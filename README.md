@@ -1,6 +1,6 @@
 # 🌱 GreenSe - Software para Cultivo Protegido em Ambiente Controlado  
 
-O **GreenSe** é uma solução de software desenvolvida para **monitoramento e automação de cultivos protegidos**, com foco em **hidroponia** em ambiente controlado. O projeto visa integrar sensores, atuadores e sistemas inteligentes para otimizar as condições de cultivo, garantindo eficiência no uso de água, nutrientes e energia.  
+O **GreenSe** é uma solução em desenvolvimento para **monitoramento e automação de cultivos protegidos**, com foco em **hidroponia** em ambiente controlado. O projeto visa integrar sensores, atuadores e sistemas inteligentes para otimizar as condições de cultivo, garantindo eficiência no uso de água, nutrientes e energia.  
 
 ---
 
@@ -21,7 +21,7 @@ O GreenSe está em desenvolvimento e, **progressivamente**, incluirá as seguint
 
 🔹 **Hardware:**  
 - **ESP32** – Para aquisição de dados dos sensores.  
-- **Raspberry Pi 4** – Como central de processamento e automação.  
+- **Raspberry Pi** – Como central de processamento e automação.  
 - **Iluminação Artificial** – Controle inteligente da iluminação para fotoperíodo otimizado.  
 
 🔹 **Software & Comunicação:**  
