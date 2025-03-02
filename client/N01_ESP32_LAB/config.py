@@ -6,7 +6,7 @@ class Config:
 
         # Configurações de MQTT
         self.mqtt_broker = "10.42.0.1"
-        self.mqtt_topic = "estufa1/dados"
+        self.mqtt_topic = "estufa1/esp32"
         self.client_id = "ESP32_Estufa"
         self.mqtt_keepalive = 60
 
