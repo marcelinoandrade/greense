@@ -19,22 +19,55 @@ def on_message(client, userdata, msg):
         dispositivo = "desconhecido"
 
         if msg.topic == "estufa1/esp32":
-            dispositivo = "ESP32"
+            dispositivo = "ESP32"   
+
+            json_body = [
+                {
+                    "measurement": "sensores",
+                    "tags": {"dispositivo": dispositivo},
+                    "fields": {
+                        # Sensores ambientais da estufa
+                        "temp": data.get("temp", 0),
+                        "umid": data.get("umid", 0),
+                        "co2": data.get("co2", 0),
+                        "luz": data.get("luz", 0),
+
+                        # Sensores da solução nutritiva (reservatório interno)
+                        "agua_min": data.get("agua_min", 0),
+                        "agua_max": data.get("agua_max", 0),
+                        "temp_reserv_int": data.get("temp_reserv_int", 0),
+
+                        # Sensores da solução nutritiva (reservatório externo)
+                        "ph": data.get("ph", 0),
+                        "ec": data.get("ec", 0),
+                        "temp_reserv_ext": data.get("temp_reserv_ext", 0),
+                    }
+                },
+                {
+                    "measurement": "atuadores",
+                    "tags": {"dispositivo": dispositivo},
+                    "fields": {
+                        # Estado dos atuadores recebidos do ESP32
+                        "bomba_agua": data.get("bomba_agua", 0)
+                    }
+                }
+            ]            
+
         elif msg.topic == "estufa1/esp8266":
             dispositivo = "ESP8266"
 
-        json_body = [
-            {
-                "measurement": "sensores",
-                "tags": {"dispositivo": dispositivo},
-                "fields": {
-                    "temperatura": data.get("temperatura", 0),
-                    "umidade": data.get("umidade", 0),
-                    "umidade_solo": data.get("umidade_solo", 0),
-                    "luz": data.get("luz", 0)
+            json_body = [
+                {
+                    "measurement": "sensores",
+                    "tags": {"dispositivo": dispositivo},
+                    "fields": {
+                        "temperatura": data.get("temperatura", 0),
+                        "umidade": data.get("umidade", 0),
+                        "umidade_solo": data.get("umidade_solo", 0),
+                        "luz": data.get("luz", 0)
+                    }
                 }
-            }
-        ]
+            ]
 
         # Inserir no InfluxDB
         client_influx.write_points(json_body)
