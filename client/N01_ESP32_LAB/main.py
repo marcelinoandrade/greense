@@ -42,14 +42,18 @@ class MainApp:
 
                 # Lê sensores
                 sensor_data = self.sensor_manager.read_sensors()
-                json_data = json.dumps(sensor_data)
+                
+                # Lê atuadores com base nos sensores
+                atuador_data = self.actuator_manager.control_actuators(sensor_data)
+                
+                # Junta dados dos sensores e atuadores
+                data_all = sensor_data.copy()  # Faz uma cópia para preservar os dados originais
+                data_all.update(atuador_data)  # Mescla os atuadores no dicionário de sensores
+                json_data = json.dumps(data_all)
 
                 # Publica dados no MQTT
                 if not self.conexao.publicar_mqtt(json_data):
                     print("Falha ao publicar dados.")
-
-                # Controla atuadores (se necessário)
-                self.actuator_manager.control_actuators(sensor_data)
 
             except Exception as e:
                 print("Erro no loop principal:", e)
