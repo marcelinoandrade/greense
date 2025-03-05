@@ -53,7 +53,7 @@ O GreenSe é projetado para crescer e evoluir continuamente. Estratégias de exp
 
 | **Capacidade de estufas** | **Expansão e melhorias** |
 |-------------------|---------------------|
-| **Até 20** <br> Atual | **- Raspberry Pi 4** |
+| **Até 20**  | **- Raspberry Pi 4** - Atual |
 | **Até 50** | **- Raspberry Pi 5** |
 | **Até 1.000** | **- Servidor central dedicado** |
 | **1.000+** | **- Arquitetura distribuída** <br> **- Edge Computing** <br> **- Servidores em nuvem** <br> **- Banco de Dados Otimizado** |
