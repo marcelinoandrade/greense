@@ -1,83 +1,100 @@
 # GreenSe - Software para Cultivo Protegido em Ambiente Controlado
 
-O **GreenSe** é uma solução inovadora para **monitoramento e automação de cultivos protegidos**, com foco em **hidroponia** em ambiente controlado. O projeto integra sensores, atuadores e sistemas inteligentes para otimizar as condições de cultivo, garantindo eficiência no uso de água, nutrientes e energia. Acesse nossa página oficial para mais informações: [www.greense.com.br](https://www.greense.com.br)
+O **GreenSe** é uma solução inovadora para **monitoramento e automação de cultivos protegidos**, com foco em **hidroponia** e outros sistemas em ambiente controlado. Integrando sensores, atuadores e sistemas inteligentes, o GreenSe otimiza as condições de cultivo, garantindo maior eficiência no uso de água, nutrientes e energia. Saiba mais em [www.greense.com.br](https://www.greense.com.br).
 
 ---
 
+<<<<<<< HEAD
 ## Funcionalidades Planejadas
 - **Monitoramento em tempo real** de temperatura, umidade, pH e condutividade elétrica da solução nutritiva entre outros.
 - **Automação inteligente** para controle de bombas de irrigação, ventilação, iluminação artificial e outros.
 - **Interface web intuitiva** para visualização e configuração dos parâmetros do sistema.
+=======
+## Funcionalidades Principais
+- **Monitoramento em tempo real** de temperatura, umidade, pH, condutividade elétrica e outros parâmetros essenciais.
+- **Automação inteligente** para controle de irrigação, ventilação, iluminação e outros processos.
+- **Interface web intuitiva** para configuração e acompanhamento do sistema.
+>>>>>>> fafb8d1 (Atualizações)
 - **Registro e análise de dados** para otimização do cultivo ao longo do tempo.
-- **Integração com dispositivos IoT**, como **ESP32 e Raspberry Pi**.
-- **Armazenamento e visualização de dados** utilizando **InfluxDB e Grafana**.
-- **Comunicação eficiente entre dispositivos** com o protocolo **MQTT**.
-- **Uso de Cloudflared** para acesso remoto seguro e confiável.
-- **Servidor NGINX hospedando a página oficial do projeto** [www.greense.com.br](https://www.greense.com.br).
-- **Expansão progressiva** para novos módulos e funcionalidades.
+- **Integração com IoT**, utilizando **ESP32, Raspberry Pi** e outros dispositivos.
+- **Armazenamento e visualização de dados** com **InfluxDB e Grafana**.
+- **Comunicação eficiente** via **MQTT**.
+- **Acesso remoto seguro** utilizando **Cloudflared**.
+- **Expansão modular**, permitindo novas funcionalidades conforme necessário.
 
 ---
 
 ## Tecnologias Utilizadas
-O GreenSe está em desenvolvimento e incorpora as seguintes tecnologias:
 
 ### Hardware
+<<<<<<< HEAD
 - **Sensores** – Monitoramento de umidade, temperatura, luminosidade, CO₂, entre outros.
 - **Atuadores** – Controle de irrigação, ventilação, iluminação e outros sistemas automatizados.
 - **ESP32 e ESP8266** – Coleta de dados dos sensores e comunicação com o servidor.
 - **Raspberry Pi** – Servidor da solução e processamento de dados.
 - **Estufas** – Ambiente controlado das plantas, onde os sensores e atuadores operam.
+=======
+- **Sensores** para monitoramento de umidade, temperatura, luminosidade, CO₂, entre outros.
+- **Atuadores** para controle de irrigação, ventilação e iluminação.
+- **ESP32 e ESP8266** para coleta de dados e comunicação.
+- **Raspberry Pi** como servidor e processador de dados.
+- **Estufas** como ambiente controlado de cultivo.
+>>>>>>> fafb8d1 (Atualizações)
 
 ### Software & Servidores
-- **Python** – Backend e lógica de controle.
-- **MQTT** – Protocolo de comunicação IoT.
-- **InfluxDB** – Banco de dados otimizado para séries temporais.
-- **Grafana** – Dashboards interativos para visualização dos dados.
-- **Cloudflared** – Conexão segura para acesso remoto sem necessidade de IP fixo.
-- **NGINX** – Servidor web que hospeda a página oficial do GreenSe.
+- **Python** para backend e lógica de controle.
+- **MQTT** para comunicação entre dispositivos.
+- **InfluxDB** para armazenamento eficiente de dados temporais.
+- **Grafana** para dashboards interativos.
+- **Cloudflared** para conexão segura e acesso remoto.
+- **NGINX** para hospedagem da página oficial.
 
 ---
 
 ## Objetivos do Projeto
-O **GreenSe** busca aprimorar a **eficiência e sustentabilidade** do cultivo protegido, oferecendo uma ferramenta confiável para produtores e pesquisadores. Benefícios incluem:
+O **GreenSe** busca aprimorar a **eficiência e sustentabilidade** dos cultivos protegidos, oferecendo uma solução confiável para produtores e pesquisadores. Entre os benefícios, destacam-se:
 
-- **Redução do consumo de água e nutrientes** através de controle preciso.
-- **Melhoria da qualidade das plantas** com ajustes automáticos do ambiente.
+- **Redução do consumo de água e nutrientes** por meio de controle inteligente.
+- **Melhoria na qualidade das plantas**, ajustando automaticamente o ambiente.
 - **Facilidade de operação e escalabilidade** para diferentes tipos de cultivo.
-- **Monitoramento acessível via web** com conexão segura via **Cloudflared**, e hospedagem do site via **NGINX**.
+- **Acesso remoto seguro**, permitindo monitoramento e controle em qualquer lugar.
 
 ---
 
 ## Expansão e Melhorias Futuras
-O GreenSe foi projetado para ser escalável e evoluir continuamente. Algumas das estratégias para expansão incluem:
+O GreenSe é projetado para crescer e evoluir continuamente. Estratégias de expansão incluem:
 
-### **Tabela de Expansão e Melhorias**
+<p align="center">
 
 | **Capacidade de estufas** | **Expansão e melhorias** |
 |-------------------|---------------------|
 | **Até 20** <br> Atual | **- Raspberry Pi 4** |
 | **Até 50** | **- Raspberry Pi 5** |
 | **Até 1.000** | **- Servidor central dedicado** |
+<<<<<<< HEAD
 | **1.000+** | **- Arquitetura distribuída** <br> **- Edge Computing** <br> **- MQTT escaláveis** <br> **- Servidores em nuvem** <br> **- Banco de Dados Otimizado** 
 |
+=======
+| **1.000+** | **- Arquitetura distribuída** <br> **- Edge Computing** <br> **- Servidores em nuvem** <br> **- Banco de Dados Otimizado** |
+
+</p>
+>>>>>>> fafb8d1 (Atualizações)
 
 ---
 
-## Perspectiva de Inserção de Inteligência Artificial
-O **GreenSe** também prevê a integração de **Inteligência Artificial (IA)** para aprimorar a automação e eficiência do cultivo. Algumas possibilidades incluem:
+## Aplicação de Inteligência Artificial
+O **GreenSe** também prevê a integração de **IA** para aprimorar a automação e eficiência do cultivo. As principais aplicações incluem:
 
-- **Modelos preditivos** para otimizar a irrigação e o uso de nutrientes com base em dados históricos.
-- **Análise de imagens com visão computacional** para detecção automática de pragas e anomalias nas plantas.
-- **Redes neurais** para prever o crescimento das plantas e sugerir ajustes automáticos no ambiente.
-- **IA para otimização de energia** no controle de ventilação, iluminação e aquecimento, reduzindo custos e desperdícios.
-- **Chatbots inteligentes** para suporte aos produtores, respondendo perguntas sobre condições da estufa e sugerindo ajustes baseados em análises de dados.
+- **Modelos preditivos** para otimizar irrigação e uso de nutrientes.
+- **Análise de imagens** para detecção automática de pragas e anomalias nas plantas.
+- **Otimização de energia**, reduzindo custos e desperdícios no controle de ventilação e iluminação.
 
-A adoção da **IA** tornará o **GreenSe** ainda mais eficiente e sustentável, permitindo maior automação e tomada de decisão baseada em dados.
+A implementação da **IA** tornará o **GreenSe** mais eficiente, automatizando processos e facilitando a tomada de decisões baseadas em dados.
 
 ---
 
 ## Como Contribuir
-Este projeto está em desenvolvimento e **qualquer colaboração é bem-vinda!** Para contribuir, siga estes passos:
+Este projeto está em desenvolvimento e **qualquer colaboração é bem-vinda!** Para contribuir, siga os passos abaixo:
 
 1. **Clone o repositório**
    ```bash
@@ -87,7 +104,7 @@ Este projeto está em desenvolvimento e **qualquer colaboração é bem-vinda!**
 ---
 
 ## Contato e Suporte
-Se tiver alguma dúvida ou sugestão, entre em contato através do nosso site oficial:
+Para dúvidas ou sugestões, entre em contato através do nosso site oficial:
 [www.greense.com.br](https://www.greense.com.br)
 
-Vamos juntos construir um futuro mais sustentável! 🚀
+Juntos, podemos construir um futuro mais sustentável! 🚀
