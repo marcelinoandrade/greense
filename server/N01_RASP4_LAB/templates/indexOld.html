@@ -18,7 +18,7 @@
             width: max-content;
             padding: 4px 0;
         }
-        .submenu.show {
+        .group:hover .submenu, .submenu:hover {
             display: block;
         }
         @media (max-width: 768px) {
@@ -60,9 +60,9 @@
             </button>
             <ul id="menu" class="md:flex space-x-6 md:space-x-6 md:flex-row flex-col absolute md:relative bg-green-700 md:bg-transparent w-full md:w-auto left-0 top-16 md:top-auto p-4 md:p-0 shadow-md md:shadow-none">
                 <li><a href="#home" class="hover:underline block md:inline">Início</a></li>
-                <li class="relative">
-                    <button id="submenu-toggle" class="hover:underline block md:inline focus:outline-none">Dashboards</button>
-                    <ul id="submenu" class="submenu w-32 text-center">
+                <li class="relative group">
+                    <a href="#dashboards" class="hover:underline block md:inline">Dashboards</a>
+                    <ul class="submenu w-32 text-center">
                         <li><a href="estufa_01.html" target="_blank" class="block px-3 py-1 hover:bg-gray-200">Estufa 1</a></li>
                         <li><a href="estufa_02.html" target="_blank" class="block px-3 py-1 hover:bg-gray-200">Estufa 2</a></li>
                     </ul>
@@ -73,8 +73,9 @@
             </ul>
         </div>
     </nav>
+
     
-   <main class="container mx-auto p-5">
+    <main class="container mx-auto p-5">
         <!-- Seção Inicial -->
         <section id="home" class="text-center my-10">
             <h1 class="text-4xl font-bold">Bem-vindo ao GreenSe</h1>
@@ -133,15 +134,5 @@
     <footer class="bg-green-700 text-white text-center p-4 mt-10">
         © 2025 GreenSe - Todos os direitos reservados.
     </footer>
-
-    <script>
-        
-        document.getElementById('menu-toggle').addEventListener('click', function() {
-            document.getElementById('menu').classList.toggle('show');
-        });
-        document.getElementById('submenu-toggle').addEventListener('click', function() {
-            document.getElementById('submenu').classList.toggle('show');
-        });
-    </script>
 </body>
 </html>
