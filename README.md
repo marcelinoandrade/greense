@@ -5,8 +5,8 @@ O **GreenSe** é uma solução inovadora para **monitoramento e automação de c
 ---
 
 ## Funcionalidades Planejadas
-- **Monitoramento em tempo real** de temperatura, umidade, pH e condutividade elétrica da solução nutritiva.
-- **Automação inteligente** para controle de bombas de irrigação, ventilação e iluminação artificial.
+- **Monitoramento em tempo real** de temperatura, umidade, pH e condutividade elétrica da solução nutritiva entre outros.
+- **Automação inteligente** para controle de bombas de irrigação, ventilação, iluminação artificial e outros.
 - **Interface web intuitiva** para visualização e configuração dos parâmetros do sistema.
 - **Registro e análise de dados** para otimização do cultivo ao longo do tempo.
 - **Integração com dispositivos IoT**, como **ESP32 e Raspberry Pi**.
@@ -22,9 +22,11 @@ O **GreenSe** é uma solução inovadora para **monitoramento e automação de c
 O GreenSe está em desenvolvimento e incorpora as seguintes tecnologias:
 
 ### Hardware
-- **ESP32** – Coleta de dados dos sensores.
+- **Sensores** – Monitoramento de umidade, temperatura, luminosidade, CO₂, entre outros.
+- **Atuadores** – Controle de irrigação, ventilação, iluminação e outros sistemas automatizados.
+- **ESP32 e ESP8266** – Coleta de dados dos sensores e comunicação com o servidor.
 - **Raspberry Pi** – Servidor da solução e processamento de dados.
-- **Estufas Indoor** – Ambiente controlado das plantas.
+- **Estufas** – Ambiente controlado das plantas, onde os sensores e atuadores operam.
 
 ### Software & Servidores
 - **Python** – Backend e lógica de controle.
