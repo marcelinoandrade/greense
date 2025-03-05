@@ -5,7 +5,7 @@ O **GreenSe** é uma solução inovadora para **monitoramento e automação de c
 ---
 
 ## Funcionalidades Principais
-- **Monitoramento em tempo real** de temperatura, umidade, pH, condutividade elétrica e outros parâmetros essenciais.
+- **Monitoramento em tempo real** de temperatura, umidade, pH, condutividade elétrica e outros parâmetros.
 - **Automação inteligente** para controle de irrigação, ventilação, iluminação e outros processos.
 - **Interface web intuitiva** para configuração e acompanhamento do sistema.
 - **Registro e análise de dados** para otimização do cultivo ao longo do tempo.
