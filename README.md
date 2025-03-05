@@ -4,17 +4,10 @@ O **GreenSe** é uma solução inovadora para **monitoramento e automação de c
 
 ---
 
-<<<<<<< HEAD
-## Funcionalidades Planejadas
-- **Monitoramento em tempo real** de temperatura, umidade, pH e condutividade elétrica da solução nutritiva entre outros.
-- **Automação inteligente** para controle de bombas de irrigação, ventilação, iluminação artificial e outros.
-- **Interface web intuitiva** para visualização e configuração dos parâmetros do sistema.
-=======
 ## Funcionalidades Principais
 - **Monitoramento em tempo real** de temperatura, umidade, pH, condutividade elétrica e outros parâmetros essenciais.
 - **Automação inteligente** para controle de irrigação, ventilação, iluminação e outros processos.
 - **Interface web intuitiva** para configuração e acompanhamento do sistema.
->>>>>>> fafb8d1 (Atualizações)
 - **Registro e análise de dados** para otimização do cultivo ao longo do tempo.
 - **Integração com IoT**, utilizando **ESP32, Raspberry Pi** e outros dispositivos.
 - **Armazenamento e visualização de dados** com **InfluxDB e Grafana**.
@@ -27,19 +20,11 @@ O **GreenSe** é uma solução inovadora para **monitoramento e automação de c
 ## Tecnologias Utilizadas
 
 ### Hardware
-<<<<<<< HEAD
-- **Sensores** – Monitoramento de umidade, temperatura, luminosidade, CO₂, entre outros.
-- **Atuadores** – Controle de irrigação, ventilação, iluminação e outros sistemas automatizados.
-- **ESP32 e ESP8266** – Coleta de dados dos sensores e comunicação com o servidor.
-- **Raspberry Pi** – Servidor da solução e processamento de dados.
-- **Estufas** – Ambiente controlado das plantas, onde os sensores e atuadores operam.
-=======
 - **Sensores** para monitoramento de umidade, temperatura, luminosidade, CO₂, entre outros.
 - **Atuadores** para controle de irrigação, ventilação e iluminação.
 - **ESP32 e ESP8266** para coleta de dados e comunicação.
 - **Raspberry Pi** como servidor e processador de dados.
 - **Estufas** como ambiente controlado de cultivo.
->>>>>>> fafb8d1 (Atualizações)
 
 ### Software & Servidores
 - **Python** para backend e lógica de controle.
@@ -71,14 +56,9 @@ O GreenSe é projetado para crescer e evoluir continuamente. Estratégias de exp
 | **Até 20** <br> Atual | **- Raspberry Pi 4** |
 | **Até 50** | **- Raspberry Pi 5** |
 | **Até 1.000** | **- Servidor central dedicado** |
-<<<<<<< HEAD
-| **1.000+** | **- Arquitetura distribuída** <br> **- Edge Computing** <br> **- MQTT escaláveis** <br> **- Servidores em nuvem** <br> **- Banco de Dados Otimizado** 
-|
-=======
 | **1.000+** | **- Arquitetura distribuída** <br> **- Edge Computing** <br> **- Servidores em nuvem** <br> **- Banco de Dados Otimizado** |
 
 </p>
->>>>>>> fafb8d1 (Atualizações)
 
 ---
 
