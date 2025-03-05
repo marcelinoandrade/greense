@@ -21,7 +21,7 @@ O **GreenSe** é uma solução inovadora para **monitoramento e automação de c
 
 ### Hardware
 - **Sensores** para monitoramento de umidade, temperatura, luminosidade, CO₂, entre outros.
-- **Atuadores** para controle de irrigação, ventilação e iluminação.
+- **Atuadores** para controle de irrigação, ventilação, iluminação e outros.
 - **ESP32 e ESP8266** para coleta de dados e comunicação.
 - **Raspberry Pi** como servidor e processador de dados.
 - **Estufas** como ambiente controlado de cultivo.
