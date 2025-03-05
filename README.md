@@ -47,18 +47,15 @@ O **GreenSe** busca aprimorar a **eficiência e sustentabilidade** dos cultivos 
 ---
 
 ## Expansão e Melhorias Futuras
-O GreenSe é projetado para crescer e evoluir continuamente. Estratégias de expansão incluem:
+O **GreenSe** é projetado para crescer e evoluir continuamente, garantindo escalabilidade e desempenho. As estratégias de expansão incluem:
 
-<p align="center">
-
-| **Capacidade de estufas** | **Expansão e melhorias** |
-|-------------------|---------------------|
-| **Até 20**  | **- Raspberry Pi 4** - Atual |
-| **Até 50** | **- Raspberry Pi 5** |
-| **Até 1.000** | **- Servidor central dedicado** |
-| **1.000+** | **- Arquitetura distribuída** <br> **- Edge Computing** <br> **- Servidores em nuvem** <br> **- Banco de Dados Otimizado** |
-
-</p>
+- **Até 20 estufas**: Utilização do **Raspberry Pi 4** para processamento local (atual).  
+- **Até 50 estufas**: Atualização para o **Raspberry Pi 5**, aumentando a capacidade de processamento.  
+- **Até 1.000 estufas**: Implementação de um **servidor central dedicado** para maior eficiência.  
+- **Mais de 1.000 estufas**: Uso de uma **arquitetura distribuída**, incluindo:  
+  - **Edge Computing** para otimização de dados em tempo real.  
+  - **Servidores em nuvem** para maior capacidade de armazenamento e processamento.  
+  - **Banco de dados otimizado** para garantir rapidez e confiabilidade. 
 
 ---
 
