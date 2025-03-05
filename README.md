@@ -51,11 +51,13 @@ O GreenSe foi projetado para ser escalável e evoluir continuamente. Algumas das
 
 ### **Tabela de Expansão e Melhorias**
 
-| **Capacidade de Estufas** | **Estratégia de Expansão** | **Melhorias Implementadas** |
-|-------------------|---------------------|---------------------|
-| **Até 10 estufas** | Uso de **Raspberry Pi** como servidor local | - **Atual** |
-| **Entre 10 e 1000 estufas** | Substituição do **Raspberry Pi** por um **servidor dedicado** | - Uso de **InfluxDB otimizado** <br> - Implementação de **compressão de dados** <br> - Expansão da interface no **Grafana** <br> - Acesso remoto otimizado via **Cloudflared** |
-| **Entre 1000 e 10.000 estufas** | Implementação de **arquitetura distribuída** e brokers MQTT escaláveis (**EMQX, VerneMQ**) | - **Edge Computing** para processamento local nos ESP32 <br> - Integração com **aplicativos móveis** <br> - Uso de **clusters de servidores** para otimização de carga |
+| **Capacidade de estufas** | **Expansão e melhorias** |
+|-------------------|---------------------|
+| **Até 20** <br> Atual | **- Raspberry Pi 4** |
+| **Até 50** | **- Raspberry Pi 5** |
+| **Até 1.000** | **- Servidor central dedicado** |
+| **Até 10.000** | **- Arquitetura distribuída** <br> **- Edge Computing** <br> **- MQTT escaláveis** <br> **- Servidores em nuvem** |
+| **1.000+** | **- Banco de Dados Otimizado (ex.: ajustes no InfluxDB)** |
 
 ---
 
