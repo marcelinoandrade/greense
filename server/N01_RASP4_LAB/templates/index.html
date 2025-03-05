@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenSe - Monitoramento Sustentável</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-900">
+    <!-- Navbar -->
+    <nav class="bg-green-700 text-white p-4 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="logo_greense.jpg" alt="Logo GreenSe" class="h-10 mr-3">
+                <span class="text-xl font-bold">GreenSe</span>
+            </div>
+            <ul class="flex space-x-6">
+                <li><a href="#home" class="hover:underline">Início</a></li>
+                <li class="relative group">
+                    <a href="#dashboards" class="hover:underline">Dashboards</a>
+                    <ul class="absolute left-0 mt-1 hidden bg-white text-green-700 shadow-md rounded-lg group-hover:block w-32 text-center">
+                        <li><a href="estufa_01.html" target="_blank" class="block px-4 py-2 hover:bg-gray-200">Estufa 1</a></li>
+                        <li><a href="estufa_02.html" target="_blank" class="block px-4 py-2 hover:bg-gray-200">Estufa 2</a></li>
+                    </ul>
+                </li>
+                <li><a href="#about" class="hover:underline">Sobre</a></li>
+                <li><a href="#how-it-works" class="hover:underline">Como Funciona</a></li>
+                <li><a href="#contact" class="hover:underline">Contato</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <main class="container mx-auto p-5">
+        <!-- Seção Inicial -->
+        <section id="home" class="text-center my-10">
+            <h1 class="text-4xl font-bold">Bem-vindo ao GreenSe</h1>
+            <p class="mt-2 text-lg text-gray-700">Monitoramento inteligente de estufas com IoT e Grafana.</p>
+        </section>
+        
+        <!-- Dashboards Grafana -->
+        <section id="dashboards" class="my-10">
+            <h2 class="text-3xl font-bold mb-6 text-center">Dashboards de Monitoramento</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white shadow-lg p-6 rounded-lg text-center">
+                    <h3 class="text-xl font-semibold text-green-700">Estufa 1</h3>
+                    <iframe src="https://grafana.greense.com.br/d/deefsj9h9fqbkf/estufa-01?orgId=1&from=now-5m&to=now&timezone=browser&kiosk
+" width="100%" height="400px" frameborder="0" class="rounded"></iframe>
+                    <p class="mt-2"><a href="estufa_01.html" target="_blank" class="text-blue-600 hover:underline">Acesse o Dashboard da Estufa 1</a></p>
+                </div>
+                <div class="bg-white shadow-lg p-6 rounded-lg text-center">
+                    <h3 class="text-xl font-semibold text-green-700">Estufa 2</h3>
+                    <iframe src="https://grafana.greense.com.br/d/eeewwlpiitvr4a/estufa-02?orgId=1&from=now-5m&to=now&timezone=browser&kiosk
+" width="100%" height="400px" frameborder="0" class="rounded"></iframe>
+                    <p class="mt-2"><a href="estufa_02.html" target="_blank" class="text-blue-600 hover:underline">Acesse o Dashboard da Estufa 2</a></p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Sobre o Projeto -->
+        <section id="about" class="my-10">
+            <h2 class="text-3xl font-bold mb-6">Sobre o GreenSe</h2>
+            <p class="text-lg text-gray-700">O GreenSe é um sistema de monitoramento e controle para estufas agrícolas, utilizando sensores e IoT para garantir um ambiente otimizado para o cultivo.</p>
+        </section>
+        
+        <!-- Como Funciona -->
+        <section id="how-it-works" class="my-10">
+            <h2 class="text-3xl font-bold mb-6">Como Funciona</h2>
+            <p class="text-lg text-gray-700">Os dados coletados por sensores são enviados para um sistema central, analisados e exibidos nos dashboards do Grafana para fácil visualização e tomada de decisão.</p>
+        </section>
+        
+        <!-- Contato -->
+        <section id="contact" class="my-10 text-center">
+            <h2 class="text-3xl font-bold mb-6">Contato</h2>
+            <p class="text-lg text-gray-700">Quer saber mais ou contribuir? Entre em contato conosco:</p>
+            <div class="flex justify-center mt-4 space-x-6">
+                <a href="https://www.instagram.com/greense_project" target="_blank" class="text-gray-600 hover:text-green-700">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" class="h-10">
+                </a>
+                <a href="https://www.linkedin.com/in/marcelinoandrade" target="_blank" class="text-gray-600 hover:text-green-700">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn" class="h-10">
+                </a>
+                <a href="https://github.com/marcelinoandrade/greense" target="_blank" class="text-gray-600 hover:text-green-700">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub" class="h-10">
+                </a>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="bg-green-700 text-white text-center p-4 mt-10">
+        © 2025 GreenSe - Todos os direitos reservados.
+    </footer>
+</body>
+</html>
