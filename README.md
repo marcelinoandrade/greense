@@ -58,8 +58,8 @@ O GreenSe foi projetado para ser escalável e evoluir continuamente. Algumas das
 | **Até 20** <br> Atual | **- Raspberry Pi 4** |
 | **Até 50** | **- Raspberry Pi 5** |
 | **Até 1.000** | **- Servidor central dedicado** |
-| **Até 10.000** | **- Arquitetura distribuída** <br> **- Edge Computing** <br> **- MQTT escaláveis** <br> **- Servidores em nuvem** |
-| **1.000+** | **- Banco de Dados Otimizado (ex.: ajustes no InfluxDB)** |
+| **1.000+** | **- Arquitetura distribuída** <br> **- Edge Computing** <br> **- MQTT escaláveis** <br> **- Servidores em nuvem** <br> **- Banco de Dados Otimizado** 
+|
 
 ---
 
