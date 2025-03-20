@@ -3,16 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GreenSe - Monitoramento Sustentável</title>
+    <title>GreenSe - Cultivo Protegido em Ambiente Controlado</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
         .submenu {
             display: none;
             position: absolute;
             top: 100%;
             left: 0;
             background-color: white;
-            color: #166534;
+            color: #003366;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
             border-radius: 0.375rem;
             width: max-content;
@@ -21,126 +25,149 @@
         .submenu.show {
             display: block;
         }
-        @media (max-width: 768px) {
-            #menu {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 60px;
-                left: 0;
-                width: 100%;
-                background-color: #166534;
-                padding: 10px;
-            }
-            #menu.show {
-                display: flex;
-            }
-            .submenu {
-                position: relative;
-                top: 0;
-                left: 0;
-                width: 100%;
-                background-color: #ffffff;
-            }
+        .hover-effect:hover {
+            transform: translateY(-5px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        @keyframes fade-in {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fade-in 1s ease-out;
         }
     </style>
 </head>
-<body class="bg-gray-100 text-gray-900">
+<body class="bg-gradient-to-r from-gray-100 to-green-50 text-gray-900">
     <!-- Navbar -->
-    <nav class="bg-green-700 text-white p-4 shadow-md relative">
+    <nav class="bg-green-900 text-white p-4 shadow-md relative">
         <div class="container mx-auto flex justify-between items-center">
-            <div class="flex items-center">
-                <img src="logo_greense.jpg" alt="Logo GreenSe" class="h-10 mr-3">
-                <span class="text-xl font-bold">GreenSe</span>
-            </div>
+            <span class="text-2xl font-bold">GreenSe</span>
             <button id="menu-toggle" class="md:hidden focus:outline-none">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
                 </svg>
             </button>
-            <ul id="menu" class="md:flex space-x-6 md:space-x-6 md:flex-row flex-col absolute md:relative bg-green-700 md:bg-transparent w-full md:w-auto left-0 top-16 md:top-auto p-4 md:p-0 shadow-md md:shadow-none">
-                <li><a href="#home" class="hover:underline block md:inline">Início</a></li>
+            <ul id="menu" class="hidden md:flex space-x-6 absolute md:relative bg-green-900 md:bg-transparent w-full md:w-auto left-0 top-16 md:top-auto p-4 md:p-0 shadow-md md:shadow-none">
+                <li><a href="#sobre" class="hover:text-green-300 transition-colors duration-300 block md:inline">Sobre</a></li>
                 <li class="relative">
-                    <button id="submenu-toggle" class="hover:underline block md:inline focus:outline-none">Dashboards</button>
-                    <ul id="submenu" class="submenu w-32 text-center">
-                        <li><a href="estufa_01.html" target="_blank" class="block px-3 py-1 hover:bg-gray-200">Estufa 1</a></li>
-                        <li><a href="estufa_02.html" target="_blank" class="block px-3 py-1 hover:bg-gray-200">Estufa 2</a></li>
+                    <span class="hover:text-green-300 transition-colors duration-300 block md:inline cursor-pointer">Estufas</span>
+                    <ul class="submenu">
+                        <li><a href="estufa_01.html" class="block px-4 py-2 hover:bg-green-50">Estufa 01</a></li>
+                        <li><a href="estufa_02.html" class="block px-4 py-2 hover:bg-green-50">Estufa 02</a></li>
                     </ul>
                 </li>
-                <li><a href="#about" class="hover:underline block md:inline">Sobre</a></li>
-                <li><a href="#how-it-works" class="hover:underline block md:inline">Como Funciona</a></li>
-                <li><a href="#contact" class="hover:underline block md:inline">Contato</a></li>
+                <li><a href="https://github.com/marcelinoandrade/greense" target="_blank" class="hover:text-green-300 transition-colors duration-300 block md:inline">GitHub</a></li>
+                <li><a href="https://blog.greense.com.br" target="_blank" class="hover:text-green-300 transition-colors duration-300 block md:inline">Blog</a></li>
+                <li><a href="#contato" class="hover:text-green-300 transition-colors duration-300 block md:inline">Contato</a></li>
             </ul>
         </div>
     </nav>
     
-   <main class="container mx-auto p-5">
-        <!-- Seção Inicial -->
-        <section id="home" class="text-center my-10">
-            <h1 class="text-4xl font-bold">Bem-vindo ao GreenSe</h1>
-            <p class="mt-2 text-lg text-gray-700">Monitoramento inteligente de estufas com IoT e Grafana.</p>
+    <!-- Header -->
+<header class="bg-green-900 text-white text-center py-1"> <!-- Padding reduzido -->
+    <div class="container mx-auto">
+        <!-- Novo Logo -->
+        <svg width="200" height="150" viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg" class="mx-auto my-2"> <!-- Margem reduzida -->
+            <defs>
+                <linearGradient id="leafGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color:#66BB6A;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#43A047;stop-opacity:1" />
+                </linearGradient>
+                <filter id="circleShadow" x="-20%" y="-20%" width="140%" height="140%">
+                    <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.3"/>
+                </filter>
+            </defs>
+            <path d="M 100 120 C 90 100, 60 70, 50 60 C 60 70, 90 50, 100 65 C 110 50, 140 70, 150 60 C 140 70, 110 100, 100 120 Z" fill="url(#leafGradient)" />
+            <path d="M 100 120 L 100 130" stroke="#388E3C" stroke-width="2" />
+            <circle cx="100" cy="130" r="10" fill="#4CAF50" filter="url(#circleShadow)" />
+        </svg>
+        <h1 class="text-6xl font-bold animate-fade-in mt-4">GreenSe</h1> <!-- Ajustei o margin-top para mt-4 -->
+        <p class="text-xl mt-4">Software para Cultivo Protegido em Ambiente Controlado</p>
+    </div>
+</header>
+
+    
+    <!-- Conteúdo Principal -->
+    <main class="container mx-auto p-1">
+        <!-- Sobre -->
+        <section id="sobre" class="my-6 text-center">
+            <h2 class="text-4xl font-bold mb-6 text-green-900">Sobre o GreenSe</h2>
+            <p class="text-lg max-w-2xl mx-auto">O GreenSe é uma solução inovadora para monitoramento e automação de cultivos protegidos, com foco em hidroponia e outros sistemas em ambiente controlado. Integrando sensores, atuadores e sistemas inteligentes, o GreenSe otimiza as condições de cultivo, garantindo maior eficiência no uso de água, nutrientes e energia.</p>
         </section>
         
-        <!-- Dashboards Grafana -->
-        <section id="dashboards" class="my-10">
-            <h2 class="text-3xl font-bold mb-6 text-center">Dashboards de Monitoramento</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-white shadow-lg p-6 rounded-lg text-center">
-                    <h3 class="text-xl font-semibold text-green-700">Estufa 1 - Desenvolvimento e Maturação</h3>
-                    <iframe src="https://grafana.greense.com.br/d/deefsj9h9fqbkf/estufa-01?orgId=1&from=now-5m&to=now&timezone=browser&kiosk
-" width="100%" height="400px" frameborder="0" class="rounded"></iframe>
-                    <p class="mt-2"><a href="estufa_01.html" target="_blank" class="text-blue-600 hover:underline">Acesse o Dashboard da Estufa 1</a></p>
+        <!-- Funcionalidades -->
+        <section id="funcionalidades" class="my-16 text-center">
+            <h2 class="text-4xl font-bold mb-6 text-green-900">Recursos Disponíveis</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                <div class="bg-white p-6 rounded-lg shadow-md hover-effect">
+                    <h3 class="text-xl font-semibold text-green-700">Visão no Tempo Desejado</h3>
+                    <p class="text-gray-700">Acompanhe com precisão temperatura, umidade, pH, condutividade elétrica e outros parâmetros cruciais.</p>
                 </div>
-                <div class="bg-white shadow-lg p-6 rounded-lg text-center">
-                    <h3 class="text-xl font-semibold text-green-700">Estufa 2 - Germinação e Enraizamento</h3>
-                    <iframe src="https://grafana.greense.com.br/d/eeewwlpiitvr4a/estufa-02?orgId=1&from=now-5m&to=now&timezone=browser&kiosk
-" width="100%" height="400px" frameborder="0" class="rounded"></iframe>
-                    <p class="mt-2"><a href="estufa_02.html" target="_blank" class="text-blue-600 hover:underline">Acesse o Dashboard da Estufa 2</a></p>
+                <div class="bg-white p-6 rounded-lg shadow-md hover-effect">
+                    <h3 class="text-xl font-semibold text-green-700">Automação Inteligente</h3>
+                    <p class="text-gray-700">Otimize processos como irrigação, ventilação e iluminação com controle automatizado e adaptável.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md hover-effect">
+                    <h3 class="text-xl font-semibold text-green-700">Interface Intuitiva</h3>
+                    <p class="text-gray-700">Configure e monitore seu sistema com facilidade através de uma interface web projetada para clareza e eficiência.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md hover-effect">
+                    <h3 class="text-xl font-semibold text-green-700">Análise de Dados Avançada</h3>
+                    <p class="text-gray-700">Registre e analise dados para aprimorar continuamente suas práticas de cultivo.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md hover-effect">
+                    <h3 class="text-xl font-semibold text-green-700">Integração IoT Flexível</h3>
+                    <p class="text-gray-700">Expanda suas capacidades com integração perfeita a dispositivos como ESP32, Raspberry Pi e outros.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md hover-effect">
+                    <h3 class="text-xl font-semibold text-green-700">Foco em Séries Temporais</h3>
+                    <p class="text-gray-700">Utilize InfluxDB e Grafana para armazenamento e visualização de dados com profundidade e clareza.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md hover-effect">
+                    <h3 class="text-xl font-semibold text-green-700">Comunicação Eficiente</h3>
+                    <p class="text-gray-700">Garanta uma comunicação robusta e confiável com o protocolo MQTT.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md hover-effect">
+                    <h3 class="text-xl font-semibold text-green-700">Acesso Remoto Seguro</h3>
+                    <p class="text-gray-700">Acesse seu sistema de qualquer lugar com segurança, utilizando Cloudflared.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md hover-effect">
+                    <h3 class="text-xl font-semibold text-green-700">Expansão Modular</h3>
+                    <p class="text-gray-700">Adapte e expanda seu sistema conforme suas necessidades evoluem.</p>
                 </div>
             </div>
-        </section>
-        
-        <!-- Sobre o Projeto -->
-        <section id="about" class="my-10">
-            <h2 class="text-3xl font-bold mb-6">Sobre o GreenSe</h2>
-            <p class="text-lg text-gray-700">O GreenSe é um sistema de monitoramento e controle para estufas agrícolas, utilizando sensores e IoT para garantir um ambiente otimizado para o cultivo.</p>
-        </section>
-        
-        <!-- Como Funciona -->
-        <section id="how-it-works" class="my-10">
-            <h2 class="text-3xl font-bold mb-6">Como Funciona</h2>
-            <p class="text-lg text-gray-700">Os dados coletados por sensores são enviados para um sistema central, analisados e exibidos nos dashboards do Grafana para fácil visualização e tomada de decisão.</p>
         </section>
         
         <!-- Contato -->
-        <section id="contact" class="my-10 text-center">
-            <h2 class="text-3xl font-bold mb-6">Contato</h2>
-            <p class="text-lg text-gray-700">Quer saber mais ou contribuir? Entre em contato conosco:</p>
-            <div class="flex justify-center mt-4 space-x-6">
-                <a href="https://www.instagram.com/greense_project" target="_blank" class="text-gray-600 hover:text-green-700">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" class="h-10">
-                </a>
-                <a href="https://www.linkedin.com/in/marcelinoandrade" target="_blank" class="text-gray-600 hover:text-green-700">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn" class="h-10">
-                </a>
-                <a href="https://github.com/marcelinoandrade/greense" target="_blank" class="text-gray-600 hover:text-green-700">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub" class="h-10">
-                </a>
-            </div>
+        <section id="contato" class="my-16 text-center">
+            <h2 class="text-4xl font-bold mb-6 text-green-900">Contato</h2>
+            <p class="text-lg">Entre em contato pelo e-mail:<br> <a class="text-green-600 underline" href="mailto:contato@greense.com.br">contato@greense.com.br</a></p>
         </section>
     </main>
     
-    <footer class="bg-green-700 text-white text-center p-4 mt-10">
-        © 2025 GreenSe - Todos os direitos reservados.
+    <!-- Footer -->
+    <footer class="bg-green-900 text-white text-center p-6 mt-16 shadow-lg">
+        © 2025 GreenSe - Inovação em Cultivo Protegido
     </footer>
 
     <script>
-        
+        // Menu toggle para mobile
         document.getElementById('menu-toggle').addEventListener('click', function() {
-            document.getElementById('menu').classList.toggle('show');
+            document.getElementById('menu').classList.toggle('hidden');
         });
-        document.getElementById('submenu-toggle').addEventListener('click', function() {
-            document.getElementById('submenu').classList.toggle('show');
+
+        // Submenu interativo
+        const estufasMenu = document.querySelector('li.relative');
+        const submenu = document.querySelector('.submenu');
+
+        estufasMenu.addEventListener('mouseenter', () => {
+            submenu.classList.add('show');
+        });
+
+        estufasMenu.addEventListener('mouseleave', () => {
+            submenu.classList.remove('show');
         });
     </script>
 </body>
