@@ -1,8 +1,10 @@
+
+
+# GreenSe - Software para Cultivo Protegido em Ambiente Controlado
+
 <div align="center">
   <img src="https://github.com/marcelinoandrade/greense/blob/main/logo_greense.svg" alt="GreenSe Logo" width="200">
 </div>
-
-# GreenSe - Software para Cultivo Protegido em Ambiente Controlado
 
 O **GreenSe** é uma solução inovadora para **monitoramento e automação de cultivos protegidos**, com foco em **hidroponia** e outros sistemas em ambiente controlado. Integrando sensores, atuadores e sistemas inteligentes, o GreenSe otimiza as condições de cultivo, garantindo maior eficiência no uso de água, nutrientes e energia. Saiba mais em [www.greense.com.br](https://www.greense.com.br).
 
