@@ -1,18 +1,9 @@
 # GreenSe - Software para Cultivo Protegido em Ambiente Controlado
 
-<svg width="200" height="150" viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg" class="mx-auto my-2"> <!-- Margem reduzida -->
-    <defs>
-        <linearGradient id="leafGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" style="stop-color:#66BB6A;stop-opacity:1" />
-            <stop offset="100%" style="stop-color:#43A047;stop-opacity:1" />
-        </linearGradient>
-        <filter id="circleShadow" x="-20%" y="-20%" width="140%" height="140%">
-            <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.3"/>
-        </filter>
-    </defs>
-    <path d="M 100 120 C 90 100, 60 70, 50 60 C 60 70, 90 50, 100 65 C 110 50, 140 70, 150 60 C 140 70, 110 100, 100 120 Z" fill="url(#leafGradient)" />
+<svg width="200" height="150" viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg" class="mx-auto my-2">
+    <path d="M 100 120 C 90 100, 60 70, 50 60 C 60 70, 90 50, 100 65 C 110 50, 140 70, 150 60 C 140 70, 110 100, 100 120 Z" fill="#66BB6A" />
     <path d="M 100 120 L 100 130" stroke="#388E3C" stroke-width="2" />
-    <circle cx="100" cy="130" r="10" fill="#4CAF50" filter="url(#circleShadow)" />
+    <circle cx="100" cy="130" r="10" fill="#4CAF50" />
 </svg>
 
 O **GreenSe** é uma solução inovadora para **monitoramento e automação de cultivos protegidos**, com foco em **hidroponia** e outros sistemas em ambiente controlado. Integrando sensores, atuadores e sistemas inteligentes, o GreenSe otimiza as condições de cultivo, garantindo maior eficiência no uso de água, nutrientes e energia. Saiba mais em [www.greense.com.br](https://www.greense.com.br).
