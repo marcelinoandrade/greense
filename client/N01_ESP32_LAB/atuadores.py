@@ -11,7 +11,7 @@ class ActuatorManager:
 
         # Inicializa o LED RGB no pino 21
         self.led = neopixel.NeoPixel(Pin(16), 1)
-        self.set_led_color((0, 0, 255))  # Azul (inicial)
+        self.set_led_color((0, 0, 10))  # Azul (inicial)
 
     def set_led_color(self, color_tuple):
         """Atualiza a cor do LED RGB."""
