@@ -26,7 +26,7 @@ class SensorManager:
         self.ec_sensor = ECSensor(pin=34, temperature_sensor=self.aht20)
         
         # Para calibrar na primeira execução:
-        # self.ph_sensor.calibrate_auto()
+        #self.ph_sensor.calibrate_auto()
         #self.ec_sensor.interactive_calibration()
 
     def read_sensors(self):
@@ -58,8 +58,8 @@ class SensorManager:
             "agua_max": agua_max,
             "temp_reserv_int": temp_reserv_int,
             "ph": ph_value,
-            "ec_raw": ec_data['raw'],
-            "ec": ec_data['ec'],
-            "ec_temp": ec_data['temp'],
+          #  "ec_raw": ec_data['raw'],
+            "ec": float(ec_data['ec']),
+          #  "ec_temp": ec_data['temp'],
             "temp_reserv_ext": temp_reserv_ext,
         }
