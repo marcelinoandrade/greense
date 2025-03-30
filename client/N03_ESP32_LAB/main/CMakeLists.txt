@@ -1,5 +1,10 @@
 idf_component_register(
-    SRCS "main.c" "conexao.c"
-    INCLUDE_DIRS "."
-    REQUIRES nvs_flash esp_wifi esp_event mqtt
+    SRCS 
+    "main.c" 
+    "conexoes/conexoes.c" 
+    "sensores/sensores.c" 
+    "sensores/aht20.c"
+    "sensores/ens160.c"
+    INCLUDE_DIRS "." "conexoes" "sensores"
+    REQUIRES nvs_flash esp_wifi esp_event mqtt driver
 )

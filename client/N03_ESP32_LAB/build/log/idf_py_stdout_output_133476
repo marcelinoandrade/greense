@@ -1,0 +1,525 @@
+fi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (694) phy_init: phy_version 4791,2c�ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:7172
+load:0x40078000,len:15540
+load:0x40080400,len:4
+ho 8 tail 4 room 4
+load:0x40080404,len:3904
+entry 0x40080640
+[0;32mI (31) boot: ESP-IDF v5.2.1 2nd stage bootloader[0m
+[0;32mI (31) boot: compile time Mar 30 2025 14:30:19[0m
+[0;32mI (31) boot: Multicore bootloader[0m
+[0;32mI (35) boot: chip revision: v3.1[0m
+[0;32mI (39) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (44) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (48) boot.esp32: SPI Flash Size : 2MB[0m
+[0;32mI (53) boot: Enabling RNG early entropy source...[0m
+[0;32mI (58) boot: Partition Table:[0m
+[0;32mI (62) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (69) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (77) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (84) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (92) boot: End of partition table[0m
+[0;32mI (96) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=26e98h (159384) map[0m
+[0;32mI (159) esp_image: segment 1: paddr=00036ec0 vaddr=3ffb0000 size=03c04h ( 15364) load[0m
+[0;32mI (165) esp_image: segment 2: paddr=0003aacc vaddr=40080000 size=0554ch ( 21836) load[0m
+[0;32mI (174) esp_image: segment 3: paddr=00040020 vaddr=400d0020 size=99a00h (629248) map[0m
+[0;32mI (389) esp_image: segment 4: paddr=000d9a28 vaddr=4008554c size=11130h ( 69936) load[0m
+[0;32mI (428) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (428) boot: Disabling RNG early entropy source...[0m
+[0;32mI (440) cpu_start: Multicore app[0m
+[0;32mI (449) cpu_start: Pro cpu start user code[0m
+[0;32mI (449) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (449) cpu_start: Application information:[0m
+[0;32mI (452) cpu_start: Project name:     N03_ESP32_LAB[0m
+[0;32mI (457) cpu_start: App version:      feea3a7-dirty[0m
+[0;32mI (463) cpu_start: Compile time:     Mar 30 2025 14:57:09[0m
+[0;32mI (469) cpu_start: ELF file SHA256:  45a760e5f...[0m
+[0;32mI (474) cpu_start: ESP-IDF:          v5.2.1[0m
+[0;32mI (479) cpu_start: Min chip rev:     v0.0[0m
+[0;32mI (484) cpu_start: Max chip rev:     v3.99 [0m
+[0;32mI (489) cpu_start: Chip rev:         v3.1[0m
+[0;32mI (494) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (501) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (507) heap_init: At 3FFB8310 len 00027CF0 (159 KiB): DRAM[0m
+[0;32mI (513) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (519) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (526) heap_init: At 4009667C len 00009984 (38 KiB): IRAM[0m
+[0;32mI (533) spi_flash: detected chip: generic[0m
+[0;32mI (536) spi_flash: flash io: dio[0m
+[0;33mW (540) spi_flash: Detected size(4096k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;32mI (554) main_task: Started on CPU0[0m
+[0;32mI (564) main_task: Calling app_main()[0m
+[0;32mI (604) wifi:wifi driver task: 3ffc0334, prio:23, stack:6656, core=0[0m
+[0;32mI (614) wifi:wifi firmware version: a9f5b59[0m
+[0;32mI (624) wifi:wifi certification version: v7.0[0m
+[0;32mI (624) wifi:config NVS flash: enabled[0m
+[0;32mI (624) wifi:config nano formating: disabled[0m
+[0;32mI (624) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (624) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (634) wifi:Init management short buffer num: 32[0m
+[0;32mI (634) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (644) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (644) wifi:Init static rx buffer num: 10[0m
+[0;32mI (644) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (654) wifi_init: rx ba win: 6[0m
+[0;32mI (654) wifi_init: tcpip mbox: 32[0m
+[0;32mI (664) wifi_init: udp mbox: 6[0m
+[0;32mI (664) wifi_init: tcp mbox: 6[0m
+[0;32mI (664) wifi_init: tcp tx win: 5760[0m
+[0;32mI (674) wifi_init: tcp rx win: 5760[0m
+[0;32mI (674) wifi_init: tcp mss: 1440[0m
+[0;32mI (684) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (684) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (694) phy_init: phy_version 4791,2c4672b,Dec 20 2023,16:06:06[0m
+[0;32mI (774) wifi:mode : sta (88:13:bf:82:3d:24)[0m
+[0;32mI (774) wifi:enable tsf[0m
+[0;32mI (774) wifi:Set ps type: 0, coexist: 0[0m
+
+[0;32mI (784) WiFi: Wi-Fi inicializado. Conectando...[0m
+[0;32mI (794) wifi:new:<13,0>, old:<1,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (794) wifi:state: init -> auth (b0)[0m
+[0;32mI (1794) wifi:state: auth -> init (200)[0m
+[0;32mI (1794) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;33mW (1794) WiFi: Desconectado. Motivo: 2[0m
+[0;32mI (1804) WiFi: Tentando reconectar ao Wi-Fi...[0m
+[0;33mW (4214) WiFi: Desconectado. Motivo: 205[0m
+[0;32mI (4214) WiFi: Tentando reconectar ao Wi-Fi...[0m
+[0;32mI (4274) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (4274) wifi:state: init -> auth (b0)[0m
+[0;32mI (5274) wifi:state: auth -> init (200)[0m
+[0;32mI (5274) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;33mW (5274) WiFi: Desconectado. Motivo: 2[0m
+[0;32mI (5284) WiFi: Tentando reconectar ao Wi-Fi...[0m
+[0;33mW (7694) WiFi: Desconectado. Motivo: 205[0m
+[0;32mI (7694) WiFi: Tentando reconectar ao Wi-Fi...[0m
+[0;32mI (7754) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (7754) wifi:state: init -> auth (b0)[0m
+[0;32mI (8754) wifi:state: auth -> init (200)[0m
+[0;32mI (8754) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;33mW (8764) WiFi: Desconectado. Motivo: 2[0m
+[0;32mI (8764) WiFi: Tentando reconectar ao Wi-Fi...[0m
+[0;33mW (11174) WiFi: Desconectado. Motivo: 201[0m
+[0;31mE (11174) WiFi: Falha ao conectar ao Wi-Fi[0m
+[0;31mE (11174) WiFi: Falha ao conectar ao Wi-Fi[0m
+[0;31mE (11184) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[0;31mE (11184) transport_base: Failed to open a new connection: 32772[0m
+[0;31mE (11194) mqtt_client: Error transport connect[0m
+[0;31mE (11194) MQTT: Erro no MQTT[0m
+[0;33mW (11204) MQTT: Desconectado do MQTT[0m
+[0;33mW (11204) wifi:Haven't to connect to a suitable AP now![0m
+Wi-Fi está desconectado. Tentando reconectar...
+[0;33mW (15624) WiFi: Desconectado. Motivo: 201[0m
+[0;31mE (15624) WiFi: Falha ao conectar ao Wi-Fi[0m
+[0;33mW (18214) wifi:Haven't to connect to a suitable AP now![0m
+Wi-Fi está desconectado. Tentando reconectar...
+[0;33mW (22624) WiFi: Desconectado. Motivo: 201[0m
+[0;31mE (22624) WiFi: Falha ao conectar ao Wi-Fi[0m
+[0;33mW (25214) wifi:Haven't to connect to a suitable AP now![0m
+Wi-Fi está desconectado. Tentando reconectar...
+[0;31mE (26204) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[0;31mE (26204) transport_base: Failed to open a new connection: 32772[0m
+[0;31mE (26204) mqtt_client: Error transport connect[0m
+[0;31mE (26214) MQTT: Erro no MQTT[0m
+[0;33mW (26214) MQTT: Desconectado do MQTT[0m
+[0;33mW (29624) WiFi: Desconectado. Motivo: 201[0m
+[0;31mE (29624) WiFi: Falha ao conectar ao Wi-Fi[0m
+[0;33mW (32214) wifi:Haven't to connect to a suitable AP now![0m
+Wi-Fi está desconectado. Tentando reconectar...
+[0;32mI (34274) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (34274) wifi:state: init -> auth (b0)[0m
+[0;32mI (34284) wifi:state: auth -> assoc (0)[0m
+[0;32mI (34284) wifi:state: assoc -> run (10)[0m
+[0;32mI (34324) wifi:connected with greense, aid = 3, channel 13, BW20, bssid = e4:5f:01:6f:f2:29[0m
+[0;32mI (34324) wifi:security: WPA-PSK, phy: bgn, rssi: -39[0m
+[0;32mI (34324) wifi:pm start, type: 0[0m
+
+[0;32mI (34324) wifi:dp: 1, bi: 102400, li: 3, scale listen interval from 307200 us to 307200 us[0m
+[0;32mI (34354) wifi:<ba-add>idx:0 (ifx:0, e4:5f:01:6f:f2:29), tid:6, ssn:0, winSize:64[0m
+[0;32mI (34374) wifi:dp: 2, bi: 102400, li: 4, scale listen interval from 307200 us to 409600 us[0m
+[0;32mI (34374) wifi:AP's beacon interval = 102400 us, DTIM period = 2[0m
+[0;32mI (35334) esp_netif_handlers: sta ip: 10.42.0.185, mask: 255.255.255.0, gw: 10.42.0.1[0m
+[0;32mI (35334) WiFi: Conectado! IP: 10.42.0.185[0m
+Wi-Fi está conectado.
+MQTT não está conectado.
+[0;32mI (41304) MQTT: Conectado ao broker MQTT![0m
+[0;32mI (42714) wifi:<ba-add>idx:1 (ifx:0, e4:5f:01:6f:f2:29), tid:0, ssn:8, winSize:64[0m
+Wi-Fi está conectado.
+[0;32mI (44214) MQTT: Publicado (id=13829): estufa3/esp32 -> {"temp": 33.50, "umid": 80.65, "co2": 985.82, "luz": 526.43, "agua_min": 1, "agua_max": 0, "temp_reserv_int": 22.54, "ph": 6.29, "ec": 2.03, "temp_reserv_ext": 18.77}[0m
+Wi-Fi está conectado.
+[0;32mI (49224) MQTT: Publicado (id=7909): estufa3/esp32 -> {"temp": 21.40, "umid": 58.80, "co2": 577.25, "luz": 622.23, "agua_min": 1, "agua_max": 0, "temp_reserv_int": 18.11, "ph": 7.21, "ec": 1.09, "temp_reserv_ext": 22.78}[0m
+Wi-Fi está conectado.
+[0;32mI (54234) MQTT: Publicado (id=51701): estufa3/esp32 -> {"temp": 22.32, "umid": 58.92, "co2": 1879.61, "luz": 741.78, "agua_min": 1, "agua_max": 1, "temp_reserv_int": 17.97, "ph": 6.03, "ec": 2.26, "temp_reserv_ext": 20.99}[0m
+Wi-Fi está conectado.
+[0;32mI (59244) MQTT: Publicado (id=23517): estufa3/esp32 -> {"temp": 24.18, "umid": 40.38, "co2": 1715.14, "luz": 655.40, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 20.75, "ph": 6.34, "ec": 0.76, "temp_reserv_ext": 20.31}[0m
+Wi-Fi está conectado.
+[0;32mI (64254) MQTT: Publicado (id=63539): estufa3/esp32 -> {"temp": 22.98, "umid": 57.74, "co2": 932.19, "luz": 119.48, "agua_min": 0, "agua_max": 1, "temp_reserv_int": 24.73, "ph": 5.62, "ec": 0.70, "temp_reserv_ext": 19.46}[0m
+Wi-Fi está conectado.
+[0;32mI (69264) MQTT: Publicado (id=58184): estufa3/esp32 -> {"temp": 31.04, "umid": 77.90, "co2": 1811.58, "luz": 1116.65, "agua_min": 0, "agua_max": 1, "temp_reserv_int": 16.91, "ph": 6.71, "ec": 1.69, "temp_reserv_ext": 20.23}[0m
+Wi-Fi está conectado.
+[0;32mI (74274) MQTT: Publicado (id=18671): estufa3/esp32 -> {"temp": 33.65, "umid": 47.00, "co2": 1195.86, "luz": 1516.11, "agua_min": 1, "agua_max": 1, "temp_reserv_int": 23.76, "ph": 5.94, "ec": 0.70, "temp_reserv_ext": 23.41}[0m
+Wi-Fi está conectado.
+[0;32mI (79284) MQTT: Publicado (id=26612): estufa3/esp32 -> {"temp": 27.41, "umid": 66.50, "co2": 1321.09, "luz": 1600.27, "agua_min": 0, "agua_max": 1, "temp_reserv_int": 20.71, "ph": 6.04, "ec": 2.40, "temp_reserv_ext": 21.69}[0m
+Wi-Fi está conectado.
+[0;32mI (84294) MQTT: Publicado (id=58821): estufa3/esp32 -> {"temp": 21.15, "umid": 78.67, "co2": 561.16, "luz": 1022.95, "agua_min": 1, "agua_max": 1, "temp_reserv_int": 19.52, "ph": 7.00, "ec": 0.72, "temp_reserv_ext": 20.93}[0m
+Wi-Fi está conectado.
+[0;32mI (89304) MQTT: Publicado (id=6967): estufa3/esp32 -> {"temp": 22.57, "umid": 77.31, "co2": 1035.12, "luz": 822.68, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 16.81, "ph": 5.50, "ec": 2.41, "temp_reserv_ext": 21.85}[0m
+Wi-Fi está conectado.
+[0;32mI (94314) MQTT: Publicado (id=19185): estufa3/esp32 -> {"temp": 24.35, "umid": 42.79, "co2": 491.56, "luz": 798.14, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 24.76, "ph": 6.38, "ec": 2.42, "temp_reserv_ext": 17.09}[0m
+Wi-Fi está conectado.
+[0;32mI (99324) MQTT: Publicado (id=23845): estufa3/esp32 -> {"temp": 30.34, "umid": 57.60, "co2": 1358.36, "luz": 1690.87, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 24.67, "ph": 6.13, "ec": 1.10, "temp_reserv_ext": 21.84}[0m
+Wi-Fi está conectado.
+[0;32mI (104334) MQTT: Publicado (id=43359): estufa3/esp32 -> {"temp": 25.60, "umid": 40.53, "co2": 991.60, "luz": 1754.67, "agua_min": 1, "agua_max": 0, "temp_reserv_int": 23.12, "ph": 6.84, "ec": 1.46, "temp_reserv_ext": 17.06}[0m
+Wi-Fi está conectado.
+[0;32mI (109344) MQTT: Publicado (id=485): estufa3/esp32 -> {"temp": 27.61, "umid": 67.49, "co2": 1512.27, "luz": 564.78, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 20.58, "ph": 5.61, "ec": 1.39, "temp_reserv_ext": 15.12}[0m
+Wi-Fi está conectado.
+[0;32mI (114354) MQTT: Publicado (id=23060): estufa3/esp32 -> {"temp": 32.46, "umid": 77.98, "co2": 1806.44, "luz": 1973.07, "agua_min": 1, "agua_max": 1, "temp_reserv_int": 20.97, "ph": 5.55, "ec": 1.31, "temp_reserv_ext": 22.23}[0m
+Wi-Fi está conectado.
+[0;32mI (119364) MQTT: Publicado (id=60678): estufa3/esp32 -> {"temp": 27.18, "umid": 44.69, "co2": 864.41, "luz": 754.54, "agua_min": 1, "agua_max": 0, "temp_reserv_int": 22.11, "ph": 5.79, "ec": 1.73, "temp_reserv_ext": 19.60}[0m
+Wi-Fi está conectado.
+[0;32mI (124374) MQTT: Publicado (id=62240): estufa3/esp32 -> {"temp": 31.85, "umid": 57.81, "co2": 539.35, "luz": 404.63, "agua_min": 1, "agua_max": 1, "temp_reserv_int": 17.25, "ph": 6.94, "ec": 2.48, "temp_reserv_ext": 24.31}[0m
+Wi-Fi está conectado.
+[0;32mI (129384) MQTT: Publicado (id=48452): estufa3/esp32 -> {"temp": 23.48, "umid": 82.51, "co2": 843.23, "luz": 515.22, "agua_min": 1, "agua_max": 1, "temp_reserv_int": 22.87, "ph": 7.02, "ec": 1.74, "temp_reserv_ext": 20.30}[0m
+Wi-Fi está conectado.
+[0;32mI (134394) MQTT: Publicado (id=49496): estufa3/esp32 -> {"temp": 29.70, "umid": 48.59, "co2": 1736.83, "luz": 1035.02, "agua_min": 1, "agua_max": 1, "temp_reserv_int": 23.70, "ph": 6.32, "ec": 1.40, "temp_reserv_ext": 21.83}[0m
+Wi-Fi está conectado.
+[0;32mI (139404) MQTT: Publicado (id=45268): estufa3/esp32 -> {"temp": 32.87, "umid": 50.36, "co2": 1108.58, "luz": 1877.91, "agua_min": 1, "agua_max": 0, "temp_reserv_int": 24.35, "ph": 7.48, "ec": 1.29, "temp_reserv_ext": 15.54}[0m
+Wi-Fi está conectado.
+[0;32mI (144414) MQTT: Publicado (id=64626): estufa3/esp32 -> {"temp": 33.38, "umid": 67.84, "co2": 1717.19, "luz": 663.31, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 20.30, "ph": 7.04, "ec": 0.91, "temp_reserv_ext": 18.88}[0m
+Wi-Fi está conectado.
+[0;32mI (149424) MQTT: Publicado (id=36678): estufa3/esp32 -> {"temp": 25.33, "umid": 66.80, "co2": 980.49, "luz": 1186.70, "agua_min": 0, "agua_max": 1, "temp_reserv_int": 22.99, "ph": 5.69, "ec": 1.09, "temp_reserv_ext": 24.27}[0m
+Wi-Fi está conectado.
+[0;32mI (154434) MQTT: Publicado (id=35926): estufa3/esp32 -> {"temp": 32.37, "umid": 79.36, "co2": 1837.56, "luz": 1052.55, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 24.95, "ph": 6.99, "ec": 0.81, "temp_reserv_ext": 22.97}[0m
+Wi-Fi está conectado.
+[0;32mI (159444) MQTT: Publicado (id=16405): estufa3/esp32 -> {"temp": 20.29, "umid": 74.90, "co2": 671.22, "luz": 1315.45, "agua_min": 1, "agua_max": 0, "temp_reserv_int": 20.46, "ph": 6.56, "ec": 1.19, "temp_reserv_ext": 20.92}[0m
+Wi-Fi está conectado.
+[0;32mI (164454) MQTT: Publicado (id=5957): estufa3/esp32 -> {"temp": 31.84, "umid": 56.26, "co2": 1236.88, "luz": 301.95, "agua_min": 0, "agua_max": 1, "temp_reserv_int": 23.34, "ph": 7.14, "ec": 2.12, "temp_reserv_ext": 16.00}[0m
+Wi-Fi está conectado.
+[0;32mI (169464) MQTT: Publicado (id=47779): estufa3/esp32 -> {"temp": 31.02, "umid": 80.07, "co2": 743.90, "luz": 1929.67, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 20.97, "ph": 5.64, "ec": 1.47, "temp_reserv_ext": 19.91}[0m
+Wi-Fi está conectado.
+[0;32mI (174474) MQTT: Publicado (id=54953): estufa3/esp32 -> {"temp": 34.24, "umid": 40.83, "co2": 413.40, "luz": 1879.48, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 18.95, "ph": 5.87, "ec": 0.87, "temp_reserv_ext": 20.83}[0m
+Wi-Fi está conectado.
+[0;32mI (179484) MQTT: Publicado (id=29868): estufa3/esp32 -> {"temp": 33.29, "umid": 64.15, "co2": 628.59, "luz": 1901.14, "agua_min": 1, "agua_max": 0, "temp_reserv_int": 19.18, "ph": 5.83, "ec": 1.34, "temp_reserv_ext": 24.36}[0m
+Wi-Fi está conectado.
+[0;32mI (184494) MQTT: Publicado (id=8907): estufa3/esp32 -> {"temp": 30.90, "umid": 65.80, "co2": 685.79, "luz": 1716.09, "agua_min": 1, "agua_max": 1, "temp_reserv_int": 15.70, "ph": 6.16, "ec": 0.87, "temp_reserv_ext": 23.52}[0m
+Wi-Fi está conectado.
+[0;32mI (189504) MQTT: Publicado (id=35951): estufa3/esp32 -> {"temp": 31.83, "umid": 86.68, "co2": 628.85, "luz": 590.12, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 15.79, "ph": 7.07, "ec": 1.68, "temp_reserv_ext": 23.60}[0m
+Wi-Fi está conectado.
+[0;32mI (194514) MQTT: Publicado (id=52514): estufa3/esp32 -> {"temp": 25.64, "umid": 52.99, "co2": 1801.98, "luz": 329.31, "agua_min": 1, "agua_max": 0, "temp_reserv_int": 18.28, "ph": 7.06, "ec": 1.83, "temp_reserv_ext": 16.47}[0m
+Wi-Fi está conectado.
+[0;32mI (199524) MQTT: Publicado (id=53117): estufa3/esp32 -> {"temp": 25.57, "umid": 81.55, "co2": 1802.71, "luz": 1110.18, "agua_min": 1, "agua_max": 1, "temp_reserv_int": 24.15, "ph": 6.16, "ec": 1.25, "temp_reserv_ext": 16.97}[0m
+Wi-Fi está conectado.
+[0;32mI (204534) MQTT: Publicado (id=42926): estufa3/esp32 -> {"temp": 33.63, "umid": 88.10, "co2": 563.36, "luz": 1082.58, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 19.07, "ph": 6.44, "ec": 2.33, "temp_reserv_ext": 22.15}[0m
+Wi-Fi está conectado.
+[0;32mI (209544) MQTT: Publicado (id=36393): estufa3/esp32 -> {"temp": 22.55, "umid": 59.54, "co2": 1023.66, "luz": 585.45, "agua_min": 0, "agua_max": 1, "temp_reserv_int": 21.70, "ph": 6.56, "ec": 1.41, "temp_reserv_ext": 17.60}[0m
+Wi-Fi está conectado.
+[0;32mI (214554) MQTT: Publicado (id=10489): estufa3/esp32 -> {"temp": 26.16, "umid": 63.99, "co2": 1017.99, "luz": 305.61, "agua_min": 1, "agua_max": 0, "temp_reserv_int": 17.02, "ph": 7.41, "ec": 1.74, "temp_reserv_ext": 20.27}[0m
+Wi-Fi está conectado.
+[0;32mI (219564) MQTT: Publicado (id=46803): estufa3/esp32 -> {"temp": 24.89, "umid": 75.58, "co2": 1195.12, "luz": 126.24, "agua_min": 0, "agua_max": 1, "temp_reserv_int": 18.55, "ph": 6.27, "ec": 2.41, "temp_reserv_ext": 15.10}[0m
+Wi-Fi está conectado.
+[0;32mI (224574) MQTT: Publicado (id=40933): estufa3/esp32 -> {"temp": 22.70, "umid": 51.63, "co2": 1238.98, "luz": 1064.67, "agua_min": 0, "agua_max": 1, "temp_reserv_int": 15.81, "ph": 6.90, "ec": 1.25, "temp_reserv_ext": 22.95}[0m
+Wi-Fi está conectado.
+[0;32mI (229584) MQTT: Publicado (id=57313): estufa3/esp32 -> {"temp": 26.12, "umid": 63.32, "co2": 1580.18, "luz": 1111.78, "agua_min": 0, "agua_max": 1, "temp_reserv_int": 20.46, "ph": 7.45, "ec": 2.24, "temp_reserv_ext": 15.80}[0m
+Wi-Fi está conectado.
+[0;32mI (234594) MQTT: Publicado (id=35594): estufa3/esp32 -> {"temp": 34.15, "umid": 67.64, "co2": 1131.53, "luz": 382.88, "agua_min": 1, "agua_max": 0, "temp_reserv_int": 19.78, "ph": 6.20, "ec": 1.65, "temp_reserv_ext": 20.65}[0m
+Wi-Fi está conectado.
+[0;32mI (239604) MQTT: Publicado (id=3415): estufa3/esp32 -> {"temp": 26.46, "umid": 39.29, "co2": 930.90, "luz": 1457.06, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 23.90, "ph": 6.55, "ec": 1.36, "temp_reserv_ext": 19.30}[0m
+Wi-Fi está conectado.
+[0;32mI (244614) MQTT: Publicado (id=48073): estufa3/esp32 -> {"temp": 34.86, "umid": 81.30, "co2": 776.99, "luz": 780.40, "agua_min": 0, "agua_max": 1, "temp_reserv_int": 16.52, "ph": 5.63, "ec": 2.07, "temp_reserv_ext": 17.75}[0m
+Wi-Fi está conectado.
+[0;32mI (249624) MQTT: Publicado (id=2715): estufa3/esp32 -> {"temp": 28.87, "umid": 72.13, "co2": 1608.60, "luz": 1743.24, "agua_min": 1, "agua_max": 0, "temp_reserv_int": 23.53, "ph": 6.27, "ec": 1.59, "temp_reserv_ext": 19.04}[0m
+Wi-Fi está conectado.
+[0;32mI (254634) MQTT: Publicado (id=45267): estufa3/esp32 -> {"temp": 23.21, "umid": 78.90, "co2": 1931.39, "luz": 1496.16, "agua_min": 1, "agua_max": 1, "temp_reserv_int": 23.23, "ph": 6.17, "ec": 1.82, "temp_reserv_ext": 22.89}[0m
+Wi-Fi está conectado.
+[0;32mI (259654) MQTT: Publicado (id=55356): estufa3/esp32 -> {"temp": 27.23, "umid": 47.62, "co2": 1951.91, "luz": 1610.19, "agua_min": 1, "agua_max": 0, "temp_reserv_int": 23.75, "ph": 7.35, "ec": 2.25, "temp_reserv_ext": 20.32}[0m
+Wi-Fi está conectado.
+[0;32mI (264664) MQTT: Publicado (id=58183): estufa3/esp32 -> {"temp": 29.07, "umid": 88.35, "co2": 1389.50, "luz": 947.52, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 22.90, "ph": 5.76, "ec": 0.61, "temp_reserv_ext": 16.71}[0m
+Wi-Fi está conectado.
+[0;32mI (269674) MQTT: Publicado (id=60933): estufa3/esp32 -> {"temp": 23.06, "umid": 67.54, "co2": 1304.35, "luz": 1099.06, "agua_min": 0, "agua_max": 1, "temp_reserv_int": 15.46, "ph": 7.08, "ec": 2.39, "temp_reserv_ext": 19.86}[0m
+Wi-Fi está conectado.
+[0;32mI (274684) MQTT: Publicado (id=18697): estufa3/esp32 -> {"temp": 25.26, "umid": 86.58, "co2": 1471.56, "luz": 1994.46, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 20.70, "ph": 7.43, "ec": 1.95, "temp_reserv_ext": 24.44}[0m
+Wi-Fi está conectado.
+[0;32mI (279694) MQTT: Publicado (id=9509): estufa3/esp32 -> {"temp": 32.80, "umid": 30.19, "co2": 1066.85, "luz": 1109.11, "agua_min": 0, "agua_max": 1, "temp_reserv_int": 17.50, "ph": 6.13, "ec": 0.77, "temp_reserv_ext": 15.52}[0m
+Wi-Fi está conectado.
+[0;32mI (284704) MQTT: Publicado (id=31481): estufa3/esp32 -> {"temp": 22.57, "umid": 82.44, "co2": 1676.85, "luz": 277.87, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 16.53, "ph": 6.64, "ec": 1.44, "temp_reserv_ext": 15.80}[0m
+Wi-Fi está conectado.
+[0;32mI (289714) MQTT: Publicado (id=62679): estufa3/esp32 -> {"temp": 27.60, "umid": 49.38, "co2": 1739.10, "luz": 427.90, "agua_min": 1, "agua_max": 1, "temp_reserv_int": 22.07, "ph": 5.90, "ec": 2.05, "temp_reserv_ext": 17.03}[0m
+Wi-Fi está conectado.
+[0;32mI (294724) MQTT: Publicado (id=13716): estufa3/esp32 -> {"temp": 34.03, "umid": 83.41, "co2": 1014.89, "luz": 850.03, "agua_min": 0, "agua_max": 1, "temp_reserv_int": 16.89, "ph": 7.09, "ec": 0.72, "temp_reserv_ext": 24.18}[0m
+Wi-Fi está conectado.
+[0;32mI (299734) MQTT: Publicado (id=18487): estufa3/esp32 -> {"temp": 23.00, "umid": 53.14, "co2": 1582.86, "luz": 357.65, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 22.20, "ph": 6.19, "ec": 0.74, "temp_reserv_ext": 18.16}[0m
+Wi-Fi está conectado.
+[0;32mI (304744) MQTT: Publicado (id=13476): estufa3/esp32 -> {"temp": 23.40, "umid": 40.03, "co2": 1931.20, "luz": 437.82, "agua_min": 1, "agua_max": 0, "temp_reserv_int": 17.37, "ph": 7.18, "ec": 2.19, "temp_reserv_ext": 22.15}[0m
+Wi-Fi está conectado.
+[0;32mI (309754) MQTT: Publicado (id=63891): estufa3/esp32 -> {"temp": 33.93, "umid": 72.48, "co2": 1054.83, "luz": 1376.65, "agua_min": 1, "agua_max": 1, "temp_reserv_int": 15.27, "ph": 5.56, "ec": 1.81, "temp_reserv_ext": 20.96}[0m
+Wi-Fi está conectado.
+[0;32mI (314764) MQTT: Publicado (id=17623): estufa3/esp32 -> {"temp": 33.28, "umid": 48.20, "co2": 426.62, "luz": 842.13, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 18.38, "ph": 7.27, "ec": 0.92, "temp_reserv_ext": 24.47}[0m
+Wi-Fi está conectado.
+[0;32mI (319774) MQTT: Publicado (id=3278): estufa3/esp32 -> {"temp": 28.92, "umid": 82.28, "co2": 593.39, "luz": 1376.03, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 23.12, "ph": 5.68, "ec": 2.30, "temp_reserv_ext": 18.56}[0m
+Wi-Fi está conectado.
+[0;32mI (324784) MQTT: Publicado (id=48093): estufa3/esp32 -> {"temp": 33.61, "umid": 83.42, "co2": 673.90, "luz": 271.07, "agua_min": 1, "agua_max": 1, "temp_reserv_int": 19.84, "ph": 5.81, "ec": 2.23, "temp_reserv_ext": 22.85}[0m
+Wi-Fi está conectado.
+[0;32mI (329794) MQTT: Publicado (id=54111): estufa3/esp32 -> {"temp": 30.27, "umid": 64.08, "co2": 1950.87, "luz": 1227.78, "agua_min": 1, "agua_max": 0, "temp_reserv_int": 18.47, "ph": 5.98, "ec": 1.72, "temp_reserv_ext": 20.54}[0m
+Wi-Fi está conectado.
+[0;32mI (334804) MQTT: Publicado (id=12948): estufa3/esp32 -> {"temp": 33.68, "umid": 59.71, "co2": 1489.30, "luz": 643.28, "agua_min": 0, "agua_max": 1, "temp_reserv_int": 23.98, "ph": 6.47, "ec": 2.07, "temp_reserv_ext": 23.08}[0m
+Wi-Fi está conectado.
+[0;32mI (339814) MQTT: Publicado (id=37086): estufa3/esp32 -> {"temp": 22.41, "umid": 40.64, "co2": 1007.24, "luz": 363.17, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 16.39, "ph": 5.68, "ec": 0.57, "temp_reserv_ext": 15.21}[0m
+Wi-Fi está conectado.
+[0;32mI (344824) MQTT: Publicado (id=53686): estufa3/esp32 -> {"temp": 28.91, "umid": 72.49, "co2": 413.82, "luz": 830.84, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 19.02, "ph": 7.39, "ec": 1.94, "temp_reserv_ext": 23.16}[0m
+Wi-Fi está conectado.
+[0;32mI (349834) MQTT: Publicado (id=35839): estufa3/esp32 -> {"temp": 33.66, "umid": 33.39, "co2": 428.41, "luz": 1312.24, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 24.70, "ph": 7.11, "ec": 0.52, "temp_reserv_ext": 17.65}[0m
+Wi-Fi está conectado.
+[0;32mI (354844) MQTT: Publicado (id=12795): estufa3/esp32 -> {"temp": 21.96, "umid": 40.94, "co2": 1624.71, "luz": 169.04, "agua_min": 0, "agua_max": 1, "temp_reserv_int": 20.44, "ph": 7.28, "ec": 1.76, "temp_reserv_ext": 16.00}[0m
+Wi-Fi está conectado.
+[0;32mI (359854) MQTT: Publicado (id=53153): estufa3/esp32 -> {"temp": 24.79, "umid": 54.81, "co2": 992.98, "luz": 841.26, "agua_min": 1, "agua_max": 1, "temp_reserv_int": 22.49, "ph": 6.81, "ec": 2.24, "temp_reserv_ext": 22.49}[0m
+Wi-Fi está conectado.
+[0;32mI (364864) MQTT: Publicado (id=16661): estufa3/esp32 -> {"temp": 23.56, "umid": 57.13, "co2": 1123.19, "luz": 1662.97, "agua_min": 0, "agua_max": 1, "temp_reserv_int": 16.19, "ph": 6.36, "ec": 1.73, "temp_reserv_ext": 24.25}[0m
+Wi-Fi está conectado.
+[0;32mI (369874) MQTT: Publicado (id=32231): estufa3/esp32 -> {"temp": 25.70, "umid": 58.68, "co2": 1602.21, "luz": 867.07, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 15.23, "ph": 6.63, "ec": 1.12, "temp_reserv_ext": 19.78}[0m
+Wi-Fi está conectado.
+[0;32mI (374884) MQTT: Publicado (id=20627): estufa3/esp32 -> {"temp": 20.60, "umid": 84.11, "co2": 433.65, "luz": 600.32, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 19.53, "ph": 7.20, "ec": 0.64, "temp_reserv_ext": 24.78}[0m
+Wi-Fi está conectado.
+[0;32mI (379894) MQTT: Publicado (id=41566): estufa3/esp32 -> {"temp": 33.65, "umid": 68.64, "co2": 1542.44, "luz": 1917.11, "agua_min": 1, "agua_max": 1, "temp_reserv_int": 15.90, "ph": 7.30, "ec": 2.47, "temp_reserv_ext": 17.23}[0m
+Wi-Fi está conectado.
+[0;32mI (384904) MQTT: Publicado (id=32167): estufa3/esp32 -> {"temp": 34.09, "umid": 84.90, "co2": 882.21, "luz": 1079.49, "agua_min": 1, "agua_max": 1, "temp_reserv_int": 15.18, "ph": 5.81, "ec": 0.69, "temp_reserv_ext": 23.97}[0m
+Wi-Fi está conectado.
+[0;32mI (389914) MQTT: Publicado (id=32669): estufa3/esp32 -> {"temp": 33.89, "umid": 40.23, "co2": 767.35, "luz": 447.74, "agua_min": 1, "agua_max": 1, "temp_reserv_int": 22.61, "ph": 6.31, "ec": 2.39, "temp_reserv_ext": 18.95}[0m
+Wi-Fi está conectado.
+[0;32mI (394924) MQTT: Publicado (id=20691): estufa3/esp32 -> {"temp": 21.43, "umid": 89.52, "co2": 575.01, "luz": 794.12, "agua_min": 1, "agua_max": 1, "temp_reserv_int": 20.17, "ph": 6.16, "ec": 1.27, "temp_reserv_ext": 22.94}[0m
+Wi-Fi está conectado.
+[0;32mI (399934) MQTT: Publicado (id=37196): estufa3/esp32 -> {"temp": 26.55, "umid": 89.27, "co2": 580.66, "luz": 1342.09, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 15.15, "ph": 7.31, "ec": 2.09, "temp_reserv_ext": 16.98}[0m
+Wi-Fi está conectado.
+[0;32mI (404944) MQTT: Publicado (id=13248): estufa3/esp32 -> {"temp": 28.55, "umid": 80.42, "co2": 1423.75, "luz": 669.76, "agua_min": 1, "agua_max": 0, "temp_reserv_int": 17.39, "ph": 6.88, "ec": 0.58, "temp_reserv_ext": 17.54}[0m
+Wi-Fi está conectado.
+[0;32mI (409954) MQTT: Publicado (id=14184): estufa3/esp32 -> {"temp": 31.81, "umid": 58.76, "co2": 952.38, "luz": 1349.74, "agua_min": 1, "agua_max": 0, "temp_reserv_int": 20.70, "ph": 5.94, "ec": 1.28, "temp_reserv_ext": 15.09}[0m
+Wi-Fi está conectado.
+[0;32mI (414964) MQTT: Publicado (id=33176): estufa3/esp32 -> {"temp": 31.16, "umid": 67.82, "co2": 1778.02, "luz": 1967.58, "agua_min": 0, "agua_max": 1, "temp_reserv_int": 15.76, "ph": 6.39, "ec": 1.14, "temp_reserv_ext": 20.13}[0m
+Wi-Fi está conectado.
+[0;32mI (419974) MQTT: Publicado (id=25891): estufa3/esp32 -> {"temp": 26.27, "umid": 86.37, "co2": 462.49, "luz": 169.95, "agua_min": 0, "agua_max": 1, "temp_reserv_int": 15.91, "ph": 6.06, "ec": 1.74, "temp_reserv_ext": 21.58}[0m
+Wi-Fi está conectado.
+[0;32mI (424984) MQTT: Publicado (id=48214): estufa3/esp32 -> {"temp": 29.71, "umid": 88.91, "co2": 676.55, "luz": 1011.42, "agua_min": 1, "agua_max": 1, "temp_reserv_int": 20.24, "ph": 6.46, "ec": 0.85, "temp_reserv_ext": 23.39}[0m
+Wi-Fi está conectado.
+[0;32mI (429994) MQTT: Publicado (id=3488): estufa3/esp32 -> {"temp": 29.94, "umid": 70.96, "co2": 1345.47, "luz": 1026.27, "agua_min": 1, "agua_max": 1, "temp_reserv_int": 19.33, "ph": 6.99, "ec": 1.38, "temp_reserv_ext": 21.55}[0m
+Wi-Fi está conectado.
+[0;32mI (435004) MQTT: Publicado (id=42589): estufa3/esp32 -> {"temp": 28.26, "umid": 79.73, "co2": 1847.94, "luz": 330.82, "agua_min": 1, "agua_max": 1, "temp_reserv_int": 23.30, "ph": 6.59, "ec": 2.02, "temp_reserv_ext": 22.98}[0m
+Wi-Fi está conectado.
+[0;32mI (440014) MQTT: Publicado (id=18834): estufa3/esp32 -> {"temp": 23.05, "umid": 75.61, "co2": 886.37, "luz": 438.91, "agua_min": 1, "agua_max": 0, "temp_reserv_int": 16.10, "ph": 7.34, "ec": 0.81, "temp_reserv_ext": 18.21}[0m
+Wi-Fi está conectado.
+[0;32mI (445024) MQTT: Publicado (id=25390): estufa3/esp32 -> {"temp": 20.58, "umid": 46.88, "co2": 1050.01, "luz": 1116.07, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 16.57, "ph": 6.18, "ec": 1.67, "temp_reserv_ext": 15.65}[0m
+Wi-Fi está conectado.
+[0;32mI (450034) MQTT: Publicado (id=32183): estufa3/esp32 -> {"temp": 24.02, "umid": 86.65, "co2": 1363.82, "luz": 637.37, "agua_min": 1, "agua_max": 1, "temp_reserv_int": 23.85, "ph": 7.49, "ec": 2.08, "temp_reserv_ext": 18.00}[0m
+Wi-Fi está conectado.
+[0;32mI (455044) MQTT: Publicado (id=39180): estufa3/esp32 -> {"temp": 27.48, "umid": 51.12, "co2": 822.55, "luz": 1082.00, "agua_min": 0, "agua_max": 1, "temp_reserv_int": 15.26, "ph": 5.50, "ec": 0.98, "temp_reserv_ext": 19.07}[0m
+Wi-Fi está conectado.
+[0;32mI (460054) MQTT: Publicado (id=61705): estufa3/esp32 -> {"temp": 25.22, "umid": 74.46, "co2": 753.75, "luz": 948.59, "agua_min": 1, "agua_max": 0, "temp_reserv_int": 19.53, "ph": 6.44, "ec": 2.45, "temp_reserv_ext": 23.03}[0m
+Wi-Fi está conectado.
+[0;32mI (465064) MQTT: Publicado (id=10354): estufa3/esp32 -> {"temp": 22.37, "umid": 45.69, "co2": 1495.59, "luz": 525.07, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 17.47, "ph": 6.16, "ec": 1.02, "temp_reserv_ext": 18.96}[0m
+Wi-Fi está conectado.
+[0;32mI (470074) MQTT: Publicado (id=52909): estufa3/esp32 -> {"temp": 31.83, "umid": 39.19, "co2": 1879.83, "luz": 573.21, "agua_min": 1, "agua_max": 0, "temp_reserv_int": 22.94, "ph": 7.01, "ec": 1.87, "temp_reserv_ext": 15.16}[0m
+Wi-Fi está conectado.
+[0;32mI (475084) MQTT: Publicado (id=30524): estufa3/esp32 -> {"temp": 25.49, "umid": 76.01, "co2": 1556.12, "luz": 553.49, "agua_min": 0, "agua_max": 1, "temp_reserv_int": 18.54, "ph": 7.20, "ec": 1.17, "temp_reserv_ext": 24.62}[0m
+Wi-Fi está conectado.
+[0;32mI (480094) MQTT: Publicado (id=3597): estufa3/esp32 -> {"temp": 31.80, "umid": 56.05, "co2": 1229.65, "luz": 1066.10, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 19.04, "ph": 7.03, "ec": 1.46, "temp_reserv_ext": 17.34}[0m
+Wi-Fi está conectado.
+[0;32mI (485104) MQTT: Publicado (id=8304): estufa3/esp32 -> {"temp": 25.28, "umid": 37.51, "co2": 1419.60, "luz": 165.09, "agua_min": 1, "agua_max": 1, "temp_reserv_int": 20.43, "ph": 6.88, "ec": 0.85, "temp_reserv_ext": 20.35}[0m
+Wi-Fi está conectado.
+[0;32mI (490114) MQTT: Publicado (id=32721): estufa3/esp32 -> {"temp": 33.60, "umid": 87.19, "co2": 1320.62, "luz": 803.98, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 20.89, "ph": 6.75, "ec": 0.60, "temp_reserv_ext": 18.24}[0m
+Wi-Fi está conectado.
+[0;32mI (495124) MQTT: Publicado (id=21494): estufa3/esp32 -> {"temp": 21.02, "umid": 67.41, "co2": 444.45, "luz": 370.08, "agua_min": 0, "agua_max": 1, "temp_reserv_int": 21.37, "ph": 6.09, "ec": 0.87, "temp_reserv_ext": 18.95}[0m
+Wi-Fi está conectado.
+[0;32mI (500134) MQTT: Publicado (id=15429): estufa3/esp32 -> {"temp": 32.89, "umid": 45.76, "co2": 881.36, "luz": 303.26, "agua_min": 1, "agua_max": 0, "temp_reserv_int": 19.18, "ph": 6.68, "ec": 0.67, "temp_reserv_ext": 23.04}[0m
+Wi-Fi está conectado.
+[0;32mI (505144) MQTT: Publicado (id=49001): estufa3/esp32 -> {"temp": 24.97, "umid": 77.00, "co2": 1089.29, "luz": 495.70, "agua_min": 1, "agua_max": 1, "temp_reserv_int": 23.33, "ph": 6.37, "ec": 2.15, "temp_reserv_ext": 16.65}[0m
+Wi-Fi está conectado.
+[0;32mI (510154) MQTT: Publicado (id=34188): estufa3/esp32 -> {"temp": 31.34, "umid": 67.70, "co2": 1437.05, "luz": 1135.10, "agua_min": 0, "agua_max": 1, "temp_reserv_int": 24.87, "ph": 7.21, "ec": 1.70, "temp_reserv_ext": 15.79}[0m
+Wi-Fi está conectado.
+[0;32mI (515164) MQTT: Publicado (id=48451): estufa3/esp32 -> {"temp": 31.56, "umid": 48.71, "co2": 1111.06, "luz": 1482.43, "agua_min": 1, "agua_max": 1, "temp_reserv_int": 17.81, "ph": 7.48, "ec": 2.40, "temp_reserv_ext": 19.56}[0m
+Wi-Fi está conectado.
+[0;32mI (520174) MQTT: Publicado (id=61916): estufa3/esp32 -> {"temp": 33.38, "umid": 89.93, "co2": 643.99, "luz": 1935.22, "agua_min": 1, "agua_max": 0, "temp_reserv_int": 23.29, "ph": 6.96, "ec": 0.94, "temp_reserv_ext": 18.70}[0m
+Wi-Fi está conectado.
+[0;32mI (525184) MQTT: Publicado (id=4685): estufa3/esp32 -> {"temp": 25.01, "umid": 36.14, "co2": 877.41, "luz": 1507.79, "agua_min": 0, "agua_max": 1, "temp_reserv_int": 19.39, "ph": 6.37, "ec": 0.54, "temp_reserv_ext": 20.06}[0m
+Wi-Fi está conectado.
+[0;32mI (530194) MQTT: Publicado (id=51878): estufa3/esp32 -> {"temp": 25.73, "umid": 70.81, "co2": 1178.12, "luz": 1059.33, "agua_min": 1, "agua_max": 0, "temp_reserv_int": 18.06, "ph": 6.78, "ec": 1.94, "temp_reserv_ext": 15.76}[0m
+Wi-Fi está conectado.
+[0;32mI (535204) MQTT: Publicado (id=39561): estufa3/esp32 -> {"temp": 24.38, "umid": 70.82, "co2": 1004.58, "luz": 576.89, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 20.03, "ph": 6.73, "ec": 0.88, "temp_reserv_ext": 15.24}[0m
+Wi-Fi está conectado.
+[0;32mI (540214) MQTT: Publicado (id=26527): estufa3/esp32 -> {"temp": 22.74, "umid": 88.22, "co2": 1083.15, "luz": 336.49, "agua_min": 1, "agua_max": 1, "temp_reserv_int": 22.83, "ph": 5.63, "ec": 0.86, "temp_reserv_ext": 22.07}[0m
+Wi-Fi está conectado.
+[0;32mI (545224) MQTT: Publicado (id=37756): estufa3/esp32 -> {"temp": 30.20, "umid": 75.56, "co2": 1519.80, "luz": 851.96, "agua_min": 1, "agua_max": 0, "temp_reserv_int": 22.78, "ph": 7.34, "ec": 1.49, "temp_reserv_ext": 19.48}[0m
+Wi-Fi está conectado.
+[0;32mI (550234) MQTT: Publicado (id=30220): estufa3/esp32 -> {"temp": 21.65, "umid": 66.24, "co2": 1207.85, "luz": 996.31, "agua_min": 0, "agua_max": 1, "temp_reserv_int": 15.50, "ph": 6.20, "ec": 1.08, "temp_reserv_ext": 19.89}[0m
+Wi-Fi está conectado.
+[0;32mI (555244) MQTT: Publicado (id=48115): estufa3/esp32 -> {"temp": 28.40, "umid": 48.06, "co2": 522.07, "luz": 624.95, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 17.14, "ph": 7.20, "ec": 1.09, "temp_reserv_ext": 16.72}[0m
+Wi-Fi está conectado.
+[0;32mI (560254) MQTT: Publicado (id=9375): estufa3/esp32 -> {"temp": 20.41, "umid": 77.84, "co2": 1786.25, "luz": 655.15, "agua_min": 1, "agua_max": 1, "temp_reserv_int": 21.56, "ph": 5.94, "ec": 1.85, "temp_reserv_ext": 20.51}[0m
+Wi-Fi está conectado.
+[0;32mI (565264) MQTT: Publicado (id=14561): estufa3/esp32 -> {"temp": 22.73, "umid": 38.87, "co2": 833.78, "luz": 549.13, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 17.44, "ph": 6.40, "ec": 1.60, "temp_reserv_ext": 22.51}[0m
+Wi-Fi está conectado.
+[0;32mI (570274) MQTT: Publicado (id=40404): estufa3/esp32 -> {"temp": 31.33, "umid": 63.51, "co2": 1032.91, "luz": 104.18, "agua_min": 1, "agua_max": 1, "temp_reserv_int": 21.49, "ph": 7.44, "ec": 2.31, "temp_reserv_ext": 18.97}[0m
+Wi-Fi está conectado.
+[0;32mI (575284) MQTT: Publicado (id=43781): estufa3/esp32 -> {"temp": 27.12, "umid": 79.13, "co2": 486.96, "luz": 1187.92, "agua_min": 1, "agua_max": 1, "temp_reserv_int": 17.69, "ph": 5.72, "ec": 1.31, "temp_reserv_ext": 15.78}[0m
+Wi-Fi está conectado.
+[0;32mI (580294) MQTT: Publicado (id=10061): estufa3/esp32 -> {"temp": 32.14, "umid": 76.12, "co2": 1049.46, "luz": 1530.44, "agua_min": 0, "agua_max": 1, "temp_reserv_int": 20.30, "ph": 6.86, "ec": 1.32, "temp_reserv_ext": 16.24}[0m
+Wi-Fi está conectado.
+[0;32mI (585304) MQTT: Publicado (id=64089): estufa3/esp32 -> {"temp": 23.79, "umid": 63.31, "co2": 1461.13, "luz": 1838.68, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 15.17, "ph": 5.71, "ec": 0.52, "temp_reserv_ext": 15.88}[0m
+Wi-Fi está conectado.
+[0;32mI (590314) MQTT: Publicado (id=50534): estufa3/esp32 -> {"temp": 23.69, "umid": 83.00, "co2": 1255.42, "luz": 532.87, "agua_min": 1, "agua_max": 1, "temp_reserv_int": 18.87, "ph": 7.43, "ec": 2.29, "temp_reserv_ext": 22.03}[0m
+Wi-Fi está conectado.
+[0;32mI (595324) MQTT: Publicado (id=62724): estufa3/esp32 -> {"temp": 21.09, "umid": 79.56, "co2": 842.49, "luz": 189.11, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 15.79, "ph": 7.41, "ec": 0.92, "temp_reserv_ext": 19.13}[0m
+Wi-Fi está conectado.
+[0;32mI (600334) MQTT: Publicado (id=4521): estufa3/esp32 -> {"temp": 21.58, "umid": 77.28, "co2": 760.71, "luz": 1945.37, "agua_min": 1, "agua_max": 1, "temp_reserv_int": 15.10, "ph": 6.59, "ec": 1.16, "temp_reserv_ext": 21.67}[0m
+Wi-Fi está conectado.
+[0;32mI (605344) MQTT: Publicado (id=28518): estufa3/esp32 -> {"temp": 22.24, "umid": 62.84, "co2": 1386.62, "luz": 1806.96, "agua_min": 0, "agua_max": 1, "temp_reserv_int": 22.71, "ph": 6.39, "ec": 2.36, "temp_reserv_ext": 20.50}[0m
+Wi-Fi está conectado.
+[0;32mI (610354) MQTT: Publicado (id=57629): estufa3/esp32 -> {"temp": 30.74, "umid": 44.51, "co2": 979.56, "luz": 1126.79, "agua_min": 1, "agua_max": 1, "temp_reserv_int": 18.14, "ph": 6.45, "ec": 0.89, "temp_reserv_ext": 24.39}[0m
+Wi-Fi está conectado.
+[0;32mI (615364) MQTT: Publicado (id=40130): estufa3/esp32 -> {"temp": 34.36, "umid": 46.02, "co2": 546.73, "luz": 546.59, "agua_min": 1, "agua_max": 1, "temp_reserv_int": 19.75, "ph": 6.88, "ec": 1.08, "temp_reserv_ext": 23.78}[0m
+Wi-Fi está conectado.
+[0;32mI (620374) MQTT: Publicado (id=3052): estufa3/esp32 -> {"temp": 26.79, "umid": 66.13, "co2": 580.18, "luz": 1448.29, "agua_min": 1, "agua_max": 0, "temp_reserv_int": 20.71, "ph": 7.19, "ec": 1.09, "temp_reserv_ext": 24.69}[0m
+Wi-Fi está conectado.
+[0;32mI (625384) MQTT: Publicado (id=55379): estufa3/esp32 -> {"temp": 26.47, "umid": 52.84, "co2": 1847.69, "luz": 1388.90, "agua_min": 1, "agua_max": 1, "temp_reserv_int": 19.30, "ph": 6.89, "ec": 0.62, "temp_reserv_ext": 23.84}[0m
+Wi-Fi está conectado.
+[0;32mI (630394) MQTT: Publicado (id=53690): estufa3/esp32 -> {"temp": 22.96, "umid": 49.56, "co2": 752.85, "luz": 1879.80, "agua_min": 0, "agua_max": 1, "temp_reserv_int": 24.48, "ph": 6.96, "ec": 1.31, "temp_reserv_ext": 21.27}[0m
+Wi-Fi está conectado.
+[0;32mI (635404) MQTT: Publicado (id=52319): estufa3/esp32 -> {"temp": 34.15, "umid": 31.77, "co2": 1702.34, "luz": 1657.67, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 17.83, "ph": 6.15, "ec": 2.29, "temp_reserv_ext": 24.20}[0m
+Wi-Fi está conectado.
+[0;32mI (640414) MQTT: Publicado (id=51344): estufa3/esp32 -> {"temp": 26.50, "umid": 41.29, "co2": 1445.22, "luz": 851.53, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 19.49, "ph": 6.00, "ec": 1.70, "temp_reserv_ext": 19.89}[0m
+Wi-Fi está conectado.
+[0;32mI (645424) MQTT: Publicado (id=30746): estufa3/esp32 -> {"temp": 20.19, "umid": 40.94, "co2": 732.91, "luz": 1409.01, "agua_min": 1, "agua_max": 0, "temp_reserv_int": 17.02, "ph": 5.77, "ec": 0.73, "temp_reserv_ext": 16.54}[0m
+Wi-Fi está conectado.
+[0;32mI (650434) MQTT: Publicado (id=51458): estufa3/esp32 -> {"temp": 34.40, "umid": 86.72, "co2": 1249.70, "luz": 425.36, "agua_min": 1, "agua_max": 0, "temp_reserv_int": 23.90, "ph": 5.51, "ec": 1.69, "temp_reserv_ext": 15.36}[0m
+Wi-Fi está conectado.
+[0;32mI (655444) MQTT: Publicado (id=16732): estufa3/esp32 -> {"temp": 20.23, "umid": 42.15, "co2": 1855.82, "luz": 1466.09, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 20.73, "ph": 6.84, "ec": 2.46, "temp_reserv_ext": 22.33}[0m
+Wi-Fi está conectado.
+[0;32mI (660454) MQTT: Publicado (id=46386): estufa3/esp32 -> {"temp": 25.95, "umid": 38.88, "co2": 1481.80, "luz": 943.29, "agua_min": 1, "agua_max": 1, "temp_reserv_int": 22.03, "ph": 5.65, "ec": 0.64, "temp_reserv_ext": 22.74}[0m
+Wi-Fi está conectado.
+[0;32mI (665464) MQTT: Publicado (id=31108): estufa3/esp32 -> {"temp": 32.46, "umid": 70.47, "co2": 1480.63, "luz": 1017.53, "agua_min": 1, "agua_max": 1, "temp_reserv_int": 17.61, "ph": 6.87, "ec": 2.21, "temp_reserv_ext": 18.76}[0m
+Wi-Fi está conectado.
+[0;32mI (670474) MQTT: Publicado (id=63243): estufa3/esp32 -> {"temp": 22.71, "umid": 45.89, "co2": 1361.09, "luz": 1034.27, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 24.44, "ph": 6.76, "ec": 0.89, "temp_reserv_ext": 22.80}[0m
+Wi-Fi está conectado.
+[0;32mI (675484) MQTT: Publicado (id=33870): estufa3/esp32 -> {"temp": 34.77, "umid": 42.27, "co2": 746.89, "luz": 649.73, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 18.48, "ph": 6.09, "ec": 1.12, "temp_reserv_ext": 24.64}[0m
+Wi-Fi está conectado.
+[0;32mI (680494) MQTT: Publicado (id=34781): estufa3/esp32 -> {"temp": 28.78, "umid": 81.14, "co2": 480.42, "luz": 230.33, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 16.08, "ph": 6.82, "ec": 1.04, "temp_reserv_ext": 20.21}[0m
+Wi-Fi está conectado.
+[0;32mI (685504) MQTT: Publicado (id=7133): estufa3/esp32 -> {"temp": 29.27, "umid": 45.47, "co2": 1683.84, "luz": 1863.49, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 22.03, "ph": 6.60, "ec": 1.76, "temp_reserv_ext": 18.24}[0m
+Wi-Fi está conectado.
+[0;32mI (690514) MQTT: Publicado (id=63740): estufa3/esp32 -> {"temp": 30.78, "umid": 66.98, "co2": 460.66, "luz": 997.10, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 17.68, "ph": 5.80, "ec": 2.35, "temp_reserv_ext": 23.98}[0m
+Wi-Fi está conectado.
+[0;32mI (695524) MQTT: Publicado (id=59232): estufa3/esp32 -> {"temp": 27.41, "umid": 34.01, "co2": 1970.18, "luz": 1163.30, "agua_min": 1, "agua_max": 1, "temp_reserv_int": 23.22, "ph": 6.34, "ec": 1.35, "temp_reserv_ext": 18.43}[0m
+Wi-Fi está conectado.
+[0;32mI (700534) MQTT: Publicado (id=28186): estufa3/esp32 -> {"temp": 33.69, "umid": 68.59, "co2": 1929.53, "luz": 766.78, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 23.70, "ph": 5.87, "ec": 2.09, "temp_reserv_ext": 19.79}[0m
+Wi-Fi está conectado.
+[0;32mI (705544) MQTT: Publicado (id=9163): estufa3/esp32 -> {"temp": 34.72, "umid": 66.90, "co2": 1507.83, "luz": 346.44, "agua_min": 0, "agua_max": 1, "temp_reserv_int": 18.29, "ph": 5.56, "ec": 0.97, "temp_reserv_ext": 19.97}[0m
+Wi-Fi está conectado.
+[0;32mI (710554) MQTT: Publicado (id=7252): estufa3/esp32 -> {"temp": 22.15, "umid": 88.54, "co2": 1013.50, "luz": 746.94, "agua_min": 1, "agua_max": 1, "temp_reserv_int": 20.12, "ph": 5.86, "ec": 0.59, "temp_reserv_ext": 16.68}[0m
+Wi-Fi está conectado.
+[0;32mI (715564) MQTT: Publicado (id=43457): estufa3/esp32 -> {"temp": 30.51, "umid": 82.26, "co2": 1577.13, "luz": 185.01, "agua_min": 1, "agua_max": 0, "temp_reserv_int": 25.00, "ph": 6.76, "ec": 0.70, "temp_reserv_ext": 16.46}[0m
+Wi-Fi está conectado.
+[0;32mI (720574) MQTT: Publicado (id=8383): estufa3/esp32 -> {"temp": 30.70, "umid": 79.96, "co2": 1920.99, "luz": 1555.70, "agua_min": 1, "agua_max": 0, "temp_reserv_int": 17.47, "ph": 6.72, "ec": 2.43, "temp_reserv_ext": 19.84}[0m
+Wi-Fi está conectado.
+[0;32mI (725584) MQTT: Publicado (id=8748): estufa3/esp32 -> {"temp": 22.88, "umid": 85.95, "co2": 990.78, "luz": 816.82, "agua_min": 1, "agua_max": 1, "temp_reserv_int": 16.22, "ph": 6.24, "ec": 2.29, "temp_reserv_ext": 18.36}[0m
+Wi-Fi está conectado.
+[0;32mI (730594) MQTT: Publicado (id=43522): estufa3/esp32 -> {"temp": 33.91, "umid": 39.47, "co2": 1384.78, "luz": 1925.73, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 15.92, "ph": 7.48, "ec": 2.27, "temp_reserv_ext": 16.79}[0m
+Wi-Fi está conectado.
+[0;32mI (735604) MQTT: Publicado (id=34978): estufa3/esp32 -> {"temp": 24.98, "umid": 84.48, "co2": 1648.24, "luz": 1682.87, "agua_min": 1, "agua_max": 1, "temp_reserv_int": 15.07, "ph": 6.29, "ec": 0.71, "temp_reserv_ext": 20.05}[0m
+Wi-Fi está conectado.
+[0;32mI (740614) MQTT: Publicado (id=12875): estufa3/esp32 -> {"temp": 29.26, "umid": 89.35, "co2": 1321.17, "luz": 1429.89, "agua_min": 1, "agua_max": 1, "temp_reserv_int": 21.89, "ph": 7.15, "ec": 1.61, "temp_reserv_ext": 21.16}[0m
+Wi-Fi está conectado.
+[0;32mI (745624) MQTT: Publicado (id=37817): estufa3/esp32 -> {"temp": 31.82, "umid": 46.19, "co2": 559.05, "luz": 906.82, "agua_min": 1, "agua_max": 1, "temp_reserv_int": 24.21, "ph": 6.84, "ec": 0.52, "temp_reserv_ext": 20.92}[0m
+Wi-Fi está conectado.
+[0;32mI (750634) MQTT: Publicado (id=39026): estufa3/esp32 -> {"temp": 27.69, "umid": 69.68, "co2": 1213.87, "luz": 1619.00, "agua_min": 0, "agua_max": 1, "temp_reserv_int": 23.79, "ph": 6.43, "ec": 1.36, "temp_reserv_ext": 22.53}[0m
+Wi-Fi está conectado.
+[0;32mI (755644) MQTT: Publicado (id=59349): estufa3/esp32 -> {"temp": 30.23, "umid": 75.25, "co2": 1810.72, "luz": 1379.41, "agua_min": 1, "agua_max": 0, "temp_reserv_int": 20.07, "ph": 7.18, "ec": 1.99, "temp_reserv_ext": 23.71}[0m
+Wi-Fi está conectado.
+[0;32mI (760654) MQTT: Publicado (id=54329): estufa3/esp32 -> {"temp": 20.19, "umid": 72.04, "co2": 600.75, "luz": 1714.09, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 17.89, "ph": 5.60, "ec": 1.12, "temp_reserv_ext": 15.78}[0m
+Wi-Fi está conectado.
+[0;32mI (765664) MQTT: Publicado (id=33754): estufa3/esp32 -> {"temp": 22.24, "umid": 65.77, "co2": 1715.26, "luz": 1626.73, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 24.79, "ph": 6.80, "ec": 1.71, "temp_reserv_ext": 21.62}[0m
+Wi-Fi está conectado.
+[0;32mI (770674) MQTT: Publicado (id=26642): estufa3/esp32 -> {"temp": 22.78, "umid": 41.39, "co2": 437.05, "luz": 478.03, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 23.52, "ph": 6.53, "ec": 1.16, "temp_reserv_ext": 17.63}[0m
+Wi-Fi está conectado.
+[0;32mI (775684) MQTT: Publicado (id=63473): estufa3/esp32 -> {"temp": 20.71, "umid": 58.94, "co2": 1076.96, "luz": 310.41, "agua_min": 0, "agua_max": 1, "temp_reserv_int": 24.71, "ph": 6.76, "ec": 1.84, "temp_reserv_ext": 19.37}[0m
+Wi-Fi está conectado.
+[0;32mI (780694) MQTT: Publicado (id=52245): estufa3/esp32 -> {"temp": 25.39, "umid": 42.64, "co2": 1840.97, "luz": 142.96, "agua_min": 1, "agua_max": 0, "temp_reserv_int": 20.32, "ph": 7.10, "ec": 2.08, "temp_reserv_ext": 19.27}[0m
+Wi-Fi está conectado.
+[0;32mI (785704) MQTT: Publicado (id=64747): estufa3/esp32 -> {"temp": 22.20, "umid": 54.95, "co2": 892.30, "luz": 465.24, "agua_min": 0, "agua_max": 1, "temp_reserv_int": 24.87, "ph": 5.64, "ec": 1.11, "temp_reserv_ext": 20.30}[0m
+Wi-Fi está conectado.
+[0;32mI (790714) MQTT: Publicado (id=13748): estufa3/esp32 -> {"temp": 29.63, "umid": 60.59, "co2": 1774.12, "luz": 1077.99, "agua_min": 1, "agua_max": 1, "temp_reserv_int": 21.99, "ph": 7.42, "ec": 2.05, "temp_reserv_ext": 21.18}[0m
+Wi-Fi está conectado.
+[0;32mI (795724) MQTT: Publicado (id=23693): estufa3/esp32 -> {"temp": 22.28, "umid": 40.63, "co2": 1500.52, "luz": 1216.73, "agua_min": 1, "agua_max": 0, "temp_reserv_int": 22.44, "ph": 6.36, "ec": 1.21, "temp_reserv_ext": 21.30}[0m
+Wi-Fi está conectado.
+[0;32mI (800734) MQTT: Publicado (id=54785): estufa3/esp32 -> {"temp": 30.99, "umid": 57.75, "co2": 881.34, "luz": 1206.55, "agua_min": 0, "agua_max": 1, "temp_reserv_int": 18.26, "ph": 7.12, "ec": 2.44, "temp_reserv_ext": 17.29}[0m
+Wi-Fi está conectado.
+[0;32mI (805744) MQTT: Publicado (id=35254): estufa3/esp32 -> {"temp": 21.82, "umid": 88.10, "co2": 686.30, "luz": 1098.39, "agua_min": 1, "agua_max": 0, "temp_reserv_int": 19.43, "ph": 5.57, "ec": 0.98, "temp_reserv_ext": 20.94}[0m
+Wi-Fi está conectado.
+[0;32mI (810754) MQTT: Publicado (id=17449): estufa3/esp32 -> {"temp": 25.11, "umid": 40.43, "co2": 1417.09, "luz": 1239.35, "agua_min": 0, "agua_max": 1, "temp_reserv_int": 15.08, "ph": 7.12, "ec": 1.07, "temp_reserv_ext": 15.27}[0m
+Wi-Fi está conectado.
+[0;32mI (815764) MQTT: Publicado (id=2429): estufa3/esp32 -> {"temp": 20.76, "umid": 67.16, "co2": 1759.97, "luz": 1571.31, "agua_min": 1, "agua_max": 0, "temp_reserv_int": 21.23, "ph": 5.91, "ec": 2.49, "temp_reserv_ext": 22.90}[0m
+Wi-Fi está conectado.
+[0;32mI (820774) MQTT: Publicado (id=20088): estufa3/esp32 -> {"temp": 34.85, "umid": 41.44, "co2": 483.26, "luz": 1537.30, "agua_min": 1, "agua_max": 1, "temp_reserv_int": 15.66, "ph": 5.65, "ec": 1.56, "temp_reserv_ext": 24.52}[0m
+Wi-Fi está conectado.
+[0;32mI (825784) MQTT: Publicado (id=2088): estufa3/esp32 -> {"temp": 30.44, "umid": 82.41, "co2": 1740.22, "luz": 514.35, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 15.68, "ph": 6.18, "ec": 1.00, "temp_reserv_ext": 23.59}[0m
+Wi-Fi está conectado.
+[0;32mI (830794) MQTT: Publicado (id=4646): estufa3/esp32 -> {"temp": 21.37, "umid": 37.35, "co2": 1463.53, "luz": 902.44, "agua_min": 1, "agua_max": 1, "temp_reserv_int": 18.95, "ph": 6.60, "ec": 1.07, "temp_reserv_ext": 20.08}[0m
+Wi-Fi está conectado.
+[0;32mI (835804) MQTT: Publicado (id=2920): estufa3/esp32 -> {"temp": 34.00, "umid": 70.34, "co2": 1912.70, "luz": 1441.15, "agua_min": 0, "agua_max": 1, "temp_reserv_int": 16.67, "ph": 6.42, "ec": 2.50, "temp_reserv_ext": 21.33}[0m
+Wi-Fi está conectado.
+[0;32mI (840814) MQTT: Publicado (id=63547): estufa3/esp32 -> {"temp": 32.39, "umid": 52.26, "co2": 986.64, "luz": 461.76, "agua_min": 0, "agua_max": 1, "temp_reserv_int": 17.92, "ph": 6.34, "ec": 0.72, "temp_reserv_ext": 16.62}[0m
+Wi-Fi está conectado.
+[0;32mI (845824) MQTT: Publicado (id=11580): estufa3/esp32 -> {"temp": 34.85, "umid": 66.06, "co2": 1331.49, "luz": 1682.70, "agua_min": 1, "agua_max": 1, "temp_reserv_int": 20.24, "ph": 7.42, "ec": 2.16, "temp_reserv_ext": 19.41}[0m
+Wi-Fi está conectado.
+[0;32mI (850834) MQTT: Publicado (id=15272): estufa3/esp32 -> {"temp": 25.46, "umid": 75.44, "co2": 1082.74, "luz": 431.94, "agua_min": 0, "agua_max": 1, "temp_reserv_int": 19.16, "ph": 6.58, "ec": 2.20, "temp_reserv_ext": 16.23}[0m
+Wi-Fi está conectado.
+[0;32mI (855844) MQTT: Publicado (id=8442): estufa3/esp32 -> {"temp": 20.97, "umid": 44.33, "co2": 441.11, "luz": 956.20, "agua_min": 0, "agua_max": 1, "temp_reserv_int": 19.60, "ph": 7.30, "ec": 0.82, "temp_reserv_ext": 17.17}[0m
+Wi-Fi está conectado.
+[0;32mI (860854) MQTT: Publicado (id=20964): estufa3/esp32 -> {"temp": 29.46, "umid": 58.63, "co2": 1306.80, "luz": 1767.67, "agua_min": 1, "agua_max": 0, "temp_reserv_int": 21.63, "ph": 7.27, "ec": 1.03, "temp_reserv_ext": 19.18}[0m
+Wi-Fi está conectado.
+[0;32mI (865864) MQTT: Publicado (id=42266): estufa3/esp32 -> {"temp": 31.97, "umid": 39.41, "co2": 1886.65, "luz": 1885.42, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 22.91, "ph": 7.24, "ec": 1.42, "temp_reserv_ext": 15.63}[0m
+Wi-Fi está conectado.
+[0;32mI (870874) MQTT: Publicado (id=14383): estufa3/esp32 -> {"temp": 32.25, "umid": 64.57, "co2": 864.85, "luz": 758.75, "agua_min": 1, "agua_max": 1, "temp_reserv_int": 23.43, "ph": 6.14, "ec": 1.47, "temp_reserv_ext": 22.23}[0m
+Wi-Fi está conectado.
+[0;32mI (875884) MQTT: Publicado (id=16628): estufa3/esp32 -> {"temp": 33.08, "umid": 85.70, "co2": 1126.94, "luz": 273.06, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 19.16, "ph": 6.99, "ec": 1.92, "temp_reserv_ext": 16.50}[0m
+Wi-Fi está conectado.
+[0;32mI (880894) MQTT: Publicado (id=20327): estufa3/esp32 -> {"temp": 27.77, "umid": 73.24, "co2": 922.68, "luz": 791.15, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 17.86, "ph": 5.79, "ec": 1.34, "temp_reserv_ext": 19.09}[0m
+Wi-Fi está conectado.
+[0;32mI (885904) MQTT: Publicado (id=15831): estufa3/esp32 -> {"temp": 22.18, "umid": 64.36, "co2": 1195.68, "luz": 548.75, "agua_min": 0, "agua_max": 1, "temp_reserv_int": 23.53, "ph": 7.24, "ec": 1.45, "temp_reserv_ext": 17.58}[0m
+Wi-Fi está conectado.
+[0;32mI (890914) MQTT: Publicado (id=62242): estufa3/esp32 -> {"temp": 34.76, "umid": 59.36, "co2": 1825.72, "luz": 1320.39, "agua_min": 1, "agua_max": 1, "temp_reserv_int": 17.56, "ph": 6.00, "ec": 1.14, "temp_reserv_ext": 18.87}[0m
+Wi-Fi está conectado.
+[0;32mI (895924) MQTT: Publicado (id=54115): estufa3/esp32 -> {"temp": 30.29, "umid": 74.89, "co2": 1927.07, "luz": 1882.26, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 21.39, "ph": 5.69, "ec": 1.66, "temp_reserv_ext": 21.44}[0m
+Wi-Fi está conectado.
+[0;32mI (900934) MQTT: Publicado (id=39713): estufa3/esp32 -> {"temp": 24.11, "umid": 85.31, "co2": 1751.85, "luz": 1904.17, "agua_min": 1, "agua_max": 1, "temp_reserv_int": 18.40, "ph": 6.02, "ec": 1.89, "temp_reserv_ext": 20.91}[0m
+Wi-Fi está conectado.
+[0;32mI (905944) MQTT: Publicado (id=43617): estufa3/esp32 -> {"temp": 29.62, "umid": 39.80, "co2": 1303.99, "luz": 706.18, "agua_min": 1, "agua_max": 0, "temp_reserv_int": 17.68, "ph": 7.05, "ec": 2.41, "temp_reserv_ext": 23.01}[0m
+Wi-Fi está conectado.
+[0;32mI (910954) MQTT: Publicado (id=62437): estufa3/esp32 -> {"temp": 28.35, "umid": 39.51, "co2": 783.67, "luz": 1155.12, "agua_min": 1, "agua_max": 1, "temp_reserv_int": 22.79, "ph": 6.84, "ec": 0.71, "temp_reserv_ext": 17.02}[0m
+Wi-Fi está conectado.
+[0;32mI (915964) MQTT: Publicado (id=24725): estufa3/esp32 -> {"temp": 33.66, "umid": 83.80, "co2": 828.67, "luz": 448.74, "agua_min": 1, "agua_max": 0, "temp_reserv_int": 21.75, "ph": 6.39, "ec": 2.30, "temp_reserv_ext": 22.06}[0m
+Wi-Fi está conectado.
+[0;32mI (920974) MQTT: Publicado (id=13209): estufa3/esp32 -> {"temp": 23.00, "umid": 84.28, "co2": 1195.01, "luz": 1586.82, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 21.05, "ph": 6.56, "ec": 1.02, "temp_reserv_ext": 19.86}[0m
+Wi-Fi está conectado.
+[0;32mI (925984) MQTT: Publicado (id=20739): estufa3/esp32 -> {"temp": 22.54, "umid": 31.83, "co2": 1621.39, "luz": 1644.15, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 21.08, "ph": 5.92, "ec": 1.30, "temp_reserv_ext": 18.22}[0m
+Wi-Fi está conectado.
+[0;32mI (930994) MQTT: Publicado (id=46861): estufa3/esp32 -> {"temp": 25.85, "umid": 43.60, "co2": 1815.61, "luz": 1669.44, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 16.23, "ph": 5.61, "ec": 1.85, "temp_reserv_ext": 21.51}[0m
+Wi-Fi está conectado.
+[0;32mI (936004) MQTT: Publicado (id=29953): estufa3/esp32 -> {"temp": 33.44, "umid": 71.46, "co2": 1583.73, "luz": 969.59, "agua_min": 1, "agua_max": 0, "temp_reserv_int": 17.03, "ph": 6.14, "ec": 2.32, "temp_reserv_ext": 19.42}[0m
+Wi-Fi está conectado.
+[0;32mI (941014) MQTT: Publicado (id=10597): estufa3/esp32 -> {"temp": 23.12, "umid": 36.06, "co2": 903.34, "luz": 652.81, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 19.76, "ph": 5.98, "ec": 2.07, "temp_reserv_ext": 15.71}[0m
+Wi-Fi está conectado.
+[0;32mI (946024) MQTT: Publicado (id=59906): estufa3/esp32 -> {"temp": 20.94, "umid": 53.21, "co2": 1390.23, "luz": 571.22, "agua_min": 1, "agua_max": 1, "temp_reserv_int": 21.92, "ph": 6.00, "ec": 0.63, "temp_reserv_ext": 18.84}[0m
+Wi-Fi está conectado.
+[0;32mI (951034) MQTT: Publicado (id=63587): estufa3/esp32 -> {"temp": 22.25, "umid": 31.10, "co2": 585.26, "luz": 1061.04, "agua_min": 1, "agua_max": 0, "temp_reserv_int": 16.23, "ph": 6.46, "ec": 1.20, "temp_reserv_ext": 18.69}[0m
+Wi-Fi está conectado.
+[0;32mI (956044) MQTT: Publicado (id=65490): estufa3/esp32 -> {"temp": 25.18, "umid": 47.46, "co2": 1165.73, "luz": 896.79, "agua_min": 0, "agua_max": 1, "temp_reserv_int": 17.02, "ph": 5.83, "ec": 1.57, "temp_reserv_ext": 17.04}[0m
+Wi-Fi está conectado.
+[0;32mI (961054) MQTT: Publicado (id=10916): estufa3/esp32 -> {"temp": 29.17, "umid": 71.85, "co2": 912.63, "luz": 1779.86, "agua_min": 1, "agua_max": 0, "temp_reserv_int": 21.23, "ph": 6.99, "ec": 0.66, "temp_reserv_ext": 18.29}[0m
+Wi-Fi está conectado.
+[0;32mI (966064) MQTT: Publicado (id=19890): estufa3/esp32 -> {"temp": 33.23, "umid": 65.23, "co2": 1909.59, "luz": 275.07, "agua_min": 1, "agua_max": 0, "temp_reserv_int": 23.17, "ph": 6.99, "ec": 1.15, "temp_reserv_ext": 20.36}[0m
+Wi-Fi está conectado.
+[0;32mI (971074) MQTT: Publicado (id=35363): estufa3/esp32 -> {"temp": 21.98, "umid": 40.25, "co2": 1426.36, "luz": 934.00, "agua_min": 0, "agua_max": 1, "temp_reserv_int": 23.92, "ph": 5.92, "ec": 1.92, "temp_reserv_ext": 18.38}[0m
+Wi-Fi está conectado.
+[0;32mI (976084) MQTT: Publicado (id=32419): 

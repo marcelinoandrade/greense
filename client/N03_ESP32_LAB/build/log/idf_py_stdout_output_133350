@@ -1,0 +1,75 @@
+[1/5] cd /home/greense/projetoGreense/client/N03_ESP32_LAB/build/esp-idf/esptool_py && /home/greense/.espressif/python_env/idf5.2_py3.11_env/bin/python /home/greense/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 partition --type app /home/greense/projetoGreense/client/N03_ESP32_LAB/build/partition_table/partition-table.bin /home/greense/projetoGreense/client/N03_ESP32_LAB/build/N03_ESP32_LAB.bin
+N03_ESP32_LAB.bin binary size 0xdab80 bytes. Smallest app partition is 0x100000 bytes. 0x25480 bytes (15%) free.
+[2/5] Performing build step for 'bootloader'
+[1/1] cd /home/greense/projetoGreense/client/N03_ESP32_LAB/build/bootloader/esp-idf/esptool_py && /home/greense/.espressif/python_env/idf5.2_py3.11_env/bin/python /home/greense/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x1000 /home/greense/projetoGreense/client/N03_ESP32_LAB/build/bootloader/bootloader.bin
+Bootloader binary size 0x6860 bytes. 0x7a0 bytes (7%) free.
+[3/5] No install step for 'bootloader'
+[4/5] Completed 'bootloader'
+[4/5] cd /home/greense/esp/esp-idf/components/esptool_py && /usr/bin/cmake -D IDF_PATH=/home/greense/esp/esp-idf -D "SERIAL_TOOL=/home/greense/.espressif/python_env/idf5.2_py3.11_env/bin/python;;/home/greense/esp/esp-idf/components/esptool_py/esptool/esptool.py;--chip;esp32" -D "SERIAL_TOOL_ARGS=--before=default_reset;--after=hard_reset;write_flash;@flash_args" -D WORKING_DIRECTORY=/home/greense/projetoGreense/client/N03_ESP32_LAB/build -P /home/greense/esp/esp-idf/components/esptool_py/run_serial_tool.cmake
+esptool.py --chip esp32 -p /dev/ttyUSB0 -b 460800 --before=default_reset --after=hard_reset write_flash --flash_mode dio --flash_freq 40m --flash_size 2MB 0x1000 bootloader/bootloader.bin 0x10000 N03_ESP32_LAB.bin 0x8000 partition_table/partition-table.bin
+esptool.py v4.8.1
+Serial port /dev/ttyUSB0
+Connecting....
+Chip is ESP32-D0WD-V3 (revision v3.1)
+Features: WiFi, BT, Dual Core, 240MHz, VRef calibration in efuse, Coding Scheme None
+Crystal is 40MHz
+MAC: 88:13:bf:82:3d:24
+Uploading stub...
+Running stub...
+Stub running...
+Changing baud rate to 460800
+Changed.
+Configuring flash size...
+Flash will be erased from 0x00001000 to 0x00007fff...
+Flash will be erased from 0x00010000 to 0x000eafff...
+Flash will be erased from 0x00008000 to 0x00008fff...
+SHA digest in image updated
+Compressed 26720 bytes to 16358...
+Writing at 0x00001000... (100 %)
+Wrote 26720 bytes (16358 compressed) at 0x00001000 in 0.8 seconds (effective 252.3 kbit/s)...
+Hash of data verified.
+Compressed 895872 bytes to 561113...
+Writing at 0x00010000... (2 %)
+Writing at 0x0001d7fc... (5 %)
+Writing at 0x000261e9... (8 %)
+Writing at 0x0002b09e... (11 %)
+Writing at 0x0003403b... (14 %)
+Writing at 0x0003e479... (17 %)
+Writing at 0x00043fed... (20 %)
+Writing at 0x00049a1a... (22 %)
+Writing at 0x0004f6be... (25 %)
+Writing at 0x00055375... (28 %)
+Writing at 0x0005ae2b... (31 %)
+Writing at 0x00060e7c... (34 %)
+Writing at 0x000673a2... (37 %)
+Writing at 0x0006d02b... (40 %)
+Writing at 0x00072aae... (42 %)
+Writing at 0x00077c1d... (45 %)
+Writing at 0x0007d135... (48 %)
+Writing at 0x0008261c... (51 %)
+Writing at 0x00087a84... (54 %)
+Writing at 0x0008d160... (57 %)
+Writing at 0x000928aa... (60 %)
+Writing at 0x0009888d... (62 %)
+Writing at 0x0009e29b... (65 %)
+Writing at 0x000a4051... (68 %)
+Writing at 0x000a9cf5... (71 %)
+Writing at 0x000af5ac... (74 %)
+Writing at 0x000b5060... (77 %)
+Writing at 0x000bae1a... (80 %)
+Writing at 0x000c05d7... (82 %)
+Writing at 0x000c978f... (85 %)
+Writing at 0x000d230d... (88 %)
+Writing at 0x000d8039... (91 %)
+Writing at 0x000ddba4... (94 %)
+Writing at 0x000e3f48... (97 %)
+Writing at 0x000e91cb... (100 %)
+Wrote 895872 bytes (561113 compressed) at 0x00010000 in 12.6 seconds (effective 567.3 kbit/s)...
+Hash of data verified.
+Compressed 3072 bytes to 103...
+Writing at 0x00008000... (100 %)
+Wrote 3072 bytes (103 compressed) at 0x00008000 in 0.1 seconds (effective 395.9 kbit/s)...
+Hash of data verified.
+
+Leaving...
+Hard resetting via RTS pin...

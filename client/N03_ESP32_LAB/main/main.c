@@ -6,7 +6,9 @@
 
 #include "esp_wifi.h"
 #include "config.h"
-#include "conexao.h"  // <- Aqui está tudo: Wi-Fi + MQTT
+#include "conexoes/conexoes.h"  
+#include "sensores/sensores.h"
+
 
 void app_main(void)
 {
@@ -23,6 +25,10 @@ void app_main(void)
     // Inicializa MQTT
     conexao_mqtt_start();
 
+    // Inicializa Sensores
+    sensores_init();
+
+
     while (true) {
         // Verifica conexão Wi-Fi
         if (!conexao_wifi_is_connected()) {
@@ -36,8 +42,14 @@ void app_main(void)
             // Verifica conexão MQTT
             if (conexao_mqtt_is_connected()) {
                 // Simula leitura de sensor
-                char payload[64];
-                snprintf(payload, sizeof(payload), "{\"temp\": %.1f}", 24.5);
+                sensor_data_t dados = sensores_ler_dados();
+                char payload[256];
+                snprintf(payload, sizeof(payload),
+                         "{\"temp\": %.2f, \"umid\": %.2f, \"co2\": %.2f, \"luz\": %.2f, \"agua_min\": %d, \"agua_max\": %d, "
+                         "\"temp_reserv_int\": %.2f, \"ph\": %.2f, \"ec\": %.2f, \"temp_reserv_ext\": %.2f}",
+                         dados.temp, dados.umid, dados.co2, dados.luz, dados.agua_min, dados.agua_max,
+                         dados.temp_reserv_int, dados.ph, dados.ec, dados.temp_reserv_ext);
+                
 
                 // Publica no tópico MQTT
                 conexao_mqtt_publish(MQTT_TOPIC, payload);

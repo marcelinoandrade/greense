@@ -1,7 +1,7 @@
 {
     "version":            "1.1",
     "project_name":       "N03_ESP32_LAB",
-    "project_version":    "e20be76",
+    "project_version":    "feea3a7-dirty",
     "project_path":       "/home/greense/projetoGreense/client/N03_ESP32_LAB",
     "idf_path":           "/home/greense/esp/esp-idf",
     "build_dir":          "/home/greense/projetoGreense/client/N03_ESP32_LAB/build",
@@ -800,13 +800,13 @@
             "dir": "/home/greense/projetoGreense/client/N03_ESP32_LAB/main",
             "type": "LIBRARY",
             "lib": "__idf_main",
-            "reqs": [ "nvs_flash", "esp_wifi", "esp_event", "mqtt" ],
+            "reqs": [ "nvs_flash", "esp_wifi", "esp_event", "mqtt", "driver" ],
             "priv_reqs": [],
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "file": "/home/greense/projetoGreense/client/N03_ESP32_LAB/build/esp-idf/main/libmain.a",
-            "sources": [ "/home/greense/projetoGreense/client/N03_ESP32_LAB/main/main.c", "/home/greense/projetoGreense/client/N03_ESP32_LAB/main/conexao.c" ],
-            "include_dirs": [ "." ]
+            "sources": [ "/home/greense/projetoGreense/client/N03_ESP32_LAB/main/main.c", "/home/greense/projetoGreense/client/N03_ESP32_LAB/main/conexoes/conexoes.c", "/home/greense/projetoGreense/client/N03_ESP32_LAB/main/sensores/sensores.c", "/home/greense/projetoGreense/client/N03_ESP32_LAB/main/sensores/aht20.c", "/home/greense/projetoGreense/client/N03_ESP32_LAB/main/sensores/ens160.c" ],
+            "include_dirs": [ ".", "conexoes", "sensores" ]
         },
         "mbedtls": {
             "alias": "idf::mbedtls",
@@ -2112,11 +2112,11 @@
             "prefix": "idf",
             "dir": "/home/greense/projetoGreense/client/N03_ESP32_LAB/main",
             "lib": "__idf_main",
-            "reqs": [ "nvs_flash", "esp_wifi", "esp_event", "mqtt" ],
+            "reqs": [ "nvs_flash", "esp_wifi", "esp_event", "mqtt", "driver" ],
             "priv_reqs": [],
             "managed_reqs": [],
             "managed_priv_reqs": [],
-            "include_dirs": [ "." ]
+            "include_dirs": [ ".", "conexoes", "sensores" ]
         }
     },
     "debug_prefix_map_gdbinit": ""
