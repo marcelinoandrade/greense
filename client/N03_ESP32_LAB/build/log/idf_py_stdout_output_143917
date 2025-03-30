@@ -1,0 +1,256 @@
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:7172
+load:0x40078000,len:15540
+load:0x40080400,len:4
+ho 8 tail 4 room 4
+load:0x40080404,len:3904
+entry 0x40080640
+[0;32mI (31) boot: ESP-IDF v5.2.1 2nd stage bootloader[0m
+[0;32mI (31) boot: compile time Mar 30 2025 14:30:19[0m
+[0;32mI (31) boot: Multicore bootloader[0m
+[0;32mI (35) boot: chip revision: v3.1[0m
+[0;32mI (39) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (44) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (48) boot.esp32: SPI Flash Size : 2MB[0m
+[0;32mI (53) boot: Enabling RNG early entropy source...[0m
+[0;32mI (58) boot: Partition Table:[0m
+[0;32mI (62) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (69) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (77) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (84) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (92) boot: End of partition table[0m
+[0;32mI (96) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=288d4h (166100) map[0m
+[0;32mI (161) esp_image: segment 1: paddr=000388fc vaddr=3ffb0000 size=03c7ch ( 15484) load[0m
+[0;32mI (167) esp_image: segment 2: paddr=0003c580 vaddr=40080000 size=03a98h ( 15000) load[0m
+[0;32mI (173) esp_image: segment 3: paddr=00040020 vaddr=400d0020 size=9c3b8h (639928) map[0m
+[0;32mI (395) esp_image: segment 4: paddr=000dc3e0 vaddr=40083a98 size=13fa0h ( 81824) load[0m
+[0;32mI (439) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (439) boot: Disabling RNG early entropy source...[0m
+[0;32mI (450) cpu_start: Multicore app[0m
+[0;32mI (459) cpu_start: Pro cpu start user code[0m
+[0;32mI (459) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (459) cpu_start: Application information:[0m
+[0;32mI (462) cpu_start: Project name:     N03_ESP32_LAB[0m
+[0;32mI (468) cpu_start: App version:      feea3a7-dirty[0m
+[0;32mI (473) cpu_start: Compile time:     Mar 30 2025 14:57:09[0m
+[0;32mI (479) cpu_start: ELF file SHA256:  6c81e5991...[0m
+[0;32mI (485) cpu_start: ESP-IDF:          v5.2.1[0m
+[0;32mI (489) cpu_start: Min chip rev:     v0.0[0m
+[0;32mI (494) cpu_start: Max chip rev:     v3.99 [0m
+[0;32mI (499) cpu_start: Chip rev:         v3.1[0m
+[0;32mI (504) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (511) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (517) heap_init: At 3FFB83A8 len 00027C58 (159 KiB): DRAM[0m
+[0;32mI (523) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (530) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (536) heap_init: At 40097A38 len 000085C8 (33 KiB): IRAM[0m
+[0;32mI (544) spi_flash: detected chip: generic[0m
+[0;32mI (547) spi_flash: flash io: dio[0m
+[0;33mW (551) spi_flash: Detected size(4096k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;33mW (564) i2c: This driver is an old driver, please migrate your application code to adapt `driver/i2c_master.h`[0m
+[0;32mI (575) main_task: Started on CPU0[0m
+[0;32mI (585) main_task: Calling app_main()[0m
+[0;32mI (625) wifi:wifi driver task: 3ffc03cc, prio:23, stack:6656, core=0[0m
+[0;32mI (635) wifi:wifi firmware version: a9f5b59[0m
+[0;32mI (645) wifi:wifi certification version: v7.0[0m
+[0;32mI (645) wifi:config NVS flash: enabled[0m
+[0;32mI (645) wifi:config nano formating: disabled[0m
+[0;32mI (645) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (645) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (655) wifi:Init management short buffer num: 32[0m
+[0;32mI (655) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (665) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (665) wifi:Init static rx buffer num: 10[0m
+[0;32mI (665) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (675) wifi_init: rx ba win: 6[0m
+[0;32mI (675) wifi_init: tcpip mbox: 32[0m
+[0;32mI (685) wifi_init: udp mbox: 6[0m
+[0;32mI (685) wifi_init: tcp mbox: 6[0m
+[0;32mI (685) wifi_init: tcp tx win: 5760[0m
+[0;32mI (695) wifi_init: tcp rx win: 5760[0m
+[0;32mI (695) wifi_init: tcp mss: 1440[0m
+[0;32mI (705) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (705) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (715) phy_init: phy_version 4791,2c4672b,Dec 20 2023,16:06:06[0m
+[0;32mI (795) wifi:mode : sta (88:13:bf:82:3d:24)[0m
+[0;32mI (795) wifi:enable tsf[0m
+[0;32mI (795) wifi:Set ps type: 0, coexist: 0[0m
+
+[0;32mI (805) WiFi: Wi-Fi inicializado. Conectando...[0m
+[0;32mI (865) wifi:new:<13,0>, old:<1,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (865) wifi:state: init -> auth (b0)[0m
+[0;32mI (1875) wifi:state: auth -> init (200)[0m
+[0;32mI (1875) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;33mW (1875) WiFi: Desconectado. Motivo: 2[0m
+[0;32mI (1875) WiFi: Tentando reconectar ao Wi-Fi...[0m
+[0;33mW (4285) WiFi: Desconectado. Motivo: 205[0m
+[0;32mI (4295) WiFi: Tentando reconectar ao Wi-Fi...[0m
+[0;32mI (4345) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (4345) wifi:state: init -> auth (b0)[0m
+[0;32mI (5345) wifi:state: auth -> init (200)[0m
+[0;32mI (5355) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;33mW (5355) WiFi: Desconectado. Motivo: 2[0m
+[0;32mI (5355) WiFi: Tentando reconectar ao Wi-Fi...[0m
+[0;33mW (7765) WiFi: Desconectado. Motivo: 205[0m
+[0;32mI (7775) WiFi: Tentando reconectar ao Wi-Fi...[0m
+[0;33mW (10185) WiFi: Desconectado. Motivo: 201[0m
+[0;32mI (10185) WiFi: Tentando reconectar ao Wi-Fi...[0m
+[0;33mW (12595) WiFi: Desconectado. Motivo: 201[0m
+[0;31mE (12595) WiFi: Falha ao conectar ao Wi-Fi[0m
+[0;31mE (12595) WiFi: Falha ao conectar ao Wi-Fi[0m
+[0;31mE (12605) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[0;31mE (12615) transport_base: Failed to open a new connection: 32772[0m
+[0;31mE (12615) mqtt_client: Error transport connect[0m
+[0;31mE (12625) MQTT: Erro no MQTT[0m
+[0;33mW (12625) MQTT: Desconectado do MQTT[0m
+[0;33mW (12675) wifi:Haven't to connect to a suitable AP now![0m
+Wi-Fi está desconectado. Tentando reconectar...
+[0;33mW (17085) WiFi: Desconectado. Motivo: 201[0m
+[0;31mE (17085) WiFi: Falha ao conectar ao Wi-Fi[0m
+[0;33mW (19675) wifi:Haven't to connect to a suitable AP now![0m
+Wi-Fi está desconectado. Tentando reconectar...
+[0;33mW (24085) WiFi: Desconectado. Motivo: 201[0m
+[0;31mE (24085) WiFi: Falha ao conectar ao Wi-Fi[0m
+[0;33mW (26675) wifi:Haven't to connect to a suitable AP now![0m
+Wi-Fi está desconectado. Tentando reconectar...
+[0;31mE (27625) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[0;31mE (27625) transport_base: Failed to open a new connection: 32772[0m
+[0;31mE (27625) mqtt_client: Error transport connect[0m
+[0;31mE (27635) MQTT: Erro no MQTT[0m
+[0;33mW (27635) MQTT: Desconectado do MQTT[0m
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:7172
+load:0x40078000,len:15540
+load:0x40080400,len:4
+ho 8 tail 4 room 4
+load:0x40080404,len:3904
+entry 0x40080640
+[0;32mI (31) boot: ESP-IDF v5.2.1 2nd stage bootloader[0m
+[0;32mI (31) boot: compile time Mar 30 2025 14:30:19[0m
+[0;32mI (31) boot: Multicore bootloader[0m
+[0;32mI (35) boot: chip revision: v3.1[0m
+[0;32mI (39) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (44) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (48) boot.esp32: SPI Flash Size : 2MB[0m
+[0;32mI (53) boot: Enabling RNG early entropy source...[0m
+[0;32mI (58) boot: Partition Table:[0m
+[0;32mI (62) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (69) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (77) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (84) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (92) boot: End of partition table[0m
+[0;32mI (96) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=288d4h (166100) map[0m
+[0;32mI (161) esp_image: segment 1: paddr=000388fc vaddr=3ffb0000 size=03c7ch ( 15484) load[0m
+[0;32mI (167) esp_image: segment 2: paddr=0003c580 vaddr=40080000 size=03a98h ( 15000) load[0m
+[0;32mI (173) esp_image: segment 3: paddr=00040020 vaddr=400d0020 size=9c3b8h (639928) map[0m
+[0;32mI (395) esp_image: segment 4: paddr=000dc3e0 vaddr=40083a98 size=13fa0h ( 81824) load[0m
+[0;32mI (439) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (439) boot: Disabling RNG early entropy source...[0m
+[0;32mI (450) cpu_start: Multicore app[0m
+[0;32mI (459) cpu_start: Pro cpu start user code[0m
+[0;32mI (459) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (459) cpu_start: Application information:[0m
+[0;32mI (462) cpu_start: Project name:     N03_ESP32_LAB[0m
+[0;32mI (468) cpu_start: App version:      feea3a7-dirty[0m
+[0;32mI (473) cpu_start: Compile time:     Mar 30 2025 14:57:09[0m
+[0;32mI (479) cpu_start: ELF file SHA256:  6c81e5991...[0m
+[0;32mI (485) cpu_start: ESP-IDF:          v5.2.1[0m
+[0;32mI (489) cpu_start: Min chip rev:     v0.0[0m
+[0;32mI (494) cpu_start: Max chip rev:     v3.99 [0m
+[0;32mI (499) cpu_start: Chip rev:         v3.1[0m
+[0;32mI (504) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (511) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (517) heap_init: At 3FFB83A8 len 00027C58 (159 KiB): DRAM[0m
+[0;32mI (523) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (530) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (536) heap_init: At 40097A38 len 000085C8 (33 KiB): IRAM[0m
+[0;32mI (544) spi_flash: detected chip: generic[0m
+[0;32mI (547) spi_flash: flash io: dio[0m
+[0;33mW (551) spi_flash: Detected size(4096k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;33mW (564) i2c: This driver is an old driver, please migrate your application code to adapt `driver/i2c_master.h`[0m
+[0;32mI (575) main_task: Started on CPU0[0m
+[0;32mI (585) main_task: Calling app_main()[0m
+[0;32mI (625) wifi:wifi driver task: 3ffc03cc, prio:23, stack:6656, core=0[0m
+[0;32mI (635) wifi:wifi firmware version: a9f5b59[0m
+[0;32mI (645) wifi:wifi certification version: v7.0[0m
+[0;32mI (645) wifi:config NVS flash: enabled[0m
+[0;32mI (645) wifi:config nano formating: disabled[0m
+[0;32mI (645) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (645) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (655) wifi:Init management short buffer num: 32[0m
+[0;32mI (655) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (665) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (665) wifi:Init static rx buffer num: 10[0m
+[0;32mI (665) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (675) wifi_init: rx ba win: 6[0m
+[0;32mI (675) wifi_init: tcpip mbox: 32[0m
+[0;32mI (685) wifi_init: udp mbox: 6[0m
+[0;32mI (685) wifi_init: tcp mbox: 6[0m
+[0;32mI (685) wifi_init: tcp tx win: 5760[0m
+[0;32mI (695) wifi_init: tcp rx win: 5760[0m
+[0;32mI (695) wifi_init: tcp mss: 1440[0m
+[0;32mI (705) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (705) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (715) phy_init: phy_version 4791,2c4672b,Dec 20 2023,16:06:06[0m
+[0;32mI (795) wifi:mode : sta (88:13:bf:82:3d:24)[0m
+[0;32mI (795) wifi:enable tsf[0m
+[0;32mI (795) wifi:Set ps type: 0, coexist: 0[0m
+
+[0;32mI (795) WiFi: Wi-Fi inicializado. Conectando...[0m
+[0;32mI (895) wifi:new:<13,0>, old:<1,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (895) wifi:state: init -> auth (b0)[0m
+[0;32mI (905) wifi:state: auth -> assoc (0)[0m
+[0;32mI (905) wifi:state: assoc -> run (10)[0m
+[0;32mI (3045) wifi:connected with greense, aid = 2, channel 13, BW20, bssid = e4:5f:01:6f:f2:29[0m
+[0;32mI (3045) wifi:security: WPA-PSK, phy: bgn, rssi: -36[0m
+[0;32mI (3055) wifi:pm start, type: 0[0m
+
+[0;32mI (3055) wifi:dp: 1, bi: 102400, li: 3, scale listen interval from 307200 us to 307200 us[0m
+[0;32mI (3105) wifi:<ba-add>idx:0 (ifx:0, e4:5f:01:6f:f2:29), tid:6, ssn:0, winSize:64[0m
+[0;32mI (3135) wifi:dp: 2, bi: 102400, li: 4, scale listen interval from 307200 us to 409600 us[0m
+[0;32mI (3135) wifi:AP's beacon interval = 102400 us, DTIM period = 2[0m
+[0;32mI (4065) esp_netif_handlers: sta ip: 10.42.0.185, mask: 255.255.255.0, gw: 10.42.0.1[0m
+[0;32mI (4065) WiFi: Conectado! IP: 10.42.0.185[0m
+[0;32mI (4065) WiFi: Conectado ao Wi-Fi com sucesso[0m
+[0;32mI (4075) wifi:<ba-add>idx:1 (ifx:0, e4:5f:01:6f:f2:29), tid:0, ssn:3, winSize:64[0m
+[0;32mI (4115) MQTT: Conectado ao broker MQTT![0m
+Wi-Fi está conectado.
+[0;31mE (4155) AHT20: Timeout waiting for idle[0m
+[0;32mI (4165) MQTT: Publicado (id=64696): estufa3/esp32 -> {"temp": 21.05, "umid": 38.18, "co2": 1621.82, "luz": 1014.61, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 16.07, "ph": 6.43, "ec": 2.04, "temp_reserv_ext": 23.51}[0m
+Wi-Fi está conectado.
+[0;31mE (9205) AHT20: Timeout waiting for idle[0m
+[0;32mI (9215) MQTT: Publicado (id=63901): estufa3/esp32 -> {"temp": 27.78, "umid": 35.53, "co2": 1712.27, "luz": 477.06, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 20.53, "ph": 6.48, "ec": 1.62, "temp_reserv_ext": 21.79}[0m
+Wi-Fi está conectado.
+[0;31mE (14255) AHT20: Timeout waiting for idle[0m
+[0;32mI (14265) MQTT: Publicado (id=32587): estufa3/esp32 -> {"temp": 29.03, "umid": 45.31, "co2": 1057.13, "luz": 643.44, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 20.12, "ph": 6.66, "ec": 1.37, "temp_reserv_ext": 20.94}[0m
+Wi-Fi está conectado.
+[0;31mE (19305) AHT20: Timeout waiting for idle[0m
+[0;32mI (19315) MQTT: Publicado (id=27293): estufa3/esp32 -> {"temp": 25.97, "umid": 87.27, "co2": 1313.56, "luz": 360.65, "agua_min": 1, "agua_max": 1, "temp_reserv_int": 15.79, "ph": 6.46, "ec": 2.48, "temp_reserv_ext": 15.24}[0m
+Wi-Fi está conectado.
+[0;31mE (24355) AHT20: Timeout waiting for idle[0m
+[0;32mI (24365) MQTT: Publicado (id=10944): estufa3/esp32 -> {"temp": 22.62, "umid": 39.38, "co2": 1116.70, "luz": 1505.43, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 19.38, "ph": 5.93, "ec": 1.93, "temp_reserv_ext": 23.57}[0m
+Wi-Fi está conectado.
+[0;31mE (29405) AHT20: Timeout waiting for idle[0m
+[0;32mI (29415) MQTT: Publicado (id=26339): estufa3/esp32 -> {"temp": 27.54, "umid": 68.67, "co2": 1176.18, "luz": 139.29, "agua_min": 0, "agua_max": 1, "temp_reserv_int": 23.87, "ph": 6.98, "ec": 1.35, "temp_reserv_ext": 24.21}[0m
+Wi-Fi está conectado.
+[0;31mE (34455) AHT20: Timeout waiting for idle[0m
+[0;32mI (34465) MQTT: Publicado (id=55838): estufa3/esp32 -> {"temp": 21.45, "umid": 83.41, "co2": 1989.97, "luz": 135.10, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 23.42, "ph": 5.60, "ec": 0.56, "temp_reserv_ext": 24.59}[0m
+Wi-Fi está conectado.
+[0;31mE (39505) AHT20: Timeout waiting for idle[0m
+[0;32mI (39515) MQTT: Publicado (id=52432): estufa3/esp32 -> {"temp": 26.65, "umid": 52.96, "co2": 872.72, "luz": 646.54, "agua_min": 0, "agua_max": 1, "temp_reserv_int": 17.81, "ph": 5.94, "ec": 0.96, "temp_reserv_ext": 16.17}[0m
+Wi-Fi está conectado.
+[0;31mE (44555) AHT20: Timeout waiting for idle[0m
+[0;32mI (44565) MQTT: Publicado (id=52707): estufa3/esp32 -> {"temp": 30.42, "umid": 45.18, "co2": 553.15, "luz": 1072.29, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 22.26, "ph": 5.68, "ec": 1.22, "temp_reserv_ext": 21.82}[0m
+Wi-Fi está conectado.
+[0;31mE (49605) AHT20: Timeout waiting for idle[0m
+[0;32mI (49615) MQTT: Publicado (id=31120): estufa3/esp32 -> {"temp": 20.70, "umid": 86.66, "co2": 418.06, "luz": 375.26, "agua_min": 1, "agua_max": 0, "temp_reserv_int": 20

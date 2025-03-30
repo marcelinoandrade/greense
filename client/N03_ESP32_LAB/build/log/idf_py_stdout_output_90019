@@ -281,4 +281,310 @@ Wi-Fi está conectado.
 Wi-Fi está conectado.
 [0;32mI (278254) MQTT: Publicado (id=50709): estufa3/esp32 -> {"temp": 24.5}[0m
 Wi-Fi está conectado.
-[0;32mI (283254) MQTT: Publicado (id=4
+[0;32mI (283254) MQTT: Publicado (id=42372): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (288254) MQTT: Publicado (id=18149): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (293254) MQTT: Publicado (id=16728): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (298254) MQTT: Publicado (id=60249): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (303254) MQTT: Publicado (id=28257): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (308254) MQTT: Publicado (id=64321): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (313254) MQTT: Publicado (id=58913): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (318254) MQTT: Publicado (id=24917): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (323254) MQTT: Publicado (id=65164): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (328254) MQTT: Publicado (id=61014): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (333254) MQTT: Publicado (id=36824): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (338254) MQTT: Publicado (id=16663): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (343254) MQTT: Publicado (id=14763): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (348254) MQTT: Publicado (id=15298): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (353254) MQTT: Publicado (id=16883): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (358254) MQTT: Publicado (id=41349): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (363254) MQTT: Publicado (id=18311): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (368254) MQTT: Publicado (id=980): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (373254) MQTT: Publicado (id=52762): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (378254) MQTT: Publicado (id=14972): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (383254) MQTT: Publicado (id=32921): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (388254) MQTT: Publicado (id=53124): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (393254) MQTT: Publicado (id=31787): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (398254) MQTT: Publicado (id=55370): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (403254) MQTT: Publicado (id=2121): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (408254) MQTT: Publicado (id=20887): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (413254) MQTT: Publicado (id=41119): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (418254) MQTT: Publicado (id=11833): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (423254) MQTT: Publicado (id=1941): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (428254) MQTT: Publicado (id=20061): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (433254) MQTT: Publicado (id=55069): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (438254) MQTT: Publicado (id=31750): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (443254) MQTT: Publicado (id=27313): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (448254) MQTT: Publicado (id=57338): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (453254) MQTT: Publicado (id=32019): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (458254) MQTT: Publicado (id=29723): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (463254) MQTT: Publicado (id=8958): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (468254) MQTT: Publicado (id=32490): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (473254) MQTT: Publicado (id=43330): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (478254) MQTT: Publicado (id=21618): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (483254) MQTT: Publicado (id=40559): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (488254) MQTT: Publicado (id=40288): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (493254) MQTT: Publicado (id=40812): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (498254) MQTT: Publicado (id=51213): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (503254) MQTT: Publicado (id=44049): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (508254) MQTT: Publicado (id=45421): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (513254) MQTT: Publicado (id=37982): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (518254) MQTT: Publicado (id=25616): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (523254) MQTT: Publicado (id=45281): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (528254) MQTT: Publicado (id=16390): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (533254) MQTT: Publicado (id=13033): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (538254) MQTT: Publicado (id=43043): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (543254) MQTT: Publicado (id=4318): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (548254) MQTT: Publicado (id=35313): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (553254) MQTT: Publicado (id=14970): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (558254) MQTT: Publicado (id=37926): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (563254) MQTT: Publicado (id=9268): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (568254) MQTT: Publicado (id=14020): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (573254) MQTT: Publicado (id=46261): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (578254) MQTT: Publicado (id=12796): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (583254) MQTT: Publicado (id=34019): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (588254) MQTT: Publicado (id=3160): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (593254) MQTT: Publicado (id=39922): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (598254) MQTT: Publicado (id=63651): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (603254) MQTT: Publicado (id=59947): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (608254) MQTT: Publicado (id=17343): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (613254) MQTT: Publicado (id=22394): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (618254) MQTT: Publicado (id=64327): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (623254) MQTT: Publicado (id=55508): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (628254) MQTT: Publicado (id=38374): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (633254) MQTT: Publicado (id=61341): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (638254) MQTT: Publicado (id=178): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (643254) MQTT: Publicado (id=55276): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (648254) MQTT: Publicado (id=9375): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (653254) MQTT: Publicado (id=13049): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (658254) MQTT: Publicado (id=49002): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (663254) MQTT: Publicado (id=44536): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (668254) MQTT: Publicado (id=11536): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (673254) MQTT: Publicado (id=46561): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (678254) MQTT: Publicado (id=31525): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (683254) MQTT: Publicado (id=36507): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (688254) MQTT: Publicado (id=58374): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (693254) MQTT: Publicado (id=48800): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (698254) MQTT: Publicado (id=19366): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (703254) MQTT: Publicado (id=64452): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (708254) MQTT: Publicado (id=47110): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (713254) MQTT: Publicado (id=1692): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (718254) MQTT: Publicado (id=44851): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (723254) MQTT: Publicado (id=11965): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (728254) MQTT: Publicado (id=24106): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (733254) MQTT: Publicado (id=41265): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (738254) MQTT: Publicado (id=53026): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (743254) MQTT: Publicado (id=34139): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (748254) MQTT: Publicado (id=5326): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (753254) MQTT: Publicado (id=51555): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (758254) MQTT: Publicado (id=16813): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (763254) MQTT: Publicado (id=41289): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (768254) MQTT: Publicado (id=1316): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (773254) MQTT: Publicado (id=38576): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (778254) MQTT: Publicado (id=51013): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (783254) MQTT: Publicado (id=56550): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (788254) MQTT: Publicado (id=21373): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (793254) MQTT: Publicado (id=29727): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (798254) MQTT: Publicado (id=30056): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (803254) MQTT: Publicado (id=27243): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (808254) MQTT: Publicado (id=51990): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (813254) MQTT: Publicado (id=25219): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (818254) MQTT: Publicado (id=50528): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (823254) MQTT: Publicado (id=27207): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (828254) MQTT: Publicado (id=5497): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (833254) MQTT: Publicado (id=10134): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (838254) MQTT: Publicado (id=41384): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (843254) MQTT: Publicado (id=28067): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (848254) MQTT: Publicado (id=14340): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (853254) MQTT: Publicado (id=40301): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (858254) MQTT: Publicado (id=18003): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (863254) MQTT: Publicado (id=44302): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (868254) MQTT: Publicado (id=27365): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (873254) MQTT: Publicado (id=11775): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (878254) MQTT: Publicado (id=44122): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (883254) MQTT: Publicado (id=27385): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (888254) MQTT: Publicado (id=15004): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (893254) MQTT: Publicado (id=58901): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (898254) MQTT: Publicado (id=30238): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (903254) MQTT: Publicado (id=31875): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (908254) MQTT: Publicado (id=20069): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (913254) MQTT: Publicado (id=12186): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (918254) MQTT: Publicado (id=6164): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (923254) MQTT: Publicado (id=42608): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (928254) MQTT: Publicado (id=9169): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (933254) MQTT: Publicado (id=20496): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (938254) MQTT: Publicado (id=45254): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (943254) MQTT: Publicado (id=51123): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (948254) MQTT: Publicado (id=63385): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (953254) MQTT: Publicado (id=44831): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (958254) MQTT: Publicado (id=14686): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (963254) MQTT: Publicado (id=35189): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (968254) MQTT: Publicado (id=54445): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (973254) MQTT: Publicado (id=3383): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (978254) MQTT: Publicado (id=44): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (983254) MQTT: Publicado (id=14245): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (988254) MQTT: Publicado (id=25706): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (993254) MQTT: Publicado (id=21170): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (998254) MQTT: Publicado (id=55540): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (1003254) MQTT: Publicado (id=25638): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (1008254) MQTT: Publicado (id=10473): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (1013254) MQTT: Publicado (id=56782): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (1018254) MQTT: Publicado (id=33105): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (1023254) MQTT: Publicado (id=14130): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (1028254) MQTT: Publicado (id=3691): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (1033254) MQTT: Publicado (id=27595): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (1038254) MQTT: Publicado (id=17697): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (1043254) MQTT: Publicado (id=32051): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (1048254) MQTT: Publicado (id=20364): estufa3/esp32 -> {
