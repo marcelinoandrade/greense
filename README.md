@@ -33,7 +33,8 @@ O **GreenSe** é uma solução inovadora para **monitoramento e automação de c
 - **Estufas** como ambiente controlado de cultivo.
 
 ### Software & Servidores
-- **Python** para backend e lógica de controle.
+- **C/C++** para backend e lógica de controle (Produção - ESP/IDE - VSCode).
+- **Python** para backend e lógica de controle (Prototipagem - MicroPython - Thonny).
 - **MQTT** para comunicação entre dispositivos.
 - **InfluxDB** para armazenamento eficiente de dados temporais.
 - **Grafana** para dashboards interativos.
