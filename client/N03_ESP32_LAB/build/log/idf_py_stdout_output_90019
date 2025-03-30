@@ -1,0 +1,140 @@
+mt buffer num: 5
+[0;32mI (634) wifi:Init �ets Jul 29 2019 12:21:46[0m
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:7172
+load:0x40078000,len:15540
+load:0x40080400,len:4
+ho 8 tail 4 room 4
+load:0x40080404,len:3904
+entry 0x40080640
+[0;32mI (31) boot: ESP-IDF v5.2.1 2nd stage bootloader[0m
+[0;32mI (31) boot: compile time Mar 30 2025 14:30:19[0m
+[0;32mI (31) boot: Multicore bootloader[0m
+[0;32mI (35) boot: chip revision: v3.1[0m
+[0;32mI (39) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (44) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (48) boot.esp32: SPI Flash Size : 2MB[0m
+[0;32mI (53) boot: Enabling RNG early entropy source...[0m
+[0;32mI (58) boot: Partition Table:[0m
+[0;32mI (62) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (69) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (77) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (84) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (92) boot: End of partition table[0m
+[0;32mI (96) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=26e08h (159240) map[0m
+[0;32mI (159) esp_image: segment 1: paddr=00036e30 vaddr=3ffb0000 size=03c04h ( 15364) load[0m
+[0;32mI (165) esp_image: segment 2: paddr=0003aa3c vaddr=40080000 size=055dch ( 21980) load[0m
+[0;32mI (174) esp_image: segment 3: paddr=00040020 vaddr=400d0020 size=99868h (628840) map[0m
+[0;32mI (389) esp_image: segment 4: paddr=000d9890 vaddr=400855dc size=110a0h ( 69792) load[0m
+[0;32mI (428) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (428) boot: Disabling RNG early entropy source...[0m
+[0;32mI (440) cpu_start: Multicore app[0m
+[0;32mI (448) cpu_start: Pro cpu start user code[0m
+[0;32mI (449) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (449) cpu_start: Application information:[0m
+[0;32mI (452) cpu_start: Project name:     N03_ESP32_LAB[0m
+[0;32mI (457) cpu_start: App version:      e20be76[0m
+[0;32mI (462) cpu_start: Compile time:     Mar 30 2025 14:29:37[0m
+[0;32mI (468) cpu_start: ELF file SHA256:  7fb226753...[0m
+[0;32mI (473) cpu_start: ESP-IDF:          v5.2.1[0m
+[0;32mI (478) cpu_start: Min chip rev:     v0.0[0m
+[0;32mI (483) cpu_start: Max chip rev:     v3.99 [0m
+[0;32mI (488) cpu_start: Chip rev:         v3.1[0m
+[0;32mI (493) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (500) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (506) heap_init: At 3FFB8310 len 00027CF0 (159 KiB): DRAM[0m
+[0;32mI (512) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (518) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (525) heap_init: At 4009667C len 00009984 (38 KiB): IRAM[0m
+[0;32mI (533) spi_flash: detected chip: generic[0m
+[0;32mI (536) spi_flash: flash io: dio[0m
+[0;33mW (540) spi_flash: Detected size(4096k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;32mI (554) main_task: Started on CPU0[0m
+[0;32mI (564) main_task: Calling app_main()[0m
+[0;32mI (604) wifi:wifi driver task: 3ffc0334, prio:23, stack:6656, core=0[0m
+[0;32mI (614) wifi:wifi firmware version: a9f5b59[0m
+[0;32mI (614) wifi:wifi certification version: v7.0[0m
+[0;32mI (624) wifi:config NVS flash: enabled[0m
+[0;32mI (624) wifi:config nano formating: disabled[0m
+[0;32mI (624) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (624) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (634) wifi:Init management short buffer num: 32[0m
+[0;32mI (634) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (644) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (644) wifi:Init static rx buffer num: 10[0m
+[0;32mI (644) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (654) wifi_init: rx ba win: 6[0m
+[0;32mI (654) wifi_init: tcpip mbox: 32[0m
+[0;32mI (664) wifi_init: udp mbox: 6[0m
+[0;32mI (664) wifi_init: tcp mbox: 6[0m
+[0;32mI (664) wifi_init: tcp tx win: 5760[0m
+[0;32mI (674) wifi_init: tcp rx win: 5760[0m
+[0;32mI (674) wifi_init: tcp mss: 1440[0m
+[0;32mI (684) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (684) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (694) phy_init: phy_version 4791,2c4672b,Dec 20 2023,16:06:06[0m
+[0;32mI (774) wifi:mode : sta (88:13:bf:82:3d:24)[0m
+[0;32mI (774) wifi:enable tsf[0m
+[0;32mI (774) wifi:Set ps type: 0, coexist: 0[0m
+
+[0;32mI (784) WiFi: Wi-Fi inicializado. Conectando...[0m
+[0;32mI (814) wifi:new:<13,0>, old:<1,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (814) wifi:state: init -> auth (b0)[0m
+[0;32mI (1814) wifi:state: auth -> init (200)[0m
+[0;32mI (1824) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;33mW (1824) WiFi: Desconectado. Motivo: 2[0m
+[0;32mI (1824) WiFi: Tentando reconectar ao Wi-Fi...[0m
+[0;33mW (4234) WiFi: Desconectado. Motivo: 205[0m
+[0;32mI (4244) WiFi: Tentando reconectar ao Wi-Fi...[0m
+[0;32mI (4294) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (4294) wifi:state: init -> auth (b0)[0m
+[0;32mI (5294) wifi:state: auth -> init (200)[0m
+[0;32mI (5304) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;33mW (5304) WiFi: Desconectado. Motivo: 2[0m
+[0;32mI (5304) WiFi: Tentando reconectar ao Wi-Fi...[0m
+[0;33mW (7714) WiFi: Desconectado. Motivo: 205[0m
+[0;32mI (7724) WiFi: Tentando reconectar ao Wi-Fi...[0m
+[0;32mI (7774) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (7774) wifi:state: init -> auth (b0)[0m
+[0;32mI (8784) wifi:state: auth -> init (200)[0m
+[0;32mI (8784) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;33mW (8784) WiFi: Desconectado. Motivo: 2[0m
+[0;32mI (8784) WiFi: Tentando reconectar ao Wi-Fi...[0m
+[0;33mW (11194) WiFi: Desconectado. Motivo: 205[0m
+[0;31mE (11204) WiFi: Falha ao conectar ao Wi-Fi[0m
+[0;31mE (11204) WiFi: Falha ao conectar ao Wi-Fi[0m
+[0;31mE (11204) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[0;31mE (11214) transport_base: Failed to open a new connection: 32772[0m
+[0;33mW (11214) wifi:[0;31mE (11214) mqtt_client: Error transport connect[0m[0m
+Haven't to connect to a suitable AP now!
+[0;31mE (11224) MQTT: Erro no MQTT[0m
+Wi-Fi está desconectado. Tentando reconectar...
+[0;33mW (11234) MQTT: Desconectado do MQTT[0m
+[0;32mI (13304) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (13304) wifi:state: init -> auth (b0)[0m
+[0;32mI (14314) wifi:state: auth -> init (200)[0m
+[0;32mI (14314) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;33mW (14314) WiFi: Desconectado. Motivo: 2[0m
+[0;31mE (14314) WiFi: Falha ao conectar ao Wi-Fi[0m
+[0;33mW (18244) wifi:Haven't to connect to a suitable AP now![0m
+Wi-Fi está desconectado. Tentando reconectar...
+[0;33mW (22654) WiFi: Desconectado. Motivo: 205[0m
+[0;31mE (22654) WiFi: Falha ao conectar ao Wi-Fi[0m
+[0;33mW (25244) wifi:Haven't to connect to a suitable AP now![0m
+Wi-Fi está desconectado. Tentando reconectar...
+[0;31mE (26234) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[0;31mE (26234) transport_base: Failed to open a new connection: 32772[0m
+[0;31mE (26234) mqtt_client: Error transport connect[0m
+[0;31mE (26244) MQTT: Erro no MQTT[0m
+[0;33mW (26244) MQTT: Desconectado do MQTT[0m
+[0;32mI (27334) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (27334) wifi:state: init -> auth (b0)[0m
+[0;32mI (28334) wifi:state: auth -> init (200)[0m
+[0;32mI (28344) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;33mW (28344) WiFi: Desconectado. Motivo: 2[0m
+[0;31mE (28344) WiFi: Falha ao conectar ao Wi-Fi[0m
+[0;33mW (32244) wifi:Haven't to connect to a suitable AP now![
