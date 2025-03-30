@@ -137,4 +137,148 @@ Wi-Fi está desconectado. Tentando reconectar...
 [0;32mI (28344) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
 [0;33mW (28344) WiFi: Desconectado. Motivo: 2[0m
 [0;31mE (28344) WiFi: Falha ao conectar ao Wi-Fi[0m
-[0;33mW (32244) wifi:Haven't to connect to a suitable AP now![
+[0;33mW (32244) wifi:Haven't to connect to a suitable AP now![0m
+Wi-Fi está desconectado. Tentando reconectar...
+[0;33mW (36654) WiFi: Desconectado. Motivo: 205[0m
+[0;31mE (36654) WiFi: Falha ao conectar ao Wi-Fi[0m
+[0;33mW (39244) wifi:Haven't to connect to a suitable AP now![0m
+Wi-Fi está desconectado. Tentando reconectar...
+[0;31mE (41244) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[0;31mE (41244) transport_base: Failed to open a new connection: 32772[0m
+[0;31mE (41244) mqtt_client: Error transport connect[0m
+[0;31mE (41254) MQTT: Erro no MQTT[0m
+[0;33mW (41254) MQTT: Desconectado do MQTT[0m
+[0;32mI (41264) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (41264) wifi:state: init -> auth (b0)[0m
+[0;32mI (42264) wifi:state: auth -> init (200)[0m
+[0;32mI (42274) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;33mW (42274) WiFi: Desconectado. Motivo: 2[0m
+[0;31mE (42274) WiFi: Falha ao conectar ao Wi-Fi[0m
+[0;33mW (46254) wifi:Haven't to connect to a suitable AP now![0m
+Wi-Fi está desconectado. Tentando reconectar...
+[0;33mW (50664) WiFi: Desconectado. Motivo: 201[0m
+[0;31mE (50664) WiFi: Falha ao conectar ao Wi-Fi[0m
+[0;33mW (53254) wifi:Haven't to connect to a suitable AP now![0m
+Wi-Fi está desconectado. Tentando reconectar...
+[0;31mE (56254) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[0;31mE (56254) transport_base: Failed to open a new connection: 32772[0m
+[0;31mE (56254) mqtt_client: Error transport connect[0m
+[0;31mE (56264) MQTT: Erro no MQTT[0m
+[0;33mW (56264) MQTT: Desconectado do MQTT[0m
+[0;33mW (57664) WiFi: Desconectado. Motivo: 201[0m
+[0;31mE (57664) WiFi: Falha ao conectar ao Wi-Fi[0m
+[0;33mW (60254) wifi:Haven't to connect to a suitable AP now![0m
+Wi-Fi está desconectado. Tentando reconectar...
+[0;33mW (64664) WiFi: Desconectado. Motivo: 201[0m
+[0;31mE (64664) WiFi: Falha ao conectar ao Wi-Fi[0m
+[0;33mW (67254) wifi:Haven't to connect to a suitable AP now![0m
+Wi-Fi está desconectado. Tentando reconectar...
+[0;31mE (71264) esp-tls: [sock=54] connect() error: Host is unreachable[0m
+[0;31mE (71264) transport_base: Failed to open a new connection: 32772[0m
+[0;31mE (71264) mqtt_client: Error transport connect[0m
+[0;31mE (71274) MQTT: Erro no MQTT[0m
+[0;33mW (71274) MQTT: Desconectado do MQTT[0m
+[0;33mW (71664) WiFi: Desconectado. Motivo: 201[0m
+[0;31mE (71664) WiFi: Falha ao conectar ao Wi-Fi[0m
+[0;33mW (74254) wifi:Haven't to connect to a suitable AP now![0m
+Wi-Fi está desconectado. Tentando reconectar...
+[0;33mW (78664) WiFi: Desconectado. Motivo: 201[0m
+[0;31mE (78664) WiFi: Falha ao conectar ao Wi-Fi[0m
+[0;33mW (81254) wifi:Haven't to connect to a suitable AP now![0m
+Wi-Fi está desconectado. Tentando reconectar...
+[0;32mI (83274) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (83274) wifi:state: init -> auth (b0)[0m
+[0;32mI (83284) wifi:state: auth -> assoc (0)[0m
+[0;32mI (83284) wifi:state: assoc -> run (10)[0m
+[0;32mI (83354) wifi:connected with greense, aid = 3, channel 13, BW20, bssid = e4:5f:01:6f:f2:29[0m
+[0;32mI (83354) wifi:security: WPA-PSK, phy: bgn, rssi: -30[0m
+[0;32mI (83364) wifi:pm start, type: 0[0m
+
+[0;32mI (83364) wifi:dp: 1, bi: 102400, li: 3, scale listen interval from 307200 us to 307200 us[0m
+[0;32mI (83374) wifi:dp: 2, bi: 102400, li: 4, scale listen interval from 307200 us to 409600 us[0m
+[0;32mI (83374) wifi:AP's beacon interval = 102400 us, DTIM period = 2[0m
+[0;32mI (83384) wifi:<ba-add>idx:0 (ifx:0, e4:5f:01:6f:f2:29), tid:6, ssn:0, winSize:64[0m
+[0;32mI (83394) wifi:<ba-add>idx:1 (ifx:0, e4:5f:01:6f:f2:29), tid:0, ssn:3, winSize:64[0m
+[0;32mI (84374) esp_netif_handlers: sta ip: 10.42.0.185, mask: 255.255.255.0, gw: 10.42.0.1[0m
+[0;32mI (84374) WiFi: Conectado! IP: 10.42.0.185[0m
+[0;32mI (86314) MQTT: Conectado ao broker MQTT![0m
+Wi-Fi está conectado.
+[0;32mI (88254) MQTT: Publicado (id=24794): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (93254) MQTT: Publicado (id=53827): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (98254) MQTT: Publicado (id=53947): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (103254) MQTT: Publicado (id=24501): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (108254) MQTT: Publicado (id=38253): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (113254) MQTT: Publicado (id=10229): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (118254) MQTT: Publicado (id=29960): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (123254) MQTT: Publicado (id=44951): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (128254) MQTT: Publicado (id=59123): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (133254) MQTT: Publicado (id=56578): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (138254) MQTT: Publicado (id=32348): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (143254) MQTT: Publicado (id=17448): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (148254) MQTT: Publicado (id=19452): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (153254) MQTT: Publicado (id=62154): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (158254) MQTT: Publicado (id=30599): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (163254) MQTT: Publicado (id=25362): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (168254) MQTT: Publicado (id=6305): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (173254) MQTT: Publicado (id=24546): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (178254) MQTT: Publicado (id=57813): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (183254) MQTT: Publicado (id=38921): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (188254) MQTT: Publicado (id=63290): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (193254) MQTT: Publicado (id=12815): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (198254) MQTT: Publicado (id=42682): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (203254) MQTT: Publicado (id=31253): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (208254) MQTT: Publicado (id=62325): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (213254) MQTT: Publicado (id=58670): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (218254) MQTT: Publicado (id=18250): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (223254) MQTT: Publicado (id=13280): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (228254) MQTT: Publicado (id=53090): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (233254) MQTT: Publicado (id=9489): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (238254) MQTT: Publicado (id=29230): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (243254) MQTT: Publicado (id=51023): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (248254) MQTT: Publicado (id=51356): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (253254) MQTT: Publicado (id=34556): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (258254) MQTT: Publicado (id=50367): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (263254) MQTT: Publicado (id=13846): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (268254) MQTT: Publicado (id=44955): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (273254) MQTT: Publicado (id=25747): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (278254) MQTT: Publicado (id=50709): estufa3/esp32 -> {"temp": 24.5}[0m
+Wi-Fi está conectado.
+[0;32mI (283254) MQTT: Publicado (id=4
