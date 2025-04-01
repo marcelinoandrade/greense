@@ -50,7 +50,7 @@
                 </svg>
             </button>
             <ul id="menu" class="hidden md:flex space-x-6 absolute md:relative bg-green-900 md:bg-transparent w-full md:w-auto left-0 top-16 md:top-auto p-4 md:p-0 shadow-md md:shadow-none">
-                <li><a href="#sobre" class="hover:text-green-300 transition-colors duration-300 block md:inline">Sobre</a></li>
+                <li><a href="index.html" class="hover:text-green-300 transition-colors duration-300 block md:inline">Início</a></li>
                 <li class="relative">
                     <span class="hover:text-green-300 transition-colors duration-300 block md:inline cursor-pointer">Estufas</span>
                     <ul class="submenu">
@@ -84,77 +84,34 @@
             <path d="M 100 120 L 100 130" stroke="#388E3C" stroke-width="2" />
             <circle cx="100" cy="130" r="10" fill="#4CAF50" filter="url(#circleShadow)" />
         </svg>
-
         <h1 class="text-6xl font-bold animate-fade-in mt-4">GreenSe</h1> <!-- Ajustei o margin-top para mt-4 -->
         <p class="text-xl mt-4">Software para Cultivo Protegido em Ambiente Controlado</p>
     </div>
 </header>
-
     
     <!-- Conteúdo Principal -->
-    <main class="container mx-auto p-1">
-        <!-- Sobre -->
-        <section id="sobre" class="my-6 text-center">
-            <h2 class="text-4xl font-bold mb-6 text-green-900">Sobre o GreenSe</h2>
-            <p class="text-lg max-w-2xl mx-auto">O GreenSe é uma solução inovadora para monitoramento e automação de cultivos protegidos, com foco em hidroponia e outros sistemas em ambiente controlado. Integrando sensores, atuadores e sistemas inteligentes, o GreenSe otimiza as condições de cultivo, garantindo maior eficiência no uso de água, nutrientes e energia.</p>
-        </section>
+    <main class="container mx-auto p-5 text-center">
+        <h1 class="text-4xl font-bold text-green-900">Estufa 03 - Desenvolvimento e Maturação</h1>
+        <p class="mt-2 text-lg text-gray-700">Acompanhe os dados no tempo desejado</p>
         
-        <!-- Funcionalidades -->
-        <section id="funcionalidades" class="my-16 text-center">
-            <h2 class="text-4xl font-bold mb-6 text-green-900">Recursos Disponíveis</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-                <div class="bg-white p-6 rounded-lg shadow-md hover-effect">
-                    <h3 class="text-xl font-semibold text-green-700">Visão no Tempo Desejado</h3>
-                    <p class="text-gray-700">Acompanhe com precisão temperatura, umidade, pH, condutividade elétrica e outros parâmetros cruciais.</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-md hover-effect">
-                    <h3 class="text-xl font-semibold text-green-700">Automação Inteligente</h3>
-                    <p class="text-gray-700">Otimize processos como irrigação, ventilação e iluminação com controle automatizado e adaptável.</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-md hover-effect">
-                    <h3 class="text-xl font-semibold text-green-700">Interface Intuitiva</h3>
-                    <p class="text-gray-700">Configure e monitore seu sistema com facilidade através de uma interface web projetada para clareza e eficiência.</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-md hover-effect">
-                    <h3 class="text-xl font-semibold text-green-700">Análise de Dados Avançada</h3>
-                    <p class="text-gray-700">Registre e analise dados para aprimorar continuamente suas práticas de cultivo.</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-md hover-effect">
-                    <h3 class="text-xl font-semibold text-green-700">Integração IoT Flexível</h3>
-                    <p class="text-gray-700">Expanda suas capacidades com integração perfeita a dispositivos como ESP32, Raspberry Pi e outros.</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-md hover-effect">
-                    <h3 class="text-xl font-semibold text-green-700">Foco em Séries Temporais</h3>
-                    <p class="text-gray-700">Utilize InfluxDB e Grafana para armazenamento e visualização de dados com profundidade e clareza.</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-md hover-effect">
-                    <h3 class="text-xl font-semibold text-green-700">Comunicação Eficiente</h3>
-                    <p class="text-gray-700">Garanta uma comunicação robusta e confiável com o protocolo MQTT.</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-md hover-effect">
-                    <h3 class="text-xl font-semibold text-green-700">Acesso Remoto Seguro</h3>
-                    <p class="text-gray-700">Acesse seu sistema de qualquer lugar com segurança, utilizando Cloudflared.</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-md hover-effect">
-                    <h3 class="text-xl font-semibold text-green-700">Expansão Modular</h3>
-                    <p class="text-gray-700">Adapte e expanda seu sistema conforme suas necessidades evoluem.</p>
-                </div>
-            </div>
-        </section>
-        
+        <!-- Dashboard do Grafana -->
+        <div class="bg-white shadow-lg p-6 rounded-lg mt-6 hover-effect">
+            <iframe src="https://grafana.greense.com.br/public-dashboards/298b53b688224b4ea5f4a01b458fa00b" width="100%" height="1000px" frameborder="0" class="rounded"></iframe>
+        </div>
+
         <!-- Contato -->
         <section id="contato" class="my-16 text-center">
             <h2 class="text-4xl font-bold mb-6 text-green-900">Contato</h2>
             <p class="text-lg">Entre em contato pelo e-mail:<br> <a class="text-green-600 underline" href="mailto:contato@greense.com.br">contato@greense.com.br</a></p>
         </section>
+
     </main>
     
     <!-- Footer -->
-    <footer class="bg-green-900 text-white text-center p-6 mt-16 shadow-lg">
-        © 2025 GreenSe - Inovação em Cultivo Protegido
+    <footer class="bg-green-900 text-white text-center p-4 mt-10 shadow-lg">
+        © 2025 GreenSe - Todos os direitos reservados.
     </footer>
-
-    <script>
+  <script>
         // Menu toggle para mobile
         document.getElementById('menu-toggle').addEventListener('click', function() {
             document.getElementById('menu').classList.toggle('hidden');
@@ -172,5 +129,7 @@
             submenu.classList.remove('show');
         });
     </script>
+
+
 </body>
 </html>
