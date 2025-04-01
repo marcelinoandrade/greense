@@ -12,7 +12,11 @@ O **GreenSe** é uma solução inovadora para **monitoramento e automação de c
 
 ## Funcionalidades Principais
 
-Este sistema oferece monitoramento em tempo real de temperatura, umidade, pH, condutividade elétrica e outros parâmetros essenciais para o cultivo. Conta com automação inteligente para controle de irrigação, ventilação, iluminação e demais processos, tudo gerenciado por uma interface web intuitiva. Os dados são registrados e analisados continuamente, permitindo a otimização do cultivo ao longo do tempo. A solução integra tecnologias de IoT com dispositivos como ESP32 e Raspberry Pi, utilizando InfluxDB e Grafana para armazenamento e visualização dos dados. A comunicação é feita de forma segura via MQTT com WebSockets (WSS) protegidos por TLS, além de oferecer acesso remoto seguro por meio do Cloudflared. Sua arquitetura modular permite fácil expansão, possibilitando a adição de novas funcionalidades conforme as necessidades evoluem.
+Este sistema oferece **monitoramento em tempo real** de **temperatura**, **umidade**, **pH**, **condutividade elétrica** e outros parâmetros essenciais para o cultivo. Conta com **automação inteligente** para controle de **irrigação**, **ventilação**, **iluminação** e demais processos, tudo gerenciado por uma **interface web intuitiva**.
+
+Os dados são **registrados e analisados continuamente**, permitindo a **otimização do cultivo ao longo do tempo**. A solução integra tecnologias de **IoT**, com dispositivos como **ESP32**, **Raspberry Pi** e outros, utilizando **InfluxDB** e **Grafana** para **armazenamento** e **visualização** de dados.
+
+A comunicação ocorre de forma **segura** via **MQTT** com **WebSockets (WSS)** protegidos por **TLS**, além de oferecer **acesso remoto seguro** por meio do **Cloudflared**. Sua arquitetura é **modular e expansível**, permitindo a adição de **novas funcionalidades** conforme necessário.
 
 ---
 
