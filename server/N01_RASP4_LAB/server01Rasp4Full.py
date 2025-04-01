@@ -71,7 +71,16 @@ def on_message(client, userdata, msg):
                     "measurement": "sensores",
                     "tags": {"dispositivo": dispositivo},
                     "fields": {
-                        "temp": data.get("temp", 0)
+                        "temp": data.get("temp", 0),
+                        "umid": data.get("umid", 0),
+                        "co2": data.get("co2", 0),
+                        "luz": data.get("luz", 0),
+                        "agua_min": float(data.get("agua_min", 0)),
+                        "agua_max": float(data.get("agua_max", 0)),
+                        "temp_reserv_int": data.get("temp_reserv_int", 0),
+                        "ph": data.get("ph", 0),
+                        "ec": data.get("ec", 0),
+                        "temp_reserv_ext": data.get("temp_reserv_ext", 0),
                     }
                 }
             ]
