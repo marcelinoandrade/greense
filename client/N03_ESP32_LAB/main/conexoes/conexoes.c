@@ -13,6 +13,7 @@
 #define WIFI_CONNECTED_BIT BIT0
 #define WIFI_FAIL_BIT BIT1
 
+
 static const char *TAG_WIFI = "WiFi";
 static const char *TAG_MQTT = "MQTT";
 
@@ -123,18 +124,38 @@ static void mqtt_event_handler_cb(void *handler_args, esp_event_base_t base, int
     }
 }
 
+// Declaração do certificado embutido (fora da função)
+extern const uint8_t greense_cert_pem_start[] asm("_binary_greense_cert_pem_start");
+extern const uint8_t greense_cert_pem_end[]   asm("_binary_greense_cert_pem_end");
+
 void conexao_mqtt_start(void)
 {
     esp_mqtt_client_config_t mqtt_cfg = {
-        .broker.address.uri = "mqtt://" MQTT_BROKER,
-        .credentials.client_id = MQTT_CLIENT_ID,
-        .session.keepalive = MQTT_KEEPALIVE
+        .broker = {
+            .address = {
+                .uri = "wss://" MQTT_BROKER,
+            },
+            .verification = {
+                .certificate = (const char *)greense_cert_pem_start,
+            },
+        },
+        .credentials = {
+            .client_id = MQTT_CLIENT_ID,
+        },
+        .session = {
+            .keepalive = MQTT_KEEPALIVE,
+        }
     };
 
     client = esp_mqtt_client_init(&mqtt_cfg);
     esp_mqtt_client_register_event(client, ESP_EVENT_ANY_ID, mqtt_event_handler_cb, NULL);
     esp_mqtt_client_start(client);
 }
+
+
+
+
+
 
 bool conexao_mqtt_is_connected(void)
 {
