@@ -1,8 +1,8 @@
 class Config:
     def __init__(self):
         # Configurações de Wi-Fi
-        self.ssid = "greense"
-        self.password = "greense@3141"
+        self.ssid = "XXXXXX"
+        self.password = "XXXXXX"
 
         # Configurações de MQTT
         self.mqtt_broker = "10.42.0.1"
