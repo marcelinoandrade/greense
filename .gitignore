@@ -1,1 +1,3 @@
 client/N03_ESP32_LAB/main/certs/greense_cert.pem
+client/N03_ESP32_LAB/build/
+client/N03_ESP32_LAB/managed_components/
