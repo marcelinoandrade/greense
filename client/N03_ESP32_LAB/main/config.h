@@ -2,8 +2,8 @@
 #define CONFIG_H
 
 // Wi-Fi
-#define WIFI_SSID       "SanLino" //"greense"
-#define WIFI_PASS       "SanLino@3141" //"greense@3141"
+#define WIFI_SSID       "greense"
+#define WIFI_PASS       "greense@3141"
 
 // MQTT (futuramente)
 #define MQTT_BROKER     "mqtt.greense.com.br" //"10.42.0.1"
