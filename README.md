@@ -17,7 +17,7 @@ O **GreenSe** é uma solução inovadora para **monitoramento e automação de c
 - **Registro e análise de dados** para otimização do cultivo ao longo do tempo.
 - **Integração com IoT**, utilizando **ESP32, Raspberry Pi** e outros dispositivos.
 - **Armazenamento e visualização de dados** com **InfluxDB e Grafana**.
-- **Comunicação eficiente** via **MQTT**.
+- **Conexão segura com WebSockets (WSS)** para **comunicação MQTT protegida por TLS**.
 - **Acesso remoto seguro** utilizando **Cloudflared**.
 - **Expansão modular**, permitindo novas funcionalidades conforme necessário.
 
@@ -35,7 +35,7 @@ O **GreenSe** é uma solução inovadora para **monitoramento e automação de c
 ### Software & Servidores
 - **C/C++** para backend e lógica de controle (Produção - ESP/IDE - VSCode).
 - **Python** para backend e lógica de controle (Prototipagem - MicroPython - Thonny).
-- **MQTT** para comunicação entre dispositivos.
+- **MQTT (WebSocket seguro - WSS)** para comunicação criptografada entre dispositivos e broker remoto.
 - **InfluxDB** para armazenamento eficiente de dados temporais.
 - **Grafana** para dashboards interativos.
 - **Cloudflared** para conexão segura e acesso remoto.
