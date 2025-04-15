@@ -9,18 +9,18 @@ INFLUXDB_DB = "dados_estufa"
 
 # Conectar ao InfluxDB
 client_influx = InfluxDBClient(host=INFLUXDB_HOST, port=INFLUXDB_PORT)
-client_influx.create_database(INFLUXDB_DB)  # Cria o banco se não existir
+client_influx.create_database(INFLUXDB_DB)
 client_influx.switch_database(INFLUXDB_DB)
 
 # Callback quando recebe mensagem MQTT
 def on_message(client, userdata, msg):
     try:
         data = json.loads(msg.payload.decode())
+        json_body = []
         dispositivo = "desconhecido"
 
         if msg.topic == "estufa1/esp32":
-            dispositivo = "ESP32_E1"   
-
+            dispositivo = "ESP32_E1"
             json_body = [
                 {
                     "measurement": "sensores",
@@ -45,11 +45,10 @@ def on_message(client, userdata, msg):
                         "bomba_agua": data.get("bomba_agua", 0)
                     }
                 }
-            ]            
+            ]
 
         elif msg.topic == "estufa1/esp8266":
             dispositivo = "ESP8266_E2"
-
             json_body = [
                 {
                     "measurement": "sensores",
@@ -65,7 +64,6 @@ def on_message(client, userdata, msg):
 
         elif msg.topic == "estufa3/esp32":
             dispositivo = "ESP32_E3"
-
             json_body = [
                 {
                     "measurement": "sensores",
@@ -81,6 +79,27 @@ def on_message(client, userdata, msg):
                         "ph": data.get("ph", 0),
                         "ec": data.get("ec", 0),
                         "temp_reserv_ext": data.get("temp_reserv_ext", 0),
+                    }
+                }
+            ]
+
+        elif msg.topic == "estufa4/uno":
+            dispositivo = "UNO_E4"
+            json_body = [
+                {
+                    "measurement": "sensores",
+                    "tags": {"dispositivo": dispositivo},
+                    "fields": {
+                        "painel": float(data.get("painel", 0)),
+                        "exaustor": float(data.get("exaustor", 0)),
+                        "temp": float(data.get("temp", 0)),
+                        "umid": float(data.get("umid", 0)),
+                        "temp_solo": float(data.get("temp_solo", 0)),
+                        "umid_solo": float(data.get("umid_solo", 0)),
+                        "boia_baixa": float(data.get("boia_baixa", 0)),
+                        "boia_alta": float(data.get("boia_alta", 0)),
+                        "bomba_baixa": float(data.get("bomba_baixa", 0)),
+                        "bomba_alta": float(data.get("bomba_alta", 0))
                     }
                 }
             ]
@@ -101,10 +120,11 @@ client_mqtt = mqtt.Client()
 client_mqtt.on_message = on_message
 client_mqtt.connect("localhost", 1883, 60)
 
-# Inscrevendo-se nos tópicos dos dispositivos
+# Inscrevendo-se em todos os tópicos
 client_mqtt.subscribe("estufa1/esp32")
 client_mqtt.subscribe("estufa1/esp8266")
-client_mqtt.subscribe("estufa3/esp32")  # <-- novo dispositivo adicionado
+client_mqtt.subscribe("estufa3/esp32")
+client_mqtt.subscribe("estufa4/uno")  # <- Novo tópico do simulador
 
 print("Servidor MQTT rodando... Aguardando mensagens.")
 client_mqtt.loop_forever()
