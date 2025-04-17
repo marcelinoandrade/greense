@@ -3,7 +3,7 @@
 
 // Wi-Fi
 #define WIFI_SSID       "greense"
-#define WIFI_PASS       "XXXXXXX"
+#define WIFI_PASS       "greense@3141"
 
 // MQTT (futuramente)
 #define MQTT_BROKER     "mqtt.greense.com.br" //"10.42.0.1"

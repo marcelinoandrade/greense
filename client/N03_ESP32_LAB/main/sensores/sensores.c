@@ -1,6 +1,7 @@
 #include "sensores.h"
 #include "aht20.h"
 #include "ens160.h"
+#include "ds18b20.h"
 #include "driver/i2c.h"
 #include "driver/gpio.h"
 #include "esp_log.h"
@@ -13,9 +14,11 @@ static aht20_t aht20_sensor;
 static ens160_t ens160_sensor;
 static bool sensors_initialized = false;
 
-// Pinos das boias
+// Pinos dos sensores
 #define GPIO_BOIA_MIN 32
 #define GPIO_BOIA_MAX 33
+#define GPIO_SENSOR_LUZ 25
+#define GPIO_DS18B20 26
 
 float randf(float min, float max) {
     return min + ((float)rand() / RAND_MAX) * (max - min);
@@ -42,7 +45,7 @@ void sensores_init(void) {
     sensors_initialized = aht20_ok && ens160_ok;
     ESP_LOGI(TAG, "Sensors initialized: %s", sensors_initialized ? "YES" : "NO");
 
-    // Configura GPIOs das boias como entrada com pull-up
+    // Configura GPIOs das boias
     gpio_config_t io_conf = {
         .pin_bit_mask = (1ULL << GPIO_BOIA_MIN) | (1ULL << GPIO_BOIA_MAX),
         .mode = GPIO_MODE_INPUT,
@@ -51,13 +54,25 @@ void sensores_init(void) {
         .intr_type = GPIO_INTR_DISABLE
     };
     gpio_config(&io_conf);
+
+    // Configura GPIO do sensor de luz
+    gpio_config_t luz_conf = {
+        .pin_bit_mask = (1ULL << GPIO_SENSOR_LUZ),
+        .mode = GPIO_MODE_INPUT,
+        .pull_up_en = GPIO_PULLUP_DISABLE,
+        .pull_down_en = GPIO_PULLDOWN_DISABLE,
+        .intr_type = GPIO_INTR_DISABLE
+    };
+    gpio_config(&luz_conf);
+
+    // Inicializa o sensor DS18B20
+    ds18b20_init(GPIO_DS18B20);
 }
 
 sensor_data_t sensores_ler_dados(void) {
     sensor_data_t dados;
     float temp_real, umid_real;
 
-    // Tenta ler dados reais
     if (sensors_initialized && aht20_read(&aht20_sensor, &temp_real, &umid_real)) {
         dados.temp = temp_real;
         dados.umid = umid_real;
@@ -71,13 +86,18 @@ sensor_data_t sensores_ler_dados(void) {
         dados.co2 = 0;
     }
 
-    // Lê os valores reais das boias
-    dados.agua_min = gpio_get_level(GPIO_BOIA_MIN);  // 0 = acionada (baixa), 1 = desligada
+    // Leitura das boias
+    dados.agua_min = gpio_get_level(GPIO_BOIA_MIN);
     dados.agua_max = gpio_get_level(GPIO_BOIA_MAX);
 
-    // Outros sensores (valores simulados por enquanto)
-    dados.luz = 1;
-    dados.temp_reserv_int = 25;
+    // Leitura do sensor de luz digital
+    int nivel_sensor_bruto = gpio_get_level(GPIO_SENSOR_LUZ);
+    dados.luz = (nivel_sensor_bruto == 0) ? 1 : 0;  // Luz está ON se sensor detectar claridade (0)
+
+    // Leitura do sensor DS18B20
+    dados.temp_reserv_int = ds18b20_read_temperature(GPIO_DS18B20);
+
+    // Simulações de sensores adicionais
     dados.ph = 5.5;
     dados.ec = 1.8;
     dados.temp_reserv_ext = randf(15.0, 25.0);
