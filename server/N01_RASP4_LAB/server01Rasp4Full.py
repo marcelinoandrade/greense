@@ -1,18 +1,54 @@
 import paho.mqtt.client as mqtt
 import json
 from influxdb import InfluxDBClient
+from flask import Flask, request, jsonify
+from flask_cors import CORS
+from datetime import datetime
+import threading
 
 # Configuração do InfluxDB
 INFLUXDB_HOST = "localhost"
 INFLUXDB_PORT = 8086
 INFLUXDB_DB = "dados_estufa"
 
+# Senha para inserção manual
+SENHA_CORRETA = "greense2025"
+
 # Conectar ao InfluxDB
 client_influx = InfluxDBClient(host=INFLUXDB_HOST, port=INFLUXDB_PORT)
 client_influx.create_database(INFLUXDB_DB)
 client_influx.switch_database(INFLUXDB_DB)
 
-# Callback quando recebe mensagem MQTT
+# === FLASK PARA INSERÇÃO MANUAL ===
+app = Flask(__name__)
+CORS(app)
+
+from datetime import datetime
+
+@app.route("/insere", methods=["POST"])
+def insere_manual():
+    dados = request.json
+    if dados.get("senha") != SENHA_CORRETA:
+        return jsonify({"erro": "não autorizado"}), 403
+
+    try:
+        ph = float(dados.get("ph", 0))
+        ec = float(dados.get("ec", 0))
+        timestamp = int(datetime.utcnow().timestamp() * 1e9)  # nanossegundos
+
+        json_body = [{
+            "measurement": "sensores",
+            "tags": {"dispositivo": "ESP32_E3"},
+            "time": timestamp,
+            "fields": {"ph": ph, "ec": ec}
+        }]
+        client_influx.write_points(json_body, time_precision='n')
+        return jsonify({"status": "ok", "ph": ph, "ec": ec})
+    except Exception as e:
+        return jsonify({"erro": str(e)}), 500
+
+
+# === MQTT CALLBACK ===
 def on_message(client, userdata, msg):
     try:
         data = json.loads(msg.payload.decode())
@@ -41,9 +77,7 @@ def on_message(client, userdata, msg):
                 {
                     "measurement": "atuadores",
                     "tags": {"dispositivo": dispositivo},
-                    "fields": {
-                        "bomba_agua": data.get("bomba_agua", 0)
-                    }
+                    "fields": {"bomba_agua": data.get("bomba_agua", 0)}
                 }
             ]
 
@@ -108,23 +142,26 @@ def on_message(client, userdata, msg):
             print(f"⚠️ Tópico desconhecido: {msg.topic}")
             return
 
-        # Inserir no InfluxDB
         client_influx.write_points(json_body)
         print(f"Dado salvo ({dispositivo}) no InfluxDB: {data}")
 
     except Exception as e:
         print(f"Erro ao processar mensagem MQTT: {e}")
 
-# Configuração do cliente MQTT
-client_mqtt = mqtt.Client()
-client_mqtt.on_message = on_message
-client_mqtt.connect("localhost", 1883, 60)
+# === INICIALIZAÇÃO DO MQTT E FLASK ===
+def start_mqtt():
+    client_mqtt = mqtt.Client()
+    client_mqtt.on_message = on_message
+    client_mqtt.connect("localhost", 1883, 60)
 
-# Inscrevendo-se em todos os tópicos
-client_mqtt.subscribe("estufa1/esp32")
-client_mqtt.subscribe("estufa1/esp8266")
-client_mqtt.subscribe("estufa3/esp32")
-client_mqtt.subscribe("estufa4/uno")  # <- Novo tópico do simulador
+    client_mqtt.subscribe("estufa1/esp32")
+    client_mqtt.subscribe("estufa1/esp8266")
+    client_mqtt.subscribe("estufa3/esp32")
+    client_mqtt.subscribe("estufa4/uno")
 
-print("Servidor MQTT rodando... Aguardando mensagens.")
-client_mqtt.loop_forever()
+    print("Servidor MQTT rodando... Aguardando mensagens.")
+    client_mqtt.loop_forever()
+
+if __name__ == "__main__":
+    threading.Thread(target=start_mqtt).start()
+    app.run(host="0.0.0.0", port=5000)
