@@ -98,8 +98,8 @@ sensor_data_t sensores_ler_dados(void) {
     dados.temp_reserv_int = ds18b20_read_temperature(GPIO_DS18B20);
 
     // Simulações de sensores adicionais
-    dados.ph = 5.5;
-    dados.ec = 1.8;
+    dados.ph = 0.0;
+    dados.ec = 0.0;
     dados.temp_reserv_ext = randf(15.0, 25.0);
 
     return dados;
