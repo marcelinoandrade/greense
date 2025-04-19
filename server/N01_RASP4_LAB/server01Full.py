@@ -55,48 +55,7 @@ def on_message(client, userdata, msg):
         json_body = []
         dispositivo = "desconhecido"
 
-        if msg.topic == "estufa1/esp32":
-            dispositivo = "ESP32_E1"
-            json_body = [
-                {
-                    "measurement": "sensores",
-                    "tags": {"dispositivo": dispositivo},
-                    "fields": {
-                        "temp": data.get("temp", 0),
-                        "umid": data.get("umid", 0),
-                        "co2": data.get("co2", 0),
-                        "luz": data.get("luz", 0),
-                        "agua_min": data.get("agua_min", 0),
-                        "agua_max": data.get("agua_max", 0),
-                        "temp_reserv_int": data.get("temp_reserv_int", 0),
-                        "ph": data.get("ph", 0),
-                        "ec": data.get("ec", 0),
-                        "temp_reserv_ext": data.get("temp_reserv_ext", 0),
-                    }
-                },
-                {
-                    "measurement": "atuadores",
-                    "tags": {"dispositivo": dispositivo},
-                    "fields": {"bomba_agua": data.get("bomba_agua", 0)}
-                }
-            ]
-
-        elif msg.topic == "estufa1/esp8266":
-            dispositivo = "ESP8266_E2"
-            json_body = [
-                {
-                    "measurement": "sensores",
-                    "tags": {"dispositivo": dispositivo},
-                    "fields": {
-                        "temperatura": data.get("temperatura", 0),
-                        "umidade": data.get("umidade", 0),
-                        "umidade_solo": data.get("umidade_solo", 0),
-                        "luz": data.get("luz", 0)
-                    }
-                }
-            ]
-
-        elif msg.topic == "estufa3/esp32":
+        if msg.topic == "estufa3/esp32":
             dispositivo = "ESP32_E3"
             json_body = [
                 {
@@ -148,14 +107,12 @@ def on_message(client, userdata, msg):
     except Exception as e:
         print(f"Erro ao processar mensagem MQTT: {e}")
 
-# === INICIALIZAÇÃO DO MQTT E FLASK ===
+# === INICIALIZAÇÃO DO MQTT E FLASK ===	
 def start_mqtt():
     client_mqtt = mqtt.Client()
     client_mqtt.on_message = on_message
     client_mqtt.connect("localhost", 1883, 60)
 
-    client_mqtt.subscribe("estufa1/esp32")
-    client_mqtt.subscribe("estufa1/esp8266")
     client_mqtt.subscribe("estufa3/esp32")
     client_mqtt.subscribe("estufa4/uno")
 

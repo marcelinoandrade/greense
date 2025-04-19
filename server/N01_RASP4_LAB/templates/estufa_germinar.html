@@ -54,9 +54,8 @@
                 <li class="relative">
                     <span class="hover:text-green-300 transition-colors duration-300 block md:inline cursor-pointer">Estufas</span>
                     <ul class="submenu">
-                        <li><a href="estufa_01.html" class="block px-4 py-2 hover:bg-green-50">Estufa 01</a></li>
-                        <li><a href="estufa_02.html" class="block px-4 py-2 hover:bg-green-50">Estufa 02</a></li>
-                        <li><a href="estufa_03.html" class="block px-4 py-2 hover:bg-green-50">Estufa 03</a></li>
+                        <li><a href="estufa_germinar.html" class="block px-4 py-2 hover:bg-green-50">Estufa Germinação</a></li>
+                        <li><a href="estufa_maturar.html" class="block px-4 py-2 hover:bg-green-50">Estufa Maturação</a></li>
                     </ul>
                 </li>
                 <li><a href="https://github.com/marcelinoandrade/greense" target="_blank" class="hover:text-green-300 transition-colors duration-300 block md:inline">GitHub</a></li>
@@ -88,18 +87,22 @@
         <p class="text-xl mt-4">Software para Cultivo Protegido em Ambiente Controlado</p>
     </div>
 </header>
+
+            </div>
+            <a href="index.html" class="bg-white text-green-900 px-4 py-2 rounded hover:bg-gray-200 transition-colors duration-300">Voltar</a>
+        </div>
+    </nav>
     
     <!-- Conteúdo Principal -->
     <main class="container mx-auto p-5 text-center">
-        <h1 class="text-4xl font-bold text-green-900">Estufa 03 - Desenvolvimento e Maturação</h1>
+        <h1 class="text-4xl font-bold text-green-900">Estufa - Germinação e Enraizamento</h1>
         <p class="mt-2 text-lg text-gray-700">Acompanhe os dados no tempo desejado</p>
         
         <!-- Dashboard do Grafana -->
         <div class="bg-white shadow-lg p-6 rounded-lg mt-6 hover-effect">
-            <iframe src="https://grafana.greense.com.br/public-dashboards/298b53b688224b4ea5f4a01b458fa00b" width="100%" height="1000px" frameborder="0" class="rounded"></iframe>
+            <iframe src="https://grafana.greense.com.br/public-dashboards/c61296cb6854467b8c6f1ae6aa7fe09e" width="100%" height="1000px" frameborder="0" class="rounded"></iframe>
         </div>
-
-        <!-- Contato -->
+       <!-- Contato -->
         <section id="contato" class="my-16 text-center">
             <h2 class="text-4xl font-bold mb-6 text-green-900">Contato</h2>
             <p class="text-lg">Entre em contato pelo e-mail:<br> <a class="text-green-600 underline" href="mailto:contato@greense.com.br">contato@greense.com.br</a></p>
@@ -107,11 +110,14 @@
 
     </main>
     
+
+
+
     <!-- Footer -->
     <footer class="bg-green-900 text-white text-center p-4 mt-10 shadow-lg">
         © 2025 GreenSe - Todos os direitos reservados.
     </footer>
-  <script>
+ <script>
         // Menu toggle para mobile
         document.getElementById('menu-toggle').addEventListener('click', function() {
             document.getElementById('menu').classList.toggle('hidden');
