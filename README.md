@@ -1,5 +1,4 @@
 
-
 # GreenSe - Software para Cultivo Protegido em Ambiente Controlado
 
 <div align="center">
@@ -18,6 +17,8 @@ Os dados são **registrados e analisados continuamente**, permitindo a **otimiza
 
 A comunicação ocorre de forma **segura** via **MQTT** com **WebSockets (WSS)** protegidos por **TLS**, além de oferecer **acesso remoto seguro** por meio do **Cloudflared**. Sua arquitetura é **modular e expansível**, permitindo a adição de **novas funcionalidades** conforme necessário.
 
+O sistema também disponibiliza um serviço de **API para inserção de dados complementares**, permitindo registrar parâmetros manuais de sensores automáticos que não estiverem disponíveis ou necessários.
+
 ---
 
 ## Tecnologias Utilizadas
@@ -32,6 +33,7 @@ A comunicação ocorre de forma **segura** via **MQTT** com **WebSockets (WSS)**
 ### Software & Servidores
 - **C/C++** para backend e lógica de controle (Produção - ESP/IDE - VSCode).
 - **Python** para backend e lógica de controle (Prototipagem - MicroPython - Thonny).
+- **Flask** para disponibilização de uma API leve e segura para inserção de dados complementares.
 - **MQTT (WebSocket seguro - WSS)** para comunicação criptografada entre dispositivos e broker remoto.
 - **InfluxDB** para armazenamento eficiente de dados temporais.
 - **Grafana** para dashboards interativos.
