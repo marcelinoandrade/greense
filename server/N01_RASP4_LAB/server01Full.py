@@ -5,6 +5,7 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 from datetime import datetime
 import threading
+import config 
 
 # Configuração do InfluxDB
 INFLUXDB_HOST = "localhost"
@@ -12,7 +13,7 @@ INFLUXDB_PORT = 8086
 INFLUXDB_DB = "dados_estufa"
 
 # Senha para inserção manual
-SENHA_CORRETA = "greense2025"
+SENHA_CORRETA = config.PASS_MANUAL
 
 # Conectar ao InfluxDB
 client_influx = InfluxDBClient(host=INFLUXDB_HOST, port=INFLUXDB_PORT)

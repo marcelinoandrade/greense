@@ -2,3 +2,4 @@ client/N03_ESP32_LAB/main/certs/greense_cert.pem
 client/N03_ESP32_LAB/build/
 client/N03_ESP32_LAB/managed_components/
 server/N01_RASP4_LAB/config.py
+client/N03_ESP32_LAB/main/secrets.h
