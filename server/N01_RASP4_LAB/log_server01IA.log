@@ -1,0 +1,7 @@
+📡 Dados coletados da Estufa3:
+{'temp': 28.98, 'umid': 62.73, 'co2': 552.0, 'luz': 0.0, 'temp_reserv_int': 28.31, 'temp_reserv_ext': 23.24, 'ph': 5.0, 'ec': 1.4}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 28.98, 'umidade_ambiente': 62.73, 'nivel_co2': 552.0, 'luminosidade': 0.0, 'ph_agua': 5.0, 'condutividade_ec': 1.4, 'temp_reservatorio_interno': 28.31, 'temp_reservatorio_externo': 23.24, 'timestamp_consulta': '2025-04-26T15:00:03.765569Z'}
+⚠️ Erro ao conectar com a OpenAI:
+Error code: 401 - {'error': {'message': 'Incorrect API key provided: ????. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}

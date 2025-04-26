@@ -1,6 +1,7 @@
 from influxdb import InfluxDBClient
 from openai import OpenAI
 from datetime import datetime
+import config 
 
 # === Configurações ===
 
@@ -10,9 +11,14 @@ INFLUXDB_PORT = 8086
 INFLUXDB_DB = "dados_estufa"
 
 # Configuração da API da OpenAI
-openai_client = OpenAI(api_key="????")
+openai_client = OpenAI(api_key=config.OPENAI_API_KEY)
 
 # === Funções ===
+
+def registrar_inicio_log():
+    agora = datetime.now()
+    data_hora_formatada = agora.strftime("%d/%m/%Y %H:%M")
+    print(f"\n📜 [{data_hora_formatada}] Início da execução do script de análise da estufa.\n")
 
 def coletar_dados_estufa3():
     client = InfluxDBClient(host=INFLUXDB_HOST, port=INFLUXDB_PORT, database=INFLUXDB_DB)
@@ -130,6 +136,9 @@ def gravar_resposta_influx(resposta_ia):
 
 
 def main():
+    
+    registrar_inicio_log()
+
     dados_estufa3 = coletar_dados_estufa3()
     print("📡 Dados coletados da Estufa3:")
     print(dados_estufa3)
