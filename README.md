@@ -70,7 +70,7 @@ O **GreenSe** também prevê a integração de **IA** para aprimorar a automaç�
 
 - **Modelos preditivos** para otimizar irrigação e uso de nutrientes.
 - **Análise de imagens** para detecção automática de pragas e anomalias nas plantas.
-- **Otimização de energia**, reduzindo custos e desperdícios no controle de ventilação e iluminação.
+- **Otimização de processos**, reduzindo custos e desperdícios no controle de ventilação e iluminação.
 
 A implementação da **IA** tornará o **GreenSe** mais eficiente, automatizando processos e facilitando a tomada de decisões baseadas em dados.
 
