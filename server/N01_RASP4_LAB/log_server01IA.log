@@ -1,0 +1,108 @@
+
+📜 [26/04/2025 18:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 26.31, 'umid': 70.44, 'co2': 613.0, 'luz': 0.0, 'temp_reserv_int': 26.25, 'temp_reserv_ext': 18.6, 'ph': 5.5, 'ec': 1.4}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 26.31, 'umidade_ambiente': 70.44, 'nivel_co2': 613.0, 'luminosidade': 0.0, 'ph_agua': 5.5, 'condutividade_ec': 1.4, 'temp_reservatorio_interno': 26.25, 'temp_reservatorio_externo': 18.6, 'timestamp_consulta': '2025-04-26T21:00:04.333387Z'}
+
+🧠 Resposta da IA sobre a Estufa3:
+26/04/2025 18:00: As condições da estufa de maturação para o cultivo de alface hidropônico estão, em geral, adequadas. A temperatura ambiente de 26.31 °C e a umidade de 70.44% são apropriadas para o crescimento do alface. O nível de CO₂ está em 613 ppm, o que é suficiente para a fotossíntese. A luminosidade está desligada, mas considerando o ciclo de 12 horas, isso é esperado para o horário. O pH da água está em 5.5, dentro do intervalo ideal para alface hidropônico, e a condutividade elétrica de 1.4 µS/cm é aceitável, embora possa ser ajustada para otimizar a absorção de nutrientes. A temperatura do reservatório interno de 26.25 °C está dentro do esperado. Recomenda-se monitorar a condutividade elétrica para garantir a disponibilidade adequada de nutrientes.
+✅ Resposta da IA gravada no InfluxDB.
+
+📜 [27/04/2025 00:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 34.03, 'umid': 50.26, 'co2': 569.0, 'luz': 1.0, 'temp_reserv_int': 26.62, 'temp_reserv_ext': 15.26, 'ph': 5.5, 'ec': 1.4}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 34.03, 'umidade_ambiente': 50.26, 'nivel_co2': 569.0, 'luminosidade': 1.0, 'ph_agua': 5.5, 'condutividade_ec': 1.4, 'temp_reservatorio_interno': 26.62, 'temp_reservatorio_externo': 15.26, 'timestamp_consulta': '2025-04-27T03:00:03.721633Z'}
+
+🧠 Resposta da IA sobre a Estufa3:
+27/04/2025 00:00: As condições da estufa de maturação para cultivo de alface hidropônico apresentam alguns pontos de atenção. A temperatura ambiente está elevada, idealmente deveria estar entre 18-24 °C para alface, o que pode estressar as plantas. A umidade relativa de 50.26% está um pouco baixa, sendo preferível entre 60-70% para otimizar o crescimento. O nível de CO₂ está adequado para o cultivo de alface. A luminosidade está correta, com o ciclo de 12 horas. O pH da água de 5.5 está dentro do intervalo ideal de 5.5-6.0. A condutividade elétrica (EC) de 1.4 µS/cm é baixa, pois o ideal para alface hidropônico é entre 1.5-2.5 mS/cm, indicando que a solução nutritiva pode estar insuficiente. A temperatura do reservatório interno de 26.62 °C é alta, devendo ser mantida entre 18-22 °C para evitar estresse térmico nas raízes. Recomenda-se ajustar a temperatura ambiente e do reservatório, aumentar a umidade e revisar a concentração de nutrientes na solução.
+✅ Resposta da IA gravada no InfluxDB.
+
+📜 [27/04/2025 06:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 33.46, 'umid': 47.27, 'co2': 515.0, 'luz': 1.0, 'temp_reserv_int': 29.62, 'temp_reserv_ext': 23.52, 'ph': 5.5, 'ec': 1.4}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 33.46, 'umidade_ambiente': 47.27, 'nivel_co2': 515.0, 'luminosidade': 1.0, 'ph_agua': 5.5, 'condutividade_ec': 1.4, 'temp_reservatorio_interno': 29.62, 'temp_reservatorio_externo': 23.52, 'timestamp_consulta': '2025-04-27T09:00:03.821120Z'}
+
+🧠 Resposta da IA sobre a Estufa3:
+27/04/2025 06:00: As condições da estufa de maturação para o cultivo de alface hidropônico apresentam alguns pontos de atenção. A temperatura ambiente está elevada, idealmente deveria estar entre 18-24 °C para alface, e a umidade relativa está baixa, sendo recomendável entre 50-70%. O nível de CO₂ está adequado para o crescimento da alface. A luminosidade está correta, com o ciclo de 12 horas. O pH da água está dentro do intervalo ideal de 5.5-6.5. No entanto, a condutividade elétrica está baixa, devendo estar entre 1.5-2.5 mS/cm para garantir nutrientes suficientes. A temperatura do reservatório interno também está alta, idealmente deveria estar entre 18-22 °C para evitar estresse nas plantas. Recomenda-se ajustar a temperatura e umidade do ambiente, aumentar a condutividade elétrica e reduzir a temperatura do reservatório para otimizar o crescimento das alfaces.
+✅ Resposta da IA gravada no InfluxDB.
+
+📜 [27/04/2025 12:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 28.66, 'umid': 62.3, 'co2': 593.0, 'luz': 0.0, 'temp_reserv_int': 28.38, 'temp_reserv_ext': 21.12, 'ph': 5.5, 'ec': 1.4}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 28.66, 'umidade_ambiente': 62.3, 'nivel_co2': 593.0, 'luminosidade': 0.0, 'ph_agua': 5.5, 'condutividade_ec': 1.4, 'temp_reservatorio_interno': 28.38, 'temp_reservatorio_externo': 21.12, 'timestamp_consulta': '2025-04-27T15:00:05.565555Z'}
+
+🧠 Resposta da IA sobre a Estufa3:
+27/04/2025 12:00: A análise das condições da estufa de maturação para cultivo de alface hidropônico indica que a temperatura ambiente está um pouco elevada, idealmente deveria estar entre 18-24 °C para alface. A umidade está dentro de uma faixa aceitável, mas poderia ser um pouco mais alta para otimizar o crescimento, idealmente entre 50-70%. O nível de CO₂ está adequado, pois valores entre 400-800 ppm são geralmente aceitáveis para alface. A luminosidade está desligada, mas considerando o ciclo de 12 horas, isso pode ser parte do ciclo normal. O pH da água está no limite inferior do ideal, que é entre 5.5-6.5, enquanto a condutividade elétrica está baixa, sendo que o ideal para alface é entre 1.5-2.5 mS/cm. A temperatura do reservatório interno também está elevada, o que pode afetar a absorção de nutrientes. Recomenda-se ajustar a temperatura e a condutividade elétrica para otimizar o crescimento das plantas.
+✅ Resposta da IA gravada no InfluxDB.
+
+📜 [27/04/2025 18:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 27.61, 'umid': 65.4, 'co2': 593.0, 'luz': 0.0, 'temp_reserv_int': 26.06, 'temp_reserv_ext': 19.02, 'ph': 5.5, 'ec': 1.4}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 27.61, 'umidade_ambiente': 65.4, 'nivel_co2': 593.0, 'luminosidade': 0.0, 'ph_agua': 5.5, 'condutividade_ec': 1.4, 'temp_reservatorio_interno': 26.06, 'temp_reservatorio_externo': 19.02, 'timestamp_consulta': '2025-04-27T21:00:03.861992Z'}
+
+🧠 Resposta da IA sobre a Estufa3:
+27/04/2025 18:00: As condições da estufa de maturação para cultivo de alface hidropônico estão, em geral, adequadas, mas com algumas observações. A temperatura ambiente de 27.61 °C está dentro da faixa aceitável, embora o ideal seja entre 18-24 °C para alface, sugerindo a necessidade de resfriamento. A umidade de 65.4% é apropriada, mas deve ser monitorada para evitar doenças fúngicas. O nível de CO₂ de 593 ppm é adequado para o crescimento. A luminosidade está desligada, mas considerando o ciclo de 12 horas, deve ser ajustada conforme necessário para garantir a exposição adequada. O pH da água de 5.5 é ligeiramente ácido, mas ainda dentro da faixa aceitável de 5.5-6.5. A condutividade elétrica de 1.4 µS/cm está abaixo do ideal, que é entre 1.5-2.5 mS/cm, indicando a necessidade de ajustar a nutrição. A temperatura do reservatório de 26.06 °C é um pouco alta e deve ser reduzida para evitar estresse nas plantas.
+✅ Resposta da IA gravada no InfluxDB.
+
+📜 [28/04/2025 00:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 34.31, 'umid': 47.37, 'co2': 666.0, 'luz': 1.0, 'temp_reserv_int': 26.81, 'temp_reserv_ext': 20.96, 'ph': 5.5, 'ec': 1.4}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 34.31, 'umidade_ambiente': 47.37, 'nivel_co2': 666.0, 'luminosidade': 1.0, 'ph_agua': 5.5, 'condutividade_ec': 1.4, 'temp_reservatorio_interno': 26.81, 'temp_reservatorio_externo': 20.96, 'timestamp_consulta': '2025-04-28T03:00:03.965638Z'}
+
+🧠 Resposta da IA sobre a Estufa3:
+28/04/2025 00:00: A temperatura ambiente de 34.31 °C está acima do ideal para o cultivo de alface hidropônico, que prefere temperaturas entre 18-24 °C. A umidade de 47.37% está abaixo do recomendado, que é entre 50-70%. O nível de CO₂ de 666 ppm está adequado, pois valores entre 600-800 ppm são benéficos para o crescimento. A luminosidade está correta com o ciclo de 12 horas. O pH da água de 5.5 está dentro do intervalo ideal de 5.5-6.0. A condutividade elétrica de 1.4 µS/cm é baixa, devendo estar entre 1.5-2.5 mS/cm para alface. A temperatura do reservatório de 26.81 °C é alta, devendo ser mantida entre 18-22 °C. Recomenda-se ajustar a temperatura ambiente e do reservatório, aumentar a umidade e a condutividade elétrica para otimizar o cultivo.
+✅ Resposta da IA gravada no InfluxDB.
+
+📜 [28/04/2025 06:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 33.98, 'umid': 47.16, 'co2': 562.0, 'luz': 1.0, 'temp_reserv_int': 29.94, 'temp_reserv_ext': 20.2, 'ph': 5.5, 'ec': 1.4}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 33.98, 'umidade_ambiente': 47.16, 'nivel_co2': 562.0, 'luminosidade': 1.0, 'ph_agua': 5.5, 'condutividade_ec': 1.4, 'temp_reservatorio_interno': 29.94, 'temp_reservatorio_externo': 20.2, 'timestamp_consulta': '2025-04-28T09:00:03.928670Z'}
+
+🧠 Resposta da IA sobre a Estufa3:
+28/04/2025 06:00: As condições da estufa de maturação para o cultivo de alface hidropônico apresentam algumas discrepâncias que precisam ser ajustadas. A temperatura ambiente está elevada, idealmente deveria estar entre 18-24 °C para o alface, o que pode afetar o crescimento e a qualidade das plantas. A umidade relativa está baixa, sendo que o ideal seria entre 50-70% para evitar estresse hídrico. O nível de CO₂ está adequado, pois valores entre 400-800 ppm são aceitáveis para o cultivo. A luminosidade está adequada conforme o ciclo de 12 horas. O pH da água está dentro do intervalo ideal de 5.5-6.5. No entanto, a condutividade elétrica (EC) está baixa, sendo que o ideal para alface é entre 1.5-2.5 mS/cm, o que pode indicar necessidade de ajuste na solução nutritiva. A temperatura do reservatório interno também está alta, idealmente deveria estar entre 18-22 °C para evitar estresse térmico nas raízes. Recomenda-se ajustar a temperatura ambiente e do reservatório, aumentar a umidade e corrigir a EC da solução nutritiva.
+✅ Resposta da IA gravada no InfluxDB.
+
+📜 [28/04/2025 12:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 26.63, 'umid': 70.93, 'co2': 520.0, 'luz': 0.0, 'temp_reserv_int': 27.12, 'temp_reserv_ext': 21.18, 'ph': 5.5, 'ec': 2.0}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 26.63, 'umidade_ambiente': 70.93, 'nivel_co2': 520.0, 'luminosidade': 0.0, 'ph_agua': 5.5, 'condutividade_ec': 2.0, 'temp_reservatorio_interno': 27.12, 'temp_reservatorio_externo': 21.18, 'timestamp_consulta': '2025-04-28T15:00:04.045715Z'}
+
+🧠 Resposta da IA sobre a Estufa3:
+28/04/2025 12:00: As condições da estufa de maturação para cultivo de alface hidropônico estão, em geral, adequadas. A temperatura ambiente de 26.63 °C e a umidade de 70.93% são apropriadas para o crescimento do alface. O nível de CO₂ de 520 ppm está dentro da faixa aceitável para a fotossíntese. A luminosidade está desligada, mas, considerando o ciclo de 12 horas, isso pode ser parte do ciclo planejado. O pH da água de 5.5 é adequado para alface, e a condutividade elétrica de 2.0 µS/cm está dentro do intervalo ideal para nutrientes. A temperatura do reservatório interno de 27.12 °C é um pouco alta, mas ainda aceitável; monitorar para evitar superaquecimento.
+✅ Resposta da IA gravada no InfluxDB.
+
+📜 [28/04/2025 18:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 26.25, 'umid': 66.78, 'co2': 520.0, 'luz': 0.0, 'temp_reserv_int': 24.5, 'temp_reserv_ext': 15.69, 'ph': 5.5, 'ec': 2.0}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 26.25, 'umidade_ambiente': 66.78, 'nivel_co2': 520.0, 'luminosidade': 0.0, 'ph_agua': 5.5, 'condutividade_ec': 2.0, 'temp_reservatorio_interno': 24.5, 'temp_reservatorio_externo': 15.69, 'timestamp_consulta': '2025-04-28T21:00:04.145109Z'}
+
+🧠 Resposta da IA sobre a Estufa3:
+28/04/2025 18:00: As condições da estufa de maturação para o cultivo de alface hidropônico estão, em geral, adequadas. A temperatura ambiente de 26.25 °C e a umidade de 66.78% são apropriadas para o crescimento do alface. O nível de CO₂ de 520 ppm está dentro do intervalo aceitável para a fotossíntese eficiente. A luminosidade está desligada, mas considerando o ciclo de 12 horas, isso não deve ser um problema se o ciclo estiver sendo seguido corretamente. O pH da água de 5.5 é ideal para alface, enquanto a condutividade elétrica de 2.0 µS/cm está dentro do intervalo adequado para a nutrição hidropônica. A temperatura do reservatório de 24.5 °C é aceitável, mas deve ser monitorada para evitar superaquecimento.
+✅ Resposta da IA gravada no InfluxDB.

@@ -56,7 +56,28 @@ def on_message(client, userdata, msg):
         json_body = []
         dispositivo = "desconhecido"
 
-        if msg.topic == "estufa3/esp32":
+        if msg.topic == "estufa/germinar":
+            dispositivo = "Estufa_Germinar"
+            json_body = [
+                {
+                    "measurement": "sensores",
+                    "tags": {"dispositivo": dispositivo},
+                    "fields": {
+                        "temp": data.get("temp", 0),
+                        "umid": data.get("umid", 0),
+                        "co2": data.get("co2", 0),
+                        "luz": data.get("luz", 0),
+                        "agua_min": float(data.get("agua_min", 0)),
+                        "agua_max": float(data.get("agua_max", 0)),
+                        "temp_reserv_int": data.get("temp_reserv_int", 0),
+                        "ph": data.get("ph", 0),
+                        "ec": data.get("ec", 0),
+                        "temp_reserv_ext": data.get("temp_reserv_ext", 0),
+                    }
+                }
+            ]
+
+        elif msg.topic == "estufa3/esp32":
             dispositivo = "ESP32_E3"
             json_body = [
                 {
@@ -113,7 +134,7 @@ def start_mqtt():
     client_mqtt = mqtt.Client()
     client_mqtt.on_message = on_message
     client_mqtt.connect("localhost", 1883, 60)
-
+    client_mqtt.subscribe("estufa/germinar")
     client_mqtt.subscribe("estufa3/esp32")
     client_mqtt.subscribe("estufa4/uno")
 
