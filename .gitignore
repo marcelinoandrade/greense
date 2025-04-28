@@ -6,3 +6,4 @@ client/N02_Estufa_Maturar/main/certs/greense_cert.pem
 client/N02_Estufa_Maturar/build/
 client/N02_Estufa_Maturar/managed_components/
 client/N02_Estufa_Maturar/main/secrets.h
+server/N01_RASP4_LAB/config.py
