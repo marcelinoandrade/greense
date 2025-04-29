@@ -86,7 +86,7 @@ def enviar_para_openai(estrutura):
 
         Para o cultivo ideal de alface, a temperatura ambiente deve ser mantida em 19.5 °C (tolerância de 15–24 °C); a umidade relativa ideal é de 60% (tolerância de 50–70%); o nível de CO₂ deve estar entre 400–800 ppm
         (tolerável até 1000 ppm); o pH da solução nutritiva deve ser 6.0 (tolerância de 5.5–6.5); a condutividade elétrica (EC) ideal é 1.6 mS/cm (tolerância de 1.2–2.0 mS/cm); e a temperatura do reservatório deve ser mantida
-        entre 21 °C (tolerância de 18–24 °C). A luminosidade está adequada (12h de luz confirmada).
+        entre 21 °C (tolerância de 18–24 °C). A luminosidade está adequada (12h de luz confirmada), ou seja, não precisa criticar o item luminosidade.
 
         Com base nos dados coletados abaixo, realize a avaliação: cite todos os valores medidos no texto, indique se cada parâmetro está adequado, próximo dos limites ou fora da faixa tolerada, e conclua de forma técnica e objetiva.
 
