@@ -130,3 +130,15 @@
 🧠 Resposta da IA sobre a Estufa3:
 29/04/2025 06:00: As condições da estufa de maturação para cultivo de alface hidropônico apresentam alguns pontos de atenção. A temperatura ambiente de 30.91 °C está acima do ideal para alface, que prefere temperaturas entre 18-24 °C, o que pode afetar o crescimento e a qualidade das plantas. A umidade de 53.23% está dentro de uma faixa aceitável, mas poderia ser um pouco mais alta para otimizar o crescimento. O nível de CO₂ de 450 ppm é adequado para o cultivo de alface. A luminosidade está adequada com o ciclo de 12 horas. O pH da água de 5.5 é apropriado para alface hidropônico. A condutividade elétrica (EC) de 2.0 µS/cm é baixa, pois o ideal para alface é entre 1.2 e 2.4 mS/cm, sugerindo que a solução nutritiva pode estar insuficiente. A temperatura do reservatório interno de 26.31 °C está um pouco alta, o que pode impactar a absorção de nutrientes. Recomenda-se ajustar a temperatura ambiente e do reservatório, além de verificar a concentração de nutrientes na solução.
 ✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [29/04/2025 12:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 26.38, 'umid': 65.89, 'co2': 458.0, 'luz': 0.0, 'temp_reserv_int': 25.56, 'temp_reserv_ext': 20.48, 'ph': 5.7, 'ec': 1.8}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 26.38, 'umidade_ambiente': 65.89, 'nivel_co2': 458.0, 'luminosidade': 0.0, 'ph_agua': 5.7, 'condutividade_ec': 1.8, 'temp_reservatorio_interno': 25.56, 'temp_reservatorio_externo': 20.48, 'timestamp_consulta': '2025-04-29T15:00:04.065438Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Em 29/04/2025 às 12:00, a avaliação das condições ambientais da estufa de maturação para o cultivo de alface hidropônico revelou os seguintes dados: a temperatura ambiente está em 26.38 °C, acima da faixa tolerável de 15–24 °C, indicando um problema que precisa ser corrigido. A umidade relativa do ar é de 65.89%, dentro da faixa tolerável de 50–70%. O nível de CO₂ é de 458.0 ppm, que está dentro do intervalo ideal de 400–800 ppm. A luminosidade está inadequada, pois o indicador está desligado, comprometendo o ciclo de 12 horas de luz necessário. O pH da solução nutritiva é 5.7, dentro da faixa tolerável de 5.5–6.5. A condutividade elétrica (EC) é de 1.8 mS/cm, também dentro da faixa tolerável de 1.2–2.0 mS/cm. A temperatura do reservatório interno é de 25.56 °C, acima da faixa tolerável de 18–24 °C, necessitando de ajustes. Em conclusão, a temperatura ambiente e a temperatura do reservatório estão fora das faixas toleráveis e precisam ser ajustadas, enquanto a luminosidade deve ser corrigida para garantir o ciclo adequado de luz. Os demais parâmetros estão dentro das faixas aceitáveis.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.

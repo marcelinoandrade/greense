@@ -2,6 +2,8 @@
 
 <div align="center">
   <img src="https://github.com/marcelinoandrade/greense/blob/main/logo_greense.svg" alt="GreenSe Logo" width="200">
+  <img src="https://github.com/marcelinoandrade/greense/blob/main/gepeto.png" alt="Eng. Gepeto" width="200">
+
 </div>
 
 O **GreenSe** é uma solução inovadora para **monitoramento e automação de cultivos protegidos**, com foco em **hidroponia** e outros sistemas em ambiente controlado. Integrando sensores, atuadores e inteligência artificial, o GreenSe otimiza as condições de cultivo, promovendo maior eficiência no uso de água, nutrientes e energia. Saiba mais em [www.greense.com.br](https://www.greense.com.br).
@@ -40,7 +42,7 @@ Essa camada de inteligência torna o GreenSe mais autônomo, eficiente e capaz d
 ### Hardware
 - Sensores de umidade, temperatura, luminosidade e CO₂.
 - Atuadores para irrigação, ventilação e iluminação.
-- Dispositivos **ESP32** e **ESP8266** para coleta e comunicação de dados.
+- Microcontrolador **ESP32** para coleta e comunicação de dados.
 - **Raspberry Pi** para processamento e armazenamento local.
 - Estufas como ambiente de cultivo controlado.
 
