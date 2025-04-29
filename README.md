@@ -2,8 +2,6 @@
 
 <div align="center">
   <img src="https://github.com/marcelinoandrade/greense/blob/main/logo_greense.svg" alt="GreenSe Logo" width="200">
-  <img src="https://github.com/marcelinoandrade/greense/blob/main/gepeto.png" alt="Eng. Gepeto" width="100">
-
 </div>
 
 O **GreenSe** é uma solução inovadora para **monitoramento e automação de cultivos protegidos**, com foco em **hidroponia** e outros sistemas em ambiente controlado. Integrando sensores, atuadores e inteligência artificial, o GreenSe otimiza as condições de cultivo, promovendo maior eficiência no uso de água, nutrientes e energia. Saiba mais em [www.greense.com.br](https://www.greense.com.br).
@@ -23,6 +21,10 @@ O **GreenSe** é uma solução inovadora para **monitoramento e automação de c
 ---
 
 ## Integração com GPT – IA Eng. GePeTo
+
+<div align="center">
+  <img src="https://github.com/marcelinoandrade/greense/blob/main/gepeto.png" alt="Eng. Gepeto" width="100">
+</div>
 
 O **GreenSe** integra inteligência artificial por meio da **IA Eng. GePeTo**, um agente construído sobre o modelo GPT, responsável por análises ambientais e suporte ao cultivo. As principais funções dessa integração incluem:
 
