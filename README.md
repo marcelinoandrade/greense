@@ -27,8 +27,11 @@ O **GreenSe** integra inteligência artificial por meio da **IA Eng. GePeTo**, u
 - **Geração automática de relatórios de status** a cada 6 horas, com interpretações objetivas dos dados de cultivo.
 - **Análises técnicas resumidas**, entregues em linguagem prática e direta, simulando a atuação de um engenheiro agrícola.
 - **Apoio na tomada de decisão**, oferecendo recomendações rápidas com base nos parâmetros ambientais monitorados.
+- **Modelos preditivos** para irrigação, controle climático e uso de nutrientes (em desenvolvimento).
+- **Análise automática de imagens** para detecção precoce de pragas e doenças (em desenvolvimento).
 
-Essa integração adiciona uma camada extra de inteligência ao GreenSe, tornando o sistema mais proativo e eficiente.
+Essa camada de inteligência torna o GreenSe mais autônomo, eficiente e capaz de reduzir a necessidade de intervenção manual no dia a dia do cultivo.
+
 
 ---
 
@@ -78,17 +81,6 @@ O GreenSe foi concebido para ser **escalável** e atender a diferentes demandas 
 
 ---
 
-## Aplicação de Inteligência Artificial
-
-A IA está integrada ao GreenSe para fortalecer a automação e a tomada de decisão:
-
-- **Modelos preditivos** para gestão de irrigação, clima interno e nutrientes.
-- **Análise de imagens** para identificação automática de pragas e doenças (em desenvolvimento).
-- **Otimização de processos agrícolas** para redução de custos e aumento da produtividade.
-
-Esses recursos ampliam a autonomia e eficiência do sistema, reduzindo a necessidade de intervenção humana.
-
----
 
 ## Como Contribuir
 
