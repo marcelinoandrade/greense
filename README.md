@@ -17,7 +17,7 @@ Os dados são **registrados e analisados continuamente**, permitindo a **otimiza
 
 A comunicação ocorre de forma **segura** via **MQTT** com **WebSockets (WSS)** protegidos por **TLS**, além de oferecer **acesso remoto seguro** por meio do **Cloudflared**. Sua arquitetura é **modular e expansível**, permitindo a adição de **novas funcionalidades** conforme necessário.
 
-O sistema também disponibiliza um serviço de **API para inserção de dados complementares**, permitindo registrar parâmetros manuais de sensores automáticos que não estiverem disponíveis ou necessários.
+O sistema também disponibiliza um serviço de **API para inserção de dados complementares**, permitindo registrar parâmetros manuais de sensores automáticos que não estiverem disponíveis ou necessários. E também a integração com o serviço de API do GPT para geração de relatórios de cultivo a cada 6 horas por meio do Eng. GePeTo.
 
 ---
 
@@ -39,7 +39,7 @@ O sistema também disponibiliza um serviço de **API para inserção de dados co
 - **Grafana** para dashboards interativos.
 - **Cloudflared** para conexão segura e acesso remoto.
 - **NGINX** para hospedagem da página oficial.
-
+- **GPT** Integração do GPT para relatório do Eng. GePeTo.
 ---
 
 ## Objetivos do Projeto
@@ -66,13 +66,13 @@ O **GreenSe** é projetado para crescer e evoluir continuamente, garantindo esca
 ---
 
 ## Aplicação de Inteligência Artificial
-O **GreenSe** também prevê a integração de **IA** para aprimorar a automação e eficiência do cultivo. As principais aplicações incluem:
+O **GreenSe** também possui integração de **IA** para aprimorar a automação e eficiência do cultivo. As principais aplicações incluem:
 
-- **Modelos preditivos** para otimizar irrigação e uso de nutrientes.
-- **Análise de imagens** para detecção automática de pragas e anomalias nas plantas.
-- **Otimização de processos**, reduzindo custos e desperdícios no controle de ventilação e iluminação.
+- **Modelos preditivos** para otimizar irrigação, ajustes ambientais e uso de nutrientes.
+- **Análise de imagens** para detecção automática de pragas e anomalias nas plantas (em desenvolvimento).
+- **Otimização de processos**, reduzindo custos e desperdícios no processo de cultivo (em desenvolvimento).
 
-A implementação da **IA** tornará o **GreenSe** mais eficiente, automatizando processos e facilitando a tomada de decisões baseadas em dados.
+A implementação da **IA** torna o **GreenSe** mais eficiente, automatizando processos e facilitando a tomada de decisões baseadas em dados.
 
 ---
 

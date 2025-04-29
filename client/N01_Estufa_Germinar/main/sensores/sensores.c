@@ -74,12 +74,12 @@ sensor_data_t sensores_ler_dados(void) {
     float temp_real, umid_real;
 
     if (sensors_initialized && aht20_read(&aht20_sensor, &temp_real, &umid_real)) {
-        dados.temp = 0; //temp_real;
-        dados.umid = 0; //umid_real;
+        dados.temp = temp_real;
+        dados.umid = umid_real;
 
         ens160_calibrate(&ens160_sensor, temp_real, umid_real);
         vTaskDelay(pdMS_TO_TICKS(100));
-        dados.co2 = 0; //ens160_get_eco2(&ens160_sensor);
+        dados.co2 =ens160_get_eco2(&ens160_sensor);
     } else {
         dados.temp = 0;
         dados.umid = 0;
@@ -91,7 +91,7 @@ sensor_data_t sensores_ler_dados(void) {
     dados.agua_max = 0; //gpio_get_level(GPIO_BOIA_MAX);
 
     // Leitura do sensor de luz digital
-    int nivel_sensor_bruto = 0; //gpio_get_level(GPIO_SENSOR_LUZ);
+    int nivel_sensor_bruto = gpio_get_level(GPIO_SENSOR_LUZ);
     dados.luz = (nivel_sensor_bruto == 0) ? 1 : 0;  // Luz está ON se sensor detectar claridade (0)
 
     // Leitura do sensor DS18B20
