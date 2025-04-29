@@ -142,3 +142,15 @@
 🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
 Em 29/04/2025 às 12:00, a avaliação das condições ambientais da estufa de maturação para o cultivo de alface hidropônico revelou os seguintes dados: a temperatura ambiente está em 26.38 °C, acima da faixa tolerável de 15–24 °C, indicando um problema que precisa ser corrigido. A umidade relativa do ar é de 65.89%, dentro da faixa tolerável de 50–70%. O nível de CO₂ é de 458.0 ppm, que está dentro do intervalo ideal de 400–800 ppm. A luminosidade está inadequada, pois o indicador está desligado, comprometendo o ciclo de 12 horas de luz necessário. O pH da solução nutritiva é 5.7, dentro da faixa tolerável de 5.5–6.5. A condutividade elétrica (EC) é de 1.8 mS/cm, também dentro da faixa tolerável de 1.2–2.0 mS/cm. A temperatura do reservatório interno é de 25.56 °C, acima da faixa tolerável de 18–24 °C, necessitando de ajustes. Em conclusão, a temperatura ambiente e a temperatura do reservatório estão fora das faixas toleráveis e precisam ser ajustadas, enquanto a luminosidade deve ser corrigida para garantir o ciclo adequado de luz. Os demais parâmetros estão dentro das faixas aceitáveis.
 ✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [29/04/2025 16:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 27.04, 'umid': 67.27, 'co2': 498.0, 'luz': 0.0, 'temp_reserv_int': 24.69, 'temp_reserv_ext': 16.26, 'ph': 5.7, 'ec': 1.8}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 27.04, 'umidade_ambiente': 67.27, 'nivel_co2': 498.0, 'luminosidade': 0.0, 'ph_agua': 5.7, 'condutividade_ec': 1.8, 'temp_reservatorio_interno': 24.69, 'temp_reservatorio_externo': 16.26, 'timestamp_consulta': '2025-04-29T19:00:03.761435Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Em 29/04/2025 às 16:00, foram coletados os seguintes dados na estufa de maturação para o cultivo de alface hidropônico: a temperatura ambiente está em 27.04 °C, acima da faixa tolerada de 15–24 °C, indicando necessidade de ajuste imediato. A umidade ambiente é de 67.27%, dentro da faixa tolerável de 50–70%. O nível de CO₂ está em 498.0 ppm, adequadamente dentro da faixa ideal de 400–800 ppm. O pH da solução nutritiva é 5.7, dentro da faixa tolerável de 5.5–6.5. A condutividade elétrica (EC) está em 1.8 mS/cm, dentro da faixa tolerável de 1.2–2.0 mS/cm. A temperatura do reservatório interno é 24.69 °C, ligeiramente acima da faixa tolerada de 18–24 °C, necessitando de correção. Concluindo, a temperatura ambiente e a temperatura do reservatório interno estão fora das faixas toleráveis, exigindo ajustes para otimizar o ambiente de cultivo.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.

@@ -61,17 +61,6 @@ Essa camada de inteligência torna o GreenSe mais autônomo, eficiente e capaz d
 
 ---
 
-## Objetivos do Projeto
-
-O **GreenSe** busca promover a **eficiência** e a **sustentabilidade** no cultivo em ambientes protegidos, entregando:
-
-- **Redução do consumo de água e nutrientes** com controle inteligente.
-- **Melhoria contínua da qualidade das plantas** com ajustes automáticos.
-- **Facilidade de operação remota**, com acesso seguro de qualquer local.
-- **Base de dados robusta** para análise, otimização e expansão.
-
----
-
 ## Expansão e Melhorias Futuras
 
 O GreenSe foi concebido para ser **escalável** e atender a diferentes demandas de crescimento:
