@@ -1,90 +1,99 @@
-
 # GreenSe - Software para Cultivo Protegido em Ambiente Controlado
 
 <div align="center">
   <img src="https://github.com/marcelinoandrade/greense/blob/main/logo_greense.svg" alt="GreenSe Logo" width="200">
 </div>
 
-O **GreenSe** é uma solução inovadora para **monitoramento e automação de cultivos protegidos**, com foco em **hidroponia** e outros sistemas em ambiente controlado. Integrando sensores, atuadores e sistemas inteligentes, o GreenSe otimiza as condições de cultivo, garantindo maior eficiência no uso de água, nutrientes e energia. Saiba mais em [www.greense.com.br](https://www.greense.com.br).
+O **GreenSe** é uma solução inovadora para **monitoramento e automação de cultivos protegidos**, com foco em **hidroponia** e outros sistemas em ambiente controlado. Integrando sensores, atuadores e inteligência artificial, o GreenSe otimiza as condições de cultivo, promovendo maior eficiência no uso de água, nutrientes e energia. Saiba mais em [www.greense.com.br](https://www.greense.com.br).
 
 ---
 
 ## Funcionalidades Principais
 
-Este sistema oferece **monitoramento em tempo real** de **temperatura**, **umidade**, **pH**, **condutividade elétrica** e outros parâmetros essenciais para o cultivo. Conta com **automação inteligente** para controle de **irrigação**, **ventilação**, **iluminação** e demais processos, tudo gerenciado por uma **interface web intuitiva**.
+- **Monitoramento em tempo real** de temperatura, umidade, pH, condutividade elétrica, nível de CO₂ e luminosidade.
+- **Automação inteligente** para irrigação, ventilação, iluminação e controle ambiental.
+- **Registro e análise contínua de dados** para otimização progressiva das condições de cultivo.
+- **Interface web intuitiva** para visualização e controle das estufas.
+- **Comunicação segura** via **MQTT** sobre **WebSocket seguro (WSS)** com **TLS**, usando **Cloudflared** para acesso remoto seguro.
+- **API REST** para inserção de dados complementares manualmente.
+- **Geração automática de relatórios** com suporte da IA **Eng. GePeTo** baseada em GPT.
 
-Os dados são **registrados e analisados continuamente**, permitindo a **otimização do cultivo ao longo do tempo**. A solução integra tecnologias de **IoT**, com dispositivos como **ESP32**, **Raspberry Pi** e outros, utilizando **InfluxDB** e **Grafana** para **armazenamento** e **visualização** de dados.
+---
 
-A comunicação ocorre de forma **segura** via **MQTT** com **WebSockets (WSS)** protegidos por **TLS**, além de oferecer **acesso remoto seguro** por meio do **Cloudflared**. Sua arquitetura é **modular e expansível**, permitindo a adição de **novas funcionalidades** conforme necessário.
+## Integração com GPT – IA Eng. GePeTo
 
-O sistema também disponibiliza um serviço de **API para inserção de dados complementares**, permitindo registrar parâmetros manuais de sensores automáticos que não estiverem disponíveis ou necessários. E também a integração com o serviço de API do GPT para geração de relatórios de cultivo a cada 6 horas por meio do Eng. GePeTo.
+O **GreenSe** integra inteligência artificial por meio da **IA Eng. GePeTo**, um agente construído sobre o modelo GPT, responsável por análises ambientais e suporte ao cultivo. As principais funções dessa integração incluem:
+
+- **Geração automática de relatórios de status** a cada 6 horas, com interpretações objetivas dos dados de cultivo.
+- **Análises técnicas resumidas**, entregues em linguagem prática e direta, simulando a atuação de um engenheiro agrícola.
+- **Apoio na tomada de decisão**, oferecendo recomendações rápidas com base nos parâmetros ambientais monitorados.
+
+Essa integração adiciona uma camada extra de inteligência ao GreenSe, tornando o sistema mais proativo e eficiente.
 
 ---
 
 ## Tecnologias Utilizadas
 
 ### Hardware
-- **Sensores** para monitoramento de umidade, temperatura, luminosidade, CO₂, entre outros.
-- **Atuadores** para controle de irrigação, ventilação, iluminação e outros.
-- **ESP32 e ESP8266** para coleta de dados e comunicação.
-- **Raspberry Pi** como servidor e processador de dados.
-- **Estufas** como ambiente controlado de cultivo.
+- Sensores de umidade, temperatura, luminosidade e CO₂.
+- Atuadores para irrigação, ventilação e iluminação.
+- Dispositivos **ESP32** e **ESP8266** para coleta e comunicação de dados.
+- **Raspberry Pi** para processamento e armazenamento local.
+- Estufas como ambiente de cultivo controlado.
 
-### Software & Servidores
-- **C/C++** para backend e lógica de controle (Produção - ESP/IDE - VSCode).
-- **Python** para backend e lógica de controle (Prototipagem - MicroPython - Thonny).
-- **Flask** para disponibilização de uma API leve e segura para inserção de dados complementares.
-- **MQTT (WebSocket seguro - WSS)** para comunicação criptografada entre dispositivos e broker remoto.
-- **InfluxDB** para armazenamento eficiente de dados temporais.
+### Software e Servidores
+- **C/C++** para desenvolvimento de firmware de produção.
+- **Python (MicroPython)** para prototipagem de sistemas.
+- **Flask** para disponibilização de API REST leve e segura.
+- **MQTT** com **WebSocket seguro (WSS)** para comunicação de dados.
+- **InfluxDB** para armazenamento de séries temporais.
 - **Grafana** para dashboards interativos.
-- **Cloudflared** para conexão segura e acesso remoto.
+- **Cloudflared** para tunelamento seguro de conexões.
 - **NGINX** para hospedagem da página oficial.
-- **GPT** Integração do GPT para relatório do Eng. GePeTo.
+- **OpenAI GPT-4o** para suporte de IA no Eng. GePeTo.
+
 ---
 
 ## Objetivos do Projeto
-O **GreenSe** busca aprimorar a **eficiência e sustentabilidade** dos cultivos protegidos, oferecendo uma solução confiável para produtores e pesquisadores. Entre os benefícios, destacam-se:
 
-- **Redução do consumo de água e nutrientes** por meio de controle inteligente.
-- **Melhoria na qualidade das plantas**, ajustando automaticamente o ambiente.
-- **Facilidade de operação e escalabilidade** para diferentes tipos de cultivo.
-- **Acesso remoto seguro**, permitindo monitoramento e controle em qualquer lugar.
+O **GreenSe** busca promover a **eficiência** e a **sustentabilidade** no cultivo em ambientes protegidos, entregando:
+
+- **Redução do consumo de água e nutrientes** com controle inteligente.
+- **Melhoria contínua da qualidade das plantas** com ajustes automáticos.
+- **Facilidade de operação remota**, com acesso seguro de qualquer local.
+- **Base de dados robusta** para análise, otimização e expansão.
 
 ---
 
 ## Expansão e Melhorias Futuras
-O **GreenSe** é projetado para crescer e evoluir continuamente, garantindo escalabilidade e desempenho. As estratégias de expansão incluem:
 
-- **Até 20 estufas (Atual)**: Utilização do **Raspberry Pi 4** para processamento local.  
-- **Até 50 estufas**: Atualização para o **Raspberry Pi 5**, aumentando a capacidade de processamento.  
-- **Até 1.000 estufas**: Implementação de um **servidor central dedicado** para maior eficiência.  
-- **Mais de 1.000 estufas**: Uso de uma **arquitetura distribuída**, incluindo:  
-  - **Edge Computing** para otimização de dados em tempo real.  
-  - **Servidores em nuvem** para maior capacidade de armazenamento e processamento.  
-  - **Banco de dados otimizado** para garantir rapidez e confiabilidade. 
+O GreenSe foi concebido para ser **escalável** e atender a diferentes demandas de crescimento:
+
+| Capacidade | Solução |
+|:-----------|:--------|
+| Até 20 estufas | Raspberry Pi 4 |
+| Até 50 estufas | Raspberry Pi 5 |
+| Até 1.000 estufas | Servidor central dedicado |
+| Acima de 1.000 estufas | Arquitetura distribuída (Edge Computing e Nuvem) |
 
 ---
 
 ## Aplicação de Inteligência Artificial
-O **GreenSe** também possui integração de **IA** para aprimorar a automação e eficiência do cultivo. As principais aplicações incluem:
 
-- **Modelos preditivos** para otimizar irrigação, ajustes ambientais e uso de nutrientes.
-- **Análise de imagens** para detecção automática de pragas e anomalias nas plantas (em desenvolvimento).
-- **Otimização de processos**, reduzindo custos e desperdícios no processo de cultivo (em desenvolvimento).
+A IA está integrada ao GreenSe para fortalecer a automação e a tomada de decisão:
 
-A implementação da **IA** torna o **GreenSe** mais eficiente, automatizando processos e facilitando a tomada de decisões baseadas em dados.
+- **Modelos preditivos** para gestão de irrigação, clima interno e nutrientes.
+- **Análise de imagens** para identificação automática de pragas e doenças (em desenvolvimento).
+- **Otimização de processos agrícolas** para redução de custos e aumento da produtividade.
+
+Esses recursos ampliam a autonomia e eficiência do sistema, reduzindo a necessidade de intervenção humana.
 
 ---
 
 ## Como Contribuir
-Este projeto está em desenvolvimento e **qualquer colaboração é bem-vinda!** Para contribuir, siga os passos abaixo:
 
-1. **Clone o repositório**
+Quer contribuir com o GreenSe? Siga os passos:
+
+1. **Clone o repositório:**
    ```bash
-   git clone https://github.com/seu-repositorio/greense.git
-
-## Contato e Suporte
-Para dúvidas ou sugestões, entre em contato através do nosso site oficial:
-[www.greense.com.br](https://www.greense.com.br)
-
-Juntos, podemos construir um futuro mais sustentável! 🚀
+   git clone https://github.com/marcelinoandrade/greense.git
