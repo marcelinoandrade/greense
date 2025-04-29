@@ -28,7 +28,7 @@ O **GreenSe** é uma solução inovadora para **monitoramento e automação de c
 
 O **GreenSe** integra inteligência artificial por meio da **IA Eng. GePeTo**, um agente construído sobre o modelo GPT, responsável por análises ambientais e suporte ao cultivo. As principais funções dessa integração incluem:
 
-- **Geração automática de relatórios de status** a cada 6 horas, com interpretações objetivas dos dados de cultivo.
+- **Geração automática de relatórios de status**, com interpretações objetivas dos dados de cultivo.
 - **Análises técnicas resumidas**, entregues em linguagem prática e direta, simulando a atuação de um engenheiro agrícola.
 - **Apoio na tomada de decisão**, oferecendo recomendações rápidas com base nos parâmetros ambientais monitorados.
 - **Modelos preditivos** para irrigação, controle climático e uso de nutrientes (em desenvolvimento).
