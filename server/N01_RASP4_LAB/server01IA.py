@@ -82,25 +82,35 @@ def enviar_para_openai(estrutura):
         data_hora_formatada = agora.strftime("%d/%m/%Y %H:%M")
 
         prompt = f"""
-        Você é um engenheiro agrícola. Avalie as condições ambientais de uma estufa de maturação para o cultivo de alface hidropônico, com base nos parâmetros ideais e toleráveis a seguir:
+        Você é um engenheiro agrícola. Avalie as condições ambientais de uma estufa de maturação para cultivo de alface hidropônico com base nos seguintes dados (coletados em {data_hora_formatada}).
 
-        Para o cultivo ideal de alface, a temperatura ambiente deve ser mantida em 19.5 °C (tolerância de 15–24 °C); a umidade relativa ideal é de 60% (tolerância de 50–70%); o nível de CO₂ deve estar entre 400–800 ppm
-        (tolerável até 1000 ppm); o pH da solução nutritiva deve ser 6.0 (tolerância de 5.5–6.5); a condutividade elétrica (EC) ideal é 1.6 mS/cm (tolerância de 1.2–2.0 mS/cm); e a temperatura do reservatório deve ser mantida
-        entre 21 °C (tolerância de 18–24 °C). A luminosidade está adequada (12h de luz confirmada), ou seja, não precisa criticar o item luminosidade.
+        Faixas ideais:
+        - Temperatura ambiente: 19.5 °C (tolerável: 15–24 °C)
+        - Umidade relativa: 60% (tolerável: 50–70%)
+        - CO₂: 400–800 ppm (tolerável até 1000 ppm)
+        - pH: 6.0 (tolerável: 5.5–6.5)
+        - EC: 1.6 mS/cm (tolerável: 1.2–2.0 mS/cm)
+        - Temp. reservatório: 21 °C (tolerável: 18–24 °C)
+        - Luminosidade: sempre adequada (12h de luz garantida)
 
-        Com base nos dados coletados abaixo, realize a avaliação: cite todos os valores medidos no texto, indique se cada parâmetro está adequado, próximo dos limites ou fora da faixa tolerada, e conclua de forma técnica e objetiva.
+        Dados atuais:
+        - Temp. ambiente: {estrutura['temperatura_ambiente']} °C
+        - Umidade: {estrutura['umidade_ambiente']} %
+        - CO₂: {estrutura['nivel_co2']} ppm
+        - pH: {estrutura['ph_agua']}
+        - EC: {estrutura['condutividade_ec']} mS/cm
+        - Temp. reservatório: {estrutura['temp_reservatorio_interno']} °C
 
-        Informe também no início da resposta a hora e o dia da análise ({data_hora_formatada}). Redija tudo em um único parágrafo, de forma o mais curta e direta possível.
-
-        Dados coletados:
-        - Temperatura ambiente: {estrutura['temperatura_ambiente']} °C
-        - Umidade ambiente: {estrutura['umidade_ambiente']} %
-        - Nível de CO₂: {estrutura['nivel_co2']} ppm
-        - Luminosidade (indicador ligado/desligado): {estrutura['luminosidade']}
-        - pH da água: {estrutura['ph_agua']}
-        - Condutividade elétrica (EC): {estrutura['condutividade_ec']} mS/cm
-        - Temperatura do reservatório interno: {estrutura['temp_reservatorio_interno']} °C
+        Avalie cada parâmetro separadamente em frases curtas e diretas, indicando se está dentro, próximo dos limites ou fora da faixa tolerada.  
+        No início da resposta, informe a data e hora da análise no seguinte formato: "Análise realizada em {data_hora_formatada}."  
+        Não use marcações de negrito, sublinhado ou quebras de linha explícitas (\n).  
+        Separe as avaliações com ponto e vírgula (;).  
+        Após as avaliações, escreva a conclusão geral iniciada por "Conclusão:" e separada do restante usando ' || '.  
+        Finalmente, adicione uma previsão de impacto resumida, iniciada por "Impacto previsto:", explicando em no máximo uma frase o que pode ocorrer caso as condições não sejam corrigidas.
+        Redija tudo em um único parágrafo corrido.
         """
+
+
 
         response = openai_client.chat.completions.create(
             model="gpt-4o",
