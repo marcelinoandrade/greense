@@ -12,6 +12,8 @@ typedef struct {
     float ph;
     float ec;
     float temp_reserv_ext;
+    int umid_solo_raw;
+    float umid_solo_pct;  
 } sensor_data_t;
 
 void sensores_init(void);

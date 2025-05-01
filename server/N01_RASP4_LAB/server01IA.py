@@ -101,12 +101,12 @@ def enviar_para_openai(estrutura):
         - EC: {estrutura['condutividade_ec']} mS/cm
         - Temp. reservatório: {estrutura['temp_reservatorio_interno']} °C
 
-        Avalie cada parâmetro separadamente em frases curtas e diretas, indicando se está dentro, próximo dos limites ou fora da faixa tolerada.  
+        Avalie cada parâmetro separadamente em frases curtas e diretas, indicando se está dentro, próximo dos limites, fora da faixa tolerada e mostre o valor.  
         No início da resposta, informe a data e hora da análise no seguinte formato: "Análise realizada em {data_hora_formatada}."  
         Não use marcações de negrito, sublinhado ou quebras de linha explícitas (\n).  
         Separe as avaliações com ponto e vírgula (;).  
         Após as avaliações, escreva a conclusão geral iniciada por "Conclusão:" e separada do restante usando ' || '.  
-        Finalmente, adicione uma previsão de impacto resumida, iniciada por "Impacto previsto:", explicando em no máximo uma frase o que pode ocorrer caso as condições não sejam corrigidas.
+        Finalmente, adicione uma previsão de impacto resumida, iniciada por "Impacto previsto:", explicando em no máximo uma frase o que pode ocorrer caso as condições não sejam corrigidas e indique uma possivel fitopatologia e porque.
         Redija tudo em um único parágrafo corrido.
         """
 

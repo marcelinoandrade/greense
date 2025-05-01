@@ -4,6 +4,7 @@
 #include "ds18b20.h"
 #include "driver/i2c.h"
 #include "driver/gpio.h"
+#include "driver/adc.h"
 #include "esp_log.h"
 #include <stdlib.h>
 #include <time.h>
@@ -14,11 +15,15 @@ static aht20_t aht20_sensor;
 static ens160_t ens160_sensor;
 static bool sensors_initialized = false;
 
+
 // Pinos dos sensores
 #define GPIO_BOIA_MIN 32
 #define GPIO_BOIA_MAX 33
 #define GPIO_SENSOR_LUZ 25
 #define GPIO_DS18B20 26
+#define GPIO_SENSOR_UMIDADE 36
+#define UMID_SOLO_ADC_SECO   3800
+#define UMID_SOLO_ADC_UMIDO  1800
 
 float randf(float min, float max) {
     return min + ((float)rand() / RAND_MAX) * (max - min);
@@ -65,6 +70,10 @@ void sensores_init(void) {
     };
     gpio_config(&luz_conf);
 
+    // Configura ADC para sensor de umidade de solo (GPIO36)
+    adc1_config_width(ADC_WIDTH_BIT_12); // 0 - 4095
+    adc1_config_channel_atten(ADC1_CHANNEL_0, ADC_ATTEN_DB_11);
+
     // Inicializa o sensor DS18B20
     ds18b20_init(GPIO_DS18B20);
 }
@@ -96,6 +105,15 @@ sensor_data_t sensores_ler_dados(void) {
 
     // Leitura do sensor DS18B20
     dados.temp_reserv_int = 0; //ds18b20_read_temperature(GPIO_DS18B20);
+
+    // Leitura do sensor de umidade de solo
+    int leitura_bruta = adc1_get_raw(ADC1_CHANNEL_0);
+    dados.umid_solo_raw = leitura_bruta;
+    //dados.umid_solo_pct = 100.0f * (4095 - leitura_bruta) / 4095.0f;
+    float umid_pct = 100.0f * (UMID_SOLO_ADC_SECO - leitura_bruta) / (UMID_SOLO_ADC_SECO - UMID_SOLO_ADC_UMIDO);
+    if (umid_pct > 100.0f) umid_pct = 100.0f;
+    if (umid_pct < 0.0f)   umid_pct = 0.0f;
+    dados.umid_solo_pct = umid_pct;
 
     // Simulações de sensores adicionais
     dados.ph = 0.0;

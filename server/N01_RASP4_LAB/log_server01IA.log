@@ -154,3 +154,87 @@ Em 29/04/2025 às 12:00, a avaliação das condições ambientais da estufa de m
 🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
 Em 29/04/2025 às 16:00, foram coletados os seguintes dados na estufa de maturação para o cultivo de alface hidropônico: a temperatura ambiente está em 27.04 °C, acima da faixa tolerada de 15–24 °C, indicando necessidade de ajuste imediato. A umidade ambiente é de 67.27%, dentro da faixa tolerável de 50–70%. O nível de CO₂ está em 498.0 ppm, adequadamente dentro da faixa ideal de 400–800 ppm. O pH da solução nutritiva é 5.7, dentro da faixa tolerável de 5.5–6.5. A condutividade elétrica (EC) está em 1.8 mS/cm, dentro da faixa tolerável de 1.2–2.0 mS/cm. A temperatura do reservatório interno é 24.69 °C, ligeiramente acima da faixa tolerada de 18–24 °C, necessitando de correção. Concluindo, a temperatura ambiente e a temperatura do reservatório interno estão fora das faixas toleráveis, exigindo ajustes para otimizar o ambiente de cultivo.
 ✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [29/04/2025 20:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 25.97, 'umid': 69.64, 'co2': 484.0, 'luz': 0.0, 'temp_reserv_int': 24.25, 'temp_reserv_ext': 23.1, 'ph': 5.7, 'ec': 1.8}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 25.97, 'umidade_ambiente': 69.64, 'nivel_co2': 484.0, 'luminosidade': 0.0, 'ph_agua': 5.7, 'condutividade_ec': 1.8, 'temp_reservatorio_interno': 24.25, 'temp_reservatorio_externo': 23.1, 'timestamp_consulta': '2025-04-29T23:00:03.999264Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 29/04/2025 20:00. Temperatura ambiente: fora da faixa tolerada; Umidade: dentro da faixa tolerada; CO₂: dentro da faixa tolerada; pH: dentro da faixa tolerada; EC: dentro da faixa tolerada; Temp. reservatório: fora da faixa tolerada. || Conclusão: A temperatura ambiente e a temperatura do reservatório estão fora das faixas toleradas, enquanto os outros parâmetros estão adequados. || Impacto previsto: Se as temperaturas não forem ajustadas, o crescimento do alface pode ser comprometido, resultando em menor produtividade.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [30/04/2025 00:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 30.59, 'umid': 53.89, 'co2': 435.0, 'luz': 1.0, 'temp_reserv_int': 25.19, 'temp_reserv_ext': 18.48, 'ph': 5.7, 'ec': 1.8}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 30.59, 'umidade_ambiente': 53.89, 'nivel_co2': 435.0, 'luminosidade': 1.0, 'ph_agua': 5.7, 'condutividade_ec': 1.8, 'temp_reservatorio_interno': 25.19, 'temp_reservatorio_externo': 18.48, 'timestamp_consulta': '2025-04-30T03:00:04.448769Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 30/04/2025 00:00. Temperatura ambiente: fora da faixa tolerada, 30.59 °C; Umidade: dentro da faixa tolerada, 53.89%; CO₂: dentro da faixa tolerada, 435.0 ppm; pH: dentro da faixa tolerada, 5.7; EC: dentro da faixa tolerada, 1.8 mS/cm; Temperatura do reservatório: fora da faixa tolerada, 25.19 °C. || Conclusão: A temperatura ambiente e a temperatura do reservatório estão fora das faixas toleradas, o que pode comprometer o desenvolvimento ideal das plantas. || Impacto previsto: Se as condições não forem corrigidas, pode ocorrer estresse térmico nas plantas, aumentando a suscetibilidade a doenças como a podridão radicular, devido ao ambiente aquático aquecido.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [30/04/2025 04:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 30.53, 'umid': 54.46, 'co2': 442.0, 'luz': 1.0, 'temp_reserv_int': 25.94, 'temp_reserv_ext': 22.3, 'ph': 5.7, 'ec': 1.8}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 30.53, 'umidade_ambiente': 54.46, 'nivel_co2': 442.0, 'luminosidade': 1.0, 'ph_agua': 5.7, 'condutividade_ec': 1.8, 'temp_reservatorio_interno': 25.94, 'temp_reservatorio_externo': 22.3, 'timestamp_consulta': '2025-04-30T07:00:03.919229Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 30/04/2025 04:00. Temperatura ambiente: fora da faixa tolerada, 30.53 °C; Umidade: dentro da faixa tolerada, 54.46%; CO₂: dentro da faixa tolerada, 442.0 ppm; pH: dentro da faixa tolerada, 5.7; EC: dentro da faixa tolerada, 1.8 mS/cm; Temperatura do reservatório: fora da faixa tolerada, 25.94 °C. || Conclusão: A temperatura ambiente e a temperatura do reservatório estão fora das faixas toleradas, o que pode afetar o crescimento ideal da alface hidropônica. || Impacto previsto: Se as condições não forem corrigidas, pode ocorrer estresse térmico nas plantas, aumentando o risco de doenças como a podridão radicular devido ao calor excessivo no reservatório.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [30/04/2025 08:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 30.66, 'umid': 55.67, 'co2': 485.0, 'luz': 1.0, 'temp_reserv_int': 25.38, 'temp_reserv_ext': 16.44, 'ph': 5.5, 'ec': 1.7}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 30.66, 'umidade_ambiente': 55.67, 'nivel_co2': 485.0, 'luminosidade': 1.0, 'ph_agua': 5.5, 'condutividade_ec': 1.7, 'temp_reservatorio_interno': 25.38, 'temp_reservatorio_externo': 16.44, 'timestamp_consulta': '2025-04-30T11:00:04.060993Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 30/04/2025 08:00. Temperatura ambiente está fora da faixa tolerada, valor de 30.66 °C; Umidade está próxima dos limites, valor de 55.67%; CO₂ está dentro da faixa ideal, valor de 485.0 ppm; pH está no limite inferior da faixa tolerada, valor de 5.5; EC está dentro da faixa ideal, valor de 1.7 mS/cm; Temperatura do reservatório está fora da faixa tolerada, valor de 25.38 °C. || Conclusão: As condições ambientais da estufa apresentam problemas significativos, especialmente na temperatura ambiente e do reservatório, que estão acima dos limites tolerados. || Impacto previsto: Se as condições não forem corrigidas, pode ocorrer estresse térmico nas plantas, aumentando o risco de doenças como a podridão radicular, devido ao ambiente aquático aquecido e ao pH no limite inferior.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [30/04/2025 12:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 27.64, 'umid': 60.91, 'co2': 441.0, 'luz': 0.0, 'temp_reserv_int': 25.88, 'temp_reserv_ext': 18.25, 'ph': 5.5, 'ec': 1.7}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 27.64, 'umidade_ambiente': 60.91, 'nivel_co2': 441.0, 'luminosidade': 0.0, 'ph_agua': 5.5, 'condutividade_ec': 1.7, 'temp_reservatorio_interno': 25.88, 'temp_reservatorio_externo': 18.25, 'timestamp_consulta': '2025-04-30T15:00:03.989468Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 30/04/2025 12:00. Temperatura ambiente: fora da faixa tolerada, 27.64 °C; Umidade: dentro da faixa, 60.91%; CO₂: dentro da faixa, 441.0 ppm; pH: no limite inferior, 5.5; EC: dentro da faixa, 1.7 mS/cm; Temperatura do reservatório: fora da faixa tolerada, 25.88 °C. || Conclusão: A temperatura ambiente e a temperatura do reservatório estão fora das faixas toleradas, o que pode afetar o crescimento do alface. || Impacto previsto: Se não corrigidas, as condições podem levar a estresse térmico nas plantas, aumentando a suscetibilidade a doenças como a podridão radicular, devido ao ambiente aquático aquecido que favorece patógenos.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [30/04/2025 16:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 26.71, 'umid': 67.03, 'co2': 668.0, 'luz': 0.0, 'temp_reserv_int': 24.56, 'temp_reserv_ext': 19.37, 'ph': 5.5, 'ec': 1.7}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 26.71, 'umidade_ambiente': 67.03, 'nivel_co2': 668.0, 'luminosidade': 0.0, 'ph_agua': 5.5, 'condutividade_ec': 1.7, 'temp_reservatorio_interno': 24.56, 'temp_reservatorio_externo': 19.37, 'timestamp_consulta': '2025-04-30T19:00:03.765068Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 30/04/2025 16:00. Temperatura ambiente: fora da faixa tolerada, 26.71 °C; Umidade: dentro da faixa tolerada, 67.03%; CO₂: dentro da faixa tolerada, 668.0 ppm; pH: no limite inferior da faixa tolerada, 5.5; EC: dentro da faixa tolerada, 1.7 mS/cm; Temperatura do reservatório: fora da faixa tolerada, 24.56 °C. || Conclusão: A temperatura ambiente e a temperatura do reservatório estão fora das faixas toleradas, o que pode impactar negativamente o cultivo. || Impacto previsto: Se não corrigidas, as condições podem levar a estresse térmico nas plantas, aumentando a suscetibilidade a doenças como a podridão radicular, devido ao ambiente aquático aquecido e pH no limite inferior.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [30/04/2025 20:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 26.26, 'umid': 69.68, 'co2': 667.0, 'luz': 0.0, 'temp_reserv_int': 24.12, 'temp_reserv_ext': 24.09, 'ph': 5.5, 'ec': 1.7}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 26.26, 'umidade_ambiente': 69.68, 'nivel_co2': 667.0, 'luminosidade': 0.0, 'ph_agua': 5.5, 'condutividade_ec': 1.7, 'temp_reservatorio_interno': 24.12, 'temp_reservatorio_externo': 24.09, 'timestamp_consulta': '2025-04-30T23:00:03.629732Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 30/04/2025 20:00. Temperatura ambiente: fora da faixa tolerada, valor de 26.26 °C; Umidade: dentro da faixa tolerada, valor de 69.68%; CO₂: dentro da faixa ideal, valor de 667.0 ppm; pH: no limite inferior da faixa tolerada, valor de 5.5; EC: dentro da faixa tolerada, valor de 1.7 mS/cm; Temperatura do reservatório: no limite superior da faixa tolerada, valor de 24.12 °C. || Conclusão: A maioria dos parâmetros está dentro ou próximo dos limites toleráveis, exceto a temperatura ambiente, que está acima do ideal. || Impacto previsto: Se não corrigida, a alta temperatura pode levar a estresse térmico nas plantas, aumentando a suscetibilidade a doenças como o míldio, devido ao ambiente quente e úmido.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
