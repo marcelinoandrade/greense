@@ -104,7 +104,7 @@ sensor_data_t sensores_ler_dados(void) {
     dados.luz = (nivel_sensor_bruto == 0) ? 1 : 0;  // Luz está ON se sensor detectar claridade (0)
 
     // Leitura do sensor DS18B20
-    dados.temp_reserv_int = 0; //ds18b20_read_temperature(GPIO_DS18B20);
+    dados.temp_reserv_int = ds18b20_read_temperature(GPIO_DS18B20);
 
     // Leitura do sensor de umidade de solo
     int leitura_bruta = adc1_get_raw(ADC1_CHANNEL_0);
