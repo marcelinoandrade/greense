@@ -358,3 +358,15 @@ Análise realizada em 02/05/2025 08:00. Temperatura ambiente: fora da faixa tole
 🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
 Análise realizada em 02/05/2025 12:00. Temperatura ambiente: fora da faixa tolerada, 25.41 °C; Umidade: dentro da faixa tolerada, 66.79%; CO₂: dentro da faixa tolerada, 465.0 ppm; pH: no limite inferior da faixa tolerada, 5.5; EC: dentro da faixa tolerada, 1.7 mS/cm; Temperatura do reservatório: fora da faixa tolerada, 24.62 °C. || Conclusão: A maioria dos parâmetros está dentro ou próximo dos limites toleráveis, exceto a temperatura ambiente e a temperatura do reservatório, que estão ligeiramente acima do limite superior. || Impacto previsto: Se as condições não forem corrigidas, o crescimento do alface pode ser prejudicado, aumentando o risco de doenças como a podridão radicular devido ao estresse térmico e condições de pH no limite.
 ✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [02/05/2025 16:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 25.56, 'umid': 66.55, 'co2': 472.0, 'luz': 0.0, 'temp_reserv_int': 23.56, 'temp_reserv_ext': 21.41, 'ph': 5.5, 'ec': 1.7}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 25.56, 'umidade_ambiente': 66.55, 'nivel_co2': 472.0, 'luminosidade': 0.0, 'ph_agua': 5.5, 'condutividade_ec': 1.7, 'temp_reservatorio_interno': 23.56, 'temp_reservatorio_externo': 21.41, 'timestamp_consulta': '2025-05-02T19:00:03.802199Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 02/05/2025 16:00. Temperatura ambiente: fora da faixa tolerada, 25.56 °C; Umidade: dentro da faixa tolerada, 66.55%; CO₂: dentro da faixa tolerada, 472.0 ppm; pH: no limite inferior da faixa tolerada, 5.5; EC: dentro da faixa tolerada, 1.7 mS/cm; Temp. reservatório: dentro da faixa tolerada, 23.56 °C. || Conclusão: A temperatura ambiente está acima do limite tolerável, o que pode afetar o crescimento ideal do alface, enquanto os outros parâmetros estão dentro ou próximos dos limites aceitáveis. || Impacto previsto: Se a temperatura ambiente não for corrigida, pode ocorrer estresse térmico nas plantas, aumentando a suscetibilidade a doenças como o míldio, que prospera em condições de calor excessivo e umidade elevada.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
