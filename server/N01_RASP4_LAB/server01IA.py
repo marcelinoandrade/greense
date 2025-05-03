@@ -1,16 +1,13 @@
 from influxdb import InfluxDBClient
 from openai import OpenAI
 from datetime import datetime
-import config 
+import config
 
 # === Configurações ===
 
-# Configurações do InfluxDB
 INFLUXDB_HOST = "localhost"
 INFLUXDB_PORT = 8086
 INFLUXDB_DB = "dados_estufa"
-
-# Configuração da API da OpenAI
 openai_client = OpenAI(api_key=config.OPENAI_API_KEY)
 
 # === Funções ===
@@ -23,8 +20,19 @@ def registrar_inicio_log():
 def coletar_dados_estufa3():
     client = InfluxDBClient(host=INFLUXDB_HOST, port=INFLUXDB_PORT, database=INFLUXDB_DB)
 
-    # Consulta geral dos sensores (exceto pH e EC)
-    query_sensores = "SELECT LAST(temp), LAST(umid), LAST(co2), LAST(luz), LAST(temp_reserv_int), LAST(temp_reserv_ext) FROM sensores WHERE dispositivo='ESP32_E3'"
+    # Consulta unificada dos sensores
+    query_sensores = """
+    SELECT 
+        LAST(temp), 
+        LAST(umid), 
+        LAST(co2), 
+        LAST(luz), 
+        LAST(temp_reserv_int), 
+        LAST(agua_min), 
+        LAST(agua_max) 
+    FROM sensores 
+    WHERE dispositivo='ESP32_E3'
+    """
     result_sensores = client.query(query_sensores)
 
     dados = {}
@@ -37,7 +45,8 @@ def coletar_dados_estufa3():
                 'co2': points[0].get('last_2', None),
                 'luz': points[0].get('last_3', None),
                 'temp_reserv_int': points[0].get('last_4', None),
-                'temp_reserv_ext': points[0].get('last_5', None),
+                'agua_min': points[0].get('last_5', 0),
+                'agua_max': points[0].get('last_6', 0),
             })
 
     # Buscar último pH diferente de zero
@@ -46,7 +55,7 @@ def coletar_dados_estufa3():
     ph_value = None
     for point in result_ph.get_points():
         ph_value = point.get('ph', None)
-    
+
     # Buscar último EC diferente de zero
     query_ec = "SELECT ec FROM sensores WHERE dispositivo='ESP32_E3' AND ec != 0 ORDER BY time DESC LIMIT 1"
     result_ec = client.query(query_ec)
@@ -54,7 +63,6 @@ def coletar_dados_estufa3():
     for point in result_ec.get_points():
         ec_value = point.get('ec', None)
 
-    # Atualizar dados finais
     dados['ph'] = ph_value
     dados['ec'] = ec_value
 
@@ -69,12 +77,11 @@ def montar_estrutura_openai(dados):
         "ph_agua": dados.get('ph', None),
         "condutividade_ec": dados.get('ec', None),
         "temp_reservatorio_interno": dados.get('temp_reserv_int', None),
-        "temp_reservatorio_externo": dados.get('temp_reserv_ext', None),
+        "agua_min": int(dados.get("agua_min", 0)),
+        "agua_max": int(dados.get("agua_max", 0)),
         "timestamp_consulta": datetime.utcnow().isoformat() + "Z"
     }
     return estrutura
-
-from datetime import datetime
 
 def enviar_para_openai(estrutura):
     try:
@@ -92,6 +99,9 @@ def enviar_para_openai(estrutura):
         - EC: 1.6 mS/cm (tolerável: 1.2–2.0 mS/cm)
         - Temp. reservatório: 21 °C (tolerável: 18–24 °C)
         - Luminosidade: sempre adequada (12h de luz garantida)
+        - água_max e água_min: sensores binários onde 1 indica que o nível do reservatório está acima da boia (nível adequado), e 0 indica que está abaixo da boia.  
+          → água_max em 0 indica que o nível está abaixo do ideal e recomenda-se reposição preventiva, embora não haja qualquer risco envolvido;  
+          → água_min em 0 indica nível criticamente baixo, com risco de falha no fornecimento de nutrientes à planta.
 
         Dados atuais:
         - Temp. ambiente: {estrutura['temperatura_ambiente']} °C
@@ -100,15 +110,23 @@ def enviar_para_openai(estrutura):
         - pH: {estrutura['ph_agua']}
         - EC: {estrutura['condutividade_ec']} mS/cm
         - Temp. reservatório: {estrutura['temp_reservatorio_interno']} °C
+        - água_max: {estrutura['agua_max']} (1 = nível adequado, 0 = abaixo da boia, reposição recomendada)
+        - água_min: {estrutura['agua_min']} (1 = nível adequado, 0 = crítico, abaixo da boia)
 
-        Avalie cada parâmetro separadamente em frases curtas e diretas, indicando se está dentro, próximo dos limites, fora da faixa tolerada e mostre o valor.  
-        No início da resposta, informe a data e hora da análise no seguinte formato: "Análise realizada em {data_hora_formatada}."  
-        Não use marcações de negrito, sublinhado ou quebras de linha explícitas (\n).  
-        Separe as avaliações com ponto e vírgula (;).  
-        Após as avaliações, escreva a conclusão geral iniciada por "Conclusão:" e separada do restante usando ' || '.  
-        Finalmente, adicione uma previsão de impacto resumida, iniciada por "Impacto previsto:", explicando em no máximo uma frase o que pode ocorrer caso as condições não sejam corrigidas e indique uma possivel fitopatologia e porque.
-        Redija tudo em um único parágrafo corrido.
+        Avalie cada parâmetro separadamente utilizando frases curtas, claras e objetivas.
+        Para cada item, indique se o valor está dentro, próximo dos limites ou fora da faixa tolerada, sempre apresentando
+        o valor numérico correspondente. Inicie a resposta com a data e hora da análise, no formato:
+        "Análise realizada em {data_hora_formatada}." Não utilize marcações como negrito, sublinhado ou quebras de linha explícitas (\n).
+        Separe cada avaliação individual com ponto e vírgula (;). Ao final da análise, inclua uma conclusão geral iniciada por
+        "Conclusão:", separada do restante por ' || '. Em seguida, adicione uma previsão de impacto iniciada por "Impacto previsto:",
+        resumindo em uma única frase o que pode ocorrer caso os parâmetros fora da faixa não sejam corrigidos;
+        mencione até duas possíveis fitopatologia mais prováveis, justifique as causas de forma curta e vinculado ao paramentro medido;
+        classifique o risco atual em uma escala de 0/5 a 5/5, sendo 5/5 crítico;
+        Caso todos os parâmetros estejam dentro das faixas toleradas, informe que não há risco identificado.
+        Toda a resposta deve ser redigida como um único parágrafo corrido.
+
         """
+
 
 
 
@@ -128,7 +146,6 @@ def enviar_para_openai(estrutura):
         print(str(e))
         return None
 
-    
 def gravar_resposta_influx(resposta_ia):
     client = InfluxDBClient(host=INFLUXDB_HOST, port=INFLUXDB_PORT, database=INFLUXDB_DB)
 
@@ -148,11 +165,8 @@ def gravar_resposta_influx(resposta_ia):
     client.write_points(json_body)
     print("✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.")
 
-
 def main():
-    
     registrar_inicio_log()
-
     dados_estufa3 = coletar_dados_estufa3()
     print("📡 Dados coletados da Estufa3:")
     print(dados_estufa3)
@@ -166,7 +180,6 @@ def main():
         print("\n🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:")
         print(resposta_ia)
         gravar_resposta_influx(resposta_ia)
-
 
 # === Execução ===
 
