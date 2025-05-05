@@ -36,22 +36,21 @@ SECTIONS
   {
     
  . = ALIGN(4); 
+ _rtc_fast_start = ABSOLUTE(.);
+    
+ . = ALIGN(4); 
  _rtc_text_start = ABSOLUTE(.);
+    HIDDEN(_rtc_code_start = .);
+    *(.rtc.entry.literal .rtc.entry.text)
     mapping[rtc_text]
     *rtc_wake_stub*.*(.literal .text .literal.* .text.*)
+    *(.rtc_text_end_test)
+    HIDDEN(_rtc_code_end = .);
+    /* Padding for possible CPU prefetch + 4B alignment for PMS split lines. */
+    . = ((_rtc_code_end - _rtc_code_start) == 0) ?
+        ALIGN(0) : 16 + ALIGN(4);
     _rtc_text_end = ABSOLUTE(.);
   } > rtc_iram_seg
-  /**
-   * This section is required to skip rtc.text area because rtc_iram_seg and
-   * rtc_data_seg are reflect the same address space on different buses.
-   */
-  .rtc.dummy :
-  {
-    _rtc_dummy_start = ABSOLUTE(.);
-    _rtc_fast_start = ABSOLUTE(.);
-    . = SIZEOF(.rtc.text);
-    _rtc_dummy_end = ABSOLUTE(.);
-  } > rtc_data_seg
   /**
    * This section located in RTC FAST Memory area.
    * It holds data marked with RTC_FAST_ATTR attribute.
@@ -74,7 +73,7 @@ SECTIONS
    * named rtc_wake_stub*.c and the data marked with
    * RTC_DATA_ATTR, RTC_RODATA_ATTR attributes.
    * The memory location of the data is dependent on
-   * CONFIG_ESP32_RTCDATA_IN_FAST_MEM option.
+   * CONFIG_ESP32S3_RTCDATA_IN_FAST_MEM option.
    */
   .rtc.data :
   {
@@ -98,7 +97,7 @@ SECTIONS
    * User data marked with RTC_NOINIT_ATTR will be placed
    * into this section. See the file "esp_attr.h" for more information.
    * The memory location of the data is dependent on
-   * CONFIG_ESP32_RTCDATA_IN_FAST_MEM option.
+   * CONFIG_ESP32S3_RTCDATA_IN_FAST_MEM option.
    */
   .rtc_noinit (NOLOAD):
   {
@@ -126,37 +125,15 @@ SECTIONS
  _rtc_force_slow_end = ABSOLUTE(.);
   } > rtc_slow_seg
   /**
-   * This section holds RTC FAST data that should have fixed addresses.
+   * This section holds RTC data that should have fixed addresses.
    * The data are not initialized at power-up and are retained during deep
    * sleep.
    */
-  .rtc_fast_reserved (NOLOAD):
+  .rtc_reserved (NOLOAD):
   {
     
  . = ALIGN(4); 
- _rtc_fast_reserved_start = ABSOLUTE(.);
-    /**
-     * New data can only be added here to ensure existing data are not moved.
-     * Because data have adhered to the end of the segment and code is relied
-     * on it.
-     * >> put new data here <<
-     */
-    KEEP(*(.bootloader_data_rtc_mem .bootloader_data_rtc_mem.*))
-    _rtc_fast_reserved_end = ABSOLUTE(.);
-  } > rtc_fast_reserved_seg
-  _rtc_fast_reserved_length = _rtc_fast_reserved_end - _rtc_fast_reserved_start;
-  ASSERT((_rtc_fast_reserved_length <= LENGTH(rtc_fast_reserved_seg)),
-          "RTC FAST reserved segment data does not fit.")
-  /**
-   * This section holds RTC SLOW data that should have fixed addresses.
-   * The data are not initialized at power-up and are retained during deep
-   * sleep.
-   */
-  .rtc_slow_reserved (NOLOAD):
-  {
-    
- . = ALIGN(4); 
- _rtc_slow_reserved_start = ABSOLUTE(.);
+ _rtc_reserved_start = ABSOLUTE(.);
     /**
      * New data can only be added here to ensure existing data are not moved.
      * Because data have adhered to the end of the segment and code is relied
@@ -164,12 +141,12 @@ SECTIONS
      * >> put new data here <<
      */
     *(.rtc_timer_data_in_rtc_mem .rtc_timer_data_in_rtc_mem.*)
-    _rtc_slow_reserved_end = ABSOLUTE(.);
-  } > rtc_slow_reserved_seg
-  _rtc_slow_reserved_length = _rtc_slow_reserved_end - _rtc_slow_reserved_start;
-  _rtc_reserved_length = _rtc_slow_reserved_length;
-  ASSERT((_rtc_slow_reserved_length <= LENGTH(rtc_slow_reserved_seg)),
-          "RTC SLOW reserved segment data does not fit.")
+    KEEP(*(.bootloader_data_rtc_mem .bootloader_data_rtc_mem.*))
+    _rtc_reserved_end = ABSOLUTE(.);
+  } > rtc_reserved_seg
+  _rtc_reserved_length = _rtc_reserved_end - _rtc_reserved_start;
+  ASSERT((_rtc_reserved_length <= LENGTH(rtc_reserved_seg)),
+          "RTC reserved segment data does not fit.")
   /* Get size of rtc slow data based on rtc_data_location alias */
   _rtc_slow_length = (ORIGIN(rtc_slow_seg) == ORIGIN(rtc_data_location))
                         ? (_rtc_force_slow_end - _rtc_data_start)
@@ -217,6 +194,14 @@ SECTIONS
     _iram_text_start = ABSOLUTE(.);
     mapping[iram0_text]
   } > iram0_0_seg
+  /**
+   * This section is required to skip .iram0.text area because iram0_0_seg and
+   * dram0_0_seg reflect the same address space on different buses.
+   */
+  .dram0.dummy (NOLOAD):
+  {
+    . = ORIGIN(dram0_0_seg) + MAX(_iram_end - _diram_i_start, 0);
+  } > dram0_0_seg
   .dram0.data :
   {
     _data_start = ABSOLUTE(.);
@@ -230,18 +215,6 @@ SECTIONS
     mapping[dram0_data]
     _data_end = ABSOLUTE(.);
   } > dram0_0_seg
-  /**
-   * This section holds data that won't be initialised when startup.
-   * This section locates in External RAM region.
-   */
-  .ext_ram_noinit (NOLOAD) :
-  {
-    _ext_ram_noinit_start = ABSOLUTE(.);
-    *(.ext_ram_noinit*)
-    
- . = ALIGN(4); 
- _ext_ram_noinit_end = ABSOLUTE(.);
-  } > extern_ram_seg
   /**
    * This section holds data that should not be initialized at power up.
    * The section located in Internal SRAM memory region. The macro _NOINIT
@@ -258,17 +231,6 @@ SECTIONS
  . = ALIGN(4); 
  _noinit_end = ABSOLUTE(.);
   } > dram0_0_seg
-  /* External Memory BSS. (Variables with EXT_RAM_BSS_ATTR attribute). */
-  .ext_ram.bss (NOLOAD) :
-  {
-    
- . = ALIGN(4); 
- _ext_ram_bss_start = ABSOLUTE(.);
-    mapping[extern_ram]
-    
- . = ALIGN(4); 
- _ext_ram_bss_end = ABSOLUTE(.);
-  } > extern_ram_seg
   /* Shared RAM */
   .dram0.bss (NOLOAD) :
   {
@@ -285,7 +247,53 @@ SECTIONS
  _bss_end = ABSOLUTE(.);
   } > dram0_0_seg
   ASSERT(((_bss_end - ORIGIN(dram0_0_seg)) <= LENGTH(dram0_0_seg)),
-          "DRAM segment data does not fit.")
+         "DRAM segment data does not fit.")
+  .flash.text :
+  {
+    _stext = .;
+    /**
+     * Mark the start of flash.text.
+     * This can be used by the MMU driver to maintain the virtual address.
+     */
+    _instruction_reserved_start = ABSOLUTE(.);
+    _text_start = ABSOLUTE(.);
+    mapping[flash_text]
+    *(.stub)
+    *(.gnu.warning)
+    *(.gnu.linkonce.literal.* .gnu.linkonce.t.*.literal .gnu.linkonce.t.*)
+    *(.irom0.text) /* catch stray ICACHE_RODATA_ATTR */
+    /**
+     * CPU will try to prefetch up to 16 bytes of of instructions.
+     * This means that any configuration (e.g. MMU, PMS) must allow
+     * safe access to up to 16 bytes after the last real instruction, add
+     * dummy bytes to ensure this
+     */
+    . += 16;
+    _text_end = ABSOLUTE(.);
+    /**
+     * Mark the flash.text end.
+     * This can be used for MMU driver to maintain virtual address.
+     */
+    _instruction_reserved_end = ABSOLUTE(.);
+    _etext = .;
+    /**
+     * Similar to _iram_start, this symbol goes here so it is
+     * resolved by addr2line in preference to the first symbol in
+     * the flash.text segment.
+     */
+    _flash_cache_start = ABSOLUTE(0);
+  } > default_code_seg
+  /**
+   * Dummy section represents the .flash.text section but in default_rodata_seg.
+   * Thus, it must have its alignment and (at least) its size.
+   */
+  .flash_rodata_dummy (NOLOAD):
+  {
+    _flash_rodata_dummy_start = ABSOLUTE(.);
+    . = ALIGN(ALIGNOF(.flash.text)) + SIZEOF(.flash.text);
+    /* Add alignment of MMU page size + 0x20 bytes for the mapping header. */
+    . = ALIGN(0x10000) + 0x20;
+  } > default_rodata_seg
   .flash.appdesc : ALIGN(0x10)
   {
     /**
@@ -314,7 +322,7 @@ SECTIONS
     *(.irom1.text) /* catch stray ICACHE_RODATA_ATTR */
     *(.gnu.linkonce.r.*)
     *(.rodata1)
-    /* C++ exception handlers table.  */
+    /* C++ exception handlers table. */
     
  . = ALIGN(4); 
  __XT_EXCEPTION_TABLE_ = ABSOLUTE(.);
@@ -382,47 +390,25 @@ SECTIONS
     _rodata_reserved_end = ABSOLUTE(.);
     mapping[rodata_noload]
   } > default_rodata_seg
-  .flash.text :
+  /**
+   * Dummy section to skip flash rodata sections.
+   * Because to `extern_ram_seg` and `drom0_0_seg` are on the same bus
+   */
+  .ext_ram.dummy (NOLOAD):
   {
-    _stext = .;
-    /**
-     * Mark the start of flash.text.
-     * This can be used by the MMU driver to maintain the virtual address.
-     */
-    _instruction_reserved_start = ABSOLUTE(.);
-    _text_start = ABSOLUTE(.);
-    mapping[flash_text]
-    *(.stub)
-    *(.gnu.warning)
-    *(.gnu.linkonce.literal.* .gnu.linkonce.t.*.literal .gnu.linkonce.t.*)
-    *(.irom0.text) /* catch stray ICACHE_RODATA_ATTR */
-    /**
-     * CPU will try to prefetch up to 16 bytes of of instructions.
-     * This means that any configuration (e.g. MMU, PMS) must allow
-     * safe access to up to 16 bytes after the last real instruction,
-     * add dummy bytes to ensure this.
-     */
-    . += 16;
-    _text_end = ABSOLUTE(.);
-    /**
-     * Mark the flash.text end.
-     * This can be used for MMU driver to maintain virtual address.
-     */
-    _instruction_reserved_end = ABSOLUTE(.);
-    _etext = .;
-    /**
-     * Similar to _iram_start, this symbol goes here so it is
-     * resolved by addr2line in preference to the first symbol in
-     * the flash.text segment.
-     */
-    _flash_cache_start = ABSOLUTE(0);
-  } > default_code_seg
+    . = ORIGIN(extern_ram_seg);
+    . = . + (_rodata_reserved_end - _flash_rodata_dummy_start);
+    . = ALIGN (0x10000);
+  } > extern_ram_seg
   /* Marks the end of IRAM code segment */
   .iram0.text_end (NOLOAD) :
   {
-    
- . = ALIGN(4); 
- _iram_text_end = ABSOLUTE(.);
+    /* Padding for possible CPU prefetch + alignment for PMS split lines */
+    . += 16;
+    . = ALIGN(256);
+    /* iram_end_test section exists for use by memprot unit tests only */
+    *(.iram_end_test)
+    _iram_text_end = ABSOLUTE(.);
   } > iram0_0_seg
   .iram0.data :
   {
@@ -430,7 +416,9 @@ SECTIONS
  . = ALIGN(4); 
  _iram_data_start = ABSOLUTE(.);
     mapping[iram0_data]
-    _iram_data_end = ABSOLUTE(.);
+    
+ . = ALIGN(4); 
+ _iram_data_end = ABSOLUTE(.);
   } > iram0_0_seg
   .iram0.bss (NOLOAD) :
   {

@@ -3,7 +3,7 @@ set(CMAKE_HOST_SYSTEM_NAME "Linux")
 set(CMAKE_HOST_SYSTEM_VERSION "6.12.25+rpt-rpi-v8")
 set(CMAKE_HOST_SYSTEM_PROCESSOR "aarch64")
 
-include("/home/mrclnndrd/esp/esp-idf/tools/cmake/toolchain-esp32.cmake")
+include("/home/mrclnndrd/esp/esp-idf/tools/cmake/toolchain-esp32s3.cmake")
 
 set(CMAKE_SYSTEM "Generic")
 set(CMAKE_SYSTEM_NAME "Generic")

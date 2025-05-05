@@ -1,0 +1,356 @@
+Command: /home/mrclnndrd/.espressif/python_env/idf5.5_py3.11_env/bin/python /home/mrclnndrd/esp/esp-idf/tools/idf_monitor.py -p /dev/ttyACM0 -b 115200 --toolchain-prefix xtensa-esp32s3-elf- --target esp32s3 --revision 0 /home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/build/N04_Estufa_Camera.elf /home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/build/bootloader/bootloader.elf -m '/home/mrclnndrd/.espressif/python_env/idf5.5_py3.11_env/bin/python' '/home/mrclnndrd/esp/esp-idf/tools/idf.py'
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x2a (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2820,len:0x15d8
+load:0x403c8700,len:0xd24
+load:0x403cb700,len:0x2f84
+entry 0x403c8924
+[0;32mI (24) boot: ESP-IDF v5.5-dev-3372-g38628f98b9 2nd stage bootloader[0m
+[0;32mI (25) boot: compile time May  4 2025 20:52:50[0m
+[0;32mI (25) boot: Multicore bootloader[0m
+[0;32mI (27) boot: chip revision: v0.2[0m
+[0;32mI (29) boot: efuse block revision: v1.3[0m
+[0;32mI (33) boot.esp32s3: Boot SPI Speed : 80MHz[0m
+[0;32mI (37) boot.esp32s3: SPI Mode       : DIO[0m
+[0;32mI (41) boot.esp32s3: SPI Flash Size : 2MB[0m
+[0;32mI (44) boot: Enabling RNG early entropy source...[0m
+[0;32mI (49) boot: Partition Table:[0m
+[0;32mI (51) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (58) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (64) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (71) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (77) boot: End of partition table[0m
+[0;32mI (81) esp_image: segment 0: paddr=00010020 vaddr=3c0a0020 size=1ff98h (130968) map[0m
+[0;32mI (111) esp_image: segment 1: paddr=0002ffc0 vaddr=3fc9ad00 size=00058h (    88) load[0m
+[0;32mI (112) esp_image: segment 2: paddr=00030020 vaddr=42000020 size=99f88h (630664) map[0m
+[0;32mI (226) esp_image: segment 3: paddr=000c9fb0 vaddr=3fc9ad58 size=059f0h ( 23024) load[0m
+[0;32mI (231) esp_image: segment 4: paddr=000cf9a8 vaddr=40374000 size=16c64h ( 93284) load[0m
+[0;32mI (252) esp_image: segment 5: paddr=000e6614 vaddr=600fe000 size=0001ch (    28) load[0m
+[0;32mI (261) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (261) boot: Disabling RNG early entropy source...[0m
+[0;32mI (271) cpu_start: Multicore app[0m
+[0;32mI (280) cpu_start: Pro cpu start user code[0m
+[0;32mI (280) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (281) app_init: Application information:[0m
+[0;32mI (281) app_init: Project name:     N04_Estufa_Camera[0m
+[0;32mI (285) app_init: App version:      9f1df4d-dirty[0m
+[0;32mI (290) app_init: Compile time:     May  4 2025 20:52:18[0m
+[0;32mI (295) app_init: ELF file SHA256:  a0147765b...[0m
+[0;32mI (299) app_init: ESP-IDF:          v5.5-dev-3372-g38628f98b9[0m
+[0;32mI (305) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (308) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (312) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (316) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (323) heap_init: At 3FCA4C60 len 00044AB0 (274 KiB): RAM[0m
+[0;32mI (328) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM[0m
+[0;32mI (333) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM[0m
+[0;32mI (338) heap_init: At 600FE01C len 00001FCC (7 KiB): RTCRAM[0m
+[0;32mI (344) spi_flash: detected chip: gd[0m
+[0;32mI (347) spi_flash: flash io: dio[0m
+[0;33mW (350) spi_flash: Detected size(8192k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;32mI (362) sleep_gpio: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (368) sleep_gpio: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (375) main_task: Started on CPU0[0m
+[0;32mI (395) main_task: Calling app_main()[0m
+[0;32mI (415) s3 ll_cam: DMA Channel=0[0m
+[0;32mI (415) cam_hal: cam init ok[0m
+[0;32mI (415) sccb-ng: pin_sda 40 pin_scl 39[0m
+[0;32mI (415) sccb-ng: sccb_i2c_port=1[0m
+[0;32mI (425) camera: Detected camera at address=0x21[0m
+[1;31mE (1425) i2c.master: s_i2c_synchronous_transaction(943): I2C transaction failed[0m
+[1;31mE (1425) i2c.master: i2c_master_transmit_receive(1246): I2C transaction failed[0m
+[1;31mE (1425) sccb-ng: SCCB_Read Failed addr:0x21, reg:0x0a, data:0x01, ret:259[0m
+[0;32mI (1425) ov7725: Mismatch PID=0x1[0m
+[1;31mE (1435) i2c.master: I2C transaction timeout detected[0m
+[1;31mE (1435) i2c.master: s_i2c_synchronous_transaction(943): I2C transaction failed[0m
+[1;31mE (1445) i2c.master: i2c_master_multi_buffer_transmit(1212): I2C transaction failed[0m
+[1;31mE (1455) sccb-ng: SCCB_Write Failed addr:0x21, reg:0xff, data:0x01, ret:259[0m
+[0;32mI (1455) ov7760: Mismatch PID=0xdc[0m
+[1;31mE (2465) i2c.master: s_i2c_synchronous_transaction(943): I2C transaction failed[0m
+[1;31mE (2465) i2c.master: i2c_master_transmit_receive(1246): I2C transaction failed[0m
+[1;31mE (2465) sccb-ng: SCCB_Read Failed addr:0x21, reg:0xf1, data:0x64, ret:259[0m
+[1;31mE (3465) i2c.master: s_i2c_synchronous_transaction(943): I2C transaction failed[0m
+[1;31mE (3465) i2c.master: i2c_master_transmit_receive(1246): I2C transaction failed[0m
+[1;31mE (3465) sccb-ng: SCCB_Read Failed addr:0x21, reg:0xf0, data:0x64, ret:259[0m
+[0;32mI (3465) gc032a: Mismatch PID=0x6464[0m
+[1;31mE (3475) i2c.master: I2C transaction timeout detected[0m
+[1;31mE (3485) i2c.master: s_i2c_synchronous_transaction(943): I2C transaction failed[0m
+[1;31mE (3485) i2c.master: i2c_master_multi_buffer_transmit(1212): I2C transaction failed[0m
+[1;31mE (3495) sccb-ng: SCCB_Write Failed addr:0x21, reg:0xfe, data:0x00, ret:259[0m
+[0;32mI (3495) gc0308: Mismatch PID=0xdc[0m
+[1;31mE (3505) camera: Detected camera not supported.[0m
+[1;31mE (3505) camera: Camera probe failed with error 0x106(ESP_ERR_NOT_SUPPORTED)[0m
+[1;31mE (3515) gdma: gdma_disconnect(309): no peripheral is connected to the channel[0m
+[1;31mE (3525) CAMERA: Erro ao inicializar a câmera: 0x106[0m
+[0;32mI (3525) pp: pp rom version: e7ae62f[0m
+[0;32mI (3525) net80211: net80211 rom version: e7ae62f[0m
+[0;32mI (3545) wifi:wifi driver task: 3fca99f8, prio:23, stack:6656, core=0[0m
+[0;32mI (3555) wifi:wifi firmware version: 7d2994f4b[0m
+[0;32mI (3555) wifi:wifi certification version: v7.0[0m
+[0;32mI (3555) wifi:config NVS flash: enabled[0m
+[0;32mI (3555) wifi:config nano formatting: disabled[0m
+[0;32mI (3555) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (3565) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (3565) wifi:Init management short buffer num: 32[0m
+[0;32mI (3565) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (3575) wifi:Init static tx FG buffer num: 2[0m
+[0;32mI (3575) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (3585) wifi:Init static rx buffer num: 10[0m
+[0;32mI (3585) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (3595) wifi_init: rx ba win: 6[0m
+[0;32mI (3595) wifi_init: accept mbox: 6[0m
+[0;32mI (3595) wifi_init: tcpip mbox: 32[0m
+[0;32mI (3595) wifi_init: udp mbox: 6[0m
+[0;32mI (3605) wifi_init: tcp mbox: 6[0m
+[0;32mI (3605) wifi_init: tcp tx win: 5760[0m
+[0;32mI (3605) wifi_init: tcp rx win: 5760[0m
+[0;32mI (3615) wifi_init: tcp mss: 1440[0m
+[0;32mI (3615) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (3615) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (3625) phy_init: phy_version 701,f4f1da3a,Mar  3 2025,15:50:10[0m
+[0;32mI (3665) wifi:mode : sta (74:4d:bd:8d:5b:d4)[0m
+[0;32mI (3665) wifi:enable tsf[0m
+[0;32mI (3665) CAMERA: Wi-Fi iniciado[0m
+[0;32mI (3665) CAMERA: Servidor HTTP iniciado[0m
+[0;32mI (3665) main_task: Returned from app_main()[0m
+[0;32mI (6075) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (8485) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (10895) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (13305) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (15715) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (18125) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (20545) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (22955) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (25365) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (27775) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (30185) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (32595) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (35005) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (37415) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (39825) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (42235) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (44645) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (47055) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (49465) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (51875) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (54285) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (56695) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (59115) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (61525) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (63935) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (66345) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (68755) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (71165) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (73575) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (75985) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (78395) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (80805) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (83215) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (85625) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (88035) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (90445) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (92865) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (95275) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (97685) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (100095) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (102505) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (104915) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (107325) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (109735) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (112145) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (114555) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (116965) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (119375) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (121785) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (124195) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (126615) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (129025) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (131435) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (133845) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (136255) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (138665) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (141075) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (143485) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (145895) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (148305) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (150715) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (153125) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (155535) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (157945) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (160355) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (162775) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (165185) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (167595) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (170005) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (172415) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (174825) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (177235) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (179645) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (182055) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (184465) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (186875) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (189285) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (191695) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (194105) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (196525) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (198935) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (201345) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (203755) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (206165) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (208575) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (210985) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (213395) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (215805) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (218215) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (220625) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (223035) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (225445) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (227855) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (230265) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (232685) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (235095) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (237505) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (239915) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (242325) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (244735) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (247145) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (249555) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (251965) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (254375) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (256785) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (259195) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (261605) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (264015) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (266425) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (268845) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (271255) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (273665) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (276075) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (278485) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (280895) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (283305) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (285715) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (288125) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (290535) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (292945) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (295355) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (297765) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (300175) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (302595) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (305005) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (307415) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (309825) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (312235) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (314645) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (317055) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (319465) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (321875) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (324285) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (326695) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (329105) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (331515) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (333925) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (336335) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (338755) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (341165) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (343575) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (345985) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (348395) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (350805) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (353215) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (355625) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (358035) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (360445) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (362855) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (365265) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (367675) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (370085) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (372505) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (374915) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (377325) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (379735) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (382145) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (384555) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (386965) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (389375) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (391785) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (394195) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (396605) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (399015) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[1;31mE (1435) i2c.master: s_i2c_synchronous_transaction(943): I2C transaction failed[0m
+[1;31mE (1435) i2c.master: i2c_master_transmit_receive(1246): I2C transaction failed[0m
+[1;31mE (1435) sccb-ng: SCCB_Read Failed addr:0x21, reg:0x0a, data:0x01, ret:259[0m
+[0;32mI (1435) ov7760: Mismatch PID=0x1[0m
+[1;31mE (2445) i2c.master: s_i2c_synchronous_transaction(943): I2C transaction failed[0m
+[1;31mE (2445) i2c.master: i2c_master_transmit_receive(1246): I2C transaction failed[0m
+[1;31mE (2445) sccb-ng: SCCB_Read Failed addr:0x21, reg:0xf1, data:0x64, ret:259[0m
+[1;31mE (3445) i2c.master: s_i2c_synchronous_transaction(943): I2C transaction failed[0m
+[1;31mE (3445) i2c.master: i2c_master_transmit_receive(1246): I2C transaction failed[0m
+[1;31mE (3445) sccb-ng: SCCB_Read Failed addr:0x21, reg:0xf0, data:0x64, ret:259[0m
+[0;32mI (3445) gc032a: Mismatch PID=0x6464[0m
+[1;31mE (3455) i2c.master: I2C transaction timeout detected[0m
+[1;31mE (3465) i2c.master: s_i2c_synchronous_transaction(943): I2C transaction failed[0m
+[1;31mE (3465) i2c.master: i2c_master_multi_buffer_transmit(1212): I2C transaction failed[0m
+[1;31mE (3475) sccb-ng: SCCB_Write Failed addr:0x21, reg:0xfe, data:0x00, ret:259[0m
+[0;32mI (3475) gc0308: Mismatch PID=0xdc[0m
+[1;31mE (3485) camera: Detected camera not supported.[0m
+[1;31mE (3485) camera: Camera probe failed with error 0x106(ESP_ERR_NOT_SUPPORTED)[0m
+[1;31mE (3495) gdma: gdma_disconnect(309): no peripheral is connected to the channel[0m
+[1;31mE (3505) CAMERA: Erro ao inicializar a câmera: 0x106[0m
+[0;32mI (3505) pp: pp rom version: e7ae62f[0m
+[0;32mI (3505) net80211: net80211 rom version: e7ae62f[0m
+[0;32mI (3525) wifi:wifi driver task: 3fca99f8, prio:23, stack:6656, core=0[0m
+[0;32mI (3535) wifi:wifi firmware version: 7d2994f4b[0m
+[0;32mI (3535) wifi:wifi certification version: v7.0[0m
+[0;32mI (3535) wifi:config NVS flash: enabled[0m
+[0;32mI (3535) wifi:config nano formatting: disabled[0m
+[0;32mI (3535) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (3545) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (3545) wifi:Init management short buffer num: 32[0m
+[0;32mI (3545) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (3555) wifi:Init static tx FG buffer num: 2[0m
+[0;32mI (3555) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (3565) wifi:Init static rx buffer num: 10[0m
+[0;32mI (3565) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (3575) wifi_init: rx ba win: 6[0m
+[0;32mI (3575) wifi_init: accept mbox: 6[0m
+[0;32mI (3575) wifi_init: tcpip mbox: 32[0m
+[0;32mI (3575) wifi_init: udp mbox: 6[0m
+[0;32mI (3585) wifi_init: tcp mbox: 6[0m
+[0;32mI (3585) wifi_init: tcp tx win: 5760[0m
+[0;32mI (3585) wifi_init: tcp rx win: 5760[0m
+[0;32mI (3595) wifi_init: tcp mss: 1440[0m
+[0;32mI (3595) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (3595) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (3605) phy_init: phy_version 701,f4f1da3a,Mar  3 2025,15:50:10[0m
+[0;32mI (3645) wifi:mode : sta (74:4d:bd:8d:5b:d4)[0m
+[0;32mI (3645) wifi:enable tsf[0m
+[0;32mI (3645) CAMERA: Wi-Fi iniciado[0m
+[0;32mI (3645) CAMERA: Servidor HTTP iniciado[0m
+[0;32mI (3645) main_task: Returned from app_main()[0m
+[0;32mI (6055) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (8465) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (10875) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (13285) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (15695) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (18105) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (20525) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (22935) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (25345) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (27755) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (30165) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (32575) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (34985) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (37395) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (39805) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (42215) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (44625) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (47035) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (49445) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (51855) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (54275) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (56685) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
+[0;32mI (59095) CAMERA: Wi-Fi desconectado. Tentando reconectar...[0m
