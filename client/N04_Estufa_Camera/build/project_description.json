@@ -1,7 +1,7 @@
 {
     "version":            "1.2",
     "project_name":       "N04_Estufa_Camera",
-    "project_version":    "9f1df4d-dirty",
+    "project_version":    "3e1b133-dirty",
     "project_path":       "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera",
     "idf_path":           "/home/mrclnndrd/esp/esp-idf",
     "build_dir":          "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/build",
@@ -12,21 +12,21 @@
     "app_bin":            "N04_Estufa_Camera.bin",
     "build_type":         "flash_app",
     "git_revision":       "v5.5-dev-3372-g38628f98b9",
-    "target":             "esp32s3",
-    "rev":                "",
+    "target":             "esp32",
+    "rev":                "0",
     "min_rev":            "0",
-    "max_rev":            "99",
+    "max_rev":            "399",
     "phy_data_partition": "",
     "monitor_baud" :      "115200",
-    "monitor_toolprefix": "xtensa-esp32s3-elf-",
-    "c_compiler":         "/home/mrclnndrd/.espressif/tools/xtensa-esp-elf/esp-14.2.0_20241119/xtensa-esp-elf/bin/xtensa-esp32s3-elf-gcc",
+    "monitor_toolprefix": "xtensa-esp32-elf-",
+    "c_compiler":         "/home/mrclnndrd/.espressif/tools/xtensa-esp-elf/esp-14.2.0_20241119/xtensa-esp-elf/bin/xtensa-esp32-elf-gcc",
     "config_environment" : {
         "COMPONENT_KCONFIGS" : "/home/mrclnndrd/esp/esp-idf/components/app_trace/Kconfig;/home/mrclnndrd/esp/esp-idf/components/bt/Kconfig;/home/mrclnndrd/esp/esp-idf/components/console/Kconfig;/home/mrclnndrd/esp/esp-idf/components/driver/Kconfig;/home/mrclnndrd/esp/esp-idf/components/efuse/Kconfig;/home/mrclnndrd/esp/esp-idf/components/esp-tls/Kconfig;/home/mrclnndrd/esp/esp-idf/components/esp_adc/Kconfig;/home/mrclnndrd/esp/esp-idf/components/esp_coex/Kconfig;/home/mrclnndrd/esp/esp-idf/components/esp_common/Kconfig;/home/mrclnndrd/esp/esp-idf/components/esp_driver_ana_cmpr/Kconfig;/home/mrclnndrd/esp/esp-idf/components/esp_driver_bitscrambler/Kconfig;/home/mrclnndrd/esp/esp-idf/components/esp_driver_cam/Kconfig;/home/mrclnndrd/esp/esp-idf/components/esp_driver_dac/Kconfig;/home/mrclnndrd/esp/esp-idf/components/esp_driver_gpio/Kconfig;/home/mrclnndrd/esp/esp-idf/components/esp_driver_gptimer/Kconfig;/home/mrclnndrd/esp/esp-idf/components/esp_driver_i2c/Kconfig;/home/mrclnndrd/esp/esp-idf/components/esp_driver_i2s/Kconfig;/home/mrclnndrd/esp/esp-idf/components/esp_driver_isp/Kconfig;/home/mrclnndrd/esp/esp-idf/components/esp_driver_jpeg/Kconfig;/home/mrclnndrd/esp/esp-idf/components/esp_driver_ledc/Kconfig;/home/mrclnndrd/esp/esp-idf/components/esp_driver_mcpwm/Kconfig;/home/mrclnndrd/esp/esp-idf/components/esp_driver_parlio/Kconfig;/home/mrclnndrd/esp/esp-idf/components/esp_driver_pcnt/Kconfig;/home/mrclnndrd/esp/esp-idf/components/esp_driver_rmt/Kconfig;/home/mrclnndrd/esp/esp-idf/components/esp_driver_sdm/Kconfig;/home/mrclnndrd/esp/esp-idf/components/esp_driver_spi/Kconfig;/home/mrclnndrd/esp/esp-idf/components/esp_driver_touch_sens/Kconfig;/home/mrclnndrd/esp/esp-idf/components/esp_driver_tsens/Kconfig;/home/mrclnndrd/esp/esp-idf/components/esp_driver_twai/Kconfig;/home/mrclnndrd/esp/esp-idf/components/esp_driver_uart/Kconfig;/home/mrclnndrd/esp/esp-idf/components/esp_driver_usb_serial_jtag/Kconfig;/home/mrclnndrd/esp/esp-idf/components/esp_eth/Kconfig;/home/mrclnndrd/esp/esp-idf/components/esp_event/Kconfig;/home/mrclnndrd/esp/esp-idf/components/esp_gdbstub/Kconfig;/home/mrclnndrd/esp/esp-idf/components/esp_hid/Kconfig;/home/mrclnndrd/esp/esp-idf/components/esp_http_client/Kconfig;/home/mrclnndrd/esp/esp-idf/components/esp_http_server/Kconfig;/home/mrclnndrd/esp/esp-idf/components/esp_https_ota/Kconfig;/home/mrclnndrd/esp/esp-idf/components/esp_https_server/Kconfig;/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/Kconfig;/home/mrclnndrd/esp/esp-idf/components/esp_lcd/Kconfig;/home/mrclnndrd/esp/esp-idf/components/esp_mm/Kconfig;/home/mrclnndrd/esp/esp-idf/components/esp_netif/Kconfig;/home/mrclnndrd/esp/esp-idf/components/esp_partition/Kconfig;/home/mrclnndrd/esp/esp-idf/components/esp_phy/Kconfig;/home/mrclnndrd/esp/esp-idf/components/esp_pm/Kconfig;/home/mrclnndrd/esp/esp-idf/components/esp_psram/Kconfig;/home/mrclnndrd/esp/esp-idf/components/esp_ringbuf/Kconfig;/home/mrclnndrd/esp/esp-idf/components/esp_rom/Kconfig;/home/mrclnndrd/esp/esp-idf/components/esp_security/Kconfig;/home/mrclnndrd/esp/esp-idf/components/esp_system/Kconfig;/home/mrclnndrd/esp/esp-idf/components/esp_timer/Kconfig;/home/mrclnndrd/esp/esp-idf/components/esp_wifi/Kconfig;/home/mrclnndrd/esp/esp-idf/components/espcoredump/Kconfig;/home/mrclnndrd/esp/esp-idf/components/fatfs/Kconfig;/home/mrclnndrd/esp/esp-idf/components/freertos/Kconfig;/home/mrclnndrd/esp/esp-idf/components/hal/Kconfig;/home/mrclnndrd/esp/esp-idf/components/heap/Kconfig;/home/mrclnndrd/esp/esp-idf/components/ieee802154/Kconfig;/home/mrclnndrd/esp/esp-idf/components/log/Kconfig;/home/mrclnndrd/esp/esp-idf/components/lwip/Kconfig;/home/mrclnndrd/esp/esp-idf/components/mbedtls/Kconfig;/home/mrclnndrd/esp/esp-idf/components/mqtt/esp-mqtt/Kconfig;/home/mrclnndrd/esp/esp-idf/components/newlib/Kconfig;/home/mrclnndrd/esp/esp-idf/components/nvs_flash/Kconfig;/home/mrclnndrd/esp/esp-idf/components/nvs_sec_provider/Kconfig;/home/mrclnndrd/esp/esp-idf/components/openthread/Kconfig;/home/mrclnndrd/esp/esp-idf/components/protocomm/Kconfig;/home/mrclnndrd/esp/esp-idf/components/pthread/Kconfig;/home/mrclnndrd/esp/esp-idf/components/soc/Kconfig;/home/mrclnndrd/esp/esp-idf/components/spi_flash/Kconfig;/home/mrclnndrd/esp/esp-idf/components/spiffs/Kconfig;/home/mrclnndrd/esp/esp-idf/components/tcp_transport/Kconfig;/home/mrclnndrd/esp/esp-idf/components/ulp/Kconfig;/home/mrclnndrd/esp/esp-idf/components/unity/Kconfig;/home/mrclnndrd/esp/esp-idf/components/usb/Kconfig;/home/mrclnndrd/esp/esp-idf/components/vfs/Kconfig;/home/mrclnndrd/esp/esp-idf/components/wear_levelling/Kconfig;/home/mrclnndrd/esp/esp-idf/components/wifi_provisioning/Kconfig;/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/components/esp32-camera/Kconfig",
         "COMPONENT_KCONFIGS_PROJBUILD" : "/home/mrclnndrd/esp/esp-idf/components/bootloader/Kconfig.projbuild;/home/mrclnndrd/esp/esp-idf/components/esp_app_format/Kconfig.projbuild;/home/mrclnndrd/esp/esp-idf/components/esp_rom/Kconfig.projbuild;/home/mrclnndrd/esp/esp-idf/components/esptool_py/Kconfig.projbuild;/home/mrclnndrd/esp/esp-idf/components/partition_table/Kconfig.projbuild"
     },
     "common_component_reqs": [ "cxx", "newlib", "freertos", "esp_hw_support", "heap", "log", "soc", "hal", "esp_rom", "esp_common", "esp_system", "xtensa" ],
-    "build_components" : [ "app_trace", "app_update", "bootloader", "bootloader_support", "bt", "cmock", "console", "cxx", "driver", "efuse", "esp-tls", "esp32-camera", "esp_adc", "esp_app_format", "esp_bootloader_format", "esp_coex", "esp_common", "esp_driver_ana_cmpr", "esp_driver_bitscrambler", "esp_driver_cam", "esp_driver_dac", "esp_driver_gpio", "esp_driver_gptimer", "esp_driver_i2c", "esp_driver_i2s", "esp_driver_isp", "esp_driver_jpeg", "esp_driver_ledc", "esp_driver_mcpwm", "esp_driver_parlio", "esp_driver_pcnt", "esp_driver_ppa", "esp_driver_rmt", "esp_driver_sdio", "esp_driver_sdm", "esp_driver_sdmmc", "esp_driver_sdspi", "esp_driver_spi", "esp_driver_touch_sens", "esp_driver_tsens", "esp_driver_twai", "esp_driver_uart", "esp_driver_usb_serial_jtag", "esp_eth", "esp_event", "esp_gdbstub", "esp_hid", "esp_http_client", "esp_http_server", "esp_https_ota", "esp_https_server", "esp_hw_support", "esp_lcd", "esp_local_ctrl", "esp_mm", "esp_netif", "esp_netif_stack", "esp_partition", "esp_phy", "esp_pm", "esp_psram", "esp_ringbuf", "esp_rom", "esp_security", "esp_system", "esp_timer", "esp_vfs_console", "esp_wifi", "espcoredump", "esptool_py", "fatfs", "freertos", "hal", "heap", "http_parser", "idf_test", "ieee802154", "json", "log", "lwip", "main", "mbedtls", "mqtt", "newlib", "nvs_flash", "nvs_sec_provider", "openthread", "partition_table", "perfmon", "protobuf-c", "protocomm", "pthread", "rt", "sdmmc", "soc", "spi_flash", "spiffs", "tcp_transport", "touch_element", "ulp", "unity", "usb", "vfs", "wear_levelling", "wifi_provisioning", "wpa_supplicant", "xtensa", "" ],
-    "build_component_paths" : [ "/home/mrclnndrd/esp/esp-idf/components/app_trace", "/home/mrclnndrd/esp/esp-idf/components/app_update", "/home/mrclnndrd/esp/esp-idf/components/bootloader", "/home/mrclnndrd/esp/esp-idf/components/bootloader_support", "/home/mrclnndrd/esp/esp-idf/components/bt", "/home/mrclnndrd/esp/esp-idf/components/cmock", "/home/mrclnndrd/esp/esp-idf/components/console", "/home/mrclnndrd/esp/esp-idf/components/cxx", "/home/mrclnndrd/esp/esp-idf/components/driver", "/home/mrclnndrd/esp/esp-idf/components/efuse", "/home/mrclnndrd/esp/esp-idf/components/esp-tls", "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/components/esp32-camera", "/home/mrclnndrd/esp/esp-idf/components/esp_adc", "/home/mrclnndrd/esp/esp-idf/components/esp_app_format", "/home/mrclnndrd/esp/esp-idf/components/esp_bootloader_format", "/home/mrclnndrd/esp/esp-idf/components/esp_coex", "/home/mrclnndrd/esp/esp-idf/components/esp_common", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_ana_cmpr", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_bitscrambler", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_cam", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_dac", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_gpio", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_gptimer", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_i2c", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_i2s", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_isp", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_jpeg", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_ledc", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_mcpwm", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_parlio", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_pcnt", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_ppa", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_rmt", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_sdio", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_sdm", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_sdmmc", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_sdspi", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_spi", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_touch_sens", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_tsens", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_twai", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_uart", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_usb_serial_jtag", "/home/mrclnndrd/esp/esp-idf/components/esp_eth", "/home/mrclnndrd/esp/esp-idf/components/esp_event", "/home/mrclnndrd/esp/esp-idf/components/esp_gdbstub", "/home/mrclnndrd/esp/esp-idf/components/esp_hid", "/home/mrclnndrd/esp/esp-idf/components/esp_http_client", "/home/mrclnndrd/esp/esp-idf/components/esp_http_server", "/home/mrclnndrd/esp/esp-idf/components/esp_https_ota", "/home/mrclnndrd/esp/esp-idf/components/esp_https_server", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support", "/home/mrclnndrd/esp/esp-idf/components/esp_lcd", "/home/mrclnndrd/esp/esp-idf/components/esp_local_ctrl", "/home/mrclnndrd/esp/esp-idf/components/esp_mm", "/home/mrclnndrd/esp/esp-idf/components/esp_netif", "/home/mrclnndrd/esp/esp-idf/components/esp_netif_stack", "/home/mrclnndrd/esp/esp-idf/components/esp_partition", "/home/mrclnndrd/esp/esp-idf/components/esp_phy", "/home/mrclnndrd/esp/esp-idf/components/esp_pm", "/home/mrclnndrd/esp/esp-idf/components/esp_psram", "/home/mrclnndrd/esp/esp-idf/components/esp_ringbuf", "/home/mrclnndrd/esp/esp-idf/components/esp_rom", "/home/mrclnndrd/esp/esp-idf/components/esp_security", "/home/mrclnndrd/esp/esp-idf/components/esp_system", "/home/mrclnndrd/esp/esp-idf/components/esp_timer", "/home/mrclnndrd/esp/esp-idf/components/esp_vfs_console", "/home/mrclnndrd/esp/esp-idf/components/esp_wifi", "/home/mrclnndrd/esp/esp-idf/components/espcoredump", "/home/mrclnndrd/esp/esp-idf/components/esptool_py", "/home/mrclnndrd/esp/esp-idf/components/fatfs", "/home/mrclnndrd/esp/esp-idf/components/freertos", "/home/mrclnndrd/esp/esp-idf/components/hal", "/home/mrclnndrd/esp/esp-idf/components/heap", "/home/mrclnndrd/esp/esp-idf/components/http_parser", "/home/mrclnndrd/esp/esp-idf/components/idf_test", "/home/mrclnndrd/esp/esp-idf/components/ieee802154", "/home/mrclnndrd/esp/esp-idf/components/json", "/home/mrclnndrd/esp/esp-idf/components/log", "/home/mrclnndrd/esp/esp-idf/components/lwip", "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/main", "/home/mrclnndrd/esp/esp-idf/components/mbedtls", "/home/mrclnndrd/esp/esp-idf/components/mqtt", "/home/mrclnndrd/esp/esp-idf/components/newlib", "/home/mrclnndrd/esp/esp-idf/components/nvs_flash", "/home/mrclnndrd/esp/esp-idf/components/nvs_sec_provider", "/home/mrclnndrd/esp/esp-idf/components/openthread", "/home/mrclnndrd/esp/esp-idf/components/partition_table", "/home/mrclnndrd/esp/esp-idf/components/perfmon", "/home/mrclnndrd/esp/esp-idf/components/protobuf-c", "/home/mrclnndrd/esp/esp-idf/components/protocomm", "/home/mrclnndrd/esp/esp-idf/components/pthread", "/home/mrclnndrd/esp/esp-idf/components/rt", "/home/mrclnndrd/esp/esp-idf/components/sdmmc", "/home/mrclnndrd/esp/esp-idf/components/soc", "/home/mrclnndrd/esp/esp-idf/components/spi_flash", "/home/mrclnndrd/esp/esp-idf/components/spiffs", "/home/mrclnndrd/esp/esp-idf/components/tcp_transport", "/home/mrclnndrd/esp/esp-idf/components/touch_element", "/home/mrclnndrd/esp/esp-idf/components/ulp", "/home/mrclnndrd/esp/esp-idf/components/unity", "/home/mrclnndrd/esp/esp-idf/components/usb", "/home/mrclnndrd/esp/esp-idf/components/vfs", "/home/mrclnndrd/esp/esp-idf/components/wear_levelling", "/home/mrclnndrd/esp/esp-idf/components/wifi_provisioning", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant", "/home/mrclnndrd/esp/esp-idf/components/xtensa", "" ],
+    "build_components" : [ "app_trace", "app_update", "bootloader", "bootloader_support", "bt", "cmock", "console", "cxx", "driver", "efuse", "esp-tls", "esp32-camera", "esp_adc", "esp_app_format", "esp_bootloader_format", "esp_coex", "esp_common", "esp_driver_ana_cmpr", "esp_driver_bitscrambler", "esp_driver_cam", "esp_driver_dac", "esp_driver_gpio", "esp_driver_gptimer", "esp_driver_i2c", "esp_driver_i2s", "esp_driver_isp", "esp_driver_jpeg", "esp_driver_ledc", "esp_driver_mcpwm", "esp_driver_parlio", "esp_driver_pcnt", "esp_driver_ppa", "esp_driver_rmt", "esp_driver_sdio", "esp_driver_sdm", "esp_driver_sdmmc", "esp_driver_sdspi", "esp_driver_spi", "esp_driver_touch_sens", "esp_driver_tsens", "esp_driver_twai", "esp_driver_uart", "esp_driver_usb_serial_jtag", "esp_eth", "esp_event", "esp_gdbstub", "esp_hid", "esp_http_client", "esp_http_server", "esp_https_ota", "esp_https_server", "esp_hw_support", "esp_lcd", "esp_local_ctrl", "esp_mm", "esp_netif", "esp_netif_stack", "esp_partition", "esp_phy", "esp_pm", "esp_psram", "esp_ringbuf", "esp_rom", "esp_security", "esp_system", "esp_timer", "esp_vfs_console", "esp_wifi", "espcoredump", "esptool_py", "fatfs", "freertos", "hal", "heap", "http_parser", "idf_test", "ieee802154", "json", "log", "lwip", "main", "mbedtls", "mqtt", "newlib", "nvs_flash", "nvs_sec_provider", "openthread", "partition_table", "perfmon", "protobuf-c", "protocomm", "pthread", "rt", "sdmmc", "soc", "spi_flash", "spiffs", "tcp_transport", "ulp", "unity", "usb", "vfs", "wear_levelling", "wifi_provisioning", "wpa_supplicant", "xtensa", "" ],
+    "build_component_paths" : [ "/home/mrclnndrd/esp/esp-idf/components/app_trace", "/home/mrclnndrd/esp/esp-idf/components/app_update", "/home/mrclnndrd/esp/esp-idf/components/bootloader", "/home/mrclnndrd/esp/esp-idf/components/bootloader_support", "/home/mrclnndrd/esp/esp-idf/components/bt", "/home/mrclnndrd/esp/esp-idf/components/cmock", "/home/mrclnndrd/esp/esp-idf/components/console", "/home/mrclnndrd/esp/esp-idf/components/cxx", "/home/mrclnndrd/esp/esp-idf/components/driver", "/home/mrclnndrd/esp/esp-idf/components/efuse", "/home/mrclnndrd/esp/esp-idf/components/esp-tls", "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/components/esp32-camera", "/home/mrclnndrd/esp/esp-idf/components/esp_adc", "/home/mrclnndrd/esp/esp-idf/components/esp_app_format", "/home/mrclnndrd/esp/esp-idf/components/esp_bootloader_format", "/home/mrclnndrd/esp/esp-idf/components/esp_coex", "/home/mrclnndrd/esp/esp-idf/components/esp_common", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_ana_cmpr", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_bitscrambler", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_cam", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_dac", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_gpio", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_gptimer", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_i2c", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_i2s", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_isp", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_jpeg", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_ledc", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_mcpwm", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_parlio", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_pcnt", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_ppa", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_rmt", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_sdio", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_sdm", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_sdmmc", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_sdspi", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_spi", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_touch_sens", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_tsens", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_twai", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_uart", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_usb_serial_jtag", "/home/mrclnndrd/esp/esp-idf/components/esp_eth", "/home/mrclnndrd/esp/esp-idf/components/esp_event", "/home/mrclnndrd/esp/esp-idf/components/esp_gdbstub", "/home/mrclnndrd/esp/esp-idf/components/esp_hid", "/home/mrclnndrd/esp/esp-idf/components/esp_http_client", "/home/mrclnndrd/esp/esp-idf/components/esp_http_server", "/home/mrclnndrd/esp/esp-idf/components/esp_https_ota", "/home/mrclnndrd/esp/esp-idf/components/esp_https_server", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support", "/home/mrclnndrd/esp/esp-idf/components/esp_lcd", "/home/mrclnndrd/esp/esp-idf/components/esp_local_ctrl", "/home/mrclnndrd/esp/esp-idf/components/esp_mm", "/home/mrclnndrd/esp/esp-idf/components/esp_netif", "/home/mrclnndrd/esp/esp-idf/components/esp_netif_stack", "/home/mrclnndrd/esp/esp-idf/components/esp_partition", "/home/mrclnndrd/esp/esp-idf/components/esp_phy", "/home/mrclnndrd/esp/esp-idf/components/esp_pm", "/home/mrclnndrd/esp/esp-idf/components/esp_psram", "/home/mrclnndrd/esp/esp-idf/components/esp_ringbuf", "/home/mrclnndrd/esp/esp-idf/components/esp_rom", "/home/mrclnndrd/esp/esp-idf/components/esp_security", "/home/mrclnndrd/esp/esp-idf/components/esp_system", "/home/mrclnndrd/esp/esp-idf/components/esp_timer", "/home/mrclnndrd/esp/esp-idf/components/esp_vfs_console", "/home/mrclnndrd/esp/esp-idf/components/esp_wifi", "/home/mrclnndrd/esp/esp-idf/components/espcoredump", "/home/mrclnndrd/esp/esp-idf/components/esptool_py", "/home/mrclnndrd/esp/esp-idf/components/fatfs", "/home/mrclnndrd/esp/esp-idf/components/freertos", "/home/mrclnndrd/esp/esp-idf/components/hal", "/home/mrclnndrd/esp/esp-idf/components/heap", "/home/mrclnndrd/esp/esp-idf/components/http_parser", "/home/mrclnndrd/esp/esp-idf/components/idf_test", "/home/mrclnndrd/esp/esp-idf/components/ieee802154", "/home/mrclnndrd/esp/esp-idf/components/json", "/home/mrclnndrd/esp/esp-idf/components/log", "/home/mrclnndrd/esp/esp-idf/components/lwip", "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/main", "/home/mrclnndrd/esp/esp-idf/components/mbedtls", "/home/mrclnndrd/esp/esp-idf/components/mqtt", "/home/mrclnndrd/esp/esp-idf/components/newlib", "/home/mrclnndrd/esp/esp-idf/components/nvs_flash", "/home/mrclnndrd/esp/esp-idf/components/nvs_sec_provider", "/home/mrclnndrd/esp/esp-idf/components/openthread", "/home/mrclnndrd/esp/esp-idf/components/partition_table", "/home/mrclnndrd/esp/esp-idf/components/perfmon", "/home/mrclnndrd/esp/esp-idf/components/protobuf-c", "/home/mrclnndrd/esp/esp-idf/components/protocomm", "/home/mrclnndrd/esp/esp-idf/components/pthread", "/home/mrclnndrd/esp/esp-idf/components/rt", "/home/mrclnndrd/esp/esp-idf/components/sdmmc", "/home/mrclnndrd/esp/esp-idf/components/soc", "/home/mrclnndrd/esp/esp-idf/components/spi_flash", "/home/mrclnndrd/esp/esp-idf/components/spiffs", "/home/mrclnndrd/esp/esp-idf/components/tcp_transport", "/home/mrclnndrd/esp/esp-idf/components/ulp", "/home/mrclnndrd/esp/esp-idf/components/unity", "/home/mrclnndrd/esp/esp-idf/components/usb", "/home/mrclnndrd/esp/esp-idf/components/vfs", "/home/mrclnndrd/esp/esp-idf/components/wear_levelling", "/home/mrclnndrd/esp/esp-idf/components/wifi_provisioning", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant", "/home/mrclnndrd/esp/esp-idf/components/xtensa", "" ],
     "build_component_info" : {
         "app_trace": {
             "alias": "idf::app_trace",
@@ -85,7 +85,7 @@
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "file": "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/build/esp-idf/bootloader_support/libbootloader_support.a",
-            "sources": [ "/home/mrclnndrd/esp/esp-idf/components/bootloader_support/src/bootloader_common.c", "/home/mrclnndrd/esp/esp-idf/components/bootloader_support/src/bootloader_common_loader.c", "/home/mrclnndrd/esp/esp-idf/components/bootloader_support/src/bootloader_clock_init.c", "/home/mrclnndrd/esp/esp-idf/components/bootloader_support/src/bootloader_mem.c", "/home/mrclnndrd/esp/esp-idf/components/bootloader_support/src/bootloader_random.c", "/home/mrclnndrd/esp/esp-idf/components/bootloader_support/src/bootloader_efuse.c", "/home/mrclnndrd/esp/esp-idf/components/bootloader_support/src/flash_encrypt.c", "/home/mrclnndrd/esp/esp-idf/components/bootloader_support/src/secure_boot.c", "/home/mrclnndrd/esp/esp-idf/components/bootloader_support/src/bootloader_random_esp32s3.c", "/home/mrclnndrd/esp/esp-idf/components/bootloader_support/bootloader_flash/src/bootloader_flash.c", "/home/mrclnndrd/esp/esp-idf/components/bootloader_support/bootloader_flash/src/flash_qio_mode.c", "/home/mrclnndrd/esp/esp-idf/components/bootloader_support/bootloader_flash/src/bootloader_flash_config_esp32s3.c", "/home/mrclnndrd/esp/esp-idf/components/bootloader_support/src/bootloader_utility.c", "/home/mrclnndrd/esp/esp-idf/components/bootloader_support/src/flash_partitions.c", "/home/mrclnndrd/esp/esp-idf/components/bootloader_support/src/esp_image_format.c", "/home/mrclnndrd/esp/esp-idf/components/bootloader_support/src/bootloader_sha.c", "/home/mrclnndrd/esp/esp-idf/components/bootloader_support/src/esp32s3/secure_boot_secure_features.c" ],
+            "sources": [ "/home/mrclnndrd/esp/esp-idf/components/bootloader_support/src/bootloader_common.c", "/home/mrclnndrd/esp/esp-idf/components/bootloader_support/src/bootloader_common_loader.c", "/home/mrclnndrd/esp/esp-idf/components/bootloader_support/src/bootloader_clock_init.c", "/home/mrclnndrd/esp/esp-idf/components/bootloader_support/src/bootloader_mem.c", "/home/mrclnndrd/esp/esp-idf/components/bootloader_support/src/bootloader_random.c", "/home/mrclnndrd/esp/esp-idf/components/bootloader_support/src/bootloader_efuse.c", "/home/mrclnndrd/esp/esp-idf/components/bootloader_support/src/flash_encrypt.c", "/home/mrclnndrd/esp/esp-idf/components/bootloader_support/src/secure_boot.c", "/home/mrclnndrd/esp/esp-idf/components/bootloader_support/src/bootloader_random_esp32.c", "/home/mrclnndrd/esp/esp-idf/components/bootloader_support/bootloader_flash/src/bootloader_flash.c", "/home/mrclnndrd/esp/esp-idf/components/bootloader_support/bootloader_flash/src/flash_qio_mode.c", "/home/mrclnndrd/esp/esp-idf/components/bootloader_support/bootloader_flash/src/bootloader_flash_config_esp32.c", "/home/mrclnndrd/esp/esp-idf/components/bootloader_support/src/bootloader_utility.c", "/home/mrclnndrd/esp/esp-idf/components/bootloader_support/src/flash_partitions.c", "/home/mrclnndrd/esp/esp-idf/components/bootloader_support/src/esp_image_format.c", "/home/mrclnndrd/esp/esp-idf/components/bootloader_support/src/bootloader_sha.c", "/home/mrclnndrd/esp/esp-idf/components/bootloader_support/src/esp32/secure_boot_secure_features.c" ],
             "include_dirs": [ "include", "bootloader_flash/include" ]
         },
         "bt": {
@@ -160,8 +160,8 @@
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "file": "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/build/esp-idf/driver/libdriver.a",
-            "sources": [ "/home/mrclnndrd/esp/esp-idf/components/driver/deprecated/adc_legacy.c", "/home/mrclnndrd/esp/esp-idf/components/driver/deprecated/adc_dma_legacy.c", "/home/mrclnndrd/esp/esp-idf/components/driver/deprecated/timer_legacy.c", "/home/mrclnndrd/esp/esp-idf/components/driver/i2c/i2c.c", "/home/mrclnndrd/esp/esp-idf/components/driver/deprecated/i2s_legacy.c", "/home/mrclnndrd/esp/esp-idf/components/driver/deprecated/mcpwm_legacy.c", "/home/mrclnndrd/esp/esp-idf/components/driver/deprecated/pcnt_legacy.c", "/home/mrclnndrd/esp/esp-idf/components/driver/deprecated/rmt_legacy.c", "/home/mrclnndrd/esp/esp-idf/components/driver/deprecated/sigma_delta_legacy.c", "/home/mrclnndrd/esp/esp-idf/components/driver/deprecated/rtc_temperature_legacy.c", "/home/mrclnndrd/esp/esp-idf/components/driver/touch_sensor/touch_sensor_common.c", "/home/mrclnndrd/esp/esp-idf/components/driver/touch_sensor/esp32s3/touch_sensor.c", "/home/mrclnndrd/esp/esp-idf/components/driver/twai/twai.c" ],
-            "include_dirs": [ "deprecated", "i2c/include", "touch_sensor/include", "twai/include", "touch_sensor/esp32s3/include" ]
+            "sources": [ "/home/mrclnndrd/esp/esp-idf/components/driver/deprecated/adc_legacy.c", "/home/mrclnndrd/esp/esp-idf/components/driver/deprecated/adc_dma_legacy.c", "/home/mrclnndrd/esp/esp-idf/components/driver/deprecated/dac_common_legacy.c", "/home/mrclnndrd/esp/esp-idf/components/driver/deprecated/esp32/dac_legacy.c", "/home/mrclnndrd/esp/esp-idf/components/driver/deprecated/timer_legacy.c", "/home/mrclnndrd/esp/esp-idf/components/driver/i2c/i2c.c", "/home/mrclnndrd/esp/esp-idf/components/driver/deprecated/i2s_legacy.c", "/home/mrclnndrd/esp/esp-idf/components/driver/deprecated/mcpwm_legacy.c", "/home/mrclnndrd/esp/esp-idf/components/driver/deprecated/pcnt_legacy.c", "/home/mrclnndrd/esp/esp-idf/components/driver/deprecated/rmt_legacy.c", "/home/mrclnndrd/esp/esp-idf/components/driver/deprecated/sigma_delta_legacy.c", "/home/mrclnndrd/esp/esp-idf/components/driver/touch_sensor/touch_sensor_common.c", "/home/mrclnndrd/esp/esp-idf/components/driver/touch_sensor/esp32/touch_sensor.c", "/home/mrclnndrd/esp/esp-idf/components/driver/twai/twai.c", "/home/mrclnndrd/esp/esp-idf/components/driver/deprecated/adc_i2s_deprecated.c" ],
+            "include_dirs": [ "deprecated", "i2c/include", "touch_sensor/include", "twai/include", "touch_sensor/esp32/include" ]
         },
         "efuse": {
             "alias": "idf::efuse",
@@ -175,8 +175,8 @@
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "file": "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/build/esp-idf/efuse/libefuse.a",
-            "sources": [ "/home/mrclnndrd/esp/esp-idf/components/efuse/esp32s3/esp_efuse_table.c", "/home/mrclnndrd/esp/esp-idf/components/efuse/esp32s3/esp_efuse_fields.c", "/home/mrclnndrd/esp/esp-idf/components/efuse/esp32s3/esp_efuse_rtc_calib.c", "/home/mrclnndrd/esp/esp-idf/components/efuse/esp32s3/esp_efuse_utility.c", "/home/mrclnndrd/esp/esp-idf/components/efuse/src/esp_efuse_api.c", "/home/mrclnndrd/esp/esp-idf/components/efuse/src/esp_efuse_fields.c", "/home/mrclnndrd/esp/esp-idf/components/efuse/src/esp_efuse_utility.c", "/home/mrclnndrd/esp/esp-idf/components/efuse/src/efuse_controller/keys/with_key_purposes/esp_efuse_api_key.c", "/home/mrclnndrd/esp/esp-idf/components/efuse/src/esp_efuse_startup.c" ],
-            "include_dirs": [ "include", "esp32s3/include" ]
+            "sources": [ "/home/mrclnndrd/esp/esp-idf/components/efuse/esp32/esp_efuse_table.c", "/home/mrclnndrd/esp/esp-idf/components/efuse/esp32/esp_efuse_fields.c", "/home/mrclnndrd/esp/esp-idf/components/efuse/esp32/esp_efuse_utility.c", "/home/mrclnndrd/esp/esp-idf/components/efuse/src/esp_efuse_api.c", "/home/mrclnndrd/esp/esp-idf/components/efuse/src/esp_efuse_fields.c", "/home/mrclnndrd/esp/esp-idf/components/efuse/src/esp_efuse_utility.c", "/home/mrclnndrd/esp/esp-idf/components/efuse/src/efuse_controller/keys/without_key_purposes/three_key_blocks/esp_efuse_api_key.c", "/home/mrclnndrd/esp/esp-idf/components/efuse/src/esp_efuse_startup.c" ],
+            "include_dirs": [ "include", "esp32/include" ]
         },
         "esp-tls": {
             "alias": "idf::esp-tls",
@@ -205,7 +205,7 @@
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "file": "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/build/esp-idf/esp32-camera/libesp32-camera.a",
-            "sources": [ "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/components/esp32-camera/conversions/yuv.c", "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/components/esp32-camera/conversions/to_jpg.cpp", "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/components/esp32-camera/conversions/to_bmp.c", "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/components/esp32-camera/conversions/jpge.cpp", "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/components/esp32-camera/conversions/esp_jpg_decode.c", "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/components/esp32-camera/driver/esp_camera.c", "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/components/esp32-camera/driver/cam_hal.c", "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/components/esp32-camera/driver/sensor.c", "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/components/esp32-camera/sensors/ov2640.c", "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/components/esp32-camera/sensors/ov3660.c", "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/components/esp32-camera/sensors/ov5640.c", "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/components/esp32-camera/sensors/ov7725.c", "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/components/esp32-camera/sensors/ov7670.c", "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/components/esp32-camera/sensors/nt99141.c", "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/components/esp32-camera/sensors/gc0308.c", "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/components/esp32-camera/sensors/gc2145.c", "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/components/esp32-camera/sensors/gc032a.c", "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/components/esp32-camera/sensors/bf3005.c", "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/components/esp32-camera/sensors/bf20a6.c", "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/components/esp32-camera/sensors/sc101iot.c", "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/components/esp32-camera/sensors/sc030iot.c", "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/components/esp32-camera/sensors/sc031gs.c", "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/components/esp32-camera/sensors/mega_ccm.c", "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/components/esp32-camera/target/esp32s3/ll_cam.c", "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/components/esp32-camera/driver/sccb-ng.c" ],
+            "sources": [ "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/components/esp32-camera/conversions/yuv.c", "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/components/esp32-camera/conversions/to_jpg.cpp", "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/components/esp32-camera/conversions/to_bmp.c", "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/components/esp32-camera/conversions/jpge.cpp", "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/components/esp32-camera/conversions/esp_jpg_decode.c", "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/components/esp32-camera/driver/esp_camera.c", "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/components/esp32-camera/driver/cam_hal.c", "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/components/esp32-camera/driver/sensor.c", "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/components/esp32-camera/sensors/ov2640.c", "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/components/esp32-camera/sensors/ov3660.c", "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/components/esp32-camera/sensors/ov5640.c", "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/components/esp32-camera/sensors/ov7725.c", "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/components/esp32-camera/sensors/ov7670.c", "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/components/esp32-camera/sensors/nt99141.c", "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/components/esp32-camera/sensors/gc0308.c", "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/components/esp32-camera/sensors/gc2145.c", "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/components/esp32-camera/sensors/gc032a.c", "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/components/esp32-camera/sensors/bf3005.c", "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/components/esp32-camera/sensors/bf20a6.c", "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/components/esp32-camera/sensors/sc101iot.c", "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/components/esp32-camera/sensors/sc030iot.c", "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/components/esp32-camera/sensors/sc031gs.c", "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/components/esp32-camera/sensors/mega_ccm.c", "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/components/esp32-camera/target/xclk.c", "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/components/esp32-camera/target/esp32/ll_cam.c", "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/components/esp32-camera/driver/sccb-ng.c" ],
             "include_dirs": [ "driver/include", "conversions/include" ]
         },
         "esp_adc": {
@@ -216,12 +216,12 @@
             "type": "LIBRARY",
             "lib": "__idf_esp_adc",
             "reqs": [],
-            "priv_reqs": [ "esp_driver_gpio", "efuse", "esp_pm", "esp_ringbuf", "esp_mm", "driver" ],
+            "priv_reqs": [ "esp_driver_gpio", "efuse", "esp_pm", "esp_ringbuf", "esp_mm", "esp_driver_i2s", "driver" ],
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "file": "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/build/esp-idf/esp_adc/libesp_adc.a",
-            "sources": [ "/home/mrclnndrd/esp/esp-idf/components/esp_adc/adc_oneshot.c", "/home/mrclnndrd/esp/esp-idf/components/esp_adc/adc_common.c", "/home/mrclnndrd/esp/esp-idf/components/esp_adc/adc_cali.c", "/home/mrclnndrd/esp/esp-idf/components/esp_adc/adc_cali_curve_fitting.c", "/home/mrclnndrd/esp/esp-idf/components/esp_adc/deprecated/esp_adc_cal_common_legacy.c", "/home/mrclnndrd/esp/esp-idf/components/esp_adc/adc_continuous.c", "/home/mrclnndrd/esp/esp-idf/components/esp_adc/adc_monitor.c", "/home/mrclnndrd/esp/esp-idf/components/esp_adc/gdma/adc_dma.c", "/home/mrclnndrd/esp/esp-idf/components/esp_adc/adc_filter.c", "/home/mrclnndrd/esp/esp-idf/components/esp_adc/esp32s3/curve_fitting_coefficients.c", "/home/mrclnndrd/esp/esp-idf/components/esp_adc/deprecated/esp32s3/esp_adc_cal_legacy.c" ],
-            "include_dirs": [ "include", "interface", "esp32s3/include", "deprecated/include" ]
+            "sources": [ "/home/mrclnndrd/esp/esp-idf/components/esp_adc/adc_oneshot.c", "/home/mrclnndrd/esp/esp-idf/components/esp_adc/adc_common.c", "/home/mrclnndrd/esp/esp-idf/components/esp_adc/adc_cali.c", "/home/mrclnndrd/esp/esp-idf/components/esp_adc/adc_cali_curve_fitting.c", "/home/mrclnndrd/esp/esp-idf/components/esp_adc/deprecated/esp_adc_cal_common_legacy.c", "/home/mrclnndrd/esp/esp-idf/components/esp_adc/adc_continuous.c", "/home/mrclnndrd/esp/esp-idf/components/esp_adc/esp32/adc_dma.c", "/home/mrclnndrd/esp/esp-idf/components/esp_adc/esp32/adc_cali_line_fitting.c", "/home/mrclnndrd/esp/esp-idf/components/esp_adc/deprecated/esp32/esp_adc_cal_legacy.c" ],
+            "include_dirs": [ "include", "interface", "esp32/include", "deprecated/include" ]
         },
         "esp_app_format": {
             "alias": "idf::esp_app_format",
@@ -265,7 +265,7 @@
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "file": "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/build/esp-idf/esp_coex/libesp_coex.a",
-            "sources": [ "/home/mrclnndrd/esp/esp-idf/components/esp_coex/esp32s3/esp_coex_adapter.c", "/home/mrclnndrd/esp/esp-idf/components/esp_coex/src/coexist_debug_diagram.c", "/home/mrclnndrd/esp/esp-idf/components/esp_coex/src/coexist_debug.c" ],
+            "sources": [ "/home/mrclnndrd/esp/esp-idf/components/esp_coex/esp32/esp_coex_adapter.c", "/home/mrclnndrd/esp/esp-idf/components/esp_coex/src/coexist_debug_diagram.c", "/home/mrclnndrd/esp/esp-idf/components/esp_coex/src/coexist_debug.c" ],
             "include_dirs": [ "include" ]
         },
         "esp_common": {
@@ -333,14 +333,14 @@
             "target": "___idf_esp_driver_dac",
             "prefix": "idf",
             "dir": "/home/mrclnndrd/esp/esp-idf/components/esp_driver_dac",
-            "type": "CONFIG_ONLY",
+            "type": "LIBRARY",
             "lib": "__idf_esp_driver_dac",
             "reqs": [],
-            "priv_reqs": [ "esp_pm", "esp_driver_gpio" ],
+            "priv_reqs": [ "esp_pm", "esp_driver_gpio", "esp_driver_i2s" ],
             "managed_reqs": [],
             "managed_priv_reqs": [],
-            "file": "",
-            "sources": [],
+            "file": "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/build/esp-idf/esp_driver_dac/libesp_driver_dac.a",
+            "sources": [ "/home/mrclnndrd/esp/esp-idf/components/esp_driver_dac/dac_oneshot.c", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_dac/dac_cosine.c", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_dac/dac_continuous.c", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_dac/dac_common.c", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_dac/esp32/dac_dma.c" ],
             "include_dirs": [ "./include" ]
         },
         "esp_driver_gpio": {
@@ -355,7 +355,7 @@
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "file": "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/build/esp-idf/esp_driver_gpio/libesp_driver_gpio.a",
-            "sources": [ "/home/mrclnndrd/esp/esp-idf/components/esp_driver_gpio/src/gpio.c", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_gpio/src/gpio_glitch_filter_ops.c", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_gpio/src/rtc_io.c", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_gpio/src/dedic_gpio.c", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_gpio/src/gpio_pin_glitch_filter.c" ],
+            "sources": [ "/home/mrclnndrd/esp/esp-idf/components/esp_driver_gpio/src/gpio.c", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_gpio/src/gpio_glitch_filter_ops.c", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_gpio/src/rtc_io.c" ],
             "include_dirs": [ "include" ]
         },
         "esp_driver_gptimer": {
@@ -400,7 +400,7 @@
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "file": "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/build/esp-idf/esp_driver_i2s/libesp_driver_i2s.a",
-            "sources": [ "/home/mrclnndrd/esp/esp-idf/components/esp_driver_i2s/i2s_common.c", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_i2s/i2s_std.c", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_i2s/i2s_pdm.c", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_i2s/i2s_tdm.c", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_i2s/i2s_platform.c" ],
+            "sources": [ "/home/mrclnndrd/esp/esp-idf/components/esp_driver_i2s/i2s_common.c", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_i2s/i2s_std.c", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_i2s/i2s_pdm.c", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_i2s/i2s_platform.c" ],
             "include_dirs": [ "include" ]
         },
         "esp_driver_isp": {
@@ -528,14 +528,14 @@
             "target": "___idf_esp_driver_sdio",
             "prefix": "idf",
             "dir": "/home/mrclnndrd/esp/esp-idf/components/esp_driver_sdio",
-            "type": "CONFIG_ONLY",
+            "type": "LIBRARY",
             "lib": "__idf_esp_driver_sdio",
             "reqs": [],
             "priv_reqs": [ "esp_driver_gpio", "esp_ringbuf" ],
             "managed_reqs": [],
             "managed_priv_reqs": [],
-            "file": "",
-            "sources": [],
+            "file": "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/build/esp-idf/esp_driver_sdio/libesp_driver_sdio.a",
+            "sources": [ "/home/mrclnndrd/esp/esp-idf/components/esp_driver_sdio/src/sdio_slave.c" ],
             "include_dirs": [ "include" ]
         },
         "esp_driver_sdm": {
@@ -595,7 +595,7 @@
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "file": "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/build/esp-idf/esp_driver_spi/libesp_driver_spi.a",
-            "sources": [ "/home/mrclnndrd/esp/esp-idf/components/esp_driver_spi/src/gpspi/spi_common.c", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_spi/src/gpspi/spi_master.c", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_spi/src/gpspi/spi_slave.c", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_spi/src/gpspi/spi_slave_hd.c" ],
+            "sources": [ "/home/mrclnndrd/esp/esp-idf/components/esp_driver_spi/src/gpspi/spi_common.c", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_spi/src/gpspi/spi_master.c", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_spi/src/gpspi/spi_slave.c", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_spi/src/gpspi/spi_dma.c" ],
             "include_dirs": [ "include" ]
         },
         "esp_driver_touch_sens": {
@@ -606,26 +606,26 @@
             "type": "LIBRARY",
             "lib": "__idf_esp_driver_touch_sens",
             "reqs": [],
-            "priv_reqs": [ "esp_driver_gpio" ],
+            "priv_reqs": [ "esp_driver_gpio", "esp_timer" ],
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "file": "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/build/esp-idf/esp_driver_touch_sens/libesp_driver_touch_sens.a",
-            "sources": [ "/home/mrclnndrd/esp/esp-idf/components/esp_driver_touch_sens/common/touch_sens_common.c", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_touch_sens/hw_ver2/touch_version_specific.c" ],
-            "include_dirs": [ "include", "hw_ver2/include" ]
+            "sources": [ "/home/mrclnndrd/esp/esp-idf/components/esp_driver_touch_sens/common/touch_sens_common.c", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_touch_sens/hw_ver1/touch_version_specific.c" ],
+            "include_dirs": [ "include", "hw_ver1/include" ]
         },
         "esp_driver_tsens": {
             "alias": "idf::esp_driver_tsens",
             "target": "___idf_esp_driver_tsens",
             "prefix": "idf",
             "dir": "/home/mrclnndrd/esp/esp-idf/components/esp_driver_tsens",
-            "type": "LIBRARY",
+            "type": "CONFIG_ONLY",
             "lib": "__idf_esp_driver_tsens",
             "reqs": [],
             "priv_reqs": [ "efuse" ],
             "managed_reqs": [],
             "managed_priv_reqs": [],
-            "file": "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/build/esp-idf/esp_driver_tsens/libesp_driver_tsens.a",
-            "sources": [ "/home/mrclnndrd/esp/esp-idf/components/esp_driver_tsens/src/temperature_sensor.c" ],
+            "file": "",
+            "sources": [],
             "include_dirs": [ "include" ]
         },
         "esp_driver_twai": {
@@ -663,14 +663,14 @@
             "target": "___idf_esp_driver_usb_serial_jtag",
             "prefix": "idf",
             "dir": "/home/mrclnndrd/esp/esp-idf/components/esp_driver_usb_serial_jtag",
-            "type": "LIBRARY",
+            "type": "CONFIG_ONLY",
             "lib": "__idf_esp_driver_usb_serial_jtag",
             "reqs": [],
             "priv_reqs": [ "esp_driver_gpio", "esp_ringbuf", "esp_pm", "esp_timer" ],
             "managed_reqs": [],
             "managed_priv_reqs": [],
-            "file": "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/build/esp-idf/esp_driver_usb_serial_jtag/libesp_driver_usb_serial_jtag.a",
-            "sources": [ "/home/mrclnndrd/esp/esp-idf/components/esp_driver_usb_serial_jtag/src/usb_serial_jtag.c", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_usb_serial_jtag/src/usb_serial_jtag_connection_monitor.c", "/home/mrclnndrd/esp/esp-idf/components/esp_driver_usb_serial_jtag/src/usb_serial_jtag_vfs.c" ],
+            "file": "",
+            "sources": [],
             "include_dirs": [ "include" ]
         },
         "esp_eth": {
@@ -685,7 +685,7 @@
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "file": "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/build/esp-idf/esp_eth/libesp_eth.a",
-            "sources": [ "/home/mrclnndrd/esp/esp-idf/components/esp_eth/src/esp_eth.c", "/home/mrclnndrd/esp/esp-idf/components/esp_eth/src/phy/esp_eth_phy_802_3.c", "/home/mrclnndrd/esp/esp-idf/components/esp_eth/src/esp_eth_netif_glue.c" ],
+            "sources": [ "/home/mrclnndrd/esp/esp-idf/components/esp_eth/src/esp_eth.c", "/home/mrclnndrd/esp/esp-idf/components/esp_eth/src/phy/esp_eth_phy_802_3.c", "/home/mrclnndrd/esp/esp-idf/components/esp_eth/src/esp_eth_netif_glue.c", "/home/mrclnndrd/esp/esp-idf/components/esp_eth/src/mac/esp_eth_mac_esp.c", "/home/mrclnndrd/esp/esp-idf/components/esp_eth/src/mac/esp_eth_mac_esp_dma.c", "/home/mrclnndrd/esp/esp-idf/components/esp_eth/src/mac/esp_eth_mac_esp_gpio.c", "/home/mrclnndrd/esp/esp-idf/components/esp_eth/src/phy/esp_eth_phy_generic.c", "/home/mrclnndrd/esp/esp-idf/components/esp_eth/src/phy/esp_eth_phy_dp83848.c", "/home/mrclnndrd/esp/esp-idf/components/esp_eth/src/phy/esp_eth_phy_ip101.c", "/home/mrclnndrd/esp/esp-idf/components/esp_eth/src/phy/esp_eth_phy_ksz80xx.c", "/home/mrclnndrd/esp/esp-idf/components/esp_eth/src/phy/esp_eth_phy_lan87xx.c", "/home/mrclnndrd/esp/esp-idf/components/esp_eth/src/phy/esp_eth_phy_rtl8201.c" ],
             "include_dirs": [ "include" ]
         },
         "esp_event": {
@@ -805,8 +805,8 @@
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "file": "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/build/esp-idf/esp_hw_support/libesp_hw_support.a",
-            "sources": [ "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/cpu.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/port/esp32s3/esp_cpu_intr.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/esp_memory_utils.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/port/esp32s3/cpu_region_protect.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/esp_clk.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/clk_ctrl_os.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/hw_random.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/intr_alloc.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/mac_addr.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/periph_ctrl.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/revision.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/rtc_module.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/regi2c_ctrl.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/esp_gpio_reserve.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/sar_periph_ctrl_common.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/port/esp32s3/io_mux.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/port/esp32s3/esp_clk_tree.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/dma/esp_dma_utils.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/dma/gdma_link.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/spi_bus_lock.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/clk_utils.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/port/esp_clk_tree_common.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/spi_share_hw_ctrl.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/adc_share_hw_ctrl.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/sleep_modem.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/sleep_modes.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/sleep_console.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/sleep_usb.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/sleep_gpio.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/sleep_event.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/dma/gdma.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/deprecated/gdma_legacy.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/dma/esp_async_memcpy.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/dma/async_memcpy_gdma.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/port/esp32s3/systimer.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/mspi_timing_tuning/mspi_timing_tuning.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/mspi_timing_tuning/mspi_timing_by_mspi_delay.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/sleep_wake_stub.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/esp_clock_output.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/power_supply/brownout.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/port/esp32s3/rtc_clk.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/port/esp32s3/rtc_clk_init.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/port/esp32s3/rtc_init.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/port/esp32s3/rtc_sleep.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/port/esp32s3/rtc_time.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/port/esp32s3/chip_info.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/port/esp32s3/sar_periph_ctrl.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/port/esp32s3/esp_memprot.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/port/esp_memprot_conv.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/mspi_timing_tuning/port/esp32s3/mspi_timing_config.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/lowpower/port/esp32s3/sleep_cpu.c" ],
-            "include_dirs": [ "include", "include/soc", "include/soc/esp32s3", "dma/include", "ldo/include", "debug_probe/include", "mspi_timing_tuning/include", "power_supply/include" ]
+            "sources": [ "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/cpu.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/port/esp32/esp_cpu_intr.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/esp_memory_utils.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/port/esp32/cpu_region_protect.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/esp_clk.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/clk_ctrl_os.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/hw_random.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/intr_alloc.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/mac_addr.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/periph_ctrl.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/revision.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/rtc_module.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/regi2c_ctrl.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/esp_gpio_reserve.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/sar_periph_ctrl_common.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/port/esp32/io_mux.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/port/esp32/esp_clk_tree.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/dma/esp_dma_utils.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/dma/gdma_link.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/spi_bus_lock.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/clk_utils.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/port/esp_clk_tree_common.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/spi_share_hw_ctrl.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/adc_share_hw_ctrl.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/sleep_modem.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/sleep_modes.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/sleep_console.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/sleep_usb.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/sleep_gpio.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/sleep_event.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/rtc_wdt.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/mspi_timing_tuning/mspi_timing_tuning.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/sleep_wake_stub.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/esp_clock_output.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/power_supply/brownout.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/port/esp32/rtc_clk.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/port/esp32/rtc_clk_init.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/port/esp32/rtc_init.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/port/esp32/rtc_sleep.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/port/esp32/rtc_time.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/port/esp32/chip_info.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/port/esp32/cache_sram_mmu.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/port/esp32/sar_periph_ctrl.c", "/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/lowpower" ],
+            "include_dirs": [ "include", "include/soc", "include/soc/esp32", "dma/include", "ldo/include", "debug_probe/include", "mspi_timing_tuning/include", "power_supply/include" ]
         },
         "esp_lcd": {
             "alias": "idf::esp_lcd",
@@ -820,8 +820,8 @@
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "file": "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/build/esp-idf/esp_lcd/libesp_lcd.a",
-            "sources": [ "/home/mrclnndrd/esp/esp-idf/components/esp_lcd/src/esp_lcd_common.c", "/home/mrclnndrd/esp/esp-idf/components/esp_lcd/src/esp_lcd_panel_io.c", "/home/mrclnndrd/esp/esp-idf/components/esp_lcd/src/esp_lcd_panel_nt35510.c", "/home/mrclnndrd/esp/esp-idf/components/esp_lcd/src/esp_lcd_panel_ssd1306.c", "/home/mrclnndrd/esp/esp-idf/components/esp_lcd/src/esp_lcd_panel_st7789.c", "/home/mrclnndrd/esp/esp-idf/components/esp_lcd/src/esp_lcd_panel_ops.c", "/home/mrclnndrd/esp/esp-idf/components/esp_lcd/i2c/esp_lcd_panel_io_i2c_v1.c", "/home/mrclnndrd/esp/esp-idf/components/esp_lcd/i2c/esp_lcd_panel_io_i2c_v2.c", "/home/mrclnndrd/esp/esp-idf/components/esp_lcd/spi/esp_lcd_panel_io_spi.c", "/home/mrclnndrd/esp/esp-idf/components/esp_lcd/i80/esp_lcd_panel_io_i80.c", "/home/mrclnndrd/esp/esp-idf/components/esp_lcd/rgb/esp_lcd_panel_rgb.c" ],
-            "include_dirs": [ "include", "interface", "rgb/include" ]
+            "sources": [ "/home/mrclnndrd/esp/esp-idf/components/esp_lcd/src/esp_lcd_common.c", "/home/mrclnndrd/esp/esp-idf/components/esp_lcd/src/esp_lcd_panel_io.c", "/home/mrclnndrd/esp/esp-idf/components/esp_lcd/src/esp_lcd_panel_nt35510.c", "/home/mrclnndrd/esp/esp-idf/components/esp_lcd/src/esp_lcd_panel_ssd1306.c", "/home/mrclnndrd/esp/esp-idf/components/esp_lcd/src/esp_lcd_panel_st7789.c", "/home/mrclnndrd/esp/esp-idf/components/esp_lcd/src/esp_lcd_panel_ops.c", "/home/mrclnndrd/esp/esp-idf/components/esp_lcd/i2c/esp_lcd_panel_io_i2c_v1.c", "/home/mrclnndrd/esp/esp-idf/components/esp_lcd/i2c/esp_lcd_panel_io_i2c_v2.c", "/home/mrclnndrd/esp/esp-idf/components/esp_lcd/spi/esp_lcd_panel_io_spi.c", "/home/mrclnndrd/esp/esp-idf/components/esp_lcd/i80/esp_lcd_panel_io_i2s.c" ],
+            "include_dirs": [ "include", "interface" ]
         },
         "esp_local_ctrl": {
             "alias": "idf::esp_local_ctrl",
@@ -850,7 +850,7 @@
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "file": "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/build/esp-idf/esp_mm/libesp_mm.a",
-            "sources": [ "/home/mrclnndrd/esp/esp-idf/components/esp_mm/esp_mmu_map.c", "/home/mrclnndrd/esp/esp-idf/components/esp_mm/port/esp32s3/ext_mem_layout.c", "/home/mrclnndrd/esp/esp-idf/components/esp_mm/esp_cache.c", "/home/mrclnndrd/esp/esp-idf/components/esp_mm/heap_align_hw.c" ],
+            "sources": [ "/home/mrclnndrd/esp/esp-idf/components/esp_mm/esp_mmu_map.c", "/home/mrclnndrd/esp/esp-idf/components/esp_mm/port/esp32/ext_mem_layout.c", "/home/mrclnndrd/esp/esp-idf/components/esp_mm/esp_cache.c", "/home/mrclnndrd/esp/esp-idf/components/esp_mm/cache_esp32.c", "/home/mrclnndrd/esp/esp-idf/components/esp_mm/heap_align_hw.c" ],
             "include_dirs": [ "include" ]
         },
         "esp_netif": {
@@ -910,8 +910,8 @@
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "file": "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/build/esp-idf/esp_phy/libesp_phy.a",
-            "sources": [ "/home/mrclnndrd/esp/esp-idf/components/esp_phy/src/phy_override.c", "/home/mrclnndrd/esp/esp-idf/components/esp_phy/src/lib_printf.c", "/home/mrclnndrd/esp/esp-idf/components/esp_phy/src/phy_common.c", "/home/mrclnndrd/esp/esp-idf/components/esp_phy/src/phy_init.c", "/home/mrclnndrd/esp/esp-idf/components/esp_phy/esp32s3/phy_init_data.c", "/home/mrclnndrd/esp/esp-idf/components/esp_phy/src/btbb_init.c" ],
-            "include_dirs": [ "include", "esp32s3/include" ]
+            "sources": [ "/home/mrclnndrd/esp/esp-idf/components/esp_phy/src/phy_override.c", "/home/mrclnndrd/esp/esp-idf/components/esp_phy/src/lib_printf.c", "/home/mrclnndrd/esp/esp-idf/components/esp_phy/src/phy_common.c", "/home/mrclnndrd/esp/esp-idf/components/esp_phy/src/phy_init.c", "/home/mrclnndrd/esp/esp-idf/components/esp_phy/esp32/phy_init_data.c", "/home/mrclnndrd/esp/esp-idf/components/esp_phy/src/btbb_init.c" ],
+            "include_dirs": [ "include", "esp32/include" ]
         },
         "esp_pm": {
             "alias": "idf::esp_pm",
@@ -933,15 +933,15 @@
             "target": "___idf_esp_psram",
             "prefix": "idf",
             "dir": "/home/mrclnndrd/esp/esp-idf/components/esp_psram",
-            "type": "CONFIG_ONLY",
+            "type": "LIBRARY",
             "lib": "__idf_esp_psram",
             "reqs": [],
-            "priv_reqs": [ "heap", "spi_flash", "esp_mm" ],
+            "priv_reqs": [ "heap", "spi_flash", "esp_mm", "bootloader_support", "esp_driver_spi", "esp_driver_gpio" ],
             "managed_reqs": [],
             "managed_priv_reqs": [],
-            "file": "",
-            "sources": [],
-            "include_dirs": [ "include", "xip_impl/include" ]
+            "file": "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/build/esp-idf/esp_psram/libesp_psram.a",
+            "sources": [ "/home/mrclnndrd/esp/esp-idf/components/esp_psram/system_layer/esp_psram.c", "/home/mrclnndrd/esp/esp-idf/components/esp_psram/esp32/esp_psram_extram_cache.c", "/home/mrclnndrd/esp/esp-idf/components/esp_psram/esp32/esp_himem.c", "/home/mrclnndrd/esp/esp-idf/components/esp_psram/esp32/esp_psram_impl_quad.c", "/home/mrclnndrd/esp/esp-idf/components/esp_psram/device" ],
+            "include_dirs": [ "include" ]
         },
         "esp_ringbuf": {
             "alias": "idf::esp_ringbuf",
@@ -970,8 +970,8 @@
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "file": "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/build/esp-idf/esp_rom/libesp_rom.a",
-            "sources": [ "/home/mrclnndrd/esp/esp-idf/components/esp_rom/patches/esp_rom_sys.c", "/home/mrclnndrd/esp/esp-idf/components/esp_rom/patches/esp_rom_print.c", "/home/mrclnndrd/esp/esp-idf/components/esp_rom/patches/esp_rom_crc.c", "/home/mrclnndrd/esp/esp-idf/components/esp_rom/patches/esp_rom_uart.c", "/home/mrclnndrd/esp/esp-idf/components/esp_rom/patches/esp_rom_spiflash.c", "/home/mrclnndrd/esp/esp-idf/components/esp_rom/patches/esp_rom_efuse.c", "/home/mrclnndrd/esp/esp-idf/components/esp_rom/patches/esp_rom_gpio.c", "/home/mrclnndrd/esp/esp-idf/components/esp_rom/patches/esp_rom_longjmp.S", "/home/mrclnndrd/esp/esp-idf/components/esp_rom/patches/esp_rom_systimer.c", "/home/mrclnndrd/esp/esp-idf/components/esp_rom/patches/esp_rom_wdt.c", "/home/mrclnndrd/esp/esp-idf/components/esp_rom/patches/esp_rom_cache_esp32s2_esp32s3.c", "/home/mrclnndrd/esp/esp-idf/components/esp_rom/patches/esp_rom_cache_writeback_esp32s3.S" ],
-            "include_dirs": [ "include", "esp32s3/include", "esp32s3/include/esp32s3", "esp32s3" ]
+            "sources": [ "/home/mrclnndrd/esp/esp-idf/components/esp_rom/patches/esp_rom_sys.c", "/home/mrclnndrd/esp/esp-idf/components/esp_rom/patches/esp_rom_print.c", "/home/mrclnndrd/esp/esp-idf/components/esp_rom/patches/esp_rom_crc.c", "/home/mrclnndrd/esp/esp-idf/components/esp_rom/patches/esp_rom_uart.c", "/home/mrclnndrd/esp/esp-idf/components/esp_rom/patches/esp_rom_spiflash.c", "/home/mrclnndrd/esp/esp-idf/components/esp_rom/patches/esp_rom_efuse.c", "/home/mrclnndrd/esp/esp-idf/components/esp_rom/patches/esp_rom_gpio.c", "/home/mrclnndrd/esp/esp-idf/components/esp_rom/patches/esp_rom_longjmp.S" ],
+            "include_dirs": [ "include", "esp32/include", "esp32/include/esp32", "esp32" ]
         },
         "esp_security": {
             "alias": "idf::esp_security",
@@ -985,7 +985,7 @@
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "file": "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/build/esp-idf/esp_security/libesp_security.a",
-            "sources": [ "/home/mrclnndrd/esp/esp-idf/components/esp_security/src/init.c", "/home/mrclnndrd/esp/esp-idf/components/esp_security/src/esp_hmac.c", "/home/mrclnndrd/esp/esp-idf/components/esp_security/src/esp_ds.c", "/home/mrclnndrd/esp/esp-idf/components/esp_security/src/esp_crypto_lock.c", "/home/mrclnndrd/esp/esp-idf/components/esp_security/src/esp_crypto_periph_clk.c" ],
+            "sources": [ "/home/mrclnndrd/esp/esp-idf/components/esp_security/src/init.c", "/home/mrclnndrd/esp/esp-idf/components/esp_security/src/esp_crypto_lock.c", "/home/mrclnndrd/esp/esp-idf/components/esp_security/src/esp_crypto_periph_clk.c" ],
             "include_dirs": [ "include" ]
         },
         "esp_system": {
@@ -1000,7 +1000,7 @@
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "file": "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/build/esp-idf/esp_system/libesp_system.a",
-            "sources": [ "/home/mrclnndrd/esp/esp-idf/components/esp_system/esp_err.c", "/home/mrclnndrd/esp/esp-idf/components/esp_system/crosscore_int.c", "/home/mrclnndrd/esp/esp-idf/components/esp_system/esp_ipc.c", "/home/mrclnndrd/esp/esp-idf/components/esp_system/esp_system_console.c", "/home/mrclnndrd/esp/esp-idf/components/esp_system/freertos_hooks.c", "/home/mrclnndrd/esp/esp-idf/components/esp_system/int_wdt.c", "/home/mrclnndrd/esp/esp-idf/components/esp_system/panic.c", "/home/mrclnndrd/esp/esp-idf/components/esp_system/esp_system.c", "/home/mrclnndrd/esp/esp-idf/components/esp_system/startup.c", "/home/mrclnndrd/esp/esp-idf/components/esp_system/startup_funcs.c", "/home/mrclnndrd/esp/esp-idf/components/esp_system/system_time.c", "/home/mrclnndrd/esp/esp-idf/components/esp_system/stack_check.c", "/home/mrclnndrd/esp/esp-idf/components/esp_system/ubsan.c", "/home/mrclnndrd/esp/esp-idf/components/esp_system/xt_wdt.c", "/home/mrclnndrd/esp/esp-idf/components/esp_system/task_wdt/task_wdt.c", "/home/mrclnndrd/esp/esp-idf/components/esp_system/task_wdt/task_wdt_impl_timergroup.c", "/home/mrclnndrd/esp/esp-idf/components/esp_system/port/cpu_start.c", "/home/mrclnndrd/esp/esp-idf/components/esp_system/port/panic_handler.c", "/home/mrclnndrd/esp/esp-idf/components/esp_system/port/esp_system_chip.c", "/home/mrclnndrd/esp/esp-idf/components/esp_system/port/image_process.c", "/home/mrclnndrd/esp/esp-idf/components/esp_system/port/esp_ipc_isr.c", "/home/mrclnndrd/esp/esp-idf/components/esp_system/port/arch/xtensa/esp_ipc_isr_port.c", "/home/mrclnndrd/esp/esp-idf/components/esp_system/port/arch/xtensa/esp_ipc_isr_handler.S", "/home/mrclnndrd/esp/esp-idf/components/esp_system/port/arch/xtensa/esp_ipc_isr_routines.S", "/home/mrclnndrd/esp/esp-idf/components/esp_system/port/arch/xtensa/panic_arch.c", "/home/mrclnndrd/esp/esp-idf/components/esp_system/port/arch/xtensa/panic_handler_asm.S", "/home/mrclnndrd/esp/esp-idf/components/esp_system/port/arch/xtensa/expression_with_stack.c", "/home/mrclnndrd/esp/esp-idf/components/esp_system/port/arch/xtensa/expression_with_stack_asm.S", "/home/mrclnndrd/esp/esp-idf/components/esp_system/port/arch/xtensa/debug_helpers.c", "/home/mrclnndrd/esp/esp-idf/components/esp_system/port/arch/xtensa/debug_helpers_asm.S", "/home/mrclnndrd/esp/esp-idf/components/esp_system/port/arch/xtensa/debug_stubs.c", "/home/mrclnndrd/esp/esp-idf/components/esp_system/port/arch/xtensa/trax.c", "/home/mrclnndrd/esp/esp-idf/components/esp_system/port/soc/esp32s3/highint_hdl.S", "/home/mrclnndrd/esp/esp-idf/components/esp_system/port/soc/esp32s3/clk.c", "/home/mrclnndrd/esp/esp-idf/components/esp_system/port/soc/esp32s3/reset_reason.c", "/home/mrclnndrd/esp/esp-idf/components/esp_system/port/soc/esp32s3/system_internal.c", "/home/mrclnndrd/esp/esp-idf/components/esp_system/port/soc/esp32s3/cache_err_int.c", "/home/mrclnndrd/esp/esp-idf/components/esp_system/port/soc/esp32s3/apb_backup_dma.c" ],
+            "sources": [ "/home/mrclnndrd/esp/esp-idf/components/esp_system/esp_err.c", "/home/mrclnndrd/esp/esp-idf/components/esp_system/crosscore_int.c", "/home/mrclnndrd/esp/esp-idf/components/esp_system/esp_ipc.c", "/home/mrclnndrd/esp/esp-idf/components/esp_system/esp_system_console.c", "/home/mrclnndrd/esp/esp-idf/components/esp_system/freertos_hooks.c", "/home/mrclnndrd/esp/esp-idf/components/esp_system/int_wdt.c", "/home/mrclnndrd/esp/esp-idf/components/esp_system/panic.c", "/home/mrclnndrd/esp/esp-idf/components/esp_system/esp_system.c", "/home/mrclnndrd/esp/esp-idf/components/esp_system/startup.c", "/home/mrclnndrd/esp/esp-idf/components/esp_system/startup_funcs.c", "/home/mrclnndrd/esp/esp-idf/components/esp_system/system_time.c", "/home/mrclnndrd/esp/esp-idf/components/esp_system/stack_check.c", "/home/mrclnndrd/esp/esp-idf/components/esp_system/ubsan.c", "/home/mrclnndrd/esp/esp-idf/components/esp_system/xt_wdt.c", "/home/mrclnndrd/esp/esp-idf/components/esp_system/task_wdt/task_wdt.c", "/home/mrclnndrd/esp/esp-idf/components/esp_system/task_wdt/task_wdt_impl_timergroup.c", "/home/mrclnndrd/esp/esp-idf/components/esp_system/port/cpu_start.c", "/home/mrclnndrd/esp/esp-idf/components/esp_system/port/panic_handler.c", "/home/mrclnndrd/esp/esp-idf/components/esp_system/port/esp_system_chip.c", "/home/mrclnndrd/esp/esp-idf/components/esp_system/port/image_process.c", "/home/mrclnndrd/esp/esp-idf/components/esp_system/port/esp_ipc_isr.c", "/home/mrclnndrd/esp/esp-idf/components/esp_system/port/arch/xtensa/esp_ipc_isr_port.c", "/home/mrclnndrd/esp/esp-idf/components/esp_system/port/arch/xtensa/esp_ipc_isr_handler.S", "/home/mrclnndrd/esp/esp-idf/components/esp_system/port/arch/xtensa/esp_ipc_isr_routines.S", "/home/mrclnndrd/esp/esp-idf/components/esp_system/port/arch/xtensa/panic_arch.c", "/home/mrclnndrd/esp/esp-idf/components/esp_system/port/arch/xtensa/panic_handler_asm.S", "/home/mrclnndrd/esp/esp-idf/components/esp_system/port/arch/xtensa/expression_with_stack.c", "/home/mrclnndrd/esp/esp-idf/components/esp_system/port/arch/xtensa/expression_with_stack_asm.S", "/home/mrclnndrd/esp/esp-idf/components/esp_system/port/arch/xtensa/debug_helpers.c", "/home/mrclnndrd/esp/esp-idf/components/esp_system/port/arch/xtensa/debug_helpers_asm.S", "/home/mrclnndrd/esp/esp-idf/components/esp_system/port/arch/xtensa/debug_stubs.c", "/home/mrclnndrd/esp/esp-idf/components/esp_system/port/arch/xtensa/trax.c", "/home/mrclnndrd/esp/esp-idf/components/esp_system/port/soc/esp32/highint_hdl.S", "/home/mrclnndrd/esp/esp-idf/components/esp_system/port/soc/esp32/clk.c", "/home/mrclnndrd/esp/esp-idf/components/esp_system/port/soc/esp32/reset_reason.c", "/home/mrclnndrd/esp/esp-idf/components/esp_system/port/soc/esp32/system_internal.c", "/home/mrclnndrd/esp/esp-idf/components/esp_system/port/soc/esp32/cache_err_int.c" ],
             "include_dirs": [ "include" ]
         },
         "esp_timer": {
@@ -1015,7 +1015,7 @@
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "file": "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/build/esp-idf/esp_timer/libesp_timer.a",
-            "sources": [ "/home/mrclnndrd/esp/esp-idf/components/esp_timer/src/esp_timer.c", "/home/mrclnndrd/esp/esp-idf/components/esp_timer/src/esp_timer_init.c", "/home/mrclnndrd/esp/esp-idf/components/esp_timer/src/ets_timer_legacy.c", "/home/mrclnndrd/esp/esp-idf/components/esp_timer/src/system_time.c", "/home/mrclnndrd/esp/esp-idf/components/esp_timer/src/esp_timer_impl_common.c", "/home/mrclnndrd/esp/esp-idf/components/esp_timer/src/esp_timer_impl_systimer.c" ],
+            "sources": [ "/home/mrclnndrd/esp/esp-idf/components/esp_timer/src/esp_timer.c", "/home/mrclnndrd/esp/esp-idf/components/esp_timer/src/esp_timer_init.c", "/home/mrclnndrd/esp/esp-idf/components/esp_timer/src/ets_timer_legacy.c", "/home/mrclnndrd/esp/esp-idf/components/esp_timer/src/system_time.c", "/home/mrclnndrd/esp/esp-idf/components/esp_timer/src/esp_timer_impl_common.c", "/home/mrclnndrd/esp/esp-idf/components/esp_timer/src/esp_timer_impl_lac.c" ],
             "include_dirs": [ "include" ]
         },
         "esp_vfs_console": {
@@ -1045,7 +1045,7 @@
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "file": "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/build/esp-idf/esp_wifi/libesp_wifi.a",
-            "sources": [ "/home/mrclnndrd/esp/esp-idf/components/esp_wifi/src/lib_printf.c", "/home/mrclnndrd/esp/esp-idf/components/esp_wifi/src/mesh_event.c", "/home/mrclnndrd/esp/esp-idf/components/esp_wifi/src/smartconfig.c", "/home/mrclnndrd/esp/esp-idf/components/esp_wifi/src/wifi_init.c", "/home/mrclnndrd/esp/esp-idf/components/esp_wifi/src/wifi_default.c", "/home/mrclnndrd/esp/esp-idf/components/esp_wifi/src/wifi_netif.c", "/home/mrclnndrd/esp/esp-idf/components/esp_wifi/src/wifi_default_ap.c", "/home/mrclnndrd/esp/esp-idf/components/esp_wifi/esp32s3/esp_adapter.c", "/home/mrclnndrd/esp/esp-idf/components/esp_wifi/regulatory/esp_wifi_regulatory.c", "/home/mrclnndrd/esp/esp-idf/components/esp_wifi/src/smartconfig_ack.c" ],
+            "sources": [ "/home/mrclnndrd/esp/esp-idf/components/esp_wifi/src/lib_printf.c", "/home/mrclnndrd/esp/esp-idf/components/esp_wifi/src/mesh_event.c", "/home/mrclnndrd/esp/esp-idf/components/esp_wifi/src/smartconfig.c", "/home/mrclnndrd/esp/esp-idf/components/esp_wifi/src/wifi_init.c", "/home/mrclnndrd/esp/esp-idf/components/esp_wifi/src/wifi_default.c", "/home/mrclnndrd/esp/esp-idf/components/esp_wifi/src/wifi_netif.c", "/home/mrclnndrd/esp/esp-idf/components/esp_wifi/src/wifi_default_ap.c", "/home/mrclnndrd/esp/esp-idf/components/esp_wifi/esp32/esp_adapter.c", "/home/mrclnndrd/esp/esp-idf/components/esp_wifi/regulatory/esp_wifi_regulatory.c", "/home/mrclnndrd/esp/esp-idf/components/esp_wifi/src/smartconfig_ack.c" ],
             "include_dirs": [ "include", "include/local", "wifi_apps/include", "wifi_apps/nan_app/include" ]
         },
         "espcoredump": {
@@ -1120,8 +1120,8 @@
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "file": "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/build/esp-idf/hal/libhal.a",
-            "sources": [ "/home/mrclnndrd/esp/esp-idf/components/hal/hal_utils.c", "/home/mrclnndrd/esp/esp-idf/components/hal/mpu_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/efuse_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/esp32s3/efuse_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/mmu_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/cache_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/color_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/spi_flash_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/spi_flash_hal_iram.c", "/home/mrclnndrd/esp/esp-idf/components/hal/spi_flash_encrypt_hal_iram.c", "/home/mrclnndrd/esp/esp-idf/components/hal/esp32s3/clk_tree_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/systimer_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/uart_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/uart_hal_iram.c", "/home/mrclnndrd/esp/esp-idf/components/hal/gpio_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/rtc_io_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/timer_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/ledc_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/ledc_hal_iram.c", "/home/mrclnndrd/esp/esp-idf/components/hal/i2c_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/i2c_hal_iram.c", "/home/mrclnndrd/esp/esp-idf/components/hal/rmt_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/pcnt_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/mcpwm_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/twai_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/twai_hal_iram.c", "/home/mrclnndrd/esp/esp-idf/components/hal/gdma_hal_top.c", "/home/mrclnndrd/esp/esp-idf/components/hal/gdma_hal_ahb_v1.c", "/home/mrclnndrd/esp/esp-idf/components/hal/i2s_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/sdm_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/sdmmc_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/adc_hal_common.c", "/home/mrclnndrd/esp/esp-idf/components/hal/adc_oneshot_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/adc_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/lcd_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/mpi_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/sha_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/aes_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/brownout_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/spi_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/spi_hal_iram.c", "/home/mrclnndrd/esp/esp-idf/components/hal/spi_slave_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/spi_slave_hal_iram.c", "/home/mrclnndrd/esp/esp-idf/components/hal/spi_slave_hd_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/spi_flash_hal_gpspi.c", "/home/mrclnndrd/esp/esp-idf/components/hal/hmac_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/ds_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/usb_serial_jtag_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/usb_dwc_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/usb_wrap_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/esp32s3/touch_sensor_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/touch_sensor_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/touch_sens_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/xt_wdt_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/esp32s3/rtc_cntl_hal.c" ],
-            "include_dirs": [ "platform_port/include", "esp32s3/include", "include" ]
+            "sources": [ "/home/mrclnndrd/esp/esp-idf/components/hal/hal_utils.c", "/home/mrclnndrd/esp/esp-idf/components/hal/mpu_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/efuse_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/esp32/efuse_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/wdt_hal_iram.c", "/home/mrclnndrd/esp/esp-idf/components/hal/mmu_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/esp32/cache_hal_esp32.c", "/home/mrclnndrd/esp/esp-idf/components/hal/color_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/spi_flash_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/spi_flash_hal_iram.c", "/home/mrclnndrd/esp/esp-idf/components/hal/spi_flash_encrypt_hal_iram.c", "/home/mrclnndrd/esp/esp-idf/components/hal/esp32/clk_tree_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/uart_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/uart_hal_iram.c", "/home/mrclnndrd/esp/esp-idf/components/hal/gpio_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/rtc_io_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/timer_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/ledc_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/ledc_hal_iram.c", "/home/mrclnndrd/esp/esp-idf/components/hal/i2c_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/i2c_hal_iram.c", "/home/mrclnndrd/esp/esp-idf/components/hal/rmt_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/pcnt_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/mcpwm_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/twai_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/twai_hal_iram.c", "/home/mrclnndrd/esp/esp-idf/components/hal/i2s_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/sdm_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/sdmmc_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/emac_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/adc_hal_common.c", "/home/mrclnndrd/esp/esp-idf/components/hal/adc_oneshot_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/adc_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/mpi_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/sha_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/aes_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/brownout_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/spi_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/spi_hal_iram.c", "/home/mrclnndrd/esp/esp-idf/components/hal/spi_slave_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/spi_slave_hal_iram.c", "/home/mrclnndrd/esp/esp-idf/components/hal/sdio_slave_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/esp32/touch_sensor_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/touch_sensor_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/touch_sens_hal.c", "/home/mrclnndrd/esp/esp-idf/components/hal/esp32/gpio_hal_workaround.c" ],
+            "include_dirs": [ "platform_port/include", "esp32/include", "include" ]
         },
         "heap": {
             "alias": "idf::heap",
@@ -1135,7 +1135,7 @@
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "file": "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/build/esp-idf/heap/libheap.a",
-            "sources": [ "/home/mrclnndrd/esp/esp-idf/components/heap/heap_caps_base.c", "/home/mrclnndrd/esp/esp-idf/components/heap/heap_caps.c", "/home/mrclnndrd/esp/esp-idf/components/heap/heap_caps_init.c", "/home/mrclnndrd/esp/esp-idf/components/heap/multi_heap.c", "/home/mrclnndrd/esp/esp-idf/components/heap/tlsf/tlsf.c", "/home/mrclnndrd/esp/esp-idf/components/heap/port/memory_layout_utils.c", "/home/mrclnndrd/esp/esp-idf/components/heap/port/esp32s3/memory_layout.c" ],
+            "sources": [ "/home/mrclnndrd/esp/esp-idf/components/heap/heap_caps_base.c", "/home/mrclnndrd/esp/esp-idf/components/heap/heap_caps.c", "/home/mrclnndrd/esp/esp-idf/components/heap/heap_caps_init.c", "/home/mrclnndrd/esp/esp-idf/components/heap/multi_heap.c", "/home/mrclnndrd/esp/esp-idf/components/heap/tlsf/tlsf.c", "/home/mrclnndrd/esp/esp-idf/components/heap/port/memory_layout_utils.c", "/home/mrclnndrd/esp/esp-idf/components/heap/port/esp32/memory_layout.c" ],
             "include_dirs": [ "include", "tlsf" ]
         },
         "http_parser": {
@@ -1166,7 +1166,7 @@
             "managed_priv_reqs": [],
             "file": "",
             "sources": [],
-            "include_dirs": [ "include", "include/esp32s3" ]
+            "include_dirs": [ "include", "include/esp32" ]
         },
         "ieee802154": {
             "alias": "idf::ieee802154",
@@ -1285,7 +1285,7 @@
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "file": "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/build/esp-idf/newlib/libnewlib.a",
-            "sources": [ "/home/mrclnndrd/esp/esp-idf/components/newlib/src/init.c", "/home/mrclnndrd/esp/esp-idf/components/newlib/src/abort.c", "/home/mrclnndrd/esp/esp-idf/components/newlib/src/assert.c", "/home/mrclnndrd/esp/esp-idf/components/newlib/src/heap.c", "/home/mrclnndrd/esp/esp-idf/components/newlib/src/locks.c", "/home/mrclnndrd/esp/esp-idf/components/newlib/src/poll.c", "/home/mrclnndrd/esp/esp-idf/components/newlib/src/pthread.c", "/home/mrclnndrd/esp/esp-idf/components/newlib/src/random.c", "/home/mrclnndrd/esp/esp-idf/components/newlib/src/getentropy.c", "/home/mrclnndrd/esp/esp-idf/components/newlib/src/termios.c", "/home/mrclnndrd/esp/esp-idf/components/newlib/src/stdatomic.c", "/home/mrclnndrd/esp/esp-idf/components/newlib/src/time.c", "/home/mrclnndrd/esp/esp-idf/components/newlib/src/sysconf.c", "/home/mrclnndrd/esp/esp-idf/components/newlib/src/realpath.c", "/home/mrclnndrd/esp/esp-idf/components/newlib/src/scandir.c", "/home/mrclnndrd/esp/esp-idf/components/newlib/src/syscalls.c", "/home/mrclnndrd/esp/esp-idf/components/newlib/src/reent_syscalls.c", "/home/mrclnndrd/esp/esp-idf/components/newlib/src/port/esp_time_impl.c", "/home/mrclnndrd/esp/esp-idf/components/newlib/src/flockfile.c", "/home/mrclnndrd/esp/esp-idf/components/newlib/src/reent_init.c", "/home/mrclnndrd/esp/esp-idf/components/newlib/src/newlib_init.c", "/home/mrclnndrd/esp/esp-idf/components/newlib/src/port/esp_time_impl.c" ],
+            "sources": [ "/home/mrclnndrd/esp/esp-idf/components/newlib/src/init.c", "/home/mrclnndrd/esp/esp-idf/components/newlib/src/abort.c", "/home/mrclnndrd/esp/esp-idf/components/newlib/src/assert.c", "/home/mrclnndrd/esp/esp-idf/components/newlib/src/heap.c", "/home/mrclnndrd/esp/esp-idf/components/newlib/src/locks.c", "/home/mrclnndrd/esp/esp-idf/components/newlib/src/poll.c", "/home/mrclnndrd/esp/esp-idf/components/newlib/src/pthread.c", "/home/mrclnndrd/esp/esp-idf/components/newlib/src/random.c", "/home/mrclnndrd/esp/esp-idf/components/newlib/src/getentropy.c", "/home/mrclnndrd/esp/esp-idf/components/newlib/src/termios.c", "/home/mrclnndrd/esp/esp-idf/components/newlib/src/stdatomic.c", "/home/mrclnndrd/esp/esp-idf/components/newlib/src/time.c", "/home/mrclnndrd/esp/esp-idf/components/newlib/src/sysconf.c", "/home/mrclnndrd/esp/esp-idf/components/newlib/src/realpath.c", "/home/mrclnndrd/esp/esp-idf/components/newlib/src/scandir.c", "/home/mrclnndrd/esp/esp-idf/components/newlib/src/syscalls.c", "/home/mrclnndrd/esp/esp-idf/components/newlib/src/reent_syscalls.c", "/home/mrclnndrd/esp/esp-idf/components/newlib/src/port/esp_time_impl.c", "/home/mrclnndrd/esp/esp-idf/components/newlib/src/port/xtensa/stdatomic_s32c1i.c", "/home/mrclnndrd/esp/esp-idf/components/newlib/src/flockfile.c", "/home/mrclnndrd/esp/esp-idf/components/newlib/src/reent_init.c", "/home/mrclnndrd/esp/esp-idf/components/newlib/src/newlib_init.c", "/home/mrclnndrd/esp/esp-idf/components/newlib/src/port/esp_time_impl.c" ],
             "include_dirs": [ "platform_include" ]
         },
         "nvs_flash": {
@@ -1450,8 +1450,8 @@
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "file": "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/build/esp-idf/soc/libsoc.a",
-            "sources": [ "/home/mrclnndrd/esp/esp-idf/components/soc/lldesc.c", "/home/mrclnndrd/esp/esp-idf/components/soc/dport_access_common.c", "/home/mrclnndrd/esp/esp-idf/components/soc/esp32s3/interrupts.c", "/home/mrclnndrd/esp/esp-idf/components/soc/esp32s3/gpio_periph.c", "/home/mrclnndrd/esp/esp-idf/components/soc/esp32s3/uart_periph.c", "/home/mrclnndrd/esp/esp-idf/components/soc/esp32s3/adc_periph.c", "/home/mrclnndrd/esp/esp-idf/components/soc/esp32s3/dedic_gpio_periph.c", "/home/mrclnndrd/esp/esp-idf/components/soc/esp32s3/gdma_periph.c", "/home/mrclnndrd/esp/esp-idf/components/soc/esp32s3/spi_periph.c", "/home/mrclnndrd/esp/esp-idf/components/soc/esp32s3/ledc_periph.c", "/home/mrclnndrd/esp/esp-idf/components/soc/esp32s3/pcnt_periph.c", "/home/mrclnndrd/esp/esp-idf/components/soc/esp32s3/rmt_periph.c", "/home/mrclnndrd/esp/esp-idf/components/soc/esp32s3/sdm_periph.c", "/home/mrclnndrd/esp/esp-idf/components/soc/esp32s3/i2s_periph.c", "/home/mrclnndrd/esp/esp-idf/components/soc/esp32s3/i2c_periph.c", "/home/mrclnndrd/esp/esp-idf/components/soc/esp32s3/temperature_sensor_periph.c", "/home/mrclnndrd/esp/esp-idf/components/soc/esp32s3/timer_periph.c", "/home/mrclnndrd/esp/esp-idf/components/soc/esp32s3/lcd_periph.c", "/home/mrclnndrd/esp/esp-idf/components/soc/esp32s3/mcpwm_periph.c", "/home/mrclnndrd/esp/esp-idf/components/soc/esp32s3/mpi_periph.c", "/home/mrclnndrd/esp/esp-idf/components/soc/esp32s3/sdmmc_periph.c", "/home/mrclnndrd/esp/esp-idf/components/soc/esp32s3/touch_sensor_periph.c", "/home/mrclnndrd/esp/esp-idf/components/soc/esp32s3/twai_periph.c", "/home/mrclnndrd/esp/esp-idf/components/soc/esp32s3/wdt_periph.c", "/home/mrclnndrd/esp/esp-idf/components/soc/esp32s3/usb_dwc_periph.c", "/home/mrclnndrd/esp/esp-idf/components/soc/esp32s3/rtc_io_periph.c", "/home/mrclnndrd/esp/esp-idf/components/soc/esp32s3/power_supply_periph.c" ],
-            "include_dirs": [ "include", "esp32s3", "esp32s3/include", "esp32s3/register" ]
+            "sources": [ "/home/mrclnndrd/esp/esp-idf/components/soc/lldesc.c", "/home/mrclnndrd/esp/esp-idf/components/soc/dport_access_common.c", "/home/mrclnndrd/esp/esp-idf/components/soc/esp32/interrupts.c", "/home/mrclnndrd/esp/esp-idf/components/soc/esp32/gpio_periph.c", "/home/mrclnndrd/esp/esp-idf/components/soc/esp32/uart_periph.c", "/home/mrclnndrd/esp/esp-idf/components/soc/esp32/dport_access.c", "/home/mrclnndrd/esp/esp-idf/components/soc/esp32/adc_periph.c", "/home/mrclnndrd/esp/esp-idf/components/soc/esp32/emac_periph.c", "/home/mrclnndrd/esp/esp-idf/components/soc/esp32/spi_periph.c", "/home/mrclnndrd/esp/esp-idf/components/soc/esp32/ledc_periph.c", "/home/mrclnndrd/esp/esp-idf/components/soc/esp32/pcnt_periph.c", "/home/mrclnndrd/esp/esp-idf/components/soc/esp32/rmt_periph.c", "/home/mrclnndrd/esp/esp-idf/components/soc/esp32/sdm_periph.c", "/home/mrclnndrd/esp/esp-idf/components/soc/esp32/i2s_periph.c", "/home/mrclnndrd/esp/esp-idf/components/soc/esp32/i2c_periph.c", "/home/mrclnndrd/esp/esp-idf/components/soc/esp32/timer_periph.c", "/home/mrclnndrd/esp/esp-idf/components/soc/esp32/lcd_periph.c", "/home/mrclnndrd/esp/esp-idf/components/soc/esp32/mcpwm_periph.c", "/home/mrclnndrd/esp/esp-idf/components/soc/esp32/mpi_periph.c", "/home/mrclnndrd/esp/esp-idf/components/soc/esp32/sdmmc_periph.c", "/home/mrclnndrd/esp/esp-idf/components/soc/esp32/touch_sensor_periph.c", "/home/mrclnndrd/esp/esp-idf/components/soc/esp32/twai_periph.c", "/home/mrclnndrd/esp/esp-idf/components/soc/esp32/wdt_periph.c", "/home/mrclnndrd/esp/esp-idf/components/soc/esp32/dac_periph.c", "/home/mrclnndrd/esp/esp-idf/components/soc/esp32/rtc_io_periph.c", "/home/mrclnndrd/esp/esp-idf/components/soc/esp32/sdio_slave_periph.c", "/home/mrclnndrd/esp/esp-idf/components/soc/esp32/power_supply_periph.c" ],
+            "include_dirs": [ "include", "esp32", "esp32/include", "esp32/register" ]
         },
         "spi_flash": {
             "alias": "idf::spi_flash",
@@ -1465,7 +1465,7 @@
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "file": "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/build/esp-idf/spi_flash/libspi_flash.a",
-            "sources": [ "/home/mrclnndrd/esp/esp-idf/components/spi_flash/flash_brownout_hook.c", "/home/mrclnndrd/esp/esp-idf/components/spi_flash/esp32s3/spi_flash_oct_flash_init.c", "/home/mrclnndrd/esp/esp-idf/components/spi_flash/spi_flash_hpm_enable.c", "/home/mrclnndrd/esp/esp-idf/components/spi_flash/spi_flash_chip_drivers.c", "/home/mrclnndrd/esp/esp-idf/components/spi_flash/spi_flash_chip_generic.c", "/home/mrclnndrd/esp/esp-idf/components/spi_flash/spi_flash_chip_issi.c", "/home/mrclnndrd/esp/esp-idf/components/spi_flash/spi_flash_chip_mxic.c", "/home/mrclnndrd/esp/esp-idf/components/spi_flash/spi_flash_chip_gd.c", "/home/mrclnndrd/esp/esp-idf/components/spi_flash/spi_flash_chip_winbond.c", "/home/mrclnndrd/esp/esp-idf/components/spi_flash/spi_flash_chip_boya.c", "/home/mrclnndrd/esp/esp-idf/components/spi_flash/spi_flash_chip_mxic_opi.c", "/home/mrclnndrd/esp/esp-idf/components/spi_flash/spi_flash_chip_th.c", "/home/mrclnndrd/esp/esp-idf/components/spi_flash/memspi_host_driver.c", "/home/mrclnndrd/esp/esp-idf/components/spi_flash/cache_utils.c", "/home/mrclnndrd/esp/esp-idf/components/spi_flash/flash_mmap.c", "/home/mrclnndrd/esp/esp-idf/components/spi_flash/flash_ops.c", "/home/mrclnndrd/esp/esp-idf/components/spi_flash/spi_flash_wrap.c", "/home/mrclnndrd/esp/esp-idf/components/spi_flash/esp_flash_api.c", "/home/mrclnndrd/esp/esp-idf/components/spi_flash/esp_flash_spi_init.c", "/home/mrclnndrd/esp/esp-idf/components/spi_flash/spi_flash_os_func_app.c", "/home/mrclnndrd/esp/esp-idf/components/spi_flash/spi_flash_os_func_noos.c" ],
+            "sources": [ "/home/mrclnndrd/esp/esp-idf/components/spi_flash/flash_brownout_hook.c", "/home/mrclnndrd/esp/esp-idf/components/spi_flash/spi_flash_chip_drivers.c", "/home/mrclnndrd/esp/esp-idf/components/spi_flash/spi_flash_chip_generic.c", "/home/mrclnndrd/esp/esp-idf/components/spi_flash/spi_flash_chip_issi.c", "/home/mrclnndrd/esp/esp-idf/components/spi_flash/spi_flash_chip_mxic.c", "/home/mrclnndrd/esp/esp-idf/components/spi_flash/spi_flash_chip_gd.c", "/home/mrclnndrd/esp/esp-idf/components/spi_flash/spi_flash_chip_winbond.c", "/home/mrclnndrd/esp/esp-idf/components/spi_flash/spi_flash_chip_boya.c", "/home/mrclnndrd/esp/esp-idf/components/spi_flash/spi_flash_chip_mxic_opi.c", "/home/mrclnndrd/esp/esp-idf/components/spi_flash/spi_flash_chip_th.c", "/home/mrclnndrd/esp/esp-idf/components/spi_flash/memspi_host_driver.c", "/home/mrclnndrd/esp/esp-idf/components/spi_flash/cache_utils.c", "/home/mrclnndrd/esp/esp-idf/components/spi_flash/flash_mmap.c", "/home/mrclnndrd/esp/esp-idf/components/spi_flash/flash_ops.c", "/home/mrclnndrd/esp/esp-idf/components/spi_flash/spi_flash_wrap.c", "/home/mrclnndrd/esp/esp-idf/components/spi_flash/esp_flash_api.c", "/home/mrclnndrd/esp/esp-idf/components/spi_flash/esp_flash_spi_init.c", "/home/mrclnndrd/esp/esp-idf/components/spi_flash/spi_flash_os_func_app.c", "/home/mrclnndrd/esp/esp-idf/components/spi_flash/spi_flash_os_func_noos.c" ],
             "include_dirs": [ "include" ]
         },
         "spiffs": {
@@ -1496,21 +1496,6 @@
             "managed_priv_reqs": [],
             "file": "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/build/esp-idf/tcp_transport/libtcp_transport.a",
             "sources": [ "/home/mrclnndrd/esp/esp-idf/components/tcp_transport/transport.c", "/home/mrclnndrd/esp/esp-idf/components/tcp_transport/transport_ssl.c", "/home/mrclnndrd/esp/esp-idf/components/tcp_transport/transport_internal.c", "/home/mrclnndrd/esp/esp-idf/components/tcp_transport/transport_socks_proxy.c", "/home/mrclnndrd/esp/esp-idf/components/tcp_transport/transport_ws.c" ],
-            "include_dirs": [ "include" ]
-        },
-        "touch_element": {
-            "alias": "idf::touch_element",
-            "target": "___idf_touch_element",
-            "prefix": "idf",
-            "dir": "/home/mrclnndrd/esp/esp-idf/components/touch_element",
-            "type": "LIBRARY",
-            "lib": "__idf_touch_element",
-            "reqs": [ "driver" ],
-            "priv_reqs": [ "esp_timer" ],
-            "managed_reqs": [],
-            "managed_priv_reqs": [],
-            "file": "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/build/esp-idf/touch_element/libtouch_element.a",
-            "sources": [ "/home/mrclnndrd/esp/esp-idf/components/touch_element/touch_element.c", "/home/mrclnndrd/esp/esp-idf/components/touch_element/touch_button.c", "/home/mrclnndrd/esp/esp-idf/components/touch_element/touch_slider.c", "/home/mrclnndrd/esp/esp-idf/components/touch_element/touch_matrix.c" ],
             "include_dirs": [ "include" ]
         },
         "ulp": {
@@ -1548,15 +1533,15 @@
             "target": "___idf_usb",
             "prefix": "idf",
             "dir": "/home/mrclnndrd/esp/esp-idf/components/usb",
-            "type": "LIBRARY",
+            "type": "CONFIG_ONLY",
             "lib": "__idf_usb",
             "reqs": [],
             "priv_reqs": [ "esp_driver_gpio", "esp_mm" ],
             "managed_reqs": [],
             "managed_priv_reqs": [],
-            "file": "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/build/esp-idf/usb/libusb.a",
-            "sources": [ "/home/mrclnndrd/esp/esp-idf/components/usb/hcd_dwc.c", "/home/mrclnndrd/esp/esp-idf/components/usb/enum.c", "/home/mrclnndrd/esp/esp-idf/components/usb/hub.c", "/home/mrclnndrd/esp/esp-idf/components/usb/usb_helpers.c", "/home/mrclnndrd/esp/esp-idf/components/usb/usb_host.c", "/home/mrclnndrd/esp/esp-idf/components/usb/usb_private.c", "/home/mrclnndrd/esp/esp-idf/components/usb/usbh.c", "/home/mrclnndrd/esp/esp-idf/components/usb/usb_phy.c" ],
-            "include_dirs": [ "include" ]
+            "file": "",
+            "sources": [],
+            "include_dirs": []
         },
         "vfs": {
             "alias": "idf::vfs",
@@ -1615,7 +1600,7 @@
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "file": "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/build/esp-idf/wpa_supplicant/libwpa_supplicant.a",
-            "sources": [ "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/port/os_xtensa.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/port/eloop.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/ap/ap_config.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/ap/ieee802_1x.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/ap/wpa_auth.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/ap/wpa_auth_ie.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/ap/pmksa_cache_auth.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/ap/sta_info.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/ap/ieee802_11.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/ap/comeback_token.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/common/sae.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/common/dragonfly.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/common/wpa_common.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/utils/bitfield.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/crypto/aes-siv.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/crypto/sha256-kdf.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/crypto/ccmp.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/crypto/aes-gcm.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/crypto/crypto_ops.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/crypto/dh_group5.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/crypto/dh_groups.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/crypto/ms_funcs.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/crypto/sha1-tlsprf.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/crypto/sha256-tlsprf.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/crypto/sha384-tlsprf.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/crypto/sha256-prf.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/crypto/sha1-prf.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/crypto/sha384-prf.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/crypto/md4-internal.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/crypto/sha1-tprf.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/eap_common/eap_wsc_common.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/common/ieee802_11_common.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/eap_peer/chap.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/eap_peer/eap.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/eap_peer/eap_common.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/eap_peer/eap_mschapv2.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/eap_peer/eap_peap.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/eap_peer/eap_peap_common.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/eap_peer/eap_tls.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/eap_peer/eap_tls_common.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/eap_peer/eap_ttls.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/eap_peer/mschapv2.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/eap_peer/eap_fast.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/eap_peer/eap_fast_common.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/eap_peer/eap_fast_pac.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/rsn_supp/pmksa_cache.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/rsn_supp/wpa.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/rsn_supp/wpa_ie.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/utils/base64.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/utils/common.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/utils/ext_password.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/utils/uuid.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/utils/wpabuf.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/utils/wpa_debug.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/utils/json.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/wps/wps.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/wps/wps_attr_build.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/wps/wps_attr_parse.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/wps/wps_attr_process.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/wps/wps_common.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/wps/wps_dev_attr.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/wps/wps_enrollee.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/common/sae_pk.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/esp_supplicant/src/esp_eap_client.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/esp_supplicant/src/esp_wpa2_api_port.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/esp_supplicant/src/esp_wpa_main.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/esp_supplicant/src/esp_wpas_glue.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/esp_supplicant/src/esp_common.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/esp_supplicant/src/esp_wps.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/esp_supplicant/src/esp_wpa3.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/esp_supplicant/src/esp_owe.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/esp_supplicant/src/esp_hostap.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/esp_supplicant/src/crypto/tls_mbedtls.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/esp_supplicant/src/crypto/crypto_mbedtls.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/esp_supplicant/src/crypto/crypto_mbedtls-bignum.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/esp_supplicant/src/crypto/crypto_mbedtls-rsa.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/esp_supplicant/src/crypto/crypto_mbedtls-ec.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/esp_supplicant/src/crypto/fastpsk.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/crypto/rc4.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/crypto/des-internal.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/esp_supplicant/src/crypto/fastpbkdf2.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/crypto/aes-wrap.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/crypto/aes-unwrap.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/crypto/aes-ccm.c" ],
+            "sources": [ "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/port/os_xtensa.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/port/eloop.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/ap/ap_config.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/ap/ieee802_1x.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/ap/wpa_auth.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/ap/wpa_auth_ie.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/ap/pmksa_cache_auth.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/ap/sta_info.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/ap/ieee802_11.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/ap/comeback_token.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/common/sae.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/common/dragonfly.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/common/wpa_common.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/utils/bitfield.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/crypto/aes-siv.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/crypto/sha256-kdf.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/crypto/ccmp.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/crypto/aes-gcm.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/crypto/crypto_ops.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/crypto/dh_group5.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/crypto/dh_groups.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/crypto/ms_funcs.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/crypto/sha1-tlsprf.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/crypto/sha256-tlsprf.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/crypto/sha384-tlsprf.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/crypto/sha256-prf.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/crypto/sha1-prf.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/crypto/sha384-prf.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/crypto/md4-internal.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/crypto/sha1-tprf.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/eap_common/eap_wsc_common.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/common/ieee802_11_common.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/eap_peer/chap.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/eap_peer/eap.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/eap_peer/eap_common.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/eap_peer/eap_mschapv2.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/eap_peer/eap_peap.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/eap_peer/eap_peap_common.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/eap_peer/eap_tls.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/eap_peer/eap_tls_common.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/eap_peer/eap_ttls.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/eap_peer/mschapv2.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/eap_peer/eap_fast.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/eap_peer/eap_fast_common.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/eap_peer/eap_fast_pac.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/rsn_supp/pmksa_cache.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/rsn_supp/wpa.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/rsn_supp/wpa_ie.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/utils/base64.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/utils/common.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/utils/ext_password.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/utils/uuid.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/utils/wpabuf.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/utils/wpa_debug.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/utils/json.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/wps/wps.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/wps/wps_attr_build.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/wps/wps_attr_parse.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/wps/wps_attr_process.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/wps/wps_common.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/wps/wps_dev_attr.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/wps/wps_enrollee.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/common/sae_pk.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/esp_supplicant/src/esp_eap_client.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/esp_supplicant/src/esp_wpa2_api_port.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/esp_supplicant/src/esp_wpa_main.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/esp_supplicant/src/esp_wpas_glue.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/esp_supplicant/src/esp_common.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/esp_supplicant/src/esp_wps.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/esp_supplicant/src/esp_wpa3.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/esp_supplicant/src/esp_owe.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/esp_supplicant/src/esp_hostap.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/esp_supplicant/src/crypto/tls_mbedtls.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/esp_supplicant/src/crypto/crypto_mbedtls.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/esp_supplicant/src/crypto/crypto_mbedtls-bignum.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/esp_supplicant/src/crypto/crypto_mbedtls-rsa.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/esp_supplicant/src/crypto/crypto_mbedtls-ec.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/crypto/rc4.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/crypto/des-internal.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/esp_supplicant/src/crypto/fastpbkdf2.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/crypto/aes-wrap.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/crypto/aes-unwrap.c", "/home/mrclnndrd/esp/esp-idf/components/wpa_supplicant/src/crypto/aes-ccm.c" ],
             "include_dirs": [ "include", "port/include", "esp_supplicant/include" ]
         },
         "xtensa": {
@@ -1631,7 +1616,7 @@
             "managed_priv_reqs": [],
             "file": "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/build/esp-idf/xtensa/libxtensa.a",
             "sources": [ "/home/mrclnndrd/esp/esp-idf/components/xtensa/eri.c", "/home/mrclnndrd/esp/esp-idf/components/xtensa/xt_trax.c", "/home/mrclnndrd/esp/esp-idf/components/xtensa/xtensa_context.S", "/home/mrclnndrd/esp/esp-idf/components/xtensa/xtensa_intr_asm.S", "/home/mrclnndrd/esp/esp-idf/components/xtensa/xtensa_intr.c", "/home/mrclnndrd/esp/esp-idf/components/xtensa/xtensa_vectors.S" ],
-            "include_dirs": [ "esp32s3/include", "include", "deprecated_include" ]
+            "include_dirs": [ "esp32/include", "include", "deprecated_include" ]
         }
     },
     "all_component_info" : {
@@ -1741,7 +1726,7 @@
             "priv_reqs": [ "efuse", "esp_timer", "esp_mm" ],
             "managed_reqs": [],
             "managed_priv_reqs": [],
-            "include_dirs": [ "deprecated", "i2c/include", "touch_sensor/include", "twai/include", "touch_sensor/esp32s3/include" ]
+            "include_dirs": [ "deprecated", "i2c/include", "touch_sensor/include", "twai/include", "touch_sensor/esp32/include" ]
         },
         "efuse": {
             "alias": "idf::efuse",
@@ -1753,7 +1738,7 @@
             "priv_reqs": [ "bootloader_support", "soc", "spi_flash", "esp_system", "esp_partition", "esp_app_format" ],
             "managed_reqs": [],
             "managed_priv_reqs": [],
-            "include_dirs": [ "include", "esp32s3/include" ]
+            "include_dirs": [ "include", "esp32/include" ]
         },
         "esp-tls": {
             "alias": "idf::esp-tls",
@@ -1774,10 +1759,10 @@
             "dir": "/home/mrclnndrd/esp/esp-idf/components/esp_adc",
             "lib": "__idf_esp_adc",
             "reqs": [],
-            "priv_reqs": [ "esp_driver_gpio", "efuse", "esp_pm", "esp_ringbuf", "esp_mm", "driver" ],
+            "priv_reqs": [ "esp_driver_gpio", "efuse", "esp_pm", "esp_ringbuf", "esp_mm", "esp_driver_i2s", "driver" ],
             "managed_reqs": [],
             "managed_priv_reqs": [],
-            "include_dirs": [ "include", "interface", "esp32s3/include", "deprecated/include" ]
+            "include_dirs": [ "include", "interface", "esp32/include", "deprecated/include" ]
         },
         "esp_app_format": {
             "alias": "idf::esp_app_format",
@@ -1870,7 +1855,7 @@
             "dir": "/home/mrclnndrd/esp/esp-idf/components/esp_driver_dac",
             "lib": "__idf_esp_driver_dac",
             "reqs": [],
-            "priv_reqs": [ "esp_pm", "esp_driver_gpio" ],
+            "priv_reqs": [ "esp_pm", "esp_driver_gpio", "esp_driver_i2s" ],
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "include_dirs": [ "./include" ]
@@ -2086,10 +2071,10 @@
             "dir": "/home/mrclnndrd/esp/esp-idf/components/esp_driver_touch_sens",
             "lib": "__idf_esp_driver_touch_sens",
             "reqs": [],
-            "priv_reqs": [ "esp_driver_gpio" ],
+            "priv_reqs": [ "esp_driver_gpio", "esp_timer" ],
             "managed_reqs": [],
             "managed_priv_reqs": [],
-            "include_dirs": [ "include", "hw_ver2/include" ]
+            "include_dirs": [ "include", "hw_ver1/include" ]
         },
         "esp_driver_tsens": {
             "alias": "idf::esp_driver_tsens",
@@ -2245,7 +2230,7 @@
             "priv_reqs": [ "efuse", "spi_flash", "bootloader_support", "esp_security", "esp_driver_gpio", "esp_timer", "esp_pm", "esp_mm" ],
             "managed_reqs": [],
             "managed_priv_reqs": [],
-            "include_dirs": [ "include", "include/soc", "include/soc/esp32s3", "dma/include", "ldo/include", "debug_probe/include", "mspi_timing_tuning/include", "power_supply/include" ]
+            "include_dirs": [ "include", "include/soc", "include/soc/esp32", "dma/include", "ldo/include", "debug_probe/include", "mspi_timing_tuning/include", "power_supply/include" ]
         },
         "esp_lcd": {
             "alias": "idf::esp_lcd",
@@ -2257,7 +2242,7 @@
             "priv_reqs": [ "esp_mm", "esp_psram", "esp_pm", "esp_driver_i2s" ],
             "managed_reqs": [],
             "managed_priv_reqs": [],
-            "include_dirs": [ "include", "interface", "rgb/include" ]
+            "include_dirs": [ "include", "interface" ]
         },
         "esp_local_ctrl": {
             "alias": "idf::esp_local_ctrl",
@@ -2329,7 +2314,7 @@
             "priv_reqs": [ "nvs_flash", "esp_driver_gpio", "efuse", "esp_timer", "esp_wifi" ],
             "managed_reqs": [],
             "managed_priv_reqs": [],
-            "include_dirs": [ "include", "esp32s3/include" ]
+            "include_dirs": [ "include", "esp32/include" ]
         },
         "esp_pm": {
             "alias": "idf::esp_pm",
@@ -2350,10 +2335,10 @@
             "dir": "/home/mrclnndrd/esp/esp-idf/components/esp_psram",
             "lib": "__idf_esp_psram",
             "reqs": [],
-            "priv_reqs": [ "heap", "spi_flash", "esp_mm" ],
+            "priv_reqs": [ "heap", "spi_flash", "esp_mm", "bootloader_support", "esp_driver_spi", "esp_driver_gpio" ],
             "managed_reqs": [],
             "managed_priv_reqs": [],
-            "include_dirs": [ "include", "xip_impl/include" ]
+            "include_dirs": [ "include" ]
         },
         "esp_ringbuf": {
             "alias": "idf::esp_ringbuf",
@@ -2377,7 +2362,7 @@
             "priv_reqs": [ "soc", "hal" ],
             "managed_reqs": [],
             "managed_priv_reqs": [],
-            "include_dirs": [ "include", "esp32s3/include", "esp32s3/include/esp32s3", "esp32s3" ]
+            "include_dirs": [ "include", "esp32/include", "esp32/include/esp32", "esp32" ]
         },
         "esp_security": {
             "alias": "idf::esp_security",
@@ -2509,7 +2494,7 @@
             "priv_reqs": [],
             "managed_reqs": [],
             "managed_priv_reqs": [],
-            "include_dirs": [ "platform_port/include", "esp32s3/include", "include" ]
+            "include_dirs": [ "platform_port/include", "esp32/include", "include" ]
         },
         "heap": {
             "alias": "idf::heap",
@@ -2545,7 +2530,7 @@
             "priv_reqs": [],
             "managed_reqs": [],
             "managed_priv_reqs": [],
-            "include_dirs": [ "include", "include/esp32s3" ]
+            "include_dirs": [ "include", "include/esp32" ]
         },
         "ieee802154": {
             "alias": "idf::ieee802154",
@@ -2785,7 +2770,7 @@
             "priv_reqs": [],
             "managed_reqs": [],
             "managed_priv_reqs": [],
-            "include_dirs": [ "include", "esp32s3", "esp32s3/include", "esp32s3/register" ]
+            "include_dirs": [ "include", "esp32", "esp32/include", "esp32/register" ]
         },
         "spi_flash": {
             "alias": "idf::spi_flash",
@@ -2829,8 +2814,8 @@
             "prefix": "idf",
             "dir": "/home/mrclnndrd/esp/esp-idf/components/touch_element",
             "lib": "__idf_touch_element",
-            "reqs": [ "driver" ],
-            "priv_reqs": [ "esp_timer" ],
+            "reqs": [],
+            "priv_reqs": [],
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "include_dirs": [ "include" ]
@@ -2869,7 +2854,7 @@
             "priv_reqs": [ "esp_driver_gpio", "esp_mm" ],
             "managed_reqs": [],
             "managed_priv_reqs": [],
-            "include_dirs": [ "include" ]
+            "include_dirs": []
         },
         "vfs": {
             "alias": "idf::vfs",
@@ -2929,7 +2914,7 @@
             "priv_reqs": [],
             "managed_reqs": [],
             "managed_priv_reqs": [],
-            "include_dirs": [ "esp32s3/include", "include", "deprecated_include" ]
+            "include_dirs": [ "esp32/include", "include", "deprecated_include" ]
         },
         "main": {
             "alias": "idf::main",
@@ -2963,5 +2948,5 @@
         "03_py_extensions": "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/build/gdbinit/py_extensions",
         "04_connect": "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/build/gdbinit/connect"
     },
-    "debug_arguments_openocd": "-f board/esp32s3-builtin.cfg"
+    "debug_arguments_openocd": "-f board/esp32-wrover-kit-3.3v.cfg"
 }

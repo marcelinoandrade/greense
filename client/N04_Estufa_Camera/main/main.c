@@ -19,23 +19,22 @@ static const char *TAG = "CAMERA";
 static const char *TAG_WIFI = "WIFI";
 static EventGroupHandle_t s_wifi_event_group;
 
-#define PWDN_GPIO_NUM    -1
-#define RESET_GPIO_NUM   -1
-#define XCLK_GPIO_NUM    10
-#define SIOD_GPIO_NUM    40
-#define SIOC_GPIO_NUM    39
-#define Y9_GPIO_NUM      48
-#define Y8_GPIO_NUM      47
-#define Y7_GPIO_NUM      21
-#define Y6_GPIO_NUM      14
-#define Y5_GPIO_NUM      13
-#define Y4_GPIO_NUM      12
-#define Y3_GPIO_NUM      11
-#define Y2_GPIO_NUM       9
-#define VSYNC_GPIO_NUM   38
-#define HREF_GPIO_NUM    41
-#define PCLK_GPIO_NUM     8
-
+#define PWDN_GPIO_NUM     32
+#define RESET_GPIO_NUM    -1
+#define XCLK_GPIO_NUM      0
+#define SIOD_GPIO_NUM     26
+#define SIOC_GPIO_NUM     27
+#define Y9_GPIO_NUM       35
+#define Y8_GPIO_NUM       34
+#define Y7_GPIO_NUM       39
+#define Y6_GPIO_NUM       36
+#define Y5_GPIO_NUM       21
+#define Y4_GPIO_NUM       19
+#define Y3_GPIO_NUM       18
+#define Y2_GPIO_NUM        5
+#define VSYNC_GPIO_NUM    25
+#define HREF_GPIO_NUM     23
+#define PCLK_GPIO_NUM     22
 
 static void wifi_event_handler(void* arg, esp_event_base_t event_base,
                                int32_t event_id, void* event_data) {
@@ -153,10 +152,12 @@ void start_camera() {
         .ledc_timer     = LEDC_TIMER_0,
         .ledc_channel   = LEDC_CHANNEL_0,
         .pixel_format   = PIXFORMAT_JPEG,
-        .frame_size     = FRAMESIZE_QVGA,
+        .frame_size     = FRAMESIZE_VGA,
         .jpeg_quality   = 12,
         .fb_count       = 1,
     };
+
+    config.sccb_i2c_port = 0;  // 👈 ESSENCIAL
 
     esp_err_t err = esp_camera_init(&config);
     if (err != ESP_OK) {

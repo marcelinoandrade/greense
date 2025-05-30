@@ -1,11 +1,16 @@
-# Load esp32s3 ROM ELF symbols
+# Load esp32 ROM ELF symbols
 define target hookpost-remote
 set confirm off
-  # if $_streq((char *) 0x3ff194ad, "Mar  1 2021")
-  if (*(int*) 0x3ff194ad) == 0x2072614d && (*(int*) 0x3ff194b1) == 0x32203120 && (*(int*) 0x3ff194b5) == 0x313230
-    add-symbol-file /home/mrclnndrd/.espressif/tools/esp-rom-elfs/20241011/esp32s3_rev0_rom.elf
+  # if $_streq((char *) 0x3ff9ea80, "Jun  8 2016")
+  if (*(int*) 0x3ff9ea80) == 0x206e754a && (*(int*) 0x3ff9ea84) == 0x32203820 && (*(int*) 0x3ff9ea88) == 0x363130
+    add-symbol-file /home/mrclnndrd/.espressif/tools/esp-rom-elfs/20241011/esp32_rev0_rom.elf
   else
-    echo Warning: Unknown esp32s3 ROM revision.\n
+    # if $_streq((char *) 0x3ff9e986, "Jul 29 2019")
+    if (*(int*) 0x3ff9e986) == 0x206c754a && (*(int*) 0x3ff9e98a) == 0x32203932 && (*(int*) 0x3ff9e98e) == 0x393130
+      add-symbol-file /home/mrclnndrd/.espressif/tools/esp-rom-elfs/20241011/esp32_rev300_rom.elf
+    else
+      echo Warning: Unknown esp32 ROM revision.\n
+    end
   end
 set confirm on
 end
