@@ -11,7 +11,7 @@
 #include "driver/gpio.h"
 
 #define WIFI_SSID "greense"
-#define WIFI_PASS "greense@3141"
+#define WIFI_PASS "XXXXXXX"
 
 #define WIFI_CONNECTED_BIT BIT0
 #define WIFI_FAIL_BIT      BIT1
