@@ -1174,3 +1174,1227 @@ Análise realizada em 13/05/2025 16:00. Temperatura ambiente: 23.31 °C, dentro 
 🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
 Análise realizada em 13/05/2025 20:00. Temperatura ambiente: 20.41 °C, dentro da faixa tolerada. Umidade: 77.22%, fora da faixa tolerada, acima do limite superior de 70%. CO₂: 400.0 ppm, dentro da faixa ideal. pH: 6.21, dentro da faixa tolerada. EC: 2.3 mS/cm, fora da faixa tolerada, acima do limite superior de 2.0 mS/cm. Temperatura do reservatório: 20.75 °C, dentro da faixa tolerada. água_max: 1, nível adequado. água_min: 1, nível adequado. || Conclusão: A umidade e a condutividade elétrica (EC) estão fora das faixas toleradas. || Impacto previsto: Se não corrigidos, os parâmetros fora da faixa podem levar a doenças como oídio, devido à alta umidade, e toxicidade por nutrientes, devido à alta EC; risco atual classificado como 3/5.
 ✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [14/05/2025 00:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 23.82, 'umid': 62.61, 'co2': 400.0, 'luz': 1.0, 'temp_reserv_int': 21.12, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.21, 'ec': 2.3}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 23.82, 'umidade_ambiente': 62.61, 'nivel_co2': 400.0, 'luminosidade': 1.0, 'ph_agua': 6.21, 'condutividade_ec': 2.3, 'temp_reservatorio_interno': 21.12, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-14T03:00:04.436592Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 14/05/2025 00:00. Temperatura ambiente: 23.82 °C, dentro da faixa tolerável. Umidade: 62.61%, dentro da faixa tolerável. CO₂: 400.0 ppm, dentro da faixa ideal. pH: 6.21, dentro da faixa tolerável. EC: 2.3 mS/cm, fora da faixa tolerável, acima do limite superior. Temp. reservatório: 21.12 °C, dentro da faixa tolerável. água_max: 1, nível adequado. água_min: 1, nível adequado. || Conclusão: Todos os parâmetros estão dentro das faixas toleráveis, exceto a condutividade elétrica (EC), que está acima do limite superior. Impacto previsto: Se a EC elevada não for corrigida, pode ocorrer toxicidade por nutrientes, levando a fitopatologias como necrose foliar e queima das pontas das folhas, devido ao acúmulo excessivo de sais. Risco atual: 2/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [14/05/2025 04:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 23.17, 'umid': 65.1, 'co2': 400.0, 'luz': 1.0, 'temp_reserv_int': 22.12, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.21, 'ec': 2.3}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 23.17, 'umidade_ambiente': 65.1, 'nivel_co2': 400.0, 'luminosidade': 1.0, 'ph_agua': 6.21, 'condutividade_ec': 2.3, 'temp_reservatorio_interno': 22.12, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-14T07:00:04.287408Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 14/05/2025 04:00. Temperatura ambiente: 23.17 °C, dentro da faixa tolerada. Umidade: 65.1%, dentro da faixa tolerada. CO₂: 400.0 ppm, dentro da faixa tolerada. pH: 6.21, dentro da faixa tolerada. EC: 2.3 mS/cm, fora da faixa tolerada (ideal: 1.2–2.0 mS/cm). Temperatura do reservatório: 22.12 °C, dentro da faixa tolerada. água_max: 1, nível adequado. água_min: 1, nível adequado. || Conclusão: Todos os parâmetros estão dentro das faixas toleradas, exceto a condutividade elétrica (EC), que está acima do ideal. Impacto previsto: Se a EC elevada não for corrigida, pode ocorrer toxicidade por nutrientes, levando a problemas como necrose foliar e crescimento atrofiado; risco atual classificado como 2/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [14/05/2025 08:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 23.62, 'umid': 63.44, 'co2': 420.0, 'luz': 1.0, 'temp_reserv_int': 22.25, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.21, 'ec': 2.3}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 23.62, 'umidade_ambiente': 63.44, 'nivel_co2': 420.0, 'luminosidade': 1.0, 'ph_agua': 6.21, 'condutividade_ec': 2.3, 'temp_reservatorio_interno': 22.25, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-14T11:00:04.176143Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 14/05/2025 08:00. Temperatura ambiente: 23.62 °C, dentro da faixa tolerada. Umidade: 63.44 %, dentro da faixa tolerada. CO₂: 420.0 ppm, dentro da faixa tolerada. pH: 6.21, dentro da faixa tolerada. EC: 2.3 mS/cm, fora da faixa tolerada (ideal: 1.2–2.0 mS/cm). Temperatura do reservatório: 22.25 °C, dentro da faixa tolerada. água_max: 1, nível adequado. água_min: 1, nível adequado. || Conclusão: Todos os parâmetros estão dentro das faixas toleradas, exceto a condutividade elétrica (EC), que está elevada. Impacto previsto: Se a EC elevada não for corrigida, pode ocorrer toxicidade por nutrientes, levando a fitopatologias como necrose foliar e queima de bordas, devido ao excesso de sais minerais; risco atual: 2/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [14/05/2025 12:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 21.44, 'umid': 71.89, 'co2': 468.0, 'luz': 0.0, 'temp_reserv_int': 21.81, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.21, 'ec': 2.3}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 21.44, 'umidade_ambiente': 71.89, 'nivel_co2': 468.0, 'luminosidade': 0.0, 'ph_agua': 6.21, 'condutividade_ec': 2.3, 'temp_reservatorio_interno': 21.81, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-14T15:00:04.702388Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 14/05/2025 12:00. Temperatura ambiente: 21.44 °C, dentro da faixa tolerada. Umidade: 71.89 %, ligeiramente acima da faixa tolerada. CO₂: 468.0 ppm, dentro da faixa tolerada. pH: 6.21, dentro da faixa tolerada. EC: 2.3 mS/cm, acima da faixa tolerada. Temperatura do reservatório: 21.81 °C, dentro da faixa tolerada. água_max: 1, nível adequado. água_min: 1, nível adequado. || Conclusão: A umidade está ligeiramente acima do limite tolerado e a condutividade elétrica (EC) está fora da faixa tolerada. || Impacto previsto: Se a umidade e a EC não forem corrigidas, pode ocorrer o desenvolvimento de doenças fúngicas como o míldio, devido à alta umidade, e toxicidade por nutrientes devido à alta EC; risco atual classificado como 2/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [14/05/2025 16:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 22.8, 'umid': 63.61, 'co2': 500.0, 'luz': 0.0, 'temp_reserv_int': 21.94, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.0, 'ec': 1.35}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 22.8, 'umidade_ambiente': 63.61, 'nivel_co2': 500.0, 'luminosidade': 0.0, 'ph_agua': 6.0, 'condutividade_ec': 1.35, 'temp_reservatorio_interno': 21.94, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-14T19:00:04.783305Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 14/05/2025 16:00. Temperatura ambiente: 22.8 °C, dentro da faixa tolerada. Umidade: 63.61%, dentro da faixa tolerada. CO₂: 500.0 ppm, dentro da faixa tolerada. pH: 6.0, dentro da faixa tolerada. EC: 1.35 mS/cm, dentro da faixa tolerada. Temperatura do reservatório: 21.94 °C, dentro da faixa tolerada. Nível de água: água_max em 1 e água_min em 1, ambos indicando nível adequado. Conclusão: Todos os parâmetros estão dentro das faixas toleradas. || Impacto previsto: Não há risco identificado.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [14/05/2025 20:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 21.81, 'umid': 66.12, 'co2': 486.0, 'luz': 0.0, 'temp_reserv_int': 21.0, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.0, 'ec': 1.35}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 21.81, 'umidade_ambiente': 66.12, 'nivel_co2': 486.0, 'luminosidade': 0.0, 'ph_agua': 6.0, 'condutividade_ec': 1.35, 'temp_reservatorio_interno': 21.0, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-14T23:00:04.733421Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 14/05/2025 20:00. Temperatura ambiente: 21.81 °C, dentro da faixa tolerada; Umidade: 66.12%, dentro da faixa tolerada; CO₂: 486.0 ppm, dentro da faixa tolerada; pH: 6.0, dentro da faixa tolerada; EC: 1.35 mS/cm, dentro da faixa tolerada; Temp. reservatório: 21.0 °C, dentro da faixa tolerada; água_max: 1, nível adequado; água_min: 1, nível adequado. || Conclusão: Todos os parâmetros estão dentro das faixas toleradas. Impacto previsto: Não há risco identificado.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [15/05/2025 00:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 31.17, 'umid': 44.02, 'co2': 458.0, 'luz': 1.0, 'temp_reserv_int': 22.69, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.0, 'ec': 1.35}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 31.17, 'umidade_ambiente': 44.02, 'nivel_co2': 458.0, 'luminosidade': 1.0, 'ph_agua': 6.0, 'condutividade_ec': 1.35, 'temp_reservatorio_interno': 22.69, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-15T03:00:04.584531Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 15/05/2025 00:00. Temperatura ambiente: 31.17 °C, fora da faixa tolerada (ideal: 19.5 °C, tolerável: 15–24 °C); Umidade: 44.02 %, fora da faixa tolerada (ideal: 60 %, tolerável: 50–70 %); CO₂: 458.0 ppm, dentro da faixa tolerada (400–800 ppm); pH: 6.0, dentro da faixa ideal (tolerável: 5.5–6.5); EC: 1.35 mS/cm, dentro da faixa tolerada (tolerável: 1.2–2.0 mS/cm); Temperatura do reservatório: 22.69 °C, dentro da faixa tolerada (tolerável: 18–24 °C); água_max: 1, nível adequado; água_min: 1, nível adequado. || Conclusão: A temperatura ambiente e a umidade relativa estão fora das faixas toleradas, o que pode impactar negativamente o cultivo. || Impacto previsto: Se não corrigidos, os parâmetros fora da faixa podem levar a estresse térmico e desidratação das plantas, aumentando o risco de doenças como oídio e podridão radicular, devido ao ambiente quente e seco; risco atual classificado como 3/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [15/05/2025 04:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 28.4, 'umid': 48.69, 'co2': 446.0, 'luz': 1.0, 'temp_reserv_int': 25.0, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.0, 'ec': 1.35}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 28.4, 'umidade_ambiente': 48.69, 'nivel_co2': 446.0, 'luminosidade': 1.0, 'ph_agua': 6.0, 'condutividade_ec': 1.35, 'temp_reservatorio_interno': 25.0, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-15T07:00:04.702942Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 15/05/2025 04:00. Temperatura ambiente: 28.4 °C, fora da faixa tolerada (15–24 °C); Umidade: 48.69%, fora da faixa tolerada (50–70%); CO₂: 446.0 ppm, dentro da faixa ideal (400–800 ppm); pH: 6.0, dentro da faixa ideal (5.5–6.5); EC: 1.35 mS/cm, dentro da faixa tolerada (1.2–2.0 mS/cm); Temp. reservatório: 25.0 °C, fora da faixa tolerada (18–24 °C); água_max: 1, nível adequado; água_min: 1, nível adequado. || Conclusão: A temperatura ambiente, umidade e temperatura do reservatório estão fora das faixas toleradas, necessitando de ajustes. Impacto previsto: Se não corrigidos, os parâmetros fora da faixa podem levar a estresse térmico e hídrico, aumentando o risco de doenças como podridão radicular e queima das pontas das folhas, causadas por alta temperatura e baixa umidade; risco atual classificado como 3/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [15/05/2025 08:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 31.02, 'umid': 43.97, 'co2': 473.0, 'luz': 1.0, 'temp_reserv_int': 25.81, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.0, 'ec': 1.35}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 31.02, 'umidade_ambiente': 43.97, 'nivel_co2': 473.0, 'luminosidade': 1.0, 'ph_agua': 6.0, 'condutividade_ec': 1.35, 'temp_reservatorio_interno': 25.81, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-15T11:00:04.468889Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 15/05/2025 08:00. Temperatura ambiente: 31.02 °C, fora da faixa tolerada (ideal: 19.5 °C, tolerável: 15–24 °C); Umidade: 43.97 %, fora da faixa tolerada (ideal: 60 %, tolerável: 50–70 %); CO₂: 473.0 ppm, dentro da faixa ideal (400–800 ppm); pH: 6.0, dentro da faixa ideal (tolerável: 5.5–6.5); EC: 1.35 mS/cm, dentro da faixa tolerada (tolerável: 1.2–2.0 mS/cm); Temperatura do reservatório: 25.81 °C, fora da faixa tolerada (ideal: 21 °C, tolerável: 18–24 °C); água_max: 1, nível adequado; água_min: 1, nível adequado. || Conclusão: A temperatura ambiente e a umidade relativa estão fora das faixas toleradas, e a temperatura do reservatório está ligeiramente acima da faixa tolerada. || Impacto previsto: Se não corrigidos, os parâmetros fora da faixa podem levar a estresse térmico e hídrico nas plantas, aumentando o risco de doenças como podridão radicular e queima das pontas, devido ao calor excessivo e baixa umidade. Risco atual: 3/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [15/05/2025 12:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 22.18, 'umid': 65.32, 'co2': 445.0, 'luz': 0.0, 'temp_reserv_int': 24.31, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.0, 'ec': 1.35}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 22.18, 'umidade_ambiente': 65.32, 'nivel_co2': 445.0, 'luminosidade': 0.0, 'ph_agua': 6.0, 'condutividade_ec': 1.35, 'temp_reservatorio_interno': 24.31, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-15T15:00:04.076240Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 15/05/2025 12:00. Temperatura ambiente: 22.18 °C, dentro da faixa tolerada. Umidade: 65.32%, dentro da faixa tolerada. CO₂: 445.0 ppm, dentro da faixa tolerada. pH: 6.0, dentro da faixa ideal. EC: 1.35 mS/cm, dentro da faixa tolerada. Temperatura do reservatório: 24.31 °C, ligeiramente acima da faixa tolerada. água_max: 1, nível adequado. água_min: 1, nível adequado. Conclusão: Todos os parâmetros estão dentro das faixas toleradas, exceto a temperatura do reservatório, que está ligeiramente acima do ideal. || Impacto previsto: Se a temperatura do reservatório não for ajustada, pode ocorrer estresse térmico nas raízes, aumentando o risco de doenças como Pythium (podridão radicular) devido ao ambiente aquático aquecido; risco atual classificado como 1/5. Não há risco identificado para os demais parâmetros.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [15/05/2025 16:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 22.92, 'umid': 62.59, 'co2': 519.0, 'luz': 0.0, 'temp_reserv_int': 21.94, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.0, 'ec': 1.35}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 22.92, 'umidade_ambiente': 62.59, 'nivel_co2': 519.0, 'luminosidade': 0.0, 'ph_agua': 6.0, 'condutividade_ec': 1.35, 'temp_reservatorio_interno': 21.94, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-15T19:00:04.511221Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 15/05/2025 16:00. Temperatura ambiente: 22.92 °C, dentro da faixa tolerada. Umidade: 62.59%, dentro da faixa tolerada. CO₂: 519.0 ppm, dentro da faixa tolerada. pH: 6.0, dentro da faixa ideal. EC: 1.35 mS/cm, dentro da faixa tolerada. Temperatura do reservatório: 21.94 °C, dentro da faixa tolerada. Nível de água: água_max em 1, nível adequado; água_min em 1, nível adequado. || Conclusão: Todos os parâmetros estão dentro das faixas toleradas. Impacto previsto: Não há risco identificado.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [15/05/2025 20:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 21.44, 'umid': 66.6, 'co2': 486.0, 'luz': 0.0, 'temp_reserv_int': 20.94, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.0, 'ec': 1.35}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 21.44, 'umidade_ambiente': 66.6, 'nivel_co2': 486.0, 'luminosidade': 0.0, 'ph_agua': 6.0, 'condutividade_ec': 1.35, 'temp_reservatorio_interno': 20.94, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-15T23:00:03.859574Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 15/05/2025 20:00. Temperatura ambiente: 21.44 °C, dentro da faixa tolerada; Umidade: 66.6%, dentro da faixa tolerada; CO₂: 486.0 ppm, dentro da faixa tolerada; pH: 6.0, dentro da faixa tolerada; EC: 1.35 mS/cm, dentro da faixa tolerada; Temperatura do reservatório: 20.94 °C, dentro da faixa tolerada; água_max: 1, nível adequado; água_min: 1, nível adequado. || Conclusão: Todos os parâmetros estão dentro das faixas toleradas. Impacto previsto: Não há risco identificado.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [16/05/2025 00:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 30.83, 'umid': 44.04, 'co2': 452.0, 'luz': 1.0, 'temp_reserv_int': 22.25, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.0, 'ec': 1.35}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 30.83, 'umidade_ambiente': 44.04, 'nivel_co2': 452.0, 'luminosidade': 1.0, 'ph_agua': 6.0, 'condutividade_ec': 1.35, 'temp_reservatorio_interno': 22.25, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-16T03:00:04.686264Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 16/05/2025 00:00. Temperatura ambiente: 30.83 °C, fora da faixa tolerada (15–24 °C); Umidade: 44.04 %, fora da faixa tolerada (50–70%); CO₂: 452.0 ppm, dentro da faixa ideal (400–800 ppm); pH: 6.0, dentro da faixa ideal (5.5–6.5); EC: 1.35 mS/cm, dentro da faixa tolerada (1.2–2.0 mS/cm); Temp. reservatório: 22.25 °C, dentro da faixa tolerada (18–24 °C); água_max: 1, nível adequado; água_min: 1, nível adequado. || Conclusão: A temperatura ambiente e a umidade relativa estão fora das faixas toleradas, o que pode impactar negativamente o cultivo. Impacto previsto: Se não corrigidos, os parâmetros fora da faixa podem levar a estresse térmico e desidratação das plantas, aumentando o risco de doenças como oídio e míldio, devido ao ambiente quente e seco; risco atual classificado como 3/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [16/05/2025 04:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 30.29, 'umid': 44.7, 'co2': 472.0, 'luz': 1.0, 'temp_reserv_int': 24.75, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.0, 'ec': 1.35}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 30.29, 'umidade_ambiente': 44.7, 'nivel_co2': 472.0, 'luminosidade': 1.0, 'ph_agua': 6.0, 'condutividade_ec': 1.35, 'temp_reservatorio_interno': 24.75, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-16T07:00:04.374560Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 16/05/2025 04:00. Temperatura ambiente: 30.29 °C, fora da faixa tolerada (15–24 °C); Umidade: 44.7 %, fora da faixa tolerada (50–70%); CO₂: 472.0 ppm, dentro da faixa ideal (400–800 ppm); pH: 6.0, dentro da faixa ideal (5.5–6.5); EC: 1.35 mS/cm, dentro da faixa tolerada (1.2–2.0 mS/cm); Temp. reservatório: 24.75 °C, ligeiramente acima da faixa tolerada (18–24 °C); água_max: 1, nível adequado; água_min: 1, nível adequado. || Conclusão: A temperatura ambiente e a umidade relativa estão fora das faixas toleradas, e a temperatura do reservatório está ligeiramente acima do limite tolerado. || Impacto previsto: Se não corrigidos, os parâmetros fora da faixa podem levar a estresse térmico e hídrico nas plantas, aumentando o risco de doenças como queima das pontas e murcha bacteriana, devido à alta temperatura e baixa umidade. Risco atual: 3/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [16/05/2025 08:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 30.18, 'umid': 45.71, 'co2': 473.0, 'luz': 1.0, 'temp_reserv_int': 25.56, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.0, 'ec': 1.35}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 30.18, 'umidade_ambiente': 45.71, 'nivel_co2': 473.0, 'luminosidade': 1.0, 'ph_agua': 6.0, 'condutividade_ec': 1.35, 'temp_reservatorio_interno': 25.56, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-16T11:00:04.490597Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 16/05/2025 08:00. Temperatura ambiente: 30.18 °C, fora da faixa tolerada (15–24 °C); Umidade: 45.71 %, fora da faixa tolerada (50–70%); CO₂: 473.0 ppm, dentro da faixa ideal (400–800 ppm); pH: 6.0, dentro da faixa ideal (5.5–6.5); EC: 1.35 mS/cm, dentro da faixa tolerada (1.2–2.0 mS/cm); Temp. reservatório: 25.56 °C, fora da faixa tolerada (18–24 °C); água_max: 1, nível adequado; água_min: 1, nível adequado. || Conclusão: A temperatura ambiente, umidade e temperatura do reservatório estão fora das faixas toleradas. Impacto previsto: Caso não sejam corrigidos, os parâmetros fora da faixa podem levar a estresse térmico e hídrico nas plantas, aumentando o risco de doenças como queima das bordas das folhas e podridão radicular, devido ao calor excessivo e baixa umidade. Risco atual: 3/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [16/05/2025 12:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 20.89, 'umid': 72.19, 'co2': 468.0, 'luz': 0.0, 'temp_reserv_int': 23.31, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.0, 'ec': 1.35}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 20.89, 'umidade_ambiente': 72.19, 'nivel_co2': 468.0, 'luminosidade': 0.0, 'ph_agua': 6.0, 'condutividade_ec': 1.35, 'temp_reservatorio_interno': 23.31, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-16T15:00:04.418276Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 16/05/2025 12:00. Temperatura ambiente: 20.89 °C, dentro da faixa tolerada. Umidade: 72.19 %, fora da faixa tolerada, ligeiramente acima do limite superior. CO₂: 468.0 ppm, dentro da faixa tolerada. pH: 6.0, dentro da faixa tolerada. EC: 1.35 mS/cm, dentro da faixa tolerada. Temperatura do reservatório: 23.31 °C, dentro da faixa tolerada. água_max: 1, nível adequado. água_min: 1, nível adequado. || Conclusão: A maioria dos parâmetros está dentro das faixas toleradas, exceto a umidade relativa, que está ligeiramente acima do limite superior. Impacto previsto: Se a umidade elevada não for corrigida, pode aumentar o risco de doenças fúngicas como o míldio e o oídio, que prosperam em condições úmidas; risco atual classificado como 1/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [16/05/2025 16:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 22.16, 'umid': 68.02, 'co2': 488.0, 'luz': 0.0, 'temp_reserv_int': 21.19, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.0, 'ec': 1.35}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 22.16, 'umidade_ambiente': 68.02, 'nivel_co2': 488.0, 'luminosidade': 0.0, 'ph_agua': 6.0, 'condutividade_ec': 1.35, 'temp_reservatorio_interno': 21.19, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-16T19:00:05.233878Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 16/05/2025 16:00. Temperatura ambiente: 22.16 °C, dentro da faixa tolerada. Umidade: 68.02%, dentro da faixa tolerada. CO₂: 488.0 ppm, dentro da faixa tolerada. pH: 6.0, dentro da faixa ideal. EC: 1.35 mS/cm, dentro da faixa tolerada. Temperatura do reservatório: 21.19 °C, dentro da faixa tolerada. água_max: 1, nível adequado. água_min: 1, nível adequado. || Conclusão: Todos os parâmetros estão dentro das faixas toleradas. Impacto previsto: Não há risco identificado.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [16/05/2025 20:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 21.01, 'umid': 70.64, 'co2': 435.0, 'luz': 0.0, 'temp_reserv_int': 20.44, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.0, 'ec': 1.35}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 21.01, 'umidade_ambiente': 70.64, 'nivel_co2': 435.0, 'luminosidade': 0.0, 'ph_agua': 6.0, 'condutividade_ec': 1.35, 'temp_reservatorio_interno': 20.44, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-16T23:00:06.008269Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 16/05/2025 20:00. Temperatura ambiente: 21.01 °C, dentro da faixa tolerada. Umidade: 70.64 %, próxima do limite superior tolerado. CO₂: 435.0 ppm, dentro da faixa tolerada. pH: 6.0, dentro da faixa ideal. EC: 1.35 mS/cm, dentro da faixa tolerada. Temperatura do reservatório: 20.44 °C, dentro da faixa tolerada. Nível de água máximo: 1, nível adequado. Nível de água mínimo: 1, nível adequado. || Conclusão: Todos os parâmetros estão dentro das faixas toleradas ou próximas dos limites, sem risco identificado. Impacto previsto: Não há risco identificado, portanto, não há previsão de impacto negativo. Risco atual: 0/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [17/05/2025 00:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 24.21, 'umid': 61.1, 'co2': 443.0, 'luz': 1.0, 'temp_reserv_int': 21.38, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.0, 'ec': 1.35}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 24.21, 'umidade_ambiente': 61.1, 'nivel_co2': 443.0, 'luminosidade': 1.0, 'ph_agua': 6.0, 'condutividade_ec': 1.35, 'temp_reservatorio_interno': 21.38, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-17T03:00:03.891379Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 17/05/2025 00:00. Temperatura ambiente: 24.21 °C, ligeiramente acima do limite tolerável de 24 °C; Umidade: 61.1 %, dentro da faixa tolerada; CO₂: 443.0 ppm, dentro da faixa tolerada; pH: 6.0, dentro da faixa ideal; EC: 1.35 mS/cm, dentro da faixa tolerada; Temperatura do reservatório: 21.38 °C, dentro da faixa tolerada; água_max: 1, nível adequado; água_min: 1, nível adequado. || Conclusão: A temperatura ambiente está ligeiramente acima do limite tolerável, mas todos os outros parâmetros estão dentro das faixas toleradas. Impacto previsto: Se a temperatura ambiente não for ajustada, pode ocorrer estresse térmico nas plantas, aumentando a suscetibilidade a doenças como oídio e podridão radicular, devido ao ambiente mais quente e úmido; risco atual classificado como 1/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [17/05/2025 04:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 23.42, 'umid': 63.6, 'co2': 435.0, 'luz': 1.0, 'temp_reserv_int': 22.19, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.0, 'ec': 1.35}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 23.42, 'umidade_ambiente': 63.6, 'nivel_co2': 435.0, 'luminosidade': 1.0, 'ph_agua': 6.0, 'condutividade_ec': 1.35, 'temp_reservatorio_interno': 22.19, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-17T07:00:04.145725Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 17/05/2025 04:00. Temperatura ambiente: 23.42 °C, dentro da faixa tolerável. Umidade: 63.6%, dentro da faixa tolerável. CO₂: 435.0 ppm, dentro da faixa tolerável. pH: 6.0, dentro da faixa ideal. EC: 1.35 mS/cm, dentro da faixa tolerável. Temperatura do reservatório: 22.19 °C, dentro da faixa tolerável. Nível de água: água_max em 1 e água_min em 1, ambos indicando nível adequado. || Conclusão: Todos os parâmetros estão dentro das faixas toleradas. Impacto previsto: Não há risco identificado.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [17/05/2025 08:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 22.72, 'umid': 67.39, 'co2': 450.0, 'luz': 1.0, 'temp_reserv_int': 21.94, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.0, 'ec': 1.35}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 22.72, 'umidade_ambiente': 67.39, 'nivel_co2': 450.0, 'luminosidade': 1.0, 'ph_agua': 6.0, 'condutividade_ec': 1.35, 'temp_reservatorio_interno': 21.94, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-17T11:00:04.746023Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 17/05/2025 08:00. Temperatura ambiente: 22.72 °C, dentro da faixa tolerada. Umidade: 67.39%, dentro da faixa tolerada. CO₂: 450.0 ppm, dentro da faixa tolerada. pH: 6.0, dentro da faixa ideal. EC: 1.35 mS/cm, dentro da faixa tolerada. Temperatura do reservatório: 21.94 °C, dentro da faixa tolerada. Nível de água_max: 1, nível adequado. Nível de água_min: 1, nível adequado. || Conclusão: Todos os parâmetros estão dentro das faixas toleradas. Impacto previsto: Não há risco identificado.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [17/05/2025 12:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 20.63, 'umid': 77.06, 'co2': 429.0, 'luz': 0.0, 'temp_reserv_int': 20.56, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.0, 'ec': 1.35}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 20.63, 'umidade_ambiente': 77.06, 'nivel_co2': 429.0, 'luminosidade': 0.0, 'ph_agua': 6.0, 'condutividade_ec': 1.35, 'temp_reservatorio_interno': 20.56, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-17T15:00:03.957097Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 17/05/2025 12:00. Temperatura ambiente: 20.63 °C, dentro da faixa tolerada. Umidade: 77.06 %, fora da faixa tolerada, acima do limite superior. CO₂: 429.0 ppm, dentro da faixa tolerada. pH: 6.0, dentro da faixa tolerada. EC: 1.35 mS/cm, dentro da faixa tolerada. Temperatura do reservatório: 20.56 °C, dentro da faixa tolerada. água_max: 1, nível adequado. água_min: 1, nível adequado. || Conclusão: A umidade está fora da faixa tolerada, enquanto os demais parâmetros estão dentro dos limites aceitáveis. Impacto previsto: Caso a umidade elevada não seja corrigida, pode ocorrer o desenvolvimento de doenças fúngicas como o míldio e o oídio, devido ao ambiente excessivamente úmido que favorece a proliferação de fungos; risco atual classificado como 2/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [17/05/2025 16:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 21.81, 'umid': 72.49, 'co2': 443.0, 'luz': 0.0, 'temp_reserv_int': -875.75, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.0, 'ec': 1.35}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 21.81, 'umidade_ambiente': 72.49, 'nivel_co2': 443.0, 'luminosidade': 0.0, 'ph_agua': 6.0, 'condutividade_ec': 1.35, 'temp_reservatorio_interno': -875.75, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-17T19:00:04.012693Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 17/05/2025 16:00. Temperatura ambiente: 21.81 °C, dentro da faixa tolerada. Umidade: 72.49 %, ligeiramente acima da faixa tolerada. CO₂: 443.0 ppm, dentro da faixa ideal. pH: 6.0, dentro da faixa ideal. EC: 1.35 mS/cm, dentro da faixa tolerada. Temp. reservatório: -875.75 °C, valor fora da realidade, indicando possível falha no sensor. água_max: 1, nível adequado. água_min: 1, nível adequado. Conclusão: A maioria dos parâmetros está dentro das faixas toleradas, exceto a umidade ligeiramente alta e a temperatura do reservatório que apresenta um valor irreal. || Impacto previsto: Se a umidade elevada não for corrigida, pode aumentar o risco de doenças fúngicas como o míldio; a falha no sensor de temperatura do reservatório impede a avaliação precisa, mas se real, poderia afetar a absorção de nutrientes. Risco atual: 2/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [17/05/2025 20:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 21.9, 'umid': 72.41, 'co2': 574.0, 'luz': 0.0, 'temp_reserv_int': 20.25, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.0, 'ec': 1.35}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 21.9, 'umidade_ambiente': 72.41, 'nivel_co2': 574.0, 'luminosidade': 0.0, 'ph_agua': 6.0, 'condutividade_ec': 1.35, 'temp_reservatorio_interno': 20.25, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-17T23:00:04.296031Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 17/05/2025 20:00. Temperatura ambiente: 21.9 °C, dentro da faixa tolerada. Umidade: 72.41 %, ligeiramente acima da faixa tolerada. CO₂: 574.0 ppm, dentro da faixa tolerada. pH: 6.0, dentro da faixa ideal. EC: 1.35 mS/cm, dentro da faixa tolerada. Temperatura do reservatório: 20.25 °C, dentro da faixa tolerada. água_max: 1, nível adequado. água_min: 1, nível adequado. || Conclusão: A umidade está ligeiramente acima da faixa tolerada, mas todos os outros parâmetros estão dentro das faixas aceitáveis. || Impacto previsto: Se a umidade elevada não for corrigida, pode aumentar o risco de doenças fúngicas como o míldio, devido ao ambiente mais úmido, e a podridão radicular, causada por condições excessivamente úmidas. Risco atual: 1/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [18/05/2025 00:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 26.21, 'umid': 57.99, 'co2': 538.0, 'luz': 1.0, 'temp_reserv_int': 21.94, 'agua_min': 1.0, 'agua_max': 0.0, 'ph': 6.0, 'ec': 1.35}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 26.21, 'umidade_ambiente': 57.99, 'nivel_co2': 538.0, 'luminosidade': 1.0, 'ph_agua': 6.0, 'condutividade_ec': 1.35, 'temp_reservatorio_interno': 21.94, 'agua_min': 1, 'agua_max': 0, 'timestamp_consulta': '2025-05-18T03:00:04.754983Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 18/05/2025 00:00. Temperatura ambiente: 26.21 °C, fora da faixa tolerada (15–24 °C). Umidade: 57.99 %, dentro da faixa tolerada (50–70%). CO₂: 538.0 ppm, dentro da faixa tolerada (400–800 ppm). pH: 6.0, dentro da faixa tolerada (5.5–6.5). EC: 1.35 mS/cm, dentro da faixa tolerada (1.2–2.0 mS/cm). Temp. reservatório: 21.94 °C, dentro da faixa tolerada (18–24 °C). água_max: 0, abaixo da boia, reposição recomendada. água_min: 1, nível adequado. || Conclusão: A temperatura ambiente está fora da faixa tolerada e o nível de água está abaixo do ideal, embora não crítico. || Impacto previsto: Se a temperatura elevada não for corrigida, pode ocorrer queima das bordas das folhas ou necrose, devido ao estresse térmico; o risco atual é 2/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [18/05/2025 04:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 29.18, 'umid': 46.97, 'co2': 491.0, 'luz': 1.0, 'temp_reserv_int': 23.81, 'agua_min': 1.0, 'agua_max': 0.0, 'ph': 6.0, 'ec': 1.35}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 29.18, 'umidade_ambiente': 46.97, 'nivel_co2': 491.0, 'luminosidade': 1.0, 'ph_agua': 6.0, 'condutividade_ec': 1.35, 'temp_reservatorio_interno': 23.81, 'agua_min': 1, 'agua_max': 0, 'timestamp_consulta': '2025-05-18T07:00:04.279203Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 18/05/2025 04:00. Temperatura ambiente: 29.18 °C, fora da faixa tolerada, acima do limite superior de 24 °C; Umidade: 46.97 %, fora da faixa tolerada, abaixo do limite inferior de 50%; CO₂: 491.0 ppm, dentro da faixa ideal; pH: 6.0, dentro da faixa ideal; EC: 1.35 mS/cm, dentro da faixa tolerada; Temp. reservatório: 23.81 °C, dentro da faixa tolerada; água_max: 0, abaixo do nível ideal, reposição recomendada; água_min: 1, nível adequado, sem risco imediato. || Conclusão: A temperatura ambiente e a umidade relativa estão fora das faixas toleradas, enquanto o nível de água está abaixo do ideal. Impacto previsto: Se não corrigidos, os parâmetros fora da faixa podem levar a estresse térmico e hídrico nas plantas, aumentando o risco de doenças como oídio e podridão radicular, devido ao calor excessivo e baixa umidade. Risco atual: 3/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [18/05/2025 08:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 30.58, 'umid': 43.14, 'co2': 456.0, 'luz': 1.0, 'temp_reserv_int': 25.25, 'agua_min': 1.0, 'agua_max': 0.0, 'ph': 6.0, 'ec': 1.35}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 30.58, 'umidade_ambiente': 43.14, 'nivel_co2': 456.0, 'luminosidade': 1.0, 'ph_agua': 6.0, 'condutividade_ec': 1.35, 'temp_reservatorio_interno': 25.25, 'agua_min': 1, 'agua_max': 0, 'timestamp_consulta': '2025-05-18T11:00:03.992522Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 18/05/2025 08:00. Temperatura ambiente: 30.58 °C, fora da faixa tolerada, acima do limite superior de 24 °C; Umidade: 43.14 %, fora da faixa tolerada, abaixo do limite inferior de 50%; CO₂: 456.0 ppm, dentro da faixa ideal; pH: 6.0, dentro da faixa ideal; EC: 1.35 mS/cm, dentro da faixa tolerada; Temp. reservatório: 25.25 °C, fora da faixa tolerada, acima do limite superior de 24 °C; água_max: 0, abaixo da boia, reposição recomendada; água_min: 1, nível adequado. || Conclusão: A temperatura ambiente, umidade e temperatura do reservatório estão fora das faixas toleradas, necessitando de ajustes imediatos. Impacto previsto: Se não corrigidos, os parâmetros fora da faixa podem levar a estresse térmico e hídrico nas plantas, aumentando o risco de doenças como queima das bordas das folhas e murcha fisiológica, devido ao calor excessivo e baixa umidade; risco atual classificado como 4/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [18/05/2025 12:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 21.12, 'umid': 69.06, 'co2': 485.0, 'luz': 0.0, 'temp_reserv_int': 23.31, 'agua_min': 1.0, 'agua_max': 0.0, 'ph': 6.0, 'ec': 1.35}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 21.12, 'umidade_ambiente': 69.06, 'nivel_co2': 485.0, 'luminosidade': 0.0, 'ph_agua': 6.0, 'condutividade_ec': 1.35, 'temp_reservatorio_interno': 23.31, 'agua_min': 1, 'agua_max': 0, 'timestamp_consulta': '2025-05-18T15:00:04.149275Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 18/05/2025 12:00. Temperatura ambiente: 21.12 °C, dentro da faixa tolerada. Umidade: 69.06%, dentro da faixa tolerada. CO₂: 485.0 ppm, dentro da faixa tolerada. pH: 6.0, dentro da faixa ideal. EC: 1.35 mS/cm, dentro da faixa tolerada. Temperatura do reservatório: 23.31 °C, dentro da faixa tolerada. Nível de água_max: 0, abaixo da boia, reposição recomendada. Nível de água_min: 1, nível adequado. Conclusão: Todos os parâmetros estão dentro das faixas toleradas, exceto o nível de água_max, que está abaixo da boia, mas sem risco imediato. || Impacto previsto: Se o nível de água não for corrigido, pode ocorrer estresse hídrico, aumentando o risco de murcha fisiológica devido à insuficiência de nutrientes; risco atual classificado como 1/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [18/05/2025 16:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 21.76, 'umid': 63.06, 'co2': 464.0, 'luz': 0.0, 'temp_reserv_int': 20.75, 'agua_min': 1.0, 'agua_max': 0.0, 'ph': 6.0, 'ec': 1.35}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 21.76, 'umidade_ambiente': 63.06, 'nivel_co2': 464.0, 'luminosidade': 0.0, 'ph_agua': 6.0, 'condutividade_ec': 1.35, 'temp_reservatorio_interno': 20.75, 'agua_min': 1, 'agua_max': 0, 'timestamp_consulta': '2025-05-18T19:00:04.819137Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 18/05/2025 16:00. Temperatura ambiente: 21.76 °C, dentro da faixa tolerada. Umidade: 63.06%, dentro da faixa tolerada. CO₂: 464.0 ppm, dentro da faixa tolerada. pH: 6.0, dentro da faixa ideal. EC: 1.35 mS/cm, dentro da faixa tolerada. Temperatura do reservatório: 20.75 °C, dentro da faixa tolerada. água_max: 0, abaixo da boia, reposição recomendada. água_min: 1, nível adequado. || Conclusão: Todos os parâmetros estão dentro das faixas toleradas, exceto o nível de água_max, que está abaixo da boia, mas sem risco imediato. || Impacto previsto: Caso o nível de água não seja corrigido, pode ocorrer estresse hídrico, aumentando a suscetibilidade a doenças como Pythium (damping-off) devido à falta de circulação adequada de nutrientes e água. Risco atual: 1/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [18/05/2025 20:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 21.72, 'umid': 65.15, 'co2': 533.0, 'luz': 0.0, 'temp_reserv_int': 20.31, 'agua_min': 1.0, 'agua_max': 0.0, 'ph': 6.0, 'ec': 1.35}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 21.72, 'umidade_ambiente': 65.15, 'nivel_co2': 533.0, 'luminosidade': 0.0, 'ph_agua': 6.0, 'condutividade_ec': 1.35, 'temp_reservatorio_interno': 20.31, 'agua_min': 1, 'agua_max': 0, 'timestamp_consulta': '2025-05-18T23:00:04.090876Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 18/05/2025 20:00. Temperatura ambiente: 21.72 °C, dentro da faixa tolerada. Umidade: 65.15%, dentro da faixa tolerada. CO₂: 533.0 ppm, dentro da faixa tolerada. pH: 6.0, dentro da faixa ideal. EC: 1.35 mS/cm, dentro da faixa tolerada. Temperatura do reservatório: 20.31 °C, dentro da faixa tolerada. Nível de água_max: 0, abaixo da boia, reposição recomendada; Nível de água_min: 1, nível adequado. || Conclusão: Todos os parâmetros estão dentro das faixas toleradas, exceto o nível de água_max, que está abaixo do ideal. || Impacto previsto: Se o nível de água não for corrigido, pode ocorrer estresse hídrico, aumentando o risco de doenças como podridão radicular e murcha bacteriana devido à insuficiência de nutrientes; risco atual classificado como 1/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [19/05/2025 00:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 27.82, 'umid': 48.41, 'co2': 521.0, 'luz': 1.0, 'temp_reserv_int': 22.75, 'agua_min': 1.0, 'agua_max': 0.0, 'ph': 6.0, 'ec': 1.35}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 27.82, 'umidade_ambiente': 48.41, 'nivel_co2': 521.0, 'luminosidade': 1.0, 'ph_agua': 6.0, 'condutividade_ec': 1.35, 'temp_reservatorio_interno': 22.75, 'agua_min': 1, 'agua_max': 0, 'timestamp_consulta': '2025-05-19T03:00:04.712696Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 19/05/2025 00:00. Temperatura ambiente: 27.82 °C, fora da faixa tolerada (15–24 °C); Umidade: 48.41%, fora da faixa tolerada (50–70%); CO₂: 521.0 ppm, dentro da faixa tolerada (400–800 ppm); pH: 6.0, dentro da faixa ideal (5.5–6.5); EC: 1.35 mS/cm, dentro da faixa tolerada (1.2–2.0 mS/cm); Temperatura do reservatório: 22.75 °C, dentro da faixa tolerada (18–24 °C); água_max: 0, abaixo do ideal, reposição recomendada; água_min: 1, nível adequado. || Conclusão: A temperatura ambiente e a umidade estão fora das faixas toleradas, e o nível de água está abaixo do ideal. Impacto previsto: Se não corrigidos, os parâmetros fora da faixa podem levar a estresse térmico e hídrico, aumentando o risco de doenças como oídio e podridão radicular, devido à alta temperatura e baixa umidade. Risco atual: 3/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [19/05/2025 04:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 31.16, 'umid': 42.53, 'co2': 472.0, 'luz': 1.0, 'temp_reserv_int': 25.06, 'agua_min': 1.0, 'agua_max': 0.0, 'ph': 6.0, 'ec': 1.35}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 31.16, 'umidade_ambiente': 42.53, 'nivel_co2': 472.0, 'luminosidade': 1.0, 'ph_agua': 6.0, 'condutividade_ec': 1.35, 'temp_reservatorio_interno': 25.06, 'agua_min': 1, 'agua_max': 0, 'timestamp_consulta': '2025-05-19T07:00:04.193702Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 19/05/2025 04:00. Temperatura ambiente: 31.16 °C, fora da faixa tolerada (15–24 °C); Umidade: 42.53 %, fora da faixa tolerada (50–70%); CO₂: 472.0 ppm, dentro da faixa ideal (400–800 ppm); pH: 6.0, dentro da faixa ideal (5.5–6.5); EC: 1.35 mS/cm, dentro da faixa tolerada (1.2–2.0 mS/cm); Temp. reservatório: 25.06 °C, ligeiramente acima da faixa tolerada (18–24 °C); água_max: 0, nível abaixo do ideal, reposição recomendada; água_min: 1, nível adequado. || Conclusão: A temperatura ambiente e a umidade relativa estão fora das faixas toleradas, e a temperatura do reservatório está ligeiramente acima do ideal. Impacto previsto: Se não corrigidos, os parâmetros fora da faixa podem levar a estresse térmico e desidratação das plantas, aumentando o risco de doenças como oídio e podridão radicular devido ao ambiente quente e seco; risco atual classificado como 3/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [19/05/2025 08:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 27.78, 'umid': 49.66, 'co2': 464.0, 'luz': 1.0, 'temp_reserv_int': 25.69, 'agua_min': 1.0, 'agua_max': 0.0, 'ph': 6.0, 'ec': 1.35}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 27.78, 'umidade_ambiente': 49.66, 'nivel_co2': 464.0, 'luminosidade': 1.0, 'ph_agua': 6.0, 'condutividade_ec': 1.35, 'temp_reservatorio_interno': 25.69, 'agua_min': 1, 'agua_max': 0, 'timestamp_consulta': '2025-05-19T11:00:04.127135Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 19/05/2025 08:00. Temperatura ambiente: 27.78 °C, fora da faixa tolerada, acima do limite superior de 24 °C. Umidade: 49.66 %, ligeiramente abaixo da faixa tolerada de 50–70%. CO₂: 464.0 ppm, dentro da faixa ideal de 400–800 ppm. pH: 6.0, dentro da faixa ideal de 5.5–6.5. EC: 1.35 mS/cm, dentro da faixa tolerada de 1.2–2.0 mS/cm. Temperatura do reservatório: 25.69 °C, fora da faixa tolerada, acima do limite superior de 24 °C. água_max: 0, indicando que o nível está abaixo da boia e reposição é recomendada. água_min: 1, indicando nível adequado, sem risco imediato. || Conclusão: A temperatura ambiente e a temperatura do reservatório estão fora das faixas toleradas, e a umidade está ligeiramente abaixo do ideal. Impacto previsto: Se não corrigidos, os parâmetros fora da faixa podem levar a estresse térmico e desidratação das plantas, aumentando o risco de doenças como oídio e podridão radicular, causadas por condições de calor excessivo e umidade inadequada. Risco atual: 3/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [19/05/2025 12:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 22.72, 'umid': 63.22, 'co2': 497.0, 'luz': 0.0, 'temp_reserv_int': 23.62, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.0, 'ec': 1.96}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 22.72, 'umidade_ambiente': 63.22, 'nivel_co2': 497.0, 'luminosidade': 0.0, 'ph_agua': 6.0, 'condutividade_ec': 1.96, 'temp_reservatorio_interno': 23.62, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-19T15:00:04.573567Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 19/05/2025 12:00. Temperatura ambiente: 22.72 °C, dentro da faixa tolerável. Umidade: 63.22%, dentro da faixa tolerável. CO₂: 497.0 ppm, dentro da faixa tolerável. pH: 6.0, dentro da faixa ideal. EC: 1.96 mS/cm, dentro da faixa tolerável. Temperatura do reservatório: 23.62 °C, dentro da faixa tolerável. água_max: 1, nível adequado. água_min: 1, nível adequado. Conclusão: Todos os parâmetros estão dentro das faixas toleráveis. || Impacto previsto: Não há risco identificado.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [19/05/2025 16:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 25.05, 'umid': 57.24, 'co2': 594.0, 'luz': 0.0, 'temp_reserv_int': 22.25, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.0, 'ec': 1.96}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 25.05, 'umidade_ambiente': 57.24, 'nivel_co2': 594.0, 'luminosidade': 0.0, 'ph_agua': 6.0, 'condutividade_ec': 1.96, 'temp_reservatorio_interno': 22.25, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-19T19:00:04.825613Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 19/05/2025 16:00. Temperatura ambiente: 25.05 °C, fora da faixa tolerada (ideal: 19.5 °C, tolerável: 15–24 °C); Umidade: 57.24 %, dentro da faixa tolerada (tolerável: 50–70%); CO₂: 594.0 ppm, dentro da faixa tolerada (tolerável: 400–1000 ppm); pH: 6.0, dentro da faixa ideal (ideal: 6.0, tolerável: 5.5–6.5); EC: 1.96 mS/cm, dentro da faixa tolerada (tolerável: 1.2–2.0 mS/cm); Temperatura do reservatório: 22.25 °C, dentro da faixa tolerada (tolerável: 18–24 °C); água_max: 1, nível adequado; água_min: 1, nível adequado. || Conclusão: A temperatura ambiente está fora da faixa tolerada, enquanto os demais parâmetros estão dentro das faixas aceitáveis. || Impacto previsto: Se a temperatura ambiente não for ajustada, pode ocorrer estresse térmico nas plantas, aumentando o risco de doenças como queima das bordas das folhas e podridão radicular, devido ao metabolismo acelerado e à maior demanda por água; risco atual classificado como 2/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [19/05/2025 20:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 22.63, 'umid': 60.62, 'co2': 495.0, 'luz': 0.0, 'temp_reserv_int': 21.62, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.0, 'ec': 1.96}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 22.63, 'umidade_ambiente': 60.62, 'nivel_co2': 495.0, 'luminosidade': 0.0, 'ph_agua': 6.0, 'condutividade_ec': 1.96, 'temp_reservatorio_interno': 21.62, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-19T23:00:04.152152Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 19/05/2025 20:00. Temperatura ambiente: 22.63 °C, dentro da faixa tolerada. Umidade: 60.62%, dentro da faixa tolerada. CO₂: 495.0 ppm, dentro da faixa tolerada. pH: 6.0, dentro da faixa tolerada. EC: 1.96 mS/cm, dentro da faixa tolerada. Temperatura do reservatório: 21.62 °C, dentro da faixa tolerada. Nível de água_max: 1, nível adequado. Nível de água_min: 1, nível adequado. || Conclusão: Todos os parâmetros estão dentro das faixas toleradas. Impacto previsto: Não há risco identificado.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [20/05/2025 00:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 29.23, 'umid': 47.23, 'co2': 485.0, 'luz': 1.0, 'temp_reserv_int': 23.25, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.0, 'ec': 1.96}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 29.23, 'umidade_ambiente': 47.23, 'nivel_co2': 485.0, 'luminosidade': 1.0, 'ph_agua': 6.0, 'condutividade_ec': 1.96, 'temp_reservatorio_interno': 23.25, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-20T03:00:04.722347Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 20/05/2025 00:00. Temperatura ambiente: 29.23 °C, fora da faixa tolerada (15–24 °C); Umidade: 47.23 %, fora da faixa tolerada (50–70%); CO₂: 485.0 ppm, dentro da faixa ideal (400–800 ppm); pH: 6.0, dentro da faixa ideal (5.5–6.5); EC: 1.96 mS/cm, dentro da faixa tolerada (1.2–2.0 mS/cm); Temp. reservatório: 23.25 °C, dentro da faixa tolerada (18–24 °C); água_max: 1, nível adequado; água_min: 1, nível adequado. || Conclusão: A temperatura ambiente e a umidade estão fora das faixas toleradas, enquanto os demais parâmetros estão adequados. Impacto previsto: Se não corrigidos, os parâmetros fora da faixa podem levar a estresse térmico e baixa umidade, aumentando o risco de queima das bordas das folhas e murcha fisiológica, com risco classificado em 3/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [20/05/2025 04:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 28.41, 'umid': 48.54, 'co2': 431.0, 'luz': 1.0, 'temp_reserv_int': 25.06, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.0, 'ec': 1.96}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 28.41, 'umidade_ambiente': 48.54, 'nivel_co2': 431.0, 'luminosidade': 1.0, 'ph_agua': 6.0, 'condutividade_ec': 1.96, 'temp_reservatorio_interno': 25.06, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-20T07:00:04.418696Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 20/05/2025 04:00. Temperatura ambiente: 28.41 °C, fora da faixa tolerada (15–24 °C); Umidade: 48.54 %, fora da faixa tolerada (50–70%); CO₂: 431.0 ppm, dentro da faixa ideal (400–800 ppm); pH: 6.0, dentro da faixa ideal (5.5–6.5); EC: 1.96 mS/cm, dentro da faixa tolerada (1.2–2.0 mS/cm); Temp. reservatório: 25.06 °C, fora da faixa tolerada (18–24 °C); água_max: 1, nível adequado; água_min: 1, nível adequado. || Conclusão: A temperatura ambiente, umidade e temperatura do reservatório estão fora das faixas toleradas, necessitando de ajustes. || Impacto previsto: Se não corrigidos, os parâmetros fora da faixa podem levar a estresse térmico e desidratação das plantas, aumentando o risco de doenças como oídio e podridão radicular; oídio pode ser favorecido pela baixa umidade e alta temperatura, enquanto a podridão radicular pode ser agravada pela alta temperatura do reservatório; risco atual classificado como 3/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [20/05/2025 08:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 28.3, 'umid': 47.46, 'co2': 461.0, 'luz': 1.0, 'temp_reserv_int': 25.5, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.0, 'ec': 1.96}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 28.3, 'umidade_ambiente': 47.46, 'nivel_co2': 461.0, 'luminosidade': 1.0, 'ph_agua': 6.0, 'condutividade_ec': 1.96, 'temp_reservatorio_interno': 25.5, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-20T11:00:04.774988Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 20/05/2025 08:00. Temperatura ambiente: 28.3 °C, fora da faixa tolerada (15–24 °C); Umidade: 47.46%, fora da faixa tolerada (50–70%); CO₂: 461.0 ppm, dentro da faixa ideal (400–800 ppm); pH: 6.0, dentro da faixa ideal (5.5–6.5); EC: 1.96 mS/cm, dentro da faixa tolerada (1.2–2.0 mS/cm); Temp. reservatório: 25.5 °C, fora da faixa tolerada (18–24 °C); água_max: 1, nível adequado; água_min: 1, nível adequado. || Conclusão: A temperatura ambiente, umidade e temperatura do reservatório estão fora das faixas toleradas. Impacto previsto: Se não corrigidos, os parâmetros fora da faixa podem levar a estresse térmico e hídrico nas plantas, aumentando o risco de doenças como queima das bordas das folhas e murcha bacteriana devido ao calor excessivo e baixa umidade; risco atual classificado como 3/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [20/05/2025 12:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 25.48, 'umid': 56.12, 'co2': 636.0, 'luz': 0.0, 'temp_reserv_int': 24.75, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.0, 'ec': 1.96}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 25.48, 'umidade_ambiente': 56.12, 'nivel_co2': 636.0, 'luminosidade': 0.0, 'ph_agua': 6.0, 'condutividade_ec': 1.96, 'temp_reservatorio_interno': 24.75, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-20T15:00:04.955020Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 20/05/2025 12:00. Temperatura ambiente: 25.48 °C, fora da faixa tolerada, acima do limite superior de 24 °C. Umidade: 56.12 %, dentro da faixa tolerada. CO₂: 636.0 ppm, dentro da faixa ideal. pH: 6.0, dentro da faixa ideal. EC: 1.96 mS/cm, dentro da faixa tolerada. Temperatura do reservatório: 24.75 °C, ligeiramente acima da faixa tolerada de 24 °C. água_max: 1, nível adequado. água_min: 1, nível adequado. || Conclusão: A temperatura ambiente está fora da faixa tolerada e a temperatura do reservatório está ligeiramente acima do ideal. || Impacto previsto: Caso a temperatura ambiente não seja corrigida, pode ocorrer estresse térmico nas plantas, aumentando o risco de doenças como queima das bordas das folhas e podridão radicular, devido ao calor excessivo e à temperatura elevada do reservatório; risco atual classificado como 2/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [20/05/2025 16:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 25.53, 'umid': 54.67, 'co2': 540.0, 'luz': 0.0, 'temp_reserv_int': 23.62, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.0, 'ec': 1.96}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 25.53, 'umidade_ambiente': 54.67, 'nivel_co2': 540.0, 'luminosidade': 0.0, 'ph_agua': 6.0, 'condutividade_ec': 1.96, 'temp_reservatorio_interno': 23.62, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-20T19:00:04.463427Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 20/05/2025 16:00. Temperatura ambiente: 25.53 °C, fora da faixa tolerada, acima do limite superior de 24 °C; Umidade: 54.67 %, dentro da faixa tolerada; CO₂: 540.0 ppm, dentro da faixa tolerada; pH: 6.0, dentro da faixa ideal; EC: 1.96 mS/cm, dentro da faixa tolerada; Temp. reservatório: 23.62 °C, dentro da faixa tolerada; água_max: 1, nível adequado; água_min: 1, nível adequado. || Conclusão: A temperatura ambiente está acima da faixa tolerada, o que pode impactar o cultivo. || Impacto previsto: Se a temperatura ambiente não for corrigida, pode ocorrer estresse térmico nas plantas, aumentando o risco de doenças como queima das bordas das folhas e podridão radicular, devido ao aumento da transpiração e possível desbalanceamento hídrico; risco atual classificado como 2/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [20/05/2025 20:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 25.12, 'umid': 56.67, 'co2': 533.0, 'luz': 0.0, 'temp_reserv_int': 23.06, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.0, 'ec': 1.96}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 25.12, 'umidade_ambiente': 56.67, 'nivel_co2': 533.0, 'luminosidade': 0.0, 'ph_agua': 6.0, 'condutividade_ec': 1.96, 'temp_reservatorio_interno': 23.06, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-20T23:00:04.027227Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 20/05/2025 20:00. Temperatura ambiente: 25.12 °C, fora da faixa tolerada (15–24 °C). Umidade: 56.67 %, dentro da faixa tolerada (50–70%). CO₂: 533.0 ppm, dentro da faixa tolerada (400–800 ppm). pH: 6.0, dentro da faixa tolerada (5.5–6.5). EC: 1.96 mS/cm, dentro da faixa tolerada (1.2–2.0 mS/cm). Temp. reservatório: 23.06 °C, dentro da faixa tolerada (18–24 °C). água_max: 1, nível adequado. água_min: 1, nível adequado. || Conclusão: A temperatura ambiente está fora da faixa tolerada, o que pode impactar o desenvolvimento das plantas. || Impacto previsto: Caso a temperatura não seja ajustada, pode ocorrer estresse térmico, aumentando o risco de doenças como queima das bordas das folhas e necrose, devido ao calor excessivo. Risco atual: 2/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [21/05/2025 00:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 30.7, 'umid': 40.58, 'co2': 454.0, 'luz': 1.0, 'temp_reserv_int': 24.19, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.0, 'ec': 1.96}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 30.7, 'umidade_ambiente': 40.58, 'nivel_co2': 454.0, 'luminosidade': 1.0, 'ph_agua': 6.0, 'condutividade_ec': 1.96, 'temp_reservatorio_interno': 24.19, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-21T03:00:04.820659Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 21/05/2025 00:00. Temperatura ambiente: 30.7 °C, fora da faixa tolerada, acima do limite superior de 24 °C; Umidade: 40.58 %, fora da faixa tolerada, abaixo do limite inferior de 50%; CO₂: 454.0 ppm, dentro da faixa ideal; pH: 6.0, dentro da faixa ideal; EC: 1.96 mS/cm, dentro da faixa tolerada; Temp. reservatório: 24.19 °C, ligeiramente acima do limite superior tolerado de 24 °C; água_max: 1, nível adequado; água_min: 1, nível adequado. || Conclusão: A temperatura ambiente e a umidade relativa estão fora das faixas toleradas, enquanto a temperatura do reservatório está ligeiramente acima do limite superior. Impacto previsto: Se não corrigidos, os parâmetros fora da faixa podem levar a estresse térmico e desidratação das plantas, aumentando o risco de doenças como oídio e podridão radicular, devido ao calor excessivo e baixa umidade; risco atual classificado como 3/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [21/05/2025 04:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 30.45, 'umid': 40.4, 'co2': 466.0, 'luz': 1.0, 'temp_reserv_int': 25.31, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.0, 'ec': 1.96}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 30.45, 'umidade_ambiente': 40.4, 'nivel_co2': 466.0, 'luminosidade': 1.0, 'ph_agua': 6.0, 'condutividade_ec': 1.96, 'temp_reservatorio_interno': 25.31, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-21T07:00:04.474190Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 21/05/2025 04:00. Temperatura ambiente: 30.45 °C, fora da faixa tolerada (ideal: 19.5 °C, tolerável: 15–24 °C); Umidade: 40.4 %, fora da faixa tolerada (ideal: 60%, tolerável: 50–70%); CO₂: 466.0 ppm, dentro da faixa tolerada (400–800 ppm); pH: 6.0, dentro da faixa ideal (tolerável: 5.5–6.5); EC: 1.96 mS/cm, dentro da faixa tolerada (tolerável: 1.2–2.0 mS/cm); Temp. reservatório: 25.31 °C, fora da faixa tolerada (ideal: 21 °C, tolerável: 18–24 °C); água_max: 1, nível adequado; água_min: 1, nível adequado. || Conclusão: A temperatura ambiente, umidade e temperatura do reservatório estão fora das faixas toleradas, o que requer ajustes imediatos. || Impacto previsto: Se não corrigidos, os parâmetros fora da faixa podem levar a estresse térmico e desidratação das plantas, aumentando o risco de doenças como queima das bordas das folhas e murcha bacteriana, devido ao calor excessivo e baixa umidade. Risco atual: 4/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [21/05/2025 08:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 26.33, 'umid': 48.59, 'co2': 0.0, 'luz': 1.0, 'temp_reserv_int': 24.88, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.5, 'ec': 2.3}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 26.33, 'umidade_ambiente': 48.59, 'nivel_co2': 0.0, 'luminosidade': 1.0, 'ph_agua': 6.5, 'condutividade_ec': 2.3, 'temp_reservatorio_interno': 24.88, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-21T11:00:04.702185Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 21/05/2025 08:00. Temperatura ambiente: 26.33 °C, fora da faixa tolerada (ideal: 19.5 °C, tolerável: 15–24 °C); Umidade: 48.59 %, fora da faixa tolerada (ideal: 60 %, tolerável: 50–70 %); CO₂: 0.0 ppm, fora da faixa tolerada (ideal: 400–800 ppm, tolerável até 1000 ppm); pH: 6.5, no limite superior da faixa tolerada (ideal: 6.0, tolerável: 5.5–6.5); EC: 2.3 mS/cm, fora da faixa tolerada (ideal: 1.6 mS/cm, tolerável: 1.2–2.0 mS/cm); Temp. reservatório: 24.88 °C, ligeiramente fora da faixa tolerada (ideal: 21 °C, tolerável: 18–24 °C); água_max: 1, nível adequado; água_min: 1, nível adequado. || Conclusão: Vários parâmetros estão fora das faixas toleradas, indicando necessidade de ajustes imediatos. Impacto previsto: Se não corrigidos, os parâmetros fora da faixa podem levar a estresse hídrico e deficiência de nutrientes, aumentando o risco de doenças como podridão radicular e queima de borda, devido ao excesso de EC e baixa umidade; risco atual classificado como 4/5, crítico.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [21/05/2025 12:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 22.12, 'umid': 71.36, 'co2': 0.0, 'luz': 0.0, 'temp_reserv_int': 24.06, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.5, 'ec': 2.3}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 22.12, 'umidade_ambiente': 71.36, 'nivel_co2': 0.0, 'luminosidade': 0.0, 'ph_agua': 6.5, 'condutividade_ec': 2.3, 'temp_reservatorio_interno': 24.06, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-21T15:00:04.265846Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 21/05/2025 12:00. Temperatura ambiente: 22.12 °C, dentro da faixa tolerada. Umidade: 71.36 %, ligeiramente acima da faixa tolerada. CO₂: 0.0 ppm, fora da faixa tolerada, indicando possível falha no sensor. pH: 6.5, no limite superior da faixa tolerada. EC: 2.3 mS/cm, acima da faixa tolerada. Temperatura do reservatório: 24.06 °C, ligeiramente acima da faixa tolerada. Nível de água: adequado, com água_max e água_min ambos em 1. || Conclusão: A maioria dos parâmetros está dentro ou próximo das faixas toleradas, exceto o nível de CO₂ e a EC, que estão fora. Impacto previsto: Se os parâmetros fora da faixa não forem corrigidos, pode ocorrer um crescimento reduzido das plantas devido à alta EC, e a falha no sensor de CO₂ pode mascarar problemas de ventilação, levando a condições anaeróbicas. Possíveis fitopatologias incluem podridão radicular devido à alta EC e oídio devido à alta umidade. Risco atual: 3/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [21/05/2025 16:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 22.3, 'umid': 64.45, 'co2': 0.0, 'luz': 0.0, 'temp_reserv_int': 22.31, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.5, 'ec': 2.3}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 22.3, 'umidade_ambiente': 64.45, 'nivel_co2': 0.0, 'luminosidade': 0.0, 'ph_agua': 6.5, 'condutividade_ec': 2.3, 'temp_reservatorio_interno': 22.31, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-21T19:00:04.320543Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 21/05/2025 16:00. Temperatura ambiente: 22.3 °C, dentro da faixa tolerada. Umidade: 64.45%, dentro da faixa tolerada. CO₂: 0.0 ppm, fora da faixa tolerada, valor extremamente baixo. pH: 6.5, no limite superior da faixa tolerada. EC: 2.3 mS/cm, fora da faixa tolerada, valor elevado. Temperatura do reservatório: 22.31 °C, dentro da faixa tolerada. Nível de água_max: 1, nível adequado. Nível de água_min: 1, nível adequado. || Conclusão: A maioria dos parâmetros está dentro das faixas toleradas, exceto CO₂ e EC. || Impacto previsto: Se os níveis de CO₂ e EC não forem corrigidos, pode ocorrer clorose devido à baixa assimilação de carbono e toxicidade por excesso de nutrientes; risco de 3/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [21/05/2025 20:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 22.02, 'umid': 69.04, 'co2': 0.0, 'luz': 0.0, 'temp_reserv_int': 21.94, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.5, 'ec': 2.3}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 22.02, 'umidade_ambiente': 69.04, 'nivel_co2': 0.0, 'luminosidade': 0.0, 'ph_agua': 6.5, 'condutividade_ec': 2.3, 'temp_reservatorio_interno': 21.94, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-21T23:00:04.850522Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 21/05/2025 20:00. Temperatura ambiente: 22.02 °C, dentro da faixa tolerada. Umidade: 69.04 %, dentro da faixa tolerada. CO₂: 0.0 ppm, fora da faixa tolerada, pois está abaixo do mínimo necessário. pH: 6.5, no limite superior da faixa tolerada. EC: 2.3 mS/cm, fora da faixa tolerada, pois está acima do máximo permitido. Temperatura do reservatório: 21.94 °C, dentro da faixa tolerada. Nível de água: adequado, com água_max e água_min ambos em 1. Conclusão: A maioria dos parâmetros está dentro das faixas toleradas, exceto o nível de CO₂ e a condutividade elétrica (EC), que estão fora dos limites aceitáveis. || Impacto previsto: Caso os parâmetros fora da faixa não sejam corrigidos, pode ocorrer clorose devido à baixa concentração de CO₂, afetando a fotossíntese, e toxicidade por nutrientes devido ao alto EC, levando a um crescimento atrofiado; risco atual classificado como 3/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [22/05/2025 00:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 26.16, 'umid': 55.21, 'co2': 0.0, 'luz': 1.0, 'temp_reserv_int': 23.31, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.5, 'ec': 2.3}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 26.16, 'umidade_ambiente': 55.21, 'nivel_co2': 0.0, 'luminosidade': 1.0, 'ph_agua': 6.5, 'condutividade_ec': 2.3, 'temp_reservatorio_interno': 23.31, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-22T03:00:04.311864Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 22/05/2025 00:00. Temperatura ambiente: 26.16 °C, fora da faixa tolerada, acima do limite superior de 24 °C. Umidade: 55.21 %, dentro da faixa tolerada. CO₂: 0.0 ppm, fora da faixa tolerada, extremamente abaixo do mínimo de 400 ppm. pH: 6.5, no limite superior da faixa tolerada. EC: 2.3 mS/cm, fora da faixa tolerada, acima do limite superior de 2.0 mS/cm. Temp. reservatório: 23.31 °C, dentro da faixa tolerada. água_max: 1, nível adequado. água_min: 1, nível adequado. || Conclusão: A estufa apresenta problemas críticos com a temperatura ambiente, níveis de CO₂ e condutividade elétrica (EC). Impacto previsto: Se não corrigidos, os parâmetros fora da faixa podem levar a problemas de crescimento e desenvolvimento do alface, como necrose foliar devido ao excesso de sais (EC alta) e crescimento atrofiado por falta de CO₂; risco atual classificado como 4/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [22/05/2025 04:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 25.99, 'umid': 53.77, 'co2': 0.0, 'luz': 1.0, 'temp_reserv_int': 24.12, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.5, 'ec': 2.3}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 25.99, 'umidade_ambiente': 53.77, 'nivel_co2': 0.0, 'luminosidade': 1.0, 'ph_agua': 6.5, 'condutividade_ec': 2.3, 'temp_reservatorio_interno': 24.12, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-22T07:00:04.537165Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 22/05/2025 04:00. Temperatura ambiente: 25.99 °C, fora da faixa tolerada, acima do limite superior de 24 °C; Umidade: 53.77 %, dentro da faixa tolerada; CO₂: 0.0 ppm, fora da faixa tolerada, abaixo do limite inferior de 400 ppm; pH: 6.5, no limite superior tolerado; EC: 2.3 mS/cm, fora da faixa tolerada, acima do limite superior de 2.0 mS/cm; Temp. reservatório: 24.12 °C, dentro da faixa tolerada; água_max: 1, nível adequado; água_min: 1, nível adequado. || Conclusão: A temperatura ambiente, CO₂ e EC estão fora das faixas toleradas, necessitando de ajustes imediatos. || Impacto previsto: Se não corrigidos, os parâmetros fora da faixa podem levar a problemas de crescimento e saúde das plantas, como necrose foliar devido ao excesso de EC e crescimento atrofiado por deficiência de CO₂; risco atual classificado como 4/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [22/05/2025 08:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 27.99, 'umid': 58.46, 'co2': 0.0, 'luz': 1.0, 'temp_reserv_int': 24.25, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.5, 'ec': 2.3}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 27.99, 'umidade_ambiente': 58.46, 'nivel_co2': 0.0, 'luminosidade': 1.0, 'ph_agua': 6.5, 'condutividade_ec': 2.3, 'temp_reservatorio_interno': 24.25, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-22T11:00:04.967722Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 22/05/2025 08:00. Temperatura ambiente: 27.99 °C, fora da faixa tolerada (15–24 °C); Umidade: 58.46 %, dentro da faixa tolerada (50–70%); CO₂: 0.0 ppm, fora da faixa tolerada (400–1000 ppm); pH: 6.5, no limite superior da faixa tolerada (5.5–6.5); EC: 2.3 mS/cm, fora da faixa tolerada (1.2–2.0 mS/cm); Temp. reservatório: 24.25 °C, ligeiramente acima da faixa tolerada (18–24 °C); água_max: 1, nível adequado; água_min: 1, nível adequado. || Conclusão: A temperatura ambiente, CO₂ e EC estão fora das faixas toleradas, e a temperatura do reservatório está ligeiramente acima do ideal. Impacto previsto: Se não corrigidos, os parâmetros fora da faixa podem levar a estresse térmico e deficiência de CO₂, resultando em crescimento reduzido e potencial para doenças como queima das bordas das folhas devido ao excesso de salinidade e necrose por deficiência de CO₂. Risco atual: 4/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [22/05/2025 12:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 22.75, 'umid': 68.47, 'co2': 0.0, 'luz': 0.0, 'temp_reserv_int': 23.94, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.5, 'ec': 2.3}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 22.75, 'umidade_ambiente': 68.47, 'nivel_co2': 0.0, 'luminosidade': 0.0, 'ph_agua': 6.5, 'condutividade_ec': 2.3, 'temp_reservatorio_interno': 23.94, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-22T15:00:04.243115Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 22/05/2025 12:00. Temperatura ambiente: 22.75 °C, dentro da faixa tolerada. Umidade: 68.47%, dentro da faixa tolerada. CO₂: 0.0 ppm, fora da faixa tolerada, pois está abaixo do mínimo necessário. pH: 6.5, no limite superior da faixa tolerada. EC: 2.3 mS/cm, fora da faixa tolerada, pois está acima do máximo recomendado. Temperatura do reservatório: 23.94 °C, dentro da faixa tolerada. água_max: 1, nível adequado. água_min: 1, nível adequado. || Conclusão: A maioria dos parâmetros está dentro das faixas toleradas, exceto o nível de CO₂ e a condutividade elétrica (EC), que estão fora dos limites recomendados. Impacto previsto: Caso os parâmetros fora da faixa não sejam corrigidos, pode ocorrer deficiência de crescimento devido à falta de CO₂ e toxicidade por excesso de nutrientes, aumentando o risco de fitopatologias como necrose foliar e clorose induzida por salinidade. Risco atual: 3/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [22/05/2025 16:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 23.13, 'umid': 66.87, 'co2': 0.0, 'luz': 0.0, 'temp_reserv_int': 22.94, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.5, 'ec': 2.3}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 23.13, 'umidade_ambiente': 66.87, 'nivel_co2': 0.0, 'luminosidade': 0.0, 'ph_agua': 6.5, 'condutividade_ec': 2.3, 'temp_reservatorio_interno': 22.94, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-22T19:00:04.212626Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 22/05/2025 16:00. Temperatura ambiente: 23.13 °C, dentro da faixa tolerada. Umidade: 66.87%, dentro da faixa tolerada. CO₂: 0.0 ppm, fora da faixa tolerada, pois está abaixo do mínimo necessário. pH: 6.5, no limite superior da faixa tolerada. EC: 2.3 mS/cm, fora da faixa tolerada, pois está acima do máximo permitido. Temperatura do reservatório: 22.94 °C, dentro da faixa tolerada. Nível de água_max: 1, nível adequado. Nível de água_min: 1, nível adequado. || Conclusão: A maioria dos parâmetros está dentro das faixas toleradas, exceto o nível de CO₂ e a condutividade elétrica (EC), que estão fora dos limites aceitáveis. Impacto previsto: Se não corrigidos, os níveis inadequados de CO₂ e EC podem levar a problemas no crescimento das plantas, como clorose e necrose foliar, devido à deficiência de carbono e excesso de sais, respectivamente. Risco atual: 3/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [22/05/2025 20:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 22.83, 'umid': 68.11, 'co2': 0.0, 'luz': 0.0, 'temp_reserv_int': 22.81, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.5, 'ec': 2.3}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 22.83, 'umidade_ambiente': 68.11, 'nivel_co2': 0.0, 'luminosidade': 0.0, 'ph_agua': 6.5, 'condutividade_ec': 2.3, 'temp_reservatorio_interno': 22.81, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-22T23:00:04.726566Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 22/05/2025 20:00. Temperatura ambiente: 22.83 °C, dentro da faixa tolerada. Umidade: 68.11%, dentro da faixa tolerada. CO₂: 0.0 ppm, fora da faixa tolerada, pois está abaixo do mínimo necessário. pH: 6.5, no limite superior da faixa tolerada. EC: 2.3 mS/cm, fora da faixa tolerada, pois está acima do máximo permitido. Temperatura do reservatório: 22.81 °C, dentro da faixa tolerada. água_max: 1, nível adequado. água_min: 1, nível adequado. || Conclusão: A maioria dos parâmetros está dentro das faixas toleradas, exceto CO₂ e EC, que estão fora dos limites ideais. || Impacto previsto: A falta de CO₂ pode levar a um crescimento reduzido e clorose, enquanto o excesso de EC pode causar toxicidade por nutrientes e queima das raízes; risco atual classificado como 3/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [23/05/2025 00:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 26.98, 'umid': 56.47, 'co2': 0.0, 'luz': 1.0, 'temp_reserv_int': 23.81, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.5, 'ec': 2.3}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 26.98, 'umidade_ambiente': 56.47, 'nivel_co2': 0.0, 'luminosidade': 1.0, 'ph_agua': 6.5, 'condutividade_ec': 2.3, 'temp_reservatorio_interno': 23.81, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-23T03:00:04.638088Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 23/05/2025 00:00. Temperatura ambiente: 26.98 °C, fora da faixa tolerada, acima do limite de 24 °C. Umidade: 56.47 %, dentro da faixa tolerada. CO₂: 0.0 ppm, fora da faixa tolerada, abaixo do mínimo de 400 ppm. pH: 6.5, no limite superior da faixa tolerada. EC: 2.3 mS/cm, fora da faixa tolerada, acima do limite de 2.0 mS/cm. Temperatura do reservatório: 23.81 °C, dentro da faixa tolerada. água_max: 1, nível adequado. água_min: 1, nível adequado. || Conclusão: Existem três parâmetros fora das faixas toleradas: temperatura ambiente, concentração de CO₂ e condutividade elétrica (EC). || Impacto previsto: Se não corrigidos, os parâmetros fora da faixa podem levar a estresse térmico e deficiência de CO₂, resultando em crescimento reduzido e potencial desenvolvimento de necrose marginal devido ao excesso de sais (EC alta); risco atual classificado como 3/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [23/05/2025 04:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 26.77, 'umid': 54.61, 'co2': 0.0, 'luz': 1.0, 'temp_reserv_int': 24.31, 'agua_min': 1.0, 'agua_max': 0.0, 'ph': 6.5, 'ec': 2.3}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 26.77, 'umidade_ambiente': 54.61, 'nivel_co2': 0.0, 'luminosidade': 1.0, 'ph_agua': 6.5, 'condutividade_ec': 2.3, 'temp_reservatorio_interno': 24.31, 'agua_min': 1, 'agua_max': 0, 'timestamp_consulta': '2025-05-23T07:00:04.378091Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 23/05/2025 04:00. Temperatura ambiente: 26.77 °C, fora da faixa tolerada (ideal: 19.5 °C, tolerável: 15–24 °C); Umidade: 54.61 %, dentro da faixa tolerada (tolerável: 50–70%); CO₂: 0.0 ppm, fora da faixa tolerada (tolerável até 1000 ppm); pH: 6.5, no limite superior da faixa tolerada (tolerável: 5.5–6.5); EC: 2.3 mS/cm, fora da faixa tolerada (tolerável: 1.2–2.0 mS/cm); Temp. reservatório: 24.31 °C, ligeiramente acima da faixa tolerada (tolerável: 18–24 °C); água_max: 0, abaixo do ideal, reposição recomendada; água_min: 1, nível adequado. || Conclusão: Vários parâmetros estão fora das faixas toleradas, necessitando de ajustes imediatos. Impacto previsto: Se não corrigidos, os parâmetros fora da faixa podem levar a problemas como necrose foliar e clorose, devido ao excesso de temperatura e condutividade elétrica elevada, respectivamente. Risco atual: 4/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [23/05/2025 08:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 26.97, 'umid': 52.56, 'co2': 0.0, 'luz': 1.0, 'temp_reserv_int': 24.19, 'agua_min': 1.0, 'agua_max': 0.0, 'ph': 6.5, 'ec': 2.3}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 26.97, 'umidade_ambiente': 52.56, 'nivel_co2': 0.0, 'luminosidade': 1.0, 'ph_agua': 6.5, 'condutividade_ec': 2.3, 'temp_reservatorio_interno': 24.19, 'agua_min': 1, 'agua_max': 0, 'timestamp_consulta': '2025-05-23T11:00:04.206497Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 23/05/2025 08:00. Temperatura ambiente: 26.97 °C, fora da faixa tolerada, acima do limite de 24 °C. Umidade: 52.56 %, dentro da faixa tolerada. CO₂: 0.0 ppm, fora da faixa tolerada, muito abaixo do mínimo de 400 ppm. pH: 6.5, no limite superior da faixa tolerada. EC: 2.3 mS/cm, fora da faixa tolerada, acima do limite de 2.0 mS/cm. Temperatura do reservatório: 24.19 °C, ligeiramente acima do limite superior tolerado de 24 °C. água_max: 0, abaixo da boia, reposição recomendada. água_min: 1, nível adequado. || Conclusão: Vários parâmetros estão fora das faixas toleradas, necessitando de ajustes imediatos. Impacto previsto: Se não corrigidos, os parâmetros fora da faixa podem levar a problemas de crescimento e saúde das plantas, como queima de bordas devido ao excesso de EC e crescimento atrofiado por falta de CO₂; risco atual classificado como 4/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [23/05/2025 12:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 22.96, 'umid': 69.98, 'co2': 0.0, 'luz': 0.0, 'temp_reserv_int': 24.12, 'agua_min': 1.0, 'agua_max': 0.0, 'ph': 6.5, 'ec': 2.3}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 22.96, 'umidade_ambiente': 69.98, 'nivel_co2': 0.0, 'luminosidade': 0.0, 'ph_agua': 6.5, 'condutividade_ec': 2.3, 'temp_reservatorio_interno': 24.12, 'agua_min': 1, 'agua_max': 0, 'timestamp_consulta': '2025-05-23T15:00:04.432812Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 23/05/2025 12:00. Temperatura ambiente: 22.96 °C, dentro da faixa tolerada. Umidade: 69.98%, dentro da faixa tolerada. CO₂: 0.0 ppm, fora da faixa tolerada, pois está abaixo do mínimo necessário. pH: 6.5, no limite superior da faixa tolerada. EC: 2.3 mS/cm, fora da faixa tolerada, pois está acima do máximo permitido. Temperatura do reservatório: 24.12 °C, ligeiramente acima da faixa tolerada. água_max: 0, abaixo do nível ideal, reposição recomendada. água_min: 1, nível adequado. || Conclusão: A maioria dos parâmetros está dentro ou próximo dos limites tolerados, exceto CO₂ e EC, que estão fora da faixa ideal. || Impacto previsto: A falta de CO₂ pode limitar a fotossíntese, enquanto a alta EC pode causar toxicidade iônica, levando a problemas como necrose foliar e clorose. Risco atual: 3/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [23/05/2025 16:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 22.72, 'umid': 69.5, 'co2': 0.0, 'luz': 0.0, 'temp_reserv_int': 23.0, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.0, 'ec': 1.8}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 22.72, 'umidade_ambiente': 69.5, 'nivel_co2': 0.0, 'luminosidade': 0.0, 'ph_agua': 6.0, 'condutividade_ec': 1.8, 'temp_reservatorio_interno': 23.0, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-23T19:00:04.607934Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 23/05/2025 16:00. Temperatura ambiente: 22.72 °C, dentro da faixa tolerada; Umidade: 69.5%, dentro da faixa tolerada; CO₂: 0.0 ppm, fora da faixa tolerada; pH: 6.0, dentro da faixa ideal; EC: 1.8 mS/cm, dentro da faixa tolerada; Temperatura do reservatório: 23.0 °C, dentro da faixa tolerada; água_max: 1, nível adequado; água_min: 1, nível adequado. || Conclusão: Todos os parâmetros estão dentro das faixas toleradas, exceto o CO₂, que está fora da faixa tolerada. || Impacto previsto: A ausência de CO₂ pode levar a uma redução na taxa de fotossíntese, resultando em crescimento atrofiado e clorose; risco de 3/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [23/05/2025 20:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 22.26, 'umid': 70.62, 'co2': 0.0, 'luz': 0.0, 'temp_reserv_int': 22.94, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.0, 'ec': 1.8}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 22.26, 'umidade_ambiente': 70.62, 'nivel_co2': 0.0, 'luminosidade': 0.0, 'ph_agua': 6.0, 'condutividade_ec': 1.8, 'temp_reservatorio_interno': 22.94, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-23T23:00:04.700772Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 23/05/2025 20:00. Temperatura ambiente: 22.26 °C, dentro da faixa tolerada. Umidade: 70.62%, ligeiramente acima da faixa tolerada. CO₂: 0.0 ppm, fora da faixa tolerada. pH: 6.0, dentro da faixa tolerada. EC: 1.8 mS/cm, dentro da faixa tolerada. Temperatura do reservatório: 22.94 °C, dentro da faixa tolerada. água_max: 1, nível adequado. água_min: 1, nível adequado. || Conclusão: A maioria dos parâmetros está dentro das faixas toleradas, exceto a concentração de CO₂, que está fora da faixa, e a umidade, que está ligeiramente acima. || Impacto previsto: A falta de CO₂ pode levar a uma fotossíntese ineficiente, resultando em crescimento reduzido; a umidade elevada pode aumentar o risco de doenças fúngicas como míldio e oídio. Risco atual: 3/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [24/05/2025 00:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 28.02, 'umid': 55.41, 'co2': 0.0, 'luz': 1.0, 'temp_reserv_int': 23.69, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.0, 'ec': 1.8}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 28.02, 'umidade_ambiente': 55.41, 'nivel_co2': 0.0, 'luminosidade': 1.0, 'ph_agua': 6.0, 'condutividade_ec': 1.8, 'temp_reservatorio_interno': 23.69, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-24T03:00:04.325248Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 24/05/2025 00:00. Temperatura ambiente: 28.02 °C, fora da faixa tolerada (15–24 °C); Umidade: 55.41 %, dentro da faixa tolerada (50–70%); CO₂: 0.0 ppm, fora da faixa tolerada (400–1000 ppm); pH: 6.0, dentro da faixa ideal (5.5–6.5); EC: 1.8 mS/cm, dentro da faixa tolerada (1.2–2.0 mS/cm); Temp. reservatório: 23.69 °C, dentro da faixa tolerada (18–24 °C); água_max: 1, nível adequado; água_min: 1, nível adequado. || Conclusão: A temperatura ambiente e o nível de CO₂ estão fora das faixas toleradas. Impacto previsto: Se não corrigidos, o excesso de temperatura pode levar a estresse térmico e o déficit de CO₂ pode limitar a fotossíntese, resultando em crescimento reduzido; possíveis fitopatologias incluem necrose foliar devido ao calor e clorose por deficiência de CO₂; risco atual classificado como 3/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [24/05/2025 04:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 27.44, 'umid': 53.0, 'co2': 0.0, 'luz': 1.0, 'temp_reserv_int': 23.94, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.0, 'ec': 1.8}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 27.44, 'umidade_ambiente': 53.0, 'nivel_co2': 0.0, 'luminosidade': 1.0, 'ph_agua': 6.0, 'condutividade_ec': 1.8, 'temp_reservatorio_interno': 23.94, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-24T07:00:04.108579Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 24/05/2025 04:00. Temperatura ambiente: 27.44 °C, fora da faixa tolerada (ideal: 19.5 °C, tolerável: 15–24 °C); Umidade: 53.0 %, dentro da faixa tolerada (tolerável: 50–70%); CO₂: 0.0 ppm, fora da faixa tolerada (tolerável até 1000 ppm); pH: 6.0, dentro da faixa ideal (ideal: 6.0, tolerável: 5.5–6.5); EC: 1.8 mS/cm, dentro da faixa tolerada (tolerável: 1.2–2.0 mS/cm); Temperatura do reservatório: 23.94 °C, dentro da faixa tolerada (tolerável: 18–24 °C); água_max: 1, nível adequado; água_min: 1, nível adequado. || Conclusão: A temperatura ambiente e o nível de CO₂ estão fora das faixas toleradas. Impacto previsto: Se não corrigidos, os parâmetros fora da faixa podem levar a estresse térmico e deficiência de carbono, aumentando o risco de necrose foliar e crescimento atrofiado devido à alta temperatura e falta de CO₂, respectivamente. Risco atual: 3/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [24/05/2025 08:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 28.05, 'umid': 50.82, 'co2': 0.0, 'luz': 1.0, 'temp_reserv_int': 23.75, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.0, 'ec': 1.8}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 28.05, 'umidade_ambiente': 50.82, 'nivel_co2': 0.0, 'luminosidade': 1.0, 'ph_agua': 6.0, 'condutividade_ec': 1.8, 'temp_reservatorio_interno': 23.75, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-24T11:00:04.238673Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 24/05/2025 08:00. Temperatura ambiente: 28.05 °C, fora da faixa tolerada, acima do limite superior de 24 °C; Umidade: 50.82 %, dentro da faixa tolerada, mas próxima do limite inferior de 50%; CO₂: 0.0 ppm, fora da faixa tolerada, abaixo do limite inferior de 400 ppm; pH: 6.0, dentro da faixa ideal; EC: 1.8 mS/cm, dentro da faixa tolerada; Temp. reservatório: 23.75 °C, dentro da faixa tolerada; água_max: 1, nível adequado; água_min: 1, nível adequado. || Conclusão: A temperatura ambiente e o nível de CO₂ estão fora das faixas toleradas. Impacto previsto: Se não corrigidos, a alta temperatura pode causar estresse térmico e o baixo nível de CO₂ pode limitar a fotossíntese, aumentando o risco de doenças como queima das bordas das folhas e clorose, respectivamente; risco atual classificado como 3/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [24/05/2025 12:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 22.67, 'umid': 68.93, 'co2': 0.0, 'luz': 0.0, 'temp_reserv_int': 24.0, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.0, 'ec': 1.8}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 22.67, 'umidade_ambiente': 68.93, 'nivel_co2': 0.0, 'luminosidade': 0.0, 'ph_agua': 6.0, 'condutividade_ec': 1.8, 'temp_reservatorio_interno': 24.0, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-24T15:00:04.995917Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 24/05/2025 12:00. Temperatura ambiente: 22.67 °C, dentro da faixa tolerada. Umidade: 68.93%, dentro da faixa tolerada. CO₂: 0.0 ppm, fora da faixa tolerada, pois está abaixo do mínimo necessário. pH: 6.0, dentro da faixa ideal. EC: 1.8 mS/cm, dentro da faixa tolerada. Temperatura do reservatório: 24.0 °C, no limite superior da faixa tolerada. água_max: 1, nível adequado. água_min: 1, nível adequado. Conclusão: A maioria dos parâmetros está dentro das faixas toleradas, exceto o nível de CO₂, que está crítico. || Impacto previsto: A ausência de CO₂ pode levar a uma fotossíntese ineficiente, resultando em crescimento reduzido e clorose; risco de 3/5 devido à importância do CO₂ para o crescimento das plantas.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [24/05/2025 16:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 22.26, 'umid': 64.98, 'co2': 0.0, 'luz': 0.0, 'temp_reserv_int': 23.12, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.0, 'ec': 1.8}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 22.26, 'umidade_ambiente': 64.98, 'nivel_co2': 0.0, 'luminosidade': 0.0, 'ph_agua': 6.0, 'condutividade_ec': 1.8, 'temp_reservatorio_interno': 23.12, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-24T19:00:04.378638Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 24/05/2025 16:00. Temperatura ambiente: 22.26 °C, dentro da faixa tolerada; Umidade: 64.98%, dentro da faixa tolerada; CO₂: 0.0 ppm, fora da faixa tolerada, pois está abaixo do mínimo necessário; pH: 6.0, dentro da faixa tolerada; EC: 1.8 mS/cm, dentro da faixa tolerada; Temperatura do reservatório: 23.12 °C, dentro da faixa tolerada; água_max: 1, nível adequado; água_min: 1, nível adequado. || Conclusão: Todos os parâmetros, exceto o CO₂, estão dentro das faixas toleradas. Impacto previsto: A ausência de CO₂ pode levar a uma fotossíntese ineficiente, resultando em crescimento reduzido e potencial clorose. Risco atual: 2/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [24/05/2025 20:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 21.65, 'umid': 67.22, 'co2': 0.0, 'luz': 0.0, 'temp_reserv_int': 22.38, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.0, 'ec': 1.8}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 21.65, 'umidade_ambiente': 67.22, 'nivel_co2': 0.0, 'luminosidade': 0.0, 'ph_agua': 6.0, 'condutividade_ec': 1.8, 'temp_reservatorio_interno': 22.38, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-24T23:00:04.410818Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 24/05/2025 20:00. Temperatura ambiente: 21.65 °C, dentro da faixa tolerada. Umidade: 67.22%, dentro da faixa tolerada. CO₂: 0.0 ppm, fora da faixa tolerada, pois está abaixo do mínimo necessário para a fotossíntese. pH: 6.0, dentro da faixa tolerada. EC: 1.8 mS/cm, dentro da faixa tolerada. Temperatura do reservatório: 22.38 °C, dentro da faixa tolerada. água_max: 1, nível adequado. água_min: 1, nível adequado. || Conclusão: A maioria dos parâmetros está dentro das faixas toleradas, exceto o nível de CO₂, que está crítico. Impacto previsto: Caso o nível de CO₂ não seja corrigido, pode ocorrer redução no crescimento das plantas devido à fotossíntese insuficiente, aumentando o risco de doenças como oídio e míldio, que prosperam em condições de estresse e baixa fotossíntese; risco atual classificado como 3/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [25/05/2025 00:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 27.0, 'umid': 55.76, 'co2': 0.0, 'luz': 1.0, 'temp_reserv_int': 23.06, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.0, 'ec': 1.8}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 27.0, 'umidade_ambiente': 55.76, 'nivel_co2': 0.0, 'luminosidade': 1.0, 'ph_agua': 6.0, 'condutividade_ec': 1.8, 'temp_reservatorio_interno': 23.06, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-25T03:00:05.042872Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 25/05/2025 00:00. Temperatura ambiente: 27.0 °C, fora da faixa tolerada (ideal: 19.5 °C, tolerável: 15–24 °C); Umidade: 55.76 %, dentro da faixa tolerada (tolerável: 50–70%); CO₂: 0.0 ppm, fora da faixa tolerada (ideal: 400–800 ppm, tolerável até 1000 ppm); pH: 6.0, dentro da faixa ideal (ideal: 6.0, tolerável: 5.5–6.5); EC: 1.8 mS/cm, dentro da faixa tolerada (ideal: 1.6 mS/cm, tolerável: 1.2–2.0 mS/cm); Temp. reservatório: 23.06 °C, dentro da faixa tolerada (ideal: 21 °C, tolerável: 18–24 °C); água_max: 1, nível adequado; água_min: 1, nível adequado. || Conclusão: A temperatura ambiente e o nível de CO₂ estão fora das faixas toleradas. Impacto previsto: Se não corrigidos, os parâmetros fora da faixa podem levar a estresse térmico e deficiência de carbono, aumentando o risco de necrose foliar e clorose, respectivamente, devido ao calor excessivo e falta de CO₂; risco atual classificado como 3/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [25/05/2025 04:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 26.7, 'umid': 55.42, 'co2': 0.0, 'luz': 1.0, 'temp_reserv_int': -0.06, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.0, 'ec': 1.8}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 26.7, 'umidade_ambiente': 55.42, 'nivel_co2': 0.0, 'luminosidade': 1.0, 'ph_agua': 6.0, 'condutividade_ec': 1.8, 'temp_reservatorio_interno': -0.06, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-25T07:00:04.298657Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 25/05/2025 04:00. Temperatura ambiente: 26.7 °C, fora da faixa tolerada (15–24 °C); Umidade: 55.42 %, dentro da faixa tolerada (50–70%); CO₂: 0.0 ppm, fora da faixa tolerada (400–800 ppm); pH: 6.0, dentro da faixa tolerada (5.5–6.5); EC: 1.8 mS/cm, dentro da faixa tolerada (1.2–2.0 mS/cm); Temp. reservatório: -0.06 °C, fora da faixa tolerada (18–24 °C); água_max: 1, nível adequado; água_min: 1, nível adequado. || Conclusão: Existem três parâmetros fora da faixa tolerada: temperatura ambiente, CO₂ e temperatura do reservatório. Impacto previsto: Se não corrigidos, os parâmetros fora da faixa podem levar a estresse térmico e deficiência de CO₂, resultando em crescimento reduzido e potencial desenvolvimento de doenças como podridão radicular devido à baixa temperatura do reservatório e oídio devido ao estresse térmico; risco atual classificado como 4/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [25/05/2025 08:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 26.96, 'umid': 53.83, 'co2': 0.0, 'luz': 1.0, 'temp_reserv_int': 23.12, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.0, 'ec': 1.8}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 26.96, 'umidade_ambiente': 53.83, 'nivel_co2': 0.0, 'luminosidade': 1.0, 'ph_agua': 6.0, 'condutividade_ec': 1.8, 'temp_reservatorio_interno': 23.12, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-25T11:00:04.457698Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 25/05/2025 08:00. Temperatura ambiente: 26.96 °C, fora da faixa tolerada, acima do limite superior de 24 °C; Umidade: 53.83 %, dentro da faixa tolerada; CO₂: 0.0 ppm, fora da faixa tolerada, muito abaixo do mínimo necessário de 400 ppm; pH: 6.0, dentro da faixa ideal; EC: 1.8 mS/cm, dentro da faixa tolerada; Temp. reservatório: 23.12 °C, dentro da faixa tolerada; água_max: 1, nível adequado; água_min: 1, nível adequado. || Conclusão: A temperatura ambiente está acima do limite tolerado e o nível de CO₂ está criticamente baixo. Impacto previsto: Se não corrigidos, esses parâmetros podem levar a um crescimento reduzido e estresse nas plantas, aumentando o risco de doenças como oídio devido ao estresse térmico e deficiência de CO₂, que é essencial para a fotossíntese; risco atual classificado como 4/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [25/05/2025 12:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 21.7, 'umid': 66.03, 'co2': 0.0, 'luz': 0.0, 'temp_reserv_int': 22.94, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.0, 'ec': 1.8}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 21.7, 'umidade_ambiente': 66.03, 'nivel_co2': 0.0, 'luminosidade': 0.0, 'ph_agua': 6.0, 'condutividade_ec': 1.8, 'temp_reservatorio_interno': 22.94, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-25T15:00:04.585615Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 25/05/2025 12:00. Temperatura ambiente: 21.7 °C, dentro da faixa tolerada. Umidade: 66.03%, dentro da faixa tolerada. CO₂: 0.0 ppm, fora da faixa tolerada, pois está abaixo do mínimo necessário. pH: 6.0, dentro da faixa tolerada. EC: 1.8 mS/cm, dentro da faixa tolerada. Temperatura do reservatório: 22.94 °C, dentro da faixa tolerada. água_max: 1, nível adequado. água_min: 1, nível adequado. Conclusão: Todos os parâmetros estão dentro das faixas toleradas, exceto o nível de CO₂, que está crítico. || Impacto previsto: A ausência de CO₂ pode levar à fotossíntese ineficiente, resultando em crescimento reduzido e potencial clorose; risco de 3/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [25/05/2025 16:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 22.24, 'umid': 68.66, 'co2': 0.0, 'luz': 0.0, 'temp_reserv_int': 22.75, 'agua_min': 1.0, 'agua_max': 0.0, 'ph': 6.0, 'ec': 1.8}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 22.24, 'umidade_ambiente': 68.66, 'nivel_co2': 0.0, 'luminosidade': 0.0, 'ph_agua': 6.0, 'condutividade_ec': 1.8, 'temp_reservatorio_interno': 22.75, 'agua_min': 1, 'agua_max': 0, 'timestamp_consulta': '2025-05-25T19:00:05.104799Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 25/05/2025 16:00. Temperatura ambiente: 22.24 °C, dentro da faixa tolerada. Umidade: 68.66%, dentro da faixa tolerada. CO₂: 0.0 ppm, fora da faixa tolerada, pois está abaixo do mínimo necessário para a fotossíntese eficiente. pH: 6.0, dentro da faixa ideal. EC: 1.8 mS/cm, dentro da faixa tolerada. Temperatura do reservatório: 22.75 °C, dentro da faixa tolerada. água_max: 0, abaixo da boia, reposição recomendada, mas sem risco imediato. água_min: 1, nível adequado. || Conclusão: A maioria dos parâmetros está dentro das faixas toleradas, exceto o nível de CO₂, que está crítico. || Impacto previsto: Se o nível de CO₂ não for corrigido, pode ocorrer redução no crescimento das plantas e clorose, devido à fotossíntese ineficiente; risco de 3/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [25/05/2025 20:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 21.53, 'umid': 67.88, 'co2': 0.0, 'luz': 0.0, 'temp_reserv_int': 22.75, 'agua_min': 1.0, 'agua_max': 0.0, 'ph': 6.0, 'ec': 1.8}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 21.53, 'umidade_ambiente': 67.88, 'nivel_co2': 0.0, 'luminosidade': 0.0, 'ph_agua': 6.0, 'condutividade_ec': 1.8, 'temp_reservatorio_interno': 22.75, 'agua_min': 1, 'agua_max': 0, 'timestamp_consulta': '2025-05-25T23:00:04.384522Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 25/05/2025 20:00. Temperatura ambiente: 21.53 °C, dentro da faixa tolerada. Umidade: 67.88%, dentro da faixa tolerada. CO₂: 0.0 ppm, fora da faixa tolerada, pois está abaixo do mínimo necessário para o crescimento adequado das plantas. pH: 6.0, dentro da faixa ideal. EC: 1.8 mS/cm, dentro da faixa tolerada. Temperatura do reservatório: 22.75 °C, dentro da faixa tolerada. água_max: 0, abaixo da boia, reposição recomendada. água_min: 1, nível adequado. || Conclusão: A maioria dos parâmetros está dentro das faixas toleradas, exceto o nível de CO₂, que está fora da faixa ideal, e o nível de água_max, que está abaixo do ideal. || Impacto previsto: Se o nível de CO₂ não for corrigido, pode ocorrer redução no crescimento das plantas e clorose, devido à baixa fotossíntese; o risco atual é 3/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [26/05/2025 00:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 26.58, 'umid': 52.9, 'co2': 0.0, 'luz': 1.0, 'temp_reserv_int': 22.94, 'agua_min': 1.0, 'agua_max': 0.0, 'ph': 6.0, 'ec': 1.8}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 26.58, 'umidade_ambiente': 52.9, 'nivel_co2': 0.0, 'luminosidade': 1.0, 'ph_agua': 6.0, 'condutividade_ec': 1.8, 'temp_reservatorio_interno': 22.94, 'agua_min': 1, 'agua_max': 0, 'timestamp_consulta': '2025-05-26T03:00:04.729353Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 26/05/2025 00:00. Temperatura ambiente: 26.58 °C, fora da faixa tolerada, acima do limite superior de 24 °C; Umidade: 52.9 %, dentro da faixa tolerada; CO₂: 0.0 ppm, fora da faixa tolerada, muito abaixo do mínimo necessário de 400 ppm; pH: 6.0, dentro da faixa ideal; EC: 1.8 mS/cm, dentro da faixa tolerada; Temp. reservatório: 22.94 °C, dentro da faixa tolerada; água_max: 0, abaixo da boia, reposição recomendada; água_min: 1, nível adequado. || Conclusão: A temperatura ambiente e o nível de CO₂ estão fora das faixas toleradas, necessitando de ajustes imediatos. Impacto previsto: Caso os parâmetros fora da faixa não sejam corrigidos, pode ocorrer estresse térmico e deficiência de crescimento devido à falta de CO₂, aumentando o risco de doenças como murcha fisiológica e clorose, ambas associadas ao estresse ambiental e à deficiência de CO₂, respectivamente. Risco atual: 4/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [26/05/2025 04:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 26.24, 'umid': 54.28, 'co2': 0.0, 'luz': 1.0, 'temp_reserv_int': 23.0, 'agua_min': 1.0, 'agua_max': 0.0, 'ph': 6.0, 'ec': 1.8}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 26.24, 'umidade_ambiente': 54.28, 'nivel_co2': 0.0, 'luminosidade': 1.0, 'ph_agua': 6.0, 'condutividade_ec': 1.8, 'temp_reservatorio_interno': 23.0, 'agua_min': 1, 'agua_max': 0, 'timestamp_consulta': '2025-05-26T07:00:04.185924Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 26/05/2025 04:00. Temperatura ambiente: 26.24 °C, fora da faixa tolerada, acima do limite superior de 24 °C. Umidade: 54.28 %, dentro da faixa tolerada. CO₂: 0.0 ppm, fora da faixa tolerada, muito abaixo do mínimo de 400 ppm. pH: 6.0, dentro da faixa ideal. EC: 1.8 mS/cm, dentro da faixa tolerada. Temp. reservatório: 23.0 °C, dentro da faixa tolerada. água_max: 0, abaixo da boia, reposição recomendada. água_min: 1, nível adequado. || Conclusão: A temperatura ambiente e os níveis de CO₂ estão fora das faixas toleradas, enquanto os demais parâmetros estão adequados. Impacto previsto: Se não corrigidos, os níveis inadequados de temperatura e CO₂ podem levar a um crescimento reduzido e estresse nas plantas, aumentando o risco de doenças como oídio e podridão radicular, devido ao estresse térmico e à falta de CO₂ para a fotossíntese; risco atual classificado como 3/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [26/05/2025 08:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 25.99, 'umid': 58.1, 'co2': 0.0, 'luz': 1.0, 'temp_reserv_int': 22.5, 'agua_min': 1.0, 'agua_max': 0.0, 'ph': 6.0, 'ec': 1.8}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 25.99, 'umidade_ambiente': 58.1, 'nivel_co2': 0.0, 'luminosidade': 1.0, 'ph_agua': 6.0, 'condutividade_ec': 1.8, 'temp_reservatorio_interno': 22.5, 'agua_min': 1, 'agua_max': 0, 'timestamp_consulta': '2025-05-26T11:00:04.294084Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 26/05/2025 08:00. Temperatura ambiente: 25.99 °C, fora da faixa tolerada, acima do limite superior de 24 °C; Umidade: 58.1 %, dentro da faixa tolerada; CO₂: 0.0 ppm, fora da faixa tolerada, muito abaixo do mínimo de 400 ppm; pH: 6.0, dentro da faixa ideal; EC: 1.8 mS/cm, dentro da faixa tolerada; Temp. reservatório: 22.5 °C, dentro da faixa tolerada; água_max: 0, nível abaixo da boia, reposição recomendada; água_min: 1, nível adequado. || Conclusão: A temperatura ambiente e o nível de CO₂ estão fora das faixas toleradas, enquanto o nível de água está abaixo do ideal. || Impacto previsto: Se não corrigidos, os parâmetros fora da faixa podem levar a estresse térmico e deficiência de CO₂, aumentando o risco de necrose marginal e clorose, respectivamente, devido ao calor excessivo e à falta de carbono para a fotossíntese; risco atual classificado como 3/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [26/05/2025 12:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 26.45, 'umid': 54.0, 'co2': 505.0, 'luz': 0.0, 'temp_reserv_int': 22.44, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.5, 'ec': 1.5}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 26.45, 'umidade_ambiente': 54.0, 'nivel_co2': 505.0, 'luminosidade': 0.0, 'ph_agua': 6.5, 'condutividade_ec': 1.5, 'temp_reservatorio_interno': 22.44, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-26T15:00:04.964296Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 26/05/2025 12:00. Temperatura ambiente: 26.45 °C, fora da faixa tolerada (ideal: 19.5 °C, tolerável: 15–24 °C); Umidade: 54.0 %, dentro da faixa tolerada (tolerável: 50–70%); CO₂: 505.0 ppm, dentro da faixa tolerada (tolerável até 1000 ppm); pH: 6.5, no limite superior da faixa tolerada (tolerável: 5.5–6.5); EC: 1.5 mS/cm, dentro da faixa tolerada (tolerável: 1.2–2.0 mS/cm); Temp. reservatório: 22.44 °C, dentro da faixa tolerada (tolerável: 18–24 °C); água_max: 1, nível adequado; água_min: 1, nível adequado. || Conclusão: A temperatura ambiente está fora da faixa tolerada, o que pode impactar negativamente o cultivo. || Impacto previsto: Se a temperatura não for ajustada, pode ocorrer queima de bordas ou necrose nas folhas devido ao estresse térmico, com risco classificado em 3/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [26/05/2025 16:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 26.44, 'umid': 53.63, 'co2': 568.0, 'luz': 0.0, 'temp_reserv_int': 22.5, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.5, 'ec': 1.5}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 26.44, 'umidade_ambiente': 53.63, 'nivel_co2': 568.0, 'luminosidade': 0.0, 'ph_agua': 6.5, 'condutividade_ec': 1.5, 'temp_reservatorio_interno': 22.5, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-26T19:00:05.046223Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 26/05/2025 16:00. Temperatura ambiente: 26.44 °C, fora da faixa tolerada, acima do limite superior de 24 °C; Umidade: 53.63%, dentro da faixa tolerada; CO₂: 568.0 ppm, dentro da faixa tolerada; pH: 6.5, no limite superior da faixa tolerada; EC: 1.5 mS/cm, dentro da faixa tolerada; Temp. reservatório: 22.5 °C, dentro da faixa tolerada; água_max: 1, nível adequado; água_min: 1, nível adequado. || Conclusão: A temperatura ambiente está fora da faixa tolerada, o que pode afetar o crescimento das plantas. Impacto previsto: Se a temperatura elevada não for corrigida, pode ocorrer estresse térmico, aumentando o risco de doenças como queima das bordas das folhas e podridão radicular, devido ao aumento da transpiração e estresse hídrico. Risco atual: 2/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [26/05/2025 20:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 22.76, 'umid': 57.58, 'co2': 487.0, 'luz': 0.0, 'temp_reserv_int': 21.81, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.5, 'ec': 1.5}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 22.76, 'umidade_ambiente': 57.58, 'nivel_co2': 487.0, 'luminosidade': 0.0, 'ph_agua': 6.5, 'condutividade_ec': 1.5, 'temp_reservatorio_interno': 21.81, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-26T23:00:04.259286Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 26/05/2025 20:00. Temperatura ambiente: 22.76 °C, dentro da faixa tolerada. Umidade: 57.58%, dentro da faixa tolerada. CO₂: 487.0 ppm, dentro da faixa tolerada. pH: 6.5, no limite superior da faixa tolerada. EC: 1.5 mS/cm, dentro da faixa tolerada. Temperatura do reservatório: 21.81 °C, dentro da faixa tolerada. Nível de água: água_max = 1 e água_min = 1, ambos indicando nível adequado. || Conclusão: Todos os parâmetros estão dentro das faixas toleradas. Impacto previsto: Não há risco identificado.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [27/05/2025 00:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 28.43, 'umid': 42.53, 'co2': 570.0, 'luz': 1.0, 'temp_reserv_int': 23.19, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.5, 'ec': 1.5}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 28.43, 'umidade_ambiente': 42.53, 'nivel_co2': 570.0, 'luminosidade': 1.0, 'ph_agua': 6.5, 'condutividade_ec': 1.5, 'temp_reservatorio_interno': 23.19, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-27T03:00:04.847682Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 27/05/2025 00:00. Temperatura ambiente: 28.43 °C, fora da faixa tolerada (15–24 °C); Umidade: 42.53 %, fora da faixa tolerada (50–70%); CO₂: 570.0 ppm, dentro da faixa ideal (400–800 ppm); pH: 6.5, no limite superior da faixa tolerada (5.5–6.5); EC: 1.5 mS/cm, dentro da faixa tolerada (1.2–2.0 mS/cm); Temp. reservatório: 23.19 °C, dentro da faixa tolerada (18–24 °C); água_max: 1, nível adequado; água_min: 1, nível adequado. || Conclusão: A temperatura ambiente e a umidade estão fora das faixas toleradas, o que pode impactar negativamente o cultivo. || Impacto previsto: Se não corrigidos, os parâmetros fora da faixa podem levar a estresse térmico e desidratação das plantas, aumentando o risco de doenças como oídio e murcha bacteriana, devido ao calor excessivo e baixa umidade; risco atual classificado como 3/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [27/05/2025 04:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 27.49, 'umid': 47.03, 'co2': 0.0, 'luz': 1.0, 'temp_reserv_int': 25.44, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.5, 'ec': 1.5}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 27.49, 'umidade_ambiente': 47.03, 'nivel_co2': 0.0, 'luminosidade': 1.0, 'ph_agua': 6.5, 'condutividade_ec': 1.5, 'temp_reservatorio_interno': 25.44, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-27T07:00:04.581551Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 27/05/2025 04:00. Temperatura ambiente: 27.49 °C, fora da faixa tolerada (ideal: 19.5 °C, tolerável: 15–24 °C); Umidade relativa: 47.03 %, fora da faixa tolerada (ideal: 60 %, tolerável: 50–70 %); CO₂: 0.0 ppm, fora da faixa tolerada (ideal: 400–800 ppm, tolerável até 1000 ppm); pH: 6.5, no limite superior da faixa tolerada (ideal: 6.0, tolerável: 5.5–6.5); EC: 1.5 mS/cm, dentro da faixa tolerada (ideal: 1.6 mS/cm, tolerável: 1.2–2.0 mS/cm); Temperatura do reservatório: 25.44 °C, fora da faixa tolerada (ideal: 21 °C, tolerável: 18–24 °C); água_max: 1, nível adequado; água_min: 1, nível adequado. || Conclusão: Vários parâmetros estão fora das faixas toleradas, necessitando de ajustes imediatos. || Impacto previsto: Caso os parâmetros não sejam corrigidos, pode ocorrer estresse térmico e deficiência de CO₂, levando a problemas como queima de borda e crescimento atrofiado. Queima de borda pode ser causada por temperaturas elevadas e baixa umidade, enquanto o crescimento atrofiado pode resultar da deficiência de CO₂. Risco atual: 4/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [27/05/2025 08:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 28.28, 'umid': 45.09, 'co2': 0.0, 'luz': 1.0, 'temp_reserv_int': 26.0, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.5, 'ec': 1.5}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 28.28, 'umidade_ambiente': 45.09, 'nivel_co2': 0.0, 'luminosidade': 1.0, 'ph_agua': 6.5, 'condutividade_ec': 1.5, 'temp_reservatorio_interno': 26.0, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-27T11:00:04.165248Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 27/05/2025 08:00. Temperatura ambiente: 28.28 °C, fora da faixa tolerada (ideal: 19.5 °C, tolerável: 15–24 °C); Umidade: 45.09 %, fora da faixa tolerada (ideal: 60%, tolerável: 50–70%); CO₂: 0.0 ppm, fora da faixa tolerada (ideal: 400–800 ppm, tolerável até 1000 ppm); pH: 6.5, no limite superior da faixa tolerada (ideal: 6.0, tolerável: 5.5–6.5); EC: 1.5 mS/cm, dentro da faixa tolerada (ideal: 1.6 mS/cm, tolerável: 1.2–2.0 mS/cm); Temp. reservatório: 26.0 °C, fora da faixa tolerada (ideal: 21 °C, tolerável: 18–24 °C); água_max: 1, nível adequado; água_min: 1, nível adequado. || Conclusão: Vários parâmetros estão fora das faixas toleradas, necessitando de ajustes imediatos para evitar impactos negativos no cultivo. Impacto previsto: Se não corrigidos, os parâmetros fora da faixa podem levar a problemas como queima das bordas das folhas devido ao calor excessivo e deficiência de crescimento por falta de CO₂, com risco atual classificado como 4/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [27/05/2025 12:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 22.01, 'umid': 63.06, 'co2': 0.0, 'luz': 0.0, 'temp_reserv_int': 24.38, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.5, 'ec': 1.5}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 22.01, 'umidade_ambiente': 63.06, 'nivel_co2': 0.0, 'luminosidade': 0.0, 'ph_agua': 6.5, 'condutividade_ec': 1.5, 'temp_reservatorio_interno': 24.38, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-27T15:00:04.370922Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 27/05/2025 12:00. Temperatura ambiente: 22.01 °C, dentro da faixa tolerada. Umidade: 63.06%, dentro da faixa tolerada. CO₂: 0.0 ppm, fora da faixa tolerada, pois está abaixo do mínimo necessário. pH: 6.5, no limite superior da faixa tolerada. EC: 1.5 mS/cm, dentro da faixa tolerada. Temperatura do reservatório: 24.38 °C, ligeiramente acima da faixa tolerada. água_max: 1, nível adequado. água_min: 1, nível adequado. || Conclusão: A maioria dos parâmetros está dentro das faixas toleradas, exceto o nível de CO₂, que está crítico, e a temperatura do reservatório, que está ligeiramente acima do ideal. || Impacto previsto: A ausência de CO₂ pode levar a uma fotossíntese ineficiente, resultando em crescimento atrofiado e clorose; risco de 3/5. Se não corrigido, pode predispor as plantas a doenças como oídio e podridão radicular, devido ao estresse fisiológico e condições de temperatura do reservatório.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [27/05/2025 16:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 22.54, 'umid': 68.3, 'co2': 0.0, 'luz': 0.0, 'temp_reserv_int': 23.0, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.5, 'ec': 1.5}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 22.54, 'umidade_ambiente': 68.3, 'nivel_co2': 0.0, 'luminosidade': 0.0, 'ph_agua': 6.5, 'condutividade_ec': 1.5, 'temp_reservatorio_interno': 23.0, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-27T19:00:04.921578Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 27/05/2025 16:00. Temperatura ambiente: 22.54 °C, dentro da faixa tolerada. Umidade: 68.3%, dentro da faixa tolerada. CO₂: 0.0 ppm, fora da faixa tolerada, pois está abaixo do mínimo necessário. pH: 6.5, no limite superior da faixa tolerada. EC: 1.5 mS/cm, dentro da faixa tolerada. Temperatura do reservatório: 23.0 °C, dentro da faixa tolerada. água_max: 1, nível adequado. água_min: 1, nível adequado. || Conclusão: A maioria dos parâmetros está dentro das faixas toleradas, exceto o nível de CO₂, que está crítico. || Impacto previsto: A ausência de CO₂ pode levar a uma fotossíntese ineficiente, resultando em crescimento atrofiado e clorose; risco de 3/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [27/05/2025 20:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 22.07, 'umid': 64.91, 'co2': 0.0, 'luz': 0.0, 'temp_reserv_int': 22.62, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.5, 'ec': 1.5}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 22.07, 'umidade_ambiente': 64.91, 'nivel_co2': 0.0, 'luminosidade': 0.0, 'ph_agua': 6.5, 'condutividade_ec': 1.5, 'temp_reservatorio_interno': 22.62, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-27T23:00:04.562586Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 27/05/2025 20:00. Temperatura ambiente: 22.07 °C, dentro da faixa tolerada; Umidade: 64.91%, dentro da faixa tolerada; CO₂: 0.0 ppm, fora da faixa tolerada, pois está abaixo do mínimo necessário; pH: 6.5, no limite superior da faixa tolerada; EC: 1.5 mS/cm, dentro da faixa tolerada; Temp. reservatório: 22.62 °C, dentro da faixa tolerada; água_max: 1, nível adequado; água_min: 1, nível adequado. || Conclusão: A maioria dos parâmetros está dentro das faixas toleradas, exceto o nível de CO₂, que está fora da faixa. Impacto previsto: A falta de CO₂ pode levar a uma fotossíntese ineficiente, resultando em crescimento reduzido e clorose; risco de 2/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [28/05/2025 00:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 28.33, 'umid': 53.43, 'co2': 0.0, 'luz': 1.0, 'temp_reserv_int': 23.94, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.5, 'ec': 1.5}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 28.33, 'umidade_ambiente': 53.43, 'nivel_co2': 0.0, 'luminosidade': 1.0, 'ph_agua': 6.5, 'condutividade_ec': 1.5, 'temp_reservatorio_interno': 23.94, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-28T03:00:04.401445Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 28/05/2025 00:00. Temperatura ambiente: 28.33 °C, fora da faixa tolerada (15–24 °C); Umidade: 53.43 %, dentro da faixa tolerada (50–70%); CO₂: 0.0 ppm, fora da faixa tolerada (400–800 ppm); pH: 6.5, no limite superior da faixa tolerada (5.5–6.5); EC: 1.5 mS/cm, dentro da faixa tolerada (1.2–2.0 mS/cm); Temp. reservatório: 23.94 °C, dentro da faixa tolerada (18–24 °C); água_max: 1, nível adequado; água_min: 1, nível adequado. || Conclusão: A temperatura ambiente está elevada e o nível de CO₂ está extremamente baixo, ambos fora das faixas toleradas. Impacto previsto: Se não corrigidos, esses parâmetros podem levar a estresse térmico e deficiência de carbono, aumentando o risco de doenças como queima das bordas das folhas e crescimento atrofiado, com risco atual classificado como 3/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [28/05/2025 04:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 27.64, 'umid': 49.6, 'co2': 0.0, 'luz': 1.0, 'temp_reserv_int': 25.81, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.5, 'ec': 1.5}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 27.64, 'umidade_ambiente': 49.6, 'nivel_co2': 0.0, 'luminosidade': 1.0, 'ph_agua': 6.5, 'condutividade_ec': 1.5, 'temp_reservatorio_interno': 25.81, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-28T07:00:05.087637Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 28/05/2025 04:00. Temperatura ambiente: 27.64 °C, fora da faixa tolerada (15–24 °C); Umidade: 49.6 %, fora da faixa tolerada (50–70%); CO₂: 0.0 ppm, fora da faixa tolerada (400–1000 ppm); pH: 6.5, no limite superior da faixa tolerada (5.5–6.5); EC: 1.5 mS/cm, dentro da faixa tolerada (1.2–2.0 mS/cm); Temp. reservatório: 25.81 °C, fora da faixa tolerada (18–24 °C); água_max: 1, nível adequado; água_min: 1, nível adequado. || Conclusão: Vários parâmetros estão fora das faixas toleradas, necessitando de ajustes imediatos. Impacto previsto: Se não corrigidos, os parâmetros fora da faixa podem levar a estresse térmico e deficiência de CO₂, aumentando o risco de doenças como queima das bordas das folhas devido ao calor excessivo e crescimento atrofiado por falta de CO₂. Risco atual: 4/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [28/05/2025 08:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 31.5, 'umid': 42.41, 'co2': 441.0, 'luz': 1.0, 'temp_reserv_int': 26.12, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.5, 'ec': 1.5}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 31.5, 'umidade_ambiente': 42.41, 'nivel_co2': 441.0, 'luminosidade': 1.0, 'ph_agua': 6.5, 'condutividade_ec': 1.5, 'temp_reservatorio_interno': 26.12, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-28T11:00:05.070166Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 28/05/2025 08:00. Temperatura ambiente: 31.5 °C, fora da faixa tolerada (15–24 °C); Umidade: 42.41%, fora da faixa tolerada (50–70%); CO₂: 441.0 ppm, dentro da faixa ideal (400–800 ppm); pH: 6.5, no limite superior da faixa tolerada (5.5–6.5); EC: 1.5 mS/cm, dentro da faixa tolerada (1.2–2.0 mS/cm); Temp. reservatório: 26.12 °C, fora da faixa tolerada (18–24 °C); água_max: 1, nível adequado; água_min: 1, nível adequado. || Conclusão: A temperatura ambiente, umidade e temperatura do reservatório estão fora das faixas toleradas, o que pode afetar o cultivo. Impacto previsto: Se não corrigidos, os parâmetros fora da faixa podem levar a estresse térmico e desidratação das plantas, aumentando o risco de doenças como oídio e podridão radicular, devido ao calor excessivo e baixa umidade; risco atual classificado como 4/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [28/05/2025 12:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 27.3, 'umid': 54.04, 'co2': 832.0, 'luz': 0.0, 'temp_reserv_int': 25.38, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.5, 'ec': 1.5}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 27.3, 'umidade_ambiente': 54.04, 'nivel_co2': 832.0, 'luminosidade': 0.0, 'ph_agua': 6.5, 'condutividade_ec': 1.5, 'temp_reservatorio_interno': 25.38, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-28T15:00:04.214561Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 28/05/2025 12:00. Temperatura ambiente: 27.3 °C, fora da faixa tolerada (15–24 °C). Umidade: 54.04 %, dentro da faixa tolerada (50–70%). CO₂: 832.0 ppm, dentro da faixa tolerada, mas próximo do limite superior (400–1000 ppm). pH: 6.5, no limite superior da faixa tolerada (5.5–6.5). EC: 1.5 mS/cm, dentro da faixa tolerada (1.2–2.0 mS/cm). Temperatura do reservatório: 25.38 °C, fora da faixa tolerada (18–24 °C). água_max: 1, nível adequado. água_min: 1, nível adequado. || Conclusão: A temperatura ambiente e a temperatura do reservatório estão fora das faixas toleradas, o que pode afetar o desenvolvimento das plantas. Impacto previsto: Se não corrigidos, os parâmetros fora da faixa podem levar a estresse térmico e problemas de absorção de nutrientes, aumentando o risco de doenças como podridão radicular e queima das pontas das folhas; risco atual classificado como 3/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [28/05/2025 16:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 27.2, 'umid': 53.03, 'co2': 814.0, 'luz': 0.0, 'temp_reserv_int': 24.25, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.5, 'ec': 1.5}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 27.2, 'umidade_ambiente': 53.03, 'nivel_co2': 814.0, 'luminosidade': 0.0, 'ph_agua': 6.5, 'condutividade_ec': 1.5, 'temp_reservatorio_interno': 24.25, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-28T19:00:04.996411Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 28/05/2025 16:00. Temperatura ambiente: 27.2 °C, fora da faixa tolerada (15–24 °C); Umidade: 53.03 %, dentro da faixa tolerada (50–70%); CO₂: 814.0 ppm, próximo dos limites (tolerável até 1000 ppm); pH: 6.5, no limite superior da faixa tolerada (5.5–6.5); EC: 1.5 mS/cm, dentro da faixa tolerada (1.2–2.0 mS/cm); Temp. reservatório: 24.25 °C, ligeiramente acima da faixa tolerada (18–24 °C); água_max: 1, nível adequado; água_min: 1, nível adequado. || Conclusão: A temperatura ambiente está fora da faixa tolerada e a temperatura do reservatório está ligeiramente acima do ideal. Impacto previsto: Se não corrigidos, os parâmetros fora da faixa podem levar a estresse térmico e problemas de absorção de nutrientes, aumentando o risco de doenças como podridão radicular e queima de borda, devido ao calor excessivo e possível desbalanceamento nutricional; risco atual classificado como 3/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [28/05/2025 20:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 23.42, 'umid': 59.78, 'co2': 420.0, 'luz': 0.0, 'temp_reserv_int': 22.56, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.5, 'ec': 2.3}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 23.42, 'umidade_ambiente': 59.78, 'nivel_co2': 420.0, 'luminosidade': 0.0, 'ph_agua': 6.5, 'condutividade_ec': 2.3, 'temp_reservatorio_interno': 22.56, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-28T23:00:04.776810Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 28/05/2025 20:00. Temperatura ambiente: 23.42 °C, dentro da faixa tolerada. Umidade: 59.78%, dentro da faixa tolerada. CO₂: 420.0 ppm, dentro da faixa tolerada. pH: 6.5, no limite superior da faixa tolerada. EC: 2.3 mS/cm, fora da faixa tolerada. Temp. reservatório: 22.56 °C, dentro da faixa tolerada. água_max: 1, nível adequado. água_min: 1, nível adequado. || Conclusão: Todos os parâmetros estão dentro das faixas toleradas, exceto a condutividade elétrica (EC), que está acima do limite superior. || Impacto previsto: Se a EC não for corrigida, pode ocorrer toxicidade por nutrientes, levando a problemas como queima de bordas nas folhas e crescimento atrofiado; risco de 2/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [29/05/2025 00:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 30.73, 'umid': 48.72, 'co2': 552.0, 'luz': 1.0, 'temp_reserv_int': 23.94, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.5, 'ec': 2.3}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 30.73, 'umidade_ambiente': 48.72, 'nivel_co2': 552.0, 'luminosidade': 1.0, 'ph_agua': 6.5, 'condutividade_ec': 2.3, 'temp_reservatorio_interno': 23.94, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-05-29T03:00:04.646827Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 29/05/2025 00:00. Temperatura ambiente: 30.73 °C, fora da faixa tolerada (ideal: 19.5 °C, tolerável: 15–24 °C); Umidade: 48.72 %, fora da faixa tolerada (ideal: 60 %, tolerável: 50–70 %); CO₂: 552.0 ppm, dentro da faixa tolerada (ideal: 400–800 ppm, tolerável até 1000 ppm); pH: 6.5, no limite superior da faixa tolerada (ideal: 6.0, tolerável: 5.5–6.5); EC: 2.3 mS/cm, fora da faixa tolerada (ideal: 1.6 mS/cm, tolerável: 1.2–2.0 mS/cm); Temp. reservatório: 23.94 °C, dentro da faixa tolerada (ideal: 21 °C, tolerável: 18–24 °C); água_max: 1, nível adequado; água_min: 1, nível adequado. || Conclusão: A temperatura ambiente, umidade e EC estão fora das faixas toleradas, necessitando de ajustes imediatos. || Impacto previsto: Se não corrigidos, os parâmetros fora da faixa podem levar a problemas como queima das bordas das folhas devido ao excesso de EC e estresse térmico, que pode resultar em necrose foliar; risco atual classificado como 4/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [29/05/2025 04:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 30.61, 'umid': 45.16, 'co2': 526.0, 'luz': 1.0, 'temp_reserv_int': 25.56, 'agua_min': 1.0, 'agua_max': 0.0, 'ph': 6.5, 'ec': 2.3}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 30.61, 'umidade_ambiente': 45.16, 'nivel_co2': 526.0, 'luminosidade': 1.0, 'ph_agua': 6.5, 'condutividade_ec': 2.3, 'temp_reservatorio_interno': 25.56, 'agua_min': 1, 'agua_max': 0, 'timestamp_consulta': '2025-05-29T07:00:04.624979Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 29/05/2025 04:00. Temperatura ambiente: 30.61 °C, fora da faixa tolerada (ideal: 19.5 °C, tolerável: 15–24 °C); Umidade: 45.16 %, fora da faixa tolerada (ideal: 60%, tolerável: 50–70%); CO₂: 526.0 ppm, dentro da faixa tolerada (ideal: 400–800 ppm, tolerável até 1000 ppm); pH: 6.5, no limite superior da faixa tolerada (ideal: 6.0, tolerável: 5.5–6.5); EC: 2.3 mS/cm, fora da faixa tolerada (ideal: 1.6 mS/cm, tolerável: 1.2–2.0 mS/cm); Temperatura do reservatório: 25.56 °C, fora da faixa tolerada (ideal: 21 °C, tolerável: 18–24 °C); água_max: 0, abaixo da boia, reposição recomendada; água_min: 1, nível adequado. || Conclusão: Vários parâmetros estão fora das faixas toleradas, indicando necessidade de ajustes imediatos. || Impacto previsto: Se não corrigidos, os parâmetros fora da faixa podem levar a estresse térmico e desidratação das plantas, aumentando o risco de doenças como podridão radicular (devido ao EC elevado) e murcha bacteriana (devido à baixa umidade). Risco atual: 4/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [29/05/2025 08:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 27.52, 'umid': 52.81, 'co2': 0.0, 'luz': 1.0, 'temp_reserv_int': 25.88, 'agua_min': 1.0, 'agua_max': 0.0, 'ph': 6.5, 'ec': 2.3}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 27.52, 'umidade_ambiente': 52.81, 'nivel_co2': 0.0, 'luminosidade': 1.0, 'ph_agua': 6.5, 'condutividade_ec': 2.3, 'temp_reservatorio_interno': 25.88, 'agua_min': 1, 'agua_max': 0, 'timestamp_consulta': '2025-05-29T11:00:05.098056Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 29/05/2025 08:00. Temperatura ambiente: 27.52 °C, fora da faixa tolerada, acima do limite superior de 24 °C; Umidade: 52.81 %, dentro da faixa tolerada; CO₂: 0.0 ppm, fora da faixa tolerada, muito abaixo do mínimo de 400 ppm; pH: 6.5, no limite superior da faixa tolerada; EC: 2.3 mS/cm, fora da faixa tolerada, acima do limite superior de 2.0 mS/cm; Temp. reservatório: 25.88 °C, fora da faixa tolerada, acima do limite superior de 24 °C; água_max: 0, abaixo da boia, reposição recomendada; água_min: 1, nível adequado. || Conclusão: Vários parâmetros estão fora das faixas toleradas, necessitando de ajustes imediatos. || Impacto previsto: Se não corrigidos, os parâmetros fora da faixa podem levar a estresse térmico e deficiência de CO₂, aumentando o risco de doenças como podridão radicular e queima das bordas das folhas, devido ao excesso de temperatura e baixa concentração de CO₂, respectivamente. Risco atual: 4/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [29/05/2025 12:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 23.33, 'umid': 66.85, 'co2': 0.0, 'luz': 0.0, 'temp_reserv_int': 25.25, 'agua_min': 1.0, 'agua_max': 0.0, 'ph': 6.5, 'ec': 2.3}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 23.33, 'umidade_ambiente': 66.85, 'nivel_co2': 0.0, 'luminosidade': 0.0, 'ph_agua': 6.5, 'condutividade_ec': 2.3, 'temp_reservatorio_interno': 25.25, 'agua_min': 1, 'agua_max': 0, 'timestamp_consulta': '2025-05-29T15:00:04.975838Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 29/05/2025 12:00. Temperatura ambiente: 23.33 °C, dentro da faixa tolerada. Umidade: 66.85%, dentro da faixa tolerada. CO₂: 0.0 ppm, fora da faixa tolerada, pois está abaixo do mínimo necessário. pH: 6.5, no limite superior da faixa tolerada. EC: 2.3 mS/cm, fora da faixa tolerada, acima do máximo permitido. Temperatura do reservatório: 25.25 °C, fora da faixa tolerada, acima do máximo permitido. água_max: 0, abaixo da boia, reposição recomendada. água_min: 1, nível adequado. || Conclusão: Existem três parâmetros fora da faixa tolerada: CO₂, EC e temperatura do reservatório. Impacto previsto: A falta de CO₂ pode levar a uma fotossíntese ineficiente, enquanto a alta EC pode causar toxicidade por nutrientes; a temperatura elevada do reservatório pode estressar as plantas, aumentando o risco de doenças como oídio e podridão radicular. Risco atual: 4/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [29/05/2025 16:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 23.14, 'umid': 64.23, 'co2': 0.0, 'luz': 0.0, 'temp_reserv_int': 23.62, 'agua_min': 1.0, 'agua_max': 0.0, 'ph': 6.5, 'ec': 2.3}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 23.14, 'umidade_ambiente': 64.23, 'nivel_co2': 0.0, 'luminosidade': 0.0, 'ph_agua': 6.5, 'condutividade_ec': 2.3, 'temp_reservatorio_interno': 23.62, 'agua_min': 1, 'agua_max': 0, 'timestamp_consulta': '2025-05-29T19:00:04.148924Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 29/05/2025 16:00. Temperatura ambiente: 23.14 °C, dentro da faixa tolerada. Umidade: 64.23%, dentro da faixa tolerada. CO₂: 0.0 ppm, fora da faixa tolerada, pois está abaixo do mínimo necessário. pH: 6.5, no limite superior da faixa tolerada. EC: 2.3 mS/cm, fora da faixa tolerada, pois está acima do máximo permitido. Temperatura do reservatório: 23.62 °C, dentro da faixa tolerada. água_max: 0, abaixo do ideal, reposição recomendada. água_min: 1, nível adequado. || Conclusão: A maioria dos parâmetros está dentro das faixas toleradas, exceto o CO₂ e a EC, que estão fora dos limites aceitáveis. Impacto previsto: Se os parâmetros fora da faixa não forem corrigidos, pode ocorrer clorose devido à baixa concentração de CO₂, que afeta a fotossíntese, e toxicidade por nutrientes devido ao alto EC, que pode causar queimaduras nas raízes; risco atual classificado como 3/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [29/05/2025 20:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 22.56, 'umid': 72.41, 'co2': 0.0, 'luz': 0.0, 'temp_reserv_int': 22.75, 'agua_min': 1.0, 'agua_max': 0.0, 'ph': 6.5, 'ec': 2.3}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 22.56, 'umidade_ambiente': 72.41, 'nivel_co2': 0.0, 'luminosidade': 0.0, 'ph_agua': 6.5, 'condutividade_ec': 2.3, 'temp_reservatorio_interno': 22.75, 'agua_min': 1, 'agua_max': 0, 'timestamp_consulta': '2025-05-29T23:00:04.883561Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 29/05/2025 20:00. Temperatura ambiente: 22.56 °C, dentro da faixa tolerada. Umidade: 72.41%, ligeiramente acima da faixa tolerada. CO₂: 0.0 ppm, fora da faixa tolerada, indicando possível falha no sensor. pH: 6.5, no limite superior da faixa tolerada. EC: 2.3 mS/cm, acima da faixa tolerada. Temperatura do reservatório: 22.75 °C, dentro da faixa tolerada. água_max: 0, abaixo do ideal, reposição recomendada. água_min: 1, nível adequado. || Conclusão: A maioria dos parâmetros está dentro ou próximo das faixas toleradas, exceto o nível de CO₂ e a EC, que estão fora das faixas ideais. Impacto previsto: Se não corrigidos, os níveis elevados de EC podem causar toxicidade por nutrientes, enquanto a falta de CO₂ pode afetar a fotossíntese, levando a um crescimento reduzido. Possíveis fitopatologias incluem necrose foliar devido ao excesso de nutrientes e clorose por deficiência de CO₂. Risco atual: 3/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [30/05/2025 00:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 26.78, 'umid': 57.71, 'co2': 0.0, 'luz': 1.0, 'temp_reserv_int': 23.06, 'agua_min': 1.0, 'agua_max': 0.0, 'ph': 6.5, 'ec': 2.3}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 26.78, 'umidade_ambiente': 57.71, 'nivel_co2': 0.0, 'luminosidade': 1.0, 'ph_agua': 6.5, 'condutividade_ec': 2.3, 'temp_reservatorio_interno': 23.06, 'agua_min': 1, 'agua_max': 0, 'timestamp_consulta': '2025-05-30T03:00:04.629148Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 30/05/2025 00:00. Temperatura ambiente: 26.78 °C, fora da faixa tolerada (15–24 °C). Umidade: 57.71 %, dentro da faixa tolerada (50–70%). CO₂: 0.0 ppm, fora da faixa tolerada (400–1000 ppm). pH: 6.5, no limite superior da faixa tolerada (5.5–6.5). EC: 2.3 mS/cm, fora da faixa tolerada (1.2–2.0 mS/cm). Temperatura do reservatório: 23.06 °C, dentro da faixa tolerada (18–24 °C). água_max: 0, abaixo da boia, reposição recomendada. água_min: 1, nível adequado. Conclusão: A temperatura ambiente, concentração de CO₂ e EC estão fora das faixas toleradas, necessitando de ajustes imediatos. || Impacto previsto: Se não corrigidos, os parâmetros fora da faixa podem levar a estresse térmico e deficiência de nutrientes, aumentando o risco de doenças como podridão radicular e queima de pontas, devido ao excesso de EC e baixa concentração de CO₂, respectivamente; risco atual classificado como 4/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [30/05/2025 04:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 26.13, 'umid': 56.51, 'co2': 0.0, 'luz': 1.0, 'temp_reserv_int': 25.06, 'agua_min': 1.0, 'agua_max': 0.0, 'ph': 6.5, 'ec': 2.3}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 26.13, 'umidade_ambiente': 56.51, 'nivel_co2': 0.0, 'luminosidade': 1.0, 'ph_agua': 6.5, 'condutividade_ec': 2.3, 'temp_reservatorio_interno': 25.06, 'agua_min': 1, 'agua_max': 0, 'timestamp_consulta': '2025-05-30T07:00:04.444075Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 30/05/2025 04:00. Temperatura ambiente: 26.13 °C, fora da faixa tolerada (ideal: 15–24 °C); Umidade: 56.51 %, dentro da faixa tolerada (tolerável: 50–70%); CO₂: 0.0 ppm, fora da faixa tolerada (ideal: 400–800 ppm); pH: 6.5, no limite superior da faixa tolerada (tolerável: 5.5–6.5); EC: 2.3 mS/cm, fora da faixa tolerada (tolerável: 1.2–2.0 mS/cm); Temperatura do reservatório: 25.06 °C, fora da faixa tolerada (tolerável: 18–24 °C); água_max: 0, abaixo da boia, reposição recomendada; água_min: 1, nível adequado. || Conclusão: Vários parâmetros estão fora das faixas toleradas, exigindo ajustes imediatos. || Impacto previsto: Se não corrigidos, os parâmetros fora da faixa podem levar a problemas como necrose foliar devido ao excesso de EC e deficiência de crescimento por falta de CO₂; risco atual classificado como 4/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [30/05/2025 08:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 25.79, 'umid': 58.05, 'co2': 0.0, 'luz': 1.0, 'temp_reserv_int': 25.62, 'agua_min': 1.0, 'agua_max': 0.0, 'ph': 6.5, 'ec': 2.3}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 25.79, 'umidade_ambiente': 58.05, 'nivel_co2': 0.0, 'luminosidade': 1.0, 'ph_agua': 6.5, 'condutividade_ec': 2.3, 'temp_reservatorio_interno': 25.62, 'agua_min': 1, 'agua_max': 0, 'timestamp_consulta': '2025-05-30T11:00:04.621601Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 30/05/2025 08:00. Temperatura ambiente: 25.79 °C, fora da faixa tolerada (15–24 °C). Umidade: 58.05 %, dentro da faixa tolerada (50–70%). CO₂: 0.0 ppm, fora da faixa tolerada (400–1000 ppm). pH: 6.5, no limite superior da faixa tolerada (5.5–6.5). EC: 2.3 mS/cm, fora da faixa tolerada (1.2–2.0 mS/cm). Temperatura do reservatório: 25.62 °C, fora da faixa tolerada (18–24 °C). água_max: 0, abaixo da boia, reposição recomendada. água_min: 1, nível adequado. || Conclusão: Vários parâmetros estão fora das faixas toleradas, necessitando de ajustes imediatos. || Impacto previsto: Se os parâmetros fora da faixa não forem corrigidos, pode ocorrer estresse térmico e deficiência de nutrientes, aumentando o risco de doenças como queima das pontas e podridão radicular. O estresse térmico está relacionado à temperatura ambiente elevada, enquanto a podridão radicular pode ser causada por alta EC e temperatura do reservatório. Risco atual: 4/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [30/05/2025 12:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 22.28, 'umid': 64.83, 'co2': 0.0, 'luz': 0.0, 'temp_reserv_int': 23.75, 'agua_min': 1.0, 'agua_max': 0.0, 'ph': 6.5, 'ec': 2.3}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 22.28, 'umidade_ambiente': 64.83, 'nivel_co2': 0.0, 'luminosidade': 0.0, 'ph_agua': 6.5, 'condutividade_ec': 2.3, 'temp_reservatorio_interno': 23.75, 'agua_min': 1, 'agua_max': 0, 'timestamp_consulta': '2025-05-30T15:00:04.196835Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 30/05/2025 12:00. Temperatura ambiente: 22.28 °C, dentro da faixa tolerada. Umidade: 64.83%, dentro da faixa tolerada. CO₂: 0.0 ppm, fora da faixa tolerada, pois está abaixo do mínimo necessário. pH: 6.5, no limite superior da faixa tolerada. EC: 2.3 mS/cm, fora da faixa tolerada, pois está acima do máximo permitido. Temperatura do reservatório: 23.75 °C, dentro da faixa tolerada. água_max: 0, abaixo da boia, reposição recomendada. água_min: 1, nível adequado. Conclusão: A maioria dos parâmetros está dentro das faixas toleradas, exceto o nível de CO₂ e a EC, que estão fora dos limites aceitáveis. || Impacto previsto: Se os parâmetros fora da faixa não forem corrigidos, pode ocorrer clorose devido à baixa concentração de CO₂, e toxicidade por nutrientes devido à alta EC. O risco atual é classificado como 3/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [30/05/2025 16:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 22.35, 'umid': 93.49, 'co2': 0.0, 'luz': 0.0, 'temp_reserv_int': 20.5, 'agua_min': 1.0, 'agua_max': 0.0, 'ph': 6.5, 'ec': 2.3}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 22.35, 'umidade_ambiente': 93.49, 'nivel_co2': 0.0, 'luminosidade': 0.0, 'ph_agua': 6.5, 'condutividade_ec': 2.3, 'temp_reservatorio_interno': 20.5, 'agua_min': 1, 'agua_max': 0, 'timestamp_consulta': '2025-05-30T19:00:05.124969Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 30/05/2025 16:00. Temperatura ambiente: 22.35 °C, dentro da faixa tolerada. Umidade: 93.49 %, fora da faixa tolerada, muito alta. CO₂: 0.0 ppm, fora da faixa tolerada, extremamente baixo. pH: 6.5, no limite superior da faixa tolerada. EC: 2.3 mS/cm, fora da faixa tolerada, muito alta. Temperatura do reservatório: 20.5 °C, dentro da faixa tolerada. Água_max: 0, abaixo da boia, reposição recomendada. Água_min: 1, nível adequado. || Conclusão: A umidade elevada, a ausência de CO₂ e a alta condutividade elétrica são preocupantes. Impacto previsto: Se não corrigidos, os parâmetros fora da faixa podem levar a problemas de crescimento e doenças como o míldio, devido à alta umidade, e deficiência de crescimento por falta de CO₂; risco atual classificado como 4/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [30/05/2025 20:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 21.78, 'umid': 88.56, 'co2': 0.0, 'luz': 0.0, 'temp_reserv_int': 21.38, 'agua_min': 1.0, 'agua_max': 0.0, 'ph': 6.5, 'ec': 2.3}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 21.78, 'umidade_ambiente': 88.56, 'nivel_co2': 0.0, 'luminosidade': 0.0, 'ph_agua': 6.5, 'condutividade_ec': 2.3, 'temp_reservatorio_interno': 21.38, 'agua_min': 1, 'agua_max': 0, 'timestamp_consulta': '2025-05-30T23:00:04.726317Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 30/05/2025 20:00. Temperatura ambiente: 21.78 °C, dentro da faixa tolerada. Umidade: 88.56 %, fora da faixa tolerada, acima do limite superior de 70%. CO₂: 0.0 ppm, fora da faixa tolerada, abaixo do limite mínimo de 400 ppm. pH: 6.5, no limite superior da faixa tolerada. EC: 2.3 mS/cm, fora da faixa tolerada, acima do limite superior de 2.0 mS/cm. Temperatura do reservatório: 21.38 °C, dentro da faixa tolerada. água_max: 0, abaixo da boia, reposição recomendada. água_min: 1, nível adequado. || Conclusão: Existem vários parâmetros fora das faixas toleradas, especialmente a umidade elevada, ausência de CO₂ e EC elevada. || Impacto previsto: Se não corrigidos, os parâmetros fora da faixa podem levar a problemas como oídio devido à alta umidade e deficiência de crescimento por falta de CO₂; risco atual classificado como 3/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
