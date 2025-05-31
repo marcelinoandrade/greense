@@ -1,0 +1,131 @@
+Command: /home/mrclnndrd/.espressif/python_env/idf5.5_py3.11_env/bin/python /home/mrclnndrd/esp/esp-idf/tools/idf_monitor.py -p /dev/ttyUSB0 -b 115200 --toolchain-prefix xtensa-esp32-elf- --target esp32 --revision 0 /home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/build/N04_Estufa_Camera.elf /home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/build/bootloader/bootloader.elf -m '/home/mrclnndrd/.espressif/python_env/idf5.5_py3.11_env/bin/python' '/home/mrclnndrd/esp/esp-idf/tools/idf.py' '-p' '/dev/ttyUSB0'
+ets Jul 29 2019 12:21:4�ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:6380
+ho 0 tail 12 room 4
+load:0x40078000,len:15904
+load:0x40080400,len:3860
+entry 0x40080638
+[0;32mI (29) boot: ESP-IDF v5.5-dev-3372-g38628f98b9 2nd stage bootloader[0m
+[0;32mI (29) boot: compile time May 29 2025 22:46:37[0m
+[0;32mI (29) boot: Multicore bootloader[0m
+[0;32mI (32) boot: chip revision: v3.1[0m
+[0;32mI (35) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (39) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (42) boot.esp32: SPI Flash Size : 2MB[0m
+[0;32mI (46) boot: Enabling RNG early entropy source...[0m
+[0;32mI (50) boot: Partition Table:[0m
+[0;32mI (53) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (59) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (66) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (72) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (79) boot: End of partition table[0m
+[0;32mI (82) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=22c84h (142468) map[0m
+[0;32mI (138) esp_image: segment 1: paddr=00032cac vaddr=3ff80000 size=0001ch (    28) load[0m
+[0;32mI (139) esp_image: segment 2: paddr=00032cd0 vaddr=3ffb0000 size=04218h ( 16920) load[0m
+[0;32mI (149) esp_image: segment 3: paddr=00036ef0 vaddr=40080000 size=09128h ( 37160) load[0m
+[0;32mI (164) esp_image: segment 4: paddr=00040020 vaddr=400d0020 size=9a6d8h (632536) map[0m
+[0;32mI (381) esp_image: segment 5: paddr=000da700 vaddr=40089128 size=13350h ( 78672) load[0m
+[0;32mI (425) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (425) boot: Disabling RNG early entropy source...[0m
+[0;32mI (435) quad_psram: This chip is ESP32-D0WD[0m
+[0;32mI (437) esp_psram: Found 8MB PSRAM device[0m
+[0;32mI (437) esp_psram: Speed: 40MHz[0m
+[0;32mI (437) esp_psram: PSRAM initialized, cache is in low/high (2-core) mode.[0m
+[0;33mW (443) esp_psram: Virtual address not enough for PSRAM, map as much as we can. 4MB is mapped[0m
+[0;32mI (451) cpu_start: Multicore app[0m
+[0;32mI (1360) esp_psram: SPI SRAM memory test OK[0m
+[0;32mI (1368) cpu_start: Pro cpu start user code[0m
+[0;32mI (1368) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (1369) app_init: Application information:[0m
+[0;32mI (1369) app_init: Project name:     N04_Estufa_Camera[0m
+[0;32mI (1374) app_init: App version:      ced5b2f-dirty[0m
+[0;32mI (1378) app_init: Compile time:     May 30 2025 21:09:26[0m
+[0;32mI (1383) app_init: ELF file SHA256:  5c9ac212d...[0m
+[0;32mI (1388) app_init: ESP-IDF:          v5.5-dev-3372-g38628f98b9[0m
+[0;32mI (1393) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (1397) efuse_init: Max chip rev:     v3.99 [0m
+[0;32mI (1401) efuse_init: Chip rev:         v3.1[0m
+[0;32mI (1406) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (1412) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (1417) heap_init: At 3FFB8C20 len 000273E0 (156 KiB): DRAM[0m
+[0;32mI (1422) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (1428) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (1433) heap_init: At 4009C478 len 00003B88 (14 KiB): IRAM[0m
+[0;32mI (1439) esp_psram: Adding pool of 4096K of PSRAM memory to heap allocator[0m
+[0;32mI (1447) spi_flash: detected chip: generic[0m
+[0;32mI (1449) spi_flash: flash io: dio[0m
+[0;33mW (1452) spi_flash: Detected size(4096k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;32mI (1465) main_task: Started on CPU0[0m
+[0;32mI (1475) esp_psram: Reserving pool of 32K of internal memory for DMA/internal allocations[0m
+[0;32mI (1475) main_task: Calling app_main()[0m
+[0;32mI (1515) cam_hal: cam init ok[0m
+[0;32mI (1515) sccb-ng: pin_sda 26 pin_scl 27[0m
+[0;32mI (1525) sccb-ng: sccb_i2c_port=0[0m
+[0;32mI (1555) camera: Detected camera at address=0x30[0m
+[0;32mI (1555) camera: Detected OV2640 camera[0m
+[0;32mI (1555) camera: Camera PID=0x26 VER=0x42 MIDL=0x7f MIDH=0xa2[0m
+[0;32mI (1635) cam_hal: buffer_size: 32768, half_buffer_size: 4096, node_buffer_size: 2048, node_cnt: 16, total_cnt: 15[0m
+[0;32mI (1635) cam_hal: Allocating 61440 Byte frame buffer in PSRAM[0m
+[0;32mI (1645) cam_hal: cam config ok[0m
+[0;32mI (1645) ov2640: Set PLL: clk_2x: 0, clk_div: 0, pclk_auto: 0, pclk_div: 8[0m
+[0;32mI (1725) CAMERA: Câmera iniciada com sucesso[0m
+[0;32mI (1735) wifi:wifi driver task: 3ffc1998, prio:23, stack:6656, core=0[0m
+[0;32mI (1755) wifi:wifi firmware version: 7d2994f4b[0m
+[0;32mI (1755) wifi:wifi certification version: v7.0[0m
+[0;32mI (1755) wifi:config NVS flash: enabled[0m
+[0;32mI (1755) wifi:config nano formatting: disabled[0m
+[0;32mI (1755) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (1765) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (1765) wifi:Init management short buffer num: 32[0m
+[0;32mI (1765) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (1775) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (1775) wifi:Init static rx buffer num: 10[0m
+[0;32mI (1785) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (1785) wifi_init: rx ba win: 6[0m
+[0;32mI (1785) wifi_init: accept mbox: 6[0m
+[0;33mW (1785) cam_hal: NO-SOI[0m
+[0;32mI (1795) wifi_init: tcpip mbox: 32[0m
+[0;32mI (1795) wifi_init: udp mbox: 6[0m
+[0;32mI (1795) wifi_init: tcp mbox: 6[0m
+[0;32mI (1805) wifi_init: tcp tx win: 5760[0m
+[0;32mI (1805) wifi_init: tcp rx win: 5760[0m
+[0;32mI (1805) wifi_init: tcp mss: 1440[0m
+[0;32mI (1815) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (1815) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (1825) phy_init: phy_version 4860,6b7a6e5,Feb  6 2025,14:47:07[0m
+[0;32mI (1915) wifi:mode : sta (78:42:1c:6d:93:8c)[0m
+[0;32mI (1915) wifi:enable tsf[0m
+[0;32mI (1915) wifi:Set ps type: 0, coexist: 0[0m
+
+[0;32mI (1915) WIFI: Wi-Fi inicializado. Conectando...[0m
+[0;32mI (1945) wifi:new:<13,0>, old:<1,0>, ap:<255,255>, sta:<13,0>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (1945) wifi:state: init -> auth (0xb0)[0m
+[0;32mI (1945) wifi:state: auth -> assoc (0x0)[0m
+[0;32mI (1955) wifi:state: assoc -> run (0x10)[0m
+[0;32mI (1995) wifi:connected with greense, aid = 2, channel 13, BW20, bssid = e4:5f:01:6f:f2:29[0m
+[0;32mI (1995) wifi:security: WPA-PSK, phy: bgn, rssi: -51[0m
+[0;32mI (1995) wifi:pm start, type: 0[0m
+
+[0;32mI (1995) wifi:dp: 1, bi: 102400, li: 3, scale listen interval from 307200 us to 307200 us[0m
+[0;32mI (2045) wifi:dp: 2, bi: 102400, li: 4, scale listen interval from 307200 us to 409600 us[0m
+[0;32mI (2045) wifi:AP's beacon interval = 102400 us, DTIM period = 2[0m
+[0;32mI (2045) wifi:<ba-add>idx:0 (ifx:0, e4:5f:01:6f:f2:29), tid:6, ssn:0, winSize:64[0m
+[0;32mI (3075) esp_netif_handlers: sta ip: 10.42.0.56, mask: 255.255.255.0, gw: 10.42.0.1[0m
+[0;32mI (3075) WIFI: IP obtido: 10.42.0.56[0m
+[0;32mI (3075) WIFI: Conectado ao Wi-Fi com sucesso[0m
+[0;32mI (3075) CAMERA: Servidor HTTP iniciado[0m
+[0;32mI (3075) main_task: Returned from app_main()[0m
+[0;32mI (7155) wifi:<ba-add>idx:1 (ifx:0, e4:5f:01:6f:f2:29), tid:0, ssn:3, winSize:64[0m
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x2 (DOWNLOAD_BOOT(UART0/UART1/SDIO_REI_FEO_V2))
+waiting for download
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x3 (DOWNLOAD_BOOT(UART0/UART1/SDIO_REI_REO_V2))
+waiting for download

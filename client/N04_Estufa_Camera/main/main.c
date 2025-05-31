@@ -8,6 +8,7 @@
 #include "esp_netif.h"
 #include "esp_http_server.h"
 #include "freertos/event_groups.h"
+#include "driver/gpio.h"
 
 #define WIFI_SSID "greense"
 #define WIFI_PASS "greense@3141"
@@ -19,6 +20,7 @@ static const char *TAG = "CAMERA";
 static const char *TAG_WIFI = "WIFI";
 static EventGroupHandle_t s_wifi_event_group;
 
+// Definições dos pinos da câmera (ESP32-CAM)
 #define PWDN_GPIO_NUM     32
 #define RESET_GPIO_NUM    -1
 #define XCLK_GPIO_NUM      0
@@ -35,6 +37,9 @@ static EventGroupHandle_t s_wifi_event_group;
 #define VSYNC_GPIO_NUM    25
 #define HREF_GPIO_NUM     23
 #define PCLK_GPIO_NUM     22
+
+// Definição do pino do flash
+#define FLASH_GPIO_NUM     4
 
 static void wifi_event_handler(void* arg, esp_event_base_t event_base,
                                int32_t event_id, void* event_data) {
@@ -101,7 +106,16 @@ bool conexao_wifi_is_connected(void) {
 }
 
 esp_err_t jpg_httpd_handler(httpd_req_t *req) {
-    camera_fb_t *fb = esp_camera_fb_get();
+    gpio_set_level(FLASH_GPIO_NUM, 1);  // Liga o flash
+    vTaskDelay(500 / portTICK_PERIOD_MS);  // Atraso mais longo para estabilizar a iluminação
+
+    camera_fb_t *fb = esp_camera_fb_get();  // Captura a imagem
+
+    // Opcional: manter o flash aceso um pouco depois
+    vTaskDelay(400 / portTICK_PERIOD_MS);
+
+    gpio_set_level(FLASH_GPIO_NUM, 0);  // Desliga o flash
+
     if (!fb) {
         ESP_LOGE(TAG, "Falha ao capturar a imagem");
         httpd_resp_send_500(req);
@@ -113,6 +127,7 @@ esp_err_t jpg_httpd_handler(httpd_req_t *req) {
     esp_camera_fb_return(fb);
     return ESP_OK;
 }
+
 
 httpd_uri_t uri_get = {
     .uri       = "/jpg",
@@ -157,7 +172,7 @@ void start_camera() {
         .fb_count       = 1,
     };
 
-    config.sccb_i2c_port = 0;  // 👈 ESSENCIAL
+    config.sccb_i2c_port = 0;
 
     esp_err_t err = esp_camera_init(&config);
     if (err != ESP_OK) {
@@ -170,6 +185,12 @@ void start_camera() {
 
 void app_main(void) {
     ESP_ERROR_CHECK(nvs_flash_init());
+
+    // Inicializa GPIO do flash
+  //  gpio_pad_select_gpio(FLASH_GPIO_NUM);
+    gpio_set_direction(FLASH_GPIO_NUM, GPIO_MODE_OUTPUT);
+    gpio_set_level(FLASH_GPIO_NUM, 0); // Garante desligado
+
     start_camera();
     conexao_wifi_init();
     start_webserver();

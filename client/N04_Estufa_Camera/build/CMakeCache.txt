@@ -603,6 +603,8 @@ _Python3_EXECUTABLE:INTERNAL=/home/mrclnndrd/.espressif/python_env/idf5.5_py3.11
 //Python3 Properties
 _Python3_INTERPRETER_PROPERTIES:INTERNAL=Python;3;11;2;32;;;/usr/lib/python3.11;/usr/lib/python3.11;/home/mrclnndrd/.espressif/python_env/idf5.5_py3.11_env/lib/python3.11/site-packages;/home/mrclnndrd/.espressif/python_env/idf5.5_py3.11_env/lib/python3.11/site-packages
 _Python3_INTERPRETER_SIGNATURE:INTERNAL=f079ec6f1d073534a55e7d3259bd8eab
+//Interpreter reason failure
+_Python3_Interpreter_REASON_FAILURE:INTERNAL=
 //NumPy reason failure
 _Python3_NumPy_REASON_FAILURE:INTERNAL=
 

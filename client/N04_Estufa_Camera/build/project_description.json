@@ -1,7 +1,7 @@
 {
     "version":            "1.2",
     "project_name":       "N04_Estufa_Camera",
-    "project_version":    "3e1b133-dirty",
+    "project_version":    "ced5b2f-dirty",
     "project_path":       "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera",
     "idf_path":           "/home/mrclnndrd/esp/esp-idf",
     "build_dir":          "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/build",
