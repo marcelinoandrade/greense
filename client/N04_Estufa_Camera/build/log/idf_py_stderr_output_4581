@@ -1,6 +1,0 @@
-Command: /home/mrclnndrd/.espressif/python_env/idf5.5_py3.11_env/bin/python /home/mrclnndrd/esp/esp-idf/tools/idf_monitor.py -p /dev/ttyUSB1 -b 115200 --toolchain-prefix xtensa-esp32-elf- --target esp32 --revision 0 /home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/build/N04_Estufa_Camera.elf /home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/build/bootloader/bootloader.elf -m '/home/mrclnndrd/.espressif/python_env/idf5.5_py3.11_env/bin/python' '/home/mrclnndrd/esp/esp-idf/tools/idf.py' '-p' '/dev/ttyUSB1'
-[0;33m--- esp-idf-monitor 1.6.2 on /dev/ttyUSB1 115200[0m
-[0;33m--- Quit: Ctrl+] | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H[0m
-[0;33m--- Connection to /dev/ttyUSB1 failed. Available ports:
---- /dev/ttyUSB0[0m
-[0m

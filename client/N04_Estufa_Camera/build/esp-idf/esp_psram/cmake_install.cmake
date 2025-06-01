@@ -1,4 +1,4 @@
-# Install script for directory: /home/mrclnndrd/esp/esp-idf/components/esp_psram
+# Install script for directory: /home/greense/esp/esp-idf/components/esp_psram
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,11 +34,6 @@ endif()
 
 # Set default install directory permissions.
 if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "/home/mrclnndrd/.espressif/tools/xtensa-esp-elf/esp-14.2.0_20241119/xtensa-esp-elf/bin/xtensa-esp32-elf-objdump")
-endif()
-
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for the subdirectory.
-  include("/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/build/esp-idf/esp_psram/device/cmake_install.cmake")
+  set(CMAKE_OBJDUMP "/home/greense/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/bin/xtensa-esp32-elf-objdump")
 endif()
 

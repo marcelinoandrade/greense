@@ -5,7 +5,8 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 from datetime import datetime
 import threading
-import config 
+import config
+import os
 
 # Configuração do InfluxDB
 INFLUXDB_HOST = "localhost"
@@ -48,6 +49,30 @@ def insere_manual():
     except Exception as e:
         return jsonify({"erro": str(e)}), 500
 
+# === Endpoint para recebimento de imagem via POST ===
+@app.route("/upload", methods=["POST"])
+def upload_foto():
+    try:
+        os.makedirs("fotos_recebidas", exist_ok=True)
+
+        conteudo = request.data
+        print(f"📩 Recebido {len(conteudo)} bytes de imagem")
+
+        if not conteudo:
+            return jsonify({"erro": "Imagem vazia"}), 400
+
+        nome_arquivo = datetime.now().strftime("foto_%Y%m%d_%H%M%S.jpg")
+        caminho = os.path.join("fotos_recebidas", nome_arquivo)
+
+        with open(caminho, "wb") as f:
+            f.write(conteudo)
+
+        print(f"📷 Imagem salva em: {caminho}")
+        return jsonify({"status": "ok", "arquivo": nome_arquivo})
+
+    except Exception as e:
+        print(f"❌ Erro no upload: {e}")
+        return jsonify({"erro": str(e)}), 500
 
 # === MQTT CALLBACK ===
 def on_message(client, userdata, msg):

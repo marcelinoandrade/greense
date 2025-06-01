@@ -1,0 +1,1 @@
+ninja: error: '/home/greense/projetoGreense/client/N04_Estufa_Camera/main/certs/greense_cert.pem', needed by 'greense_cert.pem.S', missing and no known rule to make it

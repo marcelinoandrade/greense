@@ -4,19 +4,19 @@
 cmake_minimum_required(VERSION 3.5)
 
 file(MAKE_DIRECTORY
-  "/home/mrclnndrd/esp/esp-idf/components/bootloader/subproject"
-  "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/build/bootloader"
-  "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/build/bootloader-prefix"
-  "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/build/bootloader-prefix/tmp"
-  "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/build/bootloader-prefix/src/bootloader-stamp"
-  "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/build/bootloader-prefix/src"
-  "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/build/bootloader-prefix/src/bootloader-stamp"
+  "/home/greense/esp/esp-idf/components/bootloader/subproject"
+  "/home/greense/projetoGreense/client/N04_Estufa_Camera/build/bootloader"
+  "/home/greense/projetoGreense/client/N04_Estufa_Camera/build/bootloader-prefix"
+  "/home/greense/projetoGreense/client/N04_Estufa_Camera/build/bootloader-prefix/tmp"
+  "/home/greense/projetoGreense/client/N04_Estufa_Camera/build/bootloader-prefix/src/bootloader-stamp"
+  "/home/greense/projetoGreense/client/N04_Estufa_Camera/build/bootloader-prefix/src"
+  "/home/greense/projetoGreense/client/N04_Estufa_Camera/build/bootloader-prefix/src/bootloader-stamp"
 )
 
 set(configSubDirs )
 foreach(subDir IN LISTS configSubDirs)
-    file(MAKE_DIRECTORY "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/build/bootloader-prefix/src/bootloader-stamp/${subDir}")
+    file(MAKE_DIRECTORY "/home/greense/projetoGreense/client/N04_Estufa_Camera/build/bootloader-prefix/src/bootloader-stamp/${subDir}")
 endforeach()
 if(cfgdir)
-  file(MAKE_DIRECTORY "/home/mrclnndrd/projetos/greense/client/N04_Estufa_Camera/build/bootloader-prefix/src/bootloader-stamp${cfgdir}") # cfgdir has leading slash
+  file(MAKE_DIRECTORY "/home/greense/projetoGreense/client/N04_Estufa_Camera/build/bootloader-prefix/src/bootloader-stamp${cfgdir}") # cfgdir has leading slash
 endif()
