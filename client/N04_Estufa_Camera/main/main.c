@@ -20,14 +20,15 @@ extern const uint8_t greense_cert_pem_end[]   asm("_binary_greense_cert_pem_end"
 #include "secrets.h"
 
 // === DEFINIÇÕES ===
-//#define WIFI_SSID "MyNetHome"
-//#define WIFI_PASS "RHem@314159"
 #define WIFI_CONNECTED_BIT BIT0
 #define WIFI_FAIL_BIT      BIT1
 
 #define TAG "CAMERA"
 #define TAG_WIFI "WIFI"
 static EventGroupHandle_t s_wifi_event_group;
+
+// *** NOVA DEFINIÇÃO PARA O LED ***
+#define WIFI_LED_PIN 33
 
 // === Pinos da ESP32-CAM (AI Thinker) ===
 #define PWDN_GPIO_NUM     32
@@ -58,6 +59,8 @@ static void wifi_event_handler(void* arg, esp_event_base_t event_base, int32_t e
         ip_event_got_ip_t* event = (ip_event_got_ip_t*) event_data;
         ESP_LOGI(TAG_WIFI, "IP: " IPSTR, IP2STR(&event->ip_info.ip));
         xEventGroupSetBits(s_wifi_event_group, WIFI_CONNECTED_BIT);
+        // *** ACENDE O LED QUANDO CONECTADO (Lógica Invertida) ***
+        gpio_set_level(WIFI_LED_PIN, 0);
     }
 }
 
@@ -95,8 +98,11 @@ void conexao_wifi_init(void) {
 
     if (bits & WIFI_CONNECTED_BIT) {
         ESP_LOGI(TAG_WIFI, "Wi-Fi conectado");
+        // O LED já foi aceso no manipulador de eventos IP_EVENT_STA_GOT_IP
     } else {
         ESP_LOGE(TAG_WIFI, "Falha na conexão Wi-Fi");
+        // *** APAGA O LED EM CASO DE FALHA (Lógica Invertida) ***
+        gpio_set_level(WIFI_LED_PIN, 1);
     }
 }
 
@@ -113,7 +119,7 @@ esp_err_t enviar_foto_para_raspberry(camera_fb_t *fb) {
         .cert_pem = (const char *)greense_cert_pem_start,
         .timeout_ms = 10000
     };
-    
+
 
     esp_http_client_handle_t client = esp_http_client_init(&config);
     esp_http_client_set_header(client, "Content-Type", "image/jpeg");
@@ -148,6 +154,8 @@ void task_envia_foto_periodicamente(void *pvParameter) {
             }
         } else {
             ESP_LOGW(TAG, "Sem conexão Wi-Fi. Aguardando reconexão...");
+            // *** SE DESCONECTAR, APAGA O LED (Lógica Invertida) ***
+            gpio_set_level(WIFI_LED_PIN, 1);
         }
 
         vTaskDelay(60000 / portTICK_PERIOD_MS);  // Espera 1 minuto
@@ -167,8 +175,6 @@ void start_camera() {
         .pin_d4         = Y6_GPIO_NUM,
         .pin_d3         = Y5_GPIO_NUM,
         .pin_d2         = Y4_GPIO_NUM,
-        .pin_d1         = Y3_GPIO_NUM,
-        .pin_d0         = Y2_GPIO_NUM,
         .pin_vsync      = VSYNC_GPIO_NUM,
         .pin_href       = HREF_GPIO_NUM,
         .pin_pclk       = PCLK_GPIO_NUM,
@@ -194,6 +200,10 @@ void start_camera() {
 
 void app_main(void) {
     ESP_ERROR_CHECK(nvs_flash_init());
+    // *** INICIALIZA O PINO DO LED COMO SAÍDA ***
+    gpio_set_direction(WIFI_LED_PIN, GPIO_MODE_OUTPUT);
+    // *** GARANTE QUE O LED COMECE APAGADO (Lógica Invertida) ***
+    gpio_set_level(WIFI_LED_PIN, 1);
     gpio_set_direction(FLASH_GPIO_NUM, GPIO_MODE_OUTPUT);
     gpio_set_level(FLASH_GPIO_NUM, 0);
 
