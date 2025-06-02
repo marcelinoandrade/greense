@@ -1,6 +1,6 @@
 #include <stdint.h>  // <-- Necessário para uint8_t
 
-// Declaração do certificado embutido (fora da função)
+// Certificado embutido
 extern const uint8_t greense_cert_pem_start[] asm("_binary_greense_cert_pem_start");
 extern const uint8_t greense_cert_pem_end[]   asm("_binary_greense_cert_pem_end");
 
@@ -27,9 +27,6 @@ extern const uint8_t greense_cert_pem_end[]   asm("_binary_greense_cert_pem_end"
 #define TAG_WIFI "WIFI"
 static EventGroupHandle_t s_wifi_event_group;
 
-// *** NOVA DEFINIÇÃO PARA O LED ***
-#define WIFI_LED_PIN 33
-
 // === Pinos da ESP32-CAM (AI Thinker) ===
 #define PWDN_GPIO_NUM     32
 #define RESET_GPIO_NUM    -1
@@ -49,18 +46,21 @@ static EventGroupHandle_t s_wifi_event_group;
 #define PCLK_GPIO_NUM     22
 #define FLASH_GPIO_NUM     4
 
-// === Funções ===
+// === LED Wi-Fi ===
+#define LED_WIFI_GPIO_NUM 33  // LED no lado oposto da câmera
+
+// === Handlers ===
 static void wifi_event_handler(void* arg, esp_event_base_t event_base, int32_t event_id, void* event_data) {
     if (event_base == WIFI_EVENT && event_id == WIFI_EVENT_STA_START) {
         esp_wifi_connect();
     } else if (event_base == WIFI_EVENT && event_id == WIFI_EVENT_STA_DISCONNECTED) {
         esp_wifi_connect();
+        gpio_set_level(LED_WIFI_GPIO_NUM, 0);  // Desliga o LED
     } else if (event_base == IP_EVENT && event_id == IP_EVENT_STA_GOT_IP) {
         ip_event_got_ip_t* event = (ip_event_got_ip_t*) event_data;
         ESP_LOGI(TAG_WIFI, "IP: " IPSTR, IP2STR(&event->ip_info.ip));
         xEventGroupSetBits(s_wifi_event_group, WIFI_CONNECTED_BIT);
-        // *** ACENDE O LED QUANDO CONECTADO (Lógica Invertida) ***
-        gpio_set_level(WIFI_LED_PIN, 0);
+        gpio_set_level(LED_WIFI_GPIO_NUM, 1);  // Acende o LED
     }
 }
 
@@ -98,11 +98,8 @@ void conexao_wifi_init(void) {
 
     if (bits & WIFI_CONNECTED_BIT) {
         ESP_LOGI(TAG_WIFI, "Wi-Fi conectado");
-        // O LED já foi aceso no manipulador de eventos IP_EVENT_STA_GOT_IP
     } else {
         ESP_LOGE(TAG_WIFI, "Falha na conexão Wi-Fi");
-        // *** APAGA O LED EM CASO DE FALHA (Lógica Invertida) ***
-        gpio_set_level(WIFI_LED_PIN, 1);
     }
 }
 
@@ -119,7 +116,6 @@ esp_err_t enviar_foto_para_raspberry(camera_fb_t *fb) {
         .cert_pem = (const char *)greense_cert_pem_start,
         .timeout_ms = 10000
     };
-
 
     esp_http_client_handle_t client = esp_http_client_init(&config);
     esp_http_client_set_header(client, "Content-Type", "image/jpeg");
@@ -139,6 +135,8 @@ esp_err_t enviar_foto_para_raspberry(camera_fb_t *fb) {
 void task_envia_foto_periodicamente(void *pvParameter) {
     while (true) {
         if (conexao_wifi_is_connected()) {
+            gpio_set_level(LED_WIFI_GPIO_NUM, 0);  // MANTÉM o LED ACESO
+
             gpio_set_level(FLASH_GPIO_NUM, 1);
             vTaskDelay(500 / portTICK_PERIOD_MS);
 
@@ -154,8 +152,7 @@ void task_envia_foto_periodicamente(void *pvParameter) {
             }
         } else {
             ESP_LOGW(TAG, "Sem conexão Wi-Fi. Aguardando reconexão...");
-            // *** SE DESCONECTAR, APAGA O LED (Lógica Invertida) ***
-            gpio_set_level(WIFI_LED_PIN, 1);
+            gpio_set_level(LED_WIFI_GPIO_NUM, 1);  // DESLIGA o LED se desconectado
         }
 
         vTaskDelay(60000 / portTICK_PERIOD_MS);  // Espera 1 minuto
@@ -175,6 +172,8 @@ void start_camera() {
         .pin_d4         = Y6_GPIO_NUM,
         .pin_d3         = Y5_GPIO_NUM,
         .pin_d2         = Y4_GPIO_NUM,
+        .pin_d1         = Y3_GPIO_NUM,
+        .pin_d0         = Y2_GPIO_NUM,
         .pin_vsync      = VSYNC_GPIO_NUM,
         .pin_href       = HREF_GPIO_NUM,
         .pin_pclk       = PCLK_GPIO_NUM,
@@ -200,12 +199,13 @@ void start_camera() {
 
 void app_main(void) {
     ESP_ERROR_CHECK(nvs_flash_init());
-    // *** INICIALIZA O PINO DO LED COMO SAÍDA ***
-    gpio_set_direction(WIFI_LED_PIN, GPIO_MODE_OUTPUT);
-    // *** GARANTE QUE O LED COMECE APAGADO (Lógica Invertida) ***
-    gpio_set_level(WIFI_LED_PIN, 1);
+
+    // Inicializa GPIOs
     gpio_set_direction(FLASH_GPIO_NUM, GPIO_MODE_OUTPUT);
     gpio_set_level(FLASH_GPIO_NUM, 0);
+
+    gpio_set_direction(LED_WIFI_GPIO_NUM, GPIO_MODE_OUTPUT);
+    gpio_set_level(LED_WIFI_GPIO_NUM, 1);  // Começa apagado
 
     start_camera();
     conexao_wifi_init();
