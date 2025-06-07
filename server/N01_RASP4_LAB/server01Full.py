@@ -7,6 +7,8 @@ from datetime import datetime
 import threading
 import config
 import os
+from flask import send_from_directory
+
 
 # Configuração do InfluxDB
 INFLUXDB_HOST = "localhost"
@@ -48,12 +50,23 @@ def insere_manual():
         return jsonify({"status": "ok", "ph": ph, "ec": ec})
     except Exception as e:
         return jsonify({"erro": str(e)}), 500
+    
+@app.route("/imagem")
+def serve_ultima_imagem():
+    diretorio_fotos = "fotos_recebidas"
+    caminho = os.path.join(diretorio_fotos, "ultima.jpg")
+
+    if not os.path.exists(caminho):
+        return jsonify({"erro": "Imagem ainda não disponível"}), 404
+
+    return send_from_directory(diretorio_fotos, "ultima.jpg")
 
 # === Endpoint para recebimento de imagem via POST ===
 @app.route("/upload", methods=["POST"])
 def upload_foto():
     try:
-        os.makedirs("fotos_recebidas", exist_ok=True)
+        diretorio_fotos = "fotos_recebidas"
+        os.makedirs(diretorio_fotos, exist_ok=True)
 
         conteudo = request.data
         print(f"📩 Recebido {len(conteudo)} bytes de imagem")
@@ -62,10 +75,32 @@ def upload_foto():
             return jsonify({"erro": "Imagem vazia"}), 400
 
         nome_arquivo = datetime.now().strftime("foto_%Y%m%d_%H%M%S.jpg")
-        caminho = os.path.join("fotos_recebidas", nome_arquivo)
+        caminho = os.path.join(diretorio_fotos, nome_arquivo)
 
         with open(caminho, "wb") as f:
             f.write(conteudo)
+
+        # Cria ou atualiza o link simbólico 'ultima.jpg'
+        link_fixo = os.path.join(diretorio_fotos, "ultima.jpg")
+        try:
+            if os.path.exists(link_fixo) or os.path.islink(link_fixo):
+                os.remove(link_fixo)
+            os.symlink(os.path.abspath(caminho), link_fixo)
+            print(f"🔗 Link simbólico criado: ultima.jpg → {caminho}")
+        except Exception as e:
+            print(f"⚠️ Erro ao criar symlink: {e}")
+
+        # Apaga imagens antigas, exceto a atual e o symlink
+        for filename in os.listdir(diretorio_fotos):
+            if filename in [os.path.basename(caminho), "ultima.jpg"]:
+                continue
+            file_path = os.path.join(diretorio_fotos, filename)
+            try:
+                if os.path.isfile(file_path):
+                    os.unlink(file_path)
+                    print(f"🗑️ Apagada imagem antiga: {filename}")
+            except Exception as e:
+                print(f"⚠️ Erro ao apagar {filename}: {e}")
 
         print(f"📷 Imagem salva em: {caminho}")
         return jsonify({"status": "ok", "arquivo": nome_arquivo})
@@ -73,6 +108,8 @@ def upload_foto():
     except Exception as e:
         print(f"❌ Erro no upload: {e}")
         return jsonify({"erro": str(e)}), 500
+
+
 
 # === MQTT CALLBACK ===
 def on_message(client, userdata, msg):
@@ -99,7 +136,7 @@ def on_message(client, userdata, msg):
                         "ec": data.get("ec", 0),
                         "temp_reserv_ext": data.get("temp_reserv_ext", 0),
                         "umid_solo_pct": data.get("umid_solo_pct", 0),  # <-- novo campo
-                        "umid_solo_raw": data.get("umid_solo_raw", 0)   # <-- opcional
+                        "umid_solo_raw": data.get("umid_solo_raw", 0)    # <-- opcional
                     }
                 }
             ]
@@ -121,8 +158,8 @@ def on_message(client, userdata, msg):
                         "ph": data.get("ph", 0),
                         "ec": data.get("ec", 0),
                         "temp_reserv_ext": data.get("temp_reserv_ext", 0)
-                    #    "umid_solo_pct": data.get("umid_solo_pct", 0),  # <-- novo campo
-                    #    "umid_solo_raw": data.get("umid_solo_raw", 0)   # <-- opcional
+                        #    "umid_solo_pct": data.get("umid_solo_pct", 0),  # <-- novo campo
+                        #    "umid_solo_raw": data.get("umid_solo_raw", 0)    # <-- opcional
                     }
                 }
             ]
@@ -158,7 +195,7 @@ def on_message(client, userdata, msg):
     except Exception as e:
         print(f"Erro ao processar mensagem MQTT: {e}")
 
-# === INICIALIZAÇÃO DO MQTT E FLASK ===	
+# === INICIALIZAÇÃO DO MQTT E FLASK ===
 def start_mqtt():
     client_mqtt = mqtt.Client()
     client_mqtt.on_message = on_message
