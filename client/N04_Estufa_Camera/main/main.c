@@ -1,4 +1,6 @@
-#include <stdint.h>  // <-- Necessário para uint8_t
+#include <stdint.h>
+#include <sys/stat.h> // Necessário para mkpath
+#include <dirent.h>   // Necessário para opendir, readdir, closedir
 
 // Certificado embutido
 extern const uint8_t greense_cert_pem_start[] asm("_binary_greense_cert_pem_start");
@@ -19,12 +21,19 @@ extern const uint8_t greense_cert_pem_end[]   asm("_binary_greense_cert_pem_end"
 #include "driver/gpio.h"
 #include "secrets.h"
 
+// --- Novas Inclusões para SD Card ---
+#include "esp_vfs_fat.h"
+#include "driver/sdmmc_host.h"
+#include "sdmmc_cmd.h"
+
 // === DEFINIÇÕES ===
 #define WIFI_CONNECTED_BIT BIT0
 #define WIFI_FAIL_BIT      BIT1
 
 #define TAG "CAMERA"
 #define TAG_WIFI "WIFI"
+#define TAG_SD "SD_CARD" // Novo TAG para logs do SD
+
 static EventGroupHandle_t s_wifi_event_group;
 
 // === Pinos da ESP32-CAM (AI Thinker) ===
@@ -48,6 +57,9 @@ static EventGroupHandle_t s_wifi_event_group;
 
 // === LED Wi-Fi ===
 #define LED_WIFI_GPIO_NUM 33  // LED no lado oposto da câmera
+
+// --- Definições para SD Card ---
+#define MOUNT_POINT "/sdcard"
 
 // === Handlers ===
 static void wifi_event_handler(void* arg, esp_event_base_t event_base, int32_t event_id, void* event_data) {
@@ -132,30 +144,114 @@ esp_err_t enviar_foto_para_raspberry(camera_fb_t *fb) {
     return err;
 }
 
+// --- Nova Função: Inicializa o Cartão SD ---
+static esp_err_t init_sd_card(void) {
+    esp_err_t ret;
+    sdmmc_host_t host = SDMMC_HOST_DEFAULT();
+    sdmmc_slot_config_t slot_config = SDMMC_SLOT_CONFIG_DEFAULT();
+
+    slot_config.width = 1; // 1-bit mode for compatibility (you can try 4 if your board supports it)
+    slot_config.flags |= SDMMC_SLOT_FLAG_INTERNAL_PULLUP; // Habilita pull-ups internos
+
+    esp_vfs_fat_sdmmc_mount_config_t mount_config = {
+        .format_if_mount_failed = false, // Não formatar se falhar a montagem
+        .max_files = 5,                  // Número máximo de arquivos que podem ser abertos simultaneamente
+        .allocation_unit_size = 16 * 1024 // Tamanho da unidade de alocação
+    };
+
+    ESP_LOGI(TAG_SD, "Montando cartão SD...");
+    ret = esp_vfs_fat_sdmmc_mount(MOUNT_POINT, &host, &slot_config, &mount_config, NULL);
+
+    if (ret != ESP_OK) {
+        if (ret == ESP_FAIL) {
+            ESP_LOGE(TAG_SD, "Falha ao montar sistema de arquivos. Você pode precisar formatar o cartão.");
+        } else {
+            ESP_LOGE(TAG_SD, "Falha ao inicializar cartão SD (%s).", esp_err_to_name(ret));
+        }
+        return ret;
+    }
+    ESP_LOGI(TAG_SD, "Cartão SD montado com sucesso.");
+
+    // Opcional: Lista arquivos no diretório raiz para verificar
+    ESP_LOGI(TAG_SD, "Listando arquivos em %s:", MOUNT_POINT);
+    DIR *dir = opendir(MOUNT_POINT);
+    if (dir == NULL) {
+        ESP_LOGE(TAG_SD, "Falha ao abrir diretório");
+        return ESP_FAIL;
+    }
+    struct dirent *entry;
+    while ((entry = readdir(dir)) != NULL) {
+        ESP_LOGI(TAG_SD, "%s", entry->d_name);
+    }
+    closedir(dir);
+    return ESP_OK;
+}
+
+// --- Nova Função: Salva a Imagem no Cartão SD ---
+static esp_err_t salvar_foto_no_sd(camera_fb_t *fb) {
+    char file_name[64];
+    struct tm timeinfo;
+    time_t now;
+
+    time(&now);
+    if (now < 1609459200) {  // antes de 2021-01-01
+    snprintf(file_name, sizeof(file_name), MOUNT_POINT "/img_%lu.jpg", esp_log_timestamp());
+    } else {
+    localtime_r(&now, &timeinfo);
+    strftime(file_name, sizeof(file_name), MOUNT_POINT "/%Y%m%d_%H%M%S.jpg", &timeinfo);
+    }
+
+    ESP_LOGI(TAG_SD, "Salvando imagem em: %s", file_name);
+
+    FILE *f = fopen(file_name, "wb");
+    if (f == NULL) {
+        ESP_LOGE(TAG_SD, "Falha ao abrir arquivo para escrita.");
+        return ESP_FAIL;
+    }
+    size_t bytes_written = fwrite(fb->buf, 1, fb->len, f);
+    fclose(f);
+
+    if (bytes_written == fb->len) {
+        ESP_LOGI(TAG_SD, "Imagem salva com sucesso! (%d bytes)", bytes_written);
+        return ESP_OK;
+    } else {
+        ESP_LOGE(TAG_SD, "Erro ao escrever todos os bytes da imagem. Escritos: %d, Esperados: %d", bytes_written, fb->len);
+        return ESP_FAIL;
+    }
+}
+
 void task_envia_foto_periodicamente(void *pvParameter) {
     while (true) {
+        // Assegura que o LED do Wi-Fi reflita o estado da conexão
         if (conexao_wifi_is_connected()) {
-            gpio_set_level(LED_WIFI_GPIO_NUM, 0);  // MANTÉM o LED ACESO
-
-            gpio_set_level(FLASH_GPIO_NUM, 1);
-            vTaskDelay(500 / portTICK_PERIOD_MS);
-
-            camera_fb_t *fb = esp_camera_fb_get();
-            vTaskDelay(200 / portTICK_PERIOD_MS);
-            gpio_set_level(FLASH_GPIO_NUM, 0);
-
-            if (fb) {
-                enviar_foto_para_raspberry(fb);
-                esp_camera_fb_return(fb);
-            } else {
-                ESP_LOGE(TAG, "Erro ao capturar imagem");
-            }
+            gpio_set_level(LED_WIFI_GPIO_NUM, 0); // LED desligado quando conectado (ou ajuste sua lógica de LED)
         } else {
+            gpio_set_level(LED_WIFI_GPIO_NUM, 1); // LED ligado quando desconectado
             ESP_LOGW(TAG, "Sem conexão Wi-Fi. Aguardando reconexão...");
-            gpio_set_level(LED_WIFI_GPIO_NUM, 1);  // DESLIGA o LED se desconectado
+            vTaskDelay(5000 / portTICK_PERIOD_MS); // Espera um pouco antes de tentar novamente
+            continue; // Pula para a próxima iteração se não houver Wi-Fi
         }
 
-        vTaskDelay(60000 / portTICK_PERIOD_MS);  // Espera 1 minuto
+        gpio_set_level(FLASH_GPIO_NUM, 1); // Acende o flash
+        vTaskDelay(500 / portTICK_PERIOD_MS);
+
+        camera_fb_t *fb = esp_camera_fb_get(); // Captura a imagem
+        vTaskDelay(200 / portTICK_PERIOD_MS); // Pequeno atraso para estabilização, se necessário
+        gpio_set_level(FLASH_GPIO_NUM, 0); // Desliga o flash
+
+        if (fb) {
+            // 1. Enviar a foto para o Raspberry Pi
+            enviar_foto_para_raspberry(fb);
+
+            // 2. Salvar a foto no cartão SD
+            salvar_foto_no_sd(fb);
+
+            esp_camera_fb_return(fb); // Libera o buffer da câmera
+        } else {
+            ESP_LOGE(TAG, "Erro ao capturar imagem");
+        }
+
+        vTaskDelay(2*60000 / portTICK_PERIOD_MS);  // Espera 1 minuto antes da próxima captura
     }
 }
 
@@ -181,7 +277,7 @@ void start_camera() {
         .ledc_timer     = LEDC_TIMER_0,
         .ledc_channel   = LEDC_CHANNEL_0,
         .pixel_format   = PIXFORMAT_JPEG,
-        .frame_size     = FRAMESIZE_VGA,
+        .frame_size     = FRAMESIZE_SVGA,
         .jpeg_quality   = 12,
         .fb_count       = 1
     };
@@ -205,7 +301,24 @@ void app_main(void) {
     gpio_set_level(FLASH_GPIO_NUM, 0);
 
     gpio_set_direction(LED_WIFI_GPIO_NUM, GPIO_MODE_OUTPUT);
-    gpio_set_level(LED_WIFI_GPIO_NUM, 1);  // Começa apagado
+    gpio_set_level(LED_WIFI_GPIO_NUM, 1);  // Começa apagado ou como desejar
+
+    // Inicializa o cartão SD
+    if (init_sd_card() != ESP_OK) {
+        ESP_LOGE(TAG, "Falha ao inicializar o cartão SD. As imagens não serão salvas localmente.");
+        // Se desejar, pode retornar ou continuar sem salvar imagens
+    } else {
+        // Teste simples de escrita
+        FILE *f = fopen(MOUNT_POINT "/teste.txt", "w");
+        if (f) {
+            fprintf(f, "Teste de escrita no cartão SD.\n");
+            fclose(f);
+            ESP_LOGI(TAG_SD, "Teste de escrita: OK");
+        } else {
+            ESP_LOGE(TAG_SD, "Teste de escrita: FALHOU (verifique proteção ou sistema de arquivos)");
+        }
+    }
+
 
     start_camera();
     conexao_wifi_init();
