@@ -3152,3 +3152,27 @@ Análise realizada em 10/06/2025 04:00. Temperatura ambiente: 27.34 °C, fora da
 🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
 Análise realizada em 10/06/2025 08:00. Temp. ambiente: 27.62 °C, fora da faixa tolerada (ideal: 19.5 °C, tolerável: 15–24 °C); Umidade: 55.61 %, dentro da faixa tolerada (tolerável: 50–70%); CO₂: 0.0 ppm, fora da faixa tolerada (ideal: 400–800 ppm, tolerável até 1000 ppm); pH: 6.5, no limite superior da faixa tolerada (tolerável: 5.5–6.5); EC: 2.3 mS/cm, fora da faixa tolerada (tolerável: 1.2–2.0 mS/cm); Temp. reservatório: 23.69 °C, dentro da faixa tolerada (tolerável: 18–24 °C); água_max: 1, nível adequado; água_min: 1, nível adequado. || Conclusão: A temperatura ambiente, concentração de CO₂ e condutividade elétrica estão fora das faixas toleradas, o que pode impactar negativamente o cultivo. || Impacto previsto: Caso os parâmetros fora da faixa não sejam corrigidos, pode ocorrer estresse térmico e deficiência de nutrientes, aumentando o risco de doenças como murcha bacteriana e podridão radicular, devido à alta temperatura e baixa concentração de CO₂; risco atual classificado como 4/5.
 ✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [10/06/2025 12:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 23.69, 'umid': 71.16, 'co2': 0.0, 'luz': 0.0, 'temp_reserv_int': 23.44, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 5.5, 'ec': 1.7}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 23.69, 'umidade_ambiente': 71.16, 'nivel_co2': 0.0, 'luminosidade': 0.0, 'ph_agua': 5.5, 'condutividade_ec': 1.7, 'temp_reservatorio_interno': 23.44, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-06-10T15:00:11.011814Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 10/06/2025 12:00. Temperatura ambiente: 23.69 °C, dentro da faixa tolerada. Umidade: 71.16%, ligeiramente acima da faixa tolerada. CO₂: 0.0 ppm, fora da faixa tolerada. pH: 5.5, dentro da faixa tolerada. EC: 1.7 mS/cm, dentro da faixa tolerada. Temperatura do reservatório: 23.44 °C, dentro da faixa tolerada. água_max: 1, nível adequado. água_min: 1, nível adequado. || Conclusão: A maioria dos parâmetros está dentro das faixas toleradas, exceto a umidade, que está ligeiramente acima, e o nível de CO₂, que está fora da faixa tolerada. || Impacto previsto: A falta de CO₂ pode levar a um crescimento reduzido e clorose nas folhas de alface, devido à fotossíntese comprometida; risco de oídio devido à alta umidade; risco atual classificado como 3/5.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.
+
+📜 [10/06/2025 16:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados da Estufa3:
+{'temp': 24.01, 'umid': 69.39, 'co2': 0.0, 'luz': 0.0, 'temp_reserv_int': 23.06, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 5.5, 'ec': 1.7}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 24.01, 'umidade_ambiente': 69.39, 'nivel_co2': 0.0, 'luminosidade': 0.0, 'ph_agua': 5.5, 'condutividade_ec': 1.7, 'temp_reservatorio_interno': 23.06, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-06-10T19:00:08.238568Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 10/06/2025 16:00. Temperatura ambiente: 24.01 °C, ligeiramente acima da faixa ideal, mas dentro da tolerável. Umidade: 69.39%, dentro da faixa tolerável. CO₂: 0.0 ppm, fora da faixa tolerada, indicando possível falha no sensor ou ventilação excessiva. pH: 5.5, no limite inferior da faixa tolerável. EC: 1.7 mS/cm, dentro da faixa tolerável. Temperatura do reservatório: 23.06 °C, dentro da faixa tolerável. água_max: 1, nível adequado. água_min: 1, nível adequado. || Conclusão: A maioria dos parâmetros está dentro das faixas toleráveis, exceto o nível de CO₂, que está fora da faixa. Impacto previsto: Se o nível de CO₂ não for corrigido, pode ocorrer redução na taxa de fotossíntese, levando a um crescimento mais lento das plantas; possíveis fitopatologias incluem clorose devido à baixa assimilação de carbono e necrose das folhas por estresse ambiental; risco atual classificado como 3/5 devido à falha no CO₂.
+✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.

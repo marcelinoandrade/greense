@@ -61,20 +61,36 @@ def serve_ultima_imagem():
 
     return send_from_directory(diretorio_fotos, "ultima.jpg")
 
+@app.route("/imagem1")
+def serve_cam_01():
+    caminho = "fotos_recebidas/cam_01/ultima.jpg"
+    if not os.path.exists(caminho):
+        return jsonify({"erro": "Imagem cam_01 não disponível"}), 404
+    return send_from_directory("fotos_recebidas/cam_01", "ultima.jpg")
+
+@app.route("/imagem2")
+def serve_cam_02():
+    caminho = "fotos_recebidas/cam_02/ultima.jpg"
+    if not os.path.exists(caminho):
+        return jsonify({"erro": "Imagem cam_02 não disponível"}), 404
+    return send_from_directory("fotos_recebidas/cam_02", "ultima.jpg")
+
 # === Endpoint para recebimento de imagem via POST ===
 @app.route("/upload", methods=["POST"])
 def upload_foto():
     try:
-        diretorio_fotos = "fotos_recebidas"
+        minuto_atual = datetime.now().minute
+        camera_id = "cam_01" if minuto_atual % 2 == 0 else "cam_02"
+        diretorio_fotos = os.path.join("fotos_recebidas", camera_id)
         os.makedirs(diretorio_fotos, exist_ok=True)
 
         conteudo = request.data
-        print(f"📩 Recebido {len(conteudo)} bytes de imagem")
+        print(f"📩 [{minuto_atual:02d}] Recebido {len(conteudo)} bytes de imagem para {camera_id}")
 
         if not conteudo:
             return jsonify({"erro": "Imagem vazia"}), 400
 
-        nome_arquivo = datetime.now().strftime("foto_%Y%m%d_%H%M%S.jpg")
+        nome_arquivo = datetime.now().strftime(f"{camera_id}_%Y%m%d_%H%M%S.jpg")
         caminho = os.path.join(diretorio_fotos, nome_arquivo)
 
         with open(caminho, "wb") as f:
@@ -103,11 +119,12 @@ def upload_foto():
                 print(f"⚠️ Erro ao apagar {filename}: {e}")
 
         print(f"📷 Imagem salva em: {caminho}")
-        return jsonify({"status": "ok", "arquivo": nome_arquivo})
+        return jsonify({"status": "ok", "arquivo": nome_arquivo, "camera": camera_id})
 
     except Exception as e:
         print(f"❌ Erro no upload: {e}")
         return jsonify({"erro": str(e)}), 500
+
 
 
 

@@ -222,38 +222,48 @@ static esp_err_t salvar_foto_no_sd(camera_fb_t *fb) {
 
 void task_envia_foto_periodicamente(void *pvParameter) {
     while (true) {
-        // Assegura que o LED do Wi-Fi reflita o estado da conexão
+        // Verifica o minuto atual
+        time_t now;
+        struct tm timeinfo;
+        time(&now);
+        localtime_r(&now, &timeinfo);
+        int minuto = timeinfo.tm_min;
+
+        if (minuto % 2 == 0) {  // PARA cam_02: só envia se minuto for ímpar
+            ESP_LOGI(TAG, "Minuto %d é PAR → cam_02 aguarda", minuto);
+            vTaskDelay(10000 / portTICK_PERIOD_MS); // espera 10s e tenta de novo
+            continue;
+        }
+
+        // Verifica conexão Wi-Fi
         if (conexao_wifi_is_connected()) {
-            gpio_set_level(LED_WIFI_GPIO_NUM, 0); // LED desligado quando conectado (ou ajuste sua lógica de LED)
+            gpio_set_level(LED_WIFI_GPIO_NUM, 0);
         } else {
-            gpio_set_level(LED_WIFI_GPIO_NUM, 1); // LED ligado quando desconectado
+            gpio_set_level(LED_WIFI_GPIO_NUM, 1);
             ESP_LOGW(TAG, "Sem conexão Wi-Fi. Aguardando reconexão...");
-            vTaskDelay(5000 / portTICK_PERIOD_MS); // Espera um pouco antes de tentar novamente
-            continue; // Pula para a próxima iteração se não houver Wi-Fi
+            vTaskDelay(5000 / portTICK_PERIOD_MS);
+            continue;
         }
 
         gpio_set_level(FLASH_GPIO_NUM, 1); // Acende o flash
         vTaskDelay(500 / portTICK_PERIOD_MS);
 
         camera_fb_t *fb = esp_camera_fb_get(); // Captura a imagem
-        vTaskDelay(200 / portTICK_PERIOD_MS); // Pequeno atraso para estabilização, se necessário
+        vTaskDelay(200 / portTICK_PERIOD_MS);  // Atraso opcional
         gpio_set_level(FLASH_GPIO_NUM, 0); // Desliga o flash
 
         if (fb) {
-            // 1. Enviar a foto para o Raspberry Pi
-            enviar_foto_para_raspberry(fb);
-
-            // 2. Salvar a foto no cartão SD
-            salvar_foto_no_sd(fb);
-
-            esp_camera_fb_return(fb); // Libera o buffer da câmera
+            enviar_foto_para_raspberry(fb);   // Envia
+            salvar_foto_no_sd(fb);            // Salva local
+            esp_camera_fb_return(fb);         // Libera buffer
         } else {
             ESP_LOGE(TAG, "Erro ao capturar imagem");
         }
 
-        vTaskDelay(2*60000 / portTICK_PERIOD_MS);  // Espera 1 minuto antes da próxima captura
+        vTaskDelay(60000 / portTICK_PERIOD_MS);  // Espera 1 min para próxima verificação
     }
 }
+
 
 void start_camera() {
     camera_config_t config = {
