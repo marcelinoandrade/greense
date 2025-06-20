@@ -123,6 +123,7 @@ def enviar_para_openai(estrutura):
         mencione até duas possíveis fitopatologia mais prováveis, justifique as causas de forma curta e vinculado ao paramentro medido;
         classifique o risco atual em uma escala de 0/5 a 5/5, sendo 5/5 crítico;
         Caso todos os parâmetros estejam dentro das faixas toleradas, informe que não há risco identificado.
+        Caso algum ou mais sensor esteja com valor zero realize a analise sem considerar esse sensor. Poŕem, indique que o sensor esta inoperante.
         Toda a resposta deve ser redigida como um único parágrafo corrido.
 
         """
