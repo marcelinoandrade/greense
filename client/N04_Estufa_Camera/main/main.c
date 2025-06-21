@@ -122,7 +122,7 @@ bool conexao_wifi_is_connected(void) {
 
 esp_err_t enviar_foto_para_raspberry(camera_fb_t *fb) {
     esp_http_client_config_t config = {
-        .url = "https://camera.greense.com.br/upload",
+        .url = CAMERA_UPLOAD_URL,
         .method = HTTP_METHOD_POST,
         .transport_type = HTTP_TRANSPORT_OVER_SSL,
         .cert_pem = (const char *)greense_cert_pem_start,
@@ -222,19 +222,6 @@ static esp_err_t salvar_foto_no_sd(camera_fb_t *fb) {
 
 void task_envia_foto_periodicamente(void *pvParameter) {
     while (true) {
-        // Verifica o minuto atual
-        time_t now;
-        struct tm timeinfo;
-        time(&now);
-        localtime_r(&now, &timeinfo);
-        int minuto = timeinfo.tm_min;
-
-        if (minuto % 2 == 0) {  // PARA cam_02: só envia se minuto for ímpar
-            ESP_LOGI(TAG, "Minuto %d é PAR → cam_02 aguarda", minuto);
-            vTaskDelay(10000 / portTICK_PERIOD_MS); // espera 10s e tenta de novo
-            continue;
-        }
-
         // Verifica conexão Wi-Fi
         if (conexao_wifi_is_connected()) {
             gpio_set_level(LED_WIFI_GPIO_NUM, 0);

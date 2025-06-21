@@ -53,39 +53,41 @@ def insere_manual():
     
 @app.route("/imagem")
 def serve_ultima_imagem():
-    diretorio_fotos = "fotos_recebidas"
+    host = request.headers.get("Host", "").split(":")[0]
+
+    if "camera02" in host:
+        diretorio_fotos = "fotos_recebidas/cam_02"
+    elif "camera" in host:
+        diretorio_fotos = "fotos_recebidas/cam_01"
+    else:
+        return jsonify({"erro": f"Domínio inválido ou não reconhecido: {host}"}), 400
+
     caminho = os.path.join(diretorio_fotos, "ultima.jpg")
 
     if not os.path.exists(caminho):
-        return jsonify({"erro": "Imagem ainda não disponível"}), 404
+        return jsonify({"erro": f"Imagem não disponível para {host}"}), 404
 
     return send_from_directory(diretorio_fotos, "ultima.jpg")
 
-@app.route("/imagem1")
-def serve_cam_01():
-    caminho = "fotos_recebidas/cam_01/ultima.jpg"
-    if not os.path.exists(caminho):
-        return jsonify({"erro": "Imagem cam_01 não disponível"}), 404
-    return send_from_directory("fotos_recebidas/cam_01", "ultima.jpg")
 
-@app.route("/imagem2")
-def serve_cam_02():
-    caminho = "fotos_recebidas/cam_02/ultima.jpg"
-    if not os.path.exists(caminho):
-        return jsonify({"erro": "Imagem cam_02 não disponível"}), 404
-    return send_from_directory("fotos_recebidas/cam_02", "ultima.jpg")
 
 # === Endpoint para recebimento de imagem via POST ===
 @app.route("/upload", methods=["POST"])
 def upload_foto():
     try:
-        minuto_atual = datetime.now().minute
-        camera_id = "cam_01" if minuto_atual % 2 == 0 else "cam_02"
+        host = request.headers.get("Host", "").split(":")[0]
+        if "camera02" in host:
+            camera_id = "cam_02"
+        elif "camera" in host:
+            camera_id = "cam_01"
+        else:
+            return jsonify({"erro": f"❌ camera_id ausente ou host inválido: {host}"}), 400
+
         diretorio_fotos = os.path.join("fotos_recebidas", camera_id)
         os.makedirs(diretorio_fotos, exist_ok=True)
 
         conteudo = request.data
-        print(f"📩 [{minuto_atual:02d}] Recebido {len(conteudo)} bytes de imagem para {camera_id}")
+        print(f"📩 Recebido {len(conteudo)} bytes de imagem para {camera_id} via host {host}")
 
         if not conteudo:
             return jsonify({"erro": "Imagem vazia"}), 400
@@ -96,17 +98,15 @@ def upload_foto():
         with open(caminho, "wb") as f:
             f.write(conteudo)
 
-        # Cria ou atualiza o link simbólico 'ultima.jpg'
         link_fixo = os.path.join(diretorio_fotos, "ultima.jpg")
         try:
             if os.path.exists(link_fixo) or os.path.islink(link_fixo):
                 os.remove(link_fixo)
             os.symlink(os.path.abspath(caminho), link_fixo)
-            print(f"🔗 Link simbólico criado: ultima.jpg → {caminho}")
         except Exception as e:
             print(f"⚠️ Erro ao criar symlink: {e}")
 
-        # Apaga imagens antigas, exceto a atual e o symlink
+        # Limpa fotos antigas
         for filename in os.listdir(diretorio_fotos):
             if filename in [os.path.basename(caminho), "ultima.jpg"]:
                 continue
@@ -114,7 +114,6 @@ def upload_foto():
             try:
                 if os.path.isfile(file_path):
                     os.unlink(file_path)
-                    print(f"🗑️ Apagada imagem antiga: {filename}")
             except Exception as e:
                 print(f"⚠️ Erro ao apagar {filename}: {e}")
 
@@ -124,8 +123,6 @@ def upload_foto():
     except Exception as e:
         print(f"❌ Erro no upload: {e}")
         return jsonify({"erro": str(e)}), 500
-
-
 
 
 # === MQTT CALLBACK ===
