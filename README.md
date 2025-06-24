@@ -10,7 +10,7 @@ O **GreenSe** é uma solução inovadora para **monitoramento e automação de c
 
 ## Funcionalidades Principais
 
-- **Monitoramento em tempo real** de temperatura, umidade, pH, condutividade elétrica, nível de CO₂ e luminosidade.
+- **Monitoramento em tempo real** de imagem, temperatura, umidade, pH, condutividade elétrica, nível de CO₂ e luminosidade.
 - **Automação inteligente** para irrigação, ventilação, iluminação e controle ambiental.
 - **Registro e análise contínua de dados** para otimização progressiva das condições de cultivo.
 - **Interface web intuitiva** para visualização e controle das estufas.
@@ -32,7 +32,7 @@ O **GreenSe** integra inteligência artificial por meio da **IA Eng. GePeTo**, u
 - **Análises técnicas resumidas**, entregues em linguagem prática e direta, simulando a atuação de um engenheiro agrícola.
 - **Apoio na tomada de decisão**, oferecendo recomendações rápidas com base nos parâmetros ambientais monitorados.
 - **Modelos preditivos** para irrigação, controle climático e uso de nutrientes (em desenvolvimento).
-- **Análise automática de imagens** para detecção precoce de pragas e doenças (em desenvolvimento).
+- **Análise automática de imagens** para detecção da evolução da área foliar e de pragas e doenças (em desenvolvimento).
 
 Essa camada de inteligência torna o GreenSe mais autônomo, eficiente e capaz de reduzir a necessidade de intervenção manual no dia a dia do cultivo.
 
