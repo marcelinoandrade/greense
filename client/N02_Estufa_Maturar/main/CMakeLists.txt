@@ -6,6 +6,7 @@ idf_component_register(
     "sensores/aht20.c"
     "sensores/ens160.c"
     "sensores/ds18b20.c"
+    "sensores/dht.c" 
     "atuadores/atuadores.c"
 
     INCLUDE_DIRS "." "conexoes" "sensores" "atuadores"

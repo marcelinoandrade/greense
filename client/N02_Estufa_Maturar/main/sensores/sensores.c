@@ -2,6 +2,7 @@
 #include "aht20.h"
 #include "ens160.h"
 #include "ds18b20.h"
+#include "dht.h"
 #include "driver/i2c.h"
 #include "driver/gpio.h"
 #include "esp_log.h"
@@ -19,6 +20,7 @@ static bool sensors_initialized = false;
 #define GPIO_BOIA_MAX 33
 #define GPIO_SENSOR_LUZ 25
 #define GPIO_DS18B20 26
+#define GPIO_DHT22 GPIO_NUM_4
 
 float randf(float min, float max) {
     return min + ((float)rand() / RAND_MAX) * (max - min);
@@ -101,6 +103,13 @@ sensor_data_t sensores_ler_dados(void) {
     dados.ph = 0.0;
     dados.ec = 0.0;
     dados.temp_reserv_ext = randf(15.0, 25.0);
+
+    // Leitura do DHT22 (temperatura e umidade externas)
+    if (dht_read_float_data(DHT_TYPE_AM2301, GPIO_DHT22, &dados.umid_externa, &dados.temp_externa) != ESP_OK) {
+        dados.umid_externa = 0.0;
+        dados.temp_externa = 0.0;
+    }
+
 
     return dados;
 }

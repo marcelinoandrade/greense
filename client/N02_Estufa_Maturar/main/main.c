@@ -52,10 +52,12 @@ void app_main(void) {
                 sensor_data_t dados = sensores_ler_dados();
                 char payload[256];
                 snprintf(payload, sizeof(payload),
-                         "{\"temp\": %.2f, \"umid\": %.2f, \"co2\": %.2f, \"luz\": %.2f, \"agua_min\": %d, \"agua_max\": %d, "
-                         "\"temp_reserv_int\": %.2f, \"ph\": %.2f, \"ec\": %.2f, \"temp_reserv_ext\": %.2f}",
-                         dados.temp, dados.umid, dados.co2, dados.luz, dados.agua_min, dados.agua_max,
-                         dados.temp_reserv_int, dados.ph, dados.ec, dados.temp_reserv_ext);
+                "{\"temp\": %.2f, \"umid\": %.2f, \"co2\": %.2f, \"luz\": %.2f, \"agua_min\": %d, \"agua_max\": %d, "
+                "\"temp_reserv_int\": %.2f, \"ph\": %.2f, \"ec\": %.2f, \"temp_reserv_ext\": %.2f, "
+                "\"temp_externa\": %.2f, \"umid_externa\": %.2f}",
+                dados.temp, dados.umid, dados.co2, dados.luz, dados.agua_min, dados.agua_max,
+                dados.temp_reserv_int, dados.ph, dados.ec, dados.temp_reserv_ext,
+                dados.temp_externa, dados.umid_externa);
 
                 // Publica no tópico MQTT
                 conexao_mqtt_publish(MQTT_TOPIC, payload);

@@ -171,9 +171,9 @@ def on_message(client, userdata, msg):
                         "temp_reserv_int": data.get("temp_reserv_int", 0),
                         "ph": data.get("ph", 0),
                         "ec": data.get("ec", 0),
-                        "temp_reserv_ext": data.get("temp_reserv_ext", 0)
-                        #    "umid_solo_pct": data.get("umid_solo_pct", 0),  # <-- novo campo
-                        #    "umid_solo_raw": data.get("umid_solo_raw", 0)    # <-- opcional
+                        "temp_reserv_ext": data.get("temp_reserv_ext", 0),
+                        "temp_ext": data.get("temp_externa", 0),  # <-- novo campo
+                        "umid_ext": data.get("umid_externa", 0)    # <-- opcional
                     }
                 }
             ]

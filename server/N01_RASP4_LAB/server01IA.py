@@ -92,7 +92,7 @@ def enviar_para_openai(estrutura):
         Você é um engenheiro agrícola. Avalie as condições ambientais de uma estufa de maturação para cultivo de alface hidropônico com base nos seguintes dados (coletados em {data_hora_formatada}).
 
         Faixas ideais:
-        - Temperatura ambiente: 19.5 °C (tolerável: 15–24 °C)
+        - Temperatura ambiente: 19.5 °C (tolerável: 15–25 °C)
         - Umidade relativa: 60% (tolerável: 50–70%)
         - CO₂: 400–800 ppm (tolerável até 1000 ppm)
         - pH: 6.0 (tolerável: 5.5–6.5)
