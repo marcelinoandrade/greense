@@ -31,7 +31,7 @@ def coletar_dados_estufa3():
         LAST(agua_min), 
         LAST(agua_max) 
     FROM sensores 
-    WHERE dispositivo='ESP32_E3'
+    WHERE dispositivo='Estufa_Maturar'
     """
     result_sensores = client.query(query_sensores)
 
@@ -154,7 +154,7 @@ def gravar_resposta_influx(resposta_ia):
         {
             "measurement": "analise_ia_estufa3",
             "tags": {
-                "dispositivo": "ESP32_E3"
+                "dispositivo": "Estufa_Maturar"
             },
             "fields": {
                 "avaliacao": resposta_ia
@@ -164,12 +164,12 @@ def gravar_resposta_influx(resposta_ia):
     ]
 
     client.write_points(json_body)
-    print("✅ Resposta da IA Eng. GePeTo gravada no InfluxDB.")
+    print("✅ Resposta da IA Eng. GePTo gravada no InfluxDB.")
 
 def main():
     registrar_inicio_log()
     dados_estufa3 = coletar_dados_estufa3()
-    print("📡 Dados coletados da Estufa3:")
+    print("📡 Dados coletados d Estufa_Maturar:")
     print(dados_estufa3)
 
     estrutura = montar_estrutura_openai(dados_estufa3)

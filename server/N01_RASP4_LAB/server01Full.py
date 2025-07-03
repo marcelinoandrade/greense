@@ -54,8 +54,9 @@ def insere_manual():
 @app.route("/imagem")
 def serve_ultima_imagem():
     host = request.headers.get("Host", "").split(":")[0]
-
-    if "camera02" in host:
+    if "camera03" in host:
+        diretorio_fotos = "fotos_recebidas/cam_03"
+    elif "camera02" in host:
         diretorio_fotos = "fotos_recebidas/cam_02"
     elif "camera" in host:
         diretorio_fotos = "fotos_recebidas/cam_01"
@@ -76,7 +77,9 @@ def serve_ultima_imagem():
 def upload_foto():
     try:
         host = request.headers.get("Host", "").split(":")[0]
-        if "camera02" in host:
+        if "camera03" in host:
+            camera_id = "cam_03"
+        elif "camera02" in host:
             camera_id = "cam_02"
         elif "camera" in host:
             camera_id = "cam_01"
