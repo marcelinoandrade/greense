@@ -274,7 +274,7 @@ void start_camera() {
         .ledc_timer     = LEDC_TIMER_0,
         .ledc_channel   = LEDC_CHANNEL_0,
         .pixel_format   = PIXFORMAT_JPEG,
-        .frame_size     = FRAMESIZE_SVGA,
+        .frame_size     = FRAMESIZE_XGA,
         .jpeg_quality   = 12,
         .fb_count       = 1
     };
