@@ -1,4 +1,4 @@
-# GreenSe - Software para Cultivo Protegido em Ambiente Controlado
+# GreenSe - Solução para Cultivo Protegido
 
 <div align="center">
   <img src="https://github.com/marcelinoandrade/greense/blob/main/dashboardGreense.jpg" alt="GreenSe Logo" width="800">
