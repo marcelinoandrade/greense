@@ -94,7 +94,6 @@ def enviar_para_openai(estrutura):
         Faixas ideais:
         - Temperatura ambiente: 19.5 °C (tolerável: 15–25 °C)
         - Umidade relativa: 60% (tolerável: 50–70%)
-        - CO₂: 400–800 ppm (tolerável até 1000 ppm)
         - pH: 6.0 (tolerável: 5.5–6.5)
         - EC: 1.6 mS/cm (tolerável: 1.2–2.0 mS/cm)
         - Temp. reservatório: 21 °C (tolerável: 18–24 °C)
@@ -106,7 +105,6 @@ def enviar_para_openai(estrutura):
         Dados atuais:
         - Temp. ambiente: {estrutura['temperatura_ambiente']} °C
         - Umidade: {estrutura['umidade_ambiente']} %
-        - CO₂: {estrutura['nivel_co2']} ppm
         - pH: {estrutura['ph_agua']}
         - EC: {estrutura['condutividade_ec']} mS/cm
         - Temp. reservatório: {estrutura['temp_reservatorio_interno']} °C
@@ -123,7 +121,7 @@ def enviar_para_openai(estrutura):
         mencione até duas possíveis fitopatologia mais prováveis, justifique as causas de forma curta e vinculado ao paramentro medido;
         classifique o risco atual em uma escala de 0/5 a 5/5, sendo 5/5 crítico;
         Caso todos os parâmetros estejam dentro das faixas toleradas, informe que não há risco identificado.
-        Caso algum ou mais sensor esteja com valor zero realize a analise sem considerar esse sensor. Poŕem, indique que o sensor esta inoperante.
+        Caso algum ou mais sensor esteja com valor zero, deconsiderando água_max e água_min, realize a analise sem considerar esse sensor. Poŕem, indique que o sensor esta inoperante.
         Toda a resposta deve ser redigida como um único parágrafo corrido.
 
         """
