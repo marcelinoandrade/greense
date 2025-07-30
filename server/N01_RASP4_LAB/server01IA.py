@@ -92,11 +92,11 @@ def enviar_para_openai(estrutura):
         Você é um engenheiro agrícola. Avalie as condições ambientais de uma estufa de maturação para cultivo de alface hidropônico com base nos seguintes dados (coletados em {data_hora_formatada}).
 
         Faixas ideais:
-        - Temperatura ambiente: 22 °C (tolerável: 18–25 °C)
-        - Umidade relativa: 60% (tolerável: 50–70%)
-        - pH: 6.5 (tolerável: 6.0–7.0)
+        - Temperatura ambiente: 27 °C (tolerável: 18–30 °C)
+        - Umidade relativa: 60% (tolerável: 40–70%)
+        - pH: 6.5 (tolerável: 5.5–7.0)
         - EC: 1.3 mS/cm (tolerável: 0.9–2.0 mS/cm)
-        - Temp. reservatório: 21 °C (tolerável: 18–24 °C)
+        - Temp. reservatório: 21 °C (tolerável: 18–26 °C)
         - Luminosidade: sempre adequada (12h de luz garantida)
         - água_max e água_min: sensores binários onde 1 indica que o nível do reservatório está acima da boia (nível adequado), e 0 indica que está abaixo da boia.  
           → água_max em 0 indica que o nível está abaixo do ideal e recomenda-se reposição preventiva, embora não haja qualquer risco envolvido;  
@@ -122,6 +122,7 @@ def enviar_para_openai(estrutura):
         classifique o risco atual em uma escala de 0/5 a 5/5, sendo 5/5 crítico;
         Caso todos os parâmetros estejam dentro das faixas toleradas, informe que não há risco identificado.
         Caso algum ou mais sensor esteja com valor zero, deconsiderando água_max e água_min, realize a analise sem considerar esse sensor. Poŕem, indique que o sensor esta inoperante.
+        Caso algum sensor esteja no limite superior ou inferior da faixa tolerada não considere risco associado a esse parâmetro.
         Toda a resposta deve ser redigida como um único parágrafo corrido.
 
         """
