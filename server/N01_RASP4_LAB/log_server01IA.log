@@ -9188,3 +9188,195 @@ Análise realizada em 26/08/2025 00:00. Temperatura ambiente: 28.19 °C, dentro 
 🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
 Análise realizada em 26/08/2025 04:00. Temperatura ambiente: 27.58 °C, dentro da faixa tolerada. Umidade: 48.2 %, dentro da faixa tolerada. pH: 6.0, dentro da faixa tolerada. EC: 2.0 mS/cm, no limite superior da faixa tolerada. Temperatura do reservatório: 23.38 °C, dentro da faixa tolerada. Nível de água_max: 1, nível adequado. Nível de água_min: 1, nível adequado. || Conclusão: Todos os parâmetros estão dentro das faixas toleradas, exceto a EC que está no limite superior, mas ainda não representa risco. Impacto previsto: Não há risco identificado.
 ✅ Resposta da IA Eng. GePTo gravada no InfluxDB.
+
+📜 [26/08/2025 08:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados d Estufa_Maturar:
+{'temp': 27.97, 'umid': 51.9, 'co2': 466.0, 'luz': 1.0, 'temp_reserv_int': 23.25, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.0, 'ec': 2.0}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 27.97, 'umidade_ambiente': 51.9, 'nivel_co2': 466.0, 'luminosidade': 1.0, 'ph_agua': 6.0, 'condutividade_ec': 2.0, 'temp_reservatorio_interno': 23.25, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-08-26T11:00:05.575634Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 26/08/2025 08:00. Temperatura ambiente: 27.97 °C, dentro da faixa tolerada. Umidade: 51.9 %, dentro da faixa tolerada. pH: 6.0, dentro da faixa tolerada. EC: 2.0 mS/cm, no limite superior da faixa tolerada. Temperatura do reservatório: 23.25 °C, dentro da faixa tolerada. Nível de água_max: 1, nível adequado. Nível de água_min: 1, nível adequado. || Conclusão: Todos os parâmetros estão dentro das faixas toleradas, com exceção da EC que está no limite superior, mas ainda não representa risco. Impacto previsto: Não há risco identificado.
+✅ Resposta da IA Eng. GePTo gravada no InfluxDB.
+
+📜 [26/08/2025 12:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados d Estufa_Maturar:
+{'temp': 26.66, 'umid': 53.97, 'co2': 480.0, 'luz': 0.0, 'temp_reserv_int': 22.56, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.0, 'ec': 2.0}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 26.66, 'umidade_ambiente': 53.97, 'nivel_co2': 480.0, 'luminosidade': 0.0, 'ph_agua': 6.0, 'condutividade_ec': 2.0, 'temp_reservatorio_interno': 22.56, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-08-26T15:00:05.137852Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 26/08/2025 12:00. Temperatura ambiente: 26.66 °C, dentro da faixa tolerada. Umidade: 53.97%, dentro da faixa tolerada. pH: 6.0, dentro da faixa tolerada. EC: 2.0 mS/cm, no limite superior da faixa tolerada. Temp. reservatório: 22.56 °C, dentro da faixa tolerada. água_max: 1, nível adequado. água_min: 1, nível adequado. || Conclusão: Todos os parâmetros estão dentro das faixas toleradas. Impacto previsto: Não há risco identificado.
+✅ Resposta da IA Eng. GePTo gravada no InfluxDB.
+
+📜 [26/08/2025 16:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados d Estufa_Maturar:
+{'temp': 27.39, 'umid': 52.56, 'co2': 614.0, 'luz': 0.0, 'temp_reserv_int': 23.44, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.0, 'ec': 2.0}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 27.39, 'umidade_ambiente': 52.56, 'nivel_co2': 614.0, 'luminosidade': 0.0, 'ph_agua': 6.0, 'condutividade_ec': 2.0, 'temp_reservatorio_interno': 23.44, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-08-26T19:00:05.618963Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 26/08/2025 16:00. Temperatura ambiente: 27.39 °C, dentro da faixa tolerada. Umidade: 52.56 %, dentro da faixa tolerada. pH: 6.0, dentro da faixa tolerada. EC: 2.0 mS/cm, no limite superior da faixa tolerada. Temp. reservatório: 23.44 °C, dentro da faixa tolerada. água_max: 1, nível adequado. água_min: 1, nível adequado. || Conclusão: Todos os parâmetros estão dentro das faixas toleradas, exceto a EC, que está no limite superior, mas ainda não apresenta risco. Impacto previsto: Não há risco identificado. Risco atual: 0/5.
+✅ Resposta da IA Eng. GePTo gravada no InfluxDB.
+
+📜 [26/08/2025 20:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados d Estufa_Maturar:
+{'temp': 26.44, 'umid': 42.79, 'co2': 452.0, 'luz': 0.0, 'temp_reserv_int': 23.19, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.0, 'ec': 2.0}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 26.44, 'umidade_ambiente': 42.79, 'nivel_co2': 452.0, 'luminosidade': 0.0, 'ph_agua': 6.0, 'condutividade_ec': 2.0, 'temp_reservatorio_interno': 23.19, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-08-26T23:00:05.371679Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 26/08/2025 20:00. Temperatura ambiente: 26.44 °C, dentro da faixa tolerada. Umidade: 42.79 %, próxima do limite inferior da faixa tolerada. pH: 6.0, dentro da faixa tolerada. EC: 2.0 mS/cm, no limite superior da faixa tolerada. Temperatura do reservatório: 23.19 °C, dentro da faixa tolerada. Nível de água_max: 1, nível adequado. Nível de água_min: 1, nível adequado. || Conclusão: Todos os parâmetros estão dentro das faixas toleradas, com exceção da umidade que está próxima do limite inferior. Impacto previsto: Caso a umidade não seja ajustada, pode ocorrer estresse hídrico nas plantas, aumentando o risco de doenças como oídio e míldio devido à baixa umidade relativa; risco atual classificado como 1/5.
+✅ Resposta da IA Eng. GePTo gravada no InfluxDB.
+
+📜 [27/08/2025 00:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados d Estufa_Maturar:
+{'temp': 28.45, 'umid': 53.78, 'co2': 549.0, 'luz': 1.0, 'temp_reserv_int': 23.5, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.0, 'ec': 2.0}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 28.45, 'umidade_ambiente': 53.78, 'nivel_co2': 549.0, 'luminosidade': 1.0, 'ph_agua': 6.0, 'condutividade_ec': 2.0, 'temp_reservatorio_interno': 23.5, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-08-27T03:00:05.316671Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 27/08/2025 00:00. Temperatura ambiente: 28.45 °C, dentro da faixa tolerada. Umidade: 53.78 %, dentro da faixa tolerada. pH: 6.0, dentro da faixa tolerada. EC: 2.0 mS/cm, no limite superior da faixa tolerada. Temperatura do reservatório: 23.5 °C, dentro da faixa tolerada. Nível de água_max: 1, nível adequado. Nível de água_min: 1, nível adequado. || Conclusão: Todos os parâmetros estão dentro das faixas toleradas, exceto a EC que está no limite superior, mas ainda não representa risco. Impacto previsto: Não há risco identificado.
+✅ Resposta da IA Eng. GePTo gravada no InfluxDB.
+
+📜 [27/08/2025 04:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados d Estufa_Maturar:
+{'temp': 27.66, 'umid': 54.01, 'co2': 479.0, 'luz': 1.0, 'temp_reserv_int': 23.31, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.0, 'ec': 2.0}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 27.66, 'umidade_ambiente': 54.01, 'nivel_co2': 479.0, 'luminosidade': 1.0, 'ph_agua': 6.0, 'condutividade_ec': 2.0, 'temp_reservatorio_interno': 23.31, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-08-27T07:00:05.495116Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 27/08/2025 04:00. Temperatura ambiente: 27.66 °C, dentro da faixa tolerada. Umidade: 54.01 %, dentro da faixa tolerada. pH: 6.0, dentro da faixa tolerada. EC: 2.0 mS/cm, no limite superior da faixa tolerada. Temperatura do reservatório: 23.31 °C, dentro da faixa tolerada. água_max: 1, nível adequado. água_min: 1, nível adequado. || Conclusão: Todos os parâmetros estão dentro das faixas toleradas, sem risco identificado. Impacto previsto: Não há impacto previsto, pois todos os parâmetros estão dentro das faixas toleradas. Risco atual: 0/5.
+✅ Resposta da IA Eng. GePTo gravada no InfluxDB.
+
+📜 [27/08/2025 08:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados d Estufa_Maturar:
+{'temp': 25.26, 'umid': 44.03, 'co2': 449.0, 'luz': 1.0, 'temp_reserv_int': 21.31, 'agua_min': 1.0, 'agua_max': 0.0, 'ph': 6.0, 'ec': 2.0}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 25.26, 'umidade_ambiente': 44.03, 'nivel_co2': 449.0, 'luminosidade': 1.0, 'ph_agua': 6.0, 'condutividade_ec': 2.0, 'temp_reservatorio_interno': 21.31, 'agua_min': 1, 'agua_max': 0, 'timestamp_consulta': '2025-08-27T11:00:05.372689Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 27/08/2025 08:00. Temperatura ambiente: 25.26 °C, dentro da faixa tolerada; Umidade: 44.03 %, dentro da faixa tolerada; pH: 6.0, dentro da faixa tolerada; EC: 2.0 mS/cm, no limite superior da faixa tolerada; Temperatura do reservatório: 21.31 °C, dentro da faixa tolerada; água_max: 0, nível abaixo da boia, reposição recomendada; água_min: 1, nível adequado. || Conclusão: Todos os parâmetros estão dentro das faixas toleradas, exceto o nível de água_max, que está abaixo do ideal, mas não apresenta risco imediato. Impacto previsto: Caso o nível de água não seja reposto, pode ocorrer estresse hídrico, aumentando o risco de doenças como murcha fisiológica e deficiência nutricional. Risco atual: 1/5.
+✅ Resposta da IA Eng. GePTo gravada no InfluxDB.
+
+📜 [27/08/2025 12:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados d Estufa_Maturar:
+{'temp': 27.07, 'umid': 52.57, 'co2': 483.0, 'luz': 0.0, 'temp_reserv_int': 22.75, 'agua_min': 1.0, 'agua_max': 0.0, 'ph': 6.0, 'ec': 2.0}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 27.07, 'umidade_ambiente': 52.57, 'nivel_co2': 483.0, 'luminosidade': 0.0, 'ph_agua': 6.0, 'condutividade_ec': 2.0, 'temp_reservatorio_interno': 22.75, 'agua_min': 1, 'agua_max': 0, 'timestamp_consulta': '2025-08-27T15:00:05.043574Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 27/08/2025 12:00. Temperatura ambiente: 27.07 °C, dentro da faixa ideal; Umidade: 52.57 %, dentro da faixa tolerada; pH: 6.0, dentro da faixa tolerada; EC: 2.0 mS/cm, no limite superior da faixa tolerada; Temperatura do reservatório: 22.75 °C, dentro da faixa tolerada; água_max: 0, nível abaixo da boia, reposição recomendada; água_min: 1, nível adequado. || Conclusão: Todos os parâmetros estão dentro das faixas toleradas, exceto o nível de água_max que está abaixo do ideal, mas sem risco imediato. || Impacto previsto: Caso o nível de água não seja corrigido, pode ocorrer estresse hídrico, aumentando o risco de doenças como Pythium e Fusarium devido à falta de circulação adequada de nutrientes; risco atual classificado como 1/5.
+✅ Resposta da IA Eng. GePTo gravada no InfluxDB.
+
+📜 [27/08/2025 16:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados d Estufa_Maturar:
+{'temp': 27.32, 'umid': 44.53, 'co2': 816.0, 'luz': 0.0, 'temp_reserv_int': 23.06, 'agua_min': 1.0, 'agua_max': 0.0, 'ph': 6.0, 'ec': 2.0}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 27.32, 'umidade_ambiente': 44.53, 'nivel_co2': 816.0, 'luminosidade': 0.0, 'ph_agua': 6.0, 'condutividade_ec': 2.0, 'temp_reservatorio_interno': 23.06, 'agua_min': 1, 'agua_max': 0, 'timestamp_consulta': '2025-08-27T19:00:05.629203Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 27/08/2025 16:00. Temperatura ambiente: 27.32 °C, dentro da faixa tolerada; Umidade: 44.53%, próxima do limite inferior; pH: 6.0, dentro da faixa tolerada; EC: 2.0 mS/cm, no limite superior da faixa tolerada; Temperatura do reservatório: 23.06 °C, dentro da faixa tolerada; Nível de água_max: 0, abaixo da boia, reposição recomendada; Nível de água_min: 1, nível adequado. || Conclusão: A maioria dos parâmetros está dentro das faixas toleradas, mas a umidade está próxima do limite inferior e o nível de água_max está abaixo do ideal. Impacto previsto: Se a umidade não for ajustada, pode ocorrer estresse hídrico, aumentando o risco de murcha fisiológica; o nível de água baixo pode levar a uma deficiência de nutrientes, aumentando o risco de clorose. Risco atual: 2/5.
+✅ Resposta da IA Eng. GePTo gravada no InfluxDB.
+
+📜 [27/08/2025 20:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados d Estufa_Maturar:
+{'temp': 26.83, 'umid': 53.57, 'co2': 579.0, 'luz': 0.0, 'temp_reserv_int': 23.56, 'agua_min': 1.0, 'agua_max': 0.0, 'ph': 6.0, 'ec': 2.0}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 26.83, 'umidade_ambiente': 53.57, 'nivel_co2': 579.0, 'luminosidade': 0.0, 'ph_agua': 6.0, 'condutividade_ec': 2.0, 'temp_reservatorio_interno': 23.56, 'agua_min': 1, 'agua_max': 0, 'timestamp_consulta': '2025-08-27T23:00:05.586784Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 27/08/2025 20:00. Temperatura ambiente: 26.83 °C, dentro da faixa tolerada. Umidade: 53.57 %, dentro da faixa tolerada. pH: 6.0, dentro da faixa tolerada. EC: 2.0 mS/cm, no limite superior da faixa tolerada. Temperatura do reservatório: 23.56 °C, dentro da faixa tolerada. Nível de água_max: 0, abaixo da boia, reposição recomendada. Nível de água_min: 1, nível adequado. || Conclusão: Todos os parâmetros estão dentro das faixas toleradas, exceto o nível de água_max, que está abaixo da boia, mas sem risco imediato. Impacto previsto: Se o nível de água não for corrigido, pode ocorrer estresse hídrico, aumentando o risco de doenças como murcha bacteriana e podridão radicular devido à insuficiência de nutrientes; risco atual classificado como 1/5.
+✅ Resposta da IA Eng. GePTo gravada no InfluxDB.
+
+📜 [28/08/2025 00:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados d Estufa_Maturar:
+{'temp': 28.84, 'umid': 54.56, 'co2': 644.0, 'luz': 1.0, 'temp_reserv_int': 24.06, 'agua_min': 1.0, 'agua_max': 0.0, 'ph': 6.0, 'ec': 2.0}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 28.84, 'umidade_ambiente': 54.56, 'nivel_co2': 644.0, 'luminosidade': 1.0, 'ph_agua': 6.0, 'condutividade_ec': 2.0, 'temp_reservatorio_interno': 24.06, 'agua_min': 1, 'agua_max': 0, 'timestamp_consulta': '2025-08-28T03:00:05.595604Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 28/08/2025 00:00. Temperatura ambiente: 28.84 °C, dentro da faixa tolerada; Umidade: 54.56%, dentro da faixa tolerada; pH: 6.0, dentro da faixa tolerada; EC: 2.0 mS/cm, no limite superior da faixa tolerada; Temperatura do reservatório: 24.06 °C, dentro da faixa tolerada; água_max: 0, nível abaixo da boia, reposição recomendada; água_min: 1, nível adequado. || Conclusão: Todos os parâmetros estão dentro das faixas toleradas, exceto o nível de água_max, que está abaixo do ideal, mas sem risco imediato. Impacto previsto: Caso o nível de água não seja corrigido, pode ocorrer estresse hídrico, aumentando o risco de doenças como Pythium (damping-off) devido à falta de circulação adequada de nutrientes; risco atual classificado como 1/5.
+✅ Resposta da IA Eng. GePTo gravada no InfluxDB.
+
+📜 [28/08/2025 04:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados d Estufa_Maturar:
+{'temp': 28.18, 'umid': 48.16, 'co2': 572.0, 'luz': 1.0, 'temp_reserv_int': 24.44, 'agua_min': 1.0, 'agua_max': 0.0, 'ph': 6.0, 'ec': 2.0}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 28.18, 'umidade_ambiente': 48.16, 'nivel_co2': 572.0, 'luminosidade': 1.0, 'ph_agua': 6.0, 'condutividade_ec': 2.0, 'temp_reservatorio_interno': 24.44, 'agua_min': 1, 'agua_max': 0, 'timestamp_consulta': '2025-08-28T07:00:05.676153Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 28/08/2025 04:00. Temperatura ambiente: 28.18 °C, dentro da faixa tolerada. Umidade: 48.16 %, dentro da faixa tolerada. pH: 6.0, dentro da faixa tolerada. EC: 2.0 mS/cm, no limite superior da faixa tolerada. Temperatura do reservatório: 24.44 °C, dentro da faixa tolerada. água_max: 0, nível abaixo da boia, reposição recomendada. água_min: 1, nível adequado. || Conclusão: Todos os parâmetros estão dentro das faixas toleradas, exceto o nível de água_max, que está abaixo da boia, mas sem risco imediato. Impacto previsto: Se o nível de água não for corrigido, pode ocorrer estresse hídrico, aumentando o risco de doenças como murcha fisiológica e deficiência de nutrientes; risco atual classificado como 1/5.
+✅ Resposta da IA Eng. GePTo gravada no InfluxDB.
+
+📜 [28/08/2025 08:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados d Estufa_Maturar:
+{'temp': 29.17, 'umid': 52.66, 'co2': 655.0, 'luz': 1.0, 'temp_reserv_int': 24.62, 'agua_min': 1.0, 'agua_max': 0.0, 'ph': 6.0, 'ec': 2.0}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 29.17, 'umidade_ambiente': 52.66, 'nivel_co2': 655.0, 'luminosidade': 1.0, 'ph_agua': 6.0, 'condutividade_ec': 2.0, 'temp_reservatorio_interno': 24.62, 'agua_min': 1, 'agua_max': 0, 'timestamp_consulta': '2025-08-28T11:00:05.118041Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 28/08/2025 08:00. Temperatura ambiente: 29.17 °C, dentro da faixa tolerada. Umidade: 52.66 %, dentro da faixa tolerada. pH: 6.0, dentro da faixa tolerada. EC: 2.0 mS/cm, no limite superior da faixa tolerada. Temp. reservatório: 24.62 °C, dentro da faixa tolerada. água_max: 0, nível abaixo da boia, reposição recomendada. água_min: 1, nível adequado. || Conclusão: Todos os parâmetros estão dentro das faixas toleradas, exceto o nível de água_max que está abaixo da boia, mas sem risco imediato. Impacto previsto: Caso o nível de água não seja corrigido, pode ocorrer estresse hídrico, aumentando o risco de doenças como Pythium (damping-off) devido à má circulação de nutrientes; risco atual classificado como 1/5.
+✅ Resposta da IA Eng. GePTo gravada no InfluxDB.
+
+📜 [28/08/2025 12:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados d Estufa_Maturar:
+{'temp': 26.95, 'umid': 52.55, 'co2': 573.0, 'luz': 0.0, 'temp_reserv_int': 24.0, 'agua_min': 1.0, 'agua_max': 0.0, 'ph': 6.0, 'ec': 2.0}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 26.95, 'umidade_ambiente': 52.55, 'nivel_co2': 573.0, 'luminosidade': 0.0, 'ph_agua': 6.0, 'condutividade_ec': 2.0, 'temp_reservatorio_interno': 24.0, 'agua_min': 1, 'agua_max': 0, 'timestamp_consulta': '2025-08-28T15:00:05.398365Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 28/08/2025 12:00. Temperatura ambiente: 26.95 °C, dentro da faixa tolerada. Umidade: 52.55 %, dentro da faixa tolerada. pH: 6.0, dentro da faixa tolerada. EC: 2.0 mS/cm, no limite superior da faixa tolerada. Temperatura do reservatório: 24.0 °C, dentro da faixa tolerada. água_max: 0, nível abaixo da boia, reposição recomendada. água_min: 1, nível adequado. || Conclusão: Todos os parâmetros estão dentro das faixas toleradas, exceto o nível de água_max, que está abaixo do ideal, mas não apresenta risco imediato. Impacto previsto: Caso o nível de água não seja corrigido, pode ocorrer estresse hídrico, aumentando a suscetibilidade a doenças como Pythium (damping-off) devido à insuficiência de água para o sistema radicular; risco atual classificado como 1/5.
+✅ Resposta da IA Eng. GePTo gravada no InfluxDB.
+
+📜 [28/08/2025 16:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados d Estufa_Maturar:
+{'temp': 27.41, 'umid': 53.62, 'co2': 834.0, 'luz': 0.0, 'temp_reserv_int': 24.12, 'agua_min': 1.0, 'agua_max': 0.0, 'ph': 6.0, 'ec': 2.0}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 27.41, 'umidade_ambiente': 53.62, 'nivel_co2': 834.0, 'luminosidade': 0.0, 'ph_agua': 6.0, 'condutividade_ec': 2.0, 'temp_reservatorio_interno': 24.12, 'agua_min': 1, 'agua_max': 0, 'timestamp_consulta': '2025-08-28T19:00:05.473569Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 28/08/2025 16:00. Temperatura ambiente: 27.41 °C, dentro da faixa tolerada. Umidade: 53.62 %, dentro da faixa tolerada. pH: 6.0, dentro da faixa tolerada. EC: 2.0 mS/cm, no limite superior da faixa tolerada. Temperatura do reservatório: 24.12 °C, dentro da faixa tolerada. água_max: 0, nível abaixo do ideal, reposição recomendada. água_min: 1, nível adequado. || Conclusão: Todos os parâmetros estão dentro das faixas toleradas, exceto o nível de água_max, que está abaixo do ideal. Impacto previsto: Caso o nível de água não seja corrigido, pode ocorrer estresse hídrico nas plantas, aumentando o risco de doenças como murcha fisiológica devido à insuficiência de água e nutrientes; risco atual classificado como 1/5.
+✅ Resposta da IA Eng. GePTo gravada no InfluxDB.
+
+📜 [28/08/2025 20:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados d Estufa_Maturar:
+{'temp': 26.74, 'umid': 49.69, 'co2': 464.0, 'luz': 0.0, 'temp_reserv_int': 23.81, 'agua_min': 1.0, 'agua_max': 0.0, 'ph': 6.0, 'ec': 2.0}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 26.74, 'umidade_ambiente': 49.69, 'nivel_co2': 464.0, 'luminosidade': 0.0, 'ph_agua': 6.0, 'condutividade_ec': 2.0, 'temp_reservatorio_interno': 23.81, 'agua_min': 1, 'agua_max': 0, 'timestamp_consulta': '2025-08-28T23:00:23.883667Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 28/08/2025 20:00. Temperatura ambiente: 26.74 °C, dentro da faixa tolerada. Umidade: 49.69 %, dentro da faixa tolerada. pH: 6.0, dentro da faixa tolerada. EC: 2.0 mS/cm, no limite superior da faixa tolerada. Temperatura do reservatório: 23.81 °C, dentro da faixa tolerada. água_max: 0, nível abaixo da boia, reposição recomendada. água_min: 1, nível adequado. || Conclusão: Todos os parâmetros estão dentro das faixas toleradas, exceto o nível de água_max, que está abaixo do ideal. Impacto previsto: Caso o nível de água não seja corrigido, pode ocorrer estresse hídrico nas plantas, aumentando o risco de desenvolvimento de doenças como murcha bacteriana e podridão radicular devido à insuficiência de água e nutrientes; risco atual classificado como 1/5.
+✅ Resposta da IA Eng. GePTo gravada no InfluxDB.
