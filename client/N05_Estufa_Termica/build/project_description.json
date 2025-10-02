@@ -1,7 +1,7 @@
 {
     "version":            "1.1",
     "project_name":       "N05_Estufa_Termica",
-    "project_version":    "ec1f90f-dirty",
+    "project_version":    "f1a3367-dirty",
     "project_path":       "/home/greense/projetoGreense/client/N05_Estufa_Termica",
     "idf_path":           "/home/greense/esp/esp-idf",
     "build_dir":          "/home/greense/projetoGreense/client/N05_Estufa_Termica/build",
@@ -800,13 +800,13 @@
             "dir": "/home/greense/projetoGreense/client/N05_Estufa_Termica/main",
             "type": "LIBRARY",
             "lib": "__idf_main",
-            "reqs": [],
+            "reqs": [ "nvs_flash", "esp_wifi", "esp_event", "mqtt", "driver", "esp_netif" ],
             "priv_reqs": [],
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "file": "/home/greense/projetoGreense/client/N05_Estufa_Termica/build/esp-idf/main/libmain.a",
-            "sources": [ "/home/greense/projetoGreense/client/N05_Estufa_Termica/main/main.c" ],
-            "include_dirs": [ "." ]
+            "sources": [ "/home/greense/projetoGreense/client/N05_Estufa_Termica/main/main.c", "/home/greense/projetoGreense/client/N05_Estufa_Termica/main/conexoes/conexoes.c", "/home/greense/projetoGreense/client/N05_Estufa_Termica/build/greense_cert.pem.S" ],
+            "include_dirs": [ ".", "conexoes" ]
         },
         "mbedtls": {
             "alias": "idf::mbedtls",
@@ -2097,11 +2097,11 @@
             "prefix": "idf",
             "dir": "/home/greense/projetoGreense/client/N05_Estufa_Termica/main",
             "lib": "__idf_main",
-            "reqs": [],
+            "reqs": [ "nvs_flash", "esp_wifi", "esp_event", "mqtt", "driver", "esp_netif" ],
             "priv_reqs": [],
             "managed_reqs": [],
             "managed_priv_reqs": [],
-            "include_dirs": [ "." ]
+            "include_dirs": [ ".", "conexoes" ]
         }
     },
     "debug_prefix_map_gdbinit": ""

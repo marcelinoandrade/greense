@@ -594,8 +594,6 @@ _Python3_EXECUTABLE:INTERNAL=/home/greense/.espressif/python_env/idf5.2_py3.11_e
 //Python3 Properties
 _Python3_INTERPRETER_PROPERTIES:INTERNAL=Python;3;11;2;32;;;/usr/lib/python3.11;/usr/lib/python3.11;/home/greense/.espressif/python_env/idf5.2_py3.11_env/lib/python3.11/site-packages;/home/greense/.espressif/python_env/idf5.2_py3.11_env/lib/python3.11/site-packages
 _Python3_INTERPRETER_SIGNATURE:INTERNAL=df2fea35a7d3eb7ae8e54f8b7f194725
-//Interpreter reason failure
-_Python3_Interpreter_REASON_FAILURE:INTERNAL=
 //NumPy reason failure
 _Python3_NumPy_REASON_FAILURE:INTERNAL=
 

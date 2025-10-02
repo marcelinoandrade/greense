@@ -8,7 +8,7 @@ import threading
 import config
 import os
 from flask import send_from_directory
-
+import numpy as np
 
 # Configuração do InfluxDB
 INFLUXDB_HOST = "localhost"
@@ -23,11 +23,9 @@ client_influx = InfluxDBClient(host=INFLUXDB_HOST, port=INFLUXDB_PORT)
 client_influx.create_database(INFLUXDB_DB)
 client_influx.switch_database(INFLUXDB_DB)
 
-# === FLASK PARA INSERÇÃO MANUAL ===
+# === FLASK APENAS PARA INSERÇÃO MANUAL E IMAGENS ===
 app = Flask(__name__)
 CORS(app)
-
-from datetime import datetime
 
 @app.route("/insere", methods=["POST"])
 def insere_manual():
@@ -69,8 +67,6 @@ def serve_ultima_imagem():
         return jsonify({"erro": f"Imagem não disponível para {host}"}), 404
 
     return send_from_directory(diretorio_fotos, "ultima.jpg")
-
-
 
 # === Endpoint para recebimento de imagem via POST ===
 @app.route("/upload", methods=["POST"])
@@ -127,10 +123,14 @@ def upload_foto():
         print(f"❌ Erro no upload: {e}")
         return jsonify({"erro": str(e)}), 500
 
-
 # === MQTT CALLBACK ===
 def on_message(client, userdata, msg):
     try:
+        # Verifica se é dado térmico
+        if msg.topic == "estufa/termica":
+            processar_dados_termicos(msg.payload.decode())
+            return
+            
         data = json.loads(msg.payload.decode())
         json_body = []
         dispositivo = "desconhecido"
@@ -152,8 +152,8 @@ def on_message(client, userdata, msg):
                         "ph": data.get("ph", 0),
                         "ec": data.get("ec", 0),
                         "temp_reserv_ext": data.get("temp_reserv_ext", 0),
-                        "umid_solo_pct": data.get("umid_solo_pct", 0),  # <-- novo campo
-                        "umid_solo_raw": data.get("umid_solo_raw", 0)    # <-- opcional
+                        "umid_solo_pct": data.get("umid_solo_pct", 0),
+                        "umid_solo_raw": data.get("umid_solo_raw", 0)
                     }
                 }
             ]
@@ -175,8 +175,8 @@ def on_message(client, userdata, msg):
                         "ph": data.get("ph", 0),
                         "ec": data.get("ec", 0),
                         "temp_reserv_ext": data.get("temp_reserv_ext", 0),
-                        "temp_ext": data.get("temp_externa", 0),  # <-- novo campo
-                        "umid_ext": data.get("umid_externa", 0)    # <-- opcional
+                        "temp_ext": data.get("temp_externa", 0),
+                        "umid_ext": data.get("umid_externa", 0)
                     }
                 }
             ]
@@ -212,6 +212,64 @@ def on_message(client, userdata, msg):
     except Exception as e:
         print(f"Erro ao processar mensagem MQTT: {e}")
 
+# === FUNÇÃO PARA PROCESSAR DADOS TÉRMICOS VIA MQTT ===
+def processar_dados_termicos(payload):
+    try:
+        data = json.loads(payload)
+        
+        # Extrai temperaturas e timestamp
+        temperaturas = data['temperaturas']
+        timestamp = data.get('timestamp', int(datetime.now().timestamp()))
+        
+        # Converte lista em matriz 24x32
+        matriz_temperaturas = np.array(temperaturas).reshape(24, 32)
+
+        # Salva apenas no InfluxDB (sem CSV)
+        salvar_no_influxdb(matriz_temperaturas, timestamp)
+        
+        print(f"📊 Dados térmicos recebidos via MQTT: {len(temperaturas)} pontos")
+        
+    except Exception as e:
+        print(f"❌ Erro ao processar dados térmicos MQTT: {e}")
+
+# === SALVAR DADOS TÉRMICOS NO INFLUXDB ===
+def salvar_no_influxdb(matriz_temperaturas, timestamp):
+    try:
+        json_body = []
+        
+        # Converte timestamp para nanossegundos (formato do InfluxDB)
+        influx_time = int(timestamp * 1e9)
+        
+        # Calcula estatísticas
+        temp_min = np.min(matriz_temperaturas)
+        temp_max = np.max(matriz_temperaturas)
+        temp_avg = np.mean(matriz_temperaturas)
+        temp_std = np.std(matriz_temperaturas)
+        
+        # Salva estatísticas principais
+        json_body = [
+            {
+                "measurement": "termica",
+                "tags": {"dispositivo": "Camera_Termica"},
+                "time": influx_time,
+                "fields": {
+                    "temp_min": float(temp_min),
+                    "temp_max": float(temp_max),
+                    "temp_avg": float(temp_avg),
+                    "temp_std": float(temp_std),
+                    "temp_00_00": float(matriz_temperaturas[0][0]),
+                    "temp_12_16": float(matriz_temperaturas[12][16]),  # ponto central
+                    "temp_23_31": float(matriz_temperaturas[23][31])   # último ponto
+                }
+            }
+        ]
+        
+        client_influx.write_points(json_body)
+        print(f"📈 Estatísticas térmicas salvas: min={temp_min:.2f}°C, max={temp_max:.2f}°C, avg={temp_avg:.2f}°C")
+        
+    except Exception as e:
+        print(f"❌ Erro ao salvar dados térmicos no InfluxDB: {e}")
+
 # === INICIALIZAÇÃO DO MQTT E FLASK ===
 def start_mqtt():
     client_mqtt = mqtt.Client()
@@ -220,10 +278,17 @@ def start_mqtt():
     client_mqtt.subscribe("estufa/germinar")
     client_mqtt.subscribe("estufa/maturar")
     client_mqtt.subscribe("estufa3/esp32")
+    client_mqtt.subscribe("estufa/termica")  # Tópico para dados térmicos
 
-    print("Servidor MQTT rodando... Aguardando mensagens.")
+    print("📡 Servidor MQTT rodando... Aguardando mensagens nos tópicos:")
+    print("   - estufa/germinar")
+    print("   - estufa/maturar") 
+    print("   - estufa3/esp32")
+    print("   - estufa/termica")
+    
     client_mqtt.loop_forever()
 
 if __name__ == "__main__":
     threading.Thread(target=start_mqtt).start()
+    print("🌐 Servidor Flask iniciado na porta 5000 (apenas para imagens e inserção manual)")
     app.run(host="0.0.0.0", port=5000)

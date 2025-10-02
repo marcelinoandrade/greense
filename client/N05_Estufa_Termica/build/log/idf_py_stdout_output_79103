@@ -1,0 +1,1751 @@
+ESP-ROM:esp32c3-api1-20210207
+Build:Feb  7 2021
+rst:0x15 (USB_UART_CHIP_RESET),boot:0xd (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4004c97e
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fcd5820,len:0x1738
+load:0x403cc710,len:0xb9c
+load:0x403ce710,len:0x2e40
+entry 0x403cc71a
+[0;32mI (24) boot: ESP-IDF v5.2.1 2nd stage bootloader[0m
+[0;32mI (24) boot: compile time Sep  4 2025 21:38:31[0m
+[0;32mI (25) boot: chip revision: v0.4[0m
+[0;32mI (27) boot.esp32c3: SPI Speed      : 80MHz[0m
+[0;32mI (32) boot.esp32c3: SPI Mode       : DIO[0m
+[0;32mI (37) boot.esp32c3: SPI Flash Size : 2MB[0m
+[0;32mI (42) boot: Enabling RNG early entropy source...[0m
+[0;32mI (47) boot: Partition Table:[0m
+[0;32mI (51) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (58) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (65) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (73) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (80) boot: End of partition table[0m
+[0;32mI (84) esp_image: segment 0: paddr=00010020 vaddr=3c0b0020 size=274b0h (160944) map[0m
+[0;32mI (118) esp_image: segment 1: paddr=000374d8 vaddr=3fc92200 size=02b88h ( 11144) load[0m
+[0;32mI (120) esp_image: segment 2: paddr=0003a068 vaddr=40380000 size=05fb0h ( 24496) load[0m
+[0;32mI (128) esp_image: segment 3: paddr=00040020 vaddr=42000020 size=ae16ch (713068) map[0m
+[0;32mI (244) esp_image: segment 4: paddr=000ee194 vaddr=40385fb0 size=0c1f0h ( 49648) load[0m
+[0;32mI (259) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (259) boot: Disabling RNG early entropy source...[0m
+[0;32mI (271) cpu_start: Unicore app[0m
+[0;32mI (279) cpu_start: Pro cpu start user code[0m
+[0;32mI (279) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (279) cpu_start: Application information:[0m
+[0;32mI (282) cpu_start: Project name:     N05_Estufa_Termica[0m
+[0;32mI (288) cpu_start: App version:      f1a3367-dirty[0m
+[0;32mI (294) cpu_start: Compile time:     Sep  4 2025 21:37:37[0m
+[0;32mI (300) cpu_start: ELF file SHA256:  44c805c6a...[0m
+[0;32mI (305) cpu_start: ESP-IDF:          v5.2.1[0m
+[0;32mI (310) cpu_start: Min chip rev:     v0.3[0m
+[0;32mI (315) cpu_start: Max chip rev:     v1.99 [0m
+[0;32mI (320) cpu_start: Chip rev:         v0.4[0m
+[0;32mI (324) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (332) heap_init: At 3FC9A110 len 00025EF0 (151 KiB): RAM[0m
+[0;32mI (338) heap_init: At 3FCC0000 len 0001C710 (113 KiB): Retention RAM[0m
+[0;32mI (345) heap_init: At 3FCDC710 len 00002950 (10 KiB): Retention RAM[0m
+[0;32mI (352) heap_init: At 50000010 len 00001FD8 (7 KiB): RTCRAM[0m
+[0;32mI (359) spi_flash: detected chip: generic[0m
+[0;32mI (363) spi_flash: flash io: dio[0m
+[0;33mW (366) spi_flash: Detected size(4096k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;32mI (380) sleep: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (386) sleep: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (394) main_task: Started on CPU0[0m
+[0;32mI (394) main_task: Calling app_main()[0m
+[0;32mI (404) pp: pp rom version: 9387209[0m
+[0;32mI (404) net80211: net80211 rom version: 9387209[0m
+[0;32mI (414) wifi:wifi driver task: 3fca3ec4, prio:23, stack:6656, core=0[0m
+[0;32mI (414) wifi:wifi firmware version: a9f5b59[0m
+[0;32mI (414) wifi:wifi certification version: v7.0[0m
+[0;32mI (424) wifi:config NVS flash: enabled[0m
+[0;32mI (424) wifi:config nano formating: disabled[0m
+[0;32mI (424) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (434) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (434) wifi:Init management short buffer num: 32[0m
+[0;32mI (444) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (444) wifi:Init static tx FG buffer num: 2[0m
+[0;32mI (454) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (454) wifi:Init static rx buffer num: 10[0m
+[0;32mI (454) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (464) wifi_init: rx ba win: 6[0m
+[0;32mI (464) wifi_init: tcpip mbox: 32[0m
+[0;32mI (474) wifi_init: udp mbox: 6[0m
+[0;32mI (474) wifi_init: tcp mbox: 6[0m
+[0;32mI (474) wifi_init: tcp tx win: 5760[0m
+[0;32mI (484) wifi_init: tcp rx win: 5760[0m
+[0;32mI (484) wifi_init: tcp mss: 1440[0m
+[0;32mI (484) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (494) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (504) phy_init: phy_version 1150,7c3c08f,Jan 24 2024,17:32:21[0m
+[0;32mI (544) wifi:mode : sta (10:00:3b:00:56:44)[0m
+[0;32mI (544) wifi:enable tsf[0m
+[0;32mI (544) wifi:Set ps type: 0, coexist: 0[0m
+
+[0;32mI (544) WiFi: Wi-Fi inicializado. Conectando...[0m
+[0;33mW (2954) WiFi: Desconectado. Motivo: 201[0m
+[0;32mI (2954) WiFi: Tentando reconectar ao Wi-Fi...[0m
+[0;33mW (5364) WiFi: Desconectado. Motivo: 201[0m
+[0;32mI (5364) WiFi: Tentando reconectar ao Wi-Fi...[0m
+[0;33mW (7774) WiFi: Desconectado. Motivo: 201[0m
+[0;32mI (7774) WiFi: Tentando reconectar ao Wi-Fi...[0m
+[0;33mW (10184) WiFi: Desconectado. Motivo: 201[0m
+[0;32mI (10184) WiFi: Tentando reconectar ao Wi-Fi...[0m
+[0;33mW (12594) WiFi: Desconectado. Motivo: 201[0m
+[0;32mI (12594) WiFi: Tentando reconectar ao Wi-Fi...[0m
+[0;33mW (15004) WiFi: Desconectado. Motivo: 201[0m
+[0;31mE (15004) WiFi: Falha ao conectar ao Wi-Fi[0m
+[0;31mE (15004) WiFi: Falha ao conectar ao Wi-Fi[0m
+[0;31mE (15004) esp-tls: couldn't get hostname for :mqtt.greense.com.br: getaddrinfo() returns 202, addrinfo=0x0[0m
+[0;31mE (15014) esp-tls: Failed to open new connection[0m
+[0;31mE (15024) transport_base: Failed to open a new connection[0m
+[0;31mE (15024) transport_ws: Error connecting to host mqtt.greense.com.br:443[0m
+[0;31mE (15034) mqtt_client: Error transport connect[0m
+[0;31mE (15044) MQTT: Erro no MQTT[0m
+[0;33mW (15044) MQTT: Desconectado do MQTT[0m
+[0;32mI (15044) THERMAL_SENSOR: Leitura do sensor térmico...[0m
+[0;33mW (15054) wifi:Haven't to connect to a suitable AP now![0m
+[0;32mI (15054) THERMAL_SENSOR: Sistema de câmera térmica iniciado[0m
+[0;33mW (15064) wifi:Haven't to connect to a suitable AP now![0m
+[0;33mW (15074) THERMAL_SENSOR: Wi-Fi desconectado[0m
+[0;33mW (16054) wifi:Haven't to connect to a suitable AP now![0m
+[0;33mW (17054) wifi:Haven't to connect to a suitable AP now![0m
+[0;33mW (18054) wifi:Haven't to connect to a suitable AP now![0m
+[0;33mW (19054) wifi:Haven't to connect to a suitable AP now![0m
+[0;33mW (20054) wifi:Haven't to connect to a suitable AP now![0m
+[0;33mW (20074) wifi:Haven't to connect to a suitable AP now![0m
+[0;33mW (20074) THERMAL_SENSOR: Wi-Fi desconectado[0m
+[0;33mW (21054) wifi:Haven't to connect to a suitable AP now![0m
+[0;33mW (22054) wifi:Haven't to connect to a suitable AP now![0m
+[0;33mW (23054) wifi:Haven't to connect to a suitable AP now![0m
+[0;33mW (24054) wifi:Haven't to connect to a suitable AP now![0m
+[0;33mW (25054) wifi:Haven't to connect to a suitable AP now![0m
+[0;33mW (25074) wifi:Haven't to connect to a suitable AP now![0m
+[0;33mW (25074) THERMAL_SENSOR: Wi-Fi desconectado[0m
+[0;33mW (26054) wifi:Haven't to connect to a suitable AP now![0m
+[0;33mW (27054) wifi:Haven't to connect to a suitable AP now![0m
+[0;33mW (28054) wifi:Haven't to connect to a suitable AP now![0m
+[0;33mW (29054) wifi:Haven't to connect to a suitable AP now![0m
+[0;31mE (30044) esp-tls: couldn't get hostname for :mqtt.greense.com.br: getaddrinfo() returns 202, addrinfo=0x0[0m
+[0;31mE (30044) esp-tls: Failed to open new connection[0m
+[0;31mE (30044) transport_base: Failed to open a new connection[0m
+[0;31mE (30054) transport_ws: Error connecting to host mqtt.greense.com.br:443[0m
+[0;31mE (30054) mqtt_client: Error transport connect[0m
+[0;31mE (30064) MQTT: Erro no MQTT[0m
+[0;33mW (30064) MQTT: Desconectado do MQTT[0m
+[0;33mW (30054) wifi:Haven't to connect to a suitable AP now![0m
+[0;33mW (30074) wifi:Haven't to connect to a suitable AP now![0m
+[0;33mW (30084) THERMAL_SENSOR: Wi-Fi desconectado[0m
+[0;33mW (31074) wifi:Haven't to connect to a suitable AP now![0m
+[0;33mW (32074) wifi:Haven't to connect to a suitable AP now![0m
+[0;33mW (33074) wifi:Haven't to connect to a suitable AP now![0m
+[0;33mW (34074) wifi:Haven't to connect to a suitable AP now![0m
+[0;33mW (35074) wifi:Haven't to connect to a suitable AP now![0m
+[0;33mW (35084) wifi:Haven't to connect to a suitable AP now![0m
+[0;33mW (35084) THERMAL_SENSOR: Wi-Fi desconectado[0m
+[0;33mW (36074) wifi:Haven't to connect to a suitable AP now![0m
+[0;33mW (37074) wifi:Haven't to connect to a suitable AP now![0m
+[0;33mW (38074) wifi:Haven't to connect to a suitable AP now![0m
+[0;33mW (39074) wifi:Haven't to connect to a suitable AP now![0m
+[0;33mW (40074) wifi:Haven't to connect to a suitable AP now![0m
+[0;31mE (40074) esp-tls: couldn't get hostname for :mqtt.greense.com.br: getaddrinfo() returns 202, addrinfo=0x0[0m
+[0;31mE (40074) esp-tls: Failed to open new connection[0m
+[0;31mE (40084) transport_base: Failed to open a new connection[0m
+[0;31mE (40084) transport_ws: Error connecting to host mqtt.greense.com.br:443[0m
+[0;31mE (40094) mqtt_client: Error transport connect[0m
+[0;31mE (40094) MQTT: Erro no MQTT[0m
+[0;33mW (40104) MQTT: Desconectado do MQTT[0m
+[0;33mW (40104) wifi:Haven't to connect to a suitable AP now![0m
+[0;33mW (40114) THERMAL_SENSOR: Wi-Fi desconectado[0m
+[0;33mW (41084) wifi:Haven't to connect to a suitable AP now![0m
+[0;33mW (42084) wifi:Haven't to connect to a suitable AP now![0m
+[0;33mW (43084) wifi:Haven't to connect to a suitable AP now![0m
+[0;33mW (44084) wifi:Haven't to connect to a suitable AP now![0m
+[0;33mW (45084) wifi:Haven't to connect to a suitable AP now![0m
+[0;33mW (45114) wifi:Haven't to connect to a suitable AP now![0m
+[0;33mW (45114) THERMAL_SENSOR: Wi-Fi desconectado[0m
+[0;33mW (46084) wifi:Haven't to connect to a suitable AP now![0m
+[0;33mW (47084) wifi:Haven't to connect to a suitable AP now![0m
+[0;33mW (48084) wifi:Haven't to connect to a suitable AP now![0m
+[0;33mW (49084) wifi:Haven't to connect to a suitable AP now![0m
+[0;33mW (50084) wifi:Haven't to connect to a suitable AP now![0m
+[0;33mW (50114) wifi:Haven't to connect to a suitable AP now![0m
+[0;33mW (50114) THERMAL_SENSOR: Wi-Fi desconectado[0m
+[0;33mW (51084) wifi:Haven't to connect to a suitable AP now![0m
+[0;33mW (52084) wifi:Haven't to connect to a suitable AP now![0m
+[0;33mW (53084) wifi:Haven't to connect to a suitable AP now![0m
+[0;33mW (54084) wifi:Haven't to connect to a suitable AP now![0m
+[0;33mW (55084) wifi:Haven't to connect to a suitable AP now![0m
+[0;31mE (55104) esp-tls: couldn't get hostname for :mqtt.greense.com.br: getaddrinfo() returns 202, addrinfo=0x0[0m
+[0;31mE (55104) esp-tls: Failed to open new connection[0m
+[0;31mE (55104) transport_base: Failed to open a new connection[0m
+[0;31mE (55114) transport_ws: Error connecting to host mqtt.greense.com.br:443[0m
+[0;31mE (55114) mqtt_client: Error transport connect[0m
+[0;31mE (55124) MQTT: Erro no MQTT[0m
+[0;33mW (55124) MQTT: Desconectado do MQTT[0m
+[0;33mW (55134) wifi:Haven't to connect to a suitable AP now![0m
+[0;33mW (55134) THERMAL_SENSOR: Wi-Fi desconectado[0m
+[0;33mW (56084) wifi:Haven't to connect to a suitable AP now![0m
+[0;33mW (57084) wifi:Haven't to connect to a suitable AP now![0m
+[0;33mW (58084) wifi:Haven't to connect to a suitable AP now![0m
+[0;33mW (59084) wifi:Haven't to connect to a suitable AP now![0m
+[0;32mI (265) boot: Loaded app from partition at offset 0x10000I (451) wifi:Init dynamic tx buffer num: 32
+[0;32mI (451) wifi:Init static tx FG buffer num: 2[0m
+[0;32mI (461) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (461) wifi:Init static rx buffer num: 10[0m
+[0;32mI (461) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (471) wifi_init: rx ba win: 6[0m
+[0;32mI (471) wifi_init: tcpip mbox: 32[0m
+[0;32mI (481) wifi_init: udp mbox: 6[0m
+[0;32mI (481) wifi_init: tcp mbox: 6[0m
+[0;32mI (481) wifi_init: tcp tx win: 5760[0m
+[0;32mI (491) wifi_init: tcp rx win: 5760[0m
+[0;32mI (491) wifi_init: tcp mss: 1440[0m
+[0;32mI (491) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (501) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (511) phy_init: phy_version 1150,7c3c08f,Jan 24 2024,17:32:21[0m
+[0;32mI (541) wifi:mode : sta (10:00:3b:00:56:44)[0m
+[0;32mI (541) wifi:enable tsf[0m
+[0;32mI (551) wifi:Set ps type: 0, coexist: 0[0m
+
+[0;32mI (551) WiFi: Wi-Fi inicializado. Conectando...[0m
+[0;32mI (621) wifi:new:<13,0>, old:<1,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (631) wifi:state: init -> auth (b0)[0m
+[0;32mI (631) wifi:state: auth -> assoc (0)[0m
+[0;32mI (641) wifi:state: assoc -> run (10)[0m
+[0;32mI (701) wifi:connected with greense, aid = 1, channel 13, BW20, bssid = e4:5f:01:6f:f2:29[0m
+[0;32mI (701) wifi:security: WPA-PSK, phy: bgn, rssi: -32[0m
+[0;32mI (701) wifi:pm start, type: 0[0m
+
+[0;32mI (701) wifi:dp: 1, bi: 102400, li: 3, scale listen interval from 307200 us to 307200 us[0m
+[0;32mI (711) wifi:set rx beacon pti, rx_bcn_pti: 0, bcn_timeout: 25000, mt_pti: 0, mt_time: 10000[0m
+[0;32mI (721) wifi:dp: 2, bi: 102400, li: 4, scale listen interval from 307200 us to 409600 us[0m
+[0;32mI (721) wifi:AP's beacon interval = 102400 us, DTIM period = 2[0m
+[0;32mI (3741) wifi:<ba-add>idx:0 (ifx:0, e4:5f:01:6f:f2:29), tid:0, ssn:3, winSize:64[0m
+[0;32mI (3741) wifi:<ba-add>idx:1 (ifx:0, e4:5f:01:6f:f2:29), tid:6, ssn:0, winSize:64[0m
+[0;32mI (3781) wifi:<ba-del>idx:0, tid:0[0m
+[0;32mI (3781) wifi:<ba-add>idx:0 (ifx:0, e4:5f:01:6f:f2:29), tid:0, ssn:3, winSize:64[0m
+[0;32mI (4721) esp_netif_handlers: sta ip: 10.42.0.92, mask: 255.255.255.0, gw: 10.42.0.1[0m
+[0;32mI (4721) WiFi: Conectado! IP: 10.42.0.92[0m
+[0;32mI (4721) WiFi: Conectado ao Wi-Fi com sucesso[0m
+[0;32mI (4731) THERMAL_SENSOR: Leitura do sensor térmico...[0m
+[0;32mI (4731) THERMAL_SENSOR: Sistema de câmera térmica iniciado[0m
+[0;33mW (4741) THERMAL_SENSOR: MQTT desconectado[0m
+[0;32mI (6781) MQTT: Conectado ao broker MQTT![0m
+[0;32mI (7791) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (7791) THERMAL_SENSOR: Enviando dados térmicos via MQTT...[0m
+[0;31mE (7811) THERMAL_SENSOR: Falha ao construir payload JSON[0m
+[0;32mI (7871) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (8031) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (8301) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (8551) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (8801) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (9061) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (9311) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (9571) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (9821) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (10071) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (10331) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (10581) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (10841) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (11091) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (11341) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (11601) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (11851) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (12111) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (12361) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (12621) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (12871) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (13121) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (13381) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (13631) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (13891) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (14141) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (14391) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (14651) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (14901) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (15161) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (15411) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (15671) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (15921) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (16171) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (16431) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (16681) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (16941) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (17191) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (17441) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (17701) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (17951) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (18211) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (18461) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (18721) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (18971) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (19221) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (19481) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (19731) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (19991) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (20241) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (20491) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (20751) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (21001) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (21261) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (21511) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (21771) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (22021) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (22271) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (22531) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (22781) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (23041) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (23291) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (23541) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (23801) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (24051) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (24311) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (24561) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (24821) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (25071) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (25321) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (25581) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (25831) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (26091) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (26341) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (26591) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (26851) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (27101) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (27361) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (27611) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (27871) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (28121) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (28371) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (28631) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (28881) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (29141) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (29391) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (29651) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (29901) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (30151) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (30411) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (30661) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (30921) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (31171) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (31421) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (31681) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (31931) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (32191) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (32441) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (32701) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (32951) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (33201) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (33461) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (33711) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (33971) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (34221) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (34471) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (34731) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (34981) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (35241) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (35491) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (35751) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (36001) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (36251) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (36511) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (36761) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (37021) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (37271) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (37531) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (37781) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (38031) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (38291) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (38541) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (38801) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (39051) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (39311) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (39561) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (39811) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (40071) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (40321) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (40581) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (40831) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (41081) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (41341) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (41591) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (41851) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (42101) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (42361) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (42611) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (42861) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (43121) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (43371) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (43631) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (43881) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (44141) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (44391) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (44641) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (44901) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (45151) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (45411) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (45661) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (45921) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (46171) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (46421) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (46681) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (46931) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (47191) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (47441) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (47691) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (47951) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (48201) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (48461) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (48711) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (48971) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (49221) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (49471) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (49731) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (49981) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (50241) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (50491) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (50751) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (51001) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (51251) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (51511) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (51761) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (52021) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (52271) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (52531) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (52781) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (53031) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (53291) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (53541) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (53801) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (54051) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (54311) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (54561) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (54811) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (55071) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (55321) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (55581) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (55831) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (56091) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (56341) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (56591) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (56851) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (57101) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (57361) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (57611) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (57871) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (58121) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (58371) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (58631) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (58881) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (59141) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (59391) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (59651) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (59901) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (60151) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (60411) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (60661) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (60921) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (61171) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (61431) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (61681) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (61931) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (62191) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (62441) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (62701) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (62951) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (63211) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (63461) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (63711) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (63971) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (64221) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (64481) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (64731) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (64991) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (65241) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (65491) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (65751) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (66001) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (66261) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (66511) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (66771) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (67021) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (67271) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (67531) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (67781) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (68041) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (68041) THERMAL_SENSOR: Enviando dados térmicos via MQTT...[0m
+[0;31mE (68061) THERMAL_SENSOR: Falha ao construir payload JSON[0m
+[0;32mI (68291) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (68551) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (68801) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (69051) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (69311) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (69561) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (69821) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (70071) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (70331) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (70581) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (70831) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (71091) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (71341) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (71601) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (71851) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (72111) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (72361) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (72611) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (72871) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (73121) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (73381) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (73631) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (73891) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (74141) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (74391) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (74651) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (74901) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (75161) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (75411) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (75671) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (75921) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (76171) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (76431) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (76681) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (76941) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (77191) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (77451) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (77701) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (77961) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (78211) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (78461) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (78721) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (78971) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (79231) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (79481) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (79741) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (79991) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (80241) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (80501) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (80751) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (81011) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (81261) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (81521) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (81771) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (82021) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (82281) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (82531) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (82791) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (83041) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (83301) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (83551) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (83801) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (84061) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (84311) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (84571) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (84821) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (85081) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (85331) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (85591) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (85841) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (86091) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (86351) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (86601) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (86861) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (87111) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (87371) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (87621) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (87871) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (88131) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (88381) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (88641) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (88891) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (89151) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (89401) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (89651) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (89911) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (90161) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (90421) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (90671) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (90931) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (91181) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (91441) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (91691) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (91941) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (92201) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (92451) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (92711) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (92961) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (93221) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (93471) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (93721) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (93981) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (94231) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (94491) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (94741) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (95001) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (95251) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (95511) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (95761) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (96011) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (96271) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (96521) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (96781) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (97031) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (97291) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (97541) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (97791) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (98051) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (98301) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (98561) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (98811) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (99071) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (99321) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (99581) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (99831) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (100081) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (100341) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (100591) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (100851) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (101101) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (101361) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (101611) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (101861) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (102121) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (102371) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (102631) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (102881) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (103141) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (103391) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (103651) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (103901) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (104151) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (104411) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (104661) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (104921) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (105171) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (105431) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (105681) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (105931) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (106191) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (106441) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (106701) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (106951) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (107211) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (107461) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (107721) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (107971) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (108221) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (108481) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (108731) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (108991) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (109241) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (109501) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (109751) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (110011) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (110261) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (110511) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (110771) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (111021) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (111281) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (111531) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (111791) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (112041) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (112291) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (112551) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (112801) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (113061) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (113311) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (113571) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (113821) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (114081) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (114331) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (114581) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (114841) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (115091) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (115351) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (115601) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (115861) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (116111) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (116371) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (116621) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (116871) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (117131) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (117381) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (117641) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (117891) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (118151) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (118401) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (118661) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (118911) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (119161) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (119421) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (119671) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (119931) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (120181) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (120441) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (120691) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (120951) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (121201) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (121451) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (121711) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (121961) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (122221) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (122471) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (122731) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (122981) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (123241) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (123491) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (123741) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (124001) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (124251) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (124511) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (124761) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (125021) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (125271) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (125521) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (125781) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (126031) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (126291) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (126541) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (126801) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (127051) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (127311) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (127561) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (127811) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (128071) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (128071) THERMAL_SENSOR: Enviando dados térmicos via MQTT...[0m
+[0;31mE (128091) THERMAL_SENSOR: Falha ao construir payload JSON[0m
+[0;32mI (128321) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (128581) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (128831) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (129091) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (129341) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (129601) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (129851) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (130101) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (130361) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (130611) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (130871) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (131121) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (131381) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (131631) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (131891) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (132141) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (132391) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (132651) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (132901) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (133161) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (133411) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (133671) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (133921) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (134181) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (134431) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (134681) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (134941) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (135191) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (135451) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (135701) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (135961) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (136211) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (136471) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (136721) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (136971) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (137231) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (137481) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (137741) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (137991) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (138251) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (138501) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (138761) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (139011) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (139261) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (139521) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (139771) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (140031) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (140281) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (140541) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (140791) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (141051) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (141301) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (141551) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (141811) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (142061) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (142321) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (142571) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (142831) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (143081) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (143341) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (143591) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (143841) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (144101) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (144351) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (144611) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (144861) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (145121) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (145371) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (145631) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (145881) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (146131) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (146391) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (146641) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (146901) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (147151) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (147411) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (147661) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (147921) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (148171) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (148421) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (148681) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (148931) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (149191) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (149441) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (149701) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (149951) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (150211) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (150461) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (150711) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (150971) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (151221) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (151481) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (151731) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (151991) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (152241) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (152501) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (152751) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (153011) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (153261) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (153511) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (153771) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (154021) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (154281) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (154531) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (154791) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (155041) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (155301) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (155551) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (155801) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (156061) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (156311) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (156571) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (156821) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (157081) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (157331) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (157591) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (157841) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (158091) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (158351) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (158601) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (158861) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (159111) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (159371) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (159621) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (159881) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (160131) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (160391) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (160641) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (160891) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (161151) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (161401) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (161661) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (161911) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (162171) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (162421) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (162681) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (162931) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (163181) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (163441) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (163691) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (163951) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (164201) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (164461) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (164711) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (164971) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (165221) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (165471) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (165731) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (165981) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (166241) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (166491) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (166751) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (167001) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (167261) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (167511) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (167771) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (168021) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (168271) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (168531) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (168781) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (169041) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (169291) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (169551) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (169801) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (170061) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (170311) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (170561) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (170821) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (171071) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (171331) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (171581) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (171841) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (172091) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (172351) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (172601) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (172861) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (173111) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (173361) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (173621) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (173871) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (174131) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (174381) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (174641) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (174891) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (175151) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (175401) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (175651) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (175911) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (176161) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (176421) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (176671) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (176931) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (177181) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (177441) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (177691) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (177951) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (178201) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (178451) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (178711) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (178961) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (179221) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (179471) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (179731) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (179981) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (180241) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (180491) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (180741) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (181001) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (181251) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (181511) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (181761) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (182021) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (182271) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (182531) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (182781) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (183041) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (183291) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (183541) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (183801) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (184051) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (184311) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (184561) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (184821) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (185071) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (185331) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (185581) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (185841) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (186091) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (186341) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (186601) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (186851) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (187111) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (187361) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (187621) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (187871) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (188131) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (188131) THERMAL_SENSOR: Enviando dados térmicos via MQTT...[0m
+[0;31mE (188151) THERMAL_SENSOR: Falha ao construir payload JSON[0m
+[0;32mI (188381) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (188631) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (188891) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (189141) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (189401) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (189651) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (189911) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (190161) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (190421) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (190671) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (190931) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (191181) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (191431) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (191691) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (191941) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (192201) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (192451) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (192711) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (192961) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (193221) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (193471) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (193731) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (193981) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (194231) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (194491) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (194741) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (195001) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (195251) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (195511) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (195761) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (196021) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (196271) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (196531) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (196781) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (196911) THERMAL_SENSOR: Frame completo (606 bytes)[0m
+[0;32mI (197291) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (197541) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (197801) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (198051) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (198311) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (198561) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (198821) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (199071) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (199321) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (199581) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (199831) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (200091) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (200341) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (200601) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (200851) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (201111) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (201361) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (201621) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (201871) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (202121) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (202381) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (202631) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (202891) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (203141) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (203401) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (203651) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (203911) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (204161) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (204421) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (204671) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (204921) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (205181) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (205431) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (205691) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (205941) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (206201) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (206451) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (206711) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (206961) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (207221) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (207471) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (207721) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (207981) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (208231) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (208491) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (208741) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (209001) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (209251) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (209511) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (209761) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (210011) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (210271) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (210521) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (210781) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (211031) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (211291) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (211541) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (211801) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (212051) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (212311) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (212561) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (212811) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (213071) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (213321) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (213581) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (213831) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (214091) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (214341) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (214601) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (214851) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (215111) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (215361) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (215611) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (215871) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (216121) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (216381) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (216631) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (216891) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (217141) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (217401) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (217651) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (217911) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (218161) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (218411) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (218671) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (218921) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (219181) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (219431) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (219691) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (219941) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (220201) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (220451) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (220711) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (220961) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (221211) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (221471) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (221721) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (221981) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (222231) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (222491) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (222741) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (223001) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (223251) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (223511) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (223761) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (224011) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (224271) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (224521) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (224781) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (225031) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (225291) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (225541) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (225801) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (226051) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (226311) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (226561) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (226811) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (227071) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (227321) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (227581) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (227831) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (228091) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (228341) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (228601) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (228851) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (229111) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (229361) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (229611) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (229871) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (230121) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (230381) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (230631) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (230891) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (231141) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (231401) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (231651) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (231911) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (232161) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (232411) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (232671) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (232921) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (233181) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (233431) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (233691) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (233941) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (234201) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (234451) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (234711) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (234961) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (235221) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (235471) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (235721) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (235981) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (236231) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (236491) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (236741) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (237001) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (237251) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (237511) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (237761) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (238021) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (238271) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (238521) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (238781) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (239031) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (239291) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (239541) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (239801) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (240051) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (240311) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (240561) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (240821) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (241071) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (241321) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (241581) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (241831) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (242091) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (242341) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (242601) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (242851) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (243111) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (243361) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (243621) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (243871) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (244121) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (244381) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (244631) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (244891) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (245141) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (245401) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (245651) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (245911) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (246161) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (246421) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (246671) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (246931) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (247181) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (247431) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (247691) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (247941) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (248201) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (248201) THERMAL_SENSOR: Enviando dados térmicos via MQTT...[0m
+[0;31mE (248221) THERMAL_SENSOR: Falha ao construir payload JSON[0m
+[0;32mI (248451) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (248711) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (248961) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (249221) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (249471) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (249731) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (249981) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (250231) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (250491) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (250741) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (251001) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (251251) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (251511) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (251761) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (252021) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (252271) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (252531) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (252781) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (253041) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (253291) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (253541) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (253801) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (254051) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (254311) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (254561) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (254821) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (255071) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (255331) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (255581) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (255841) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (256091) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (256351) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (256601) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (256851) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (257111) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (257361) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (257621) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (257871) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (258131) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (258381) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (258641) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (258891) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (259151) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (259401) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (259651) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (259911) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (260161) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (260421) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (260671) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (260931) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (261181) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (261441) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (261691) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (261951) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (262201) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (262461) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (262711) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (262841) THERMAL_SENSOR: Frame completo (606 bytes)[0m
+[0;32mI (263221) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (263471) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (263731) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (263981) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (264241) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (264491) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (264751) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (265001) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (265261) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (265511) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (265771) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (266021) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (266271) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (266531) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (266781) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (267041) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (267291) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (267551) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (267801) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (268061) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (268311) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (268571) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (268821) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (269071) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (269331) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (269581) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (269841) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (270091) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (270351) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (270601) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (270861) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (271111) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (271371) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (271621) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (271881) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (272131) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (272381) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (272641) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (272891) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (273151) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (273401) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (273661) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (273911) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (274171) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (274421) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (274681) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (274931) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (275191) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (275441) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (275691) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (275951) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (276201) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (276461) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (276711) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (276971) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (277221) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (277481) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (277731) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (277991) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (278241) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (278501) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (278751) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (279001) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (279261) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (279511) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (279771) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (280021) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (280281) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (280531) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (280791) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (281041) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (281301) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (281551) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (281801) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (282061) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (282311) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (282571) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (282821) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (283081) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (283331) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (283591) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (283841) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (284101) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (284351) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (284611) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (284861) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (285111) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (285371) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (285621) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (285881) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (286131) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (286391) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (286641) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (286901) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (287151) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (287411) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (287661) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (287921) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (288171) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (288421) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (288681) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (288931) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (289191) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (289441) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (289701) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (289951) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (290211) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (290461) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (290721) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (290971) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (291231) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (291481) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (291731) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (291991) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (292241) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (292501) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (292751) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (293011) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (293261) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (293521) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (293771) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (294031) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (294281) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (294541) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (294791) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (295041) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (295301) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (295551) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (295811) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (296061) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (296321) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (296571) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (296831) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (297081) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (297341) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (297591) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (297851) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (298101) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (298351) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (298611) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (298861) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (299121) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (299371) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (299631) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (299881) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (300141) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (300391) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (300651) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (300901) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (301161) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (301411) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (301661) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (301921) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (302171) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (302431) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (302681) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (302941) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (303191) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (303451) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (303701) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (303961) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (304211) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (304471) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (304721) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (304971) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (305231) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (305481) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (305741) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (305991) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (306251) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (306501) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (306761) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (307011) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (307271) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (307521) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (307781) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (308031) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (308281) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (308281) THERMAL_SENSOR: Enviando dados térmicos via MQTT...[0m
+[0;31mE (308301) THERMAL_SENSOR: Falha ao construir payload JSON[0m
+[0;32mI (308541) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (308791) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (309051) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (309301) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (309561) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (309811) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (310071) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (310321) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (310581) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (310831) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (311091) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (311341) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (311591) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (311851) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (312101) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (312361) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (312611) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (312871) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (313121) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (313381) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (313631) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (313891) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (314141) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (314401) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (314651) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (314911) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (315161) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (315411) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (315671) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (315921) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (316181) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (316431) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (316691) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (316941) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (317201) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (317451) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (317711) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (317841) THERMAL_SENSOR: Frame completo (606 bytes)[0m
+[0;32mI (318221) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (318471) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (318721) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (318981) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (319231) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (319491) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (319741) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (320001) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (320251) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (320511) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (320761) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (321021) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (321271) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (321531) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (321781) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (322031) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (322291) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (322541) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (322801) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (323051) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (323311) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (323561) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (323821) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (324071) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (324331) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (324581) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (324841) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (325091) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (325351) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (325601) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (325851) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (326111) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (326361) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (326621) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (326871) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (327131) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (327381) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (327641) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (327891) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (328151) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (328401) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (328661) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (328911) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (329161) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (329421) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (329671) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (329931) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (330181) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (330441) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (330691) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (330951) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (331201) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (331461) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (331711) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (331971) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (332221) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (332481) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (332731) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (332981) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (333241) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (333491) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (333751) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (334001) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (334261) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (334511) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (334771) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (334901) THERMAL_SENSOR: Frame completo (606 bytes)[0m
+[0;32mI (335281) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (335531) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (335791) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (336041) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (336301) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (336551) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (336801) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (337061) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (337311) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (337571) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (337821) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (338081) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (338331) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (338591) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (338841) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (339101) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (339351) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (339611) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (339861) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (340111) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (340371) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (340621) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (340881) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (341131) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (341391) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (341641) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (341901) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (342151) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (342411) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (342661) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (342921) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (343171) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (343431) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (343681) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (343931) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (344191) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (344441) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (344701) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (344951) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (345211) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (345461) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (345721) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (345971) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (346231) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (346481) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (346741) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (346991) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (347241) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (347501) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (347751) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (348011) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (348261) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (348521) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (348771) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (349031) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (349281) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (349541) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (349791) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (350051) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (350301) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (350561) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (350811) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (351061) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (351321) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (351571) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (351831) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (352081) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (352341) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (352591) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (352851) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (353101) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (353361) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (353611) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (353871) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (354121) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (354381) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (354631) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (354881) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (355141) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (355391) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (355651) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (355901) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (356161) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (356411) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (356671) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (356921) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (357181) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (357431) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (357691) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (357941) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (358191) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (358451) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (358701) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (358961) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (359211) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (359471) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (359721) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (359981) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (360111) THERMAL_SENSOR: Frame completo (606 bytes)[0m
+[0;32mI (360491) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (360741) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (361001) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (361251) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (361511) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (361761) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (362011) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (362271) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (362521) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (362781) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (363031) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (363291) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (363541) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (363801) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (364051) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (364311) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (364561) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (364821) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (365071) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (365331) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (365581) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (365831) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (366091) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (366341) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (366601) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (366851) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (367111) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (367361) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (367621) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (367871) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (368131) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (368381) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (368381) THERMAL_SENSOR: Enviando dados térmicos via MQTT...[0m
+[0;31mE (368401) THERMAL_SENSOR: Falha ao construir payload JSON[0m
+[0;32mI (368641) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (368891) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (369141) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (369401) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (369651) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (369911) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (370161) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (370421) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (370671) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (370931) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (371181) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (371441) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (371691) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (371951) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (372201) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (372461) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (372711) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (372961) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (373221) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (373471) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (373731) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (373981) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (374241) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (374491) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (374751) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (375001) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (375261) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (375511) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (375771) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (376021) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (376271) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (376531) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (376781) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (377041) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (377291) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (377551) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (377801) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (378061) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (378311) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (378571) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (378821) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (379081) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (379331) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (379591) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (379841) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (380091) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (380351) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (380601) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (380861) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (381111) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (381371) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (381621) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (381881) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (382131) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (382391) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (382641) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (382901) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (383151) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (383411) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (383661) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (383911) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (384171) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (384421) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (384681) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (384931) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (385191) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (385441) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (385701) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (385951) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (386211) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (386461) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (386721) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (386971) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (387221) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (387481) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (387731) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (387991) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (388241) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (388501) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (388751) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (389011) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (389261) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (389521) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (389771) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
+[0;32mI (390031) THERMAL_SENSOR: Frame completo (1542 bytes)[0m
