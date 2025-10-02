@@ -11,3 +11,6 @@ server/N01_RASP4_LAB/fotos_recebidas/
 client/N04_Estufa_Camera/main/certs/greense_cert.pem
 client/N04_Estufa_Camera/build/
 client/N04_Estufa_Camera/main/secrets.h
+client/N05_Estufa_Termica/main/certs/greense_cert.pem
+client/N05_Estufa_Termica/build/
+client/N05_Estufa_Termica/main/secrets.h
