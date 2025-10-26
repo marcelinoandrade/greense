@@ -1,0 +1,39 @@
+2025-10-25 20:25:47,646 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.200:5000
+2025-10-25 20:25:47,652 - INFO - [33mPress CTRL+C to quit[0m
+2025-10-25 20:26:13,370 - INFO - 127.0.0.1 - - [25/Oct/2025 20:26:13] "[33mPOST /upload HTTP/1.1[0m" 404 -
+2025-10-25 20:26:40,955 - INFO - 127.0.0.1 - - [25/Oct/2025 20:26:40] "[33mPOST /upload HTTP/1.1[0m" 404 -
+2025-10-25 20:27:18,680 - INFO - 127.0.0.1 - - [25/Oct/2025 20:27:18] "[33mPOST /upload HTTP/1.1[0m" 404 -
+2025-10-25 20:27:45,654 - INFO - 127.0.0.1 - - [25/Oct/2025 20:27:45] "[33mPOST /upload HTTP/1.1[0m" 404 -
+2025-10-25 20:28:23,579 - INFO - 127.0.0.1 - - [25/Oct/2025 20:28:23] "[33mPOST /upload HTTP/1.1[0m" 404 -
+2025-10-25 20:28:50,558 - INFO - 127.0.0.1 - - [25/Oct/2025 20:28:50] "[33mPOST /upload HTTP/1.1[0m" 404 -
+2025-10-25 20:28:55,663 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.200:5000
+2025-10-25 20:28:55,669 - INFO - [33mPress CTRL+C to quit[0m
+2025-10-25 20:29:28,649 - INFO - 127.0.0.1 - - [25/Oct/2025 20:29:28] "[33mPOST /upload HTTP/1.1[0m" 404 -
+2025-10-25 20:29:32,285 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.200:5000
+2025-10-25 20:29:32,287 - INFO - [33mPress CTRL+C to quit[0m
+2025-10-25 20:29:55,403 - INFO - 127.0.0.1 - - [25/Oct/2025 20:29:55] "[33mPOST /upload HTTP/1.1[0m" 404 -
+2025-10-25 20:30:33,940 - INFO - 127.0.0.1 - - [25/Oct/2025 20:30:33] "[33mPOST /upload HTTP/1.1[0m" 404 -
+2025-10-25 20:31:01,115 - INFO - 127.0.0.1 - - [25/Oct/2025 20:31:01] "[33mPOST /upload HTTP/1.1[0m" 404 -
+2025-10-25 20:31:40,013 - INFO - 127.0.0.1 - - [25/Oct/2025 20:31:40] "[33mPOST /upload HTTP/1.1[0m" 404 -
+2025-10-25 20:32:06,043 - INFO - 127.0.0.1 - - [25/Oct/2025 20:32:06] "[33mPOST /upload HTTP/1.1[0m" 404 -
+2025-10-25 20:32:45,272 - INFO - 127.0.0.1 - - [25/Oct/2025 20:32:45] "[33mPOST /upload HTTP/1.1[0m" 404 -
+2025-10-25 20:33:10,938 - INFO - 127.0.0.1 - - [25/Oct/2025 20:33:10] "[33mPOST /upload HTTP/1.1[0m" 404 -
+2025-10-25 20:33:49,948 - INFO - 127.0.0.1 - - [25/Oct/2025 20:33:49] "[33mPOST /upload HTTP/1.1[0m" 404 -
+2025-10-25 20:34:15,620 - INFO - 127.0.0.1 - - [25/Oct/2025 20:34:15] "[33mPOST /upload HTTP/1.1[0m" 404 -
+2025-10-25 20:34:54,730 - INFO - 127.0.0.1 - - [25/Oct/2025 20:34:54] "[33mPOST /upload HTTP/1.1[0m" 404 -
+2025-10-25 20:35:20,470 - INFO - 127.0.0.1 - - [25/Oct/2025 20:35:20] "[33mPOST /upload HTTP/1.1[0m" 404 -
+2025-10-25 20:35:59,742 - INFO - 127.0.0.1 - - [25/Oct/2025 20:35:59] "[33mPOST /upload HTTP/1.1[0m" 404 -
+2025-10-25 20:36:25,032 - INFO - 127.0.0.1 - - [25/Oct/2025 20:36:25] "[33mPOST /upload HTTP/1.1[0m" 404 -
+2025-10-25 20:37:04,427 - INFO - 127.0.0.1 - - [25/Oct/2025 20:37:04] "[33mPOST /upload HTTP/1.1[0m" 404 -
+2025-10-25 20:37:30,007 - INFO - 127.0.0.1 - - [25/Oct/2025 20:37:30] "[33mPOST /upload HTTP/1.1[0m" 404 -
+2025-10-25 20:38:09,118 - INFO - 127.0.0.1 - - [25/Oct/2025 20:38:09] "[33mPOST /upload HTTP/1.1[0m" 404 -
+2025-10-25 20:38:34,464 - INFO - 127.0.0.1 - - [25/Oct/2025 20:38:34] "[33mPOST /upload HTTP/1.1[0m" 404 -

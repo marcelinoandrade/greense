@@ -1,6 +1,9 @@
 {
     "idf.adapterTargetName": "esp32c3",
     "idf.port": "/dev/ttyACM0",
-    "idf.flashType": "UART"
+    "idf.flashType": "UART",
+    "files.associations": {
+      "config.h": "c"
+    }
   }
   
