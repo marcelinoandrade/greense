@@ -1,0 +1,36 @@
+[1/11] Building C object esp-idf/esp_app_format/CMakeFiles/__idf_esp_app_format.dir/esp_app_desc.c.obj
+[2/11] Linking C static library esp-idf/esp_app_format/libesp_app_format.a
+[3/11] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/main.c.obj
+[4/11] Linking C static library esp-idf/main/libmain.a
+[5/11] Performing build step for 'bootloader'
+[0/1] Re-running CMake...
+-- Building ESP-IDF components for target esp32
+-- Project sdkconfig file /home/greense/projetoGreense/client/N04_Estufa_Camera/sdkconfig
+-- Compiler supported targets: xtensa-esp-elf
+-- Adding linker script /home/greense/esp/esp-idf/components/soc/esp32/ld/esp32.peripherals.ld
+-- Bootloader project name: "bootloader" version: 1
+-- Adding linker script /home/greense/esp/esp-idf/components/esp_rom/esp32/ld/esp32.rom.ld
+-- Adding linker script /home/greense/esp/esp-idf/components/esp_rom/esp32/ld/esp32.rom.api.ld
+-- Adding linker script /home/greense/esp/esp-idf/components/esp_rom/esp32/ld/esp32.rom.libgcc.ld
+-- Adding linker script /home/greense/esp/esp-idf/components/esp_rom/esp32/ld/esp32.rom.newlib-funcs.ld
+-- Adding linker script /home/greense/esp/esp-idf/components/bootloader/subproject/main/ld/esp32/bootloader.ld
+-- Adding linker script /home/greense/esp/esp-idf/components/bootloader/subproject/main/ld/esp32/bootloader.rom.ld
+-- Components: bootloader bootloader_support efuse esp_app_format esp_bootloader_format esp_common esp_hw_support esp_rom esp_system esptool_py freertos hal log main micro-ecc newlib partition_table soc spi_flash xtensa
+-- Component paths: /home/greense/esp/esp-idf/components/bootloader /home/greense/esp/esp-idf/components/bootloader_support /home/greense/esp/esp-idf/components/efuse /home/greense/esp/esp-idf/components/esp_app_format /home/greense/esp/esp-idf/components/esp_bootloader_format /home/greense/esp/esp-idf/components/esp_common /home/greense/esp/esp-idf/components/esp_hw_support /home/greense/esp/esp-idf/components/esp_rom /home/greense/esp/esp-idf/components/esp_system /home/greense/esp/esp-idf/components/esptool_py /home/greense/esp/esp-idf/components/freertos /home/greense/esp/esp-idf/components/hal /home/greense/esp/esp-idf/components/log /home/greense/esp/esp-idf/components/bootloader/subproject/main /home/greense/esp/esp-idf/components/bootloader/subproject/components/micro-ecc /home/greense/esp/esp-idf/components/newlib /home/greense/esp/esp-idf/components/partition_table /home/greense/esp/esp-idf/components/soc /home/greense/esp/esp-idf/components/spi_flash /home/greense/esp/esp-idf/components/xtensa
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/greense/projetoGreense/client/N04_Estufa_Camera/build/bootloader
+[1/1] cd /home/greense/projetoGreense/client/N04_Estufa_Camera/build/bootloader/esp-idf/esptool_py && /home/greense/.espressif/python_env/idf5.2_py3.11_env/bin/python /home/greense/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x1000 /home/greense/projetoGreense/client/N04_Estufa_Camera/build/bootloader/bootloader.bin
+Bootloader binary size 0x64d0 bytes. 0xb30 bytes (10%) free.
+[6/11] No install step for 'bootloader'
+[7/11] Completed 'bootloader'
+[8/11] Generating ld/sections.ld
+[9/11] Linking CXX executable N04_Estufa_Camera.elf
+[10/11] Generating binary image from built executable
+esptool.py v4.8.1
+Creating esp32 image...
+Merged 2 ELF sections
+Successfully created esp32 image.
+Generated /home/greense/projetoGreense/client/N04_Estufa_Camera/build/N04_Estufa_Camera.bin
+[11/11] cd /home/greense/projetoGreense/client/N04_Estufa_Camera/build/esp-idf/esptool_py && /home/greense/.espressif/python_env/idf5.2_py3.11_env/bin/python /home/greense/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 partition --type app /home/greense/projetoGreense/client/N04_Estufa_Camera/build/partition_table/partition-table.bin /home/greense/projetoGreense/client/N04_Estufa_Camera/build/N04_Estufa_Camera.bin
+N04_Estufa_Camera.bin binary size 0x10c960 bytes. Smallest app partition is 0x200000 bytes. 0xf36a0 bytes (48%) free.

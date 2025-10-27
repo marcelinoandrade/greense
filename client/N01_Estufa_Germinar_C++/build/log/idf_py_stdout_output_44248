@@ -1,0 +1,76 @@
+[1/5] cd /home/greense/projetoGreense/client/N01_Estufa_Germinar/build/esp-idf/esptool_py && /home/greense/.espressif/python_env/idf5.2_py3.11_env/bin/python /home/greense/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 partition --type app /home/greense/projetoGreense/client/N01_Estufa_Germinar/build/partition_table/partition-table.bin /home/greense/projetoGreense/client/N01_Estufa_Germinar/build/N01_Estufa_Germinar.bin
+N01_Estufa_Germinar.bin binary size 0xe7420 bytes. Smallest app partition is 0x100000 bytes. 0x18be0 bytes (10%) free.
+[2/5] Performing build step for 'bootloader'
+[1/1] cd /home/greense/projetoGreense/client/N01_Estufa_Germinar/build/bootloader/esp-idf/esptool_py && /home/greense/.espressif/python_env/idf5.2_py3.11_env/bin/python /home/greense/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x1000 /home/greense/projetoGreense/client/N01_Estufa_Germinar/build/bootloader/bootloader.bin
+Bootloader binary size 0x6860 bytes. 0x7a0 bytes (7%) free.
+[3/5] No install step for 'bootloader'
+[4/5] Completed 'bootloader'
+[4/5] cd /home/greense/esp/esp-idf/components/esptool_py && /usr/bin/cmake -D IDF_PATH=/home/greense/esp/esp-idf -D "SERIAL_TOOL=/home/greense/.espressif/python_env/idf5.2_py3.11_env/bin/python;;/home/greense/esp/esp-idf/components/esptool_py/esptool/esptool.py;--chip;esp32" -D "SERIAL_TOOL_ARGS=--before=default_reset;--after=hard_reset;write_flash;@flash_args" -D WORKING_DIRECTORY=/home/greense/projetoGreense/client/N01_Estufa_Germinar/build -P /home/greense/esp/esp-idf/components/esptool_py/run_serial_tool.cmake
+esptool.py --chip esp32 -p /dev/ttyUSB0 -b 460800 --before=default_reset --after=hard_reset write_flash --flash_mode dio --flash_freq 40m --flash_size 2MB 0x1000 bootloader/bootloader.bin 0x10000 N01_Estufa_Germinar.bin 0x8000 partition_table/partition-table.bin
+esptool.py v4.8.1
+Serial port /dev/ttyUSB0
+Connecting....
+Chip is ESP32-D0WD-V3 (revision v3.1)
+Features: WiFi, BT, Dual Core, 240MHz, VRef calibration in efuse, Coding Scheme None
+Crystal is 40MHz
+MAC: 88:13:bf:82:3a:50
+Uploading stub...
+Running stub...
+Stub running...
+Changing baud rate to 460800
+Changed.
+Configuring flash size...
+Flash will be erased from 0x00001000 to 0x00007fff...
+Flash will be erased from 0x00010000 to 0x000f7fff...
+Flash will be erased from 0x00008000 to 0x00008fff...
+SHA digest in image updated
+Compressed 26720 bytes to 16357...
+Writing at 0x00001000... (100 %)
+Wrote 26720 bytes (16357 compressed) at 0x00001000 in 0.9 seconds (effective 246.1 kbit/s)...
+Hash of data verified.
+Compressed 947232 bytes to 589154...
+Writing at 0x00010000... (2 %)
+Writing at 0x0001e5a7... (5 %)
+Writing at 0x000289b8... (8 %)
+Writing at 0x0002d465... (11 %)
+Writing at 0x00033e0d... (13 %)
+Writing at 0x0004097d... (16 %)
+Writing at 0x000463eb... (19 %)
+Writing at 0x0004bd73... (22 %)
+Writing at 0x00051db2... (25 %)
+Writing at 0x00057e07... (27 %)
+Writing at 0x0005d9dc... (30 %)
+Writing at 0x00063813... (33 %)
+Writing at 0x0006a09c... (36 %)
+Writing at 0x0006fcf4... (38 %)
+Writing at 0x000757ef... (41 %)
+Writing at 0x0007ae47... (44 %)
+Writing at 0x00080248... (47 %)
+Writing at 0x000856c7... (50 %)
+Writing at 0x0008a96b... (52 %)
+Writing at 0x00090100... (55 %)
+Writing at 0x0009580d... (58 %)
+Writing at 0x0009b651... (61 %)
+Writing at 0x000a1092... (63 %)
+Writing at 0x000a6a38... (66 %)
+Writing at 0x000ac5ff... (69 %)
+Writing at 0x000b23ad... (72 %)
+Writing at 0x000b7c38... (75 %)
+Writing at 0x000bd83c... (77 %)
+Writing at 0x000c3392... (80 %)
+Writing at 0x000c8de1... (83 %)
+Writing at 0x000d2cd0... (86 %)
+Writing at 0x000daa92... (88 %)
+Writing at 0x000e08d6... (91 %)
+Writing at 0x000e6391... (94 %)
+Writing at 0x000ec167... (97 %)
+Writing at 0x000f1fb2... (100 %)
+Wrote 947232 bytes (589154 compressed) at 0x00010000 in 14.1 seconds (effective 538.0 kbit/s)...
+Hash of data verified.
+Compressed 3072 bytes to 103...
+Writing at 0x00008000... (100 %)
+Wrote 3072 bytes (103 compressed) at 0x00008000 in 0.1 seconds (effective 328.9 kbit/s)...
+Hash of data verified.
+
+Leaving...
+Hard resetting via RTS pin...

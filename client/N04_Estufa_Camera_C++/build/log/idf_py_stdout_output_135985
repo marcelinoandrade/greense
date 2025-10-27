@@ -1,0 +1,521 @@
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x3 (DOWNLOAD_BOOT(UART0/UART1/SDIO_REI_REO_V2))
+waiting for download
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:6260
+load:0x40078000,len:15540
+load:0x40080400,len:4
+ho 8 tail 4 room 4
+load:0x40080404,len:3904
+entry 0x40080640
+[0;32mI (31) boot: ESP-IDF v5.2.1 2nd stage bootloader[0m
+[0;32mI (31) boot: compile time Jul  3 2025 16:11:55[0m
+[0;32mI (31) boot: Multicore bootloader[0m
+[0;32mI (32) boot: chip revision: v3.1[0m
+[0;32mI (35) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (39) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (43) boot.esp32: SPI Flash Size : 4MB[0m
+[0;32mI (46) boot: Enabling RNG early entropy source...[0m
+[0;32mI (51) boot: Partition Table:[0m
+[0;32mI (53) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (60) boot:  0 nvs              WiFi data        01 02 00009000 00005000[0m
+[0;32mI (66) boot:  1 otadata          OTA data         01 00 0000e000 00002000[0m
+[0;32mI (73) boot:  2 app0             factory app      00 00 00010000 00200000[0m
+[0;32mI (79) boot:  3 spiffs           Unknown data     01 82 00210000 000f0000[0m
+[0;32mI (86) boot: End of partition table[0m
+[0;32mI (89) boot: Defaulting to factory image[0m
+[0;32mI (93) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=2bc44h (179268) map[0m
+[0;32mI (161) esp_image: segment 1: paddr=0003bc6c vaddr=3ffb0000 size=043ach ( 17324) load[0m
+[0;32mI (168) esp_image: segment 2: paddr=00040020 vaddr=400d0020 size=bc980h (772480) map[0m
+[0;32mI (433) esp_image: segment 3: paddr=000fc9a8 vaddr=3ffb43ac size=0128ch (  4748) load[0m
+[0;32mI (435) esp_image: segment 4: paddr=000fdc3c vaddr=40080000 size=1ed00h (126208) load[0m
+[0;32mI (502) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (502) boot: Disabling RNG early entropy source...[0m
+[0;32mI (511) cpu_start: Multicore app[0m
+[0;32mI (512) quad_psram: This chip is ESP32-D0WD[0m
+[0;32mI (514) esp_psram: Found 8MB PSRAM device[0m
+[0;32mI (514) esp_psram: Speed: 40MHz[0m
+[0;32mI (514) esp_psram: PSRAM initialized, cache is in low/high (2-core) mode.[0m
+[0;33mW (520) esp_psram: Virtual address not enough for PSRAM, map as much as we can. 4MB is mapped[0m
+[0;32mI (1434) esp_psram: SPI SRAM memory test OK[0m
+[0;32mI (1442) cpu_start: Pro cpu start user code[0m
+[0;32mI (1442) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (1442) cpu_start: Application information:[0m
+[0;32mI (1443) cpu_start: Project name:     N04_Estufa_Camera[0m
+[0;32mI (1448) cpu_start: App version:      8afb32c-dirty[0m
+[0;32mI (1452) cpu_start: Compile time:     Aug 22 2025 17:01:05[0m
+[0;32mI (1457) cpu_start: ELF file SHA256:  793f9c76e...[0m
+[0;32mI (1462) cpu_start: ESP-IDF:          v5.2.1[0m
+[0;32mI (1466) cpu_start: Min chip rev:     v0.0[0m
+[0;32mI (1470) cpu_start: Max chip rev:     v3.99 [0m
+[0;32mI (1474) cpu_start: Chip rev:         v3.1[0m
+[0;32mI (1478) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (1484) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (1489) heap_init: At 3FFB9EF0 len 00026110 (152 KiB): DRAM[0m
+[0;32mI (1494) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (1500) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (1505) heap_init: At 4009ED00 len 00001300 (4 KiB): IRAM[0m
+[0;32mI (1511) esp_psram: Adding pool of 4096K of PSRAM memory to heap allocator[0m
+[0;32mI (1519) spi_flash: detected chip: generic[0m
+[0;32mI (1521) spi_flash: flash io: dio[0m
+[0;33mW (1525) i2c: This driver is an old driver, please migrate your application code to adapt `driver/i2c_master.h`[0m
+[0;32mI (1535) main_task: Started on CPU0[0m
+[0;32mI (1545) esp_psram: Reserving pool of 32K of internal memory for DMA/internal allocations[0m
+[0;32mI (1545) main_task: Calling app_main()[0m
+[0;32mI (1585) SD_CARD: Montando cartão SD...[0m
+[1;31mE (1605) sdmmc_common: sdmmc_init_ocr: send_op_cond (1) returned 0x107[0m
+[1;31mE (1605) vfs_fat_sdmmc: sdmmc_card_init failed (0x107).[0m
+[1;31mE (1605) SD_CARD: Falha ao inicializar cartão SD (ESP_ERR_TIMEOUT).[0m
+[1;31mE (1615) CAMERA: Falha ao inicializar o cartão SD. As imagens não serão salvas localmente.[0m
+[0;32mI (1625) gpio: GPIO[25]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:2 [0m
+[0;32mI (1635) cam_hal: cam init ok[0m
+[0;32mI (1635) sccb: pin_sda 26 pin_scl 27[0m
+[0;32mI (1635) sccb: sccb_i2c_port=1[0m
+[0;32mI (1635) gpio: GPIO[32]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (1675) camera: Detected camera at address=0x30[0m
+[0;32mI (1675) camera: Detected OV2640 camera[0m
+[0;32mI (1675) camera: Camera PID=0x26 VER=0x42 MIDL=0x7f MIDH=0xa2[0m
+[0;32mI (1765) cam_hal: buffer_size: 32768, half_buffer_size: 4096, node_buffer_size: 2048, node_cnt: 16, total_cnt: 38[0m
+[0;32mI (1765) cam_hal: Allocating 157286 Byte frame buffer in PSRAM[0m
+[0;32mI (1765) cam_hal: cam config ok[0m
+[0;32mI (1765) ov2640: Set PLL: clk_2x: 0, clk_div: 0, pclk_auto: 0, pclk_div: 12[0m
+[0;32mI (1845) CAMERA: Câmera pronta[0m
+[0;32mI (1855) wifi:wifi driver task: 3ffd29c0, prio:23, stack:6656, core=0[0m
+[0;32mI (1865) wifi:wifi firmware version: a9f5b59[0m
+[0;32mI (1875) wifi:wifi certification version: v7.0[0m
+[0;32mI (1875) wifi:config NVS flash: enabled[0m
+[0;32mI (1875) wifi:config nano formating: disabled[0m
+[0;32mI (1875) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (1875) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (1885) wifi:Init management short buffer num: 32[0m
+[0;32mI (1885) wifi:Init static tx buffer num: 16[0m
+[0;32mI (1895) wifi:Init tx cache buffer num: 32[0m
+[0;32mI (1895) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (1905) wifi:Init static rx buffer num: 10[0m
+[0;32mI (1905) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (1905) wifi_init: rx ba win: 6[0m
+[0;32mI (1915) wifi_init: tcpip mbox: 32[0m
+[0;32mI (1915) wifi_init: udp mbox: 6[0m
+[0;32mI (1915) wifi_init: tcp mbox: 6[0m
+[0;32mI (1925) wifi_init: tcp tx win: 5760[0m
+[0;32mI (1925) wifi_init: tcp rx win: 5760[0m
+[0;32mI (1925) wifi_init: tcp mss: 1440[0m
+[0;32mI (1925) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (1935) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (1945) phy_init: phy_version 4791,2c4672b,Dec 20 2023,16:06:06[0m
+[0;32mI (2035) wifi:mode : sta (78:42:1c:6d:93:8c)[0m
+[0;32mI (2035) wifi:enable tsf[0m
+[0;33mW (2035) cam_hal: NO-SOI[0m
+[0;32mI (2035) wifi:Set ps type: 0, coexist: 0[0m
+
+[0;32mI (2035) WIFI: Wi-Fi conectando...[0m
+[0;32mI (2135) wifi:new:<13,0>, old:<1,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (2135) wifi:state: init -> auth (b0)[0m
+[0;32mI (3145) wifi:state: auth -> init (200)[0m
+[0;32mI (3145) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (5615) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (5615) wifi:state: init -> auth (b0)[0m
+[0;32mI (6615) wifi:state: auth -> init (200)[0m
+[0;32mI (6625) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (9095) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (9105) wifi:state: init -> auth (b0)[0m
+[0;32mI (10105) wifi:state: auth -> init (200)[0m
+[0;32mI (10105) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (12585) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (12585) wifi:state: init -> auth (b0)[0m
+[0;32mI (13585) wifi:state: auth -> init (200)[0m
+[0;32mI (13585) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (16065) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (16065) wifi:state: init -> auth (b0)[0m
+[0;32mI (17065) wifi:state: auth -> init (200)[0m
+[0;32mI (17065) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (19545) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (19545) wifi:state: init -> auth (b0)[0m
+[0;32mI (20545) wifi:state: auth -> init (200)[0m
+[0;32mI (20545) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (23025) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (23025) wifi:state: init -> auth (b0)[0m
+[0;32mI (24025) wifi:state: auth -> init (200)[0m
+[0;32mI (24025) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (26505) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (26505) wifi:state: init -> auth (b0)[0m
+[0;32mI (27505) wifi:state: auth -> init (200)[0m
+[0;32mI (27515) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (29985) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (29995) wifi:state: init -> auth (b0)[0m
+[0;32mI (30995) wifi:state: auth -> init (200)[0m
+[0;32mI (30995) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (33475) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (33475) wifi:state: init -> auth (b0)[0m
+[0;32mI (34475) wifi:state: auth -> init (200)[0m
+[0;32mI (34475) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (36955) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (36955) wifi:state: init -> auth (b0)[0m
+[0;32mI (37955) wifi:state: auth -> init (200)[0m
+[0;32mI (37955) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (40435) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (40435) wifi:state: init -> auth (b0)[0m
+[0;32mI (41435) wifi:state: auth -> init (200)[0m
+[0;32mI (41445) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (43915) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (43915) wifi:state: init -> auth (b0)[0m
+[0;32mI (44915) wifi:state: auth -> init (200)[0m
+[0;32mI (44915) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (47395) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (47395) wifi:state: init -> auth (b0)[0m
+[0;32mI (48405) wifi:state: auth -> init (200)[0m
+[0;32mI (48405) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (50885) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (50885) wifi:state: init -> auth (b0)[0m
+[0;32mI (51885) wifi:state: auth -> init (200)[0m
+[0;32mI (51885) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (54365) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (54365) wifi:state: init -> auth (b0)[0m
+[0;32mI (55375) wifi:state: auth -> init (200)[0m
+[0;32mI (55375) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (57855) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (57855) wifi:state: init -> auth (b0)[0m
+[0;32mI (58855) wifi:state: auth -> init (200)[0m
+[0;32mI (58855) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (61325) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (61325) wifi:state: init -> auth (b0)[0m
+[0;32mI (62325) wifi:state: auth -> init (200)[0m
+[0;32mI (62325) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (64805) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (64805) wifi:state: init -> auth (b0)[0m
+[0;32mI (65805) wifi:state: auth -> init (200)[0m
+[0;32mI (65815) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (68285) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (68285) wifi:state: init -> auth (b0)[0m
+[0;32mI (69295) wifi:state: auth -> init (200)[0m
+[0;32mI (69295) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (71785) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (71785) wifi:state: init -> auth (b0)[0m
+[0;32mI (72785) wifi:state: auth -> init (200)[0m
+[0;32mI (72785) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (75255) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (75255) wifi:state: init -> auth (b0)[0m
+[0;32mI (76255) wifi:state: auth -> init (200)[0m
+[0;32mI (76255) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (78735) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (78735) wifi:state: init -> auth (b0)[0m
+[0;32mI (79735) wifi:state: auth -> init (200)[0m
+[0;32mI (79735) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (82215) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (82215) wifi:state: init -> auth (b0)[0m
+[0;32mI (83215) wifi:state: auth -> init (200)[0m
+[0;32mI (83225) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (85705) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (85705) wifi:state: init -> auth (b0)[0m
+[0;32mI (86705) wifi:state: auth -> init (200)[0m
+[0;32mI (86705) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (89195) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (89195) wifi:state: init -> auth (b0)[0m
+[0;32mI (90195) wifi:state: auth -> init (200)[0m
+[0;32mI (90195) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (92665) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (92665) wifi:state: init -> auth (b0)[0m
+[0;32mI (93665) wifi:state: auth -> init (200)[0m
+[0;32mI (93665) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (96145) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (96145) wifi:state: init -> auth (b0)[0m
+[0;32mI (97145) wifi:state: auth -> init (200)[0m
+[0;32mI (97145) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (99625) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (99625) wifi:state: init -> auth (b0)[0m
+[0;32mI (100625) wifi:state: auth -> init (200)[0m
+[0;32mI (100625) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (103105) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (103105) wifi:state: init -> auth (b0)[0m
+[0;32mI (104105) wifi:state: auth -> init (200)[0m
+[0;32mI (104105) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (106585) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (106585) wifi:state: init -> auth (b0)[0m
+[0;32mI (107595) wifi:state: auth -> init (200)[0m
+[0;32mI (107595) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (110075) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (110075) wifi:state: init -> auth (b0)[0m
+[0;32mI (111075) wifi:state: auth -> init (200)[0m
+[0;32mI (111075) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (113555) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (113555) wifi:state: init -> auth (b0)[0m
+[0;32mI (114555) wifi:state: auth -> init (200)[0m
+[0;32mI (114555) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (117035) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (117035) wifi:state: init -> auth (b0)[0m
+[0;32mI (118035) wifi:state: auth -> init (200)[0m
+[0;32mI (118035) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (120515) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (120515) wifi:state: init -> auth (b0)[0m
+[0;32mI (121515) wifi:state: auth -> init (200)[0m
+[0;32mI (121515) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (123995) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (123995) wifi:state: init -> auth (b0)[0m
+[0;32mI (124995) wifi:state: auth -> init (200)[0m
+[0;32mI (124995) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (127475) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (127475) wifi:state: init -> auth (b0)[0m
+[0;32mI (128475) wifi:state: auth -> init (200)[0m
+[0;32mI (128485) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (130955) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (130965) wifi:state: init -> auth (b0)[0m
+[0;32mI (131965) wifi:state: auth -> init (200)[0m
+[0;32mI (131965) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (134445) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (134445) wifi:state: init -> auth (b0)[0m
+[0;32mI (135445) wifi:state: auth -> init (200)[0m
+[0;32mI (135445) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (137925) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (137925) wifi:state: init -> auth (b0)[0m
+[0;32mI (138925) wifi:state: auth -> init (200)[0m
+[0;32mI (138925) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (141405) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (141405) wifi:state: init -> auth (b0)[0m
+[0;32mI (142405) wifi:state: auth -> init (200)[0m
+[0;32mI (142405) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (144885) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (144885) wifi:state: init -> auth (b0)[0m
+[0;32mI (145895) wifi:state: auth -> init (200)[0m
+[0;32mI (145895) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (148365) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (148375) wifi:state: init -> auth (b0)[0m
+[0;32mI (149375) wifi:state: auth -> init (200)[0m
+[0;32mI (149375) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (151845) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (151855) wifi:state: init -> auth (b0)[0m
+[0;32mI (152855) wifi:state: auth -> init (200)[0m
+[0;32mI (152855) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (155335) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (155335) wifi:state: init -> auth (b0)[0m
+[0;32mI (156335) wifi:state: auth -> init (200)[0m
+[0;32mI (156335) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (158815) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (158815) wifi:state: init -> auth (b0)[0m
+[0;32mI (159815) wifi:state: auth -> init (200)[0m
+[0;32mI (159815) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (162295) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (162295) wifi:state: init -> auth (b0)[0m
+[0;32mI (163295) wifi:state: auth -> init (200)[0m
+[0;32mI (163295) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (165775) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (165775) wifi:state: init -> auth (b0)[0m
+[0;32mI (166775) wifi:state: auth -> init (200)[0m
+[0;32mI (166775) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (169255) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (169265) wifi:state: init -> auth (b0)[0m
+[0;32mI (170265) wifi:state: auth -> init (200)[0m
+[0;32mI (170265) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (172745) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (172745) wifi:state: init -> auth (b0)[0m
+[0;32mI (173745) wifi:state: auth -> init (200)[0m
+[0;32mI (173745) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (176225) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (176225) wifi:state: init -> auth (b0)[0m
+[0;32mI (177225) wifi:state: auth -> init (200)[0m
+[0;32mI (177225) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (179705) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (179705) wifi:state: init -> auth (b0)[0m
+[0;32mI (180705) wifi:state: auth -> init (200)[0m
+[0;32mI (180705) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (183185) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (183185) wifi:state: init -> auth (b0)[0m
+[0;32mI (184185) wifi:state: auth -> init (200)[0m
+[0;32mI (184195) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (186665) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (186665) wifi:state: init -> auth (b0)[0m
+[0;32mI (187665) wifi:state: auth -> init (200)[0m
+[0;32mI (187675) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (190145) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (190155) wifi:state: init -> auth (b0)[0m
+[0;32mI (191155) wifi:state: auth -> init (200)[0m
+[0;32mI (191155) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (193635) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (193645) wifi:state: init -> auth (b0)[0m
+[0;32mI (194645) wifi:state: auth -> init (200)[0m
+[0;32mI (194645) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (197115) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (197115) wifi:state: init -> auth (b0)[0m
+[0;32mI (198115) wifi:state: auth -> init (200)[0m
+[0;32mI (198115) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (200595) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (200595) wifi:state: init -> auth (b0)[0m
+[0;32mI (201595) wifi:state: auth -> init (200)[0m
+[0;32mI (201595) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (204075) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (204075) wifi:state: init -> auth (b0)[0m
+[0;32mI (205085) wifi:state: auth -> init (200)[0m
+[0;32mI (205085) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (207555) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (207565) wifi:state: init -> auth (b0)[0m
+[0;32mI (208565) wifi:state: auth -> init (200)[0m
+[0;32mI (208565) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (211035) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (211045) wifi:state: init -> auth (b0)[0m
+[0;32mI (212045) wifi:state: auth -> init (200)[0m
+[0;32mI (212045) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (214525) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (214525) wifi:state: init -> auth (b0)[0m
+[0;32mI (215525) wifi:state: auth -> init (200)[0m
+[0;32mI (215525) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (218005) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (218005) wifi:state: init -> auth (b0)[0m
+[0;32mI (219005) wifi:state: auth -> init (200)[0m
+[0;32mI (219005) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (221485) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (221485) wifi:state: init -> auth (b0)[0m
+[0;32mI (222485) wifi:state: auth -> init (200)[0m
+[0;32mI (222485) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (224965) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (224965) wifi:state: init -> auth (b0)[0m
+[0;32mI (225965) wifi:state: auth -> init (200)[0m
+[0;32mI (225965) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (228445) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (228455) wifi:state: init -> auth (b0)[0m
+[0;32mI (229455) wifi:state: auth -> init (200)[0m
+[0;32mI (229455) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (231925) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (231935) wifi:state: init -> auth (b0)[0m
+[0;32mI (232935) wifi:state: auth -> init (200)[0m
+[0;32mI (232935) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (235415) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (235415) wifi:state: init -> auth (b0)[0m
+[0;32mI (236415) wifi:state: auth -> init (200)[0m
+[0;32mI (236415) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (238895) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (238895) wifi:state: init -> auth (b0)[0m
+[0;32mI (239895) wifi:state: auth -> init (200)[0m
+[0;32mI (239895) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (242375) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (242375) wifi:state: init -> auth (b0)[0m
+[0;32mI (243375) wifi:state: auth -> init (200)[0m
+[0;32mI (243375) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (245855) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (245855) wifi:state: init -> auth (b0)[0m
+[0;32mI (246865) wifi:state: auth -> init (200)[0m
+[0;32mI (246865) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (249335) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (249345) wifi:state: init -> auth (b0)[0m
+[0;32mI (250345) wifi:state: auth -> init (200)[0m
+[0;32mI (250345) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (252825) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (252825) wifi:state: init -> auth (b0)[0m
+[0;32mI (253825) wifi:state: auth -> init (200)[0m
+[0;32mI (253825) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (256305) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (256305) wifi:state: init -> auth (b0)[0m
+[0;32mI (257305) wifi:state: auth -> init (200)[0m
+[0;32mI (257305) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (259785) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (259785) wifi:state: init -> auth (b0)[0m
+[0;32mI (260785) wifi:state: auth -> init (200)[0m
+[0;32mI (260785) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (263265) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (263265) wifi:state: init -> auth (b0)[0m
+[0;32mI (264265) wifi:state: auth -> init (200)[0m
+[0;32mI (264265) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (266745) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (266745) wifi:state: init -> auth (b0)[0m
+[0;32mI (267745) wifi:state: auth -> init (200)[0m
+[0;32mI (267745) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (270225) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (270225) wifi:state: init -> auth (b0)[0m
+[0;32mI (271235) wifi:state: auth -> init (200)[0m
+[0;32mI (271235) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (273715) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (273715) wifi:state: init -> auth (b0)[0m
+[0;32mI (274715) wifi:state: auth -> init (200)[0m
+[0;32mI (274715) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (277195) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (277195) wifi:state: init -> auth (b0)[0m
+[0;32mI (278195) wifi:state: auth -> init (200)[0m
+[0;32mI (278195) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (280675) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (280675) wifi:state: init -> auth (b0)[0m
+[0;32mI (281675) wifi:state: auth -> init (200)[0m
+[0;32mI (281675) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (284155) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (284155) wifi:state: init -> auth (b0)[0m
+[0;32mI (285155) wifi:state: auth -> init (200)[0m
+[0;32mI (285155) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (287635) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (287635) wifi:state: init -> auth (b0)[0m
+[0;32mI (288645) wifi:state: auth -> init (200)[0m
+[0;32mI (288645) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (291115) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (291125) wifi:state: init -> auth (b0)[0m
+[0;32mI (292125) wifi:state: auth -> init (200)[0m
+[0;32mI (292125) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (294605) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (294605) wifi:state: init -> auth (b0)[0m
+[0;32mI (295605) wifi:state: auth -> init (200)[0m
+[0;32mI (295605) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (298085) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (298085) wifi:state: init -> auth (b0)[0m
+[0;32mI (299085) wifi:state: auth -> init (200)[0m
+[0;32mI (299085) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (301565) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (301565) wifi:state: init -> auth (b0)[0m
+[0;32mI (302565) wifi:state: auth -> init (200)[0m
+[0;32mI (302565) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (305045) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (305045) wifi:state: init -> auth (b0)[0m
+[0;32mI (306045) wifi:state: auth -> init (200)[0m
+[0;32mI (306055) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (308525) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (308525) wifi:state: init -> auth (b0)[0m
+[0;32mI (309535) wifi:state: auth -> init (200)[0m
+[0;32mI (309535) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (312005) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (312015) wifi:state: init -> auth (b0)[0m
+[0;32mI (313015) wifi:state: auth -> init (200)[0m
+[0;32mI (313015) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (315495) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (315495) wifi:state: init -> auth (b0)[0m
+[0;32mI (316495) wifi:state: auth -> init (200)[0m
+[0;32mI (316495) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (318975) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (318975) wifi:state: init -> auth (b0)[0m
+[0;32mI (319975) wifi:state: auth -> init (200)[0m
+[0;32mI (319975) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (322455) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (322455) wifi:state: init -> auth (b0)[0m
+[0;32mI (323455) wifi:state: auth -> init (200)[0m
+[0;32mI (323455) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (325935) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (325935) wifi:state: init -> auth (b0)[0m
+[0;32mI (326935) wifi:state: auth -> init (200)[0m
+[0;32mI (326935) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (329415) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (329415) wifi:state: init -> auth (b0)[0m
+[0;32mI (330425) wifi:state: auth -> init (200)[0m
+[0;32mI (330425) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (332895) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (332905) wifi:state: init -> auth (b0)[0m
+[0;32mI (333905) wifi:state: auth -> init (200)[0m
+[0;32mI (333905) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (336385) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (336385) wifi:state: init -> auth (b0)[0m
+[0;32mI (337385) wifi:state: auth -> init (200)[0m
+[0;32mI (337385) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (339865) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (339865) wifi:state: init -> auth (b0)[0m
+[0;32mI (340865) wifi:state: auth -> init (200)[0m
+[0;32mI (340865) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (343345) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (343345) wifi:state: init -> auth (b0)[0m
+[0;32mI (344345) wifi:state: auth -> init (200)[0m
+[0;32mI (344345) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (346825) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (346825) wifi:state: init -> auth (b0)[0m
+[0;32mI (347825) wifi:state: auth -> init (200)[0m
+[0;32mI (347825) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (350305) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (350305) wifi:state: init -> auth (b0)[0m
+[0;32mI (351315) wifi:state: auth -> init (200)[0m
+[0;32mI (351315) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m

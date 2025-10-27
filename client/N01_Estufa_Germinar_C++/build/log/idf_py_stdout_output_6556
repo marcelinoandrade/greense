@@ -1,0 +1,48 @@
+-- Existing sdkconfig '/home/greense/projetoGreense/client/N01_Estufa_Germinar/sdkconfig' renamed to '/home/greense/projetoGreense/client/N01_Estufa_Germinar/sdkconfig.old'.
+-- Found Git: /usr/bin/git (found version "2.39.5") 
+-- The C compiler identification is GNU 13.2.0
+-- The CXX compiler identification is GNU 13.2.0
+-- The ASM compiler identification is GNU
+-- Found assembler: /home/greense/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/bin/xtensa-esp32-elf-gcc
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /home/greense/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/bin/xtensa-esp32-elf-gcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /home/greense/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/bin/xtensa-esp32-elf-g++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Building ESP-IDF components for target esp32
+NOTICE: Processing 2 dependencies:
+NOTICE: [1/2] espressif/led_strip (3.0.1)
+NOTICE: [2/2] idf (5.2.1)
+-- Project sdkconfig file /home/greense/projetoGreense/client/N01_Estufa_Germinar/sdkconfig
+-- Compiler supported targets: xtensa-esp-elf
+-- Looking for sys/types.h
+-- Looking for sys/types.h - found
+-- Looking for stdint.h
+-- Looking for stdint.h - found
+-- Looking for stddef.h
+-- Looking for stddef.h - found
+-- Check size of time_t
+-- Check size of time_t - done
+-- Found Python3: /home/greense/.espressif/python_env/idf5.2_py3.11_env/bin/python (found version "3.11.2") found components: Interpreter 
+-- Performing Test C_COMPILER_SUPPORTS_WFORMAT_SIGNEDNESS
+-- Performing Test C_COMPILER_SUPPORTS_WFORMAT_SIGNEDNESS - Success
+-- App "N01_Estufa_Germinar" version: 78b1461-dirty
+-- Adding linker script /home/greense/projetoGreense/client/N01_Estufa_Germinar/build/esp-idf/esp_system/ld/memory.ld
+-- Adding linker script /home/greense/esp/esp-idf/components/esp_system/ld/esp32/sections.ld.in
+-- Adding linker script /home/greense/esp/esp-idf/components/esp_rom/esp32/ld/esp32.rom.ld
+-- Adding linker script /home/greense/esp/esp-idf/components/esp_rom/esp32/ld/esp32.rom.api.ld
+-- Adding linker script /home/greense/esp/esp-idf/components/esp_rom/esp32/ld/esp32.rom.libgcc.ld
+-- Adding linker script /home/greense/esp/esp-idf/components/esp_rom/esp32/ld/esp32.rom.newlib-data.ld
+-- Adding linker script /home/greense/esp/esp-idf/components/esp_rom/esp32/ld/esp32.rom.syscalls.ld
+-- Adding linker script /home/greense/esp/esp-idf/components/esp_rom/esp32/ld/esp32.rom.newlib-funcs.ld
+-- Adding linker script /home/greense/esp/esp-idf/components/soc/esp32/ld/esp32.peripherals.ld
+-- Components: app_trace app_update bootloader bootloader_support bt cmock console cxx driver efuse esp-tls esp_adc esp_app_format esp_bootloader_format esp_coex esp_common esp_eth esp_event esp_gdbstub esp_hid esp_http_client esp_http_server esp_https_ota esp_https_server esp_hw_support esp_lcd esp_local_ctrl esp_mm esp_netif esp_netif_stack esp_partition esp_phy esp_pm esp_psram esp_ringbuf esp_rom esp_system esp_timer esp_wifi espcoredump espressif__led_strip esptool_py fatfs freertos hal heap http_parser idf_test ieee802154 json log lwip main mbedtls mqtt newlib nvs_flash nvs_sec_provider openthread partition_table perfmon protobuf-c protocomm pthread sdmmc soc spi_flash spiffs tcp_transport ulp unity usb vfs wear_levelling wifi_provisioning wpa_supplicant xtensa
+-- Component paths: /home/greense/esp/esp-idf/components/app_trace /home/greense/esp/esp-idf/components/app_update /home/greense/esp/esp-idf/components/bootloader /home/greense/esp/esp-idf/components/bootloader_support /home/greense/esp/esp-idf/components/bt /home/greense/esp/esp-idf/components/cmock /home/greense/esp/esp-idf/components/console /home/greense/esp/esp-idf/components/cxx /home/greense/esp/esp-idf/components/driver /home/greense/esp/esp-idf/components/efuse /home/greense/esp/esp-idf/components/esp-tls /home/greense/esp/esp-idf/components/esp_adc /home/greense/esp/esp-idf/components/esp_app_format /home/greense/esp/esp-idf/components/esp_bootloader_format /home/greense/esp/esp-idf/components/esp_coex /home/greense/esp/esp-idf/components/esp_common /home/greense/esp/esp-idf/components/esp_eth /home/greense/esp/esp-idf/components/esp_event /home/greense/esp/esp-idf/components/esp_gdbstub /home/greense/esp/esp-idf/components/esp_hid /home/greense/esp/esp-idf/components/esp_http_client /home/greense/esp/esp-idf/components/esp_http_server /home/greense/esp/esp-idf/components/esp_https_ota /home/greense/esp/esp-idf/components/esp_https_server /home/greense/esp/esp-idf/components/esp_hw_support /home/greense/esp/esp-idf/components/esp_lcd /home/greense/esp/esp-idf/components/esp_local_ctrl /home/greense/esp/esp-idf/components/esp_mm /home/greense/esp/esp-idf/components/esp_netif /home/greense/esp/esp-idf/components/esp_netif_stack /home/greense/esp/esp-idf/components/esp_partition /home/greense/esp/esp-idf/components/esp_phy /home/greense/esp/esp-idf/components/esp_pm /home/greense/esp/esp-idf/components/esp_psram /home/greense/esp/esp-idf/components/esp_ringbuf /home/greense/esp/esp-idf/components/esp_rom /home/greense/esp/esp-idf/components/esp_system /home/greense/esp/esp-idf/components/esp_timer /home/greense/esp/esp-idf/components/esp_wifi /home/greense/esp/esp-idf/components/espcoredump /home/greense/projetoGreense/client/N01_Estufa_Germinar/managed_components/espressif__led_strip /home/greense/esp/esp-idf/components/esptool_py /home/greense/esp/esp-idf/components/fatfs /home/greense/esp/esp-idf/components/freertos /home/greense/esp/esp-idf/components/hal /home/greense/esp/esp-idf/components/heap /home/greense/esp/esp-idf/components/http_parser /home/greense/esp/esp-idf/components/idf_test /home/greense/esp/esp-idf/components/ieee802154 /home/greense/esp/esp-idf/components/json /home/greense/esp/esp-idf/components/log /home/greense/esp/esp-idf/components/lwip /home/greense/projetoGreense/client/N01_Estufa_Germinar/main /home/greense/esp/esp-idf/components/mbedtls /home/greense/esp/esp-idf/components/mqtt /home/greense/esp/esp-idf/components/newlib /home/greense/esp/esp-idf/components/nvs_flash /home/greense/esp/esp-idf/components/nvs_sec_provider /home/greense/esp/esp-idf/components/openthread /home/greense/esp/esp-idf/components/partition_table /home/greense/esp/esp-idf/components/perfmon /home/greense/esp/esp-idf/components/protobuf-c /home/greense/esp/esp-idf/components/protocomm /home/greense/esp/esp-idf/components/pthread /home/greense/esp/esp-idf/components/sdmmc /home/greense/esp/esp-idf/components/soc /home/greense/esp/esp-idf/components/spi_flash /home/greense/esp/esp-idf/components/spiffs /home/greense/esp/esp-idf/components/tcp_transport /home/greense/esp/esp-idf/components/ulp /home/greense/esp/esp-idf/components/unity /home/greense/esp/esp-idf/components/usb /home/greense/esp/esp-idf/components/vfs /home/greense/esp/esp-idf/components/wear_levelling /home/greense/esp/esp-idf/components/wifi_provisioning /home/greense/esp/esp-idf/components/wpa_supplicant /home/greense/esp/esp-idf/components/xtensa
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/greense/projetoGreense/client/N01_Estufa_Germinar/build

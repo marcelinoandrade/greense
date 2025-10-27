@@ -1,0 +1,423 @@
+[0;32mI (659) wifi:wifi driver taskets Jul 29 2019 12:21:46[0m
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:7172
+load:0x40078000,len:15540
+load:0x40080400,len:4
+ho 8 tail 4 room 4
+load:0x40080404,len:3904
+entry 0x40080640
+[0;32mI (31) boot: ESP-IDF v5.2.1 2nd stage bootloader[0m
+[0;32mI (31) boot: compile time Apr 28 2025 18:04:56[0m
+[0;32mI (31) boot: Multicore bootloader[0m
+[0;32mI (35) boot: chip revision: v3.1[0m
+[0;32mI (39) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (44) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (48) boot.esp32: SPI Flash Size : 2MB[0m
+[0;32mI (53) boot: Enabling RNG early entropy source...[0m
+[0;32mI (58) boot: Partition Table:[0m
+[0;32mI (62) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (69) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (77) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (84) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (92) boot: End of partition table[0m
+[0;32mI (96) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=2b0e8h (176360) map[0m
+[0;32mI (165) esp_image: segment 1: paddr=0003b110 vaddr=3ffb0000 size=03ccch ( 15564) load[0m
+[0;32mI (171) esp_image: segment 2: paddr=0003ede4 vaddr=40080000 size=01234h (  4660) load[0m
+[0;32mI (173) esp_image: segment 3: paddr=00040020 vaddr=400d0020 size=9fd38h (654648) map[0m
+[0;32mI (403) esp_image: segment 4: paddr=000dfd60 vaddr=40081234 size=176c8h ( 95944) load[0m
+[0;32mI (453) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (453) boot: Disabling RNG early entropy source...[0m
+[0;32mI (465) cpu_start: Multicore app[0m
+[0;32mI (474) cpu_start: Pro cpu start user code[0m
+[0;32mI (474) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (474) cpu_start: Application information:[0m
+[0;32mI (477) cpu_start: Project name:     N01_Estufa_Germinar[0m
+[0;32mI (483) cpu_start: App version:      5e3a464-dirty[0m
+[0;32mI (488) cpu_start: Compile time:     Apr 30 2025 22:53:59[0m
+[0;32mI (494) cpu_start: ELF file SHA256:  07e17fabb...[0m
+[0;32mI (500) cpu_start: ESP-IDF:          v5.2.1[0m
+[0;32mI (504) cpu_start: Min chip rev:     v0.0[0m
+[0;32mI (509) cpu_start: Max chip rev:     v3.99 [0m
+[0;32mI (514) cpu_start: Chip rev:         v3.1[0m
+[0;32mI (519) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (526) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (532) heap_init: At 3FFB8428 len 00027BD8 (158 KiB): DRAM[0m
+[0;32mI (538) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (545) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (551) heap_init: At 400988FC len 00007704 (29 KiB): IRAM[0m
+[0;32mI (559) spi_flash: detected chip: generic[0m
+[0;32mI (562) spi_flash: flash io: dio[0m
+[0;33mW (566) spi_flash: Detected size(4096k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;33mW (579) i2c: This driver is an old driver, please migrate your application code to adapt `driver/i2c_master.h`[0m
+[0;33mW (590) ADC: legacy driver is deprecated, please migrate to `esp_adc/adc_oneshot.h`[0m
+[0;32mI (599) main_task: Started on CPU0[0m
+[0;32mI (609) main_task: Calling app_main()[0m
+[0;32mI (659) wifi:wifi driver task: 3ffc044c, prio:23, stack:6656, core=0[0m
+[0;32mI (679) wifi:wifi firmware version: a9f5b59[0m
+[0;32mI (679) wifi:wifi certification version: v7.0[0m
+[0;32mI (679) wifi:config NVS flash: enabled[0m
+[0;32mI (679) wifi:config nano formating: disabled[0m
+[0;32mI (679) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (689) wifi:Init static rx mgmt buffer num: 5[0m
+I (689) wifi:Init management short buffer num: 32
+[0;32mI (689) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (699) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (699) wifi:Init static rx buffer num: 10[0m
+[0;32mI (709) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (709) wifi_init: rx ba win: 6[0m
+[0;32mI (709) wifi_init: tcpip mbox: 32[0m
+[0;32mI (719) wifi_init: udp mbox: 6[0m
+[0;32mI (719) wifi_init: tcp mbox: 6[0m
+[0;32mI (729) wifi_init: tcp tx win: 5760[0m
+[0;32mI (729) wifi_init: tcp rx win: 5760[0m
+[0;32mI (729) wifi_init: tcp mss: 1440[0m
+[0;32mI (739) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (739) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (749) phy_init: phy_version 4791,2c4672b,Dec 20 2023,16:06:06[0m
+[0;32mI (829) wifi:mode : sta (88:13:bf:82:3a:50)[0m
+[0;32mI (829) wifi:enable tsf[0m
+[0;32mI (839) wifi:Set ps type: 0, coexist: 0[0m
+
+[0;32mI (839) WiFi: Wi-Fi inicializado. Conectando...[0m
+[0;32mI (949) wifi:new:<13,0>, old:<1,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (949) wifi:state: init -> auth (b0)[0m
+[0;32mI (1949) wifi:state: auth -> init (200)[0m
+[0;32mI (1949) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;33mW (1949) WiFi: Desconectado. Motivo: 2[0m
+[0;32mI (1949) WiFi: Tentando reconectar ao Wi-Fi...[0m
+[0;33mW (4369) WiFi: Desconectado. Motivo: 205[0m
+[0;32mI (4369) WiFi: Tentando reconectar ao Wi-Fi...[0m
+[0;32mI (4429) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (4429) wifi:state: init -> auth (b0)[0m
+[0;32mI (5429) wifi:state: auth -> init (200)[0m
+[0;32mI (5429) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;33mW (5429) WiFi: Desconectado. Motivo: 2[0m
+[0;32mI (5429) WiFi: Tentando reconectar ao Wi-Fi...[0m
+[0;33mW (7849) WiFi: Desconectado. Motivo: 205[0m
+[0;32mI (7849) WiFi: Tentando reconectar ao Wi-Fi...[0m
+[0;32mI (7909) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (7909) wifi:state: init -> auth (b0)[0m
+[0;32mI (8909) wifi:state: auth -> init (200)[0m
+[0;32mI (8909) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;33mW (8909) WiFi: Desconectado. Motivo: 2[0m
+[0;32mI (8919) WiFi: Tentando reconectar ao Wi-Fi...[0m
+[0;33mW (11329) WiFi: Desconectado. Motivo: 205[0m
+[0;31mE (11329) WiFi: Falha ao conectar ao Wi-Fi[0m
+[0;31mE (11329) WiFi: Falha ao conectar ao Wi-Fi[0m
+[0;31mE (11339) esp-tls: couldn't get hostname for :mqtt.greense.com.br: getaddrinfo() returns 202, addrinfo=0x0[0m
+[0;31mE (11339) esp-tls: Failed to open new connection[0m
+[0;31mE (11349) transport_base: Failed to open a new connection[0m
+[0;31mE (11359) transport_ws: Error connecting to host mqtt.greense.com.br:443[0m
+[0;31mE (11359) mqtt_client: Error transport connect[0m
+[0;31mE (11369) MQTT: Erro no MQTT[0m
+[0;33mW (11369) MQTT: Desconectado do MQTT[0m
+[0;32mI (11449) AHT20: Initialized successfully (attempt 1)[0m
+[0;32mI (11949) ENS160: Initialized successfully[0m
+[0;32mI (11949) SENSORES: Sensors initialized: YES[0m
+[0;32mI (11949) gpio: GPIO[32]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (11949) gpio: GPIO[33]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (11959) gpio: GPIO[25]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (11969) Atuadores: Inicializando atuadores...[0m
+[0;32mI (11979) Atuadores: Inicializando LED RGB...[0m
+[0;32mI (11979) gpio: GPIO[16]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;33mW (11989) wifi:Haven't to connect to a suitable AP now![0m
+Wi-Fi está desconectado. Tentando reconectar...
+[0;32mI (14149) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (14159) wifi:state: init -> auth (b0)[0m
+[0;32mI (15159) wifi:state: auth -> init (200)[0m
+[0;32mI (15159) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;33mW (15159) WiFi: Desconectado. Motivo: 2[0m
+[0;31mE (15159) WiFi: Falha ao conectar ao Wi-Fi[0m
+[0;33mW (18999) wifi:Haven't to connect to a suitable AP now![0m
+Wi-Fi está desconectado. Tentando reconectar...
+[0;31mE (21379) esp-tls: couldn't get hostname for :mqtt.greense.com.br: getaddrinfo() returns 202, addrinfo=0x0[0m
+[0;31mE (21379) esp-tls: Failed to open new connection[0m
+[0;31mE (21379) transport_base: Failed to open a new connection[0m
+[0;31mE (21389) transport_ws: Error connecting to host mqtt.greense.com.br:443[0m
+[0;31mE (21399) mqtt_client: Error transport connect[0m
+[0;31mE (21399) MQTT: Erro no MQTT[0m
+[0;33mW (21399) MQTT: Desconectado do MQTT[0m
+[0;33mW (23409) WiFi: Desconectado. Motivo: 201[0m
+[0;31mE (23409) WiFi: Falha ao conectar ao Wi-Fi[0m
+[0;33mW (25999) wifi:Haven't to connect to a suitable AP now![0m
+Wi-Fi está desconectado. Tentando reconectar...
+[0;32mI (28009) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (28019) wifi:state: init -> auth (b0)[0m
+[0;32mI (28089) wifi:state: auth -> assoc (0)[0m
+[0;32mI (28139) wifi:state: assoc -> run (10)[0m
+[0;32mI (31239) wifi:connected with greense, aid = 1, channel 13, BW20, bssid = e4:5f:01:6f:f2:29[0m
+[0;32mI (31239) wifi:security: WPA-PSK, phy: bgn, rssi: -19[0m
+[0;32mI (31249) wifi:pm start, type: 0[0m
+
+[0;32mI (31249) wifi:dp: 1, bi: 102400, li: 3, scale listen interval from 307200 us to 307200 us[0m
+[0;32mI (31269) wifi:<ba-add>idx:0 (ifx:0, e4:5f:01:6f:f2:29), tid:6, ssn:0, winSize:64[0m
+[0;32mI (31289) wifi:dp: 2, bi: 102400, li: 4, scale listen interval from 307200 us to 409600 us[0m
+[0;32mI (31289) wifi:AP's beacon interval = 102400 us, DTIM period = 2[0m
+[0;32mI (32249) esp_netif_handlers: sta ip: 10.42.0.167, mask: 255.255.255.0, gw: 10.42.0.1[0m
+[0;32mI (32249) WiFi: Conectado! IP: 10.42.0.167[0m
+[0;32mI (32469) wifi:<ba-add>idx:1 (ifx:0, e4:5f:01:6f:f2:29), tid:0, ssn:3, winSize:64[0m
+Wi-Fi está conectado.
+MQTT não está conectado.
+[0;32mI (35449) MQTT: Conectado ao broker MQTT![0m
+Wi-Fi está conectado.
+[0;32mI (38259) MQTT: Publicado (id=48380): estufa/germinar -> {"temp": 29.30, "umid": 61.27, "co2": 569.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2059, "umid_solo_pct": 87.05}[0m
+Wi-Fi está conectado.
+[0;32mI (43519) MQTT: Publicado (id=18519): estufa/germinar -> {"temp": 29.30, "umid": 61.24, "co2": 580.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2064, "umid_solo_pct": 86.80}[0m
+Wi-Fi está conectado.
+[0;32mI (48799) MQTT: Publicado (id=32464): estufa/germinar -> {"temp": 29.30, "umid": 61.39, "co2": 564.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 4095, "umid_solo_pct": 0.00}[0m
+Wi-Fi está conectado.
+[0;32mI (54059) MQTT: Publicado (id=54008): estufa/germinar -> {"temp": 29.28, "umid": 61.33, "co2": 561.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2413, "umid_solo_pct": 69.35}[0m
+Wi-Fi está conectado.
+[0;32mI (59339) MQTT: Publicado (id=41622): estufa/germinar -> {"temp": 29.31, "umid": 61.29, "co2": 551.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2474, "umid_solo_pct": 66.30}[0m
+Wi-Fi está conectado.
+[0;32mI (64599) MQTT: Publicado (id=61151): estufa/germinar -> {"temp": 29.30, "umid": 61.41, "co2": 569.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2530, "umid_solo_pct": 63.50}[0m
+Wi-Fi está conectado.
+[0;32mI (69869) MQTT: Publicado (id=2394): estufa/germinar -> {"temp": 29.31, "umid": 61.35, "co2": 569.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2497, "umid_solo_pct": 65.15}[0m
+Wi-Fi está conectado.
+[0;32mI (75139) MQTT: Publicado (id=60579): estufa/germinar -> {"temp": 29.26, "umid": 61.38, "co2": 575.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2701, "umid_solo_pct": 54.95}[0m
+Wi-Fi está conectado.
+[0;32mI (80409) MQTT: Publicado (id=5626): estufa/germinar -> {"temp": 29.28, "umid": 61.55, "co2": 579.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2900, "umid_solo_pct": 45.00}[0m
+Wi-Fi está conectado.
+[0;32mI (85679) MQTT: Publicado (id=39779): estufa/germinar -> {"temp": 29.28, "umid": 61.63, "co2": 553.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 3583, "umid_solo_pct": 10.85}[0m
+Wi-Fi está conectado.
+[0;32mI (90949) MQTT: Publicado (id=60142): estufa/germinar -> {"temp": 29.28, "umid": 61.58, "co2": 576.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 4095, "umid_solo_pct": 0.00}[0m
+Wi-Fi está conectado.
+[0;32mI (96219) MQTT: Publicado (id=5400): estufa/germinar -> {"temp": 29.30, "umid": 61.59, "co2": 581.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2427, "umid_solo_pct": 68.65}[0m
+Wi-Fi está conectado.
+[0;32mI (101489) MQTT: Publicado (id=19655): estufa/germinar -> {"temp": 29.29, "umid": 61.51, "co2": 583.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2455, "umid_solo_pct": 67.25}[0m
+Wi-Fi está conectado.
+[0;32mI (106769) MQTT: Publicado (id=25438): estufa/germinar -> {"temp": 29.29, "umid": 61.53, "co2": 581.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2270, "umid_solo_pct": 76.50}[0m
+Wi-Fi está conectado.
+[0;32mI (112029) MQTT: Publicado (id=11195): estufa/germinar -> {"temp": 29.29, "umid": 61.50, "co2": 592.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2234, "umid_solo_pct": 78.30}[0m
+Wi-Fi está conectado.
+[0;32mI (117309) MQTT: Publicado (id=34698): estufa/germinar -> {"temp": 29.31, "umid": 61.47, "co2": 596.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2274, "umid_solo_pct": 76.30}[0m
+Wi-Fi está conectado.
+[0;32mI (122569) MQTT: Publicado (id=2111): estufa/germinar -> {"temp": 29.32, "umid": 61.67, "co2": 611.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2288, "umid_solo_pct": 75.60}[0m
+Wi-Fi está conectado.
+[0;32mI (127839) MQTT: Publicado (id=44639): estufa/germinar -> {"temp": 29.34, "umid": 61.64, "co2": 597.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2358, "umid_solo_pct": 72.10}[0m
+Wi-Fi está conectado.
+[0;32mI (133119) MQTT: Publicado (id=4458): estufa/germinar -> {"temp": 29.31, "umid": 61.62, "co2": 585.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2309, "umid_solo_pct": 74.55}[0m
+Wi-Fi está conectado.
+[0;32mI (138379) MQTT: Publicado (id=52328): estufa/germinar -> {"temp": 29.33, "umid": 61.58, "co2": 586.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2320, "umid_solo_pct": 74.00}[0m
+Wi-Fi está conectado.
+[0;32mI (143649) MQTT: Publicado (id=64641): estufa/germinar -> {"temp": 29.34, "umid": 61.51, "co2": 583.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2318, "umid_solo_pct": 74.10}[0m
+Wi-Fi está conectado.
+[0;32mI (148919) MQTT: Publicado (id=39845): estufa/germinar -> {"temp": 29.35, "umid": 61.34, "co2": 578.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2310, "umid_solo_pct": 74.50}[0m
+Wi-Fi está conectado.
+[0;32mI (154189) MQTT: Publicado (id=20536): estufa/germinar -> {"temp": 29.33, "umid": 61.41, "co2": 555.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2407, "umid_solo_pct": 69.65}[0m
+Wi-Fi está conectado.
+[0;32mI (159459) MQTT: Publicado (id=12777): estufa/germinar -> {"temp": 29.35, "umid": 61.35, "co2": 557.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2285, "umid_solo_pct": 75.75}[0m
+Wi-Fi está conectado.
+[0;32mI (164729) MQTT: Publicado (id=21102): estufa/germinar -> {"temp": 29.34, "umid": 61.58, "co2": 595.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2289, "umid_solo_pct": 75.55}[0m
+Wi-Fi está conectado.
+[0;32mI (169999) MQTT: Publicado (id=3510): estufa/germinar -> {"temp": 29.35, "umid": 61.68, "co2": 631.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2303, "umid_solo_pct": 74.85}[0m
+Wi-Fi está conectado.
+[0;32mI (175279) MQTT: Publicado (id=4851): estufa/germinar -> {"temp": 29.34, "umid": 61.68, "co2": 616.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2302, "umid_solo_pct": 74.90}[0m
+Wi-Fi está conectado.
+[0;32mI (180539) MQTT: Publicado (id=32422): estufa/germinar -> {"temp": 29.33, "umid": 61.60, "co2": 609.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2277, "umid_solo_pct": 76.15}[0m
+Wi-Fi está conectado.
+[0;32mI (185819) MQTT: Publicado (id=25340): estufa/germinar -> {"temp": 29.36, "umid": 61.57, "co2": 592.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2271, "umid_solo_pct": 76.45}[0m
+Wi-Fi está conectado.
+[0;32mI (191079) MQTT: Publicado (id=42853): estufa/germinar -> {"temp": 29.35, "umid": 61.39, "co2": 604.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2291, "umid_solo_pct": 75.45}[0m
+Wi-Fi está conectado.
+[0;32mI (196359) MQTT: Publicado (id=35918): estufa/germinar -> {"temp": 29.35, "umid": 61.35, "co2": 575.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2304, "umid_solo_pct": 74.80}[0m
+Wi-Fi está conectado.
+[0;32mI (201619) MQTT: Publicado (id=33641): estufa/germinar -> {"temp": 29.36, "umid": 61.45, "co2": 583.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2311, "umid_solo_pct": 74.45}[0m
+Wi-Fi está conectado.
+[0;32mI (206899) MQTT: Publicado (id=13233): estufa/germinar -> {"temp": 29.37, "umid": 61.75, "co2": 584.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2305, "umid_solo_pct": 74.75}[0m
+Wi-Fi está conectado.
+[0;32mI (212169) MQTT: Publicado (id=605): estufa/germinar -> {"temp": 29.36, "umid": 61.70, "co2": 593.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2315, "umid_solo_pct": 74.25}[0m
+Wi-Fi está conectado.
+[0;32mI (217429) MQTT: Publicado (id=53465): estufa/germinar -> {"temp": 29.38, "umid": 61.69, "co2": 561.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2320, "umid_solo_pct": 74.00}[0m
+Wi-Fi está conectado.
+[0;32mI (222709) MQTT: Publicado (id=26891): estufa/germinar -> {"temp": 29.37, "umid": 61.81, "co2": 591.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2320, "umid_solo_pct": 74.00}[0m
+Wi-Fi está conectado.
+[0;32mI (227969) MQTT: Publicado (id=1403): estufa/germinar -> {"temp": 29.37, "umid": 61.85, "co2": 589.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2329, "umid_solo_pct": 73.55}[0m
+Wi-Fi está conectado.
+[0;32mI (233239) MQTT: Publicado (id=11557): estufa/germinar -> {"temp": 29.36, "umid": 61.81, "co2": 597.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2314, "umid_solo_pct": 74.30}[0m
+Wi-Fi está conectado.
+[0;32mI (238509) MQTT: Publicado (id=29048): estufa/germinar -> {"temp": 29.38, "umid": 61.71, "co2": 580.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2322, "umid_solo_pct": 73.90}[0m
+Wi-Fi está conectado.
+[0;32mI (243779) MQTT: Publicado (id=24417): estufa/germinar -> {"temp": 29.36, "umid": 61.77, "co2": 575.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2263, "umid_solo_pct": 76.85}[0m
+Wi-Fi está conectado.
+[0;32mI (249059) MQTT: Publicado (id=55095): estufa/germinar -> {"temp": 29.35, "umid": 61.92, "co2": 630.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2329, "umid_solo_pct": 73.55}[0m
+Wi-Fi está conectado.
+[0;32mI (254329) MQTT: Publicado (id=49968): estufa/germinar -> {"temp": 29.37, "umid": 61.99, "co2": 657.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2321, "umid_solo_pct": 73.95}[0m
+Wi-Fi está conectado.
+[0;32mI (259589) MQTT: Publicado (id=20277): estufa/germinar -> {"temp": 29.35, "umid": 61.70, "co2": 610.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2304, "umid_solo_pct": 74.80}[0m
+Wi-Fi está conectado.
+[0;32mI (264869) MQTT: Publicado (id=53509): estufa/germinar -> {"temp": 29.37, "umid": 61.62, "co2": 591.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2308, "umid_solo_pct": 74.60}[0m
+Wi-Fi está conectado.
+[0;32mI (270129) MQTT: Publicado (id=34234): estufa/germinar -> {"temp": 29.36, "umid": 61.62, "co2": 570.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2315, "umid_solo_pct": 74.25}[0m
+Wi-Fi está conectado.
+[0;32mI (275399) MQTT: Publicado (id=57239): estufa/germinar -> {"temp": 29.38, "umid": 61.50, "co2": 586.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2315, "umid_solo_pct": 74.25}[0m
+Wi-Fi está conectado.
+[0;32mI (280669) MQTT: Publicado (id=16025): estufa/germinar -> {"temp": 29.35, "umid": 61.53, "co2": 568.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2318, "umid_solo_pct": 74.10}[0m
+Wi-Fi está conectado.
+[0;32mI (285939) MQTT: Publicado (id=48616): estufa/germinar -> {"temp": 29.36, "umid": 61.40, "co2": 572.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2317, "umid_solo_pct": 74.15}[0m
+Wi-Fi está conectado.
+[0;32mI (291209) MQTT: Publicado (id=36206): estufa/germinar -> {"temp": 29.35, "umid": 61.63, "co2": 568.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2334, "umid_solo_pct": 73.30}[0m
+Wi-Fi está conectado.
+[0;32mI (296479) MQTT: Publicado (id=58152): estufa/germinar -> {"temp": 29.36, "umid": 61.48, "co2": 577.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2322, "umid_solo_pct": 73.90}[0m
+Wi-Fi está conectado.
+[0;32mI (301749) MQTT: Publicado (id=55708): estufa/germinar -> {"temp": 29.36, "umid": 61.45, "co2": 565.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2338, "umid_solo_pct": 73.10}[0m
+Wi-Fi está conectado.
+[0;32mI (307019) MQTT: Publicado (id=55929): estufa/germinar -> {"temp": 29.34, "umid": 61.50, "co2": 561.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2324, "umid_solo_pct": 73.80}[0m
+Wi-Fi está conectado.
+[0;32mI (312289) MQTT: Publicado (id=46564): estufa/germinar -> {"temp": 29.36, "umid": 61.70, "co2": 561.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2367, "umid_solo_pct": 71.65}[0m
+Wi-Fi está conectado.
+[0;32mI (317559) MQTT: Publicado (id=20017): estufa/germinar -> {"temp": 29.35, "umid": 62.08, "co2": 631.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2368, "umid_solo_pct": 71.60}[0m
+Wi-Fi está conectado.
+[0;32mI (322839) MQTT: Publicado (id=41103): estufa/germinar -> {"temp": 29.34, "umid": 61.86, "co2": 608.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2366, "umid_solo_pct": 71.70}[0m
+Wi-Fi está conectado.
+[0;32mI (328099) MQTT: Publicado (id=38197): estufa/germinar -> {"temp": 29.32, "umid": 61.61, "co2": 580.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2352, "umid_solo_pct": 72.40}[0m
+Wi-Fi está conectado.
+[0;32mI (333369) MQTT: Publicado (id=15745): estufa/germinar -> {"temp": 29.30, "umid": 61.48, "co2": 591.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2364, "umid_solo_pct": 71.80}[0m
+Wi-Fi está conectado.
+[0;32mI (338639) MQTT: Publicado (id=54851): estufa/germinar -> {"temp": 29.34, "umid": 61.48, "co2": 580.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2368, "umid_solo_pct": 71.60}[0m
+Wi-Fi está conectado.
+[0;32mI (343919) MQTT: Publicado (id=45224): estufa/germinar -> {"temp": 29.32, "umid": 61.76, "co2": 575.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2368, "umid_solo_pct": 71.60}[0m
+Wi-Fi está conectado.
+[0;32mI (349179) MQTT: Publicado (id=13451): estufa/germinar -> {"temp": 29.32, "umid": 61.94, "co2": 578.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2364, "umid_solo_pct": 71.80}[0m
+Wi-Fi está conectado.
+[0;32mI (354459) MQTT: Publicado (id=56267): estufa/germinar -> {"temp": 29.31, "umid": 61.90, "co2": 579.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2359, "umid_solo_pct": 72.05}[0m
+Wi-Fi está conectado.
+[0;32mI (359719) MQTT: Publicado (id=60508): estufa/germinar -> {"temp": 29.31, "umid": 61.76, "co2": 567.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2370, "umid_solo_pct": 71.50}[0m
+Wi-Fi está conectado.
+[0;32mI (364989) MQTT: Publicado (id=11394): estufa/germinar -> {"temp": 29.33, "umid": 61.89, "co2": 576.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2374, "umid_solo_pct": 71.30}[0m
+Wi-Fi está conectado.
+[0;32mI (370259) MQTT: Publicado (id=38187): estufa/germinar -> {"temp": 29.33, "umid": 61.79, "co2": 593.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2375, "umid_solo_pct": 71.25}[0m
+Wi-Fi está conectado.
+[0;32mI (375529) MQTT: Publicado (id=40721): estufa/germinar -> {"temp": 29.32, "umid": 61.80, "co2": 568.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2329, "umid_solo_pct": 73.55}[0m
+Wi-Fi está conectado.
+[0;32mI (380799) MQTT: Publicado (id=45954): estufa/germinar -> {"temp": 29.36, "umid": 61.56, "co2": 570.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2315, "umid_solo_pct": 74.25}[0m
+Wi-Fi está conectado.
+[0;32mI (386069) MQTT: Publicado (id=50130): estufa/germinar -> {"temp": 29.32, "umid": 61.65, "co2": 571.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2321, "umid_solo_pct": 73.95}[0m
+Wi-Fi está conectado.
+[0;32mI (391339) MQTT: Publicado (id=27518): estufa/germinar -> {"temp": 29.33, "umid": 61.62, "co2": 561.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2318, "umid_solo_pct": 74.10}[0m
+Wi-Fi está conectado.
+[0;32mI (396609) MQTT: Publicado (id=35959): estufa/germinar -> {"temp": 29.33, "umid": 61.69, "co2": 546.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2314, "umid_solo_pct": 74.30}[0m
+Wi-Fi está conectado.
+[0;32mI (401889) MQTT: Publicado (id=33788): estufa/germinar -> {"temp": 29.33, "umid": 61.80, "co2": 556.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2319, "umid_solo_pct": 74.05}[0m
+Wi-Fi está conectado.
+[0;32mI (407149) MQTT: Publicado (id=44290): estufa/germinar -> {"temp": 29.33, "umid": 61.66, "co2": 549.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2304, "umid_solo_pct": 74.80}[0m
+Wi-Fi está conectado.
+[0;32mI (412429) MQTT: Publicado (id=34000): estufa/germinar -> {"temp": 29.35, "umid": 61.40, "co2": 558.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2313, "umid_solo_pct": 74.35}[0m
+Wi-Fi está conectado.
+[0;32mI (417689) MQTT: Publicado (id=37486): estufa/germinar -> {"temp": 29.34, "umid": 61.44, "co2": 567.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2320, "umid_solo_pct": 74.00}[0m
+Wi-Fi está conectado.
+[0;32mI (422959) MQTT: Publicado (id=13397): estufa/germinar -> {"temp": 29.34, "umid": 61.61, "co2": 592.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2329, "umid_solo_pct": 73.55}[0m
+Wi-Fi está conectado.
+[0;32mI (428229) MQTT: Publicado (id=22216): estufa/germinar -> {"temp": 29.33, "umid": 61.62, "co2": 589.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2342, "umid_solo_pct": 72.90}[0m
+Wi-Fi está conectado.
+[0;32mI (433499) MQTT: Publicado (id=25510): estufa/germinar -> {"temp": 29.33, "umid": 61.46, "co2": 573.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2362, "umid_solo_pct": 71.90}[0m
+Wi-Fi está conectado.
+[0;32mI (438769) MQTT: Publicado (id=58389): estufa/germinar -> {"temp": 29.32, "umid": 61.57, "co2": 563.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2380, "umid_solo_pct": 71.00}[0m
+Wi-Fi está conectado.
+[0;32mI (444039) MQTT: Publicado (id=30433): estufa/germinar -> {"temp": 29.31, "umid": 61.46, "co2": 552.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2368, "umid_solo_pct": 71.60}[0m
+Wi-Fi está conectado.
+[0;32mI (449309) MQTT: Publicado (id=35406): estufa/germinar -> {"temp": 29.32, "umid": 61.43, "co2": 526.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2370, "umid_solo_pct": 71.50}[0m
+Wi-Fi está conectado.
+[0;32mI (454579) MQTT: Publicado (id=673): estufa/germinar -> {"temp": 29.31, "umid": 61.37, "co2": 546.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2375, "umid_solo_pct": 71.25}[0m
+Wi-Fi está conectado.
+[0;32mI (459849) MQTT: Publicado (id=51657): estufa/germinar -> {"temp": 29.32, "umid": 61.29, "co2": 555.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2377, "umid_solo_pct": 71.15}[0m
+Wi-Fi está conectado.
+[0;32mI (465129) MQTT: Publicado (id=7466): estufa/germinar -> {"temp": 29.33, "umid": 61.29, "co2": 553.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2371, "umid_solo_pct": 71.45}[0m
+Wi-Fi está conectado.
+[0;32mI (470389) MQTT: Publicado (id=43932): estufa/germinar -> {"temp": 29.30, "umid": 61.28, "co2": 538.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2373, "umid_solo_pct": 71.35}[0m
+Wi-Fi está conectado.
+[0;32mI (475659) MQTT: Publicado (id=32537): estufa/germinar -> {"temp": 29.30, "umid": 61.26, "co2": 539.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2369, "umid_solo_pct": 71.55}[0m
+Wi-Fi está conectado.
+[0;32mI (480939) MQTT: Publicado (id=13590): estufa/germinar -> {"temp": 29.34, "umid": 61.33, "co2": 535.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2371, "umid_solo_pct": 71.45}[0m
+Wi-Fi está conectado.
+[0;32mI (486199) MQTT: Publicado (id=40447): estufa/germinar -> {"temp": 29.35, "umid": 61.24, "co2": 546.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2368, "umid_solo_pct": 71.60}[0m
+Wi-Fi está conectado.
+[0;32mI (491479) MQTT: Publicado (id=64236): estufa/germinar -> {"temp": 29.34, "umid": 61.20, "co2": 535.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2368, "umid_solo_pct": 71.60}[0m
+Wi-Fi está conectado.
+[0;32mI (496739) MQTT: Publicado (id=2055): estufa/germinar -> {"temp": 29.34, "umid": 61.23, "co2": 529.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2371, "umid_solo_pct": 71.45}[0m
+Wi-Fi está conectado.
+[0;32mI (502009) MQTT: Publicado (id=43968): estufa/germinar -> {"temp": 29.33, "umid": 61.20, "co2": 551.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2378, "umid_solo_pct": 71.10}[0m
+Wi-Fi está conectado.
+[0;32mI (507289) MQTT: Publicado (id=44738): estufa/germinar -> {"temp": 29.34, "umid": 61.30, "co2": 552.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2375, "umid_solo_pct": 71.25}[0m
+Wi-Fi está conectado.
+[0;32mI (512549) MQTT: Publicado (id=52677): estufa/germinar -> {"temp": 29.35, "umid": 61.33, "co2": 545.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2378, "umid_solo_pct": 71.10}[0m
+Wi-Fi está conectado.
+[0;32mI (517819) MQTT: Publicado (id=24296): estufa/germinar -> {"temp": 29.37, "umid": 61.32, "co2": 570.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2385, "umid_solo_pct": 70.75}[0m
+Wi-Fi está conectado.
+[0;32mI (523089) MQTT: Publicado (id=17626): estufa/germinar -> {"temp": 29.34, "umid": 61.29, "co2": 543.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2368, "umid_solo_pct": 71.60}[0m
+Wi-Fi está conectado.
+[0;32mI (528359) MQTT: Publicado (id=47364): estufa/germinar -> {"temp": 29.37, "umid": 61.21, "co2": 572.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2366, "umid_solo_pct": 71.70}[0m
+Wi-Fi está conectado.
+[0;32mI (533629) MQTT: Publicado (id=41794): estufa/germinar -> {"temp": 29.36, "umid": 61.30, "co2": 562.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2367, "umid_solo_pct": 71.65}[0m
+Wi-Fi está conectado.
+[0;32mI (538899) MQTT: Publicado (id=528): estufa/germinar -> {"temp": 29.38, "umid": 61.32, "co2": 570.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2368, "umid_solo_pct": 71.60}[0m
+Wi-Fi está conectado.
+[0;32mI (544169) MQTT: Publicado (id=38239): estufa/germinar -> {"temp": 29.38, "umid": 61.45, "co2": 582.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2369, "umid_solo_pct": 71.55}[0m
+Wi-Fi está conectado.
+[0;32mI (549439) MQTT: Publicado (id=35545): estufa/germinar -> {"temp": 29.37, "umid": 61.42, "co2": 579.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2368, "umid_solo_pct": 71.60}[0m
+Wi-Fi está conectado.
+[0;32mI (554709) MQTT: Publicado (id=51259): estufa/germinar -> {"temp": 29.37, "umid": 61.39, "co2": 571.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2368, "umid_solo_pct": 71.60}[0m
+Wi-Fi está conectado.
+[0;32mI (559989) MQTT: Publicado (id=6879): estufa/germinar -> {"temp": 29.35, "umid": 61.46, "co2": 558.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2381, "umid_solo_pct": 70.95}[0m
+Wi-Fi está conectado.
+[0;32mI (565249) MQTT: Publicado (id=44501): estufa/germinar -> {"temp": 29.36, "umid": 61.35, "co2": 570.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2370, "umid_solo_pct": 71.50}[0m
+Wi-Fi está conectado.
+[0;32mI (570529) MQTT: Publicado (id=51287): estufa/germinar -> {"temp": 29.33, "umid": 61.20, "co2": 570.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2367, "umid_solo_pct": 71.65}[0m
+Wi-Fi está conectado.
+[0;32mI (575789) MQTT: Publicado (id=1445): estufa/germinar -> {"temp": 29.36, "umid": 61.14, "co2": 556.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2369, "umid_solo_pct": 71.55}[0m
+Wi-Fi está conectado.
+[0;32mI (581059) MQTT: Publicado (id=33220): estufa/germinar -> {"temp": 29.37, "umid": 61.37, "co2": 564.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2375, "umid_solo_pct": 71.25}[0m
+Wi-Fi está conectado.
+[0;32mI (586329) MQTT: Publicado (id=36581): estufa/germinar -> {"temp": 29.35, "umid": 61.31, "co2": 536.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2368, "umid_solo_pct": 71.60}[0m
+Wi-Fi está conectado.
+[0;32mI (591599) MQTT: Publicado (id=36291): estufa/germinar -> {"temp": 29.34, "umid": 61.32, "co2": 531.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2371, "umid_solo_pct": 71.45}[0m
+Wi-Fi está conectado.
+[0;32mI (596869) MQTT: Publicado (id=61252): estufa/germinar -> {"temp": 29.32, "umid": 61.38, "co2": 550.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2377, "umid_solo_pct": 71.15}[0m
+Wi-Fi está conectado.
+[0;32mI (602139) MQTT: Publicado (id=10999): estufa/germinar -> {"temp": 29.32, "umid": 61.77, "co2": 591.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2381, "umid_solo_pct": 70.95}[0m
+Wi-Fi está conectado.
+[0;32mI (607409) MQTT: Publicado (id=47769): estufa/germinar -> {"temp": 29.33, "umid": 61.66, "co2": 570.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2375, "umid_solo_pct": 71.25}[0m
+Wi-Fi está conectado.
+[0;32mI (612679) MQTT: Publicado (id=12692): estufa/germinar -> {"temp": 29.33, "umid": 61.51, "co2": 554.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2372, "umid_solo_pct": 71.40}[0m
+Wi-Fi está conectado.
+[0;32mI (617949) MQTT: Publicado (id=48440): estufa/germinar -> {"temp": 29.34, "umid": 61.43, "co2": 556.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2368, "umid_solo_pct": 71.60}[0m
+Wi-Fi está conectado.
+[0;32mI (623219) MQTT: Publicado (id=36247): estufa/germinar -> {"temp": 29.34, "umid": 61.42, "co2": 558.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2367, "umid_solo_pct": 71.65}[0m
+Wi-Fi está conectado.
+[0;32mI (628499) MQTT: Publicado (id=20034): estufa/germinar -> {"temp": 29.35, "umid": 61.56, "co2": 560.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2371, "umid_solo_pct": 71.45}[0m
+Wi-Fi está conectado.
+[0;32mI (633759) MQTT: Publicado (id=34465): estufa/germinar -> {"temp": 29.34, "umid": 61.61, "co2": 573.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2371, "umid_solo_pct": 71.45}[0m
+Wi-Fi está conectado.
+[0;32mI (639039) MQTT: Publicado (id=40860): estufa/germinar -> {"temp": 29.35, "umid": 61.60, "co2": 560.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2365, "umid_solo_pct": 71.75}[0m
+Wi-Fi está conectado.
+[0;32mI (644299) MQTT: Publicado (id=7094): estufa/germinar -> {"temp": 29.33, "umid": 61.66, "co2": 574.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2368, "umid_solo_pct": 71.60}[0m
+Wi-Fi está conectado.
+[0;32mI (649569) MQTT: Publicado (id=44646): estufa/germinar -> {"temp": 29.32, "umid": 61.62, "co2": 558.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2364, "umid_solo_pct": 71.80}[0m
+Wi-Fi está conectado.
+[0;32mI (654849) MQTT: Publicado (id=47026): estufa/germinar -> {"temp": 29.33, "umid": 61.88, "co2": 608.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2363, "umid_solo_pct": 71.85}[0m
+Wi-Fi está conectado.
+[0;32mI (660109) MQTT: Publicado (id=22643): estufa/germinar -> {"temp": 29.32, "umid": 61.85, "co2": 591.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2366, "umid_solo_pct": 71.70}[0m
+Wi-Fi está conectado.
+[0;32mI (665379) MQTT: Publicado (id=18954): estufa/germinar -> {"temp": 29.33, "umid": 61.63, "co2": 583.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2366, "umid_solo_pct": 71.70}[0m
+Wi-Fi está conectado.
+[0;32mI (670649) MQTT: Publicado (id=62305): estufa/germinar -> {"temp": 29.34, "umid": 61.59, "co2": 576.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2359, "umid_solo_pct": 72.05}[0m
+Wi-Fi está conectado.
+[0;32mI (675919) MQTT: Publicado (id=35831): estufa/germinar -> {"temp": 29.34, "umid": 61.61, "co2": 572.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2369, "umid_solo_pct": 71.55}[0m
+Wi-Fi está conectado.
+[0;32mI (681189) MQTT: Publicado (id=25520): estufa/germinar -> {"temp": 29.36, "umid": 61.68, "co2": 601.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2269, "umid_solo_pct": 76.55}[0m
+Wi-Fi está conectado.
+[0;32mI (686459) MQTT: Publicado (id=13598): estufa/germinar -> {"temp": 29.35, "umid": 61.73, "co2": 613.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2227, "umid_solo_pct": 78.65}[0m
+Wi-Fi está conectado.
+[0;32mI (691729) MQTT: Publicado (id=55813): estufa/germinar -> {"temp": 29.37, "umid": 61.52, "co2": 551.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2240, "umid_solo_pct": 78.00}[0m
+Wi-Fi está conectado.
+[0;32mI (696999) MQTT: Publicado (id=63783): estufa/germinar -> {"temp": 29.35, "umid": 61.40, "co2": 565.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2253, "umid_solo_pct": 77.35}[0m
+Wi-Fi está conectado.
+[0;32mI (702269) MQTT: Publicado (id=47476): estufa/germinar -> {"temp": 29.36, "umid": 61.35, "co2": 553.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2266, "umid_solo_pct": 76.70}[0m
+Wi-Fi está conectado.
+[0;32mI (707549) MQTT: Publicado (id=56401): estufa/germinar -> {"temp": 29.37, "umid": 61.31, "co2": 571.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 0.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 2256, "umid_solo_pct": 77.20}[0m
+Wi-Fi está conectado.
+[0;32mI (71

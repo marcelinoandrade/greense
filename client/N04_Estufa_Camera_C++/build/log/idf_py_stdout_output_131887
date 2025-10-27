@@ -1,0 +1,357 @@
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x3 (DOWNLOA�ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:6260
+load:0x40078000,len:15540
+load:0x40080400,len:4
+ho 8 tail 4 room 4
+load:0x40080404,len:3904
+entry 0x40080640
+[0;32mI (31) boot: ESP-IDF v5.2.1 2nd stage bootloader[0m
+[0;32mI (31) boot: compile time Jul  3 2025 16:11:55[0m
+[0;32mI (31) boot: Multicore bootloader[0m
+[0;32mI (32) boot: chip revision: v3.1[0m
+[0;32mI (35) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (39) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (43) boot.esp32: SPI Flash Size : 4MB[0m
+[0;32mI (46) boot: Enabling RNG early entropy source...[0m
+[0;32mI (51) boot: Partition Table:[0m
+[0;32mI (53) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (60) boot:  0 nvs              WiFi data        01 02 00009000 00005000[0m
+[0;32mI (66) boot:  1 otadata          OTA data         01 00 0000e000 00002000[0m
+[0;32mI (73) boot:  2 app0             factory app      00 00 00010000 00200000[0m
+[0;32mI (79) boot:  3 spiffs           Unknown data     01 82 00210000 000f0000[0m
+[0;32mI (86) boot: End of partition table[0m
+[0;32mI (89) boot: Defaulting to factory image[0m
+[0;32mI (93) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=2bc44h (179268) map[0m
+[0;32mI (161) esp_image: segment 1: paddr=0003bc6c vaddr=3ffb0000 size=043ach ( 17324) load[0m
+[0;32mI (168) esp_image: segment 2: paddr=00040020 vaddr=400d0020 size=bc980h (772480) map[0m
+[0;32mI (433) esp_image: segment 3: paddr=000fc9a8 vaddr=3ffb43ac size=0128ch (  4748) load[0m
+[0;32mI (435) esp_image: segment 4: paddr=000fdc3c vaddr=40080000 size=1ed00h (126208) load[0m
+[0;32mI (502) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (502) boot: Disabling RNG early entropy source...[0m
+[0;32mI (511) cpu_start: Multicore app[0m
+[0;32mI (512) quad_psram: This chip is ESP32-D0WD[0m
+[0;32mI (514) esp_psram: Found 8MB PSRAM device[0m
+[0;32mI (514) esp_psram: Speed: 40MHz[0m
+[0;32mI (514) esp_psram: PSRAM initialized, cache is in low/high (2-core) mode.[0m
+[0;33mW (520) esp_psram: Virtual address not enough for PSRAM, map as much as we can. 4MB is mapped[0m
+[0;32mI (1434) esp_psram: SPI SRAM memory test OK[0m
+[0;32mI (1442) cpu_start: Pro cpu start user code[0m
+[0;32mI (1442) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (1442) cpu_start: Application information:[0m
+[0;32mI (1443) cpu_start: Project name:     N04_Estufa_Camera[0m
+[0;32mI (1448) cpu_start: App version:      8afb32c-dirty[0m
+[0;32mI (1452) cpu_start: Compile time:     Aug 22 2025 17:01:05[0m
+[0;32mI (1457) cpu_start: ELF file SHA256:  16c44255a...[0m
+[0;32mI (1462) cpu_start: ESP-IDF:          v5.2.1[0m
+[0;32mI (1466) cpu_start: Min chip rev:     v0.0[0m
+[0;32mI (1470) cpu_start: Max chip rev:     v3.99 [0m
+[0;32mI (1474) cpu_start: Chip rev:         v3.1[0m
+[0;32mI (1478) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (1484) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (1489) heap_init: At 3FFB9EF0 len 00026110 (152 KiB): DRAM[0m
+[0;32mI (1494) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (1500) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (1506) heap_init: At 4009ED00 len 00001300 (4 KiB): IRAM[0m
+[0;32mI (1511) esp_psram: Adding pool of 4096K of PSRAM memory to heap allocator[0m
+[0;32mI (1519) spi_flash: detected chip: generic[0m
+[0;32mI (1521) spi_flash: flash io: dio[0m
+[0;33mW (1525) i2c: This driver is an old driver, please migrate your application code to adapt `driver/i2c_master.h`[0m
+[0;32mI (1535) main_task: Started on CPU0[0m
+[0;32mI (1545) esp_psram: Reserving pool of 32K of internal memory for DMA/internal allocations[0m
+[0;32mI (1545) main_task: Calling app_main()[0m
+[0;32mI (1585) SD_CARD: Montando cartão SD...[0m
+[1;31mE (1605) sdmmc_common: sdmmc_init_ocr: send_op_cond (1) returned 0x107[0m
+[1;31mE (1605) vfs_fat_sdmmc: sdmmc_card_init failed (0x107).[0m
+[1;31mE (1605) SD_CARD: Falha ao inicializar cartão SD (ESP_ERR_TIMEOUT).[0m
+[1;31mE (1615) CAMERA: Falha ao inicializar o cartão SD. As imagens não serão salvas localmente.[0m
+[0;32mI (1625) gpio: GPIO[25]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:2 [0m
+[0;32mI (1635) cam_hal: cam init ok[0m
+[0;32mI (1635) sccb: pin_sda 26 pin_scl 27[0m
+[0;32mI (1635) sccb: sccb_i2c_port=1[0m
+[0;32mI (1635) gpio: GPIO[32]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (1675) camera: Detected camera at address=0x30[0m
+[0;32mI (1675) camera: Detected OV2640 camera[0m
+[0;32mI (1675) camera: Camera PID=0x26 VER=0x42 MIDL=0x7f MIDH=0xa2[0m
+[0;32mI (1765) cam_hal: buffer_size: 32768, half_buffer_size: 4096, node_buffer_size: 2048, node_cnt: 16, total_cnt: 38[0m
+[0;32mI (1765) cam_hal: Allocating 157286 Byte frame buffer in PSRAM[0m
+[0;32mI (1765) cam_hal: cam config ok[0m
+[0;32mI (1765) ov2640: Set PLL: clk_2x: 0, clk_div: 0, pclk_auto: 0, pclk_div: 12[0m
+[0;32mI (1845) CAMERA: Câmera pronta[0m
+[0;32mI (1855) wifi:wifi driver task: 3ffd29c0, prio:23, stack:6656, core=0[0m
+[0;32mI (1865) wifi:wifi firmware version: a9f5b59[0m
+[0;32mI (1875) wifi:wifi certification version: v7.0[0m
+[0;32mI (1875) wifi:config NVS flash: enabled[0m
+[0;32mI (1875) wifi:config nano formating: disabled[0m
+[0;32mI (1875) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (1875) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (1885) wifi:Init management short buffer num: 32[0m
+[0;32mI (1885) wifi:Init static tx buffer num: 16[0m
+[0;32mI (1895) wifi:Init tx cache buffer num: 32[0m
+[0;32mI (1895) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (1905) wifi:Init static rx buffer num: 10[0m
+[0;32mI (1905) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (1905) wifi_init: rx ba win: 6[0m
+[0;32mI (1915) wifi_init: tcpip mbox: 32[0m
+[0;32mI (1915) wifi_init: udp mbox: 6[0m
+[0;32mI (1915) wifi_init: tcp mbox: 6[0m
+[0;32mI (1925) wifi_init: tcp tx win: 5760[0m
+[0;32mI (1925) wifi_init: tcp rx win: 5760[0m
+[0;32mI (1925) wifi_init: tcp mss: 1440[0m
+[0;32mI (1925) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (1935) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (1945) phy_init: phy_version 4791,2c4672b,Dec 20 2023,16:06:06[0m
+[0;32mI (2035) wifi:mode : sta (78:42:1c:6d:93:8c)[0m
+[0;32mI (2035) wifi:enable tsf[0m
+[0;33mW (2035) cam_hal: NO-SOI[0m
+[0;32mI (2035) wifi:Set ps type: 0, coexist: 0[0m
+
+[0;32mI (2035) WIFI: Wi-Fi conectando...[0m
+[0;32mI (2065) wifi:new:<13,0>, old:<1,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (2065) wifi:state: init -> auth (b0)[0m
+[0;32mI (3065) wifi:state: auth -> init (200)[0m
+[0;32mI (3075) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (5545) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (5545) wifi:state: init -> auth (b0)[0m
+[0;32mI (6545) wifi:state: auth -> init (200)[0m
+[0;32mI (6555) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (9025) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (9025) wifi:state: init -> auth (b0)[0m
+[0;32mI (10035) wifi:state: auth -> init (200)[0m
+[0;32mI (10035) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (12505) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (12515) wifi:state: init -> auth (b0)[0m
+[0;32mI (13515) wifi:state: auth -> init (200)[0m
+[0;32mI (13515) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (15995) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (15995) wifi:state: init -> auth (b0)[0m
+[0;32mI (16995) wifi:state: auth -> init (200)[0m
+[0;32mI (16995) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (19475) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (19475) wifi:state: init -> auth (b0)[0m
+[0;32mI (20475) wifi:state: auth -> init (200)[0m
+[0;32mI (20475) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (22955) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (22955) wifi:state: init -> auth (b0)[0m
+[0;32mI (23955) wifi:state: auth -> init (200)[0m
+[0;32mI (23955) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (26435) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (26435) wifi:state: init -> auth (b0)[0m
+[0;32mI (27435) wifi:state: auth -> init (200)[0m
+[0;32mI (27445) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (29925) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (29925) wifi:state: init -> auth (b0)[0m
+[0;32mI (30925) wifi:state: auth -> init (200)[0m
+[0;32mI (30925) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (33405) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (33405) wifi:state: init -> auth (b0)[0m
+[0;32mI (34405) wifi:state: auth -> init (200)[0m
+[0;32mI (34405) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (36885) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (36885) wifi:state: init -> auth (b0)[0m
+[0;32mI (37885) wifi:state: auth -> init (200)[0m
+[0;32mI (37885) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (40365) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (40365) wifi:state: init -> auth (b0)[0m
+[0;32mI (41365) wifi:state: auth -> init (200)[0m
+[0;32mI (41365) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (43845) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (43845) wifi:state: init -> auth (b0)[0m
+[0;32mI (44845) wifi:state: auth -> init (200)[0m
+[0;32mI (44845) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (47325) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (47325) wifi:state: init -> auth (b0)[0m
+[0;32mI (48325) wifi:state: auth -> init (200)[0m
+[0;32mI (48335) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (50805) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (50815) wifi:state: init -> auth (b0)[0m
+[0;32mI (51815) wifi:state: auth -> init (200)[0m
+[0;32mI (51815) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (54295) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (54295) wifi:state: init -> auth (b0)[0m
+[0;32mI (55295) wifi:state: auth -> init (200)[0m
+[0;32mI (55295) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (57775) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (57775) wifi:state: init -> auth (b0)[0m
+[0;32mI (58775) wifi:state: auth -> init (200)[0m
+[0;32mI (58775) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (61255) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (61255) wifi:state: init -> auth (b0)[0m
+[0;32mI (62255) wifi:state: auth -> init (200)[0m
+[0;32mI (62255) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (64735) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (64735) wifi:state: init -> auth (b0)[0m
+[0;32mI (65735) wifi:state: auth -> init (200)[0m
+[0;32mI (65735) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (68215) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (68215) wifi:state: init -> auth (b0)[0m
+[0;32mI (69225) wifi:state: auth -> init (200)[0m
+[0;32mI (69225) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (71695) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (71705) wifi:state: init -> auth (b0)[0m
+[0;32mI (72705) wifi:state: auth -> init (200)[0m
+[0;32mI (72705) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (75185) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (75185) wifi:state: init -> auth (b0)[0m
+[0;32mI (76185) wifi:state: auth -> init (200)[0m
+[0;32mI (76185) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (78665) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (78665) wifi:state: init -> auth (b0)[0m
+[0;32mI (79665) wifi:state: auth -> init (200)[0m
+[0;32mI (79665) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (82145) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (82145) wifi:state: init -> auth (b0)[0m
+[0;32mI (83145) wifi:state: auth -> init (200)[0m
+[0;32mI (83145) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (85625) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (85625) wifi:state: init -> auth (b0)[0m
+[0;32mI (86625) wifi:state: auth -> init (200)[0m
+[0;32mI (86625) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (89105) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (89105) wifi:state: init -> auth (b0)[0m
+[0;32mI (90115) wifi:state: auth -> init (200)[0m
+[0;32mI (90115) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (92595) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (92605) wifi:state: init -> auth (b0)[0m
+[0;32mI (93605) wifi:state: auth -> init (200)[0m
+[0;32mI (93605) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (96075) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (96075) wifi:state: init -> auth (b0)[0m
+[0;32mI (97075) wifi:state: auth -> init (200)[0m
+[0;32mI (97075) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (99555) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (99555) wifi:state: init -> auth (b0)[0m
+[0;32mI (100555) wifi:state: auth -> init (200)[0m
+[0;32mI (100555) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (103035) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (103035) wifi:state: init -> auth (b0)[0m
+[0;32mI (104035) wifi:state: auth -> init (200)[0m
+[0;32mI (104035) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (106515) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (106515) wifi:state: init -> auth (b0)[0m
+[0;32mI (107515) wifi:state: auth -> init (200)[0m
+[0;32mI (107525) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (109995) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (109995) wifi:state: init -> auth (b0)[0m
+[0;32mI (111005) wifi:state: auth -> init (200)[0m
+[0;32mI (111005) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (113475) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (113485) wifi:state: init -> auth (b0)[0m
+[0;32mI (114485) wifi:state: auth -> init (200)[0m
+[0;32mI (114485) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (116965) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (116965) wifi:state: init -> auth (b0)[0m
+[0;32mI (117965) wifi:state: auth -> init (200)[0m
+[0;32mI (117965) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (120445) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (120445) wifi:state: init -> auth (b0)[0m
+[0;32mI (121445) wifi:state: auth -> init (200)[0m
+[0;32mI (121445) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (123925) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (123925) wifi:state: init -> auth (b0)[0m
+[0;32mI (124925) wifi:state: auth -> init (200)[0m
+[0;32mI (124925) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (127405) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1[0m
+[0;32mI (127405) wifi:state: init -> auth (b0)[0m
+[0;32mI (127415) wifi:state: auth -> assoc (0)[0m
+[0;32mI (127425) wifi:state: assoc -> run (10)[0m
+[0;32mI (127535) wifi:connected with greense, aid = 1, channel 13, BW20, bssid = e4:5f:01:6f:f2:29[0m
+[0;32mI (127535) wifi:security: WPA-PSK, phy: bgn, rssi: -17[0m
+[0;32mI (127545) wifi:pm start, type: 0[0m
+
+[0;32mI (127545) wifi:dp: 1, bi: 102400, li: 3, scale listen interval from 307200 us to 307200 us[0m
+[0;32mI (127605) wifi:dp: 2, bi: 102400, li: 4, scale listen interval from 307200 us to 409600 us[0m
+[0;32mI (127615) wifi:AP's beacon interval = 102400 us, DTIM period = 2[0m
+[0;32mI (127635) wifi:<ba-add>idx:0 (ifx:0, e4:5f:01:6f:f2:29), tid:6, ssn:0, winSize:64[0m
+[0;32mI (128555) esp_netif_handlers: sta ip: 10.42.0.56, mask: 255.255.255.0, gw: 10.42.0.1[0m
+[0;32mI (128555) WIFI: IP: 10.42.0.56[0m
+[0;32mI (128555) WIFI: Wi-Fi conectado[0m
+[0;32mI (128555) main_task: Returned from app_main()[0m
+[0;32mI (129255) wifi:<ba-add>idx:1 (ifx:0, e4:5f:01:6f:f2:29), tid:0, ssn:3, winSize:64[0m
+[0;32mI (131735) CAMERA: Imagem enviada. Status = 200[0m
+[0;32mI (131735) SD_CARD: Salvando imagem em: /sdcard/img_131735.jpg[0m
+[1;31mE (131735) SD_CARD: Falha ao abrir arquivo para escrita.[0m
+[0;32mI (197695) CAMERA: Imagem enviada. Status = 200[0m
+[0;32mI (197705) SD_CARD: Salvando imagem em: /sdcard/img_197705.jpg[0m
+[1;31mE (197705) SD_CARD: Falha ao abrir arquivo para escrita.[0m
+[0;32mI (262805) CAMERA: Imagem enviada. Status = 200[0m
+[0;32mI (262815) SD_CARD: Salvando imagem em: /sdcard/img_262815.jpg[0m
+[1;31mE (262815) SD_CARD: Falha ao abrir arquivo para escrita.[0m
+[0;32mI (326615) CAMERA: Imagem enviada. Status = 200[0m
+[0;32mI (326615) SD_CARD: Salvando imagem em: /sdcard/img_326615.jpg[0m
+[1;31mE (326615) SD_CARD: Falha ao abrir arquivo para escrita.[0m
+[0;32mI (390495) CAMERA: Imagem enviada. Status = 200[0m
+[0;32mI (390495) SD_CARD: Salvando imagem em: /sdcard/img_390495.jpg[0m
+[1;31mE (390505) SD_CARD: Falha ao abrir arquivo para escrita.[0m
+[0;32mI (454015) CAMERA: Imagem enviada. Status = 200[0m
+[0;32mI (454015) SD_CARD: Salvando imagem em: /sdcard/img_454015.jpg[0m
+[1;31mE (454015) SD_CARD: Falha ao abrir arquivo para escrita.[0m
+[0;32mI (518525) CAMERA: Imagem enviada. Status = 200[0m
+[0;32mI (518535) SD_CARD: Salvando imagem em: /sdcard/img_518535.jpg[0m
+[1;31mE (518535) SD_CARD: Falha ao abrir arquivo para escrita.[0m
+[0;32mI (582275) CAMERA: Imagem enviada. Status = 200[0m
+[0;32mI (582285) SD_CARD: Salvando imagem em: /sdcard/img_582285.jpg[0m
+[1;31mE (582285) SD_CARD: Falha ao abrir arquivo para escrita.[0m
+[0;32mI (646065) CAMERA: Imagem enviada. Status = 200[0m
+[0;32mI (646065) SD_CARD: Salvando imagem em: /sdcard/img_646065.jpg[0m
+[1;31mE (646065) SD_CARD: Falha ao abrir arquivo para escrita.[0m
+[0;32mI (708875) CAMERA: Imagem enviada. Status = 200[0m
+[0;32mI (708885) SD_CARD: Salvando imagem em: /sdcard/img_708885.jpg[0m
+[1;31mE (708885) SD_CARD: Falha ao abrir arquivo para escrita.[0m
+[0;32mI (772645) CAMERA: Imagem enviada. Status = 200[0m
+[0;32mI (772655) SD_CARD: Salvando imagem em: /sdcard/img_772655.jpg[0m
+[1;31mE (772655) SD_CARD: Falha ao abrir arquivo para escrita.[0m
+[0;32mI (836145) CAMERA: Imagem enviada. Status = 200[0m
+[0;32mI (836155) SD_CARD: Salvando imagem em: /sdcard/img_836155.jpg[0m
+[1;31mE (836155) SD_CARD: Falha ao abrir arquivo para escrita.[0m
+[0;32mI (902215) CAMERA: Imagem enviada. Status = 200[0m
+[0;32mI (902225) SD_CARD: Salvando imagem em: /sdcard/img_902225.jpg[0m
+[1;31mE (902225) SD_CARD: Falha ao abrir arquivo para escrita.[0m
+[0;32mI (968645) CAMERA: Imagem enviada. Status = 200[0m
+[0;32mI (968655) SD_CARD: Salvando imagem em: /sdcard/img_968655.jpg[0m
+[1;31mE (968655) SD_CARD: Falha ao abrir arquivo para escrita.[0m
+[0;32mI (1032235) CAMERA: Imagem enviada. Status = 200[0m
+[0;32mI (1032235) SD_CARD: Salvando imagem em: /sdcard/img_1032235.jpg[0m
+[1;31mE (1032235) SD_CARD: Falha ao abrir arquivo para escrita.[0m
+[0;32mI (1097025) CAMERA: Imagem enviada. Status = 200[0m
+[0;32mI (1097025) SD_CARD: Salvando imagem em: /sdcard/img_1097025.jpg[0m
+[1;31mE (1097025) SD_CARD: Falha ao abrir arquivo para escrita.[0m
+[0;32mI (1161165) CAMERA: Imagem enviada. Status = 200[0m
+[0;32mI (1161175) SD_CARD: Salvando imagem em: /sdcard/img_1161175.jpg[0m
+[1;31mE (1161175) SD_CARD: Falha ao abrir arquivo para escrita.[0m
+[0;32mI (1224945) CAMERA: Imagem enviada. Status = 200[0m
+[0;32mI (1224945) SD_CARD: Salvando imagem em: /sdcard/img_1224945.jpg[0m
+[1;31mE (1224945) SD_CARD: Falha ao abrir arquivo para escrita.[0m
+[0;32mI (1288775) CAMERA: Imagem enviada. Status = 200[0m
+[0;32mI (1288785) SD_CARD: Salvando imagem em: /sdcard/img_1288785.jpg[0m
+[1;31mE (1288785) SD_CARD: Falha ao abrir arquivo para escrita.[0m
+[0;32mI (1352965) CAMERA: Imagem enviada. Status = 200[0m
+[0;32mI (1352975) SD_CARD: Salvando imagem em: /sdcard/img_1352975.jpg[0m
+[1;31mE (1352975) SD_CARD: Falha ao abrir arquivo para escrita.[0m
+[0;32mI (1416805) CAMERA: Imagem enviada. Status = 200[0m
+[0;32mI (1416805) SD_CARD: Salvando imagem em: /sdcard/img_1416805.jpg[0m
+[1;31mE (1416805) SD_CARD: Falha ao abrir arquivo para escrita.[0m
+[0;32mI (1481715) CAMERA: Imagem enviada. Status = 200[0m
+[0;32mI (1481725) SD_CARD: Salvando imagem em: /sdcard/img_1481725.jpg[0m
+[1;31mE (1481725) SD_CARD: Falha ao abrir arquivo para escrita.[0m
+[0;32mI (1548725) CAMERA: Imagem enviada. Status = 200[0m
+[0;32mI (1548725) SD_CARD: Salvando imagem em: /sdcard/img_1548725.jpg[0m
+[1;31mE (1548725) SD_CARD: Falha ao abrir arquivo para escrita.[0m
+[0;32mI (1613155) CAMERA: Imagem enviada. Status = 200[0m
+[0;32mI (1613155) SD_CARD: Salvando imagem em: /sdcard/img_1613155.jpg[0m
+[1;31mE (1613155) SD_CARD: Falha ao abrir arquivo para escrita.[0m
+[0;32mI (1677355) CAMERA: Imagem enviada. Status = 200[0m
+[0;32mI (1677365) SD_CARD: Salvando imagem em: /sdcard/img_1677355.jpg[0m
+[1;31mE (1677365) SD_CARD: Falha ao abrir arquivo para escrita.[0m
+[0;32mI (1742025) CAMERA: Imagem enviada. Status = 200[0m
+[0;32mI (1742025) SD_CARD: Salvando imagem em: /sdcard/img_1742025.jpg[0m
+[1;31mE (1742025) SD_CARD: Falha ao abrir arquivo para escrita.[0m
+[0;32mI (1805865) CAMERA: Imagem enviada. Status = 200[0m
+[0;32mI (1805875) SD_CARD: Salvando imagem em: /sdcard/img_1805875.jpg[0m
+[1;31mE (1805875) SD_CARD: Falha ao abrir arquivo para escrita.[0m

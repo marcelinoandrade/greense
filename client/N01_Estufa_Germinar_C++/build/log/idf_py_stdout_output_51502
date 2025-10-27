@@ -1,0 +1,30 @@
+[1/9] Performing build step for 'bootloader'
+[1/1] cd /home/greense/projetoGreense/client/N01_Estufa_Germinar/build/bootloader/esp-idf/esptool_py && /home/greense/.espressif/python_env/idf5.2_py3.11_env/bin/python /home/greense/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x1000 /home/greense/projetoGreense/client/N01_Estufa_Germinar/build/bootloader/bootloader.bin
+Bootloader binary size 0x6860 bytes. 0x7a0 bytes (7%) free.
+[2/9] No install step for 'bootloader'
+[3/9] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/sensores/sensores.c.obj
+In file included from /home/greense/projetoGreense/client/N01_Estufa_Germinar/main/sensores/sensores.c:7:
+/home/greense/esp/esp-idf/components/driver/deprecated/driver/adc.h:19:2: warning: #warning "legacy adc driver is deprecated, please migrate to use esp_adc/adc_oneshot.h and esp_adc/adc_continuous.h for oneshot mode and continuous mode drivers respectively" [-Wcpp]
+   19 | #warning "legacy adc driver is deprecated, please migrate to use esp_adc/adc_oneshot.h and esp_adc/adc_continuous.h for oneshot mode and continuous mode drivers respectively"
+      |  ^~~~~~~
+/home/greense/projetoGreense/client/N01_Estufa_Germinar/main/sensores/sensores.c: In function 'sensores_init':
+/home/greense/projetoGreense/client/N01_Estufa_Germinar/main/sensores/sensores.c:75:5: warning: 'ADC_ATTEN_DB_11' is deprecated [-Wdeprecated-declarations]
+   75 |     adc1_config_channel_atten(ADC1_CHANNEL_0, ADC_ATTEN_DB_11);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from /home/greense/esp/esp-idf/components/driver/deprecated/driver/adc_types_legacy.h:8,
+                 from /home/greense/esp/esp-idf/components/driver/deprecated/driver/adc.h:15:
+/home/greense/esp/esp-idf/components/hal/include/hal/adc_types.h:51:5: note: declared here
+   51 |     ADC_ATTEN_DB_11 __attribute__((deprecated)) = ADC_ATTEN_DB_12,  ///<This is deprecated, it behaves the same as `ADC_ATTEN_DB_12`
+      |     ^~~~~~~~~~~~~~~
+[4/9] Completed 'bootloader'
+[5/9] Linking C static library esp-idf/main/libmain.a
+[6/9] Generating ld/sections.ld
+[7/9] Linking CXX executable N01_Estufa_Germinar.elf
+[8/9] Generating binary image from built executable
+esptool.py v4.8.1
+Creating esp32 image...
+Merged 2 ELF sections
+Successfully created esp32 image.
+Generated /home/greense/projetoGreense/client/N01_Estufa_Germinar/build/N01_Estufa_Germinar.bin
+[9/9] cd /home/greense/projetoGreense/client/N01_Estufa_Germinar/build/esp-idf/esptool_py && /home/greense/.espressif/python_env/idf5.2_py3.11_env/bin/python /home/greense/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 partition --type app /home/greense/projetoGreense/client/N01_Estufa_Germinar/build/partition_table/partition-table.bin /home/greense/projetoGreense/client/N01_Estufa_Germinar/build/N01_Estufa_Germinar.bin
+N01_Estufa_Germinar.bin binary size 0xe7450 bytes. Smallest app partition is 0x100000 bytes. 0x18bb0 bytes (10%) free.
