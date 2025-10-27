@@ -13602,3 +13602,15 @@ Análise realizada em 27/10/2025 04:00. Temperatura ambiente: 27.25 °C, dentro 
 🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
 Análise realizada em 27/10/2025 08:00. Temperatura ambiente: 28.89 °C, dentro da faixa tolerada. Umidade: 53.8%, dentro da faixa tolerada. pH: 5.5, no limite inferior da faixa tolerada. EC: 1.5 mS/cm, dentro da faixa tolerada. Temperatura do reservatório: 25.25 °C, dentro da faixa tolerada. água_max: 0, nível abaixo da boia, reposição recomendada. água_min: 1, nível adequado. || Conclusão: Todos os parâmetros estão dentro das faixas toleradas, exceto o nível de água_max, que está abaixo do ideal, mas sem risco imediato. Impacto previsto: Caso o nível de água não seja corrigido, pode ocorrer estresse hídrico, aumentando o risco de doenças como Pythium e Fusarium, devido à baixa circulação de nutrientes; risco atual classificado como 1/5.
 ✅ Resposta da IA Eng. GePTo gravada no InfluxDB.
+
+📜 [27/10/2025 12:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados d Estufa_Maturar:
+{'temp': 29.86, 'umid': 60.18, 'co2': 715.0, 'luz': 0.0, 'temp_reserv_int': 25.44, 'agua_min': 1.0, 'agua_max': 0.0, 'ph': 5.5, 'ec': 1.5}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 29.86, 'umidade_ambiente': 60.18, 'nivel_co2': 715.0, 'luminosidade': 0.0, 'ph_agua': 5.5, 'condutividade_ec': 1.5, 'temp_reservatorio_interno': 25.44, 'agua_min': 1, 'agua_max': 0, 'timestamp_consulta': '2025-10-27T15:00:07.549032Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 27/10/2025 12:00. Temperatura ambiente: 29.86 °C, dentro da faixa tolerada. Umidade: 60.18 %, dentro da faixa tolerada. pH: 5.5, no limite inferior da faixa tolerada. EC: 1.5 mS/cm, dentro da faixa tolerada. Temperatura do reservatório: 25.44 °C, dentro da faixa tolerada. água_max: 0, nível abaixo da boia, reposição recomendada. água_min: 1, nível adequado. || Conclusão: Todos os parâmetros estão dentro das faixas toleradas, exceto o nível de água_max que está abaixo da boia, mas sem risco imediato. Impacto previsto: Caso o nível de água não seja corrigido, pode haver estresse hídrico, aumentando o risco de doenças como murcha bacteriana e podridão radicular devido à insuficiência de água e nutrientes; risco atual classificado como 1/5.
+✅ Resposta da IA Eng. GePTo gravada no InfluxDB.

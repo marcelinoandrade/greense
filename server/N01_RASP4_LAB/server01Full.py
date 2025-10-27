@@ -17,6 +17,8 @@ INFLUXDB_PORT = 8086
 INFLUXDB_DB = "dados_estufa"
 SENHA_CORRETA = config.PASS_MANUAL
 
+ARQUIVO_CSV_GLOBAL = "historico_tempo/termica_global.csv"
+
 # ========== INICIALIZAÇÃO ==========
 # Conectar ao InfluxDB
 client_influx = InfluxDBClient(host=INFLUXDB_HOST, port=INFLUXDB_PORT)
@@ -52,50 +54,93 @@ def salvar_dados_termicos_influxdb(temperaturas, timestamp):
         }]
         
         client_influx.write_points(json_body)
-        print(f"📈 Estatísticas térmicas salvas no InfluxDB")
+        print("📈 Estatísticas térmicas salvas no InfluxDB")
         print(f"   📊 Temperaturas: min={temp_min:.1f}°C, max={temp_max:.1f}°C, avg={temp_avg:.1f}°C")
         return True
     except Exception as e:
         print(f"❌ Erro ao salvar no InfluxDB: {e}")
         return False
 
-def salvar_csv_completo(temperaturas, timestamp):
-    """Salva matriz completa em CSV"""
-    try:
-        dt = datetime.fromtimestamp(timestamp)
-        diretorio = "historico_tempo"
-        os.makedirs(diretorio, exist_ok=True)
+def atualizar_csv_termico_incremental(temperaturas, timestamp):
+    """
+    Mantém um único CSV acumulado em ARQUIVO_CSV_GLOBAL.
+    Cada linha é (Linha, Coluna, ...leituras no tempo...).
+    Cada nova captura térmica vira UMA nova coluna com nome YYYYmmdd_HHMMSS.
+    Se o arquivo não existe ele é criado.
+    Se já existe ele é carregado, ganha a nova coluna e é sobrescrito.
+    """
+    # garante diretório
+    diretorio = os.path.dirname(ARQUIVO_CSV_GLOBAL)
+    os.makedirs(diretorio, exist_ok=True)
 
-        filename = f"termica_{dt.strftime('%Y%m%d_%H%M%S')}.csv"
-        caminho = os.path.join(diretorio, filename)
+    # nome da nova coluna baseado no timestamp
+    dt = datetime.fromtimestamp(timestamp)
+    nome_coluna = dt.strftime("%Y%m%d_%H%M%S")
 
-        with open(caminho, "w", newline="") as f:
+    # achata matriz 24x32 -> vetor 768 na mesma ordem (linha-major)
+    flat_temp = temperaturas.reshape(24*32)
+
+    # criar novo CSV se não existir
+    if not os.path.exists(ARQUIVO_CSV_GLOBAL):
+        with open(ARQUIVO_CSV_GLOBAL, "w", newline="") as f:
             writer = csv.writer(f)
-            writer.writerow(["Linha", "Coluna", "Temperatura_C"])
+            # cabeçalho
+            writer.writerow(["Linha", "Coluna", nome_coluna])
+
+            # corpo
+            idx = 0
             for i in range(24):
                 for j in range(32):
-                    writer.writerow([i, j, f"{temperaturas[i][j]:.2f}"])
+                    writer.writerow([i, j, f"{flat_temp[idx]:.2f}"])
+                    idx += 1
 
-        print(f"💾 CSV salvo em: {caminho}")
-        return caminho
-    except Exception as e:
-        print(f"❌ Erro ao salvar CSV: {e}")
-        return None
+        print(f"💾 Criado CSV novo {ARQUIVO_CSV_GLOBAL} com coluna {nome_coluna}")
+        return True
 
-# ===============================================
-# <-- INÍCIO DA MUDANÇA
-# ===============================================
+    # caso já exista: carregar e adicionar coluna
+    with open(ARQUIVO_CSV_GLOBAL, "r", newline="") as f:
+        reader = list(csv.reader(f))
 
-def processar_em_background(temperaturas_copia, timestamp):
-    """
-    Função executada em background para salvar o CSV sem travar a 
-    requisição principal.
-    """
-    print("🚀 Iniciando salvamento do CSV em background...")
-    try:
-        salvar_csv_completo(temperaturas_copia, timestamp)
-    except Exception as e:
-        print(f"❌ Erro na thread de salvamento do CSV: {e}")
+    header = reader[0]      # ['Linha','Coluna',...timestamps...]
+    corpo = reader[1:]      # linhas de pixels
+
+    num_pixels_esperado = 24 * 32
+    if len(corpo) != num_pixels_esperado:
+        print(f"⚠️ Inconsistência: CSV tem {len(corpo)} linhas de pixel. Esperado {num_pixels_esperado}.")
+
+    # checar se já existe coluna com esse timestamp
+    if nome_coluna in header:
+        print(f"⚠️ Timestamp repetido {nome_coluna}. Vou sobrescrever esta coluna.")
+        col_exists = True
+        idx_col = header.index(nome_coluna)
+    else:
+        header.append(nome_coluna)
+        col_exists = False
+        idx_col = len(header) - 1  # nova posição
+
+    # preencher valores
+    idx = 0
+    for k in range(len(corpo)):
+        valor_pixel = f"{flat_temp[idx]:.2f}"
+        idx += 1
+
+        if col_exists:
+            # garantir tamanho mínimo da linha
+            while len(corpo[k]) <= idx_col:
+                corpo[k].append("")
+            corpo[k][idx_col] = valor_pixel
+        else:
+            corpo[k].append(valor_pixel)
+
+    # sobrescreve o arquivo inteiro
+    with open(ARQUIVO_CSV_GLOBAL, "w", newline="") as f:
+        w = csv.writer(f)
+        w.writerow(header)
+        for linha in corpo:
+            w.writerow(linha)
+
+    print(f"📄 Atualizado {ARQUIVO_CSV_GLOBAL} com nova coluna {nome_coluna}")
+    return True
 
 # ========== ENDPOINTS FLASK ==========
 @app.route("/termica", methods=["POST"])
@@ -104,7 +149,7 @@ def receber_dados_termicos():
     try:
         data = request.get_json(force=True)
         
-        # Validação dos dados
+        # Validação mínima
         if 'temperaturas' not in data:
             return jsonify({"status": "erro", "mensagem": "Campo 'temperaturas' ausente"}), 400
         
@@ -112,48 +157,38 @@ def receber_dados_termicos():
         temperaturas = np.array(data['temperaturas']).reshape(24, 32)
         timestamp = data.get('timestamp', int(datetime.now().timestamp()))
         
-        # Print dos dados recebidos (RÁPIDO)
-        temp_min = np.min(temperaturas)
-        temp_max = np.max(temperaturas)
-        temp_avg = np.mean(temperaturas)
+        # Métricas rápidas
+        temp_min = float(np.min(temperaturas))
+        temp_max = float(np.max(temperaturas))
+        temp_avg = float(np.mean(temperaturas))
         
-        print(f"🔥 DADOS TÉRMICOS RECEBIDOS:")
+        print("🔥 DADOS TÉRMICOS RECEBIDOS:")
         print(f"   📅 Timestamp: {datetime.fromtimestamp(timestamp).strftime('%Y-%m-%d %H%M%S')}")
         print(f"   📊 Estatísticas: min={temp_min:.1f}°C, max={temp_max:.1f}°C, avg={temp_avg:.1f}°C")
         print(f"   📐 Dimensões: {temperaturas.shape[0]}x{temperaturas.shape[1]} ({temperaturas.size} pontos)")
         print(f"   🔢 Amostra: [{temperaturas[0][0]:.1f}, {temperaturas[12][16]:.1f}, {temperaturas[23][31]:.1f}]°C")
-        
-        # (Não salva no InfluxDB)
-        # salvar_dados_termicos_influxdb(temperaturas, timestamp) 
-        
-        # INICIA O SALVAMENTO DO CSV EM SEGUNDO PLANO (RÁPIDO)
-        # Passamos uma cópia (np.copy) para garantir que a thread
-        # tenha seus próprios dados.
-        args_para_thread = (np.copy(temperaturas), timestamp)
-        threading.Thread(target=processar_em_background, args=args_para_thread, daemon=True).start()
-        
-        # RESPONDE IMEDIATAMENTE AO ESP32 (RÁPIDO)
-        print("⚡ Resposta 200 OK enviada ao ESP32.")
-        
+
+        # opcional: ainda pode registrar estatística no InfluxDB
+        # salvar_dados_termicos_influxdb(temperaturas, timestamp)
+
+        # atualiza CSV cumulativo
+        ok_csv = atualizar_csv_termico_incremental(temperaturas, timestamp)
+
         return jsonify({
-            "status": "sucesso", 
-            "arquivo": "processando_em_background",
-            "pontos": temperaturas.size, 
+            "status": "sucesso",
+            "csv_atualizado": ok_csv,
+            "pontos": int(temperaturas.size),
             "timestamp": timestamp,
             "estatisticas": {
-                "temp_min": float(temp_min),
-                "temp_max": float(temp_max),
-                "temp_avg": float(temp_avg)
+                "temp_min": temp_min,
+                "temp_max": temp_max,
+                "temp_avg": temp_avg
             }
         })
 
     except Exception as e:
         print(f"❌ Erro ao processar dados térmicos: {e}")
         return jsonify({"status": "erro", "mensagem": str(e)}), 500
-
-# ===============================================
-# <-- FIM DA MUDANÇA
-# ===============================================
 
 @app.route("/insere", methods=["POST"])
 def insere_manual():
@@ -176,7 +211,7 @@ def insere_manual():
         
         client_influx.write_points(json_body, time_precision='n')
         
-        print(f"🔧 DADOS MANUAIS INSERIDOS:")
+        print("🔧 DADOS MANUAIS INSERIDOS:")
         print(f"   📅 Horário: {datetime.now().strftime('%Y-%m-%d %H:%M%S')}")
         print(f"   🧪 pH: {ph}")
         print(f"   ⚡ EC: {ec}")
@@ -253,7 +288,7 @@ def upload_foto():
                 except Exception as e:
                     print(f"⚠️ Erro ao apagar {filename}: {e}")
 
-        print(f"📷 IMAGEM RECEBIDA:")
+        print("📷 IMAGEM RECEBIDA:")
         print(f"   📁 Câmera: {camera_id}")
         print(f"   💾 Arquivo: {caminho}")
         print(f"   📏 Tamanho: {len(conteudo)} bytes")
@@ -342,8 +377,7 @@ def processar_dados_mqtt(topic, data):
     print(f"📡 DADO MQTT SALVO ({dispositivo}):")
     print(f"   📍 Tópico: {topic}")
     print(f"   🕒 Horário: {datetime.now().strftime('%Y-%m-%d %H%M%S')}")
-    
-    # Dados principais
+
     if 'temp' in data:
         print(f"   🌡️  Temperatura: {data.get('temp', 'N/A')}°C")
     if 'umid' in data:
@@ -352,24 +386,18 @@ def processar_dados_mqtt(topic, data):
         print(f"   🌫️  CO2: {data.get('co2', 'N/A')} ppm")
     if 'luz' in data:
         print(f"   💡 Luz: {data.get('luz', 'N/A')} lux")
-    
-    # Dados de água/reservatório
     if 'agua_min' in data or 'agua_max' in data:
         print(f"   💦 Água: min={data.get('agua_min', 'N/A')}, max={data.get('agua_max', 'N/A')}")
     if 'temp_reserv_int' in data:
         print(f"   🔥 Temp. Reserv. Interna: {data.get('temp_reserv_int', 'N/A')}°C")
     if 'temp_reserv_ext' in data:
         print(f"   ❄️  Temp. Reserv. Externa: {data.get('temp_reserv_ext', 'N/A')}°C")
-    
-    # Dados de solo/químicos
     if 'ph' in data:
         print(f"   🧪 pH: {data.get('ph', 'N/A')}")
     if 'ec' in data:
         print(f"   ⚡ EC: {data.get('ec', 'N/A')}")
     if 'umid_solo_pct' in data:
         print(f"   🌱 Umidade Solo: {data.get('umid_solo_pct', 'N/A')}%")
-    
-    # Dados externos
     if 'temp_externa' in data:
         print(f"   🌍 Temp. Externa: {data.get('temp_externa', 'N/A')}°C")
     if 'umid_externa' in data:

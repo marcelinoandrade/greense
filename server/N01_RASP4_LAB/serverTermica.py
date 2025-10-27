@@ -1,185 +1,216 @@
-import json
-from flask import Flask, request, jsonify
-from flask_cors import CORS
-from datetime import datetime
 import os
 import csv
-import logging
+import json
+import threading
+from datetime import datetime
 
-# ========== CONFIGURAÇÕES ==========
-HOST = "0.0.0.0"
-PORT = 5000
+import numpy as np
+from flask import Flask, request, jsonify, send_from_directory
+from flask_cors import CORS
+import paho.mqtt.client as mqtt
+from influxdb import InfluxDBClient
 
-# ========== CONFIGURAÇÃO DE LOG ==========
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.StreamHandler(),
-        logging.FileHandler('servidor_linha0.log')
-    ]
-)
-logger = logging.getLogger(__name__)
+import config  # precisa ter PASS_MANUAL
 
-# ========== INICIALIZAÇÃO ==========
+
+# =========================
+# CONFIGURAÇÃO GERAL
+# =========================
+
+INFLUXDB_HOST = "localhost"
+INFLUXDB_PORT = 8086
+INFLUXDB_DB = "dados_estufa"
+SENHA_CORRETA = config.PASS_MANUAL
+
+ARQUIVO_CSV_GLOBAL = "historico_tempo/termica_global.csv"
+
+# conecta InfluxDB
+client_influx = InfluxDBClient(host=INFLUXDB_HOST, port=INFLUXDB_PORT)
+client_influx.create_database(INFLUXDB_DB)
+client_influx.switch_database(INFLUXDB_DB)
+
+# Flask
 app = Flask(__name__)
 CORS(app)
 
-# ========== FUNÇÕES AUXILIARES ==========
-def salvar_linha_csv(linha_idx, pixels, timestamp):
-    """Salva linha 0 em CSV"""
+
+# =========================
+# FUNÇÕES AUXILIARES
+# =========================
+
+def salvar_dados_termicos_influxdb(temperaturas, timestamp):
+    """
+    Salva estatísticas térmicas no InfluxDB.
+    temperaturas: np.array 24x32
+    timestamp: int (epoch seconds)
+    """
     try:
-        dt = datetime.fromtimestamp(timestamp)
-        diretorio = "historico_linha0"
-        os.makedirs(diretorio, exist_ok=True)
+        temp_min = np.min(temperaturas)
+        temp_max = np.max(temperaturas)
+        temp_avg = np.mean(temperaturas)
+        temp_std = np.std(temperaturas)
 
-        filename = f"linha0_{dt.strftime('%Y%m%d')}.csv"
-        caminho = os.path.join(diretorio, filename)
-
-        file_exists = os.path.exists(caminho)
-        
-        with open(caminho, "a", newline="") as f:
-            writer = csv.writer(f)
-            if not file_exists:
-                writer.writerow(["Timestamp", "Data_Hora", "Linha", "Coluna", "Temperatura_C"])
-            
-            for coluna, temp in enumerate(pixels):
-                writer.writerow([timestamp, dt.strftime('%Y-%m-%d %H:%M:%S'), linha_idx, coluna, f"{temp:.2f}"])
-
-        logger.info(f"💾 CSV salvo: {caminho}")
-        return caminho
-    except Exception as e:
-        logger.error(f"❌ Erro ao salvar CSV: {e}")
-        return None
-
-# ========== ENDPOINT PRINCIPAL ==========
-@app.route("/dados-termicos-linha", methods=["POST", "GET"])
-def receber_dados_termicos_linha():
-    """Endpoint para receber linhas térmicas individuais"""
-    try:
-        # Log da requisição
-        client_ip = request.remote_addr
-        logger.info(f"📥 Requisição de {client_ip} - Método: {request.method}")
-        
-        if request.method == 'GET':
-            return jsonify({
-                "status": "online",
-                "servico": "Receptor Linha 0",
-                "mensagem": "Use POST para enviar dados",
-                "timestamp": datetime.now().isoformat()
-            })
-        
-        # Processa POST
-        if not request.is_json:
-            logger.warning("❌ Content-Type não é JSON")
-            return jsonify({"status": "erro", "mensagem": "Content-Type deve ser application/json"}), 400
-        
-        data = request.get_json(force=True)
-        
-        # Validação dos dados
-        if 'linha' not in data or 'pixels' not in data:
-            logger.warning("❌ Campos obrigatórios ausentes")
-            return jsonify({"status": "erro", "mensagem": "Campos 'linha' e 'pixels' são obrigatórios"}), 400
-        
-        linha_idx = data['linha']
-        pixels = data['pixels']
-        timestamp = data.get('timestamp', int(datetime.now().timestamp()))
-        
-        if not isinstance(pixels, list) or len(pixels) != 32:
-            logger.warning(f"❌ Linha deve ter 32 pixels, recebido {len(pixels)}")
-            return jsonify({"status": "erro", "mensagem": "Linha deve ter 32 pixels"}), 400
-        
-        # Valida valores numéricos
-        try:
-            pixels_float = [float(p) for p in pixels]
-        except (ValueError, TypeError) as e:
-            logger.warning(f"❌ Valores de pixel inválidos: {e}")
-            return jsonify({"status": "erro", "mensagem": "Valores de pixel devem ser números"}), 400
-        
-        # Processamento
-        temp_min = min(pixels_float)
-        temp_max = max(pixels_float)
-        temp_avg = sum(pixels_float) / len(pixels_float)
-        
-        logger.info(f"🔥 LINHA {linha_idx} RECEBIDA:")
-        logger.info(f"   📅 {datetime.fromtimestamp(timestamp).strftime('%Y-%m-%d %H:%M:%S')}")
-        logger.info(f"   📊 Min:{temp_min:.1f}°C Max:{temp_max:.1f}°C Avg:{temp_avg:.1f}°C")
-        logger.info(f"   🔢 Amostra: [{pixels_float[0]:.1f}, {pixels_float[16]:.1f}, {pixels_float[31]:.1f}]°C")
-        
-        # Salva dados
-        arquivo_csv = salvar_linha_csv(linha_idx, pixels_float, timestamp)
-        
-        # Resposta de sucesso
-        response_data = {
-            "status": "sucesso", 
-            "linha": linha_idx,
-            "timestamp": timestamp,
-            "arquivo": arquivo_csv,
-            "estatisticas": {
+        json_body = [{
+            "measurement": "termica",
+            "tags": {"dispositivo": "Camera_Termica"},
+            "time": timestamp * 1000000000,  # nanossegundos
+            "fields": {
                 "temp_min": float(temp_min),
                 "temp_max": float(temp_max),
-                "temp_avg": float(temp_avg)
+                "temp_avg": float(temp_avg),
+                "temp_std": float(temp_std),
+                "temp_00_00": float(temperaturas[0][0]),
+                "temp_12_16": float(temperaturas[12][16]),
+                "temp_23_31": float(temperaturas[23][31])
             }
-        }
-        
-        logger.info(f"✅ Resposta enviada: {response_data}")
-        return jsonify(response_data)
+        }]
+
+        client_influx.write_points(json_body)
+        print(f"📈 Estatísticas térmicas salvas no InfluxDB")
+        print(f"   📊 Temperaturas: min={temp_min:.1f}°C, max={temp_max:.1f}°C, avg={temp_avg:.1f}°C")
+        return True
 
     except Exception as e:
-        logger.error(f"❌ Erro no endpoint: {e}", exc_info=True)
-        return jsonify({"status": "erro", "mensagem": "Erro interno do servidor"}), 500
+        print(f"❌ Erro ao salvar no InfluxDB: {e}")
+        return False
 
-@app.route("/status", methods=["GET"])
-def status():
-    """Endpoint de status do servidor"""
-    return jsonify({
-        "status": "online",
-        "servico": "Receptor Linha 0",
-        "versao": "1.0",
-        "timestamp": datetime.now().isoformat(),
-        "endpoints": {
-            "POST /dados-termicos-linha": "Recebe dados da linha 0",
-            "GET /status": "Status do servidor"
-        }
-    })
 
-@app.route("/", methods=["GET"])
-def index():
-    """Página inicial"""
-    return jsonify({
-        "mensagem": "Servidor para recebimento de dados térmicos - Linha 0",
-        "uso": "Envie dados POST para /dados-termicos-linha",
-        "status": "online"
-    })
+def atualizar_csv_termico_incremental(temperaturas, timestamp):
+    """
+    Mantém um CSV acumulado.
+    Cada linha é um pixel fixo (Linha, Coluna).
+    Cada nova captura vira uma nova coluna com nome timestamp.
 
-# ========== HANDLER DE ERROS ==========
-@app.errorhandler(404)
-def not_found(error):
-    return jsonify({"status": "erro", "mensagem": "Endpoint não encontrado"}), 404
+    Formato final:
+    Linha,Coluna,20251027_110501,20251027_110732,...
+    0,0,23.8,24.1,...
+    ...
 
-@app.errorhandler(405)
-def method_not_allowed(error):
-    return jsonify({"status": "erro", "mensagem": "Método não permitido"}), 405
+    temperaturas: np.array shape (24,32)
+    timestamp: int epoch seconds
+    """
+    diretorio = os.path.dirname(ARQUIVO_CSV_GLOBAL)
+    os.makedirs(diretorio, exist_ok=True)
 
-# ========== INICIALIZAÇÃO ==========
-if __name__ == "__main__":
-    print("🚀 SERVIDOR LINHA 0 - INICIANDO...")
-    print("=" * 50)
-    print(f"🌐 Host: {HOST}")
-    print(f"🔌 Porta: {PORT}")
-    print("=" * 50)
-    print("📊 ENDPOINTS:")
-    print("   POST /dados-termicos-linha - Recebe dados da linha 0")
-    print("   GET  /status               - Status do servidor")
-    print("   GET  /                     - Página inicial")
-    print("=" * 50)
-    print("💾 ARMAZENAMENTO:")
-    print("   📁 CSV: historico_linha0/")
-    print("   📄 Log: servidor_linha0.log")
-    print("=" * 50)
-    
-    # Cria diretório se não existir
-    os.makedirs("historico_linha0", exist_ok=True)
-    
-    # Inicia servidor
-    app.run(host=HOST, port=PORT, debug=False, threaded=True)
+    dt = datetime.fromtimestamp(timestamp)
+    nome_coluna = dt.strftime("%Y%m%d_%H%M%S")
+
+    flat_temp = temperaturas.reshape(24 * 32)
+
+    # caso CSV ainda não exista
+    if not os.path.exists(ARQUIVO_CSV_GLOBAL):
+        with open(ARQUIVO_CSV_GLOBAL, "w", newline="") as f:
+            writer = csv.writer(f)
+            # cabeçalho inicial
+            writer.writerow(["Linha", "Coluna", nome_coluna])
+
+            idx = 0
+            for i in range(24):
+                for j in range(32):
+                    writer.writerow([i, j, f"{flat_temp[idx]:.2f}"])
+                    idx += 1
+
+        print(f"💾 Criado CSV novo {ARQUIVO_CSV_GLOBAL} com coluna {nome_coluna}")
+        return True
+
+    # CSV já existe. Ler tudo e anexar coluna
+    with open(ARQUIVO_CSV_GLOBAL, "r", newline="") as f:
+        reader = list(csv.reader(f))
+
+    header = reader[0]      # ex: ['Linha','Coluna','20251027_110501',...]
+    corpo = reader[1:]      # linhas de pixels
+
+    num_pixels_esperado = 24 * 32
+    if len(corpo) != num_pixels_esperado:
+        print(f"⚠️ Inconsistência: CSV tem {len(corpo)} linhas. Esperado {num_pixels_esperado}.")
+
+    # Decide se cria nova coluna ou sobrescreve timestamp repetido
+    if nome_coluna in header:
+        print(f"⚠️ Timestamp repetido {nome_coluna}. Coluna existente será sobrescrita.")
+        col_exists = True
+        idx_col = header.index(nome_coluna)
+    else:
+        header.append(nome_coluna)
+        col_exists = False
+        idx_col = len(header) - 1
+
+    # Preenche valores da nova captura em cada linha
+    idx = 0
+    for k in range(len(corpo)):
+        valor_pixel = f"{flat_temp[idx]:.2f}"
+        idx += 1
+
+        if col_exists:
+            while len(corpo[k]) <= idx_col:
+                corpo[k].append("")
+            corpo[k][idx_col] = valor_pixel
+        else:
+            corpo[k].append(valor_pixel)
+
+    # Regrava CSV inteiro
+    with open(ARQUIVO_CSV_GLOBAL, "w", newline="") as f:
+        w = csv.writer(f)
+        w.writerow(header)
+        for linha in corpo:
+            w.writerow(linha)
+
+    print(f"📄 Atualizado {ARQUIVO_CSV_GLOBAL} com nova coluna {nome_coluna}")
+    return True
+
+
+# =========================
+# ENDPOINTS HTTP
+# =========================
+
+@app.route("/termica", methods=["POST"])
+def receber_dados_termicos():
+    """
+    Recebe JSON:
+    {
+        "temperaturas": [768 valores float],
+        "timestamp": 1690000000 (opcional)
+    }
+    """
+    try:
+        data = request.get_json(force=True)
+
+        if 'temperaturas' not in data:
+            return jsonify({"status": "erro", "mensagem": "Campo 'temperaturas' ausente"}), 400
+
+        temperaturas = np.array(data['temperaturas']).reshape(24, 32)
+        timestamp = data.get('timestamp', int(datetime.now().timestamp()))
+
+        temp_min = float(np.min(temperaturas))
+        temp_max = float(np.max(temperaturas))
+        temp_avg = float(np.mean(temperaturas))
+
+        print("🔥 DADOS TÉRMICOS RECEBIDOS:")
+        print(f"   📅 Timestamp: {datetime.fromtimestamp(timestamp).strftime('%Y-%m-%d %H%M%S')}")
+        print(f"   📊 Estatísticas: min={temp_min:.1f}°C, max={temp_max:.1f}°C, avg={temp_avg:.1f}°C")
+        print(f"   📐 Dimensões: {temperaturas.shape[0]}x{temperaturas.shape[1]} ({temperaturas.size} pontos)")
+        print(f"   🔢 Amostra: [{temperaturas[0][0]:.1f}, {temperaturas[12][16]:.1f}, {temperaturas[23][31]:.1f}]°C")
+
+        # opcional: manter histórico agregado no InfluxDB
+        # salvar_dados_termicos_influxdb(temperaturas, timestamp)
+
+        # atualiza CSV cumulativo
+        ok = atualizar_csv_termico_incremental(temperaturas, timestamp)
+
+        return jsonify({
+            "status": "sucesso",
+            "csv_atualizado": ok,
+            "pontos": int(temperaturas.size),
+            "timestamp": timestamp,
+            "estatisticas": {
+                "temp_min": temp_min,
+                "temp_max": temp_max,
+                "temp_avg": temp_avg
+            }
+        })
+
+    except Exception as e:
+        print(f"❌ Erro ao processar dados térmicos: {e}")
+        return jsonify({"status": "erro", "mensagem": str(e)}), 500
+
+
+@app
