@@ -1,0 +1,279 @@
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x17 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:7172
+load:0x40078000,len:15540
+load:0x40080400,len:4
+ho 8 tail 4 room 4
+load:0x40080404,len:3904
+entry 0x40080640
+[0;32mI (31) boot: ESP-IDF v5.2.1 2nd stage bootloader[0m
+[0;32mI (31) boot: compile time Oct 28 2025 11:42:20[0m
+[0;32mI (31) boot: Multicore bootloader[0m
+[0;32mI (35) boot: chip revision: v3.1[0m
+[0;32mI (39) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (44) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (48) boot.esp32: SPI Flash Size : 4MB[0m
+[0;32mI (53) boot: Enabling RNG early entropy source...[0m
+[0;32mI (58) boot: Partition Table:[0m
+[0;32mI (62) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (69) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (77) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (84) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (92) boot:  3 spiffs           Unknown data     01 82 00110000 002f0000[0m
+[0;32mI (99) boot: End of partition table[0m
+[0;32mI (103) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=26f90h (159632) map[0m
+[0;32mI (166) esp_image: segment 1: paddr=00036fb8 vaddr=3ff80000 size=00004h (     4) load[0m
+[0;32mI (167) esp_image: segment 2: paddr=00036fc4 vaddr=3ffb0000 size=03c0ch ( 15372) load[0m
+[0;32mI (178) esp_image: segment 3: paddr=0003abd8 vaddr=40080000 size=05440h ( 21568) load[0m
+[0;32mI (189) esp_image: segment 4: paddr=00040020 vaddr=400d0020 size=99fc8h (630728) map[0m
+[0;32mI (406) esp_image: segment 5: paddr=000d9ff0 vaddr=40085440 size=1123ch ( 70204) load[0m
+[0;32mI (445) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (445) boot: Disabling RNG early entropy source...[0m
+[0;32mI (456) cpu_start: Multicore app[0m
+[0;32mI (465) cpu_start: Pro cpu start user code[0m
+[0;32mI (465) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (465) cpu_start: Application information:[0m
+[0;32mI (468) cpu_start: Project name:     sensor_campo[0m
+[0;32mI (473) cpu_start: App version:      59ede00-dirty[0m
+[0;32mI (479) cpu_start: Compile time:     Oct 28 2025 11:40:47[0m
+[0;32mI (485) cpu_start: ELF file SHA256:  64216a348...[0m
+[0;32mI (490) cpu_start: ESP-IDF:          v5.2.1[0m
+[0;32mI (495) cpu_start: Min chip rev:     v0.0[0m
+[0;32mI (500) cpu_start: Max chip rev:     v3.99 [0m
+[0;32mI (505) cpu_start: Chip rev:         v3.1[0m
+[0;32mI (510) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (517) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (523) heap_init: At 3FFB7D68 len 00028298 (160 KiB): DRAM[0m
+[0;32mI (529) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (535) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (542) heap_init: At 4009667C len 00009984 (38 KiB): IRAM[0m
+[0;32mI (550) spi_flash: detected chip: generic[0m
+[0;32mI (553) spi_flash: flash io: dio[0m
+[0;32mI (558) main_task: Started on CPU0[0m
+[0;32mI (568) main_task: Calling app_main()[0m
+[0;32mI (588) APP_MAIN: Inicializando SPIFFS e logger[0m
+[0;32mI (938) DATA_LOGGER: SPIFFS montado em /spiffs[0m
+[0;33mW (1088) DATA_LOGGER: Arquivo /spiffs/soil_calib.json nao encontrado. Usando valores padrao (Seco: 4000, Molhado: 400)[0m
+[0;32mI (1108) DATA_LOGGER: Arquivo de log encontrado (prox indice=110)[0m
+[0;32mI (1108) APP_MAIN: Dump inicial do log para conferência[0m
+[0;32mI (1108) DATA_LOGGER: --- Lendo /spiffs/log_temp.csv ---[0m
+[0;32mI (1118) DATA_LOGGER: N,temp_ar_C,umid_ar_pct,temp_solo_C,umid_solo_pct[0m
+[0;32mI (1128) DATA_LOGGER: 1,25.0,50.0,27.8,0.0[0m
+[0;32mI (1128) DATA_LOGGER: 2,25.0,50.0,27.8,0.0[0m
+[0;32mI (1138) DATA_LOGGER: 3,25.0,50.0,27.8,0.0[0m
+[0;32mI (1138) DATA_LOGGER: 4,25.0,50.0,27.8,0.0[0m
+[0;32mI (1148) DATA_LOGGER: 5,25.0,50.0,27.8,0.0[0m
+[0;32mI (1148) DATA_LOGGER: 6,25.0,50.0,27.8,0.0[0m
+[0;32mI (1158) DATA_LOGGER: 7,25.0,50.0,27.8,0.0[0m
+[0;32mI (1158) DATA_LOGGER: 8,25.0,50.0,27.7,0.0[0m
+[0;32mI (1168) DATA_LOGGER: 9,25.0,50.0,27.8,0.0[0m
+[0;32mI (1168) DATA_LOGGER: 10,25.0,50.0,27.7,0.0[0m
+[0;32mI (1178) DATA_LOGGER: 11,25.0,50.0,27.8,0.0[0m
+[0;32mI (1178) DATA_LOGGER: 12,25.0,50.0,27.7,0.0[0m
+[0;32mI (1178) DATA_LOGGER: 13,25.0,50.0,27.8,0.0[0m
+[0;32mI (1188) DATA_LOGGER: 14,25.0,50.0,27.8,0.0[0m
+[0;32mI (1188) DATA_LOGGER: 15,25.0,50.0,27.8,0.0[0m
+[0;32mI (1198) DATA_LOGGER: 16,25.0,50.0,27.8,0.0[0m
+[0;32mI (1198) DATA_LOGGER: 17,25.0,50.0,27.8,0.0[0m
+[0;32mI (1208) DATA_LOGGER: 18,25.0,50.0,27.9,0.0[0m
+[0;32mI (1208) DATA_LOGGER: 19,25.0,50.0,27.9,0.0[0m
+[0;32mI (1218) DATA_LOGGER: 20,25.0,50.0,27.9,0.0[0m
+[0;32mI (1218) DATA_LOGGER: 21,25.0,50.0,27.9,0.0[0m
+[0;32mI (1228) DATA_LOGGER: 22,25.0,50.0,27.9,0.0[0m
+[0;32mI (1228) DATA_LOGGER: 23,25.0,50.0,27.9,0.0[0m
+[0;32mI (1238) DATA_LOGGER: 24,25.0,50.0,27.9,0.0[0m
+[0;32mI (1238) DATA_LOGGER: 25,25.0,50.0,27.9,0.0[0m
+[0;32mI (1248) DATA_LOGGER: 26,25.0,50.0,27.9,0.0[0m
+[0;32mI (1248) DATA_LOGGER: 27,25.0,50.0,27.9,0.0[0m
+[0;32mI (1258) DATA_LOGGER: 28,25.0,50.0,27.9,0.0[0m
+[0;32mI (1258) DATA_LOGGER: 29,25.0,50.0,27.8,0.0[0m
+[0;32mI (1268) DATA_LOGGER: 30,25.0,50.0,27.8,0.0[0m
+[0;32mI (1268) DATA_LOGGER: 31,25.0,50.0,27.8,0.0[0m
+[0;32mI (1278) DATA_LOGGER: 32,25.0,50.0,27.8,0.0[0m
+[0;32mI (1278) DATA_LOGGER: 33,25.0,50.0,27.8,0.0[0m
+[0;32mI (1288) DATA_LOGGER: 34,25.0,50.0,27.8,0.0[0m
+[0;32mI (1288) DATA_LOGGER: 35,25.0,50.0,27.9,0.0[0m
+[0;32mI (1298) DATA_LOGGER: 36,25.0,50.0,27.8,0.0[0m
+[0;32mI (1298) DATA_LOGGER: 37,25.0,50.0,27.8,0.0[0m
+[0;32mI (1308) DATA_LOGGER: 38,25.0,50.0,27.9,0.0[0m
+[0;32mI (1308) DATA_LOGGER: 39,25.0,50.0,27.8,0.0[0m
+[0;32mI (1318) DATA_LOGGER: 40,25.0,50.0,27.8,0.0[0m
+[0;32mI (1318) DATA_LOGGER: 41,25.0,50.0,27.8,0.0[0m
+[0;32mI (1328) DATA_LOGGER: 42,25.0,50.0,27.8,0.0[0m
+[0;32mI (1328) DATA_LOGGER: 43,25.0,50.0,27.8,0.0[0m
+[0;32mI (1338) DATA_LOGGER: 44,25.0,50.0,27.8,0.0[0m
+[0;32mI (1338) DATA_LOGGER: 45,25.0,50.0,27.8,0.0[0m
+[0;32mI (1348) DATA_LOGGER: 46,25.0,50.0,27.8,0.0[0m
+[0;32mI (1348) DATA_LOGGER: 47,25.0,50.0,27.8,0.0[0m
+[0;32mI (1348) DATA_LOGGER: 48,25.0,50.0,27.8,0.0[0m
+[0;32mI (1358) DATA_LOGGER: 49,25.0,50.0,27.8,0.0[0m
+[0;32mI (1358) DATA_LOGGER: 50,25.0,50.0,27.8,0.0[0m
+[0;32mI (1368) DATA_LOGGER: 51,25.0,50.0,27.8,0.0[0m
+[0;32mI (1368) DATA_LOGGER: 52,25.0,50.0,27.8,0.0[0m
+[0;32mI (1378) DATA_LOGGER: 53,25.0,50.0,27.8,0.0[0m
+[0;32mI (1378) DATA_LOGGER: 54,25.0,50.0,27.8,0.0[0m
+[0;32mI (1388) DATA_LOGGER: 55,25.0,50.0,27.8,0.0[0m
+[0;32mI (1388) DATA_LOGGER: 56,25.0,50.0,27.8,0.0[0m
+[0;32mI (1398) DATA_LOGGER: 57,25.0,50.0,27.8,0.0[0m
+[0;32mI (1398) DATA_LOGGER: 58,25.0,50.0,27.8,0.0[0m
+[0;32mI (1408) DATA_LOGGER: 59,25.0,50.0,27.7,0.0[0m
+[0;32mI (1408) DATA_LOGGER: 60,25.0,50.0,27.7,0.0[0m
+[0;32mI (1418) DATA_LOGGER: 61,25.0,50.0,27.7,0.0[0m
+[0;32mI (1418) DATA_LOGGER: 62,25.0,50.0,27.7,0.0[0m
+[0;32mI (1428) DATA_LOGGER: 63,25.0,50.0,27.7,0.0[0m
+[0;32mI (1428) DATA_LOGGER: 64,25.0,50.0,27.7,0.0[0m
+[0;32mI (1438) DATA_LOGGER: 65,25.0,50.0,27.7,0.0[0m
+[0;32mI (1438) DATA_LOGGER: 66,25.0,50.0,27.7,0.0[0m
+[0;32mI (1448) DATA_LOGGER: 67,25.0,50.0,27.7,0.0[0m
+[0;32mI (1448) DATA_LOGGER: 68,25.0,50.0,27.7,0.0[0m
+[0;32mI (1458) DATA_LOGGER: 69,25.0,50.0,27.7,0.0[0m
+[0;32mI (1458) DATA_LOGGER: 70,25.0,50.0,27.7,0.0[0m
+[0;32mI (1468) DATA_LOGGER: 71,25.0,50.0,27.7,0.0[0m
+[0;32mI (1468) DATA_LOGGER: 72,25.0,50.0,27.7,0.0[0m
+[0;32mI (1478) DATA_LOGGER: 73,25.0,50.0,27.7,0.0[0m
+[0;32mI (1478) DATA_LOGGER: 74,25.0,50.0,27.7,0.0[0m
+[0;32mI (1488) DATA_LOGGER: 75,25.0,50.0,27.6,0.0[0m
+[0;32mI (1488) DATA_LOGGER: 76,25.0,50.0,27.6,0.0[0m
+[0;32mI (1498) DATA_LOGGER: 77,25.0,50.0,27.7,0.0[0m
+[0;32mI (1498) DATA_LOGGER: 78,25.0,50.0,27.6,0.0[0m
+[0;32mI (1508) DATA_LOGGER: 79,25.0,50.0,27.6,0.0[0m
+[0;32mI (1508) DATA_LOGGER: 80,25.0,50.0,27.6,0.0[0m
+[0;32mI (1518) DATA_LOGGER: 81,25.0,50.0,27.6,0.0[0m
+[0;32mI (1518) DATA_LOGGER: 82,25.0,50.0,27.6,0.0[0m
+[0;32mI (1518) DATA_LOGGER: 83,25.0,50.0,27.6,0.0[0m
+[0;32mI (1528) DATA_LOGGER: 84,25.0,50.0,27.6,0.0[0m
+[0;32mI (1528) DATA_LOGGER: 85,25.0,50.0,27.7,0.0[0m
+[0;32mI (1538) DATA_LOGGER: 86,25.0,50.0,27.7,0.0[0m
+[0;32mI (1538) DATA_LOGGER: 87,25.0,50.0,27.6,0.0[0m
+[0;32mI (1548) DATA_LOGGER: 88,25.0,50.0,27.6,0.0[0m
+[0;32mI (1548) DATA_LOGGER: 89,25.0,50.0,27.6,0.0[0m
+[0;32mI (1558) DATA_LOGGER: 90,25.0,50.0,27.6,0.0[0m
+[0;32mI (1558) DATA_LOGGER: 91,25.0,50.0,27.6,0.0[0m
+[0;32mI (1568) DATA_LOGGER: 92,25.0,50.0,27.6,0.0[0m
+[0;32mI (1568) DATA_LOGGER: 93,25.0,50.0,27.6,0.0[0m
+[0;32mI (1578) DATA_LOGGER: 94,25.0,50.0,27.6,100.0[0m
+[0;32mI (1578) DATA_LOGGER: 95,25.0,50.0,27.6,100.0[0m
+[0;32mI (1588) DATA_LOGGER: 96,25.0,50.0,27.6,92.0[0m
+[0;32mI (1588) DATA_LOGGER: 97,25.0,50.0,27.6,92.0[0m
+[0;32mI (1598) DATA_LOGGER: 98,25.0,50.0,27.6,91.1[0m
+[0;32mI (1598) DATA_LOGGER: 99,25.0,50.0,27.6,90.4[0m
+[0;32mI (1608) DATA_LOGGER: 100,25.0,50.0,27.6,90.7[0m
+[0;32mI (1608) DATA_LOGGER: 101,25.0,50.0,27.6,90.7[0m
+[0;32mI (1618) DATA_LOGGER: 102,25.0,50.0,27.6,90.6[0m
+[0;32mI (1618) DATA_LOGGER: 103,25.0,50.0,27.6,89.3[0m
+[0;32mI (1628) DATA_LOGGER: 104,25.0,50.0,27.6,88.5[0m
+[0;32mI (1628) DATA_LOGGER: 105,25.0,50.0,27.6,88.1[0m
+[0;32mI (1638) DATA_LOGGER: 106,25.0,50.0,27.5,88.8[0m
+[0;32mI (1638) DATA_LOGGER: 107,25.0,50.0,27.6,88.4[0m
+[0;32mI (1648) DATA_LOGGER: 108,25.0,50.0,26.9,0.0[0m
+[0;32mI (1648) DATA_LOGGER: 109,25.00,50.00,27.50,0.00[0m
+[0;32mI (1658) DATA_LOGGER: --- Fim do arquivo ---[0m
+[0;32mI (1658) APP_MAIN: Inicializando sensores[0m
+[0;32mI (1668) SOIL_MOISTURE: ADC umidade solo inicializado. canal=6 bitwidth=12 atten=3[0m
+[0;32mI (1678) SENSORES: Sensores inicializados.[0m
+[0;32mI (1678) APP_MAIN: Inicializando servidor HTTP em modo AP[0m
+[0;32mI (1698) wifi:wifi driver task: 3ffc0d28, prio:23, stack:6656, core=0[0m
+[0;32mI (1708) wifi:wifi firmware version: a9f5b59[0m
+[0;32mI (1708) wifi:wifi certification version: v7.0[0m
+[0;32mI (1708) wifi:config NVS flash: enabled[0m
+[0;32mI (1708) wifi:config nano formating: disabled[0m
+[0;32mI (1708) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (1718) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (1718) wifi:Init management short buffer num: 32[0m
+[0;32mI (1728) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (1728) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (1728) wifi:Init static rx buffer num: 10[0m
+[0;32mI (1738) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (1738) wifi_init: rx ba win: 6[0m
+[0;32mI (1748) wifi_init: tcpip mbox: 32[0m
+[0;32mI (1748) wifi_init: udp mbox: 6[0m
+[0;32mI (1748) wifi_init: tcp mbox: 6[0m
+[0;32mI (1758) wifi_init: tcp tx win: 5760[0m
+[0;32mI (1758) wifi_init: tcp rx win: 5760[0m
+[0;32mI (1768) wifi_init: tcp mss: 1440[0m
+[0;32mI (1768) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (1778) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (1788) phy_init: phy_version 4791,2c4672b,Dec 20 2023,16:06:06[0m
+[0;32mI (1868) wifi:mode : softAP (38:18:2b:ea:b7:cd)[0m
+[0;32mI (1878) wifi:Total power save buffer number: 16[0m
+[0;32mI (1878) wifi:Init max length of beacon: 752/752[0m
+[0;32mI (1878) wifi:Init max length of beacon: 752/752[0m
+[0;32mI (1888) HTTP_SERVER: Modo AP iniciado. SSID='ESP32_TEMP' senha='12345678'[0m
+[0;32mI (1888) esp_netif_lwip: DHCP server started on interface WIFI_AP_DEF with IP: 192.168.4.1[0m
+[0;32mI (1898) HTTP_SERVER: Servidor HTTP iniciado e rotas registradas. Acesse http://192.168.4.1/[0m
+[0;32mI (1908) APP_MAIN: Sistema iniciado[0m
+[0;32mI (1908) main_task: Returned from app_main()[0m
+[0;32mI (2678) APP_MAIN: Log salvo! Temp Solo: 27.56 C, Umid Solo: 0.00 %[0m
+[0;32mI (27028) wifi:new:<1,0>, old:<1,1>, ap:<1,1>, sta:<255,255>, prof:1[0m
+[0;32mI (27028) wifi:station: 96:62:32:cc:84:05 join, AID=1, bgn, 20[0m
+[0;32mI (27078) HTTP_SERVER: Cliente 96:62:32:cc:84:05 conectou, AID=1[0m
+[0;32mI (27318) wifi:<ba-add>idx:2 (ifx:1, 96:62:32:cc:84:05), tid:0, ssn:0, winSize:64[0m
+[0;32mI (27318) esp_netif_lwip: DHCP server assigned IP to a client, IP is: 192.168.4.2[0m
+[0;33mW (36768) httpd_parse: parse_block: request URI/header too long[0m
+[0;33mW (36768) httpd_txrx: httpd_resp_send_err: 431 Request Header Fields Too Large - Header fields are too long[0m
+[0;33mW (40218) httpd_parse: parse_block: request URI/header too long[0m
+[0;33mW (40218) httpd_txrx: httpd_resp_send_err: 431 Request Header Fields Too Large - Header fields are too long[0m
+[0;33mW (42258) httpd_parse: parse_block: request URI/header too long[0m
+[0;33mW (42258) httpd_txrx: httpd_resp_send_err: 431 Request Header Fields Too Large - Header fields are too long[0m
+[0;33mW (46728) httpd_parse: parse_block: request URI/header too long[0m
+[0;33mW (46728) httpd_txrx: httpd_resp_send_err: 431 Request Header Fields Too Large - Header fields are too long[0m
+[0;33mW (54398) httpd_txrx: httpd_sock_err: error in recv : 104[0m
+[0;32mI (63438) APP_MAIN: Log salvo! Temp Solo: 27.50 C, Umid Solo: 0.00 %[0m
+[0;32mI (83028) wifi:new:<1,0>, old:<1,0>, ap:<1,1>, sta:<255,255>, prof:1[0m
+[0;32mI (83028) wifi:station: e4:5f:01:6f:f2:29 join, AID=2, bgn, 20[0m
+[0;32mI (83118) HTTP_SERVER: Cliente e4:5f:01:6f:f2:29 conectou, AID=2[0m
+[0;32mI (83158) wifi:<ba-add>idx:3 (ifx:1, e4:5f:01:6f:f2:29), tid:6, ssn:0, winSize:64[0m
+[0;32mI (83178) wifi:<ba-add>idx:4 (ifx:1, e4:5f:01:6f:f2:29), tid:7, ssn:0, winSize:64[0m
+[0;32mI (83328) esp_netif_lwip: DHCP server assigned IP to a client, IP is: 192.168.4.4[0m
+[0;33mW (92948) httpd_uri: httpd_uri: URI '/favicon.ico' not found[0m
+[0;33mW (92948) httpd_txrx: httpd_resp_send_err: 404 Not Found - Nothing matches the given URI[0m
+[0;32mI (124198) APP_MAIN: Log salvo! Temp Solo: 27.56 C, Umid Solo: 0.00 %[0m
+[0;32mI (137828) DATA_LOGGER: Calibracao salva. seco=4095 molhado=223[0m
+[0;32mI (184958) APP_MAIN: Log salvo! Temp Solo: 30.75 C, Umid Solo: 94.50 %[0m
+[0;32mI (193668) wifi:station: e4:5f:01:6f:f2:29 leave, AID = 2, bss_flags is 658547, bss:0x3ffb9ba0[0m
+[0;32mI (193668) wifi:new:<1,0>, old:<1,0>, ap:<1,1>, sta:<255,255>, prof:1[0m
+[0;32mI (193668) wifi:<ba-del>idx:3, tid:6[0m
+[0;32mI (193668) wifi:<ba-del>idx:4, tid:7[0m
+[0;32mI (193678) HTTP_SERVER: Cliente e4:5f:01:6f:f2:29 saiu, AID=2[0m
+[0;32mI (245718) APP_MAIN: Log salvo! Temp Solo: 29.75 C, Umid Solo: 94.45 %[0m
+[0;33mW (292308) httpd_parse: parse_block: request URI/header too long[0m
+[0;33mW (292308) httpd_txrx: httpd_resp_send_err: 431 Request Header Fields Too Large - Header fields are too long[0m
+[0;32mI (306478) APP_MAIN: Log salvo! Temp Solo: 29.12 C, Umid Solo: 89.33 %[0m
+[0;32mI (331668) wifi:station: 96:62:32:cc:84:05 leave, AID = 1, bss_flags is 134243, bss:0x3ffb911c[0m
+[0;32mI (331668) wifi:new:<1,0>, old:<1,0>, ap:<1,1>, sta:<255,255>, prof:1[0m
+[0;32mI (331668) wifi:<ba-del>idx:2, tid:0[0m
+[0;32mI (331678) HTTP_SERVER: Cliente 96:62:32:cc:84:05 saiu, AID=1[0m
+[0;32mI (367238) APP_MAIN: Log salvo! Temp Solo: 28.62 C, Umid Solo: 93.75 %[0m
+[0;32mI (427998) APP_MAIN: Log salvo! Temp Solo: 28.38 C, Umid Solo: 94.83 %[0m
+[0;32mI (488758) APP_MAIN: Log salvo! Temp Solo: 28.19 C, Umid Solo: 94.68 %[0m
+[0;32mI (549518) APP_MAIN: Log salvo! Temp Solo: 28.06 C, Umid Solo: 95.66 %[0m
+[0;32mI (610278) APP_MAIN: Log salvo! Temp Solo: 28.00 C, Umid Solo: 97.03 %[0m
+[0;32mI (671038) APP_MAIN: Log salvo! Temp Solo: 27.94 C, Umid Solo: 96.75 %[0m
+[0;32mI (731798) APP_MAIN: Log salvo! Temp Solo: 27.88 C, Umid Solo: 96.82 %[0m
+[0;32mI (792558) APP_MAIN: Log salvo! Temp Solo: 27.81 C, Umid Solo: 97.83 %[0m
+[0;32mI (853318) APP_MAIN: Log salvo! Temp Solo: 27.81 C, Umid Solo: 97.06 %[0m
+[0;32mI (914078) APP_MAIN: Log salvo! Temp Solo: 27.88 C, Umid Solo: 97.31 %[0m
+[0;32mI (926548) wifi:new:<1,0>, old:<1,0>, ap:<1,1>, sta:<255,255>, prof:1[0m
+[0;32mI (926548) wifi:station: 96:62:32:cc:84:05 join, AID=1, bgn, 20[0m
+[0;32mI (926598) HTTP_SERVER: Cliente 96:62:32:cc:84:05 conectou, AID=1[0m
+[0;32mI (926648) wifi:<ba-add>idx:2 (ifx:1, 96:62:32:cc:84:05), tid:0, ssn:0, winSize:64[0m
+[0;32mI (926868) esp_netif_lwip: DHCP server assigned IP to a client, IP is: 192.168.4.2[0m
+[0;33mW (937008) httpd_uri: httpd_uri: URI '/favicon.ico' not found[0m
+[0;33mW (937008) httpd_txrx: httpd_resp_send_err: 404 Not Found - Nothing matches the given URI[0m
+[0;33mW (946938) httpd_parse: parse_block: request URI/header too long[0m
+[0;33mW (946938) httpd_txrx: httpd_resp_send_err: 431 Request Header Fields Too Large - Header fields are too long[0m
+[0;33mW (958778) httpd_txrx: httpd_sock_err: error in recv : 104[0m
+[0;32mI (974838) APP_MAIN: Log salvo! Temp Solo: 27.81 C, Umid Solo: 96.90 %[0m
+[0;32mI (1035598) APP_MAIN: Log salvo! Temp Solo: 27.75 C, Umid Solo: 97.26 %[0m
+[0;32mI (1096358) APP_MAIN: Log salvo! Temp Solo: 27.81 C, Umid Solo: 96.62 %[0m
+[0;32mI (1157118) APP_MAIN: Log salvo! Temp Solo: 27.75 C, Umid Solo: 96.67 %[0m
+[0;32mI (1217878) APP_MAIN: Log salvo! Temp Solo: 27.75 C, Umid Solo: 97.24 %[0m
+[0;32mI (1278638) APP_MAIN: Log salvo! Temp Solo: 27.69 C, Umid Solo: 99.15 %[0m
+[0;32mI (1339398) APP_MAIN: Log salvo! Temp Solo: 27.56 C, Umid Solo: 97.29 %[0m
+[0;32mI (1400158) APP_MAIN: Log salvo! Temp Solo: 27.62 C, Umid Solo: 96.10 %[0m
+[0;32mI (1460918) APP_MAIN: Log salvo! Temp Solo: 27.75 C, Umid Solo: 97.00 %[0m
+[0;32mI (1521678) APP_MAIN: Log salvo! Temp Solo: 27.88 C, Umid Solo: 97.08 %[0m

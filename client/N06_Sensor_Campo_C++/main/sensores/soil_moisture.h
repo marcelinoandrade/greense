@@ -1,38 +1,41 @@
 #ifndef SOIL_MOISTURE_H
 #define SOIL_MOISTURE_H
 
-#include <stdbool.h>
+#include "esp_err.h"
 
 /**
- * @brief Inicializa o sensor de umidade do solo.
- * Configura o pino ADC e carrega os dados de calibração do SPIFFS.
+ * Driver mínimo do sensor de umidade do solo.
+ * Faz só leitura ADC bruta.
+ * A conversão para porcentagem e a calibração
+ * ficam no data_logger.c.
  *
- * @param mount_path O ponto de montagem do SPIFFS (ex: "/spiffs").
- * @return true se a inicialização for bem-sucedida, false caso contrário.
+ * Hardware:
+ *  - Sensor analógico no GPIO34 (ADC1_CH6)
+ *  - 3V3
  */
-bool soil_moisture_init(const char* mount_path);
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /**
- * @brief Lê o valor analógico bruto (0-4095) do sensor.
+ * Inicializa o ADC oneshot no canal de umidade do solo.
+ * Deve ser chamado uma vez no boot.
  *
- * @return O valor ADC bruto.
+ * Retorna ESP_OK se sucesso.
+ */
+esp_err_t soil_moisture_init(void);
+
+/**
+ * Lê o valor ADC bruto atual.
+ *
+ * Retorna 0..4095 em sucesso.
+ * Retorna -1 em erro.
  */
 int soil_moisture_leitura_bruta(void);
 
-/**
- * @brief Calcula a umidade percentual (0-100%) com base na calibração.
- *
- * @return A umidade em percentual (0.0 a 100.0).
- */
-float soil_moisture_umidade_percentual(void);
-
-/**
- * @brief Salva novos valores de calibração na memória e no arquivo JSON.
- *
- * @param seco O valor ADC bruto lido com o sensor SECO.
- * @param molhado O valor ADC bruto lido com o sensor MOLHADO (imerso).
- * @return true se os dados foram salvos com sucesso, false caso contrário.
- */
-bool soil_moisture_salvar_calibracao(float seco, float molhado);
+#ifdef __cplusplus
+}
+#endif
 
 #endif // SOIL_MOISTURE_H

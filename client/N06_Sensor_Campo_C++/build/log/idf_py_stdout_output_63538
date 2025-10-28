@@ -31,7 +31,7 @@ NOTICE: [2/2] idf (5.2.1)
 -- Found Python3: /home/greense/.espressif/python_env/idf5.2_py3.11_env/bin/python (found version "3.11.2") found components: Interpreter 
 -- Performing Test C_COMPILER_SUPPORTS_WFORMAT_SIGNEDNESS
 -- Performing Test C_COMPILER_SUPPORTS_WFORMAT_SIGNEDNESS - Success
--- App "sensor_campo" version: b7f4466-dirty
+-- App "sensor_campo" version: 59ede00-dirty
 -- Adding linker script /home/greense/projetoGreense/client/N06_Sensor_Campo_C++/build/esp-idf/esp_system/ld/memory.ld
 -- Adding linker script /home/greense/esp/esp-idf/components/esp_system/ld/esp32/sections.ld.in
 -- Adding linker script /home/greense/esp/esp-idf/components/esp_rom/esp32/ld/esp32.rom.ld

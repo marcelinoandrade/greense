@@ -1,42 +1,65 @@
 #include "sensores.h"
 #include "ds18b20.h"
-#include "soil_moisture.h" // <-- Novo include
-#include "driver/i2c.h"
-#include "driver/gpio.h"
+#include "soil_moisture.h"
+
+#include <math.h>
 #include "esp_log.h"
-#include <stdlib.h>
-#include <time.h>
+#include "driver/gpio.h"
 
-// Pinos dos sensores
-#define GPIO_DS18B20 4
-// O pino do sensor de umidade (GPIO 34) é configurado 
-// dentro de 'soil_moisture.c' (ADC_CHANNEL_6)
+static const char *TAG = "SENSORES";
 
-float randf(float min, float max) {
-    return min + ((float)rand() / RAND_MAX) * (max - min);
+/* Mapeamento de hardware atual */
+#define GPIO_DS18B20_SOLO   4   /* seu DS18B20 no GPIO4 */
+
+/* Cache interno básico para evitar NAN intermitente */
+static float ultimo_temp_solo = NAN;
+static int   ultimo_umid_raw  = -1;
+
+void sensores_init(void)
+{
+    /* Inicializa DS18B20 */
+    ds18b20_init(GPIO_DS18B20_SOLO);
+
+    /* Inicializa ADC da umidade do solo */
+    esp_err_t err = soil_moisture_init();
+    if (err != ESP_OK) {
+        ESP_LOGE(TAG, "soil_moisture_init falhou: %s", esp_err_to_name(err));
+    }
+
+    ESP_LOGI(TAG, "Sensores inicializados.");
 }
 
-void sensores_init(void) {
-    srand((unsigned int) time(NULL));
-
-    // Inicializa o sensor DS18B20
-    ds18b20_init(GPIO_DS18B20);
-
-    // Inicializa o sensor de Umidade do Solo
-    // Ele precisa do caminho do SPIFFS para encontrar o "soil_calib.json"
-    // Assumindo que foi montado em "/spiffs" no main.c
-    soil_moisture_init("/spiffs"); 
+float sensores_get_temp_ar(void)
+{
+    /* Placeholder. Você logou 25.0 °C no firmware original. */
+    return 25.0f;
 }
 
-sensor_data_t sensores_ler_dados(void) {
-    sensor_data_t dados;
+float sensores_get_umid_ar(void)
+{
+    /* Placeholder. Você logou 50.0 % no firmware original. */
+    return 50.0f;
+}
 
-    // Leitura do sensor DS18B20
-    dados.temp_solo = ds18b20_read_temperature(GPIO_DS18B20);
+float sensores_get_temp_solo(void)
+{
+    float t = ds18b20_read_temperature(GPIO_DS18B20_SOLO);
+    /* DS18B20 stub retorna -127.0 em erro. Convertemos para NAN. */
+    if (t <= -126.0f) {
+        return ultimo_temp_solo; /* devolve último válido se existir */
+    }
 
-    // Leitura do sensor de Umidade do Solo
-    dados.umid_solo = soil_moisture_umidade_percentual(); 
-    
+    ultimo_temp_solo = t;
+    return t;
+}
 
-    return dados;
+int sensores_get_umid_solo_raw(void)
+{
+    int leitura = soil_moisture_leitura_bruta();
+    if (leitura < 0) {
+        return ultimo_umid_raw;
+    }
+
+    ultimo_umid_raw = leitura;
+    return leitura;
 }

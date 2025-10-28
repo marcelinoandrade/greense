@@ -1,46 +1,59 @@
-#ifndef DATA_LOGGER_H
-#define DATA_LOGGER_H
+#pragma once
 
 #include <stdbool.h>
+#include "esp_err.h"
 
-/**
- * @brief Estrutura para manter os dados de uma única leitura.
- * Corresponde às colunas do CSV.
- */
+/* Estrutura de uma amostra registrada no CSV */
 typedef struct {
-    float temp_ar;
-    float umid_ar;
-    float temp_solo;
-    float umid_solo;
-} log_data_t;
+    float temp_ar;     /* °C ar */
+    float umid_ar;     /* % ar */
+    float temp_solo;   /* °C solo */
+    float umid_solo;   /* % solo convertida via calibração */
+} log_entry_t;
 
-/**
- * @brief Inicializa o logger e o sistema de arquivos SPIFFS.
- * * Monta a partição SPIFFS, verifica se o arquivo de log existe,
- * cria o cabeçalho se for novo, e lê o último índice.
- * * @param mount_path Ponto de montagem no VFS (ex: "/spiffs")
- * @param log_file_name Nome do arquivo de log (ex: "/log_temp.csv")
- * @return true se a inicialização for bem-sucedida, false caso contrário.
+/* Inicializa SPIFFS, carrega/calibra solo, prepara/analisa log_temp.csv.
+ * - Monta /spiffs com label "spiffs".
+ * - Cria cabeçalho CSV se não existir.
+ * - Lê último índice N.
+ * Retorna ESP_OK em caso de sucesso.
  */
-bool data_logger_init(const char* mount_path, const char* log_file_name);
+esp_err_t data_logger_init(void);
 
-/**
- * @brief Adiciona uma nova entrada de log (linha) ao arquivo CSV.
- * * @param data A estrutura com os 4 valores dos sensores.
- * @return true se a escrita for bem-sucedida, false caso contrário.
+/* Acrescenta uma linha (N, temp_ar, umid_ar, temp_solo, umid_solo) no CSV
+ * e autoincrementa N interno.
+ * Retorna true em caso de sucesso.
  */
-bool data_logger_append(log_data_t data);
+bool data_logger_append(const log_entry_t *entry);
 
-/**
- * @brief Lê todo o arquivo de log e imprime no monitor serial.
- * (Equivalente ao seu 'ler_linhas' e depois imprimir)
+/* Imprime no log (ESP_LOGI) todo o conteúdo atual de /spiffs/log_temp.csv.
+ * Usado apenas para debug no boot.
  */
-void data_logger_read_all(void);
+void data_logger_dump_to_logcat(void);
 
-/**
- * @brief Desmonta o sistema de arquivos SPIFFS.
+/* Lê /spiffs/log_temp.csv e constrói um JSON compacto com os últimos pontos.
+ * Formato:
+ * {
+ *   "temp_points": [ [idx, temp_ar], ... ],
+ *   "solo_points": [ [idx, umid_solo], ... ]
+ * }
+ *
+ * Retorna ponteiro malloc(). O chamador deve dar free().
+ * Retorna NULL se falhar.
  */
-void data_logger_deinit(void);
+char *data_logger_build_history_json(void);
 
+/* Converte leitura ADC bruta de umidade do solo (solo seco = valor alto)
+ * em % [0..100] usando a calibração em RAM.
+ */
+float data_logger_raw_to_pct(int leitura_raw);
 
-#endif // DATA_LOGGER_H
+/* Lê a calibração de solo atualmente carregada em RAM.
+ * seco    = leitura ADC em solo "seco"
+ * molhado = leitura ADC em solo "molhado"
+ */
+void data_logger_get_calibracao(float *seco, float *molhado);
+
+/* Atualiza calibração em RAM e persiste em /spiffs/soil_calib.json.
+ * Retorna ESP_OK se salvou.
+ */
+esp_err_t data_logger_set_calibracao(float seco, float molhado);

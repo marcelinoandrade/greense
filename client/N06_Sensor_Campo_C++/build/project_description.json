@@ -1,7 +1,7 @@
 {
     "version":            "1.1",
     "project_name":       "sensor_campo",
-    "project_version":    "b7f4466-dirty",
+    "project_version":    "59ede00-dirty",
     "project_path":       "/home/greense/projetoGreense/client/N06_Sensor_Campo_C++",
     "idf_path":           "/home/greense/esp/esp-idf",
     "build_dir":          "/home/greense/projetoGreense/client/N06_Sensor_Campo_C++/build",
@@ -816,11 +816,11 @@
             "type": "LIBRARY",
             "lib": "__idf_main",
             "reqs": [],
-            "priv_reqs": [ "esp_adc", "nvs_flash", "spiffs", "driver", "esp_rom", "freertos", "vfs", "espressif__cjson" ],
+            "priv_reqs": [ "esp_wifi", "esp_netif", "esp_http_server", "esp_event", "lwip", "esp_adc", "nvs_flash", "spiffs", "driver", "esp_rom", "freertos", "vfs", "espressif__cjson" ],
             "managed_reqs": [],
             "managed_priv_reqs": [ "espressif__cjson" ],
             "file": "/home/greense/projetoGreense/client/N06_Sensor_Campo_C++/build/esp-idf/main/libmain.a",
-            "sources": [ "/home/greense/projetoGreense/client/N06_Sensor_Campo_C++/main/main.c", "/home/greense/projetoGreense/client/N06_Sensor_Campo_C++/main/sensores/sensores.c", "/home/greense/projetoGreense/client/N06_Sensor_Campo_C++/main/sensores/ds18b20.c", "/home/greense/projetoGreense/client/N06_Sensor_Campo_C++/main/sensores/soil_moisture.c", "/home/greense/projetoGreense/client/N06_Sensor_Campo_C++/main/libs/data_logger.c" ],
+            "sources": [ "/home/greense/projetoGreense/client/N06_Sensor_Campo_C++/main/main.c", "/home/greense/projetoGreense/client/N06_Sensor_Campo_C++/main/libs/data_logger.c", "/home/greense/projetoGreense/client/N06_Sensor_Campo_C++/main/sensores/sensores.c", "/home/greense/projetoGreense/client/N06_Sensor_Campo_C++/main/sensores/ds18b20.c", "/home/greense/projetoGreense/client/N06_Sensor_Campo_C++/main/sensores/soil_moisture.c", "/home/greense/projetoGreense/client/N06_Sensor_Campo_C++/main/libs/http_server.c" ],
             "include_dirs": [ ".", "sensores", "libs" ]
         },
         "mbedtls": {
@@ -2128,7 +2128,7 @@
             "dir": "/home/greense/projetoGreense/client/N06_Sensor_Campo_C++/main",
             "lib": "__idf_main",
             "reqs": [],
-            "priv_reqs": [ "esp_adc", "nvs_flash", "spiffs", "driver", "esp_rom", "freertos", "vfs", "espressif__cjson" ],
+            "priv_reqs": [ "esp_wifi", "esp_netif", "esp_http_server", "esp_event", "lwip", "esp_adc", "nvs_flash", "spiffs", "driver", "esp_rom", "freertos", "vfs", "espressif__cjson" ],
             "managed_reqs": [],
             "managed_priv_reqs": [ "espressif__cjson" ],
             "include_dirs": [ ".", "sensores", "libs" ]

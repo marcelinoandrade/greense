@@ -1,53 +1,138 @@
-| Supported Targets | ESP32 | ESP32-C2 | ESP32-C3 | ESP32-C6 | ESP32-H2 | ESP32-P4 | ESP32-S2 | ESP32-S3 | Linux |
-| ----------------- | ----- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | ----- |
+# 🌱 Projeto GreenSe – Sensor de Campo IoT (ESP32)
 
-# Hello World Example
+Sistema embarcado desenvolvido com **ESP-IDF (v5.x)** para monitoramento ambiental e de solo, integrando sensores de temperatura, umidade e armazenamento local, com interface web embarcada em servidor HTTP.  
 
-Starts a FreeRTOS task to print "Hello World".
+## ⚙️ Visão Geral
 
-(See the README.md file in the upper level 'examples' directory for more information about examples.)
+O projeto implementa um nó de coleta de dados ambientais e de solo para aplicações de **agricultura inteligente**.  
 
-## How to use example
+O firmware cria uma rede **Wi-Fi Access Point (AP)** local e hospeda uma página interativa acessível via navegador (`http://192.168.4.1/`), permitindo visualizar gráficos, calibrar sensores e baixar o histórico de medições em CSV.
 
-Follow detailed instructions provided specifically for this example.
+### Funcionalidades principais
 
-Select the instructions depending on Espressif chip installed on your development board:
+- 📡 Cria rede Wi-Fi local “ESP32_TEMP” com IP fixo `192.168.4.1`.
+- 🌤️ Lê sensores de:
+  - Temperatura e umidade do ar (AHT/DHT ou similar)
+  - Temperatura do solo (DS18B20)
+  - Umidade do solo (sensor resistivo ou capacitivo via ADC)
+- 💾 Armazena leituras em `log_temp.csv` no **SPIFFS**.
+- 📈 Exibe **dashboard com 4 gráficos**:
+  - Temperatura do ar (°C)
+  - Umidade do ar (%)
+  - Temperatura do solo (°C)
+  - Umidade do solo (%)
+- ⚙️ Permite **calibração da umidade do solo** (parâmetros “seco” e “molhado”).
+- ⬇️ Oferece **download direto** do log em CSV.
+- 🔧 Possui servidor HTTP leve com rotas dedicadas.
 
-- [ESP32 Getting Started Guide](https://docs.espressif.com/projects/esp-idf/en/stable/get-started/index.html)
-- [ESP32-S2 Getting Started Guide](https://docs.espressif.com/projects/esp-idf/en/latest/esp32s2/get-started/index.html)
+---
 
-
-## Example folder contents
-
-The project **hello_world** contains one source file in C language [hello_world_main.c](main/hello_world_main.c). The file is located in folder [main](main).
-
-ESP-IDF projects are built using CMake. The project build configuration is contained in `CMakeLists.txt` files that provide set of directives and instructions describing the project's source files and targets (executable, library, or both).
-
-Below is short explanation of remaining files in the project folder.
+## 🧩 Estrutura de Diretórios
 
 ```
-├── CMakeLists.txt
-├── pytest_hello_world.py      Python script used for automated testing
-├── main
-│   ├── CMakeLists.txt
-│   └── hello_world_main.c
-└── README.md                  This is the file you are currently reading
+main/
+├── main.c                     # Inicialização, tarefas e loop principal
+├── libs/
+│   ├── data_logger.c/.h       # Registro de dados no SPIFFS e histórico JSON
+│   ├── http_server.c/.h       # Servidor HTTP e páginas web
+│
+├── sensores/
+│   ├── sensores.c/.h          # Integração dos sensores
+│   ├── ds18b20.c/.h           # Leitura do sensor de temperatura do solo
+│   ├── soil_moisture.c/.h     # Leitura e calibração do sensor de umidade do solo
+│
+├── CMakeLists.txt             # Configuração de build e dependências
+└── README.md                  # Este arquivo
 ```
 
-For more information on structure and contents of ESP-IDF projects, please refer to Section [Build System](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-guides/build-system.html) of the ESP-IDF Programming Guide.
+---
 
-## Troubleshooting
+## 🌐 Servidor Web Integrado
 
-* Program upload failure
+### Rotas HTTP
 
-    * Hardware connection is not correct: run `idf.py -p PORT monitor`, and reboot your board to see if there are any output logs.
-    * The baud rate for downloading is too high: lower your baud rate in the `menuconfig` menu, and try again.
+| Rota             | Método | Descrição |
+|------------------|---------|-----------|
+| `/`              | GET     | Página principal com 4 gráficos e botões de ação |
+| `/history`       | GET     | Retorna JSON com últimas leituras |
+| `/calibra`       | GET     | Página para calibração manual |
+| `/set_calibra`   | GET     | Aplica calibração (via query string) |
+| `/download`      | GET     | Baixa `log_temp.csv` completo |
+| `/favicon.ico`   | GET     | Ícone da página (1×1 PNG) |
 
-## Technical support and feedback
+---
 
-Please use the following feedback channels:
+## 📊 Estrutura do Arquivo CSV
 
-* For technical queries, go to the [esp32.com](https://esp32.com/) forum
-* For a feature request or bug report, create a [GitHub issue](https://github.com/espressif/esp-idf/issues)
+Local: `/spiffs/log_temp.csv`
 
-We will get back to you as soon as possible.
+| Campo | Descrição | Unidade |
+|--------|------------|---------|
+| N | Índice sequencial | — |
+| temp_ar_C | Temperatura do ar | °C |
+| umid_ar_pct | Umidade relativa do ar | % |
+| temp_solo_C | Temperatura do solo | °C |
+| umid_solo_pct | Umidade do solo calibrada | % |
+
+---
+
+## 💾 Requisitos de Build
+
+### Ferramentas
+
+- ESP-IDF ≥ **v5.0**
+- Python 3.x
+- Ferramentas padrão (`idf.py`, `esptool.py`)
+
+### Componentes ESP-IDF utilizados
+
+- `esp_wifi`, `esp_netif`, `esp_http_server`
+- `esp_event`, `lwip`
+- `esp_adc`, `nvs_flash`, `spiffs`, `driver`
+- `freertos`, `esp_rom`, `vfs`
+
+---
+
+## 🚀 Como Executar
+
+1. Clone este repositório e configure o ambiente ESP-IDF:
+   ```bash
+   idf.py set-target esp32
+   idf.py menuconfig
+   ```
+2. Compile e grave na placa:
+   ```bash
+   idf.py build flash monitor
+   ```
+3. Conecte-se ao Wi-Fi **ESP32_TEMP** (senha: `12345678`).
+4. Acesse **http://192.168.4.1/** no navegador.
+
+---
+
+## 🧪 Testes de Campo
+
+- Testado em ESP32-WROOM-32 e ESP32-S3.
+- Funcionamento validado em:
+  - **Chrome** (Android e Desktop)
+  - **Edge** (Desktop)
+  - **Samsung Browser** — com restrições de cabeçalhos HTTP (erro 431 sem impacto funcional).
+
+---
+
+## 🧰 Extensões futuras
+
+- Envio MQTT para servidor remoto.
+- Dashboard remoto via Flask/InfluxDB.
+- Integração com AI (modelo embarcado de previsão de irrigação).
+- Modo STA (conexão em rede existente).
+- Suporte a OTA update.
+
+---
+
+## 🧑‍🔬 Autoria e Créditos
+
+**Projeto GreenSe | Agricultura Inteligente**  
+Coordenação: *Prof. Marcelino Monteiro de Andrade* e *Prof. Ronne Toledo*  
+Faculdade de Ciências e Tecnologias em Engenharia (FCTE) – Universidade de Brasília  
+📧 [andrade@unb.br](mailto:andrade@unb.br)  
+🌐 [https://greense.com.br](https://greense.com.br)

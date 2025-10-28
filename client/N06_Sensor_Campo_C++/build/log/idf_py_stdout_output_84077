@@ -1,0 +1,230 @@
+[1/10] Performing build step for 'bootloader'
+[1/1] cd /home/greense/projetoGreense/client/N06_Sensor_Campo_C++/build/bootloader/esp-idf/esptool_py && /home/greense/.espressif/python_env/idf5.2_py3.11_env/bin/python /home/greense/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x1000 /home/greense/projetoGreense/client/N06_Sensor_Campo_C++/build/bootloader/bootloader.bin
+Bootloader binary size 0x6860 bytes. 0x7a0 bytes (7%) free.
+[2/10] No install step for 'bootloader'
+[3/10] Completed 'bootloader'
+[4/10] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/libs/data_logger.c.obj
+[5/10] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/libs/http_server.c.obj
+FAILED: esp-idf/main/CMakeFiles/__idf_main.dir/libs/http_server.c.obj 
+/home/greense/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/bin/xtensa-esp32-elf-gcc -DESP_PLATFORM -DIDF_VER=\"v5.2.1\" -DSOC_MMU_PAGE_SIZE=CONFIG_MMU_PAGE_SIZE -DSOC_XTAL_FREQ_MHZ=CONFIG_XTAL_FREQ -D_GLIBCXX_HAVE_POSIX_SEMAPHORE -D_GLIBCXX_USE_POSIX_SEMAPHORE -D_GNU_SOURCE -D_POSIX_READER_WRITER_LOCKS -I/home/greense/projetoGreense/client/N06_Sensor_Campo_C++/build/config -I/home/greense/projetoGreense/client/N06_Sensor_Campo_C++/main -I/home/greense/projetoGreense/client/N06_Sensor_Campo_C++/main/sensores -I/home/greense/projetoGreense/client/N06_Sensor_Campo_C++/main/libs -I/home/greense/esp/esp-idf/components/newlib/platform_include -I/home/greense/esp/esp-idf/components/freertos/config/include -I/home/greense/esp/esp-idf/components/freertos/config/include/freertos -I/home/greense/esp/esp-idf/components/freertos/config/xtensa/include -I/home/greense/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include -I/home/greense/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/include -I/home/greense/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/include/freertos -I/home/greense/esp/esp-idf/components/freertos/esp_additions/include -I/home/greense/esp/esp-idf/components/esp_hw_support/include -I/home/greense/esp/esp-idf/components/esp_hw_support/include/soc -I/home/greense/esp/esp-idf/components/esp_hw_support/include/soc/esp32 -I/home/greense/esp/esp-idf/components/esp_hw_support/port/esp32/. -I/home/greense/esp/esp-idf/components/heap/include -I/home/greense/esp/esp-idf/components/log/include -I/home/greense/esp/esp-idf/components/soc/include -I/home/greense/esp/esp-idf/components/soc/esp32 -I/home/greense/esp/esp-idf/components/soc/esp32/include -I/home/greense/esp/esp-idf/components/hal/platform_port/include -I/home/greense/esp/esp-idf/components/hal/esp32/include -I/home/greense/esp/esp-idf/components/hal/include -I/home/greense/esp/esp-idf/components/esp_rom/include -I/home/greense/esp/esp-idf/components/esp_rom/include/esp32 -I/home/greense/esp/esp-idf/components/esp_rom/esp32 -I/home/greense/esp/esp-idf/components/esp_common/include -I/home/greense/esp/esp-idf/components/esp_system/include -I/home/greense/esp/esp-idf/components/esp_system/port/soc -I/home/greense/esp/esp-idf/components/esp_system/port/include/private -I/home/greense/esp/esp-idf/components/xtensa/esp32/include -I/home/greense/esp/esp-idf/components/xtensa/include -I/home/greense/esp/esp-idf/components/xtensa/deprecated_include -I/home/greense/esp/esp-idf/components/lwip/include -I/home/greense/esp/esp-idf/components/lwip/include/apps -I/home/greense/esp/esp-idf/components/lwip/include/apps/sntp -I/home/greense/esp/esp-idf/components/lwip/lwip/src/include -I/home/greense/esp/esp-idf/components/lwip/port/include -I/home/greense/esp/esp-idf/components/lwip/port/freertos/include -I/home/greense/esp/esp-idf/components/lwip/port/esp32xx/include -I/home/greense/esp/esp-idf/components/lwip/port/esp32xx/include/arch -I/home/greense/esp/esp-idf/components/lwip/port/esp32xx/include/sys -I/home/greense/esp/esp-idf/components/esp_wifi/include -I/home/greense/esp/esp-idf/components/esp_wifi/wifi_apps/include -I/home/greense/esp/esp-idf/components/esp_event/include -I/home/greense/esp/esp-idf/components/esp_phy/include -I/home/greense/esp/esp-idf/components/esp_phy/esp32/include -I/home/greense/esp/esp-idf/components/esp_netif/include -I/home/greense/esp/esp-idf/components/esp_http_server/include -I/home/greense/esp/esp-idf/components/http_parser -I/home/greense/esp/esp-idf/components/esp_adc/include -I/home/greense/esp/esp-idf/components/esp_adc/interface -I/home/greense/esp/esp-idf/components/esp_adc/esp32/include -I/home/greense/esp/esp-idf/components/esp_adc/deprecated/include -I/home/greense/esp/esp-idf/components/nvs_flash/include -I/home/greense/esp/esp-idf/components/spi_flash/include -I/home/greense/esp/esp-idf/components/esp_partition/include -I/home/greense/esp/esp-idf/components/spiffs/include -I/home/greense/esp/esp-idf/components/driver/include -I/home/greense/esp/esp-idf/components/driver/deprecated -I/home/greense/esp/esp-idf/components/driver/analog_comparator/include -I/home/greense/esp/esp-idf/components/driver/dac/include -I/home/greense/esp/esp-idf/components/driver/gpio/include -I/home/greense/esp/esp-idf/components/driver/gptimer/include -I/home/greense/esp/esp-idf/components/driver/i2c/include -I/home/greense/esp/esp-idf/components/driver/i2s/include -I/home/greense/esp/esp-idf/components/driver/ledc/include -I/home/greense/esp/esp-idf/components/driver/mcpwm/include -I/home/greense/esp/esp-idf/components/driver/parlio/include -I/home/greense/esp/esp-idf/components/driver/pcnt/include -I/home/greense/esp/esp-idf/components/driver/rmt/include -I/home/greense/esp/esp-idf/components/driver/sdio_slave/include -I/home/greense/esp/esp-idf/components/driver/sdmmc/include -I/home/greense/esp/esp-idf/components/driver/sigma_delta/include -I/home/greense/esp/esp-idf/components/driver/spi/include -I/home/greense/esp/esp-idf/components/driver/temperature_sensor/include -I/home/greense/esp/esp-idf/components/driver/touch_sensor/include -I/home/greense/esp/esp-idf/components/driver/twai/include -I/home/greense/esp/esp-idf/components/driver/uart/include -I/home/greense/esp/esp-idf/components/driver/usb_serial_jtag/include -I/home/greense/esp/esp-idf/components/driver/touch_sensor/esp32/include -I/home/greense/esp/esp-idf/components/esp_pm/include -I/home/greense/esp/esp-idf/components/esp_ringbuf/include -I/home/greense/esp/esp-idf/components/vfs/include -I/home/greense/projetoGreense/client/N06_Sensor_Campo_C++/managed_components/espressif__cjson/cJSON -mlongcalls -Wno-frame-address  -fdiagnostics-color=always -ffunction-sections -fdata-sections -Wall -Werror=all -Wno-error=unused-function -Wno-error=unused-variable -Wno-error=unused-but-set-variable -Wno-error=deprecated-declarations -Wextra -Wno-unused-parameter -Wno-sign-compare -Wno-enum-conversion -gdwarf-4 -ggdb -Og -fno-shrink-wrap -fmacro-prefix-map=/home/greense/projetoGreense/client/N06_Sensor_Campo_C++=. -fmacro-prefix-map=/home/greense/esp/esp-idf=/IDF -fstrict-volatile-bitfields -fno-jump-tables -fno-tree-switch-conversion -std=gnu17 -Wno-old-style-declaration -MD -MT esp-idf/main/CMakeFiles/__idf_main.dir/libs/http_server.c.obj -MF esp-idf/main/CMakeFiles/__idf_main.dir/libs/http_server.c.obj.d -o esp-idf/main/CMakeFiles/__idf_main.dir/libs/http_server.c.obj -c /home/greense/projetoGreense/client/N06_Sensor_Campo_C++/main/libs/http_server.c
+In file included from /home/greense/projetoGreense/client/N06_Sensor_Campo_C++/main/libs/http_server.c:5:
+/home/greense/projetoGreense/client/N06_Sensor_Campo_C++/main/libs/http_server.c: In function 'wifi_event_handler':
+/home/greense/esp/esp-idf/components/log/include/esp_log.h:291:27: error: unknown conversion type character ':' in format [-Werror=format=]
+  291 | #define LOG_COLOR(COLOR)  "\033[0;" COLOR "m"
+      |                           ^~~~~~~~~
+/home/greense/esp/esp-idf/components/log/include/esp_log.h:294:27: note: in expansion of macro 'LOG_COLOR'
+  294 | #define LOG_COLOR_E       LOG_COLOR(LOG_COLOR_RED)
+      |                           ^~~~~~~~~
+/home/greense/esp/esp-idf/components/log/include/esp_log.h:308:37: note: in expansion of macro 'LOG_COLOR_E'
+  308 | #define LOG_FORMAT(letter, format)  LOG_COLOR_ ## letter #letter " (%" PRIu32 ") %s: " format LOG_RESET_COLOR "\n"
+      |                                     ^~~~~~~~~~
+/home/greense/esp/esp-idf/components/log/include/esp_log.h:436:86: note: in expansion of macro 'LOG_FORMAT'
+  436 |         if (level==ESP_LOG_ERROR )          { esp_log_write(ESP_LOG_ERROR,      tag, LOG_FORMAT(E, format), esp_log_timestamp(), tag, ##__VA_ARGS__); } \
+      |                                                                                      ^~~~~~~~~~
+/home/greense/esp/esp-idf/components/log/include/esp_log.h:464:41: note: in expansion of macro 'ESP_LOG_LEVEL'
+  464 |         if ( LOG_LOCAL_LEVEL >= level ) ESP_LOG_LEVEL(level, tag, format, ##__VA_ARGS__); \
+      |                                         ^~~~~~~~~~~~~
+/home/greense/esp/esp-idf/components/log/include/esp_log.h:368:38: note: in expansion of macro 'ESP_LOG_LEVEL_LOCAL'
+  368 | #define ESP_LOGI( tag, format, ... ) ESP_LOG_LEVEL_LOCAL(ESP_LOG_INFO,    tag, format, ##__VA_ARGS__)
+      |                                      ^~~~~~~~~~~~~~~~~~~
+/home/greense/projetoGreense/client/N06_Sensor_Campo_C++/main/libs/http_server.c:48:9: note: in expansion of macro 'ESP_LOGI'
+   48 |         ESP_LOGI(TAG,
+      |         ^~~~~~~~
+/home/greense/esp/esp-idf/components/log/include/esp_log.h:291:27: error: too many arguments for format [-Werror=format-extra-args]
+  291 | #define LOG_COLOR(COLOR)  "\033[0;" COLOR "m"
+      |                           ^~~~~~~~~
+/home/greense/esp/esp-idf/components/log/include/esp_log.h:294:27: note: in expansion of macro 'LOG_COLOR'
+  294 | #define LOG_COLOR_E       LOG_COLOR(LOG_COLOR_RED)
+      |                           ^~~~~~~~~
+/home/greense/esp/esp-idf/components/log/include/esp_log.h:308:37: note: in expansion of macro 'LOG_COLOR_E'
+  308 | #define LOG_FORMAT(letter, format)  LOG_COLOR_ ## letter #letter " (%" PRIu32 ") %s: " format LOG_RESET_COLOR "\n"
+      |                                     ^~~~~~~~~~
+/home/greense/esp/esp-idf/components/log/include/esp_log.h:436:86: note: in expansion of macro 'LOG_FORMAT'
+  436 |         if (level==ESP_LOG_ERROR )          { esp_log_write(ESP_LOG_ERROR,      tag, LOG_FORMAT(E, format), esp_log_timestamp(), tag, ##__VA_ARGS__); } \
+      |                                                                                      ^~~~~~~~~~
+/home/greense/esp/esp-idf/components/log/include/esp_log.h:464:41: note: in expansion of macro 'ESP_LOG_LEVEL'
+  464 |         if ( LOG_LOCAL_LEVEL >= level ) ESP_LOG_LEVEL(level, tag, format, ##__VA_ARGS__); \
+      |                                         ^~~~~~~~~~~~~
+/home/greense/esp/esp-idf/components/log/include/esp_log.h:368:38: note: in expansion of macro 'ESP_LOG_LEVEL_LOCAL'
+  368 | #define ESP_LOGI( tag, format, ... ) ESP_LOG_LEVEL_LOCAL(ESP_LOG_INFO,    tag, format, ##__VA_ARGS__)
+      |                                      ^~~~~~~~~~~~~~~~~~~
+/home/greense/projetoGreense/client/N06_Sensor_Campo_C++/main/libs/http_server.c:48:9: note: in expansion of macro 'ESP_LOGI'
+   48 |         ESP_LOGI(TAG,
+      |         ^~~~~~~~
+/home/greense/esp/esp-idf/components/log/include/esp_log.h:291:27: error: unknown conversion type character ':' in format [-Werror=format=]
+  291 | #define LOG_COLOR(COLOR)  "\033[0;" COLOR "m"
+      |                           ^~~~~~~~~
+/home/greense/esp/esp-idf/components/log/include/esp_log.h:295:27: note: in expansion of macro 'LOG_COLOR'
+  295 | #define LOG_COLOR_W       LOG_COLOR(LOG_COLOR_BROWN)
+      |                           ^~~~~~~~~
+/home/greense/esp/esp-idf/components/log/include/esp_log.h:308:37: note: in expansion of macro 'LOG_COLOR_W'
+  308 | #define LOG_FORMAT(letter, format)  LOG_COLOR_ ## letter #letter " (%" PRIu32 ") %s: " format LOG_RESET_COLOR "\n"
+      |                                     ^~~~~~~~~~
+/home/greense/esp/esp-idf/components/log/include/esp_log.h:437:86: note: in expansion of macro 'LOG_FORMAT'
+  437 |         else if (level==ESP_LOG_WARN )      { esp_log_write(ESP_LOG_WARN,       tag, LOG_FORMAT(W, format), esp_log_timestamp(), tag, ##__VA_ARGS__); } \
+      |                                                                                      ^~~~~~~~~~
+/home/greense/esp/esp-idf/components/log/include/esp_log.h:464:41: note: in expansion of macro 'ESP_LOG_LEVEL'
+  464 |         if ( LOG_LOCAL_LEVEL >= level ) ESP_LOG_LEVEL(level, tag, format, ##__VA_ARGS__); \
+      |                                         ^~~~~~~~~~~~~
+/home/greense/esp/esp-idf/components/log/include/esp_log.h:368:38: note: in expansion of macro 'ESP_LOG_LEVEL_LOCAL'
+  368 | #define ESP_LOGI( tag, format, ... ) ESP_LOG_LEVEL_LOCAL(ESP_LOG_INFO,    tag, format, ##__VA_ARGS__)
+      |                                      ^~~~~~~~~~~~~~~~~~~
+/home/greense/projetoGreense/client/N06_Sensor_Campo_C++/main/libs/http_server.c:48:9: note: in expansion of macro 'ESP_LOGI'
+   48 |         ESP_LOGI(TAG,
+      |         ^~~~~~~~
+/home/greense/esp/esp-idf/components/log/include/esp_log.h:291:27: error: too many arguments for format [-Werror=format-extra-args]
+  291 | #define LOG_COLOR(COLOR)  "\033[0;" COLOR "m"
+      |                           ^~~~~~~~~
+/home/greense/esp/esp-idf/components/log/include/esp_log.h:295:27: note: in expansion of macro 'LOG_COLOR'
+  295 | #define LOG_COLOR_W       LOG_COLOR(LOG_COLOR_BROWN)
+      |                           ^~~~~~~~~
+/home/greense/esp/esp-idf/components/log/include/esp_log.h:308:37: note: in expansion of macro 'LOG_COLOR_W'
+  308 | #define LOG_FORMAT(letter, format)  LOG_COLOR_ ## letter #letter " (%" PRIu32 ") %s: " format LOG_RESET_COLOR "\n"
+      |                                     ^~~~~~~~~~
+/home/greense/esp/esp-idf/components/log/include/esp_log.h:437:86: note: in expansion of macro 'LOG_FORMAT'
+  437 |         else if (level==ESP_LOG_WARN )      { esp_log_write(ESP_LOG_WARN,       tag, LOG_FORMAT(W, format), esp_log_timestamp(), tag, ##__VA_ARGS__); } \
+      |                                                                                      ^~~~~~~~~~
+/home/greense/esp/esp-idf/components/log/include/esp_log.h:464:41: note: in expansion of macro 'ESP_LOG_LEVEL'
+  464 |         if ( LOG_LOCAL_LEVEL >= level ) ESP_LOG_LEVEL(level, tag, format, ##__VA_ARGS__); \
+      |                                         ^~~~~~~~~~~~~
+/home/greense/esp/esp-idf/components/log/include/esp_log.h:368:38: note: in expansion of macro 'ESP_LOG_LEVEL_LOCAL'
+  368 | #define ESP_LOGI( tag, format, ... ) ESP_LOG_LEVEL_LOCAL(ESP_LOG_INFO,    tag, format, ##__VA_ARGS__)
+      |                                      ^~~~~~~~~~~~~~~~~~~
+/home/greense/projetoGreense/client/N06_Sensor_Campo_C++/main/libs/http_server.c:48:9: note: in expansion of macro 'ESP_LOGI'
+   48 |         ESP_LOGI(TAG,
+      |         ^~~~~~~~
+/home/greense/projetoGreense/client/N06_Sensor_Campo_C++/main/libs/http_server.c:52:1: error: unknown conversion type character ':' in format [-Werror=format=]
+   52 |                  event->aid);
+      | ^          
+/home/greense/esp/esp-idf/components/log/include/esp_log.h:308:59: note: in definition of macro 'LOG_FORMAT'
+  308 | #define LOG_FORMAT(letter, format)  LOG_COLOR_ ## letter #letter " (%" PRIu32 ") %s: " format LOG_RESET_COLOR "\n"
+      |                                                           ^~~~~~
+/home/greense/esp/esp-idf/components/log/include/esp_log.h:464:41: note: in expansion of macro 'ESP_LOG_LEVEL'
+  464 |         if ( LOG_LOCAL_LEVEL >= level ) ESP_LOG_LEVEL(level, tag, format, ##__VA_ARGS__); \
+      |                                         ^~~~~~~~~~~~~
+/home/greense/esp/esp-idf/components/log/include/esp_log.h:368:38: note: in expansion of macro 'ESP_LOG_LEVEL_LOCAL'
+  368 | #define ESP_LOGI( tag, format, ... ) ESP_LOG_LEVEL_LOCAL(ESP_LOG_INFO,    tag, format, ##__VA_ARGS__)
+      |                                      ^~~~~~~~~~~~~~~~~~~
+/home/greense/projetoGreense/client/N06_Sensor_Campo_C++/main/libs/http_server.c:48:9: note: in expansion of macro 'ESP_LOGI'
+   48 |         ESP_LOGI(TAG,
+      |         ^~~~~~~~
+/home/greense/projetoGreense/client/N06_Sensor_Campo_C++/main/libs/http_server.c:52:1: error: too many arguments for format [-Werror=format-extra-args]
+   52 |                  event->aid);
+      | ^          
+/home/greense/esp/esp-idf/components/log/include/esp_log.h:308:59: note: in definition of macro 'LOG_FORMAT'
+  308 | #define LOG_FORMAT(letter, format)  LOG_COLOR_ ## letter #letter " (%" PRIu32 ") %s: " format LOG_RESET_COLOR "\n"
+      |                                                           ^~~~~~
+/home/greense/esp/esp-idf/components/log/include/esp_log.h:464:41: note: in expansion of macro 'ESP_LOG_LEVEL'
+  464 |         if ( LOG_LOCAL_LEVEL >= level ) ESP_LOG_LEVEL(level, tag, format, ##__VA_ARGS__); \
+      |                                         ^~~~~~~~~~~~~
+/home/greense/esp/esp-idf/components/log/include/esp_log.h:368:38: note: in expansion of macro 'ESP_LOG_LEVEL_LOCAL'
+  368 | #define ESP_LOGI( tag, format, ... ) ESP_LOG_LEVEL_LOCAL(ESP_LOG_INFO,    tag, format, ##__VA_ARGS__)
+      |                                      ^~~~~~~~~~~~~~~~~~~
+/home/greense/projetoGreense/client/N06_Sensor_Campo_C++/main/libs/http_server.c:48:9: note: in expansion of macro 'ESP_LOGI'
+   48 |         ESP_LOGI(TAG,
+      |         ^~~~~~~~
+/home/greense/projetoGreense/client/N06_Sensor_Campo_C++/main/libs/http_server.c:52:1: error: unknown conversion type character ':' in format [-Werror=format=]
+   52 |                  event->aid);
+      | ^          
+/home/greense/esp/esp-idf/components/log/include/esp_log.h:308:59: note: in definition of macro 'LOG_FORMAT'
+  308 | #define LOG_FORMAT(letter, format)  LOG_COLOR_ ## letter #letter " (%" PRIu32 ") %s: " format LOG_RESET_COLOR "\n"
+      |                                                           ^~~~~~
+/home/greense/esp/esp-idf/components/log/include/esp_log.h:464:41: note: in expansion of macro 'ESP_LOG_LEVEL'
+  464 |         if ( LOG_LOCAL_LEVEL >= level ) ESP_LOG_LEVEL(level, tag, format, ##__VA_ARGS__); \
+      |                                         ^~~~~~~~~~~~~
+/home/greense/esp/esp-idf/components/log/include/esp_log.h:368:38: note: in expansion of macro 'ESP_LOG_LEVEL_LOCAL'
+  368 | #define ESP_LOGI( tag, format, ... ) ESP_LOG_LEVEL_LOCAL(ESP_LOG_INFO,    tag, format, ##__VA_ARGS__)
+      |                                      ^~~~~~~~~~~~~~~~~~~
+/home/greense/projetoGreense/client/N06_Sensor_Campo_C++/main/libs/http_server.c:48:9: note: in expansion of macro 'ESP_LOGI'
+   48 |         ESP_LOGI(TAG,
+      |         ^~~~~~~~
+/home/greense/projetoGreense/client/N06_Sensor_Campo_C++/main/libs/http_server.c:52:1: error: too many arguments for format [-Werror=format-extra-args]
+   52 |                  event->aid);
+      | ^          
+/home/greense/esp/esp-idf/components/log/include/esp_log.h:308:59: note: in definition of macro 'LOG_FORMAT'
+  308 | #define LOG_FORMAT(letter, format)  LOG_COLOR_ ## letter #letter " (%" PRIu32 ") %s: " format LOG_RESET_COLOR "\n"
+      |                                                           ^~~~~~
+/home/greense/esp/esp-idf/components/log/include/esp_log.h:464:41: note: in expansion of macro 'ESP_LOG_LEVEL'
+  464 |         if ( LOG_LOCAL_LEVEL >= level ) ESP_LOG_LEVEL(level, tag, format, ##__VA_ARGS__); \
+      |                                         ^~~~~~~~~~~~~
+/home/greense/esp/esp-idf/components/log/include/esp_log.h:368:38: note: in expansion of macro 'ESP_LOG_LEVEL_LOCAL'
+  368 | #define ESP_LOGI( tag, format, ... ) ESP_LOG_LEVEL_LOCAL(ESP_LOG_INFO,    tag, format, ##__VA_ARGS__)
+      |                                      ^~~~~~~~~~~~~~~~~~~
+/home/greense/projetoGreense/client/N06_Sensor_Campo_C++/main/libs/http_server.c:48:9: note: in expansion of macro 'ESP_LOGI'
+   48 |         ESP_LOGI(TAG,
+      |         ^~~~~~~~
+/home/greense/esp/esp-idf/components/log/include/esp_log.h:291:27: error: unknown conversion type character ':' in format [-Werror=format=]
+  291 | #define LOG_COLOR(COLOR)  "\033[0;" COLOR "m"
+      |                           ^~~~~~~~~
+/home/greense/esp/esp-idf/components/log/include/esp_log.h:296:27: note: in expansion of macro 'LOG_COLOR'
+  296 | #define LOG_COLOR_I       LOG_COLOR(LOG_COLOR_GREEN)
+      |                           ^~~~~~~~~
+/home/greense/esp/esp-idf/components/log/include/esp_log.h:308:37: note: in expansion of macro 'LOG_COLOR_I'
+  308 | #define LOG_FORMAT(letter, format)  LOG_COLOR_ ## letter #letter " (%" PRIu32 ") %s: " format LOG_RESET_COLOR "\n"
+      |                                     ^~~~~~~~~~
+/home/greense/esp/esp-idf/components/log/include/esp_log.h:440:86: note: in expansion of macro 'LOG_FORMAT'
+  440 |         else                                { esp_log_write(ESP_LOG_INFO,       tag, LOG_FORMAT(I, format), esp_log_timestamp(), tag, ##__VA_ARGS__); } \
+      |                                                                                      ^~~~~~~~~~
+/home/greense/esp/esp-idf/components/log/include/esp_log.h:464:41: note: in expansion of macro 'ESP_LOG_LEVEL'
+  464 |         if ( LOG_LOCAL_LEVEL >= level ) ESP_LOG_LEVEL(level, tag, format, ##__VA_ARGS__); \
+      |                                         ^~~~~~~~~~~~~
+/home/greense/esp/esp-idf/components/log/include/esp_log.h:368:38: note: in expansion of macro 'ESP_LOG_LEVEL_LOCAL'
+  368 | #define ESP_LOGI( tag, format, ... ) ESP_LOG_LEVEL_LOCAL(ESP_LOG_INFO,    tag, format, ##__VA_ARGS__)
+      |                                      ^~~~~~~~~~~~~~~~~~~
+/home/greense/projetoGreense/client/N06_Sensor_Campo_C++/main/libs/http_server.c:48:9: note: in expansion of macro 'ESP_LOGI'
+   48 |         ESP_LOGI(TAG,
+      |         ^~~~~~~~
+/home/greense/esp/esp-idf/components/log/include/esp_log.h:291:27: error: too many arguments for format [-Werror=format-extra-args]
+  291 | #define LOG_COLOR(COLOR)  "\033[0;" COLOR "m"
+      |                           ^~~~~~~~~
+/home/greense/esp/esp-idf/components/log/include/esp_log.h:296:27: note: in expansion of macro 'LOG_COLOR'
+  296 | #define LOG_COLOR_I       LOG_COLOR(LOG_COLOR_GREEN)
+      |                           ^~~~~~~~~
+/home/greense/esp/esp-idf/components/log/include/esp_log.h:308:37: note: in expansion of macro 'LOG_COLOR_I'
+  308 | #define LOG_FORMAT(letter, format)  LOG_COLOR_ ## letter #letter " (%" PRIu32 ") %s: " format LOG_RESET_COLOR "\n"
+      |                                     ^~~~~~~~~~
+/home/greense/esp/esp-idf/components/log/include/esp_log.h:440:86: note: in expansion of macro 'LOG_FORMAT'
+  440 |         else                                { esp_log_write(ESP_LOG_INFO,       tag, LOG_FORMAT(I, format), esp_log_timestamp(), tag, ##__VA_ARGS__); } \
+      |                                                                                      ^~~~~~~~~~
+/home/greense/esp/esp-idf/components/log/include/esp_log.h:464:41: note: in expansion of macro 'ESP_LOG_LEVEL'
+  464 |         if ( LOG_LOCAL_LEVEL >= level ) ESP_LOG_LEVEL(level, tag, format, ##__VA_ARGS__); \
+      |                                         ^~~~~~~~~~~~~
+/home/greense/esp/esp-idf/components/log/include/esp_log.h:368:38: note: in expansion of macro 'ESP_LOG_LEVEL_LOCAL'
+  368 | #define ESP_LOGI( tag, format, ... ) ESP_LOG_LEVEL_LOCAL(ESP_LOG_INFO,    tag, format, ##__VA_ARGS__)
+      |                                      ^~~~~~~~~~~~~~~~~~~
+/home/greense/projetoGreense/client/N06_Sensor_Campo_C++/main/libs/http_server.c:48:9: note: in expansion of macro 'ESP_LOGI'
+   48 |         ESP_LOGI(TAG,
+      |         ^~~~~~~~
+In file included from /home/greense/projetoGreense/client/N06_Sensor_Campo_C++/main/libs/http_server.c:6:
+/home/greense/projetoGreense/client/N06_Sensor_Campo_C++/main/libs/http_server.c: In function 'wifi_init_softap':
+/home/greense/projetoGreense/client/N06_Sensor_Campo_C++/main/libs/http_server.c:80:45: warning: passing argument 3 of 'esp_event_handler_instance_register' from incompatible pointer type [-Wincompatible-pointer-types]
+   80 |                                             &wifi_event_handler,
+      |                                             ^~~~~~~~~~~~~~~~~~~
+      |                                             |
+      |                                             esp_err_t (*)(void *, const char *, int32_t,  void *) {aka int (*)(void *, const char *, long int,  void *)}
+/home/greense/esp/esp-idf/components/esp_common/include/esp_err.h:117:30: note: in definition of macro 'ESP_ERROR_CHECK'
+  117 |         esp_err_t err_rc_ = (x);                                        \
+      |                              ^
+In file included from /home/greense/esp/esp-idf/components/esp_wifi/include/esp_wifi.h:56,
+                 from /home/greense/projetoGreense/client/N06_Sensor_Campo_C++/main/libs/http_server.c:7:
+/home/greense/esp/esp-idf/components/esp_event/include/esp_event.h:243:66: note: expected 'esp_event_handler_t' {aka 'void (*)(void *, const char *, long int,  void *)'} but argument is of type 'esp_err_t (*)(void *, const char *, int32_t,  void *)' {aka 'int (*)(void *, const char *, long int,  void *)'}
+  243 |                                              esp_event_handler_t event_handler,
+      |                                              ~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~
+/home/greense/projetoGreense/client/N06_Sensor_Campo_C++/main/libs/http_server.c: In function 'responder_dashboard':
+/home/greense/projetoGreense/client/N06_Sensor_Campo_C++/main/libs/http_server.c:135:9: error: unknown conversion type character ')' in format [-Werror=format=]
+  135 |         "<!DOCTYPE html>"
+      |         ^~~~~~~~~~~~~~~~~
+/home/greense/projetoGreense/client/N06_Sensor_Campo_C++/main/libs/http_server.c:192:54: note: format string is defined here
+  192 |         "  desenha('chart_umid_solo','Umidade Solo (%)',soloUmid.xs,soloUmid.ys);"
+      |                                                      ^
+/home/greense/projetoGreense/client/N06_Sensor_Campo_C++/main/libs/http_server.c: In function 'handle_set_calibra':
+/home/greense/projetoGreense/client/N06_Sensor_Campo_C++/main/libs/http_server.c:316:21: error: implicit declaration of function 'httpd_req_get_uri_query_len'; did you mean 'httpd_req_get_url_query_len'? [-Werror=implicit-function-declaration]
+  316 |     size_t qs_len = httpd_req_get_uri_query_len(req) + 1;
+      |                     ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                     httpd_req_get_url_query_len
+/home/greense/projetoGreense/client/N06_Sensor_Campo_C++/main/libs/http_server.c:318:13: error: implicit declaration of function 'httpd_req_get_uri_query_str'; did you mean 'httpd_req_get_url_query_str'? [-Werror=implicit-function-declaration]
+  318 |         if (httpd_req_get_uri_query_str(req, qs, sizeof(qs)) == ESP_OK) {
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |             httpd_req_get_url_query_str
+cc1: some warnings being treated as errors
+ninja: build stopped: subcommand failed.
