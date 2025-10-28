@@ -745,4 +745,154 @@ entry 0x40080640
 [0m
 [0;32mI (2909) DATA_LOGGER: 152,25.00,50.00,27.62,89.80
 [0m
-[0;32mI (2919) DATA_LOGGER: 153,25.00,50.00,27.
+[0;32mI (2919) DATA_LOGGER: 153,25.00,50.00,27.62,89.36
+[0m
+[0;32mI (2919) DATA_LOGGER: 154,25.00,50.00,27.62,88.82
+[0m
+[0;32mI (2929) DATA_LOGGER: 155,25.00,50.00,27.75,87.60
+[0m
+[0;32mI (2929) DATA_LOGGER: 156,25.00,50.00,27.81,89.02
+[0m
+[0;32mI (2939) DATA_LOGGER: 157,25.00,50.00,27.88,89.36
+[0m
+[0;32mI (2949) DATA_LOGGER: 158,25.00,50.00,27.94,88.09
+[0m
+[0;32mI (2949) DATA_LOGGER: 159,25.00,50.00,28.00,87.94
+[0m
+[0;32mI (2959) DATA_LOGGER: 160,25.00,50.00,28.06,87.94
+[0m
+[0;32mI (2959) DATA_LOGGER: 161,25.00,50.00,28.06,87.50
+[0m
+[0;32mI (2969) DATA_LOGGER: 162,25.00,50.00,28.06,87.78
+[0m
+[0;32mI (2969) DATA_LOGGER: 163,25.00,50.00,28.12,88.15
+[0m
+[0;32mI (2979) DATA_LOGGER: 164,25.00,50.00,28.12,87.84
+[0m
+[0;32mI (2979) DATA_LOGGER: 165,25.00,50.00,28.12,88.33
+[0m
+[0;32mI (2989) DATA_LOGGER: 166,25.00,50.00,28.12,88.09
+[0m
+[0;32mI (2999) DATA_LOGGER: 167,25.00,50.00,28.00,88.07
+[0m
+[0;32mI (2999) DATA_LOGGER: 168,25.00,50.00,27.88,90.62
+[0m
+[0;32mI (3009) DATA_LOGGER: 169,25.00,50.00,27.88,87.99
+[0m
+[0;32mI (3009) DATA_LOGGER: 170,25.00,50.00,27.94,87.14
+[0m
+[0;32mI (3019) DATA_LOGGER: 171,25.00,50.00,27.94,87.63
+[0m
+[0;32mI (3019) DATA_LOGGER: 172,25.00,50.00,28.00,87.99
+[0m
+[0;32mI (3029) DATA_LOGGER: 173,25.00,50.00,28.06,88.33
+[0m
+[0;32mI (3029) DATA_LOGGER: 174,25.00,50.00,28.06,87.32
+[0m
+[0;32mI (3039) DATA_LOGGER: 175,25.00,50.00,28.06,87.50
+[0m
+[0;32mI (3049) DATA_LOGGER: 176,25.00,50.00,28.12,87.58
+[0m
+[0;32mI (3049) DATA_LOGGER: 177,25.00,50.00,28.12,87.55
+[0m
+[0;32mI (3059) DATA_LOGGER: 178,25.00,50.00,28.06,88.38
+[0m
+[0;32mI (3059) DATA_LOGGER: 179,25.00,50.00,28.06,87.81
+[0m
+[0;32mI (3069) DATA_LOGGER: 180,25.00,50.00,28.06,87.32
+[0m
+[0;32mI (3069) DATA_LOGGER: 181,25.00,50.00,28.00,87.81
+[0m
+[0;32mI (3079) DATA_LOGGER: 182,25.00,50.00,28.00,88.43
+[0m
+[0;32mI (3079) DATA_LOGGER: 183,25.00,50.00,28.06,88.53
+[0m
+[0;32mI (3089) DATA_LOGGER: 184,25.00,50.00,28.19,88.77
+[0m
+[0;32mI (3099) DATA_LOGGER: 185,25.00,50.00,28.19,88.17
+[0m
+[0;32mI (3099) DATA_LOGGER: 186,25.00,50.00,28.25,87.99
+[0m
+[0;32mI (3109) DATA_LOGGER: --- Fim do arquivo ---[0m
+[0;32mI (3109) APP_MAIN: Inicializando sensores[0m
+[0;32mI (3119) SOIL_MOISTURE: ADC umidade solo inicializado. canal=6 bitwidth=12 atten=3[0m
+[0;32mI (3119) SENSORES: Sensores inicializados.[0m
+[0;32mI (3129) APP_MAIN: Inicializando servidor HTTP em modo AP[0m
+[0;32mI (3149) wifi:wifi driver task: 3ffc0968, prio:23, stack:6656, core=0[0m
+[0;32mI (3159) wifi:wifi firmware version: a9f5b59[0m
+[0;32mI (3159) wifi:wifi certification version: v7.0[0m
+[0;32mI (3159) wifi:config NVS flash: enabled[0m
+[0;32mI (3159) wifi:config nano formating: disabled[0m
+[0;32mI (3159) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (3169) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (3169) wifi:Init management short buffer num: 32[0m
+[0;32mI (3179) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (3179) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (3179) wifi:Init static rx buffer num: 10[0m
+[0;32mI (3189) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (3189) wifi_init: rx ba win: 6[0m
+[0;32mI (3199) wifi_init: tcpip mbox: 32[0m
+[0;32mI (3199) wifi_init: udp mbox: 6[0m
+[0;32mI (3199) wifi_init: tcp mbox: 6[0m
+[0;32mI (3209) wifi_init: tcp tx win: 5760[0m
+[0;32mI (3209) wifi_init: tcp rx win: 5760[0m
+[0;32mI (3219) wifi_init: tcp mss: 1440[0m
+[0;32mI (3219) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (3229) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (3239) phy_init: phy_version 4791,2c4672b,Dec 20 2023,16:06:06[0m
+[0;32mI (3329) wifi:mode : softAP (38:18:2b:ea:b7:cd)[0m
+[0;32mI (3329) wifi:Total power save buffer number: 16[0m
+[0;32mI (3329) wifi:Init max length of beacon: 752/752[0m
+[0;32mI (3329) wifi:Init max length of beacon: 752/752[0m
+[0;32mI (3339) HTTP_SERVER: Modo AP iniciado. SSID='ESP32_TEMP' senha='12345678'[0m
+[0;32mI (3339) esp_netif_lwip: DHCP server started on interface WIFI_AP_DEF with IP: 192.168.4.1[0m
+[0;32mI (3359) HTTP_SERVER: Servidor HTTP iniciado e rotas registradas. Acesse http://192.168.4.1/[0m
+[0;32mI (3359) APP_MAIN: Sistema iniciado[0m
+[0;32mI (3359) main_task: Returned from app_main()[0m
+[0;32mI (4129) APP_MAIN: Log salvo! Temp Solo: 28.19 C, Umid Solo: 87.94 %[0m
+[0;32mI (4129) APP_MAIN: Log salvo! Temp Solo: 28.19 C, Umid Solo: 87.94 %[0m
+[0;32mI (27339) wifi:new:<1,0>, old:<1,1>, ap:<1,1>, sta:<255,255>, prof:1[0m
+[0;32mI (27339) wifi:station: 96:62:32:cc:84:05 join, AID=1, bgn, 20[0m
+[0;32mI (27379) HTTP_SERVER: Cliente 96:62:32:cc:84:05 conectou, AID=1[0m
+[0;32mI (27539) wifi:<ba-add>idx:2 (ifx:1, 96:62:32:cc:84:05), tid:0, ssn:0, winSize:64[0m
+[0;32mI (27599) esp_netif_lwip: DHCP server assigned IP to a client, IP is: 192.168.4.2[0m
+[0;32mI (64889) APP_MAIN: Log salvo! Temp Solo: 28.25 C, Umid Solo: 87.24 %[0m
+[0;32mI (64889) APP_MAIN: Log salvo! Temp Solo: 28.25 C, Umid Solo: 87.24 %[0m
+[0;33mW (78419) httpd_txrx: httpd_sock_err: error in recv : 104[0m
+[0;33mW (78419) httpd_txrx: httpd_sock_err: error in recv : 104[0m
+[0;32mI (125649) APP_MAIN: Log salvo! Temp Solo: 28.31 C, Umid Solo: 88.02 %[0m
+[0;32mI (125649) APP_MAIN: Log salvo! Temp Solo: 28.31 C, Umid Solo: 88.02 %[0m
+[0;32mI (186409) APP_MAIN: Log salvo! Temp Solo: 28.38 C, Umid Solo: 88.04 %[0m
+[0;32mI (186409) APP_MAIN: Log salvo! Temp Solo: 28.38 C, Umid Solo: 88.04 %[0m
+[0;33mW (198719) httpd_parse: parse_block: request URI/header too long[0m
+[0;33mW (198719) httpd_txrx: httpd_resp_send_err: 431 Request Header Fields Too Large - Header fields are too long[0m
+[0;33mW (205859) httpd_parse: parse_block: request URI/header too long[0m
+[0;33mW (205859) httpd_txrx: httpd_resp_send_err: 431 Request Header Fields Too Large - Header fields are too long[0m
+[0;33mW (210449) httpd_txrx: httpd_sock_err: error in recv : 104[0m
+[0;33mW (232399) httpd_txrx: httpd_sock_err: error in recv : 104[0m
+[0;33mW (232409) httpd_txrx: httpd_sock_err: error in recv : 104[0m
+[0;32mI (247179) APP_MAIN: Log salvo! Temp Solo: 28.38 C, Umid Solo: 95.89 %[0m
+[0;32mI (247179) APP_MAIN: Log salvo! Temp Solo: 28.38 C, Umid Solo: 95.89 %[0m
+[0;32mI (307949) APP_MAIN: Log salvo! Temp Solo: 28.31 C, Umid Solo: 95.14 %[0m
+[0;32mI (307949) APP_MAIN: Log salvo! Temp Solo: 28.31 C, Umid Solo: 95.14 %[0m
+[0;32mI (368719) APP_MAIN: Log salvo! Temp Solo: 28.12 C, Umid Solo: 95.25 %[0m
+[0;32mI (368719) APP_MAIN: Log salvo! Temp Solo: 28.12 C, Umid Solo: 95.25 %[0m
+[0;32mI (429479) APP_MAIN: Log salvo! Temp Solo: 28.00 C, Umid Solo: 95.14 %[0m
+[0;32mI (429479) APP_MAIN: Log salvo! Temp Solo: 28.00 C, Umid Solo: 95.14 %[0m
+[0;32mI (490239) APP_MAIN: Log salvo! Temp Solo: 28.06 C, Umid Solo: 95.40 %[0m
+[0;32mI (490239) APP_MAIN: Log salvo! Temp Solo: 28.06 C, Umid Solo: 95.40 %[0m
+[0;32mI (550999) APP_MAIN: Log salvo! Temp Solo: 28.06 C, Umid Solo: 95.69 %[0m
+[0;32mI (550999) APP_MAIN: Log salvo! Temp Solo: 28.06 C, Umid Solo: 95.69 %[0m
+[0;32mI (611759) APP_MAIN: Log salvo! Temp Solo: 28.06 C, Umid Solo: 95.20 %[0m
+[0;32mI (611759) APP_MAIN: Log salvo! Temp Solo: 28.06 C, Umid Solo: 95.20 %[0m
+[0;32mI (672519) APP_MAIN: Log salvo! Temp Solo: 28.00 C, Umid Solo: 95.40 %[0m
+[0;32mI (672519) APP_MAIN: Log salvo! Temp Solo: 28.00 C, Umid Solo: 95.40 %[0m
+[0;32mI (733279) APP_MAIN: Log salvo! Temp Solo: 27.94 C, Umid Solo: 95.35 %[0m
+[0;32mI (733279) APP_MAIN: Log salvo! Temp Solo: 27.94 C, Umid Solo: 95.35 %[0m
+[0;32mI (779549) wifi:station: 96:62:32:cc:84:05 leave, AID = 1, bss_flags is 134259, bss:0x3ffb91a4[0m
+[0;32mI (779549) wifi:new:<1,0>, old:<1,0>, ap:<1,1>, sta:<255,255>, prof:1[0m
+[0;32mI (779549) wifi:<ba-del>idx:2, tid:0[0m
+[0;32mI (779549) HTTP_SERVER: Cliente 96:62:32:cc:84:05 saiu, AID=1[0m
+[0;32mI (794039) APP_MAIN: Log salvo! Temp Solo: 27.94 C, Umid Solo: 95.69 %[0m
+[0;32mI (794039) APP_MAIN: Log salvo! Temp Solo: 27.94 C, Umid Solo: 95.69 %[0m
+[0;32mI (854799) APP_MAIN: Log salvo! Temp Solo: 27
