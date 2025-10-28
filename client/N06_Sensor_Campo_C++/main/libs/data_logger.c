@@ -201,10 +201,10 @@ bool data_logger_append(const log_entry_t *entry)
             entry->umid_solo);
     fclose(f);
 
-    ESP_LOGI("APP_MAIN",
-             "Log salvo! Temp Solo: %.2f C, Umid Solo: %.2f %%",
-             entry->temp_solo,
-             entry->umid_solo);
+   // ESP_LOGI("APP_MAIN",
+   //          "Log salvo! Temp Solo: %.2f C, Umid Solo: %.2f %%",
+   //          entry->temp_solo,
+   //          entry->umid_solo);
 
     linha_idx++;
     return true;

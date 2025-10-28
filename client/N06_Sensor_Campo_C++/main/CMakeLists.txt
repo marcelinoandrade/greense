@@ -10,6 +10,7 @@ idf_component_register(
     "sensores/sensores.c"
     "sensores/ds18b20.c"
     "sensores/soil_moisture.c"
+    "atuadores/atuadores.c"
 
     # NOVA FONTE: O servidor web
     "libs/http_server.c"
@@ -17,6 +18,7 @@ idf_component_register(
     INCLUDE_DIRS
     "."
     "sensores"
+    "atuadores"
     "libs"
 
     # Lista de dependências de componentes do ESP-IDF

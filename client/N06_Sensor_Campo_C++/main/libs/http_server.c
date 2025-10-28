@@ -22,6 +22,7 @@
  
  #include "data_logger.h"
  #include "sensores.h"
+ #include "atuadores.h"
  
  static const char *TAG = "HTTP_SERVER";
  
@@ -39,6 +40,7 @@
      if (event_base == WIFI_EVENT &&
          event_id == WIFI_EVENT_AP_STACONNECTED)
      {
+         atuadores_cliente_conectou();
          wifi_event_ap_staconnected_t *e =
              (wifi_event_ap_staconnected_t *)event_data;
          ESP_LOGI(TAG,
@@ -50,6 +52,7 @@
      else if (event_base == WIFI_EVENT &&
               event_id == WIFI_EVENT_AP_STADISCONNECTED)
      {
+        atuadores_cliente_desconectou();
          wifi_event_ap_stadisconnected_t *e =
              (wifi_event_ap_stadisconnected_t *)event_data;
          ESP_LOGI(TAG,

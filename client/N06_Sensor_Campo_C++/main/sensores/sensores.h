@@ -49,6 +49,8 @@ float sensores_get_temp_solo(void);
  */
 int sensores_get_umid_solo_raw(void);
 
+
+
 #ifdef __cplusplus
 }
 #endif

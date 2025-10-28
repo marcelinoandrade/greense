@@ -63,3 +63,5 @@ int sensores_get_umid_solo_raw(void)
     ultimo_umid_raw = leitura;
     return leitura;
 }
+
+
