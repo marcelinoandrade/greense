@@ -3,15 +3,6 @@
 Firmware baseado em **ESP-IDF (v5.x)** para monitoramento e controle ambiental, integrando sensores múltiplos (AHT20, ENS160, DHT, DS18B20) e atuadores, com comunicação segura via **MQTT** e suporte a interface web local.
 
 
-<div align="center">
-  <figure>
-    <img src="https://github.com/marcelinoandrade/greense/blob/main/client/N01_Estufa_Germinar_C%2B%2B/esp32_Freenove.png" alt="ESP32" width="200"> <br>
-    <figcaption>Módulo ESP32 (Freenove) conectado à estufa</figcaption>
-  </figure>
-</div>
-
-
-
 ---
 
 ## ⚙️ Visão Geral
@@ -85,6 +76,12 @@ Permite visualização rápida de medições e acionamento manual dos atuadores.
 Acesso via `http://192.168.4.1/` (modo AP) ou endereço IP obtido no modo STA.
 
 ---
+
+## 🖼️ Hardware de Referência
+
+| Sensor MLX90640 |
+|-----------------|
+| ![ESP32](esp32_Freenove.png) |
 
 ## 💾 Requisitos de Build
 
