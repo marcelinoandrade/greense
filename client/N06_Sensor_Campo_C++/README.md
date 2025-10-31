@@ -51,7 +51,7 @@ main/
 
 | ESP32-Battery|
 |-----------------|
-| ![ESP32](esp32_cam.png) |
+| ![ESP32](esp32_battery.png) |
 
 
 ## 🌐 Servidor Web Integrado
