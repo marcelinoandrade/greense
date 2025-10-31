@@ -4,7 +4,10 @@ Firmware baseado em **ESP-IDF (v5.x)** para monitoramento e controle ambiental, 
 
 
 <div align="center">
-  <img src="https://github.com/marcelinoandrade/greense/blob/main/client/N01_Estufa_Germinar_C%2B%2B/esp32_Freenove.png" alt="ESP32" width="200">
+  <figure>
+    <img src="https://github.com/marcelinoandrade/greense/blob/main/client/N01_Estufa_Germinar_C%2B%2B/esp32_Freenove.png" alt="ESP32" width="200">
+    <figcaption>Módulo ESP32 (Freenove) conectado à estufa</figcaption>
+  </figure>
 </div>
 
 
