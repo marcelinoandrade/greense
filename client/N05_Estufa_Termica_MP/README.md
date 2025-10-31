@@ -4,11 +4,12 @@ Sistema embarcado em **MicroPython** para aquisição de imagens térmicas usand
 
 <div align="center">
   <figure>
-    <img src="https://github.com/marcelinoandrade/greense/blob/main/client/N04_Estufa_Camera_C%2B%2B/esp32_cam.png" alt="ESP32" width="200"> 
-        <img src="https://github.com/marcelinoandrade/greense/blob/main/client/N04_Estufa_Camera_C%2B%2B/esp32_cam.png" alt="ESP32" width="200"> <br>
+    <img src="https://github.com/marcelinoandrade/greense/blob/main/client/N05_Estufa_Termica_MP/esp32_c3.png" alt="ESP32" width="200"> 
+        <img src="https://github.com/marcelinoandrade/greense/blob/main/client/N05_Estufa_Termica_MP/camera_termica.png" alt="ESP32" width="200"> <br>
     <figcaption>Módulo ESP32-C3 e Modulo Termico utilizado à estufa</figcaption>
   </figure>
 </div>
+
 
 ---
 
