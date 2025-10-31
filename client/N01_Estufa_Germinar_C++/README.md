@@ -2,6 +2,11 @@
 
 Firmware baseado em **ESP-IDF (v5.x)** para monitoramento e controle ambiental, integrando sensores múltiplos (AHT20, ENS160, DHT, DS18B20) e atuadores, com comunicação segura via **MQTT** e suporte a interface web local.
 
+
+<div align="center">
+  <img src="https://github.com/marcelinoandrade/greense/blob/main/dashboardGreense.jpg" alt="GreenSe Logo" width="800">
+</div>
+
 ---
 
 ## ⚙️ Visão Geral
