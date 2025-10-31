@@ -2,6 +2,14 @@
 
 Firmware desenvolvido em **ESP-IDF (v5.x)** para o módulo **ESP32-CAM**, responsável por capturar imagens e enviá-las de forma segura via **HTTPS POST** para um servidor remoto (ex: Raspberry Pi ou Flask API).
 
+<div align="center">
+  <figure>
+    <img src="https://github.com/marcelinoandrade/greense/blob/main/client/N01_Estufa_Germinar_C%2B%2B/esp32_Freenove.png" alt="ESP32" width="200"> <br>
+    <figcaption>Módulo ESP32-CAM conectado à estufa</figcaption>
+  </figure>
+</div>
+
+
 ---
 
 ## ⚙️ Visão Geral
