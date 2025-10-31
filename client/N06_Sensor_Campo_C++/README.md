@@ -47,6 +47,13 @@ main/
 
 ---
 
+## 🖼️ Hardware de Referência
+
+| ESP32-Battery|
+|-----------------|
+| ![ESP32](esp32_cam.png) |
+
+
 ## 🌐 Servidor Web Integrado
 
 ### Rotas HTTP
