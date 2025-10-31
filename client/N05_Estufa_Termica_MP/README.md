@@ -2,6 +2,14 @@
 
 Sistema embarcado em **MicroPython** para aquisição de imagens térmicas usando o sensor **MLX90640** (modulo GY-MCU90640) e transmissão automática via **HTTP POST** para um servidor remoto.
 
+<div align="center">
+  <figure>
+    <img src="https://github.com/marcelinoandrade/greense/blob/main/client/N04_Estufa_Camera_C%2B%2B/esp32_cam.png" alt="ESP32" width="200"> 
+        <img src="https://github.com/marcelinoandrade/greense/blob/main/client/N04_Estufa_Camera_C%2B%2B/esp32_cam.png" alt="ESP32" width="200"> <br>
+    <figcaption>Módulo ESP32-C3 e Modulo Termico utilizado à estufa</figcaption>
+  </figure>
+</div>
+
 ---
 
 ## ⚙️ Descrição Geral
