@@ -1,6 +1,6 @@
-import csv
 import numpy as np
 import matplotlib.pyplot as plt
+import csv
 
 arquivo = "termica_global.csv"
 
@@ -14,20 +14,26 @@ dados = reader[1:]
 # Extrai os nomes das colunas de temperatura (a partir da 3ª coluna)
 colunas_temp = header[2:]
 
-# Seleciona as 4 últimas colunas
-ultimas_colunas = colunas_temp[-4:] if len(colunas_temp) >= 4 else colunas_temp
-print("Últimas colunas:", ultimas_colunas)
+# Seleciona as 36 últimas colunas
+ultimas_colunas = colunas_temp[-36:]
+num_imagens = len(ultimas_colunas)
+
+print(f"Total de {num_imagens} imagens para plotar.")
 
 # Dimensões fixas da câmera térmica
 n_linhas, n_colunas = 24, 32
 
-fig, axs = plt.subplots(1, len(ultimas_colunas), figsize=(5 * len(ultimas_colunas), 6))
+# Cria uma grade 6x6 de subplots
+fig, axs = plt.subplots(6, 6, figsize=(18, 18))
 
-if len(ultimas_colunas) == 1:
-    axs = [axs]
+# "Achata" o array de eixos 2D (6x6) para um array 1D (36)
+axs_flat = axs.flatten()
 
-# Para cada uma das 4 últimas colunas, reconstruir matriz e exibir
+# Para cada uma das 36 últimas colunas, reconstruir matriz e exibir
 for idx, nome_coluna in enumerate(ultimas_colunas):
+    # Pega o eixo correto do array achatado
+    ax = axs_flat[idx]
+    
     # índice da coluna correspondente
     col_index = header.index(nome_coluna)
     
@@ -37,12 +43,25 @@ for idx, nome_coluna in enumerate(ultimas_colunas):
     # converter para matriz 24x32
     matriz = np.array(vetor_temp).reshape((n_linhas, n_colunas))
     
-    im = axs[idx].imshow(matriz, cmap="hot", aspect="auto")
-    axs[idx].set_title(f"{nome_coluna}")
-    axs[idx].set_xlabel("Coluna")
-    axs[idx].set_ylabel("Linha")
-    plt.colorbar(im, ax=axs[idx], fraction=0.046, pad=0.04)
+    # --- ALTERAÇÃO AQUI ---
+    # Rotaciona a matriz em 180 graus (k=2 -> 2 * 90 graus)
+    matriz_rotacionada = np.rot90(matriz, k=2)
+    # --- FIM DA ALTERAÇÃO ---
 
-plt.suptitle("Quatro Últimas Imagens Térmicas")
-plt.tight_layout()
+    # Usamos a paleta 'PRGn' e a interpolação como antes
+    im = ax.imshow(matriz_rotacionada, cmap='PRGn', aspect="auto", interpolation='bilinear')
+    
+    ax.set_title(f"{nome_coluna}", fontsize=10)
+    ax.set_xlabel("Coluna")
+    ax.set_ylabel("Linha")
+    
+    plt.colorbar(im, ax=ax, fraction=0.046, pad=0.04)
+
+# Desliga os eixos extras se houver menos de 36 imagens
+if num_imagens < 36:
+    for i in range(num_imagens, 36):
+        axs_flat[i].axis('off')
+
+plt.suptitle(f"Últimas {num_imagens} Imagens Térmicas (Rotacionadas 180°)")
+plt.tight_layout(rect=[0, 0.03, 1, 0.97]) 
 plt.show()
