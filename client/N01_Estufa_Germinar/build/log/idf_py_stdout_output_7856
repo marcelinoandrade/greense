@@ -1,0 +1,125 @@
+Command: /home/mrclnndrd/.espressif/python_env/idf5.5_py3.11_env/bin/python /home/mrclnndrd/esp/esp-idf/tools/idf_monitor.py -p /dev/ttyUSB0 -b 115200 --toolchain-prefix xtensa-esp32-elf- --target esp32 --revision 0 /home/mrclnndrd/projetos/greense/client/N01_Estufa_Germinar/build/N01_Estufa_Germinar.elf /home/mrclnndrd/projetos/greense/client/N01_Estufa_Germinar/build/bootloader/bootloader.elf -m '/home/mrclnndrd/.espressif/python_env/idf5.5_py3.11_env/bin/python' '/home/mrclnndrd/esp/esp-idf/tools/idf.py' '-p' '/dev/ttyUSB0'
+0m
+[0;33mW (581) ADC: legacy driver is deprecated, please migrate to `esp_adc/adc_oneshot.h`[0m
+[0;32mI (590) �ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:6380
+ho 0 tail 12 room 4
+load:0x40078000,len:15904
+load:0x40080400,len:3860
+entry 0x40080638
+[0;32mI (29) boot: ESP-IDF v5.5-dev-3372-g38628f98b9 2nd stage bootloader[0m
+[0;32mI (29) boot: compile time May  2 2025 13:16:58[0m
+[0;32mI (29) boot: Multicore bootloader[0m
+[0;32mI (32) boot: chip revision: v3.1[0m
+[0;32mI (35) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (39) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (42) boot.esp32: SPI Flash Size : 2MB[0m
+[0;32mI (46) boot: Enabling RNG early entropy source...[0m
+[0;32mI (50) boot: Partition Table:[0m
+[0;32mI (53) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (59) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (66) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (72) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (79) boot: End of partition table[0m
+[0;32mI (82) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=297fch (169980) map[0m
+[0;32mI (148) esp_image: segment 1: paddr=00039824 vaddr=3ff80000 size=0001ch (    28) load[0m
+[0;32mI (148) esp_image: segment 2: paddr=00039848 vaddr=3ffb0000 size=041cch ( 16844) load[0m
+[0;32mI (158) esp_image: segment 3: paddr=0003da1c vaddr=40080000 size=025fch (  9724) load[0m
+[0;32mI (163) esp_image: segment 4: paddr=00040020 vaddr=400d0020 size=a32a8h (668328) map[0m
+[0;32mI (395) esp_image: segment 5: paddr=000e32d0 vaddr=400825fc size=1751ch ( 95516) load[0m
+[0;32mI (445) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (445) boot: Disabling RNG early entropy source...[0m
+[0;32mI (455) cpu_start: Multicore app[0m
+[0;32mI (464) cpu_start: Pro cpu start user code[0m
+[0;32mI (464) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (464) app_init: Application information:[0m
+[0;32mI (467) app_init: Project name:     N01_Estufa_Germinar[0m
+[0;32mI (473) app_init: App version:      6517dce-dirty[0m
+[0;32mI (478) app_init: Compile time:     May  2 2025 17:56:47[0m
+[0;32mI (484) app_init: ELF file SHA256:  4d7213deb...[0m
+[0;32mI (489) app_init: ESP-IDF:          v5.5-dev-3372-g38628f98b9[0m
+[0;32mI (496) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (500) efuse_init: Max chip rev:     v3.99 [0m
+[0;32mI (505) efuse_init: Chip rev:         v3.1[0m
+[0;32mI (511) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (518) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (524) heap_init: At 3FFB8928 len 000276D8 (157 KiB): DRAM[0m
+[0;32mI (530) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (536) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (543) heap_init: At 40099B18 len 000064E8 (25 KiB): IRAM[0m
+[0;32mI (550) spi_flash: detected chip: generic[0m
+[0;32mI (553) spi_flash: flash io: dio[0m
+[0;33mW (557) spi_flash: Detected size(4096k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;33mW (570) i2c: This driver is an old driver, please migrate your application code to adapt `driver/i2c_master.h`[0m
+[0;33mW (581) ADC: legacy driver is deprecated, please migrate to `esp_adc/adc_oneshot.h`[0m
+[0;32mI (590) main_task: Started on CPU0[0m
+[0;32mI (600) main_task: Calling app_main()[0m
+[0;32mI (640) wifi:wifi driver task: 3ffc0980, prio:23, stack:6656, core=0[0m
+[0;32mI (650) wifi:wifi firmware version: 7d2994f4b[0m
+[0;32mI (650) wifi:wifi certification version: v7.0[0m
+[0;32mI (650) wifi:config NVS flash: enabled[0m
+[0;32mI (650) wifi:config nano formatting: disabled[0m
+[0;32mI (660) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (660) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (660) wifi:Init management short buffer num: 32[0m
+[0;32mI (670) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (670) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (680) wifi:Init static rx buffer num: 10[0m
+[0;32mI (680) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (690) wifi_init: rx ba win: 6[0m
+[0;32mI (690) wifi_init: accept mbox: 6[0m
+[0;32mI (690) wifi_init: tcpip mbox: 32[0m
+[0;32mI (700) wifi_init: udp mbox: 6[0m
+[0;32mI (700) wifi_init: tcp mbox: 6[0m
+[0;32mI (700) wifi_init: tcp tx win: 5760[0m
+[0;32mI (710) wifi_init: tcp rx win: 5760[0m
+[0;32mI (710) wifi_init: tcp mss: 1440[0m
+[0;32mI (720) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (720) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (730) phy_init: phy_version 4860,6b7a6e5,Feb  6 2025,14:47:07[0m
+[0;32mI (810) wifi:mode : sta (88:13:bf:82:3a:50)[0m
+[0;32mI (810) wifi:enable tsf[0m
+[0;32mI (810) wifi:Set ps type: 0, coexist: 0[0m
+
+[0;32mI (810) WiFi: Wi-Fi inicializado. Conectando...[0m
+[0;32mI (840) wifi:new:<13,0>, old:<1,0>, ap:<255,255>, sta:<13,0>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (840) wifi:state: init -> auth (0xb0)[0m
+[0;32mI (860) wifi:state: auth -> assoc (0x0)[0m
+[0;32mI (860) wifi:state: assoc -> init (0x2c0)[0m
+[0;32mI (870) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1, snd_ch_cfg:0x0[0m
+[0;33mW (870) WiFi: Desconectado. Motivo: 203[0m
+[0;32mI (870) WiFi: Tentando reconectar ao Wi-Fi...[0m
+[0;33mW (3280) WiFi: Desconectado. Motivo: 205[0m
+[0;32mI (3290) WiFi: Tentando reconectar ao Wi-Fi...[0m
+[0;32mI (3300) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (3300) wifi:state: init -> auth (0xb0)[0m
+[0;32mI (3310) wifi:state: auth -> assoc (0x0)[0m
+[0;32mI (3330) wifi:state: assoc -> run (0x10)[0m
+[0;32mI (3370) wifi:connected with greense, aid = 1, channel 13, BW20, bssid = e4:5f:01:6f:f2:29[0m
+[0;32mI (3370) wifi:security: WPA-PSK, phy: bgn, rssi: -26[0m
+[0;32mI (3370) wifi:pm start, type: 0[0m
+
+[0;32mI (3370) wifi:dp: 1, bi: 102400, li: 3, scale listen interval from 307200 us to 307200 us[0m
+[0;32mI (3390) wifi:<ba-add>idx:0 (ifx:0, e4:5f:01:6f:f2:29), tid:6, ssn:0, winSize:64[0m
+[0;32mI (3400) wifi:dp: 2, bi: 102400, li: 4, scale listen interval from 307200 us to 409600 us[0m
+[0;32mI (3400) wifi:AP's beacon interval = 102400 us, DTIM period = 2[0m
+[0;32mI (4420) esp_netif_handlers: sta ip: 10.42.0.167, mask: 255.255.255.0, gw: 10.42.0.1[0m
+[0;32mI (4420) WiFi: Conectado! IP: 10.42.0.167[0m
+[0;32mI (4420) WiFi: Conectado ao Wi-Fi com sucesso[0m
+[0;32mI (4440) wifi:<ba-add>idx:1 (ifx:0, e4:5f:01:6f:f2:29), tid:0, ssn:3, winSize:64[0m
+[0;32mI (4500) AHT20: Initialized successfully (attempt 1)[0m
+[0;32mI (5000) ENS160: Initialized successfully[0m
+[0;32mI (5000) SENSORES: Sensors initialized: YES[0m
+[0;32mI (5000) Atuadores: Inicializando atuadores...[0m
+[0;32mI (5000) Atuadores: Inicializando LED RGB...[0m
+Wi-Fi está conectado.
+MQTT não está conectado.
+[0;32mI (6240) MQTT: Conectado ao broker MQTT![0m
+Wi-Fi está conectado.
+[0;32mI (11020) MQTT: Publicado (id=62561): estufa/germinar -> {"temp": 25.19, "umid": 70.76, "co2": 628.00, "luz": 0.00, "agua_min": 0, "agua_max": 0, "temp_reserv_int": 28.88, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 0.00, "umid_solo_raw": 0, "umid_solo_pct": 100.00}[0m
+Wi-Fi

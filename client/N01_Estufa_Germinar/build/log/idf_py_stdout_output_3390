@@ -1,0 +1,102 @@
+Command: ninja flash
+[1/10] Performing build step for 'bootloader'
+[1/1] cd /home/mrclnndrd/projetos/greense/client/N01_Estufa_Germinar/build/bootloader/esp-idf/esptool_py && /home/mrclnndrd/.espressif/python_env/idf5.5_py3.11_env/bin/python /home/mrclnndrd/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x1000 /home/mrclnndrd/projetos/greense/client/N01_Estufa_Germinar/build/bootloader/bootloader.bin
+Bootloader binary size 0x6680 bytes. 0x980 bytes (8%) free.
+[2/10] No install step for 'bootloader'
+[3/10] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/sensores/sensores.c.obj
+In file included from /home/mrclnndrd/projetos/greense/client/N01_Estufa_Germinar/main/sensores/sensores.c:7:
+/home/mrclnndrd/esp/esp-idf/components/driver/deprecated/driver/adc.h:19:2: warning: #warning "legacy adc driver is deprecated, please migrate to use esp_adc/adc_oneshot.h and esp_adc/adc_continuous.h for oneshot mode and continuous mode drivers respectively" [-Wcpp]
+   19 | #warning "legacy adc driver is deprecated, please migrate to use esp_adc/adc_oneshot.h and esp_adc/adc_continuous.h for oneshot mode and continuous mode drivers respectively"
+      |  ^~~~~~~
+/home/mrclnndrd/projetos/greense/client/N01_Estufa_Germinar/main/sensores/sensores.c: In function 'sensores_init':
+/home/mrclnndrd/projetos/greense/client/N01_Estufa_Germinar/main/sensores/sensores.c:75:5: warning: 'ADC_ATTEN_DB_11' is deprecated [-Wdeprecated-declarations]
+   75 |     adc1_config_channel_atten(ADC1_CHANNEL_0, ADC_ATTEN_DB_11);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from /home/mrclnndrd/esp/esp-idf/components/driver/deprecated/driver/adc_types_legacy.h:8,
+                 from /home/mrclnndrd/esp/esp-idf/components/driver/deprecated/driver/adc.h:15:
+/home/mrclnndrd/esp/esp-idf/components/hal/include/hal/adc_types.h:51:5: note: declared here
+   51 |     ADC_ATTEN_DB_11 __attribute__((deprecated)) = ADC_ATTEN_DB_12,  ///<This is deprecated, it behaves the same as `ADC_ATTEN_DB_12`
+      |     ^~~~~~~~~~~~~~~
+[4/10] Completed 'bootloader'
+[5/10] Linking C static library esp-idf/main/libmain.a
+[6/10] Generating esp-idf/esp_system/ld/sections.ld
+[7/10] Linking CXX executable N01_Estufa_Germinar.elf
+[8/10] Generating binary image from built executable
+esptool.py v4.9.dev6
+Creating esp32 image...
+Merged 2 ELF sections
+Successfully created esp32 image.
+Generated /home/mrclnndrd/projetos/greense/client/N01_Estufa_Germinar/build/N01_Estufa_Germinar.bin
+[9/10] cd /home/mrclnndrd/projetos/greense/client/N01_Estufa_Germinar/build/esp-idf/esptool_py && /home/mrclnndrd/.espressif/python_env/idf5.5_py3.11_env/bin/python /home/mrclnndrd/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 partition --type app /home/mrclnndrd/projetos/greense/client/N01_Estufa_Germinar/build/partition_table/partition-table.bin /home/mrclnndrd/projetos/greense/client/N01_Estufa_Germinar/build/N01_Estufa_Germinar.bin
+N01_Estufa_Germinar.bin binary size 0xea690 bytes. Smallest app partition is 0x100000 bytes. 0x15970 bytes (8%) free.
+[9/10] cd /home/mrclnndrd/esp/esp-idf/components/esptool_py && /usr/bin/cmake -D IDF_PATH=/home/mrclnndrd/esp/esp-idf -D "SERIAL_TOOL=/home/mrclnndrd/.espressif/python_env/idf5.5_py3.11_env/bin/python;;/home/mrclnndrd/esp/esp-idf/components/esptool_py/esptool/esptool.py;--chip;esp32" -D "SERIAL_TOOL_ARGS=--before=default_reset;--after=hard_reset;write_flash;@flash_args" -D WORKING_DIRECTORY=/home/mrclnndrd/projetos/greense/client/N01_Estufa_Germinar/build -P /home/mrclnndrd/esp/esp-idf/components/esptool_py/run_serial_tool.cmake
+esptool.py --chip esp32 -p /dev/ttyUSB0 -b 460800 --before=default_reset --after=hard_reset write_flash --flash_mode dio --flash_freq 40m --flash_size 2MB 0x1000 bootloader/bootloader.bin 0x10000 N01_Estufa_Germinar.bin 0x8000 partition_table/partition-table.bin
+esptool.py v4.9.dev6
+Serial port /dev/ttyUSB0
+Connecting......
+Chip is ESP32-D0WD-V3 (revision v3.1)
+Features: WiFi, BT, Dual Core, 240MHz, VRef calibration in efuse, Coding Scheme None
+Crystal is 40MHz
+MAC: 88:13:bf:82:3a:50
+Uploading stub...
+Running stub...
+Stub running...
+Changing baud rate to 460800
+Changed.
+Configuring flash size...
+Flash will be erased from 0x00001000 to 0x00007fff...
+Flash will be erased from 0x00010000 to 0x000fafff...
+Flash will be erased from 0x00008000 to 0x00008fff...
+SHA digest in image updated
+Compressed 26240 bytes to 16510...
+Writing at 0x00001000... (50 %)
+Writing at 0x000075ce... (100 %)
+Wrote 26240 bytes (16510 compressed) at 0x00001000 in 0.9 seconds (effective 243.0 kbit/s)...
+Hash of data verified.
+Compressed 960144 bytes to 604600...
+Writing at 0x00010000... (2 %)
+Writing at 0x0001e928... (5 %)
+Writing at 0x00028d1d... (8 %)
+Writing at 0x0002e1ff... (10 %)
+Writing at 0x0003420d... (13 %)
+Writing at 0x0003f23a... (16 %)
+Writing at 0x00044b65... (18 %)
+Writing at 0x0004a8bf... (21 %)
+Writing at 0x000506ea... (24 %)
+Writing at 0x0005659d... (27 %)
+Writing at 0x0005c39d... (29 %)
+Writing at 0x00062161... (32 %)
+Writing at 0x000688bb... (35 %)
+Writing at 0x0006e6ae... (37 %)
+Writing at 0x00074499... (40 %)
+Writing at 0x000799fe... (43 %)
+Writing at 0x0007ed28... (45 %)
+Writing at 0x000841f6... (48 %)
+Writing at 0x00089a3a... (51 %)
+Writing at 0x0008efdd... (54 %)
+Writing at 0x0009436d... (56 %)
+Writing at 0x00099a57... (59 %)
+Writing at 0x0009f9f0... (62 %)
+Writing at 0x000a5485... (64 %)
+Writing at 0x000ab04b... (67 %)
+Writing at 0x000b0d0c... (70 %)
+Writing at 0x000b671b... (72 %)
+Writing at 0x000bc1a3... (75 %)
+Writing at 0x000c1ebd... (78 %)
+Writing at 0x000c79c6... (81 %)
+Writing at 0x000cde61... (83 %)
+Writing at 0x000d7f99... (86 %)
+Writing at 0x000de05e... (89 %)
+Writing at 0x000e421b... (91 %)
+Writing at 0x000e9d96... (94 %)
+Writing at 0x000effb3... (97 %)
+Writing at 0x000f54f6... (100 %)
+Wrote 960144 bytes (604600 compressed) at 0x00010000 in 14.1 seconds (effective 544.9 kbit/s)...
+Hash of data verified.
+Compressed 3072 bytes to 103...
+Writing at 0x00008000... (100 %)
+Wrote 3072 bytes (103 compressed) at 0x00008000 in 0.1 seconds (effective 345.5 kbit/s)...
+Hash of data verified.
+
+Leaving...
+Hard resetting via RTS pin...

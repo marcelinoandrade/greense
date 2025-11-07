@@ -1,0 +1,199 @@
+Command: /home/mrclnndrd/.espressif/python_env/idf5.5_py3.11_env/bin/python /home/mrclnndrd/esp/esp-idf/tools/idf_monitor.py -p /dev/ttyUSB0 -b 115200 --toolchain-prefix xtensa-esp32-elf- --target esp32 --revision 0 /home/mrclnndrd/projetos/greense/client/N02_Estufa_Maturar/build/N02_Estufa_Maturar.elf /home/mrclnndrd/projetos/greense/client/N02_Estufa_Maturar/build/bootloader/bootloader.elf -m '/home/mrclnndrd/.espressif/python_env/idf5.5_py3.11_env/bin/python' '/home/mrclnndrd/esp/esp-idf/tools/idf.py' '-p' '/dev/ttyUSB0'
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:6380
+ho 0 tail 12 room 4
+load:0x40078000,len:15904
+load:0x40080400,len:3860
+entry 0x40080638
+[0;32mI (29) boot: ESP-IDF v5.5-dev-3372-g38628f98b9 2nd stage bootloader[0m
+[0;32mI (29) boot: compile time May  2 2025 13:38:47[0m
+[0;32mI (29) boot: Multicore bootloader[0m
+[0;32mI (32) boot: chip revision: v3.1[0m
+[0;32mI (35) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (39) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (42) boot.esp32: SPI Flash Size : 2MB[0m
+[0;32mI (46) boot: Enabling RNG early entropy source...[0m
+[0;32mI (50) boot: Partition Table:[0m
+[0;32mI (53) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (59) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (66) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (72) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (79) boot: End of partition table[0m
+[0;32mI (82) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=2a218h (172568) map[0m
+[0;32mI (149) esp_image: segment 1: paddr=0003a240 vaddr=3ff80000 size=0001ch (    28) load[0m
+[0;32mI (149) esp_image: segment 2: paddr=0003a264 vaddr=3ffb0000 size=041cch ( 16844) load[0m
+[0;32mI (159) esp_image: segment 3: paddr=0003e438 vaddr=40080000 size=01be0h (  7136) load[0m
+[0;32mI (163) esp_image: segment 4: paddr=00040020 vaddr=400d0020 size=a52a0h (676512) map[0m
+[0;32mI (399) esp_image: segment 5: paddr=000e52c8 vaddr=40081be0 size=17f38h ( 98104) load[0m
+[0;32mI (449) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (450) boot: Disabling RNG early entropy source...[0m
+[0;32mI (460) cpu_start: Multicore app[0m
+[0;32mI (468) cpu_start: Pro cpu start user code[0m
+[0;32mI (469) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (469) app_init: Application information:[0m
+[0;32mI (471) app_init: Project name:     N02_Estufa_Maturar[0m
+[0;32mI (477) app_init: App version:      312e980-dirty[0m
+[0;32mI (483) app_init: Compile time:     May  2 2025 13:38:16[0m
+[0;32mI (489) app_init: ELF file SHA256:  97ce8a13d...[0m
+[0;32mI (494) app_init: ESP-IDF:          v5.5-dev-3372-g38628f98b9[0m
+[0;32mI (500) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (505) efuse_init: Max chip rev:     v3.99 [0m
+[0;32mI (510) efuse_init: Chip rev:         v3.1[0m
+[0;32mI (515) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (522) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (528) heap_init: At 3FFB8920 len 000276E0 (157 KiB): DRAM[0m
+[0;32mI (534) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (541) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (547) heap_init: At 40099B18 len 000064E8 (25 KiB): IRAM[0m
+[0;32mI (555) spi_flash: detected chip: generic[0m
+[0;32mI (558) spi_flash: flash io: dio[0m
+[0;33mW (562) spi_flash: Detected size(4096k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;33mW (575) i2c: This driver is an old driver, please migrate your application code to adapt `driver/i2c_master.h`[0m
+[0;32mI (587) main_task: Started on CPU0[0m
+[0;32mI (597) main_task: Calling app_main()[0m
+[0;32mI (637) wifi:wifi driver task: 3ffc08f4, prio:23, stack:6656, core=0[0m
+[0;32mI (647) wifi:wifi firmware version: 7d2994f4b[0m
+[0;32mI (647) wifi:wifi certification version: v7.0[0m
+[0;32mI (647) wifi:config NVS flash: enabled[0m
+[0;32mI (647) wifi:config nano formatting: disabled[0m
+[0;32mI (657) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (657) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (657) wifi:Init management short buffer num: 32[0m
+[0;32mI (667) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (667) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (677) wifi:Init static rx buffer num: 10[0m
+[0;32mI (677) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (687) wifi_init: rx ba win: 6[0m
+[0;32mI (687) wifi_init: accept mbox: 6[0m
+[0;32mI (687) wifi_init: tcpip mbox: 32[0m
+[0;32mI (697) wifi_init: udp mbox: 6[0m
+[0;32mI (697) wifi_init: tcp mbox: 6[0m
+[0;32mI (697) wifi_init: tcp tx win: 5760[0m
+[0;32mI (707) wifi_init: tcp rx win: 5760[0m
+[0;32mI (707) wifi_init: tcp mss: 1440[0m
+[0;32mI (717) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (717) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (727) phy_init: phy_version 4860,6b7a6e5,Feb  6 2025,14:47:07[0m
+[0;32mI (807) wifi:mode : sta (88:13:bf:82:3a:50)[0m
+[0;32mI (807) wifi:enable tsf[0m
+[0;32mI (807) wifi:Set ps type: 0, coexist: 0[0m
+
+[0;32mI (807) WiFi: Wi-Fi inicializado. Conectando...[0m
+[0;32mI (897) wifi:new:<13,0>, old:<1,0>, ap:<255,255>, sta:<13,0>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (897) wifi:state: init -> auth (0xb0)[0m
+[0;32mI (897) wifi:state: auth -> assoc (0x0)[0m
+[0;32mI (907) wifi:state: assoc -> run (0x10)[0m
+[0;32mI (917) wifi:state: run -> init (0x2c0)[0m
+[0;32mI (927) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1, snd_ch_cfg:0x0[0m
+[0;33mW (927) WiFi: Desconectado. Motivo: 2[0m
+[0;32mI (927) WiFi: Tentando reconectar ao Wi-Fi...[0m
+[0;33mW (1217) wifi:tx null, bss is null[0m
+[0;33mW (3337) WiFi: Desconectado. Motivo: 205[0m
+[0;32mI (3347) WiFi: Tentando reconectar ao Wi-Fi...[0m
+[0;32mI (3347) wifi:new:<13,0>, old:<13,0>, ap:<255,255>, sta:<13,0>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (3347) wifi:state: init -> auth (0xb0)[0m
+[0;32mI (3367) wifi:state: auth -> assoc (0x0)[0m
+[0;32mI (3377) wifi:state: assoc -> run (0x10)[0m
+[0;32mI (3407) wifi:connected with greense, aid = 1, channel 13, BW20, bssid = e4:5f:01:6f:f2:29[0m
+[0;32mI (3407) wifi:security: WPA-PSK, phy: bgn, rssi: -30[0m
+[0;32mI (3407) wifi:pm start, type: 0[0m
+
+[0;32mI (3407) wifi:dp: 1, bi: 102400, li: 3, scale listen interval from 307200 us to 307200 us[0m
+[0;32mI (3427) wifi:<ba-add>idx:0 (ifx:0, e4:5f:01:6f:f2:29), tid:6, ssn:0, winSize:64[0m
+[0;32mI (3447) wifi:dp: 2, bi: 102400, li: 4, scale listen interval from 307200 us to 409600 us[0m
+[0;32mI (3447) wifi:AP's beacon interval = 102400 us, DTIM period = 2[0m
+[0;32mI (4457) esp_netif_handlers: sta ip: 10.42.0.167, mask: 255.255.255.0, gw: 10.42.0.1[0m
+[0;32mI (4457) WiFi: Conectado! IP: 10.42.0.167[0m
+[0;32mI (4457) WiFi: Conectado ao Wi-Fi com sucesso[0m
+[0;32mI (4477) wifi:<ba-add>idx:1 (ifx:0, e4:5f:01:6f:f2:29), tid:0, ssn:3, winSize:64[0m
+[0;32mI (4537) AHT20: Initialized successfully (attempt 1)[0m
+[0;32mI (5037) ENS160: Initialized successfully[0m
+[0;32mI (5037) SENSORES: Sensors initialized: YES[0m
+[0;32mI (5037) Atuadores: Inicializando atuadores...[0m
+[0;32mI (5037) Atuadores: Inicializando LED RGB...[0m
+Wi-Fi está conectado.
+MQTT não está conectado.
+[0;32mI (6827) MQTT: Conectado ao broker MQTT![0m
+Wi-Fi está conectado.
+[0;32mI (10307) MQTT: Publicado (id=56449): estufa/maturar -> {"temp": 29.61, "umid": 56.99, "co2": 809.00, "luz": 0.00, "agua_min": 1, "agua_max": 1, "temp_reserv_int": -127.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 22.60}[0m
+Wi-Fi está conectado.
+[0;32mI (15577) MQTT: Publicado (id=63841): estufa/maturar -> {"temp": 29.59, "umid": 56.88, "co2": 781.00, "luz": 0.00, "agua_min": 1, "agua_max": 1, "temp_reserv_int": -127.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 24.52}[0m
+Wi-Fi está conectado.
+[0;32mI (20847) MQTT: Publicado (id=34692): estufa/maturar -> {"temp": 29.57, "umid": 56.92, "co2": 741.00, "luz": 0.00, "agua_min": 1, "agua_max": 1, "temp_reserv_int": -127.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 23.50}[0m
+Wi-Fi está conectado.
+[0;32mI (26117) MQTT: Publicado (id=15180): estufa/maturar -> {"temp": 29.61, "umid": 56.88, "co2": 693.00, "luz": 0.00, "agua_min": 1, "agua_max": 1, "temp_reserv_int": -127.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 19.45}[0m
+Wi-Fi está conectado.
+[0;32mI (31387) MQTT: Publicado (id=53281): estufa/maturar -> {"temp": 29.61, "umid": 56.86, "co2": 712.00, "luz": 0.00, "agua_min": 1, "agua_max": 1, "temp_reserv_int": -127.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 23.49}[0m
+Wi-Fi está conectado.
+[0;32mI (36657) MQTT: Publicado (id=44801): estufa/maturar -> {"temp": 29.59, "umid": 56.91, "co2": 699.00, "luz": 0.00, "agua_min": 1, "agua_max": 1, "temp_reserv_int": -127.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 23.96}[0m
+Wi-Fi está conectado.
+[0;32mI (41927) MQTT: Publicado (id=63860): estufa/maturar -> {"temp": 29.61, "umid": 56.82, "co2": 701.00, "luz": 0.00, "agua_min": 1, "agua_max": 1, "temp_reserv_int": -127.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 15.56}[0m
+Wi-Fi está conectado.
+[0;32mI (47197) MQTT: Publicado (id=19894): estufa/maturar -> {"temp": 29.63, "umid": 56.81, "co2": 686.00, "luz": 0.00, "agua_min": 1, "agua_max": 1, "temp_reserv_int": -127.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 23.83}[0m
+Wi-Fi está conectado.
+[0;32mI (52467) MQTT: Publicado (id=17273): estufa/maturar -> {"temp": 29.63, "umid": 56.72, "co2": 709.00, "luz": 0.00, "agua_min": 1, "agua_max": 1, "temp_reserv_int": -127.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 19.82}[0m
+Wi-Fi está conectado.
+[0;32mI (57737) MQTT: Publicado (id=45709): estufa/maturar -> {"temp": 29.56, "umid": 56.73, "co2": 699.00, "luz": 0.00, "agua_min": 1, "agua_max": 1, "temp_reserv_int": -127.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 18.55}[0m
+Wi-Fi está conectado.
+[0;32mI (63007) MQTT: Publicado (id=32859): estufa/maturar -> {"temp": 29.56, "umid": 56.84, "co2": 708.00, "luz": 0.00, "agua_min": 1, "agua_max": 1, "temp_reserv_int": -127.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 22.44}[0m
+Wi-Fi está conectado.
+[0;32mI (68277) MQTT: Publicado (id=43889): estufa/maturar -> {"temp": 29.53, "umid": 56.90, "co2": 713.00, "luz": 0.00, "agua_min": 1, "agua_max": 1, "temp_reserv_int": -127.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 19.33}[0m
+Wi-Fi está conectado.
+[0;32mI (73547) MQTT: Publicado (id=36345): estufa/maturar -> {"temp": 29.58, "umid": 57.47, "co2": 778.00, "luz": 0.00, "agua_min": 1, "agua_max": 1, "temp_reserv_int": -127.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 17.90}[0m
+Wi-Fi está conectado.
+[0;32mI (78817) MQTT: Publicado (id=3212): estufa/maturar -> {"temp": 29.58, "umid": 57.11, "co2": 788.00, "luz": 0.00, "agua_min": 1, "agua_max": 1, "temp_reserv_int": -127.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 21.38}[0m
+Wi-Fi está conectado.
+[0;32mI (84087) MQTT: Publicado (id=56908): estufa/maturar -> {"temp": 29.59, "umid": 56.90, "co2": 779.00, "luz": 0.00, "agua_min": 1, "agua_max": 1, "temp_reserv_int": -127.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 24.64}[0m
+Wi-Fi está conectado.
+[0;32mI (89357) MQTT: Publicado (id=54643): estufa/maturar -> {"temp": 29.63, "umid": 56.74, "co2": 760.00, "luz": 0.00, "agua_min": 1, "agua_max": 1, "temp_reserv_int": -127.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 18.98}[0m
+Wi-Fi está conectado.
+[0;32mI (94627) MQTT: Publicado (id=27069): estufa/maturar -> {"temp": 29.59, "umid": 56.68, "co2": 716.00, "luz": 0.00, "agua_min": 1, "agua_max": 1, "temp_reserv_int": -127.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 18.76}[0m
+Wi-Fi está conectado.
+[0;32mI (99897) MQTT: Publicado (id=58856): estufa/maturar -> {"temp": 29.56, "umid": 56.60, "co2": 686.00, "luz": 0.00, "agua_min": 1, "agua_max": 1, "temp_reserv_int": -127.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 21.87}[0m
+Wi-Fi está conectado.
+[0;32mI (105167) MQTT: Publicado (id=34629): estufa/maturar -> {"temp": 29.52, "umid": 56.68, "co2": 678.00, "luz": 0.00, "agua_min": 1, "agua_max": 1, "temp_reserv_int": -127.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 18.80}[0m
+Wi-Fi está conectado.
+[0;32mI (110437) MQTT: Publicado (id=47351): estufa/maturar -> {"temp": 29.55, "umid": 56.73, "co2": 677.00, "luz": 0.00, "agua_min": 1, "agua_max": 1, "temp_reserv_int": -127.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 17.64}[0m
+Wi-Fi está conectado.
+[0;32mI (115707) MQTT: Publicado (id=17679): estufa/maturar -> {"temp": 29.54, "umid": 56.71, "co2": 682.00, "luz": 0.00, "agua_min": 1, "agua_max": 1, "temp_reserv_int": -127.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 24.67}[0m
+Wi-Fi está conectado.
+[0;32mI (120977) MQTT: Publicado (id=42586): estufa/maturar -> {"temp": 29.54, "umid": 56.69, "co2": 689.00, "luz": 0.00, "agua_min": 1, "agua_max": 1, "temp_reserv_int": -127.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 22.16}[0m
+Wi-Fi está conectado.
+[0;32mI (126247) MQTT: Publicado (id=36237): estufa/maturar -> {"temp": 29.55, "umid": 56.76, "co2": 696.00, "luz": 0.00, "agua_min": 1, "agua_max": 1, "temp_reserv_int": -127.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 22.70}[0m
+Wi-Fi está conectado.
+[0;32mI (131517) MQTT: Publicado (id=40823): estufa/maturar -> {"temp": 29.58, "umid": 56.70, "co2": 693.00, "luz": 0.00, "agua_min": 1, "agua_max": 1, "temp_reserv_int": -127.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 16.51}[0m
+Wi-Fi está conectado.
+[0;32mI (136787) MQTT: Publicado (id=60927): estufa/maturar -> {"temp": 29.57, "umid": 56.62, "co2": 684.00, "luz": 0.00, "agua_min": 1, "agua_max": 1, "temp_reserv_int": -127.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 22.77}[0m
+Wi-Fi está conectado.
+[0;32mI (142057) MQTT: Publicado (id=1911): estufa/maturar -> {"temp": 29.56, "umid": 56.69, "co2": 678.00, "luz": 0.00, "agua_min": 1, "agua_max": 1, "temp_reserv_int": -127.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 15.42}[0m
+Wi-Fi está conectado.
+[0;32mI (147327) MQTT: Publicado (id=29446): estufa/maturar -> {"temp": 29.52, "umid": 56.70, "co2": 721.00, "luz": 0.00, "agua_min": 1, "agua_max": 1, "temp_reserv_int": -127.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 18.38}[0m
+Wi-Fi está conectado.
+[0;32mI (152597) MQTT: Publicado (id=40026): estufa/maturar -> {"temp": 29.58, "umid": 56.62, "co2": 691.00, "luz": 0.00, "agua_min": 1, "agua_max": 1, "temp_reserv_int": -127.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 23.20}[0m
+Wi-Fi está conectado.
+[0;32mI (157867) MQTT: Publicado (id=24531): estufa/maturar -> {"temp": 29.52, "umid": 56.53, "co2": 722.00, "luz": 0.00, "agua_min": 1, "agua_max": 1, "temp_reserv_int": -127.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 17.11}[0m
+Wi-Fi está conectado.
+[0;32mI (163137) MQTT: Publicado (id=52148): estufa/maturar -> {"temp": 29.56, "umid": 56.43, "co2": 676.00, "luz": 0.00, "agua_min": 1, "agua_max": 1, "temp_reserv_int": -127.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 16.66}[0m
+Wi-Fi está conectado.
+[0;32mI (168407) MQTT: Publicado (id=23740): estufa/maturar -> {"temp": 29.60, "umid": 56.40, "co2": 679.00, "luz": 0.00, "agua_min": 1, "agua_max": 1, "temp_reserv_int": -127.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 18.81}[0m
+Wi-Fi está conectado.
+[0;32mI (173677) MQTT: Publicado (id=45544): estufa/maturar -> {"temp": 29.55, "umid": 56.51, "co2": 671.00, "luz": 0.00, "agua_min": 1, "agua_max": 1, "temp_reserv_int": -127.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 16.28}[0m
+Wi-Fi está conectado.
+[0;32mI (178947) MQTT: Publicado (id=44181): estufa/maturar -> {"temp": 29.56, "umid": 56.49, "co2": 681.00, "luz": 0.00, "agua_min": 1, "agua_max": 1, "temp_reserv_int": -127.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 23.93}[0m
+Wi-Fi está conectado.
+[0;32mI (184217) MQTT: Publicado (id=54815): estufa/maturar -> {"temp": 29.56, "umid": 56.48, "co2": 665.00, "luz": 0.00, "agua_min": 1, "agua_max": 1, "temp_reserv_int": -127.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 23.74}[0m
+Wi-Fi está conectado.
+[0;32mI (189487) MQTT: Publicado (id=43548): estufa/maturar -> {"temp": 29.55, "umid": 56.53, "co2": 652.00, "luz": 0.00, "agua_min": 1, "agua_max": 1, "temp_reserv_int": -127.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 20.89}[0m
+Wi-Fi está conectado.
+[0;32mI (194757) MQTT: Publicado (id=33673): estufa/maturar -> {"temp": 29.49, "umid": 56.59, "co2": 663.00, "luz": 0.00, "agua_min": 1, "agua_max": 1, "temp_reserv_int": -127.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 20.68}[0m
+Wi-Fi está conectado.
+[0;32mI (200027) MQTT: Publicado (id=28376): estufa/maturar -> {"temp": 29.34, "umid": 56.69, "co2": 658.00, "luz": 0.00, "agua_min": 1, "agua_max": 1, "temp_reserv_int": -127.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 17.93}[0m
+Wi-Fi está conectado.
+[0;32mI (205297) MQTT: Publicado (id=46857): estufa/maturar -> {"temp": 29.26, "umid": 56.95, "co2": 660.00, "luz": 0.00, "agua_min": 1, "agua_max": 1, "temp_reserv_int": -127.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 22.59}[0m
+Wi-Fi está conectado.
+[0;32mI (210567) MQTT: Publicado (id=37439): estufa/maturar -> {"temp": 29.26, "umid": 57.01, "co2": 668.00, "luz": 0.00, "agua_min": 1, "agua_max": 1, "temp_reserv_int": -127.00, "ph": 0.00, "ec": 0.00, "temp_reserv_ext": 15.10}[0m

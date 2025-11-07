@@ -1,0 +1,13 @@
+# Target labels
+ bootloader
+# Source files and their labels
+/home/mrclnndrd/projetos/greense/client/N05_Estufa_Termica/build/CMakeFiles/bootloader
+/home/mrclnndrd/projetos/greense/client/N05_Estufa_Termica/build/CMakeFiles/bootloader.rule
+/home/mrclnndrd/projetos/greense/client/N05_Estufa_Termica/build/CMakeFiles/bootloader-complete.rule
+/home/mrclnndrd/projetos/greense/client/N05_Estufa_Termica/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule
+/home/mrclnndrd/projetos/greense/client/N05_Estufa_Termica/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule
+/home/mrclnndrd/projetos/greense/client/N05_Estufa_Termica/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule
+/home/mrclnndrd/projetos/greense/client/N05_Estufa_Termica/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule
+/home/mrclnndrd/projetos/greense/client/N05_Estufa_Termica/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule
+/home/mrclnndrd/projetos/greense/client/N05_Estufa_Termica/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule
+/home/mrclnndrd/projetos/greense/client/N05_Estufa_Termica/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule

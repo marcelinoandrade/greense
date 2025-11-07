@@ -1,0 +1,11 @@
+Command: cmake -G Ninja -DPYTHON_DEPS_CHECKED=1 -DPYTHON=/home/mrclnndrd/.espressif/python_env/idf5.5_py3.11_env/bin/python -DESP_PLATFORM=1 -DCCACHE_ENABLE=0 /home/mrclnndrd/projetos/greense/client/N01_Estufa_Germinar
+CMake Error in main/CMakeLists.txt:
+  Cannot find source file:
+
+    /home/mrclnndrd/projetos/greense/client/N01_Estufa_Germinar/main/certs/greense_cert.pem
+
+  Tried extensions .c .C .c++ .cc .cpp .cxx .cu .mpp .m .M .mm .ixx .cppm .h
+  .hh .h++ .hm .hpp .hxx .in .txx .f .F .for .f77 .f90 .f95 .f03 .hip .ispc
+
+
+CMake Generate step failed.  Build files cannot be regenerated correctly.
