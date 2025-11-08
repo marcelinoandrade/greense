@@ -74,8 +74,11 @@ def atualizar_csv_termico_incremental(temperaturas, timestamp):
     os.makedirs(diretorio, exist_ok=True)
 
     # nome da nova coluna baseado no timestamp
-    dt = datetime.fromtimestamp(timestamp)
-    nome_coluna = dt.strftime("%Y%m%d_%H%M%S")
+    #dt = datetime.fromtimestamp(timestamp)
+    #nome_coluna = dt.strftime("%Y%m%d_%H%M%S")
+    dt = datetime.now()
+    # Formatando para um padrão mais legível (ISO 8601 amigável)
+    nome_coluna = dt.strftime("%d-%m-%y %H:%M")
 
     # achata matriz 24x32 -> vetor 768 na mesma ordem (linha-major)
     flat_temp = temperaturas.reshape(24*32)
