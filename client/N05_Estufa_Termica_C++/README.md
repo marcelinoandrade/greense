@@ -26,6 +26,10 @@ O sistema realiza:
 | **LED GPIO 8** | Indicador de status | Digital |
 | **UART TX/RX (5/4)** | Comunicação com MLX90640 | UART1 |
 
+| Sensor MLX90640 | ESP32-C3 SuperMini |
+|-----------------|-------------------|
+| ![MLX90640](camera_termica.png) | ![ESP32-C3](esp32_c3.png) |
+
 ### Conexões
 
 | MLX90640 | ESP32-C3 |
