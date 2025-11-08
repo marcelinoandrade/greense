@@ -14466,3 +14466,15 @@ Análise realizada em 08/11/2025 04:00. Temperatura ambiente: 28.46 °C, dentro 
 🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
 Análise realizada em 08/11/2025 08:00. Temperatura ambiente: 28.64 °C, dentro da faixa tolerada; Umidade: 76.81 %, fora da faixa tolerada; pH: 6.0, dentro da faixa tolerada; EC: 1.8 mS/cm, dentro da faixa tolerada; Temperatura do reservatório: 26.12 °C, dentro da faixa tolerada; água_max: 1, nível adequado; água_min: 1, nível adequado. || Conclusão: A umidade está fora da faixa tolerada. Impacto previsto: Se a umidade elevada não for corrigida, pode ocorrer o desenvolvimento de doenças fúngicas como o míldio e a podridão cinzenta, devido ao ambiente excessivamente úmido; risco atual classificado como 2/5.
 ✅ Resposta da IA Eng. GePTo gravada no InfluxDB.
+
+📜 [08/11/2025 12:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados d Estufa_Maturar:
+{'temp': 27.37, 'umid': 78.88, 'co2': 514.0, 'luz': 0.0, 'temp_reserv_int': 25.44, 'agua_min': 1.0, 'agua_max': 1.0, 'ph': 6.0, 'ec': 1.8}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 27.37, 'umidade_ambiente': 78.88, 'nivel_co2': 514.0, 'luminosidade': 0.0, 'ph_agua': 6.0, 'condutividade_ec': 1.8, 'temp_reservatorio_interno': 25.44, 'agua_min': 1, 'agua_max': 1, 'timestamp_consulta': '2025-11-08T15:00:05.280427Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 08/11/2025 12:00. Temperatura ambiente: 27.37 °C, dentro da faixa tolerada. Umidade: 78.88 %, fora da faixa tolerada, acima do limite superior. pH: 6.0, dentro da faixa tolerada. EC: 1.8 mS/cm, dentro da faixa tolerada. Temperatura do reservatório: 25.44 °C, dentro da faixa tolerada. Nível de água_max: 1, nível adequado. Nível de água_min: 1, nível adequado. || Conclusão: A umidade está fora da faixa tolerada, sendo o único parâmetro que requer atenção. Impacto previsto: Se a umidade elevada não for corrigida, pode ocorrer o desenvolvimento de doenças fúngicas como o míldio ou o oídio, devido ao ambiente excessivamente úmido, que favorece a proliferação de fungos; risco atual classificado como 2/5.
+✅ Resposta da IA Eng. GePTo gravada no InfluxDB.
