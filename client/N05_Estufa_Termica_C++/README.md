@@ -140,8 +140,7 @@ Principais bibliotecas usadas:
 
 ## 🧪 Próximos Passos
 
-- Armazenamento local em SDCard  
-- Integração com Flask no Raspberry Pi  
+- Aplicar em pesquisa na micro-estufa  
 - Visualização térmica em tempo real  
 - IA para detecção de eventos térmicos  
 
