@@ -1,7 +1,0 @@
-Command: /home/mrclnndrd/.espressif/python_env/idf5.5_py3.11_env/bin/python /home/mrclnndrd/esp/esp-idf/tools/idf_monitor.py -p /dev/ttyACM0 -b 115200 --toolchain-prefix riscv32-esp-elf- --target esp32c3 --revision 3 --decode-panic backtrace /home/mrclnndrd/projetos/greense/client/N05_Estufa_Termica_C++/N05_Estufa_Termica_C++/build/N05_Estufa_Termica_C++.elf /home/mrclnndrd/projetos/greense/client/N05_Estufa_Termica_C++/N05_Estufa_Termica_C++/build/bootloader/bootloader.elf -m '/home/mrclnndrd/.espressif/python_env/idf5.5_py3.11_env/bin/python' '/home/mrclnndrd/esp/esp-idf/tools/idf.py'
-[0;33m--- esp-idf-monitor 1.8.0 on /dev/ttyACM0 115200[0m
-[0;33m--- Quit: Ctrl+] | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H[0m
-[0m--- 0x4004c72e: [0;33mrecv_packet[0m[0m in [0;32mROM[0m
-[0m--- 0x403cbf10: [0;33mesp_bootloader_get_description[0m[0m at [0;32m/home/mrclnndrd/esp/esp-idf/components/esp_bootloader_format/esp_bootloader_desc.c[0m[0m:[1;31m39[0m
-[0m--- 0x403ce710: [0;33mesp_flash_encryption_enabled[0m[0m at [0;32m/home/mrclnndrd/esp/esp-idf/components/bootloader_support/src/flash_encrypt.c[0m[0m:[1;31m89[0m
-[0m--- 0x403cbf1a: [0;33mcall_start_cpu0[0m[0m at [0;32m/home/mrclnndrd/esp/esp-idf/components/bootloader/subproject/main/bootloader_start.c[0m[0m:[1;31m25[0m

@@ -31,6 +31,7 @@
 // ====== Variáveis globais ======
 static EventGroupHandle_t s_wifi_event_group;
 static const int WIFI_CONNECTED_BIT = BIT0;
+static bool s_wifi_connected = false;
 
 // ====== Wi-Fi ======
 static void wifi_event_handler(void* arg, esp_event_base_t event_base,
@@ -39,10 +40,12 @@ static void wifi_event_handler(void* arg, esp_event_base_t event_base,
         ESP_LOGI(TAG, "Wi-Fi desconectado, reconectando...");
         esp_wifi_connect();
         xEventGroupClearBits(s_wifi_event_group, WIFI_CONNECTED_BIT);
+        s_wifi_connected = false;
     } else if (event_base == IP_EVENT && event_id == IP_EVENT_STA_GOT_IP) {
         ip_event_got_ip_t* event = (ip_event_got_ip_t*) event_data;
         ESP_LOGI(TAG, "Conectado com IP: " IPSTR, IP2STR(&event->ip_info.ip));
         xEventGroupSetBits(s_wifi_event_group, WIFI_CONNECTED_BIT);
+        s_wifi_connected = true;
     }
 }
 
@@ -90,9 +93,11 @@ static esp_err_t wifi_start_sta(void) {
 
     if (bits & WIFI_CONNECTED_BIT) {
         ESP_LOGI(TAG, "Conectado ao Wi-Fi!");
+        s_wifi_connected = true;
         return ESP_OK;
     } else {
         ESP_LOGE(TAG, "Timeout na conexão Wi-Fi");
+        s_wifi_connected = false;
         return ESP_FAIL;
     }
 }
@@ -104,6 +109,22 @@ static void led_blink(int times, int on_ms, int off_ms) {
         vTaskDelay(pdMS_TO_TICKS(on_ms));
         gpio_set_level(LED_PIN, 0);
         vTaskDelay(pdMS_TO_TICKS(off_ms));
+    }
+}
+
+static void led_control_task(void *pvParameters) {
+    while (1) {
+        if (s_wifi_connected) {
+            // Wi-Fi conectado: LED acesso continuamente
+            gpio_set_level(LED_PIN, 1);
+            vTaskDelay(pdMS_TO_TICKS(1000)); // Verifica a cada segundo
+        } else {
+            // Wi-Fi desconectado: LED piscando (500ms ligado, 500ms desligado)
+            gpio_set_level(LED_PIN, 1);
+            vTaskDelay(pdMS_TO_TICKS(500));
+            gpio_set_level(LED_PIN, 0);
+            vTaskDelay(pdMS_TO_TICKS(500));
+        }
     }
 }
 
@@ -261,7 +282,7 @@ static bool enviar_http_json(const float temps[TOTAL]) {
     // Verificar resultado
     if (err == ESP_OK && status_code == 200) {
         ESP_LOGI(TAG, "✅ POST 200 - Sucesso!");
-        led_blink(1, 300, 100); // Uma piscada como no MicroPython
+        led_blink(1, 300, 100); // Uma piscada para envio com sucesso
         return true;
     } else {
         if (err != ESP_OK) {
@@ -269,6 +290,7 @@ static bool enviar_http_json(const float temps[TOTAL]) {
         } else {
             ESP_LOGW(TAG, "Status: %d", status_code);
         }
+        led_blink(5, 100, 100); // Cinco piscadas para erro
         return false;
     }
 }
@@ -327,6 +349,9 @@ void app_main(void) {
         esp_restart();
     }
 
+    // Iniciar tarefa de controle do LED
+    xTaskCreate(led_control_task, "led_control", 2048, NULL, 1, NULL);
+
     // Verificar conectividade
     verificar_conectividade();
 
@@ -376,7 +401,6 @@ void app_main(void) {
                 ESP_LOGI(TAG, "✅ Ciclo %d completo", ciclo);
             } else {
                 ESP_LOGW(TAG, "❌ Ciclo %d falhou após 3 tentativas", ciclo);
-                led_blink(5, 100, 100);
             }
         } else {
             ESP_LOGW(TAG, "❌ Sem frame válido no ciclo %d", ciclo);

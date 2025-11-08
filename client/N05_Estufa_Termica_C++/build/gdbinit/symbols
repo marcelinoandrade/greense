@@ -18,8 +18,8 @@ end
 
 # Load bootloader symbols
 set confirm off
-    add-symbol-file /home/mrclnndrd/projetos/greense/client/N05_Estufa_Termica_C++/N05_Estufa_Termica_C++/build/bootloader/bootloader.elf
+    add-symbol-file /home/mrclnndrd/projetos/greense/client/N05_Estufa_Termica_C++/build/bootloader/bootloader.elf
 set confirm on
 
 # Load application symbols
-file /home/mrclnndrd/projetos/greense/client/N05_Estufa_Termica_C++/N05_Estufa_Termica_C++/build/N05_Estufa_Termica_C++.elf
+file /home/mrclnndrd/projetos/greense/client/N05_Estufa_Termica_C++/build/N05_Estufa_Termica_C++.elf

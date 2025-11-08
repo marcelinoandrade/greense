@@ -1,4 +1,4 @@
-# Install script for directory: /home/mrclnndrd/projetos/greense/client/N05_Estufa_Termica_C++/N05_Estufa_Termica_C++/main
+# Install script for directory: /home/mrclnndrd/projetos/greense/client/N05_Estufa_Termica_C++/main
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

@@ -1,4 +1,4 @@
-/* * Data converted from /home/mrclnndrd/projetos/greense/client/N05_Estufa_Termica_C++/N05_Estufa_Termica_C++/build/esp-idf/mbedtls/x509_crt_bundle
+/* * Data converted from /home/mrclnndrd/projetos/greense/client/N05_Estufa_Termica_C++/build/esp-idf/mbedtls/x509_crt_bundle
  */
 .data
 #if !defined (__APPLE__) && !defined (__linux__)

@@ -1,4 +1,4 @@
-# Install script for directory: /home/mrclnndrd/projetos/greense/client/N05_Estufa_Termica_C++/N05_Estufa_Termica_C++
+# Install script for directory: /home/mrclnndrd/projetos/greense/client/N05_Estufa_Termica_C++
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,7 +39,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/mrclnndrd/projetos/greense/client/N05_Estufa_Termica_C++/N05_Estufa_Termica_C++/build/esp-idf/cmake_install.cmake")
+  include("/home/mrclnndrd/projetos/greense/client/N05_Estufa_Termica_C++/build/esp-idf/cmake_install.cmake")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/mrclnndrd/projetos/greense/client/N05_Estufa_Termica_C++/N05_Estufa_Termica_C++/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/mrclnndrd/projetos/greense/client/N05_Estufa_Termica_C++/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

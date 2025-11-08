@@ -22,4 +22,4 @@ set confirm off
 set confirm on
 
 # Load application symbols
-file /home/mrclnndrd/projetos/greense/client/N05_Estufa_Termica_C++/N05_Estufa_Termica_C++/build/bootloader/bootloader.elf
+file /home/mrclnndrd/projetos/greense/client/N05_Estufa_Termica_C++/build/bootloader/bootloader.elf
