@@ -1,135 +1,157 @@
-# 📸 Módulo ESP32-CAM – Captura e Envio de Imagens via HTTPS
+# 🔥 Câmera Térmica MLX90640 com ESP32-C3 (ESP-IDF)
 
-Firmware desenvolvido em **ESP-IDF (v5.x)** para o módulo **ESP32-CAM**, responsável por capturar imagens e enviá-las de forma segura via **HTTPS POST** para um servidor remoto (ex: Raspberry Pi ou Flask API).
-
-
----
-
-## ⚙️ Visão Geral
-
-O projeto implementa uma **câmera IoT autônoma**, capaz de capturar imagens JPEG, armazenar em cartão SD (opcional) e enviar para um endpoint HTTPS com autenticação via certificado.
-
-### Principais Recursos
-
-- 📸 Captura de imagem via **esp32-camera**  
-- 🔐 Envio seguro via **HTTPS POST**  
-- 💾 Armazenamento local opcional em SD (FATFS)  
-- 🌐 Conexão Wi-Fi automática (STA mode)  
-- 📡 Comunicação com servidor Flask ou Raspberry Pi  
-- 🔁 Reenvio automático em caso de falha de conexão  
+Sistema embarcado em **C (ESP-IDF)** para aquisição de imagens térmicas usando o sensor **MLX90640** (módulo GY-MCU90640) e envio automático via **HTTP POST** para um servidor remoto.
 
 ---
 
-## 🧩 Estrutura de Diretórios
+## ⚙️ Descrição Geral
+
+O firmware executa em uma **placa ESP32-C3 SuperMini** conectada ao módulo **MLX90640BAB/BAA**, capturando quadros térmicos (24 × 32 pixels) via UART e enviando periodicamente os dados como JSON para um endpoint HTTP configurável.
+
+O sistema realiza:
+- 🧠 Captura e decodificação de frames (0x5A 0x5A)  
+- 🌡️ Conversão binária → temperatura (°C)  
+- 🌐 Conexão Wi-Fi com reconexão automática  
+- 🔄 Envio periódico de dados em JSON via HTTP POST  
+- 💡 Sinalização por LED para indicar estado do sistema e conectividade  
+
+---
+
+## 🧩 Hardware Utilizado
+
+| Componente | Função | Interface |
+|-------------|---------|-----------|
+| **MLX90640BAB/BAA** | Câmera térmica 24 × 32 px | UART |
+| **ESP32-C3 SuperMini** | Microcontrolador principal | USB-C, Wi-Fi, GPIO |
+| **LED GPIO 8** | Indicador de status | Digital |
+| **UART TX/RX (5/4)** | Comunicação com MLX90640 | UART1 |
+
+| Sensor MLX90640 | ESP32-C3 SuperMini |
+|-----------------|-------------------|
+| ![MLX90640](camera_termica.png) | ![ESP32-C3](esp32_c3.png) |
+
+### Conexões
+
+| MLX90640 | ESP32-C3 |
+|-----------|-----------|
+| VIN | 5 V |
+| GND | G |
+| RX | GPIO 5 |
+| TX | GPIO 4 |
+
+---
+
+## 🧠 Arquitetura de Software
 
 ```
-main/
-│
-├── main.c                      # Função principal (setup e loop de captura/envio)
-│
-├── certs/
-│   └── greense_cert.pem        # Certificado HTTPS embutido no firmware
-│
-└── CMakeLists.txt              # Configuração do build e dependências
+main.c
+├── Inicialização de NVS e Wi-Fi (STA)
+├── Loop principal de captura térmica
+│   ├── Leitura UART
+│   ├── Decodificação e conversão para °C
+│   ├── Montagem de JSON (768 valores + timestamp)
+│   ├── Envio HTTP POST
+│   └── Feedback via LED
+└── Reconexão automática em falhas
 ```
-
----
-
-## 🖼️ Hardware de Referência
-
-| ESP32-CAM|
-|-----------------|
-| ![ESP32](esp32_cam.png) |
-
-## 🧱 Dependências ESP-IDF
-
-Declaradas em `CMakeLists.txt`:
-
-| Categoria         | Componentes |
-|-------------------|-------------|
-| Conectividade     | `esp_wifi`, `esp_http_client`, `nvs_flash` |
-| Câmera            | `esp32-camera`, `driver` |
-| Armazenamento     | `fatfs`, `sdmmc` |
-| Servidor HTTPS    | `esp_http_server` |
-
----
-
-## 📸 Fluxo de Operação
-
-1. Inicializa **NVS**, **Wi-Fi** e **câmera**.  
-2. Captura frame JPEG (QVGA ou VGA).  
-3. Monta corpo de requisição HTTP com cabeçalho multipart/form-data.  
-4. Envia para o endpoint configurado via HTTPS (`esp_http_client`).  
-5. (Opcional) Salva a imagem em SD para debug local.  
 
 ---
 
 ## ⚙️ Configuração
 
-Definir as credenciais e URL no código-fonte `main.c`:
+Defina as credenciais Wi-Fi e o endpoint no arquivo `secrets.h`:
 
 ```c
-#define WIFI_SSID     "SuaRedeWiFi"
-#define WIFI_PASS     "SuaSenhaWiFi"
-#define POST_URL      "https://raspberrypi.local:5000/upload"
-#define IMAGE_QUALITY 12  // 10~63 (menor = melhor qualidade)
-#define FRAME_SIZE    FRAMESIZE_VGA
+#define WIFI_SSID "sua_rede"
+#define WIFI_PASS "sua_senha"
+#define URL_POST  "http://seu-servidor:porta/endpoint"
+```
+
+Parâmetro de intervalo de envio (em segundos):
+
+```c
+#define ENVIO_MS (90*1000)
 ```
 
 ---
 
-## 🔧 Compilação e Gravação
+## 🚀 Compilação e Execução
 
-1. **Configurar o ambiente ESP-IDF**
-   ```bash
-   . $HOME/esp/esp-idf/export.sh
-   ```
-
-2. **Compilar e gravar o firmware**
+1. Instale o **ESP-IDF v5+**  
+2. Copie este diretório para o workspace  
+3. Compile e grave na placa:  
    ```bash
    idf.py build
-   idf.py flash
+   idf.py flash -b 921600
    idf.py monitor
    ```
 
-3. **Visualizar logs**
-   ```bash
-   screen /dev/ttyUSB0 115200
-   ```
+---
+
+## 💡 Sinalização por LED
+
+O LED (GPIO 8) indica o estado do sistema:
+
+| Estado | Indicação | Descrição |
+|---------|------------|-----------|
+| 🔄 **Sem Wi-Fi** | LED piscando continuamente | Tentando conectar à rede Wi-Fi |
+| 📶 **Wi-Fi Conectado** | LED aceso fixo | Conectado à rede com IP válido |
+| ✅ **Envio bem-sucedido (HTTP 200)** | 1 piscada curta | Dados enviados com sucesso |
+| ⚠️ **Erro de envio ou reconexão** | Múltiplas piscadas curtas | Falha na comunicação ou HTTP erro |
 
 ---
 
-## 💾 Armazenamento em SD (Opcional)
+## 🧾 Estrutura de Dados Enviada
 
-O firmware tenta montar o cartão SD automaticamente:
-
-```c
-sdmmc_host_t host = SDMMC_HOST_DEFAULT();
-esp_vfs_fat_sdmmc_mount("/sdcard", &host, &slot_config, &mount_config, &card);
+```json
+{
+  "temperaturas": [23.45, 23.60, ..., 26.12],
+  "timestamp": 1730269802
+}
 ```
 
-As imagens capturadas são salvas em `/sdcard/capturas/` com nome baseado no timestamp.
+- 768 valores de temperatura em °C  
+- Timestamp Unix gerado por `esp_timer_get_time()`  
 
 ---
 
-## 🔐 Certificado HTTPS
+## 🧩 Componentes ESP-IDF
 
-O certificado público (`greense_cert.pem`) é embutido no firmware via diretiva:
+Declarados em `CMakeLists.txt`:
 
-```cmake
-EMBED_TXTFILES "certs/greense_cert.pem"
+```
+idf_component_register(
+  SRCS "main.c"
+  REQUIRES esp_wifi esp_http_client nvs_flash driver json esp_timer
+)
 ```
 
-Isso permite conexão HTTPS segura com servidor Flask usando o mesmo certificado.
+Principais bibliotecas usadas:
+- `esp_wifi.h` – conexão Wi-Fi STA  
+- `esp_http_client.h` – envio HTTP POST  
+- `uart.h` – comunicação serial com MLX90640  
+- `esp_timer.h` – timestamp  
+- `FreeRTOS` – tarefas principais e controle do LED  
 
 ---
 
-## 🧠 Possíveis Extensões
+## 🔋 Requisitos e Considerações
 
-- Envio MQTT com base64 da imagem.  
-- Compressão adaptativa conforme nível de sinal Wi-Fi.  
-- Captura sob comando remoto via HTTP GET.  
-- Integração com sistema GreenSe para análise IA de imagens.  
+- ESP-IDF v5.0 ou superior  
+- UART 115200 bps  
+- Alimentação 5 V para o sensor  
+- Frame: 24×32 = 768 pontos float  
+- Intervalo válido: –40 °C a 200 °C  
+- Wi-Fi 2.4 GHz ativo  
+
+---
+
+## 🧪 Próximos Passos
+
+- Armazenamento local em SDCard  
+- Integração com Flask no Raspberry Pi  
+- Visualização térmica em tempo real  
+- IA para detecção de eventos térmicos  
 
 ---
 
@@ -139,5 +161,3 @@ Licença **MIT**
 Desenvolvido por **Prof. Marcelino Monteiro de Andrade**  
 **Universidade de Brasília (FCTE/UnB)**  
 [https://github.com/marcelinoandrade/greense](https://github.com/marcelinoandrade/greense)
-
----

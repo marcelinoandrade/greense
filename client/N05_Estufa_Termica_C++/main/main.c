@@ -28,10 +28,18 @@
 #define UART_BUF_MAX   8192
 #define ENVIO_MS       (90*1000)
 
-// ====== Variáveis globais ======
 static EventGroupHandle_t s_wifi_event_group;
 static const int WIFI_CONNECTED_BIT = BIT0;
-static bool s_wifi_connected = false;
+
+// ====== LED ======
+static void led_blink(int times, int on_ms, int off_ms) {
+    for (int i = 0; i < times; i++) {
+        gpio_set_level(LED_PIN, 1);
+        vTaskDelay(pdMS_TO_TICKS(on_ms));
+        gpio_set_level(LED_PIN, 0);
+        vTaskDelay(pdMS_TO_TICKS(off_ms));
+    }
+}
 
 // ====== Wi-Fi ======
 static void wifi_event_handler(void* arg, esp_event_base_t event_base,
@@ -40,12 +48,10 @@ static void wifi_event_handler(void* arg, esp_event_base_t event_base,
         ESP_LOGI(TAG, "Wi-Fi desconectado, reconectando...");
         esp_wifi_connect();
         xEventGroupClearBits(s_wifi_event_group, WIFI_CONNECTED_BIT);
-        s_wifi_connected = false;
     } else if (event_base == IP_EVENT && event_id == IP_EVENT_STA_GOT_IP) {
         ip_event_got_ip_t* event = (ip_event_got_ip_t*) event_data;
         ESP_LOGI(TAG, "Conectado com IP: " IPSTR, IP2STR(&event->ip_info.ip));
         xEventGroupSetBits(s_wifi_event_group, WIFI_CONNECTED_BIT);
-        s_wifi_connected = true;
     }
 }
 
@@ -54,7 +60,6 @@ static esp_err_t wifi_start_sta(void) {
 
     ESP_ERROR_CHECK(esp_netif_init());
     ESP_ERROR_CHECK(esp_event_loop_create_default());
-    
     esp_netif_create_default_wifi_sta();
 
     ESP_ERROR_CHECK(esp_event_handler_instance_register(WIFI_EVENT,
@@ -85,45 +90,28 @@ static esp_err_t wifi_start_sta(void) {
 
     ESP_LOGI(TAG, "Conectando ao Wi-Fi: %s", WIFI_SSID);
 
-    EventBits_t bits = xEventGroupWaitBits(s_wifi_event_group,
-            WIFI_CONNECTED_BIT,
-            pdFALSE,
-            pdFALSE,
-            pdMS_TO_TICKS(15000));
-
-    if (bits & WIFI_CONNECTED_BIT) {
-        ESP_LOGI(TAG, "Conectado ao Wi-Fi!");
-        s_wifi_connected = true;
-        return ESP_OK;
-    } else {
-        ESP_LOGE(TAG, "Timeout na conexão Wi-Fi");
-        s_wifi_connected = false;
-        return ESP_FAIL;
-    }
-}
-
-// ====== LED ======
-static void led_blink(int times, int on_ms, int off_ms) {
-    for (int i = 0; i < times; i++) {
-        gpio_set_level(LED_PIN, 1);
-        vTaskDelay(pdMS_TO_TICKS(on_ms));
-        gpio_set_level(LED_PIN, 0);
-        vTaskDelay(pdMS_TO_TICKS(off_ms));
-    }
-}
-
-static void led_control_task(void *pvParameters) {
+    // ===== NOVO: LED piscando até conectar =====
+    TickType_t t0 = xTaskGetTickCount();
     while (1) {
-        if (s_wifi_connected) {
-            // Wi-Fi conectado: LED acesso continuamente
-            gpio_set_level(LED_PIN, 1);
-            vTaskDelay(pdMS_TO_TICKS(1000)); // Verifica a cada segundo
-        } else {
-            // Wi-Fi desconectado: LED piscando (500ms ligado, 500ms desligado)
-            gpio_set_level(LED_PIN, 1);
-            vTaskDelay(pdMS_TO_TICKS(500));
-            gpio_set_level(LED_PIN, 0);
-            vTaskDelay(pdMS_TO_TICKS(500));
+        EventBits_t bits = xEventGroupWaitBits(s_wifi_event_group,
+                                               WIFI_CONNECTED_BIT,
+                                               pdFALSE,
+                                               pdFALSE,
+                                               pdMS_TO_TICKS(500));
+        if (bits & WIFI_CONNECTED_BIT) {
+            gpio_set_level(LED_PIN, 1);  // LED aceso ao conectar
+            ESP_LOGI(TAG, "Conectado ao Wi-Fi!");
+            return ESP_OK;
+        }
+        // pisca enquanto tenta conectar
+        gpio_set_level(LED_PIN, 1);
+        vTaskDelay(pdMS_TO_TICKS(200));
+        gpio_set_level(LED_PIN, 0);
+        vTaskDelay(pdMS_TO_TICKS(300));
+
+        if ((xTaskGetTickCount() - t0) > pdMS_TO_TICKS(15000)) {
+            ESP_LOGE(TAG, "Timeout na conexão Wi-Fi");
+            return ESP_FAIL;
         }
     }
 }
@@ -212,150 +200,91 @@ static bool capturar_frame_termo(float out[TOTAL], TickType_t timeout_ticks) {
     return false;
 }
 
-// ====== HTTP SIMPLES - COMO NO MICROPYTHON ======
+// ====== HTTP ======
 static bool enviar_http_json(const float temps[TOTAL]) {
     ESP_LOGI(TAG, "Preparando dados HTTP...");
     
-    // Calcular tamanho necessário
-    int tamanho_estimado = 1000; // Base
-    for (int i = 0; i < TOTAL; i++) {
-        tamanho_estimado += 6; // "xx.xx," em média
-    }
+    int tamanho_estimado = 1000;
+    for (int i = 0; i < TOTAL; i++) tamanho_estimado += 6;
     
     char *json_buffer = malloc(tamanho_estimado);
-    if (!json_buffer) {
-        ESP_LOGE(TAG, "Falha ao alocar buffer");
-        return false;
-    }
+    if (!json_buffer) return false;
     
-    // Construir JSON manualmente - igual ao MicroPython
     char *ptr = json_buffer;
-    
-    // Header
     strcpy(ptr, "{\"temperaturas\":[");
     ptr += strlen(ptr);
     
-    // Temperaturas
     for (int i = 0; i < TOTAL; i++) {
-        if (i > 0) {
-            *ptr++ = ',';
-        }
-        // Formatar como no MicroPython: "%.2f"
+        if (i > 0) *ptr++ = ',';
         int len = sprintf(ptr, "%.2f", temps[i]);
         ptr += len;
     }
     
-    // Footer com timestamp
     int64_t ts_us = esp_timer_get_time();
     double ts_s = (double)ts_us / 1e6;
-    sprintf(ptr, "],\"timestamp\":%.0f}", ts_s); // %.0f igual ao int(time.time())
+    sprintf(ptr, "],\"timestamp\":%.0f}", ts_s);
     
     int json_len = strlen(json_buffer);
-    ESP_LOGI(TAG, "JSON: %d bytes", json_len);
-
-    // Configuração HTTP MÍNIMA - como urequests
-    esp_http_client_config_t cfg = {
-        .url = URL_POST,
-        .timeout_ms = 20000, // 20 segundos
-    };
+    esp_http_client_config_t cfg = {.url = URL_POST, .timeout_ms = 20000};
     
     esp_http_client_handle_t client = esp_http_client_init(&cfg);
     esp_http_client_set_method(client, HTTP_METHOD_POST);
     esp_http_client_set_header(client, "Content-Type", "application/json");
-    esp_http_client_set_header(client, "Connection", "close"); // IMPORTANTE
-    
-    ESP_LOGI(TAG, "Enviando para: %s", URL_POST);
+    esp_http_client_set_header(client, "Connection", "close");
     esp_http_client_set_post_field(client, json_buffer, json_len);
     
-    // Executar de forma SIMPLES
     esp_err_t err = esp_http_client_perform(client);
-    
     int status_code = 0;
-    if (err == ESP_OK) {
-        status_code = esp_http_client_get_status_code(client);
-    }
+    if (err == ESP_OK) status_code = esp_http_client_get_status_code(client);
     
-    // Limpeza IMEDIATA
     esp_http_client_cleanup(client);
     free(json_buffer);
     
-    // Verificar resultado
     if (err == ESP_OK && status_code == 200) {
         ESP_LOGI(TAG, "✅ POST 200 - Sucesso!");
-        led_blink(1, 300, 100); // Uma piscada para envio com sucesso
+        led_blink(1, 300, 100); // Uma piscada para sucesso
         return true;
     } else {
-        if (err != ESP_OK) {
-            ESP_LOGE(TAG, "Erro HTTP: %s", esp_err_to_name(err));
-        } else {
-            ESP_LOGW(TAG, "Status: %d", status_code);
-        }
-        led_blink(5, 100, 100); // Cinco piscadas para erro
+        ESP_LOGW(TAG, "❌ Falha HTTP (%s), status %d", esp_err_to_name(err), status_code);
+        led_blink(3, 100, 100); // Mais de uma piscada para erro
         return false;
     }
 }
 
-// ====== VERIFICAR CONECTIVIDADE ======
 static void verificar_conectividade(void) {
-    ESP_LOGI(TAG, "Verificando conectividade com servidor...");
-    
-    esp_http_client_config_t cfg = {
-        .url = "http://greense.com.br/",
-        .timeout_ms = 10000,
-    };
-    
+    esp_http_client_config_t cfg = {.url = "http://greense.com.br/", .timeout_ms = 10000};
     esp_http_client_handle_t client = esp_http_client_init(&cfg);
     esp_http_client_set_method(client, HTTP_METHOD_GET);
-    
     esp_err_t err = esp_http_client_perform(client);
-    int status = esp_http_client_get_status_code(client);
-    
     esp_http_client_cleanup(client);
-    
-    if (err == ESP_OK) {
-        ESP_LOGI(TAG, "✅ Servidor acessível - Status: %d", status);
-    } else {
-        ESP_LOGE(TAG, "❌ Servidor inacessível: %s", esp_err_to_name(err));
-    }
+    if (err == ESP_OK) ESP_LOGI(TAG, "Servidor acessível");
+    else ESP_LOGE(TAG, "Servidor inacessível");
 }
 
 // ====== APP ======
 void app_main(void) {
     ESP_LOGI(TAG, "Iniciando aplicação...");
-    ESP_LOGI(TAG, "Memória livre: %d bytes", esp_get_free_heap_size());
     
-    // Configurar LED
-    gpio_config_t io_conf = {
-        .pin_bit_mask = (1ULL << LED_PIN),
-        .mode = GPIO_MODE_OUTPUT,
-    };
+    gpio_config_t io_conf = {.pin_bit_mask = (1ULL << LED_PIN), .mode = GPIO_MODE_OUTPUT};
     gpio_config(&io_conf);
     gpio_set_level(LED_PIN, 0);
-
     led_blink(2, 200, 200);
 
-    // Inicializar NVS
     esp_err_t ret = nvs_flash_init();
     if (ret == ESP_ERR_NVS_NO_FREE_PAGES || ret == ESP_ERR_NVS_NEW_VERSION_FOUND) {
-        ESP_ERROR_CHECK(nvs_flash_erase());
+        nvs_flash_erase();
         ret = nvs_flash_init();
     }
     ESP_ERROR_CHECK(ret);
 
-    // Conectar Wi-Fi
     if (wifi_start_sta() != ESP_OK) {
         ESP_LOGE(TAG, "Falha Wi-Fi. Reiniciando...");
         vTaskDelay(pdMS_TO_TICKS(5000));
         esp_restart();
     }
 
-    // Iniciar tarefa de controle do LED
-    xTaskCreate(led_control_task, "led_control", 2048, NULL, 1, NULL);
-
-    // Verificar conectividade
     verificar_conectividade();
 
-    // Configurar UART
     uart_config_t uart_config = {
         .baud_rate = UART_BAUD,
         .data_bits = UART_DATA_8_BITS,
@@ -363,50 +292,24 @@ void app_main(void) {
         .stop_bits = UART_STOP_BITS_1,
         .flow_ctrl = UART_HW_FLOWCTRL_DISABLE,
     };
-    
-    ESP_ERROR_CHECK(uart_driver_install(UART_PORT, UART_BUF_MAX, 0, 0, NULL, 0));
-    ESP_ERROR_CHECK(uart_param_config(UART_PORT, &uart_config));
-    ESP_ERROR_CHECK(uart_set_pin(UART_PORT, UART_TX_PIN, UART_RX_PIN, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE));
+    uart_driver_install(UART_PORT, UART_BUF_MAX, 0, 0, NULL, 0);
+    uart_param_config(UART_PORT, &uart_config);
+    uart_set_pin(UART_PORT, UART_TX_PIN, UART_RX_PIN, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE);
 
     float temps[TOTAL];
     int ciclo = 0;
 
-    ESP_LOGI(TAG, "=== INICIANDO LOOP PRINCIPAL ===");
-    
     while (1) {
         ciclo++;
         ESP_LOGI(TAG, "Ciclo %d", ciclo);
-        ESP_LOGI(TAG, "Lendo frame térmico...");
-        
         if (capturar_frame_termo(temps, pdMS_TO_TICKS(5000))) {
-            float tmin = temps[0], tmax = temps[0];
-            for (int i = 1; i < TOTAL; i++) {
-                if (temps[i] < tmin) tmin = temps[i];
-                if (temps[i] > tmax) tmax = temps[i];
-            }
-            
-            ESP_LOGI(TAG, "Frame: min=%.2f°C max=%.2f°C", tmin, tmax);
-            
-            // Tentar enviar 3 vezes como fallback
             bool enviado = false;
             for (int tentativa = 0; tentativa < 3 && !enviado; tentativa++) {
-                if (tentativa > 0) {
-                    ESP_LOGI(TAG, "Tentativa %d/3", tentativa + 1);
-                    vTaskDelay(pdMS_TO_TICKS(2000));
-                }
+                if (tentativa > 0) vTaskDelay(pdMS_TO_TICKS(2000));
                 enviado = enviar_http_json(temps);
             }
-            
-            if (enviado) {
-                ESP_LOGI(TAG, "✅ Ciclo %d completo", ciclo);
-            } else {
-                ESP_LOGW(TAG, "❌ Ciclo %d falhou após 3 tentativas", ciclo);
-            }
-        } else {
-            ESP_LOGW(TAG, "❌ Sem frame válido no ciclo %d", ciclo);
+            if (!enviado) led_blink(5, 100, 100);
         }
-        
-        ESP_LOGI(TAG, "Aguardando %d segundos...", ENVIO_MS / 1000);
         vTaskDelay(pdMS_TO_TICKS(ENVIO_MS));
     }
 }
