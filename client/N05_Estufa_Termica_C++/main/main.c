@@ -26,7 +26,7 @@
 #define COLS           32
 #define TOTAL          (LINHAS*COLS)
 #define UART_BUF_MAX   8192
-#define ENVIO_MS       (90*1000)
+#define ENVIO_MS       (30*1000)
 
 static EventGroupHandle_t s_wifi_event_group;
 static const int WIFI_CONNECTED_BIT = BIT0;
@@ -204,33 +204,68 @@ static bool capturar_frame_termo(float out[TOTAL], TickType_t timeout_ticks) {
 static bool enviar_http_json(const float temps[TOTAL]) {
     ESP_LOGI(TAG, "Preparando dados HTTP...");
     
-    int tamanho_estimado = 1000;
-    for (int i = 0; i < TOTAL; i++) tamanho_estimado += 6;
-    
-    char *json_buffer = malloc(tamanho_estimado);
-    if (!json_buffer) return false;
-    
-    char *ptr = json_buffer;
-    strcpy(ptr, "{\"temperaturas\":[");
-    ptr += strlen(ptr);
-    
-    for (int i = 0; i < TOTAL; i++) {
-        if (i > 0) *ptr++ = ',';
-        int len = sprintf(ptr, "%.2f", temps[i]);
-        ptr += len;
+    // 1. AUMENTAMOS A ESTIMATIVA PARA SER MAIS SEGURA
+    // Vamos estimar 10 bytes por pixel ("-123.45",) + 1000 de base
+    int tamanho_buffer = (TOTAL * 10) + 1000; 
+    char *json_buffer = malloc(tamanho_buffer);
+    if (!json_buffer) {
+        ESP_LOGE(TAG, "Falha ao alocar buffer JSON");
+        return false;
     }
     
+    char *ptr = json_buffer;
+    int espaco_restante = tamanho_buffer;
+    int len = 0; // Para guardar o retorno do snprintf
+
+    // 2. Usamos snprintf para escrever com segurança
+    len = snprintf(ptr, espaco_restante, "{\"temperaturas\":[");
+    ptr += len;
+    espaco_restante -= len;
+
+    for (int i = 0; i < TOTAL; i++) {
+        if (espaco_restante < 2) break; // Garante espaço para a vírgula e \0
+
+        if (i > 0) {
+            *ptr++ = ',';
+            espaco_restante--;
+        }
+
+        if (espaco_restante < 15) break; // Garante espaço para o número
+
+        // snprintf escreve e retorna quantos caracteres *escreveria*
+        // Ele NUNCA escreverá mais que 'espaco_restante'
+        len = snprintf(ptr, espaco_restante, "%.2f", temps[i]);
+        
+        if (len >= espaco_restante) {
+            // Isso significa que o buffer estourou, pare o loop
+            ESP_LOGE(TAG, "Buffer JSON estourou!");
+            break; 
+        }
+        
+        ptr += len;
+        espaco_restante -= len;
+    }
+    
+    if (espaco_restante < 50) {
+         ESP_LOGE(TAG, "Buffer JSON sem espaço para timestamp!");
+         free(json_buffer);
+         return false;
+    }
+
     int64_t ts_us = esp_timer_get_time();
     double ts_s = (double)ts_us / 1e6;
-    sprintf(ptr, "],\"timestamp\":%.0f}", ts_s);
+    
+    // 3. snprintf seguro para o final
+    snprintf(ptr, espaco_restante, "],\"timestamp\":%.0f}", ts_s);
     
     int json_len = strlen(json_buffer);
     esp_http_client_config_t cfg = {.url = URL_POST, .timeout_ms = 20000};
     
+    // ... (O resto da sua função continua igual) ...
     esp_http_client_handle_t client = esp_http_client_init(&cfg);
     esp_http_client_set_method(client, HTTP_METHOD_POST);
     esp_http_client_set_header(client, "Content-Type", "application/json");
-    esp_http_client_set_header(client, "Connection", "close");
+    // esp_http_client_set_header(client, "Connection", "close");
     esp_http_client_set_post_field(client, json_buffer, json_len);
     
     esp_err_t err = esp_http_client_perform(client);
