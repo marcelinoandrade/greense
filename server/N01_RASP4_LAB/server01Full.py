@@ -10,6 +10,7 @@ import os
 from flask import send_from_directory
 import numpy as np
 import csv
+from queue import Queue
 
 # ========== CONFIGURAÇÕES ==========
 INFLUXDB_HOST = "localhost"
@@ -145,6 +146,44 @@ def atualizar_csv_termico_incremental(temperaturas, timestamp):
     print(f"📄 Atualizado {ARQUIVO_CSV_GLOBAL} com nova coluna {nome_coluna}")
     return True
 
+# ========== FILA DE PROCESSAMENTO CSV ==========
+# Cria uma fila para armazenar os trabalhos de escrita
+data_queue = Queue()
+
+def csv_worker():
+    """
+    Esta função roda em uma thread separada.
+    Ela "assiste" a fila e salva os dados no CSV um por um,
+    sem travar o servidor web.
+    """
+    print("👷 [WORKER-CSV] Iniciando... Aguardando dados para salvar.")
+    while True:
+        try:
+            # Pega o próximo item da fila (espera até que um apareça)
+            item = data_queue.get()
+            
+            if item is None:  # Um sinal para parar (opcional)
+                break
+                
+            temperaturas = item['temps']
+            timestamp = item['ts']
+            
+            print(f"👷 [WORKER-CSV] Processando timestamp {timestamp}...")
+            
+            # Chama sua função original de escrita no CSV
+            # Esta é a parte LENTA, mas agora está em segundo plano
+            atualizar_csv_termico_incremental(temperaturas, timestamp)
+            
+            print(f"👷 [WORKER-CSV] Timestamp {timestamp} salvo no CSV.")
+            
+            # Informa à fila que a tarefa foi concluída
+            data_queue.task_done()
+            
+        except Exception as e:
+            print(f"❌ Erro grave no worker CSV: {e}")
+            # Garante que a tarefa seja marcada como concluída para não travar
+            data_queue.task_done()
+
 # ========== ENDPOINTS FLASK ==========
 @app.route("/termica", methods=["POST"])
 def receber_dados_termicos():
@@ -175,11 +214,12 @@ def receber_dados_termicos():
         # salvar_dados_termicos_influxdb(temperaturas, timestamp)
 
         # atualiza CSV cumulativo
-        ok_csv = atualizar_csv_termico_incremental(temperaturas, timestamp)
+        #ok_csv = atualizar_csv_termico_incremental(temperaturas, timestamp)
+        # APENAS colocamos os dados na fila para o worker processar:
+        data_queue.put({"temps": temperaturas, "ts": timestamp})
 
         return jsonify({
             "status": "sucesso",
-            "csv_atualizado": ok_csv,
             "pontos": int(temperaturas.size),
             "timestamp": timestamp,
             "estatisticas": {
@@ -448,6 +488,9 @@ if __name__ == "__main__":
     
     # Inicia MQTT em thread separada (opcional)
     threading.Thread(target=start_mqtt, daemon=True).start()
+    
+    # Inicia o worker do CSV em uma thread separada
+    threading.Thread(target=csv_worker, daemon=True).start()
     
     # Inicia Flask
     app.run(host="0.0.0.0", port=5000, debug=False, threaded=True)
