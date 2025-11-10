@@ -26,7 +26,7 @@
 #define COLS           32
 #define TOTAL          (LINHAS*COLS)
 #define UART_BUF_MAX   8192
-#define ENVIO_MS       (30*1000)
+#define ENVIO_MS       (6*60*60*1000)
 
 static EventGroupHandle_t s_wifi_event_group;
 static const int WIFI_CONNECTED_BIT = BIT0;
