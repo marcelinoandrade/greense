@@ -12,4 +12,5 @@ client/N04_Estufa_Camera_C++/main/certs/greense_cert.pem
 client/N04_Estufa_Camera_C++/build/
 client/N04_Estufa_Camera_C++/main/secrets.h
 client/N05_Estufa_Termica_C++/main/secrets.h
+client/N05_Estufa_Termica_C++/main/certs/greense_cert.pem
 client/N05_Estufa_Termica_C++/build/

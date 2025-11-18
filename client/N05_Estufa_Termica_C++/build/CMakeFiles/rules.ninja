@@ -1219,6 +1219,16 @@ rule C_STATIC_LIBRARY_LINKER____idf_json_
 
 
 #############################################
+# Rule for compiling ASM files.
+
+rule ASM_COMPILER____idf_main_
+  depfile = $DEP_FILE
+  deps = gcc
+  command = /home/mrclnndrd/.espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/riscv32-esp-elf-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  description = Building ASM object $out
+
+
+#############################################
 # Rule for compiling C files.
 
 rule C_COMPILER____idf_main_

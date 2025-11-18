@@ -1,7 +1,7 @@
 {
     "version":            "1.2",
     "project_name":       "N05_Estufa_Termica_C++",
-    "project_version":    "2f6ef59b-dirty",
+    "project_version":    "d21d8168-dirty",
     "project_path":       "/home/mrclnndrd/projetos/greense/client/N05_Estufa_Termica_C++",
     "idf_path":           "/home/mrclnndrd/esp/esp-idf",
     "build_dir":          "/home/mrclnndrd/projetos/greense/client/N05_Estufa_Termica_C++/build",
@@ -860,13 +860,13 @@
             "dir": "/home/mrclnndrd/projetos/greense/client/N05_Estufa_Termica_C++/main",
             "type": "LIBRARY",
             "lib": "__idf_main",
-            "reqs": [ "esp_wifi", "esp_http_client", "nvs_flash", "driver", "json", "esp_timer" ],
+            "reqs": [ "esp_wifi", "esp_http_client", "nvs_flash", "driver", "json", "esp_timer", "lwip" ],
             "priv_reqs": [],
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "file": "/home/mrclnndrd/projetos/greense/client/N05_Estufa_Termica_C++/build/esp-idf/main/libmain.a",
-            "sources": [ "/home/mrclnndrd/projetos/greense/client/N05_Estufa_Termica_C++/main/main.c" ],
-            "include_dirs": []
+            "sources": [ "/home/mrclnndrd/projetos/greense/client/N05_Estufa_Termica_C++/main/main.c", "/home/mrclnndrd/projetos/greense/client/N05_Estufa_Termica_C++/main/bsp/bsp_gpio.c", "/home/mrclnndrd/projetos/greense/client/N05_Estufa_Termica_C++/main/bsp/bsp_uart.c", "/home/mrclnndrd/projetos/greense/client/N05_Estufa_Termica_C++/main/bsp/bsp_wifi.c", "/home/mrclnndrd/projetos/greense/client/N05_Estufa_Termica_C++/main/app/app_main.c", "/home/mrclnndrd/projetos/greense/client/N05_Estufa_Termica_C++/main/app/app_thermal.c", "/home/mrclnndrd/projetos/greense/client/N05_Estufa_Termica_C++/main/app/app_http.c", "/home/mrclnndrd/projetos/greense/client/N05_Estufa_Termica_C++/main/app/app_time.c", "/home/mrclnndrd/projetos/greense/client/N05_Estufa_Termica_C++/main/gui/gui_led.c", "/home/mrclnndrd/projetos/greense/client/N05_Estufa_Termica_C++/build/greense_cert.pem.S" ],
+            "include_dirs": [ "." ]
         },
         "mbedtls": {
             "alias": "idf::mbedtls",
@@ -2352,11 +2352,11 @@
             "prefix": "idf",
             "dir": "/home/mrclnndrd/projetos/greense/client/N05_Estufa_Termica_C++/main",
             "lib": "__idf_main",
-            "reqs": [ "esp_wifi", "esp_http_client", "nvs_flash", "driver", "json", "esp_timer" ],
+            "reqs": [ "esp_wifi", "esp_http_client", "nvs_flash", "driver", "json", "esp_timer", "lwip" ],
             "priv_reqs": [],
             "managed_reqs": [],
             "managed_priv_reqs": [],
-            "include_dirs": []
+            "include_dirs": [ "." ]
         }
     },
     "debug_prefix_map_gdbinit": "",
