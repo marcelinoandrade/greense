@@ -1,19 +1,22 @@
-# 🔥 Câmera Térmica MLX90640 com ESP32-C3 (ESP-IDF)
+# 📷 Câmera ESP32-CAM com Envio Automático (ESP-IDF)
 
-Sistema embarcado em **C (ESP-IDF)** para aquisição de imagens térmicas usando o sensor **MLX90640** (módulo GY-MCU90640) e envio automático via **HTTP POST** para um servidor remoto.
+Sistema embarcado em **C (ESP-IDF)** para captura de imagens usando **ESP32-CAM (AI Thinker)** e envio automático via **HTTPS POST** para um servidor remoto, com armazenamento local em cartão SD.
+
+![ESP32-CAM](esp32_cam.png)
 
 ---
 
 ## ⚙️ Descrição Geral
 
-O firmware executa em uma **placa ESP32-C3 SuperMini** conectada ao módulo **MLX90640BAB/BAA**, capturando quadros térmicos (24 × 32 pixels) via UART e enviando periodicamente os dados como JSON para um endpoint HTTP configurável.
+O firmware executa em uma placa **ESP32-CAM (AI Thinker)**, capturando imagens JPEG periodicamente e enviando-as via HTTPS para um endpoint configurável. As imagens também são salvas localmente em um cartão SD para backup.
 
 O sistema realiza:
-- 🧠 Captura e decodificação de frames (0x5A 0x5A)  
-- 🌡️ Conversão binária → temperatura (°C)  
+- 📸 Captura de imagens JPEG (XGA - 1024×768)  
+- 💾 Armazenamento local em cartão SD  
 - 🌐 Conexão Wi-Fi com reconexão automática  
-- 🔄 Envio periódico de dados em JSON via HTTP POST  
-- 💡 Sinalização por LED para indicar estado do sistema e conectividade  
+- 🔒 Envio seguro via HTTPS com certificado SSL  
+- 💡 Sinalização por LED para indicar estado do Wi-Fi  
+- ⚡ Flash LED para iluminação durante captura  
 
 ---
 
@@ -21,23 +24,32 @@ O sistema realiza:
 
 | Componente | Função | Interface |
 |-------------|---------|-----------|
-| **MLX90640BAB/BAA** | Câmera térmica 24 × 32 px | UART |
-| **ESP32-C3 SuperMini** | Microcontrolador principal | USB-C, Wi-Fi, GPIO |
-| **LED GPIO 8** | Indicador de status | Digital |
-| **UART TX/RX (5/4)** | Comunicação com MLX90640 | UART1 |
+| **ESP32-CAM (AI Thinker)** | Microcontrolador + Câmera OV2640 | USB-C, Wi-Fi, GPIO |
+| **Cartão SD** | Armazenamento local | SDMMC |
+| **LED GPIO 33** | Indicador de status Wi-Fi | Digital |
+| **Flash LED GPIO 4** | Iluminação para fotos | Digital |
 
-| Sensor MLX90640 | ESP32-C3 SuperMini |
-|-----------------|-------------------|
-| ![MLX90640](camera_termica.png) | ![ESP32-C3](esp32_c3.png) |
+### Pinos da ESP32-CAM
 
-### Conexões
-
-| MLX90640 | ESP32-C3 |
-|-----------|-----------|
-| VIN | 5 V |
-| GND | G |
-| RX | GPIO 5 |
-| TX | GPIO 4 |
+| Função | GPIO | Descrição |
+|--------|------|-----------|
+| PWDN | 32 | Power Down |
+| XCLK | 0 | Clock da câmera |
+| SIOD | 26 | I2C Data |
+| SIOC | 27 | I2C Clock |
+| Y9 | 35 | Dados da câmera |
+| Y8 | 34 | Dados da câmera |
+| Y7 | 39 | Dados da câmera |
+| Y6 | 36 | Dados da câmera |
+| Y5 | 21 | Dados da câmera |
+| Y4 | 19 | Dados da câmera |
+| Y3 | 18 | Dados da câmera |
+| Y2 | 5 | Dados da câmera |
+| VSYNC | 25 | Sincronização vertical |
+| HREF | 23 | Horizontal Reference |
+| PCLK | 22 | Pixel Clock |
+| Flash LED | 4 | LED de iluminação |
+| LED Wi-Fi | 33 | Indicador de status |
 
 ---
 
@@ -46,12 +58,15 @@ O sistema realiza:
 ```
 main.c
 ├── Inicialização de NVS e Wi-Fi (STA)
-├── Loop principal de captura térmica
-│   ├── Leitura UART
-│   ├── Decodificação e conversão para °C
-│   ├── Montagem de JSON (768 valores + timestamp)
-│   ├── Envio HTTP POST
-│   └── Feedback via LED
+├── Inicialização do cartão SD
+├── Inicialização da câmera (OV2640)
+├── Task periódica de captura
+│   ├── Verificação de conexão Wi-Fi
+│   ├── Ativação do flash LED
+│   ├── Captura de imagem JPEG
+│   ├── Envio HTTPS POST
+│   ├── Salvamento no SD Card
+│   └── Liberação do buffer
 └── Reconexão automática em falhas
 ```
 
@@ -64,22 +79,29 @@ Defina as credenciais Wi-Fi e o endpoint no arquivo `secrets.h`:
 ```c
 #define WIFI_SSID "sua_rede"
 #define WIFI_PASS "sua_senha"
-#define URL_POST  "http://seu-servidor:porta/endpoint"
+#define CAMERA_UPLOAD_URL "https://seu-servidor.com/upload"
 ```
 
-Parâmetro de intervalo de envio (em segundos):
+**Importante:** O certificado SSL do servidor deve estar em `main/certs/greense_cert.pem` (ou ajuste o caminho no `CMakeLists.txt`).
 
-```c
-#define ENVIO_MS (90*1000)
-```
+Parâmetros de captura (em `main.c`):
+- **Intervalo entre capturas:** 60 segundos (60000 ms)
+- **Resolução:** XGA (1024×768)
+- **Qualidade JPEG:** 12 (0-63, menor = melhor qualidade)
+- **Formato:** JPEG
 
 ---
 
 ## 🚀 Compilação e Execução
 
-1. Instale o **ESP-IDF v5+**  
+1. Instale o **ESP-IDF v5.0+**  
 2. Copie este diretório para o workspace  
-3. Compile e grave na placa:  
+3. Configure o certificado SSL:
+   ```bash
+   mkdir -p main/certs
+   # Copie o certificado do servidor para main/certs/greense_cert.pem
+   ```
+4. Compile e grave na placa:  
    ```bash
    idf.py build
    idf.py flash -b 921600
@@ -90,47 +112,60 @@ Parâmetro de intervalo de envio (em segundos):
 
 ## 💡 Sinalização por LED
 
-O LED (GPIO 8) indica o estado do sistema:
+O LED Wi-Fi (GPIO 33) indica o estado da conexão:
 
 | Estado | Indicação | Descrição |
-|---------|------------|-----------|
-| 🔄 **Sem Wi-Fi** | LED piscando continuamente | Tentando conectar à rede Wi-Fi |
-| 📶 **Wi-Fi Conectado** | LED aceso fixo | Conectado à rede com IP válido |
-| ✅ **Envio bem-sucedido (HTTP 200)** | 1 piscada curta | Dados enviados com sucesso |
-| ⚠️ **Erro de envio ou reconexão** | Múltiplas piscadas curtas | Falha na comunicação ou HTTP erro |
+|---------|-----------|-----------|
+| 🔄 **Sem Wi-Fi** | LED aceso | Tentando conectar à rede Wi-Fi |
+| 📶 **Wi-Fi Conectado** | LED apagado | Conectado à rede com IP válido |
+
+O Flash LED (GPIO 4) é ativado durante a captura de imagem para iluminação.
 
 ---
 
-## 🧾 Estrutura de Dados Enviada
+## 💾 Armazenamento no SD Card
 
-```json
-{
-  "temperaturas": [23.45, 23.60, ..., 26.12],
-  "timestamp": 1730269802
-}
-```
+As imagens são salvas no cartão SD com o seguinte formato de nome:
+- **Com NTP sincronizado:** `YYYYMMDD_HHMMSS.jpg`
+- **Sem NTP:** `img_TIMESTAMP.jpg`
 
-- 768 valores de temperatura em °C  
-- Timestamp Unix gerado por `esp_timer_get_time()`  
+O cartão SD é montado em `/sdcard` e deve ser formatado em FAT32.
+
+**Configuração do SD Card:**
+- Modo: 1-bit (pode ser alterado para 4-bit se suportado)
+- Pull-ups internos habilitados
+- Sistema de arquivos FAT
+
+---
+
+## 🔒 Segurança
+
+O sistema utiliza **HTTPS** para envio seguro das imagens:
+- Certificado SSL embutido no firmware
+- Validação do certificado do servidor
+- Timeout de 10 segundos para requisições
 
 ---
 
 ## 🧩 Componentes ESP-IDF
 
-Declarados em `CMakeLists.txt`:
+Declarados em `main/CMakeLists.txt`:
 
 ```
 idf_component_register(
   SRCS "main.c"
-  REQUIRES esp_wifi esp_http_client nvs_flash driver json esp_timer
+  INCLUDE_DIRS "."
+  REQUIRES esp32-camera esp_http_server esp_wifi nvs_flash 
+           esp_http_client driver fatfs sdmmc
+  EMBED_TXTFILES "certs/greense_cert.pem"
 )
 ```
 
 Principais bibliotecas usadas:
+- `esp_camera.h` – controle da câmera OV2640  
 - `esp_wifi.h` – conexão Wi-Fi STA  
-- `esp_http_client.h` – envio HTTP POST  
-- `uart.h` – comunicação serial com MLX90640  
-- `esp_timer.h` – timestamp  
+- `esp_http_client.h` – envio HTTPS POST  
+- `esp_vfs_fat.h` / `sdmmc_cmd.h` – sistema de arquivos e SD Card  
 - `FreeRTOS` – tarefas principais e controle do LED  
 
 ---
@@ -138,20 +173,33 @@ Principais bibliotecas usadas:
 ## 🔋 Requisitos e Considerações
 
 - ESP-IDF v5.0 ou superior  
-- UART 115200 bps  
-- Alimentação 5 V para o sensor  
-- Frame: 24×32 = 768 pontos float  
-- Intervalo válido: –40 °C a 200 °C  
+- ESP32-CAM (AI Thinker) com câmera OV2640  
+- Cartão SD formatado em FAT32  
 - Wi-Fi 2.4 GHz ativo  
+- Certificado SSL do servidor de destino  
+- Alimentação adequada (recomendado 5V/2A para operação estável)  
+
+**Nota:** A ESP32-CAM consome bastante energia durante a captura. Certifique-se de usar uma fonte de alimentação adequada.
+
+---
+
+## 📊 Estrutura de Dados
+
+As imagens são enviadas como:
+- **Content-Type:** `image/jpeg`
+- **Método:** POST
+- **Body:** Dados binários da imagem JPEG
 
 ---
 
 ## 🧪 Próximos Passos
 
-- Armazenamento local em SDCard  
-- Integração com Flask no Raspberry Pi  
-- Visualização térmica em tempo real  
-- IA para detecção de eventos térmicos  
+- [ ] Sincronização NTP para timestamps precisos  
+- [ ] Configuração via web interface  
+- [ ] Compressão adicional de imagens  
+- [ ] Detecção de movimento para captura sob demanda  
+- [ ] Stream de vídeo em tempo real  
+- [ ] Integração com sistema de monitoramento  
 
 ---
 
