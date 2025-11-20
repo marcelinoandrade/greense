@@ -1,0 +1,5 @@
+dependencies:
+  idf: ">=5.0"
+  espressif/esp32-camera: "^2.0.15"
+  espressif/led_strip: "*"
+

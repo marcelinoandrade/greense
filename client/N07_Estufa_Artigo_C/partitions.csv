@@ -1,0 +1,8 @@
+# ESP-IDF Partition Table
+# Name,   Type, SubType, Offset,  Size,     Flags
+# Tabela de partição para ESP32-S3 N16R8 (16MB flash)
+nvs,      data, nvs,     ,        24K,
+phy_init, data, phy,     ,        4K,
+factory,  app,  factory, ,        3M,
+spiffs,   data, spiffs,  ,        12M,
+

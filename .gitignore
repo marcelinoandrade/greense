@@ -14,3 +14,9 @@ client/N04_Estufa_Camera_C/main/secrets.h
 client/N05_Estufa_Termica_C/main/secrets.h
 client/N05_Estufa_Termica_C/main/certs/greense_cert.pem
 client/N05_Estufa_Termica_C/build/
+client/N07_Estufa_Artigo_C/main/secrets.h
+client/N07_Estufa_Artigo_C/main/certs/greense_cert.pem
+client/N07_Estufa_Artigo_C/build/
+client/N07_Estufa_Artigo_C/managed_components/
+client/N07_Estufa_Artigo_C/sdkconfig.old
+client/N07_Estufa_Artigo_C/dependencies.lock
