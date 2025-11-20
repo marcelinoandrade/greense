@@ -12,7 +12,7 @@ N = LINHAS * COLUNAS
 # --------------------------------------------
 
 ARQUIVO_CSV = "termica_global.csv"
-VMIN, VMAX = 20, 40 
+VMIN, VMAX = 25, 30 
 
 # --- Dimensões da imagem térmica ---
 # (altere aqui se sua matriz de sensor for diferente, ex: 8x8)
