@@ -25,8 +25,15 @@
 #define I2C_SCL_GPIO           2   // GPIO2 - I2C Clock (alternativa, não conflita com câmera)
 
 // ===== UART =====
-#define UART_TX_GPIO           43  // U0TXD
-#define UART_RX_GPIO           44  // U0RXD
+#define UART_TX_GPIO           43  // U0TXD (Console/Debug)
+#define UART_RX_GPIO           44  // U0RXD (Console/Debug)
+
+// ===== UART para MLX90640 (Câmera Térmica) =====
+#define UART_THERMAL_PORT       UART_NUM_1
+#define UART_THERMAL_RX_GPIO    14  // GPIO14 - RX (recebe dados do MLX90640)
+#define UART_THERMAL_TX_GPIO    3   // GPIO3 - TX (configurado mas não usado fisicamente)
+#define UART_THERMAL_BAUD       115200
+#define UART_THERMAL_BUF_MAX    8192
 
 // ===== ADC (Analog-to-Digital Converter) =====
 // Canais ADC disponíveis para sensores analógicos
@@ -73,7 +80,8 @@
 // - GPIO37, GPIO36, GPIO35 são usados para PSRAM - evitar uso
 // - GPIO43, GPIO44 são UART0 (USB) - usar com cuidado
 // - GPIO0 é usado para boot - usar com cuidado
-// - GPIOs 19-21 são seguros para uso geral
+// - GPIOs 14, 19-21 são seguros para uso geral
+// - GPIO14 é usado para RX da câmera térmica (UART1)
 
 #endif // BSP_PINS_H
 
