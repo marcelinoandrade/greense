@@ -4,6 +4,8 @@
 #include "esp_http_client.h"
 #include "esp_log.h"
 #include "esp_heap_caps.h"
+#include "esp_task_wdt.h"
+#include "freertos/task.h"
 #include <stdint.h>
 #include <string.h>
 #include <stdlib.h>
@@ -15,6 +17,37 @@ extern const uint8_t greense_cert_pem_start[] asm("_binary_greense_cert_pem_star
 extern const uint8_t greense_cert_pem_end[]   asm("_binary_greense_cert_pem_end");
 
 #define TAG "APP_HTTP"
+
+// ✅ CORREÇÃO: Callback para resetar watchdog durante transferência HTTP
+static esp_err_t http_event_handler(esp_http_client_event_t *evt)
+{
+    // ✅ CORREÇÃO: Reset watchdog em TODOS os eventos para garantir resets frequentes
+    esp_task_wdt_reset();
+    
+    switch(evt->event_id) {
+        case HTTP_EVENT_ERROR:
+            ESP_LOGD(TAG, "HTTP_EVENT_ERROR");
+            break;
+        case HTTP_EVENT_ON_CONNECTED:
+            ESP_LOGD(TAG, "HTTP_EVENT_ON_CONNECTED");
+            break;
+        case HTTP_EVENT_HEADER_SENT:
+            ESP_LOGD(TAG, "HTTP_EVENT_HEADER_SENT");
+            break;
+        case HTTP_EVENT_ON_HEADER:
+            ESP_LOGD(TAG, "HTTP_EVENT_ON_HEADER");
+            break;
+        case HTTP_EVENT_ON_DATA:
+            ESP_LOGD(TAG, "HTTP_EVENT_ON_DATA: %d bytes", evt->data_len);
+            break;
+        case HTTP_EVENT_ON_FINISH:
+            ESP_LOGD(TAG, "HTTP_EVENT_ON_FINISH");
+            break;
+        default:
+            break;
+    }
+    return ESP_OK;
+}
 
 esp_err_t app_http_send_data(const char *url, const uint8_t *data, size_t data_len, const char *content_type)
 {
@@ -56,7 +89,8 @@ esp_err_t app_http_send_data(const char *url, const uint8_t *data, size_t data_l
         .transport_type = HTTP_TRANSPORT_OVER_SSL,
         .cert_pem = (const char *)greense_cert_pem_start,
         .timeout_ms = 30000,  // Aumentado para 30s (mais seguro)
-        .skip_cert_common_name_check = false
+        .skip_cert_common_name_check = false,
+        .event_handler = http_event_handler  // ✅ CORREÇÃO: Callback para resetar watchdog
     };
 
     esp_http_client_handle_t client = esp_http_client_init(&config);
@@ -69,20 +103,47 @@ esp_err_t app_http_send_data(const char *url, const uint8_t *data, size_t data_l
     esp_http_client_set_header(client, "Content-Type", content_type);
     esp_http_client_set_post_field(client, (const char *)ram_buffer, data_len);
 
-    esp_err_t err = esp_http_client_perform(client);
-    if (err == ESP_OK) {
-        int status_code = esp_http_client_get_status_code(client);
-        ESP_LOGI(TAG, "Dados enviados. Status HTTP: %d", status_code);
-        
-        // Verifica se status HTTP é sucesso (2xx)
-        if (status_code >= 200 && status_code < 300) {
-            ESP_LOGI(TAG, "✅ Envio bem-sucedido!");
-        } else {
-            ESP_LOGE(TAG, "❌ Servidor retornou erro HTTP: %d", status_code);
-            err = ESP_FAIL;  // Marca como erro se status não for 2xx
+    // ✅ CORREÇÃO 4: Retry com backoff exponencial
+    const int max_retries = 3;
+    esp_err_t err = ESP_FAIL;
+    int status_code = 0;
+    
+    for (int attempt = 0; attempt < max_retries; attempt++) {
+        if (attempt > 0) {
+            int backoff_ms = 1000 * (1 << (attempt - 1)); // 1s, 2s, 4s...
+            ESP_LOGW(TAG, "Tentativa %d/%d após %d ms...", attempt + 1, max_retries, backoff_ms);
+            vTaskDelay(pdMS_TO_TICKS(backoff_ms));
         }
-    } else {
-        ESP_LOGE(TAG, "Erro ao enviar dados: %s", esp_err_to_name(err));
+        
+        // ✅ CORREÇÃO: Reset watchdog antes de operação longa
+        esp_task_wdt_reset();
+        
+        // ✅ CORREÇÃO: Usa perform normalmente, mas o callback HTTP reseta watchdog periodicamente
+        // O callback http_event_handler será chamado durante a transferência e resetará o watchdog
+        err = esp_http_client_perform(client);
+        
+        // ✅ CORREÇÃO: Reset watchdog após operação (mesmo se falhou)
+        esp_task_wdt_reset();
+        
+        if (err == ESP_OK) {
+            status_code = esp_http_client_get_status_code(client);
+            ESP_LOGI(TAG, "Dados enviados. Status HTTP: %d (tentativa %d/%d)", 
+                     status_code, attempt + 1, max_retries);
+            
+            // Verifica se status HTTP é sucesso (2xx)
+            if (status_code >= 200 && status_code < 300) {
+                ESP_LOGI(TAG, "✅ Envio bem-sucedido!");
+                err = ESP_OK;
+                break; // Sucesso, sai do loop
+            } else {
+                ESP_LOGE(TAG, "❌ Servidor retornou erro HTTP: %d", status_code);
+                err = ESP_FAIL;
+            }
+        } else {
+            ESP_LOGE(TAG, "Erro ao enviar dados (tentativa %d/%d): %s (0x%x)", 
+                     attempt + 1, max_retries, esp_err_to_name(err), err);
+            // Continua tentando se ainda houver tentativas
+        }
     }
 
     esp_http_client_cleanup(client);

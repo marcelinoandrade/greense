@@ -97,5 +97,13 @@ esp_err_t bsp_sdcard_read_send_index(const char* filename, uint32_t* frames_sent
  */
 esp_err_t bsp_sdcard_rename_file(const char* old_filename, const char* new_filename);
 
+/**
+ * @brief Anexa conteúdo de um arquivo ao final de outro arquivo
+ * @param source_filename Arquivo fonte (será anexado)
+ * @param dest_filename Arquivo destino (receberá os dados)
+ * @return ESP_OK em caso de sucesso, erro caso contrário
+ */
+esp_err_t bsp_sdcard_append_file_to_file(const char* source_filename, const char* dest_filename);
+
 #endif // BSP_SDCARD_H
 

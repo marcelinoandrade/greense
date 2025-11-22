@@ -50,9 +50,18 @@ static bool parse_frame(const uint8_t *payload, size_t plen, float out[APP_THERM
 }
 
 bool app_thermal_capture_frame(float out[APP_THERMAL_TOTAL], TickType_t timeout_ticks) {
-    uint8_t *buf = malloc(UART_THERMAL_BUF_MAX);
+    // ✅ CORREÇÃO: Tenta alocar em PSRAM primeiro (mais disponível), depois RAM interna
+    uint8_t *buf = heap_caps_malloc(UART_THERMAL_BUF_MAX, MALLOC_CAP_SPIRAM | MALLOC_CAP_8BIT);
     if (!buf) {
-        ESP_LOGE(TAG, "Falha ao alocar buffer para UART");
+        ESP_LOGW(TAG, "PSRAM insuficiente, tentando RAM interna...");
+        buf = heap_caps_malloc(UART_THERMAL_BUF_MAX, MALLOC_CAP_INTERNAL | MALLOC_CAP_8BIT);
+    }
+    if (!buf) {
+        ESP_LOGW(TAG, "RAM interna insuficiente, tentando qualquer RAM disponível...");
+        buf = malloc(UART_THERMAL_BUF_MAX);
+    }
+    if (!buf) {
+        ESP_LOGE(TAG, "Falha ao alocar buffer para UART (%d bytes). Memória fragmentada?", UART_THERMAL_BUF_MAX);
         return false;
     }
     

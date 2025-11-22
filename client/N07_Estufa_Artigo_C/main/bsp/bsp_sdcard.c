@@ -5,6 +5,8 @@
 #include "driver/gpio.h"
 #include "sdmmc_cmd.h"
 #include "esp_log.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/semphr.h"
 #include <dirent.h>
 #include <stdio.h>
 #include <string.h>
@@ -15,12 +17,37 @@
 #include <stdlib.h>
 
 #define TAG "BSP_SDCARD"
+#define SDCARD_MUTEX_TIMEOUT_MS 5000
 
 static bool s_sdcard_mounted = false;
 static sdmmc_card_t* s_card = NULL;
+static SemaphoreHandle_t s_sdcard_mutex = NULL;  // ✅ Mutex para thread safety
+
+// ✅ Macro helper para proteger operações com mutex
+#define SDCARD_LOCK() do { \
+    if (s_sdcard_mutex && xSemaphoreTake(s_sdcard_mutex, pdMS_TO_TICKS(SDCARD_MUTEX_TIMEOUT_MS)) != pdTRUE) { \
+        ESP_LOGE(TAG, "Timeout ao adquirir mutex do SD card"); \
+        return ESP_ERR_TIMEOUT; \
+    } \
+} while(0)
+
+#define SDCARD_UNLOCK() do { \
+    if (s_sdcard_mutex) { \
+        xSemaphoreGive(s_sdcard_mutex); \
+    } \
+} while(0)
 
 esp_err_t bsp_sdcard_init(void)
 {
+    // ✅ Cria mutex se ainda não existe
+    if (s_sdcard_mutex == NULL) {
+        s_sdcard_mutex = xSemaphoreCreateMutex();
+        if (s_sdcard_mutex == NULL) {
+            ESP_LOGE(TAG, "Falha ao criar mutex do SD card");
+            return ESP_ERR_NO_MEM;
+        }
+    }
+    
     if (s_card != NULL) {
         ESP_LOGI(TAG, "SD Card já inicializado");
         return ESP_OK; // Já inicializado
@@ -117,14 +144,18 @@ esp_err_t bsp_sdcard_init(void)
 
 esp_err_t bsp_sdcard_save_file(const char* filename, const uint8_t* data, size_t data_len)
 {
+    SDCARD_LOCK();  // ✅ Thread safety
+    
     if (!s_sdcard_mounted || s_card == NULL) {
         ESP_LOGE(TAG, "SD Card não está montado");
+        SDCARD_UNLOCK();
         return ESP_ERR_INVALID_STATE;
     }
     
     if (!filename || !data || data_len == 0) {
         ESP_LOGE(TAG, "Parâmetros inválidos em save_file (filename=%p, data=%p, len=%d)",
                  (void*)filename, (void*)data, (int)data_len);
+        SDCARD_UNLOCK();
         return ESP_ERR_INVALID_ARG;
     }
     
@@ -132,6 +163,7 @@ esp_err_t bsp_sdcard_save_file(const char* filename, const uint8_t* data, size_t
     size_t filename_len = strlen(filename);
     if (filename_len == 0 || filename_len > 64) {
         ESP_LOGE(TAG, "Nome de arquivo inválido: comprimento=%d", (int)filename_len);
+        SDCARD_UNLOCK();
         return ESP_ERR_INVALID_ARG;
     }
     
@@ -140,6 +172,7 @@ esp_err_t bsp_sdcard_save_file(const char* filename, const uint8_t* data, size_t
     int ret = snprintf(full_path, sizeof(full_path), "%s/%s", SD_MOUNT_POINT, filename);
     if (ret < 0 || ret >= (int)sizeof(full_path)) {
         ESP_LOGE(TAG, "Caminho muito longo: %s/%s", SD_MOUNT_POINT, filename);
+        SDCARD_UNLOCK();
         return ESP_ERR_INVALID_ARG;
     }
     
@@ -150,6 +183,7 @@ esp_err_t bsp_sdcard_save_file(const char* filename, const uint8_t* data, size_t
     if (stat(SD_MOUNT_POINT, &st) == -1) {
         ESP_LOGE(TAG, "Diretório %s não existe ou não está acessível (errno=%d)", 
                  SD_MOUNT_POINT, errno);
+        SDCARD_UNLOCK();
         return ESP_FAIL;
     }
     
@@ -194,6 +228,7 @@ esp_err_t bsp_sdcard_save_file(const char* filename, const uint8_t* data, size_t
         if (needs_free) {
             free(ram_data);
         }
+        SDCARD_UNLOCK();  // ✅ Thread safety
         return ESP_FAIL;
     }
     
@@ -205,6 +240,7 @@ esp_err_t bsp_sdcard_save_file(const char* filename, const uint8_t* data, size_t
         if (needs_free) {
             free(ram_data);
         }
+        SDCARD_UNLOCK();  // ✅ Thread safety
         return ESP_FAIL;
     }
     
@@ -216,6 +252,7 @@ esp_err_t bsp_sdcard_save_file(const char* filename, const uint8_t* data, size_t
     }
     
     ESP_LOGI(TAG, "✅ Arquivo salvo com sucesso: %d bytes", (int)bytes_written);
+    SDCARD_UNLOCK();  // ✅ Thread safety
     return ESP_OK;
 }
 
@@ -233,6 +270,7 @@ esp_err_t bsp_sdcard_append_file(const char* filename, const uint8_t* data, size
     
     if (!filename || !data || data_len == 0) {
         ESP_LOGE(TAG, "Parâmetros inválidos em append_file");
+        SDCARD_UNLOCK();
         return ESP_ERR_INVALID_ARG;
     }
     
@@ -241,6 +279,7 @@ esp_err_t bsp_sdcard_append_file(const char* filename, const uint8_t* data, size
     int ret = snprintf(full_path, sizeof(full_path), "%s/%s", SD_MOUNT_POINT, filename);
     if (ret < 0 || ret >= (int)sizeof(full_path)) {
         ESP_LOGE(TAG, "Caminho muito longo: %s/%s", SD_MOUNT_POINT, filename);
+        SDCARD_UNLOCK();
         return ESP_ERR_INVALID_ARG;
     }
     
@@ -273,6 +312,7 @@ esp_err_t bsp_sdcard_append_file(const char* filename, const uint8_t* data, size
             if (needs_free) {
                 free(ram_data);
             }
+            SDCARD_UNLOCK();
             return ESP_FAIL;
         }
     }
@@ -285,6 +325,7 @@ esp_err_t bsp_sdcard_append_file(const char* filename, const uint8_t* data, size
         if (needs_free) {
             free(ram_data);
         }
+        SDCARD_UNLOCK();
         return ESP_FAIL;
     }
     
@@ -296,6 +337,7 @@ esp_err_t bsp_sdcard_append_file(const char* filename, const uint8_t* data, size
     }
     
     ESP_LOGD(TAG, "✅ Dados adicionados ao arquivo: %d bytes", (int)bytes_written);
+    SDCARD_UNLOCK();  // ✅ CORREÇÃO 1: Thread safety
     return ESP_OK;
 }
 
@@ -668,6 +710,80 @@ esp_err_t bsp_sdcard_rename_file(const char* old_filename, const char* new_filen
     }
     
     ESP_LOGI(TAG, "✅ Arquivo renomeado com sucesso");
+    return ESP_OK;
+}
+
+esp_err_t bsp_sdcard_append_file_to_file(const char* source_filename, const char* dest_filename)
+{
+    if (!s_sdcard_mounted || s_card == NULL) {
+        ESP_LOGE(TAG, "SD Card não está montado");
+        return ESP_ERR_INVALID_STATE;
+    }
+    
+    if (!source_filename || !dest_filename) {
+        ESP_LOGE(TAG, "Parâmetros inválidos em append_file_to_file");
+        return ESP_ERR_INVALID_ARG;
+    }
+    
+    char source_path[128];
+    char dest_path[128];
+    
+    int ret1 = snprintf(source_path, sizeof(source_path), "%s/%s", SD_MOUNT_POINT, source_filename);
+    int ret2 = snprintf(dest_path, sizeof(dest_path), "%s/%s", SD_MOUNT_POINT, dest_filename);
+    
+    if (ret1 < 0 || ret1 >= (int)sizeof(source_path) || ret2 < 0 || ret2 >= (int)sizeof(dest_path)) {
+        ESP_LOGE(TAG, "Caminho muito longo");
+        return ESP_ERR_INVALID_ARG;
+    }
+    
+    // Verifica se arquivo fonte existe
+    if (access(source_path, F_OK) != 0) {
+        ESP_LOGE(TAG, "Arquivo fonte não existe: %s", source_filename);
+        return ESP_ERR_NOT_FOUND;
+    }
+    
+    // Abre arquivo fonte para leitura
+    FILE* src = fopen(source_path, "rb");
+    if (!src) {
+        ESP_LOGE(TAG, "Falha ao abrir arquivo fonte: %s (errno=%d)", source_filename, errno);
+        return ESP_FAIL;
+    }
+    
+    // Abre arquivo destino para append
+    FILE* dst = fopen(dest_path, "ab");
+    if (!dst) {
+        ESP_LOGE(TAG, "Falha ao abrir arquivo destino: %s (errno=%d)", dest_filename, errno);
+        fclose(src);
+        return ESP_FAIL;
+    }
+    
+    // Lê e anexa em chunks (4KB por vez para eficiência)
+    uint8_t buffer[4096];
+    size_t bytes_read;
+    size_t total_appended = 0;
+    
+    while ((bytes_read = fread(buffer, 1, sizeof(buffer), src)) > 0) {
+        size_t bytes_written = fwrite(buffer, 1, bytes_read, dst);
+        if (bytes_written != bytes_read) {
+            ESP_LOGE(TAG, "Falha ao escrever dados (escreveu %d de %d bytes)", 
+                     (int)bytes_written, (int)bytes_read);
+            fclose(src);
+            fclose(dst);
+            return ESP_FAIL;
+        }
+        total_appended += bytes_written;
+    }
+    
+    // Garante que dados foram escritos no disco
+    fflush(dst);
+    fsync(fileno(dst));
+    
+    fclose(src);
+    fclose(dst);
+    
+    ESP_LOGI(TAG, "✅ Anexados %d bytes de %s ao final de %s", 
+             (int)total_appended, source_filename, dest_filename);
+    
     return ESP_OK;
 }
 

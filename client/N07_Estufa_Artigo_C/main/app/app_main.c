@@ -18,6 +18,7 @@
 #include "esp_heap_caps.h"
 #include "freertos/task.h"
 #include "driver/gpio.h"
+#include "esp_task_wdt.h"
 #include <time.h>
 #include <string.h>
 #include <stdlib.h>
@@ -25,6 +26,7 @@
 #include <errno.h>
 
 #define TAG "APP_MAIN"
+#define WATCHDOG_TIMEOUT_SEC 30  // ✅ CORREÇÃO 3: Timeout de 30s para watchdog
 
 // Declaração das tasks térmicas
 static void task_captura_termica(void *pvParameter);
@@ -51,18 +53,28 @@ static bool should_capture_now(const schedule_time_t schedule[], int schedule_si
 
 // Task periódica para captura e envio de imagens (agendamento baseado em horários)
 static void task_envia_foto_periodicamente(void *pvParameter) {
+    // ✅ CORREÇÃO 3: Adiciona task ao watchdog
+    esp_task_wdt_add(NULL);
+    
     int last_captured_hour = -1;
     int last_captured_minute = -1;
     int log_counter = 0;  // Contador para logs periódicos
     
     while (true) {
+        // ✅ CORREÇÃO 3: Alimenta watchdog periodicamente
+        esp_task_wdt_reset();
         // Verifica conexão Wi-Fi
         if (bsp_wifi_is_connected()) {
             gui_led_set_state_wifi_connected();  // LED azul quando conectado
         } else {
             gui_led_set_state_wifi_disconnected();  // LED vermelho quando desconectado
             ESP_LOGW(TAG, "Sem conexão Wi-Fi. Aguardando reconexão...");
-            vTaskDelay(5000 / portTICK_PERIOD_MS);
+            // ✅ CORREÇÃO 3: Divide delay em múltiplos delays menores com resets
+            // Watchdog timeout é 5s, então dividimos 5s em 2 delays de ~2.5s cada
+            for (int i = 0; i < 2; i++) {
+                esp_task_wdt_reset();
+                vTaskDelay(2500 / portTICK_PERIOD_MS);  // 2.5s * 2 = 5s
+            }
             continue;
         }
 
@@ -106,61 +118,63 @@ static void task_envia_foto_periodicamente(void *pvParameter) {
             if (timeinfo.tm_hour != last_captured_hour || timeinfo.tm_min != last_captured_minute) {
                 ESP_LOGI(TAG, "📸 Horário agendado para captura visual: %02d:%02d", 
                          timeinfo.tm_hour, timeinfo.tm_min);
-                
-                // Ativa flash LED (se disponível)
-                if (CAM_FLASH_GPIO >= 0) {
-                    gpio_set_level(CAM_FLASH_GPIO, 1);
-                    vTaskDelay(pdMS_TO_TICKS(500));
-                }
 
-                // Captura imagem da câmera
-                camera_fb_t* fb = bsp_camera_capture();
-                vTaskDelay(pdMS_TO_TICKS(200));  // Atraso opcional
+        // Ativa flash LED (se disponível)
+        if (CAM_FLASH_GPIO >= 0) {
+            gpio_set_level(CAM_FLASH_GPIO, 1);
+            vTaskDelay(pdMS_TO_TICKS(500));
+        }
 
-                // Desativa flash LED
-                if (CAM_FLASH_GPIO >= 0) {
-                    gpio_set_level(CAM_FLASH_GPIO, 0);
-                }
+        // Captura imagem da câmera
+        camera_fb_t* fb = bsp_camera_capture();
+        vTaskDelay(pdMS_TO_TICKS(200));  // Atraso opcional
 
-                if (fb) {
-                    // Envia imagem via HTTPS
-                    esp_err_t err = app_http_send_data(CAMERA_UPLOAD_URL, 
-                                                       fb->buf, 
-                                                       fb->len,
-                                                       "image/jpeg");
-                    
-                    if (err == ESP_OK) {
+        // Desativa flash LED
+        if (CAM_FLASH_GPIO >= 0) {
+            gpio_set_level(CAM_FLASH_GPIO, 0);
+        }
+
+        if (fb) {
+            // ✅ CORREÇÃO 3: Reset watchdog antes de operação longa (envio HTTP pode demorar)
+            esp_task_wdt_reset();
+            // Envia imagem via HTTPS
+            esp_err_t err = app_http_send_data(CAMERA_UPLOAD_URL, 
+                                               fb->buf, 
+                                               fb->len,
+                                               "image/jpeg");
+            
+            if (err == ESP_OK) {
                         ESP_LOGI(TAG, "✅ Imagem visual enviada com sucesso");
-                        gui_led_flash_success();
-                    } else {
+                gui_led_flash_success();
+            } else {
                         ESP_LOGE(TAG, "❌ Erro ao enviar imagem visual");
-                        gui_led_flash_error();
-                    }
+                gui_led_flash_error();
+            }
 
-                    // Salva imagem no SD Card (se disponível)
-                    if (bsp_sdcard_is_mounted()) {
-                        // Formato 8.3 simples: IMG#####.JPG (8 caracteres no nome + .JPG)
-                        // Usa timestamp para garantir unicidade
-                        char filename[16];
-                        time_t now = time(NULL);
-                        // Formato: IMG + 5 dígitos do timestamp = 8 caracteres
-                        snprintf(filename, sizeof(filename), "IMG%05lu.JPG", (unsigned long)now % 100000);
-                        
-                        esp_err_t sd_err = bsp_sdcard_save_file(filename, fb->buf, fb->len);
-                        if (sd_err == ESP_OK) {
-                            ESP_LOGI(TAG, "✅ Imagem visual salva no SD Card: %s", filename);
-                        } else {
-                            ESP_LOGW(TAG, "⚠️ Falha ao salvar imagem visual no SD Card");
-                        }
-                    }
-
-                    // Libera buffer da câmera
-                    bsp_camera_release(fb);
-                } else {
-                    ESP_LOGE(TAG, "Erro ao capturar imagem visual");
-                    gui_led_flash_error();
-                }
+            // Salva imagem no SD Card (se disponível)
+            if (bsp_sdcard_is_mounted()) {
+                // Formato 8.3 simples: IMG#####.JPG (8 caracteres no nome + .JPG)
+                // Usa timestamp para garantir unicidade
+                char filename[16];
+                time_t now = time(NULL);
+                // Formato: IMG + 5 dígitos do timestamp = 8 caracteres
+                snprintf(filename, sizeof(filename), "IMG%05lu.JPG", (unsigned long)now % 100000);
                 
+                esp_err_t sd_err = bsp_sdcard_save_file(filename, fb->buf, fb->len);
+                if (sd_err == ESP_OK) {
+                            ESP_LOGI(TAG, "✅ Imagem visual salva no SD Card: %s", filename);
+                } else {
+                            ESP_LOGW(TAG, "⚠️ Falha ao salvar imagem visual no SD Card");
+                }
+            }
+
+            // Libera buffer da câmera
+            bsp_camera_release(fb);
+        } else {
+                    ESP_LOGE(TAG, "Erro ao capturar imagem visual");
+            gui_led_flash_error();
+        }
+
                 // Atualiza último horário capturado
                 last_captured_hour = timeinfo.tm_hour;
                 last_captured_minute = timeinfo.tm_min;
@@ -168,7 +182,12 @@ static void task_envia_foto_periodicamente(void *pvParameter) {
         }
 
         // Aguarda 30 segundos antes de verificar novamente
-        vTaskDelay(30000 / portTICK_PERIOD_MS);
+        // ✅ CORREÇÃO 3: Divide delay longo em múltiplos delays menores com resets
+        // Watchdog timeout é 5s, então dividimos 30s em 8 delays de ~4s cada
+        for (int i = 0; i < 8; i++) {
+            esp_task_wdt_reset();
+            vTaskDelay(3750 / portTICK_PERIOD_MS);  // ~3.75s * 8 = 30s
+        }
     }
 }
 
@@ -235,6 +254,10 @@ void app_main(void) {
         ESP_LOGW(TAG, "NTP não sincronizado. Usando tempo do sistema.");
     }
     
+    // ✅ CORREÇÃO 3: Watchdog já é inicializado automaticamente pelo ESP-IDF
+    // Não precisamos inicializar manualmente - apenas adicionar tasks
+    ESP_LOGI(TAG, "✅ Watchdog timer gerenciado pelo ESP-IDF (timeout: 5s)");
+    
     // Cria task periódica para captura e envio de imagens
     BaseType_t task_result = xTaskCreate(task_envia_foto_periodicamente, 
                                           "envia_foto_task", 
@@ -280,12 +303,17 @@ void app_main(void) {
             gui_led_set_state_wifi_connected();  // LED azul quando conectado
         }
         
+        // Loop principal não precisa resetar watchdog (não é task crítica)
+        // As tasks críticas já estão monitoradas pelo watchdog
         vTaskDelay(5000 / portTICK_PERIOD_MS); // Aguarda 5 segundos (igual ao N01/N02)
     }
 }
 
 // Task para captura e exibição de dados térmicos (agendamento baseado em horários)
 static void task_captura_termica(void *pvParameter) {
+    // ✅ CORREÇÃO 3: Adiciona task ao watchdog
+    esp_task_wdt_add(NULL);
+    
     // Array temporário na stack (pequeno, apenas 1 frame)
     float temps[APP_THERMAL_TOTAL];
     
@@ -306,6 +334,9 @@ static void task_captura_termica(void *pvParameter) {
     }
     
     while (true) {
+        // ✅ CORREÇÃO 3: Alimenta watchdog periodicamente
+        esp_task_wdt_reset();
+        
         // Log periódico da próxima aquisição (a cada 5 verificações = ~2.5 minutos)
         if (app_time_is_valid() && (log_counter % 5 == 0)) {
             time_t now = app_time_get_unix_timestamp();
@@ -346,28 +377,30 @@ static void task_captura_termica(void *pvParameter) {
             if (timeinfo.tm_hour != last_captured_hour || timeinfo.tm_min != last_captured_minute) {
                 ESP_LOGI(TAG, "🌡️ Horário agendado para captura térmica: %02d:%02d", 
                          timeinfo.tm_hour, timeinfo.tm_min);
-                
-                ESP_LOGI(TAG, "Tentando capturar frame térmico...");
-                
-                if (app_thermal_capture_frame(temps, pdMS_TO_TICKS(5000))) {
-                    contador_aquisicoes++;
-                    ESP_LOGI(TAG, "✅ Frame térmico capturado com sucesso! (Aquisição #%d)", contador_aquisicoes);
-                    
+        
+        ESP_LOGI(TAG, "Tentando capturar frame térmico...");
+        
+        // ✅ CORREÇÃO 3: Reset watchdog antes de captura (pode demorar até 5s)
+        esp_task_wdt_reset();
+        if (app_thermal_capture_frame(temps, pdMS_TO_TICKS(5000))) {
+            contador_aquisicoes++;
+            ESP_LOGI(TAG, "✅ Frame térmico capturado com sucesso! (Aquisição #%d)", contador_aquisicoes);
+            
                     // Calcula estatísticas
-                    float tmin = temps[0], tmax = temps[0], tavg = 0.0f;
-                    for (int i = 0; i < APP_THERMAL_TOTAL; i++) {
-                        if (temps[i] < tmin) tmin = temps[i];
-                        if (temps[i] > tmax) tmax = temps[i];
-                        tavg += temps[i];
-                    }
-                    tavg /= APP_THERMAL_TOTAL;
-                    
-                    ESP_LOGI(TAG, "=== Estatísticas Térmicas ===");
-                    ESP_LOGI(TAG, "Temperatura Mínima: %.2f°C", tmin);
-                    ESP_LOGI(TAG, "Temperatura Máxima: %.2f°C", tmax);
-                    ESP_LOGI(TAG, "Temperatura Média:  %.2f°C", tavg);
-                    ESP_LOGI(TAG, "================================");
-                    
+            float tmin = temps[0], tmax = temps[0], tavg = 0.0f;
+            for (int i = 0; i < APP_THERMAL_TOTAL; i++) {
+                if (temps[i] < tmin) tmin = temps[i];
+                if (temps[i] > tmax) tmax = temps[i];
+                tavg += temps[i];
+            }
+            tavg /= APP_THERMAL_TOTAL;
+            
+            ESP_LOGI(TAG, "=== Estatísticas Térmicas ===");
+            ESP_LOGI(TAG, "Temperatura Mínima: %.2f°C", tmin);
+            ESP_LOGI(TAG, "Temperatura Máxima: %.2f°C", tmax);
+            ESP_LOGI(TAG, "Temperatura Média:  %.2f°C", tavg);
+            ESP_LOGI(TAG, "================================");
+            
                     // Adiciona frame ao arquivo acumulativo na SPIFFS
                     size_t frame_size = APP_THERMAL_TOTAL * sizeof(float);
                     if (bsp_spiffs_is_mounted()) {
@@ -381,7 +414,7 @@ static void task_captura_termica(void *pvParameter) {
                                 ESP_LOGI(TAG, "📦 Limite da SPIFFS atingido (%d bytes). Migrando para SD card...", (int)current_size);
                                 
                                 // Migra dados da SPIFFS para SD card
-                                if (bsp_sdcard_is_mounted()) {
+                if (bsp_sdcard_is_mounted()) {
                                     // ✅ MELHORIA: Migração em chunks menores para reduzir uso de memória
                                     // Ao invés de carregar tudo na RAM, processa em pedaços menores
                                     // Isso evita problemas de OOM (Out Of Memory) quando há muitos frames
@@ -447,6 +480,17 @@ static void task_captura_termica(void *pvParameter) {
                                                         esp_err_t meta_ret = bsp_spiffs_read_thermal_metadata(timestamps, frame_count, &timestamps_read);
                                                         
                                                         if (meta_ret == ESP_OK && timestamps_read == frame_count) {
+                                                            // ✅ CORREÇÃO 2: Valida tamanho necessário antes de usar buffer fixo
+                                                            // Cada frame JSON: ~80 bytes ({"timestamp":...,"datetime":"..."})
+                                                            size_t json_size_needed = (timestamps_read * 80) + 100; // ~80 bytes por frame + overhead
+                                                            if (json_size_needed > 8192) {
+                                                                ESP_LOGE(TAG, "❌ Buffer insuficiente para %d timestamps (necessário: %d bytes)", 
+                                                                         (int)timestamps_read, (int)json_size_needed);
+                                                                free(timestamps);
+                                                                migration_success = false;
+                                                                break;
+                                                            }
+                                                            
                                                             // Gera JSON de metadados
                                                             char json_buffer[8192];
                                                             int json_len = snprintf(json_buffer, sizeof(json_buffer), "{\"frames\":[");
@@ -506,9 +550,10 @@ static void task_captura_termica(void *pvParameter) {
                                             }
                                         } else {
                                             ESP_LOGE(TAG, "❌ Falha ao abrir arquivo SPIFFS para migração");
+                                            free(chunk_buffer);  // ✅ CORREÇÃO: Libera buffer se fopen falhar
                                         }
                                         
-                                        free(chunk_buffer);
+                                        // Nota: chunk_buffer é liberado acima em todos os caminhos
                                     } else {
                                         ESP_LOGE(TAG, "❌ Falha ao alocar buffer para chunk de migração");
                                     }
@@ -535,11 +580,19 @@ static void task_captura_termica(void *pvParameter) {
         }
         
         // Aguarda 30 segundos antes de verificar novamente
-        vTaskDelay(30000 / portTICK_PERIOD_MS);
+        // ✅ CORREÇÃO 3: Divide delay longo em múltiplos delays menores com resets
+        // Watchdog timeout é 5s, então dividimos 30s em 8 delays de ~4s cada
+        for (int i = 0; i < 8; i++) {
+            esp_task_wdt_reset();
+            vTaskDelay(3750 / portTICK_PERIOD_MS);  // ~3.75s * 8 = 30s
+        }
     }
 }
 
 static void task_envio_termica(void *pvParameter) {
+    // ✅ CORREÇÃO 3: Adiciona task ao watchdog ANTES de qualquer operação
+    esp_task_wdt_add(NULL);
+    
     ESP_LOGI(TAG, "Task de envio térmico iniciada");
     
     // Buffer para um frame (3072 bytes)
@@ -562,17 +615,30 @@ static void task_envio_termica(void *pvParameter) {
     }
     
     while (true) {
+        // ✅ CORREÇÃO 3: Alimenta watchdog periodicamente
+        esp_task_wdt_reset();
+        
         // Verifica se Wi-Fi está conectado e servidor acessível
         if (!bsp_wifi_is_connected()) {
             ESP_LOGD(TAG, "🌐 Wi-Fi desconectado. Aguardando conexão...");
-            vTaskDelay(30000 / portTICK_PERIOD_MS);  // Aguarda 30s antes de tentar novamente
+            // ✅ CORREÇÃO 3: Divide delay longo em múltiplos delays menores com resets
+            // Watchdog timeout é 5s, então dividimos 30s em 8 delays de ~4s cada
+            for (int i = 0; i < 8; i++) {
+                esp_task_wdt_reset();
+                vTaskDelay(3750 / portTICK_PERIOD_MS);  // ~3.75s * 8 = 30s
+            }
             continue;
         }
         
         // Verifica se há arquivo acumulativo pendente
         if (!bsp_sdcard_is_mounted()) {
             ESP_LOGD(TAG, "💾 SD Card não montado. Aguardando...");
-            vTaskDelay(30000 / portTICK_PERIOD_MS);
+            // ✅ CORREÇÃO 3: Divide delay longo em múltiplos delays menores com resets
+            // Watchdog timeout é 5s, então dividimos 30s em 8 delays de ~4s cada
+            for (int i = 0; i < 8; i++) {
+                esp_task_wdt_reset();
+                vTaskDelay(3750 / portTICK_PERIOD_MS);  // ~3.75s * 8 = 30s
+            }
             continue;
         }
         
@@ -581,7 +647,12 @@ static void task_envio_termica(void *pvParameter) {
         if (file_size == 0) {
             // Nenhum arquivo pendente
             ESP_LOGD(TAG, "📤 Nenhum arquivo térmico pendente para envio");
-            vTaskDelay(60000 / portTICK_PERIOD_MS);  // Verifica a cada 60s
+            // ✅ CORREÇÃO 3: Divide delay longo em múltiplos delays menores com resets
+            // Watchdog timeout é 5s, então dividimos 60s em 15 delays de ~4s cada
+            for (int i = 0; i < 15; i++) {
+                esp_task_wdt_reset();
+                vTaskDelay(4000 / portTICK_PERIOD_MS);  // 4s * 15 = 60s
+            }
             continue;
         }
         
@@ -589,7 +660,12 @@ static void task_envio_termica(void *pvParameter) {
         size_t total_frames = file_size / frame_size;
         if (total_frames == 0) {
             ESP_LOGW(TAG, "⚠️ Arquivo térmico muito pequeno ou inválido");
-            vTaskDelay(60000 / portTICK_PERIOD_MS);
+            // ✅ CORREÇÃO 3: Divide delay longo em múltiplos delays menores com resets
+            // Watchdog timeout é 5s, então dividimos 60s em 15 delays de ~4s cada
+            for (int i = 0; i < 15; i++) {
+                esp_task_wdt_reset();
+                vTaskDelay(4000 / portTICK_PERIOD_MS);  // 4s * 15 = 60s
+            }
             continue;
         }
         
@@ -665,6 +741,8 @@ static void task_envio_termica(void *pvParameter) {
             ESP_LOGI(TAG, "📤 Enviando frame %lu/%d (timestamp: %ld)...", 
                      (unsigned long)(i + 1), (int)total_frames, (long)timestamp);
             
+            // ✅ CORREÇÃO 3: Reset watchdog antes de envio HTTP (pode demorar)
+            esp_task_wdt_reset();
             esp_err_t send_ret = app_http_send_thermal_frame(frame_buffer, timestamp);
             
             if (send_ret == ESP_OK) {
@@ -693,22 +771,60 @@ static void task_envio_termica(void *pvParameter) {
         if (frames_enviados >= total_frames && !envio_interrompido) {
             ESP_LOGI(TAG, "✅ Todos os frames foram enviados! (%d frames)", (int)total_frames);
             
-            // Renomeia arquivo para indicar que foi enviado
-            esp_err_t rename_ret = bsp_sdcard_rename_file(THERMAL_ACCUM_FILE_LOCAL, THERMAL_SENT_FILE);
-            if (rename_ret == ESP_OK) {
-                ESP_LOGI(TAG, "✅ Arquivo renomeado: %s -> %s", THERMAL_ACCUM_FILE_LOCAL, THERMAL_SENT_FILE);
+            // Verifica se arquivo de histórico já existe
+            size_t sent_file_size = bsp_sdcard_get_file_size(THERMAL_SENT_FILE);
+            
+            if (sent_file_size > 0) {
+                // Histórico existe: anexa THERML.BIN ao final de THERMS.BIN (preserva histórico)
+                ESP_LOGI(TAG, "📦 Arquivo de histórico existe (%d bytes). Anexando novos dados...", (int)sent_file_size);
                 
-                // Renomeia metadados também
-                bsp_sdcard_rename_file(THERMAL_ACCUM_FILE_META_LOCAL, THERMAL_SENT_META_FILE);
+                esp_err_t append_ret = bsp_sdcard_append_file_to_file(
+                    THERMAL_ACCUM_FILE_LOCAL, THERMAL_SENT_FILE);
                 
-                // Remove arquivo de índice (não precisa mais)
-                char idx_path[128];
-                snprintf(idx_path, sizeof(idx_path), "%s/%s", SD_MOUNT_POINT, THERMAL_INDEX_FILE);
-                unlink(idx_path);  // Remove arquivo de índice
-                
-                ESP_LOGI(TAG, "✅ Arquivo térmico completamente enviado e marcado como enviado");
+                if (append_ret == ESP_OK) {
+                    // Anexa metadados também
+                    esp_err_t meta_append_ret = bsp_sdcard_append_file_to_file(
+                        THERMAL_ACCUM_FILE_META_LOCAL, THERMAL_SENT_META_FILE);
+                    
+                    if (meta_append_ret == ESP_OK) {
+                        // Remove arquivo local (já foi anexado ao histórico)
+                        char local_path[128];
+                        snprintf(local_path, sizeof(local_path), "%s/%s", SD_MOUNT_POINT, THERMAL_ACCUM_FILE_LOCAL);
+                        unlink(local_path);
+                        snprintf(local_path, sizeof(local_path), "%s/%s", SD_MOUNT_POINT, THERMAL_ACCUM_FILE_META_LOCAL);
+                        unlink(local_path);
+                        
+                        // Remove arquivo de índice (não precisa mais, THERML.BIN foi processado)
+                        snprintf(local_path, sizeof(local_path), "%s/%s", SD_MOUNT_POINT, THERMAL_INDEX_FILE);
+                        unlink(local_path);
+                        
+                        size_t new_total_size = bsp_sdcard_get_file_size(THERMAL_SENT_FILE);
+                        ESP_LOGI(TAG, "✅ Dados anexados ao histórico. Total acumulado: %d bytes (%d frames)", 
+                                 (int)new_total_size, (int)(new_total_size / (APP_THERMAL_TOTAL * sizeof(float))));
+                    } else {
+                        ESP_LOGW(TAG, "⚠️ Falha ao anexar metadados ao histórico");
+                    }
+                } else {
+                    ESP_LOGW(TAG, "⚠️ Falha ao anexar dados ao histórico");
+                }
             } else {
-                ESP_LOGW(TAG, "⚠️ Falha ao renomear arquivo após envio completo");
+                // Primeira vez: renomeia normalmente (cria arquivo de histórico)
+                esp_err_t rename_ret = bsp_sdcard_rename_file(THERMAL_ACCUM_FILE_LOCAL, THERMAL_SENT_FILE);
+                if (rename_ret == ESP_OK) {
+                    ESP_LOGI(TAG, "✅ Arquivo renomeado: %s -> %s", THERMAL_ACCUM_FILE_LOCAL, THERMAL_SENT_FILE);
+                    
+                    // Renomeia metadados também
+                    bsp_sdcard_rename_file(THERMAL_ACCUM_FILE_META_LOCAL, THERMAL_SENT_META_FILE);
+                    
+                    // Remove arquivo de índice (não precisa mais)
+                    char idx_path[128];
+                    snprintf(idx_path, sizeof(idx_path), "%s/%s", SD_MOUNT_POINT, THERMAL_INDEX_FILE);
+                    unlink(idx_path);  // Remove arquivo de índice
+                    
+                    ESP_LOGI(TAG, "✅ Arquivo térmico completamente enviado e marcado como enviado");
+        } else {
+                    ESP_LOGW(TAG, "⚠️ Falha ao renomear arquivo após envio completo");
+                }
             }
         } else if (frames_enviados_nesta_sessao > 0) {
             ESP_LOGI(TAG, "📊 Progresso: %lu/%d frames enviados (salvo no índice)", 
@@ -718,10 +834,20 @@ static void task_envio_termica(void *pvParameter) {
         // Aguarda antes de verificar novamente (60s se completo, 30s se interrompido)
         if (envio_interrompido) {
             ESP_LOGI(TAG, "⏳ Aguardando 30s antes de retomar envio...");
-            vTaskDelay(30000 / portTICK_PERIOD_MS);
+            // ✅ CORREÇÃO 3: Divide delay longo em múltiplos delays menores com resets
+            // Watchdog timeout é 5s, então dividimos 30s em 8 delays de ~4s cada
+            for (int i = 0; i < 8; i++) {
+                esp_task_wdt_reset();
+                vTaskDelay(3750 / portTICK_PERIOD_MS);  // ~3.75s * 8 = 30s
+            }
         } else {
             ESP_LOGI(TAG, "⏳ Aguardando 60s antes de verificar novos arquivos...");
-            vTaskDelay(60000 / portTICK_PERIOD_MS);
+            // ✅ CORREÇÃO 3: Divide delay longo em múltiplos delays menores com resets
+            // Watchdog timeout é 5s, então dividimos 60s em 15 delays de ~4s cada
+            for (int i = 0; i < 15; i++) {
+                esp_task_wdt_reset();
+                vTaskDelay(4000 / portTICK_PERIOD_MS);  // 4s * 15 = 60s
+            }
         }
     }
     
