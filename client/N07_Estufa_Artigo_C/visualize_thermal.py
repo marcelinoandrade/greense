@@ -399,6 +399,141 @@ def create_animation(frames, output_path, fps=1):
     plt.close()
 
 
+def find_thermal_files(directory=".", pattern="*.BIN"):
+    """
+    Encontra todos os arquivos térmicos no diretório especificado
+    
+    Args:
+        directory: Diretório para buscar (padrão: diretório atual)
+        pattern: Padrão de busca (padrão: *.BIN)
+    
+    Returns:
+        Lista de tuplas (arquivo_bin, arquivo_meta) onde:
+        - arquivo_bin: Caminho para arquivo .BIN
+        - arquivo_meta: Caminho para arquivo de metadados .TXT (ou None)
+    """
+    import glob
+    
+    directory = Path(directory)
+    bin_files = []
+    
+    # Busca arquivos .BIN
+    if pattern == "*.BIN":
+        # Busca padrões comuns: THM*.BIN, THERM*.BIN, THERML.BIN, THERMS.BIN
+        patterns = [
+            "THM*.BIN",
+            "THERM*.BIN",
+            "THERML.BIN",
+            "THERMS.BIN"
+        ]
+        for p in patterns:
+            bin_files.extend(glob.glob(str(directory / p)))
+    else:
+        bin_files.extend(glob.glob(str(directory / pattern)))
+    
+    # Remove duplicatas e ordena
+    bin_files = sorted(set(bin_files))
+    
+    # Para cada arquivo .BIN, tenta encontrar arquivo de metadados correspondente
+    result = []
+    for bin_file in bin_files:
+        bin_path = Path(bin_file)
+        meta_file = None
+        
+        # Tenta encontrar arquivo de metadados:
+        # THM#####L.BIN -> THM#####M.TXT
+        # THM#####S.BIN -> THM#####M.TXT
+        # THERML.BIN -> THERMLM.TXT
+        # THERMS.BIN -> THERMSM.TXT
+        stem = bin_path.stem
+        if stem.endswith('L') or stem.endswith('S'):
+            # Formato THM#####L ou THM#####S
+            meta_stem = stem[:-1] + 'M'
+        elif stem == 'THERML':
+            meta_stem = 'THERMLM'
+        elif stem == 'THERMS':
+            meta_stem = 'THERMSM'
+        else:
+            # Tenta adicionar 'M' ao final
+            meta_stem = stem + 'M'
+        
+        # Tenta .TXT e .txt
+        for ext in ['.TXT', '.txt']:
+            meta_path = bin_path.parent / (meta_stem + ext)
+            if meta_path.exists():
+                meta_file = str(meta_path)
+                break
+        
+        result.append((str(bin_path), meta_file))
+    
+    return result
+
+
+def list_thermal_files(directory=".", show_stats=True):
+    """
+    Lista todos os arquivos térmicos encontrados com informações
+    
+    Args:
+        directory: Diretório para buscar
+        show_stats: Se True, mostra estatísticas dos arquivos
+    """
+    files = find_thermal_files(directory)
+    
+    if not files:
+        print(f"❌ Nenhum arquivo térmico encontrado em: {directory}")
+        return files
+    
+    print(f"\n📂 Arquivos térmicos encontrados em: {directory}")
+    print("="*80)
+    
+    total_size = 0
+    total_frames = 0
+    
+    for i, (bin_file, meta_file) in enumerate(files, 1):
+        bin_path = Path(bin_file)
+        file_size = bin_path.stat().st_size if bin_path.exists() else 0
+        total_size += file_size
+        
+        # Tenta calcular número de frames
+        num_frames_old = file_size // (THERMAL_TOTAL * FLOAT_SIZE)  # Formato antigo
+        num_frames_new = file_size // FRAME_SIZE  # Formato novo
+        
+        # Usa o que fizer mais sentido
+        if file_size % FRAME_SIZE == 0:
+            num_frames = num_frames_new
+            format_type = "novo (com timestamp)"
+        elif file_size % (THERMAL_TOTAL * FLOAT_SIZE) == 0:
+            num_frames = num_frames_old
+            format_type = "antigo (sem timestamp)"
+        else:
+            num_frames = max(num_frames_old, num_frames_new)
+            format_type = "desconhecido"
+        
+        total_frames += num_frames
+        
+        print(f"\n{i}. {bin_path.name}")
+        print(f"   📁 Caminho: {bin_file}")
+        print(f"   📊 Tamanho: {file_size:,} bytes ({file_size/1024:.2f} KB)")
+        print(f"   🎬 Frames estimados: {num_frames} ({format_type})")
+        
+        if meta_file:
+            meta_path = Path(meta_file)
+            meta_size = meta_path.stat().st_size if meta_path.exists() else 0
+            print(f"   📄 Metadados: {meta_path.name} ({meta_size:,} bytes)")
+        else:
+            print(f"   📄 Metadados: ❌ Não encontrado")
+    
+    if show_stats:
+        print("\n" + "="*80)
+        print(f"📈 Estatísticas Gerais:")
+        print(f"   Total de arquivos: {len(files)}")
+        print(f"   Tamanho total: {total_size:,} bytes ({total_size/1024:.2f} KB)")
+        print(f"   Frames totais estimados: {total_frames}")
+        print("="*80)
+    
+    return files
+
+
 def main():
     parser = argparse.ArgumentParser(
         description='Visualiza dados térmicos da câmera MLX90640',
@@ -407,6 +542,15 @@ def main():
 Exemplos:
   # Visualizar um arquivo
   python visualize_thermal.py THM12345.BIN
+  
+  # Listar todos os arquivos térmicos no diretório
+  python visualize_thermal.py --list
+  
+  # Listar arquivos em diretório específico (ex: SD card)
+  python visualize_thermal.py --list --directory /media/sdcard
+  
+  # Processar todos os arquivos encontrados
+  python visualize_thermal.py --list --process-all --output-dir ./output
   
   # Visualizar e salvar imagens
   python visualize_thermal.py THM12345.BIN --output-dir ./output
@@ -419,7 +563,14 @@ Exemplos:
         """
     )
     
-    parser.add_argument('file', type=str, help='Arquivo binário .BIN para processar')
+    parser.add_argument('file', type=str, nargs='?', default=None,
+                       help='Arquivo binário .BIN para processar (opcional se usar --list)')
+    parser.add_argument('--list', action='store_true',
+                       help='Lista todos os arquivos térmicos encontrados no diretório')
+    parser.add_argument('--directory', type=str, default='.',
+                       help='Diretório para buscar arquivos (padrão: diretório atual)')
+    parser.add_argument('--process-all', action='store_true',
+                       help='Processa todos os arquivos encontrados (requer --list)')
     parser.add_argument('--frames', type=int, default=3, 
                        help='Número de frames no arquivo (THERMAL_SAVE_INTERVAL, padrão: 3)')
     parser.add_argument('--format', type=str, choices=['auto', 'old', 'new'], default='auto',
@@ -436,9 +587,76 @@ Exemplos:
     
     args = parser.parse_args()
     
+    # Modo listagem
+    if args.list:
+        files = list_thermal_files(args.directory, show_stats=True)
+        
+        if args.process_all:
+            if not files:
+                print("❌ Nenhum arquivo para processar")
+                return
+            
+            print(f"\n🔄 Processando {len(files)} arquivo(s)...")
+            print("="*80)
+            
+            for i, (bin_file, meta_file) in enumerate(files, 1):
+                print(f"\n📂 Processando arquivo {i}/{len(files)}: {Path(bin_file).name}")
+                print("-"*80)
+                
+                try:
+                    # Determina formato baseado no argumento
+                    prefer_old = True
+                    if args.format == 'new':
+                        prefer_old = False
+                    elif args.format == 'old':
+                        prefer_old = True
+                    
+                    # Lê os frames
+                    frames = read_thermal_file(bin_file, args.frames, 
+                                             auto_detect=(args.format == 'auto'), 
+                                             prefer_old_format=prefer_old)
+                    
+                    if not frames:
+                        print(f"⚠️ Nenhum frame válido encontrado em {bin_file}")
+                        continue
+                    
+                    # Cria diretório de saída específico para este arquivo
+                    base_name = Path(bin_file).stem
+                    file_output_dir = None
+                    if args.output_dir:
+                        file_output_dir = os.path.join(args.output_dir, base_name)
+                    
+                    # Visualiza os frames
+                    visualize_all_frames(frames, file_output_dir, base_name)
+                    
+                    # Cria animação GIF se solicitado (com nome único)
+                    if args.gif:
+                        gif_name = f"{base_name}_{i:03d}.gif"
+                        gif_path = os.path.join(args.output_dir, gif_name) if args.output_dir else gif_name
+                        print(f"\n🎬 Criando animação GIF: {gif_path}")
+                        create_animation(frames, gif_path)
+                    
+                    print(f"✅ Arquivo {i}/{len(files)} processado com sucesso")
+                    
+                except Exception as e:
+                    print(f"❌ Erro ao processar {bin_file}: {e}")
+                    import traceback
+                    traceback.print_exc()
+                    continue
+            
+            print("\n" + "="*80)
+            print("✅ Processamento em lote concluído!")
+        return
+    
+    # Modo processamento de arquivo único
+    if not args.file:
+        parser.error("É necessário especificar um arquivo ou usar --list")
+        return
+    
     # Verifica se o arquivo existe
     if not os.path.exists(args.file):
         print(f"❌ Erro: Arquivo não encontrado: {args.file}")
+        print(f"💡 Dica: Use --list para ver arquivos disponíveis")
         return
     
     print(f"📂 Lendo arquivo: {args.file}")

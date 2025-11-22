@@ -252,6 +252,28 @@ json_len += snprintf(json_buffer + json_len, remaining_size, ...);
 
 **Implementação:**
 ```c
+// Callback HTTP robusto
+static esp_err_t http_event_handler(esp_http_client_event_t *evt)
+{
+    // Reset watchdog em TODOS os eventos para garantir resets frequentes
+    esp_task_wdt_reset();
+    
+    switch(evt->event_id) {
+        case HTTP_EVENT_ERROR:
+        case HTTP_EVENT_ON_CONNECTED:
+        case HTTP_EVENT_HEADER_SENT:
+        case HTTP_EVENT_ON_HEADER:
+        case HTTP_EVENT_ON_DATA:
+        case HTTP_EVENT_ON_FINISH:
+            ESP_LOGD(TAG, "HTTP_EVENT_%d: %d bytes", evt->event_id, evt->data_len);
+            break;
+        default:
+            break;
+    }
+    return ESP_OK;
+}
+
+// Retry com backoff exponencial
 const int max_retries = 3;
 esp_err_t err = ESP_FAIL;
 int status_code = 0;
@@ -263,7 +285,15 @@ for (int attempt = 0; attempt < max_retries; attempt++) {
         vTaskDelay(pdMS_TO_TICKS(backoff_ms));
     }
     
+    // Reset watchdog antes de operação longa
+    esp_task_wdt_reset();
+    
+    // Usa perform normalmente, callback HTTP reseta watchdog periodicamente
     err = esp_http_client_perform(client);
+    
+    // Reset watchdog após operação (mesmo se falhou)
+    esp_task_wdt_reset();
+    
     if (err == ESP_OK) {
         status_code = esp_http_client_get_status_code(client);
         if (status_code >= 200 && status_code < 300) {
@@ -282,6 +312,9 @@ for (int attempt = 0; attempt < max_retries; attempt++) {
 - ✅ Validação de status HTTP 2xx
 - ✅ Logs informativos
 - ✅ Não retenta erros 4xx/5xx (correto)
+- ✅ **Callback HTTP robusto** reseta watchdog em todos os eventos
+- ✅ **Uso de `esp_http_client_perform()`** para gerenciamento automático
+- ✅ **Timeout de 30s** sem resetar o sistema
 
 **Nota:** ⭐⭐⭐⭐⭐ (5/5)
 

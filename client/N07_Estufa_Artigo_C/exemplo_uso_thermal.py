@@ -2,9 +2,10 @@
 """
 Exemplo simples de uso do script de visualização térmica
 Formato atualizado: arquivos contêm timestamps Unix para cada frame
+Suporta arquivos do cartão SD: THERML.BIN, THERMS.BIN, etc.
 """
 
-from visualize_thermal import read_thermal_file, visualize_thermal_frame
+from visualize_thermal import read_thermal_file, visualize_thermal_frame, find_thermal_files, list_thermal_files
 import numpy as np
 
 # Exemplo 1: Ler e visualizar um arquivo
@@ -119,6 +120,29 @@ def exemplo_analise():
         print(f"❌ Arquivo não encontrado: {arquivo}")
 
 
+# Exemplo 4: Listar arquivos do cartão SD
+def exemplo_listar_sdcard():
+    """Exemplo de listagem de arquivos no cartão SD"""
+    print("\n📂 Exemplo 4: Listar arquivos do cartão SD")
+    
+    # Caminho do cartão SD (ajuste conforme seu sistema)
+    # Linux: /media/sdcard ou /mnt/sdcard
+    # Windows: E:\ ou D:\
+    # macOS: /Volumes/SDCARD
+    sdcard_path = "/media/sdcard"  # Ajuste conforme necessário
+    
+    # Lista todos os arquivos térmicos
+    print(f"🔍 Buscando arquivos em: {sdcard_path}")
+    files = list_thermal_files(sdcard_path, show_stats=True)
+    
+    if files:
+        print(f"\n✅ Encontrados {len(files)} arquivo(s) térmico(s)")
+        print("\n💡 Dica: Use visualize_thermal.py --list --process-all para processar todos")
+    else:
+        print("❌ Nenhum arquivo encontrado")
+        print("💡 Dica: Verifique o caminho do cartão SD ou use o diretório atual")
+
+
 if __name__ == '__main__':
     print("=" * 60)
     print("Exemplos de Uso - Visualização de Dados Térmicos")
@@ -127,8 +151,9 @@ if __name__ == '__main__':
     # Descomente o exemplo que deseja executar:
     
     #exemplo_basico()
-    exemplo_multiplos_arquivos()
+    #exemplo_multiplos_arquivos()
     #exemplo_analise()
+    exemplo_listar_sdcard()
     
     print("\n💡 Dica: Descomente os exemplos no código para executá-los")
 
