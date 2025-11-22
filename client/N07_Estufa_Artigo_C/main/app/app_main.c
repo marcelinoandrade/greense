@@ -7,6 +7,7 @@
 #include "../bsp/bsp_wifi.h"
 #include "../bsp/bsp_camera.h"
 #include "../bsp/bsp_sdcard.h"
+#include "../bsp/bsp_spiffs.h"
 #include "../bsp/bsp_uart.h"
 #include "../bsp/bsp_pins.h"
 #include "../gui/gui_led.h"
@@ -20,11 +21,14 @@
 #include <time.h>
 #include <string.h>
 #include <stdlib.h>
+#include <unistd.h>
+#include <errno.h>
 
 #define TAG "APP_MAIN"
 
-// Declaração da task de captura térmica
+// Declaração das tasks térmicas
 static void task_captura_termica(void *pvParameter);
+static void task_envio_termica(void *pvParameter);
 
 // Função auxiliar para verificar se é hora de capturar baseado no agendamento
 // schedule: array de schedule_time_t com formato [H1:M1, H2:M2, ..., Hn:Mn]
@@ -198,6 +202,11 @@ void app_main(void) {
         ESP_LOGW(TAG, "SD Card não disponível. Continuando sem armazenamento local.");
     }
     
+    // Inicializa SPIFFS para buffer de dados parciais térmicos
+    if (bsp_spiffs_init() != ESP_OK) {
+        ESP_LOGW(TAG, "SPIFFS não inicializado. Parciais não serão protegidas contra reboot.");
+    }
+    
     // Inicializa câmera
     if (bsp_camera_init() != ESP_OK) {
         ESP_LOGE(TAG, "Falha na inicialização da câmera. Reiniciando...");
@@ -248,6 +257,15 @@ void app_main(void) {
                 NULL);
     ESP_LOGI(TAG, "Task de captura térmica criada");
     
+    // Task para envio de dados térmicos pendentes para servidor
+    xTaskCreate(task_envio_termica, 
+                "termica_send_task", 
+                16384,  // Stack maior para JSON e buffers
+                NULL, 
+                3,  // Prioridade menor que captura
+                NULL);
+    ESP_LOGI(TAG, "Task de envio térmico criada");
+    
     // Loop principal (monitoramento - igual ao projeto N01/N02)
     while (true) {
         // Verifica conexão Wi-Fi
@@ -271,25 +289,21 @@ static void task_captura_termica(void *pvParameter) {
     // Array temporário na stack (pequeno, apenas 1 frame)
     float temps[APP_THERMAL_TOTAL];
     
-    // Buffer grande alocado no heap/PSRAM (não na stack!)
-    float *temps_buffer = (float *)heap_caps_malloc(
-        APP_THERMAL_TOTAL * THERMAL_SAVE_INTERVAL * sizeof(float),
-        MALLOC_CAP_SPIRAM | MALLOC_CAP_8BIT);
-    
-    if (!temps_buffer) {
-        ESP_LOGE(TAG, "Falha ao alocar buffer térmico. Reiniciando...");
-        vTaskDelay(pdMS_TO_TICKS(5000));
-        esp_restart();
-    }
-    
     int contador_aquisicoes = 0;
-    int buffer_index = 0;
     int last_captured_hour = -1;
     int last_captured_minute = -1;
     int log_counter = 0;  // Contador para logs periódicos
     
     ESP_LOGI(TAG, "Task de captura térmica iniciada");
-    ESP_LOGI(TAG, "Configuração: salvando a cada %d registros térmicos", THERMAL_SAVE_INTERVAL);
+    ESP_LOGI(TAG, "Configuração: arquivo acumulativo SPIFFS (limite: %d bytes)", (int)THERMAL_SPIFFS_MAX_SIZE);
+    
+    // Verifica se há dados acumulativos na SPIFFS que precisam ser migrados
+    if (bsp_spiffs_is_mounted()) {
+        size_t accum_size = bsp_spiffs_get_thermal_file_size();
+        if (accum_size > 0) {
+            ESP_LOGI(TAG, "📦 Encontrados %d bytes no arquivo acumulativo SPIFFS (será migrado quando atingir limite)", (int)accum_size);
+        }
+    }
     
     while (true) {
         // Log periódico da próxima aquisição (a cada 5 verificações = ~2.5 minutos)
@@ -339,7 +353,7 @@ static void task_captura_termica(void *pvParameter) {
                     contador_aquisicoes++;
                     ESP_LOGI(TAG, "✅ Frame térmico capturado com sucesso! (Aquisição #%d)", contador_aquisicoes);
                     
-                    // Calcula estatísticas (dados já estão em RAM interna - array temps na stack)
+                    // Calcula estatísticas
                     float tmin = temps[0], tmax = temps[0], tavg = 0.0f;
                     for (int i = 0; i < APP_THERMAL_TOTAL; i++) {
                         if (temps[i] < tmin) tmin = temps[i];
@@ -348,44 +362,168 @@ static void task_captura_termica(void *pvParameter) {
                     }
                     tavg /= APP_THERMAL_TOTAL;
                     
-                    // Exibe apenas estatísticas (sem matriz completa)
                     ESP_LOGI(TAG, "=== Estatísticas Térmicas ===");
                     ESP_LOGI(TAG, "Temperatura Mínima: %.2f°C", tmin);
                     ESP_LOGI(TAG, "Temperatura Máxima: %.2f°C", tmax);
                     ESP_LOGI(TAG, "Temperatura Média:  %.2f°C", tavg);
                     ESP_LOGI(TAG, "================================");
                     
-                    // Acumula dados no buffer (copia de RAM interna para PSRAM)
-                    memcpy(&temps_buffer[buffer_index * APP_THERMAL_TOTAL], temps, 
-                           sizeof(float) * APP_THERMAL_TOTAL);
-                    buffer_index++;
-                    
-                    // A cada THERMAL_SAVE_INTERVAL aquisições, salva arquivo binário no SD card
-                    if (buffer_index >= THERMAL_SAVE_INTERVAL) {
-                        if (bsp_sdcard_is_mounted()) {
-                            // Formato 8.3 simples: THM#####.BIN (8 caracteres no nome + .BIN)
-                            char filename[16];
-                            time_t now = time(NULL);
-                            // Formato: THM + 5 dígitos do timestamp = 8 caracteres
-                            snprintf(filename, sizeof(filename), "THM%05lu.BIN", (unsigned long)now % 100000);
+                    // Adiciona frame ao arquivo acumulativo na SPIFFS
+                    size_t frame_size = APP_THERMAL_TOTAL * sizeof(float);
+                    if (bsp_spiffs_is_mounted()) {
+                        esp_err_t append_ret = bsp_spiffs_append_thermal_frame(temps, frame_size, now);
+                        if (append_ret == ESP_OK) {
+                            ESP_LOGD(TAG, "✅ Frame adicionado ao arquivo acumulativo SPIFFS");
                             
-                            // Salva dados binários acumulados (array de floats)
-                            size_t total_size = sizeof(float) * APP_THERMAL_TOTAL * THERMAL_SAVE_INTERVAL;
-                            esp_err_t ret = bsp_sdcard_save_file(filename, (const uint8_t*)temps_buffer, total_size);
-                            if (ret == ESP_OK) {
-                                ESP_LOGI(TAG, "✅ Arquivo térmico salvo: %s (%d registros, %d bytes)", 
-                                         filename, THERMAL_SAVE_INTERVAL, (int)total_size);
+                            // Verifica se atingiu o limite
+                            size_t current_size = bsp_spiffs_get_thermal_file_size();
+                            if (current_size >= THERMAL_SPIFFS_MAX_SIZE) {
+                                ESP_LOGI(TAG, "📦 Limite da SPIFFS atingido (%d bytes). Migrando para SD card...", (int)current_size);
+                                
+                                // Migra dados da SPIFFS para SD card
+                                if (bsp_sdcard_is_mounted()) {
+                                    // ✅ MELHORIA: Migração em chunks menores para reduzir uso de memória
+                                    // Ao invés de carregar tudo na RAM, processa em pedaços menores
+                                    // Isso evita problemas de OOM (Out Of Memory) quando há muitos frames
+                                    size_t chunk_size = THERMAL_MIGRATION_CHUNK_SIZE;
+                                    size_t total_migrated = 0;
+                                    bool migration_success = true;
+                                    
+                                    ESP_LOGI(TAG, "📊 Migrando %d bytes em chunks de %d bytes", 
+                                             (int)current_size, (int)chunk_size);
+                                    
+                                    // Aloca buffer para chunk (muito menor que carregar tudo)
+                                    uint8_t *chunk_buffer = malloc(chunk_size);
+                                    if (chunk_buffer) {
+                                        // Lê arquivo da SPIFFS em chunks e migra para SD card
+                                        FILE *spiffs_file = fopen("/spiffs/thermal_accum.bin", "rb");
+                                        if (spiffs_file) {
+                                            size_t bytes_read_chunk = 0;
+                                            
+                                            while ((bytes_read_chunk = fread(chunk_buffer, 1, chunk_size, spiffs_file)) > 0 && migration_success) {
+                                                // Obtém tamanho do arquivo SD antes do append (para verificação)
+                                                size_t sd_size_before = bsp_sdcard_get_file_size(THERMAL_ACCUM_FILE_LOCAL);
+                                                
+                                                // Adiciona chunk ao arquivo acumulativo no SD card
+                                                esp_err_t append_ret = bsp_sdcard_append_file(THERMAL_ACCUM_FILE_LOCAL, chunk_buffer, bytes_read_chunk);
+                                                
+                                                if (append_ret == ESP_OK) {
+                                                    // ✅ MELHORIA: Verificação read-after-write (garante integridade)
+                                                    size_t sd_size_after = bsp_sdcard_get_file_size(THERMAL_ACCUM_FILE_LOCAL);
+                                                    if (sd_size_after >= sd_size_before + bytes_read_chunk) {
+                                                        // Verifica integridade dos dados escritos lendo de volta
+                                                        esp_err_t verify_ret = bsp_sdcard_verify_write(THERMAL_ACCUM_FILE_LOCAL, chunk_buffer, bytes_read_chunk, sd_size_before);
+                                                        if (verify_ret == ESP_OK) {
+                                                            total_migrated += bytes_read_chunk;
+                                                            ESP_LOGD(TAG, "✅ Chunk migrado e verificado: %d bytes (total: %d/%d)", 
+                                                                     (int)bytes_read_chunk, (int)total_migrated, (int)current_size);
+                                                        } else {
+                                                            ESP_LOGE(TAG, "❌ Falha na verificação read-after-write do chunk");
+                                                            migration_success = false;
+                                                        }
+                                                    } else {
+                                                        ESP_LOGE(TAG, "❌ Tamanho do arquivo SD incorreto após append (antes: %d, depois: %d, esperado: %d)", 
+                                                                 (int)sd_size_before, (int)sd_size_after, (int)(sd_size_before + bytes_read_chunk));
+                                                        migration_success = false;
+                                                    }
+                                                } else {
+                                                    ESP_LOGE(TAG, "❌ Falha ao adicionar chunk ao SD card");
+                                                    migration_success = false;
+                                                }
+                                            }
+                                            
+                                            fclose(spiffs_file);
+                                            
+                                            // ✅ MELHORIA: Valida checksum total migrado
+                                            if (migration_success && total_migrated == current_size) {
+                                                ESP_LOGI(TAG, "✅ Dados migrados com sucesso: %d bytes (checksum validado)", (int)total_migrated);
+                                                
+                                                // Lê e migra metadados (timestamps)
+                                                size_t frame_count = total_migrated / frame_size;
+                                                if (frame_count > 0) {
+                                                    time_t *timestamps = malloc(frame_count * sizeof(time_t));
+                                                    if (timestamps) {
+                                                        size_t timestamps_read = 0;
+                                                        esp_err_t meta_ret = bsp_spiffs_read_thermal_metadata(timestamps, frame_count, &timestamps_read);
+                                                        
+                                                        if (meta_ret == ESP_OK && timestamps_read == frame_count) {
+                                                            // Gera JSON de metadados
+                                                            char json_buffer[8192];
+                                                            int json_len = snprintf(json_buffer, sizeof(json_buffer), "{\"frames\":[");
+                                                            
+                                                            for (size_t i = 0; i < timestamps_read && json_len < (int)sizeof(json_buffer) - 150; i++) {
+                                                                struct tm timeinfo_meta;
+                                                                localtime_r(&timestamps[i], &timeinfo_meta);
+                                                                
+                                                                char datetime_str[32];
+                                                                strftime(datetime_str, sizeof(datetime_str), "%Y-%m-%d %H:%M:%S", &timeinfo_meta);
+                                                                
+                                                                json_len += snprintf(json_buffer + json_len, sizeof(json_buffer) - json_len,
+                                                                    "%s{\"timestamp\":%ld,\"datetime\":\"%s\"}",
+                                                                    (i > 0) ? "," : "", (long)timestamps[i], datetime_str);
+                                                            }
+                                                            
+                                                            json_len += snprintf(json_buffer + json_len, sizeof(json_buffer) - json_len, "]}\n");
+                                                            
+                                                            // Adiciona metadados ao arquivo acumulativo no SD card
+                                                            esp_err_t meta_append_ret = bsp_sdcard_append_file(THERMAL_ACCUM_FILE_META_LOCAL, (const uint8_t*)json_buffer, json_len);
+                                                            
+                                                            // ✅ MELHORIA: Verifica metadados também
+                                                            if (meta_append_ret == ESP_OK) {
+                                                                esp_err_t meta_verify_ret = bsp_sdcard_verify_write(THERMAL_ACCUM_FILE_META_LOCAL, (const uint8_t*)json_buffer, json_len, 0);
+                                                                if (meta_verify_ret == ESP_OK) {
+                                                                    ESP_LOGI(TAG, "✅ Metadados migrados e verificados: %d timestamps", (int)timestamps_read);
+                                                                    
+                                                                    // ✅ MELHORIA: Limpa SPIFFS APENAS após confirmação completa (dados + metadados)
+                                                                    esp_err_t clear_ret = bsp_spiffs_clear_thermal_file();
+                                                                    if (clear_ret == ESP_OK) {
+                                                                        ESP_LOGI(TAG, "✅ Arquivo acumulativo SPIFFS limpo após migração completa e verificada");
+                                                                    } else {
+                                                                        ESP_LOGW(TAG, "⚠️ Falha ao limpar arquivo acumulativo SPIFFS");
+                                                                    }
+                                                                } else {
+                                                                    ESP_LOGE(TAG, "❌ Falha na verificação dos metadados. SPIFFS NÃO será limpo.");
+                                                                    migration_success = false;
+                                                                }
+                                                            } else {
+                                                                ESP_LOGE(TAG, "❌ Falha ao adicionar metadados ao SD card. SPIFFS NÃO será limpo.");
+                                                                migration_success = false;
+                                                            }
+                                                        } else {
+                                                            ESP_LOGE(TAG, "❌ Falha ao ler metadados ou quantidade incorreta. SPIFFS NÃO será limpo.");
+                                                            migration_success = false;
+                                                        }
+                                                        
+                                                        free(timestamps);
+                                                    }
+                                                } else {
+                                                    ESP_LOGE(TAG, "❌ Frame count inválido. SPIFFS NÃO será limpo.");
+                                                    migration_success = false;
+                                                }
+                                            } else {
+                                                ESP_LOGE(TAG, "❌ Migração incompleta. SPIFFS NÃO será limpo.");
+                                                ESP_LOGE(TAG, "   Migrado: %d bytes, Esperado: %d bytes", (int)total_migrated, (int)current_size);
+                                            }
+                                        } else {
+                                            ESP_LOGE(TAG, "❌ Falha ao abrir arquivo SPIFFS para migração");
+                                        }
+                                        
+                                        free(chunk_buffer);
+                                    } else {
+                                        ESP_LOGE(TAG, "❌ Falha ao alocar buffer para chunk de migração");
+                                    }
+                                } else {
+                                    ESP_LOGW(TAG, "⚠️ SD Card não disponível. Dados mantidos na SPIFFS até SD estar disponível");
+                                }
                             } else {
-                                ESP_LOGE(TAG, "❌ Falha ao salvar arquivo térmico: %s", filename);
+                                ESP_LOGD(TAG, "📊 Tamanho atual SPIFFS: %d / %d bytes", (int)current_size, (int)THERMAL_SPIFFS_MAX_SIZE);
                             }
                         } else {
-                            ESP_LOGW(TAG, "⚠️ SD Card não disponível. Não foi possível salvar arquivo térmico.");
+                            ESP_LOGE(TAG, "❌ Falha ao adicionar frame ao arquivo acumulativo SPIFFS");
                         }
-                        
-                        // Reseta o buffer
-                        buffer_index = 0;
+                    } else {
+                        ESP_LOGW(TAG, "⚠️ SPIFFS não montado. Frame não foi salvo.");
                     }
-                    
                 } else {
                     ESP_LOGW(TAG, "❌ Falha ao capturar frame térmico");
                 }
@@ -399,8 +537,196 @@ static void task_captura_termica(void *pvParameter) {
         // Aguarda 30 segundos antes de verificar novamente
         vTaskDelay(30000 / portTICK_PERIOD_MS);
     }
+}
+
+static void task_envio_termica(void *pvParameter) {
+    ESP_LOGI(TAG, "Task de envio térmico iniciada");
+    
+    // Buffer para um frame (3072 bytes)
+    const size_t frame_size = APP_THERMAL_TOTAL * sizeof(float);
+    float *frame_buffer = malloc(frame_size);
+    if (!frame_buffer) {
+        ESP_LOGE(TAG, "Falha ao alocar buffer para frame. Reiniciando...");
+        vTaskDelay(pdMS_TO_TICKS(5000));
+        esp_restart();
+    }
+    
+    // Buffer para timestamps (até 1000 frames)
+    const size_t max_timestamps = 1000;
+    time_t *timestamps_buffer = malloc(max_timestamps * sizeof(time_t));
+    if (!timestamps_buffer) {
+        ESP_LOGE(TAG, "Falha ao alocar buffer para timestamps. Reiniciando...");
+        free(frame_buffer);
+        vTaskDelay(pdMS_TO_TICKS(5000));
+        esp_restart();
+    }
+    
+    while (true) {
+        // Verifica se Wi-Fi está conectado e servidor acessível
+        if (!bsp_wifi_is_connected()) {
+            ESP_LOGD(TAG, "🌐 Wi-Fi desconectado. Aguardando conexão...");
+            vTaskDelay(30000 / portTICK_PERIOD_MS);  // Aguarda 30s antes de tentar novamente
+            continue;
+        }
+        
+        // Verifica se há arquivo acumulativo pendente
+        if (!bsp_sdcard_is_mounted()) {
+            ESP_LOGD(TAG, "💾 SD Card não montado. Aguardando...");
+            vTaskDelay(30000 / portTICK_PERIOD_MS);
+            continue;
+        }
+        
+        // Verifica se existe arquivo pendente
+        size_t file_size = bsp_sdcard_get_file_size(THERMAL_ACCUM_FILE_LOCAL);
+        if (file_size == 0) {
+            // Nenhum arquivo pendente
+            ESP_LOGD(TAG, "📤 Nenhum arquivo térmico pendente para envio");
+            vTaskDelay(60000 / portTICK_PERIOD_MS);  // Verifica a cada 60s
+            continue;
+        }
+        
+        // Calcula quantos frames tem no arquivo
+        size_t total_frames = file_size / frame_size;
+        if (total_frames == 0) {
+            ESP_LOGW(TAG, "⚠️ Arquivo térmico muito pequeno ou inválido");
+            vTaskDelay(60000 / portTICK_PERIOD_MS);
+            continue;
+        }
+        
+        ESP_LOGI(TAG, "📤 Processando envio térmico: %d frames (%d bytes)", 
+                 (int)total_frames, (int)file_size);
+        
+        // Lê índice de progresso (quantos frames já foram enviados)
+        uint32_t frames_enviados = 0;
+        esp_err_t idx_ret = bsp_sdcard_read_send_index(THERMAL_INDEX_FILE, &frames_enviados);
+        if (idx_ret == ESP_ERR_NOT_FOUND) {
+            // Arquivo de índice não existe = nenhum frame foi enviado ainda
+            frames_enviados = 0;
+            ESP_LOGI(TAG, "📊 Iniciando envio do arquivo térmico (0/%d frames enviados)", (int)total_frames);
+        } else if (idx_ret != ESP_OK) {
+            ESP_LOGW(TAG, "⚠️ Erro ao ler índice. Assumindo 0 frames enviados");
+            frames_enviados = 0;
+        } else {
+            ESP_LOGI(TAG, "📊 Retomando envio do arquivo térmico (%lu/%d frames enviados)", 
+                     (unsigned long)frames_enviados, (int)total_frames);
+        }
+        
+        // Carrega timestamps do arquivo de metadados
+        size_t timestamps_read = 0;
+        esp_err_t meta_ret = bsp_sdcard_read_thermal_timestamps(
+            THERMAL_ACCUM_FILE_META_LOCAL, 
+            timestamps_buffer, 
+            max_timestamps, 
+            &timestamps_read);
+        
+        if (meta_ret != ESP_OK || timestamps_read == 0) {
+            ESP_LOGW(TAG, "⚠️ Não foi possível ler timestamps. Usando timestamp atual para todos os frames");
+            // Usa timestamp atual se não conseguir ler metadados
+            time_t now = time(NULL);
+            for (size_t i = 0; i < total_frames && i < max_timestamps; i++) {
+                timestamps_buffer[i] = now;
+            }
+            timestamps_read = total_frames;
+        }
+        
+        // Processa frames pendentes
+        bool envio_interrompido = false;
+        uint32_t frames_enviados_nesta_sessao = 0;
+        
+        for (uint32_t i = frames_enviados; i < total_frames; i++) {
+            // Verifica conexão antes de cada envio
+            if (!bsp_wifi_is_connected()) {
+                ESP_LOGW(TAG, "🌐 Wi-Fi desconectado durante envio. Interrompendo...");
+                envio_interrompido = true;
+                break;
+            }
+            
+            // Lê frame do arquivo acumulativo
+            esp_err_t read_ret = bsp_sdcard_read_thermal_frame(
+                THERMAL_ACCUM_FILE_LOCAL,
+                i,
+                (uint8_t*)frame_buffer,
+                frame_size);
+            
+            if (read_ret != ESP_OK) {
+                ESP_LOGE(TAG, "❌ Falha ao ler frame %lu do arquivo", (unsigned long)i);
+                continue;  // Pula este frame e tenta o próximo
+            }
+            
+            // Obtém timestamp correspondente (ou timestamp atual se não disponível)
+            time_t timestamp;
+            if (i < timestamps_read) {
+                timestamp = timestamps_buffer[i];
+            } else {
+                timestamp = time(NULL);  // Fallback: timestamp atual
+            }
+            
+            // Envia frame para servidor
+            ESP_LOGI(TAG, "📤 Enviando frame %lu/%d (timestamp: %ld)...", 
+                     (unsigned long)(i + 1), (int)total_frames, (long)timestamp);
+            
+            esp_err_t send_ret = app_http_send_thermal_frame(frame_buffer, timestamp);
+            
+            if (send_ret == ESP_OK) {
+                frames_enviados++;
+                frames_enviados_nesta_sessao++;
+                
+                // Atualiza índice de progresso após cada frame enviado
+                esp_err_t save_idx_ret = bsp_sdcard_save_send_index(THERMAL_INDEX_FILE, frames_enviados);
+                if (save_idx_ret != ESP_OK) {
+                    ESP_LOGW(TAG, "⚠️ Falha ao salvar índice de progresso (mas frame foi enviado)");
+                }
+                
+                ESP_LOGI(TAG, "✅ Frame %lu enviado com sucesso (%lu/%d enviados)", 
+                         (unsigned long)(i + 1), (unsigned long)frames_enviados, (int)total_frames);
+                
+                // Pequeno delay entre envios para não sobrecarregar rede/servidor
+                vTaskDelay(1000 / portTICK_PERIOD_MS);  // 1 segundo entre envios
+            } else {
+                ESP_LOGE(TAG, "❌ Falha ao enviar frame %lu. Interrompendo envio...", (unsigned long)(i + 1));
+                envio_interrompido = true;
+                break;  // Para de enviar e tenta novamente depois
+            }
+        }
+        
+        // Verifica se todos os frames foram enviados
+        if (frames_enviados >= total_frames && !envio_interrompido) {
+            ESP_LOGI(TAG, "✅ Todos os frames foram enviados! (%d frames)", (int)total_frames);
+            
+            // Renomeia arquivo para indicar que foi enviado
+            esp_err_t rename_ret = bsp_sdcard_rename_file(THERMAL_ACCUM_FILE_LOCAL, THERMAL_SENT_FILE);
+            if (rename_ret == ESP_OK) {
+                ESP_LOGI(TAG, "✅ Arquivo renomeado: %s -> %s", THERMAL_ACCUM_FILE_LOCAL, THERMAL_SENT_FILE);
+                
+                // Renomeia metadados também
+                bsp_sdcard_rename_file(THERMAL_ACCUM_FILE_META_LOCAL, THERMAL_SENT_META_FILE);
+                
+                // Remove arquivo de índice (não precisa mais)
+                char idx_path[128];
+                snprintf(idx_path, sizeof(idx_path), "%s/%s", SD_MOUNT_POINT, THERMAL_INDEX_FILE);
+                unlink(idx_path);  // Remove arquivo de índice
+                
+                ESP_LOGI(TAG, "✅ Arquivo térmico completamente enviado e marcado como enviado");
+            } else {
+                ESP_LOGW(TAG, "⚠️ Falha ao renomear arquivo após envio completo");
+            }
+        } else if (frames_enviados_nesta_sessao > 0) {
+            ESP_LOGI(TAG, "📊 Progresso: %lu/%d frames enviados (salvo no índice)", 
+                     (unsigned long)frames_enviados, (int)total_frames);
+        }
+        
+        // Aguarda antes de verificar novamente (60s se completo, 30s se interrompido)
+        if (envio_interrompido) {
+            ESP_LOGI(TAG, "⏳ Aguardando 30s antes de retomar envio...");
+            vTaskDelay(30000 / portTICK_PERIOD_MS);
+        } else {
+            ESP_LOGI(TAG, "⏳ Aguardando 60s antes de verificar novos arquivos...");
+            vTaskDelay(60000 / portTICK_PERIOD_MS);
+        }
+    }
     
     // Nunca chega aqui, mas por segurança:
-    free(temps_buffer);
+    free(frame_buffer);
+    free(timestamps_buffer);
 }
 

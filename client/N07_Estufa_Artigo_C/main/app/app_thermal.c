@@ -2,11 +2,16 @@
 #include "../bsp/bsp_uart.h"
 #include "../bsp/bsp_pins.h"
 #include "esp_log.h"
+#include "nvs_flash.h"
+#include "nvs.h"
 #include <string.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <stdint.h>
 
 #define TAG "APP_THERMAL"
+#define NVS_NAMESPACE "thermal"
+#define NVS_KEY_SEQUENCE "seq"
 
 static size_t find_header_5A5A(const uint8_t *buf, size_t len) {
     for (size_t i = 0; i + 1 < len; i++) {
@@ -149,5 +154,72 @@ bool app_thermal_capture_frame(float out[APP_THERMAL_TOTAL], TickType_t timeout_
     }
     free(buf);
     return false;
+}
+
+uint32_t app_thermal_get_next_sequence(void) {
+    nvs_handle_t nvs_handle;
+    uint32_t sequence = 1;
+    
+    esp_err_t err = nvs_open(NVS_NAMESPACE, NVS_READWRITE, &nvs_handle);
+    if (err != ESP_OK) {
+        ESP_LOGW(TAG, "Erro ao abrir NVS: %s", esp_err_to_name(err));
+        return 1;
+    }
+    
+    // Tenta ler o contador atual
+    err = nvs_get_u32(nvs_handle, NVS_KEY_SEQUENCE, &sequence);
+    if (err == ESP_ERR_NVS_NOT_FOUND) {
+        // Primeira vez - inicia com 0 (será incrementado para 1)
+        sequence = 0;
+        ESP_LOGI(TAG, "Primeiro uso: inicializando contador de sequência");
+    }
+    
+    // Incrementa
+    sequence++;
+    
+    // Salva o novo valor
+    err = nvs_set_u32(nvs_handle, NVS_KEY_SEQUENCE, sequence);
+    if (err != ESP_OK) {
+        ESP_LOGE(TAG, "Erro ao salvar sequência na NVS: %s", esp_err_to_name(err));
+        nvs_close(nvs_handle);
+        return sequence;  // Retorna mesmo assim
+    }
+    
+    err = nvs_commit(nvs_handle);
+    if (err != ESP_OK) {
+        ESP_LOGE(TAG, "Erro ao commitar NVS: %s", esp_err_to_name(err));
+    }
+    
+    nvs_close(nvs_handle);
+    
+    ESP_LOGI(TAG, "Número de sequência gerado: %lu", (unsigned long)sequence);
+    return sequence;
+}
+
+esp_err_t app_thermal_reset_sequence(void) {
+    nvs_handle_t nvs_handle;
+    
+    esp_err_t err = nvs_open(NVS_NAMESPACE, NVS_READWRITE, &nvs_handle);
+    if (err != ESP_OK) {
+        ESP_LOGE(TAG, "Erro ao abrir NVS: %s", esp_err_to_name(err));
+        return err;
+    }
+    
+    // Remove a chave (reseta para 0)
+    err = nvs_erase_key(nvs_handle, NVS_KEY_SEQUENCE);
+    if (err != ESP_OK && err != ESP_ERR_NVS_NOT_FOUND) {
+        ESP_LOGE(TAG, "Erro ao remover chave de sequência: %s", esp_err_to_name(err));
+        nvs_close(nvs_handle);
+        return err;
+    }
+    
+    err = nvs_commit(nvs_handle);
+    if (err != ESP_OK) {
+        ESP_LOGE(TAG, "Erro ao commitar NVS: %s", esp_err_to_name(err));
+    }
+    
+    nvs_close(nvs_handle);
+    ESP_LOGI(TAG, "Contador de sequência resetado");
+    return ESP_OK;
 }
 
