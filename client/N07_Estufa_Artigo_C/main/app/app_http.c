@@ -125,14 +125,14 @@ esp_err_t app_http_send_data(const char *url, const uint8_t *data, size_t data_l
         // ✅ CORREÇÃO: Reset watchdog após operação (mesmo se falhou)
         esp_task_wdt_reset();
         
-        if (err == ESP_OK) {
+    if (err == ESP_OK) {
             status_code = esp_http_client_get_status_code(client);
             ESP_LOGI(TAG, "Dados enviados. Status HTTP: %d (tentativa %d/%d)", 
                      status_code, attempt + 1, max_retries);
             
             // Verifica se status HTTP é sucesso (2xx)
             if (status_code >= 200 && status_code < 300) {
-                ESP_LOGI(TAG, "✅ Envio bem-sucedido!");
+            ESP_LOGI(TAG, "✅ Envio bem-sucedido!");
                 err = ESP_OK;
                 break; // Sucesso, sai do loop
             } else {

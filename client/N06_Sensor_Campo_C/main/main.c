@@ -8,10 +8,16 @@
 #include "esp_err.h"
 #include "nvs_flash.h"
 
-#include "sensores/sensores.h"
-#include "libs/data_logger.h"
-#include "libs/http_server.h"
-#include "atuadores/atuadores.h"
+// BSP
+#include "bsp/sensors/sensors_bsp.h"
+
+// APP
+#include "app/sensor_manager.h"
+#include "app/data_logger.h"
+#include "app/atuadores.h"
+
+// GUI
+#include "gui/web/http_server.h"
 
 static const char *TAG = "APP_MAIN";
 
@@ -20,25 +26,27 @@ static void tarefa_log(void *pvParameter)
 {
     while (1)
     {
-        log_entry_t entry;
-        entry.temp_ar    = sensores_get_temp_ar();
-        entry.umid_ar    = sensores_get_umid_ar();
-        entry.temp_solo  = sensores_get_temp_solo();
-        // leitura bruta do solo (ADC). converte para % usando calibração atual
-        int leitura_raw = sensores_get_umid_solo_raw();
-        entry.umid_solo = data_logger_raw_to_pct(leitura_raw);
-
-        if (!isnan(entry.temp_solo) && !isnan(entry.umid_solo))
+        sensor_reading_t reading;
+        if (sensor_manager_read(&reading) == ESP_OK)
         {
-            if (data_logger_append(&entry))
+            if (sensor_manager_is_valid(&reading))
             {
-                ESP_LOGI(TAG,
-                         "Log salvo! Temp Solo: %.2f C, Umid Solo: %.2f %%",
-                         entry.temp_solo,
-                         entry.umid_solo);
+                log_entry_t entry;
+                entry.temp_ar    = reading.temp_air;
+                entry.umid_ar    = reading.humid_air;
+                entry.temp_solo  = reading.temp_soil;
+                entry.umid_solo = reading.humid_soil;
 
-                // sinaliza flash de gravação
-                atuadores_sinalizar_gravacao();
+                if (data_logger_append(&entry))
+                {
+                    ESP_LOGI(TAG,
+                             "Log salvo! Temp Solo: %.2f C, Umid Solo: %.2f %%",
+                             entry.temp_solo,
+                             entry.umid_solo);
+
+                    // sinaliza flash de gravação
+                    atuadores_sinalizar_gravacao();
+                }
             }
         }
 
@@ -61,8 +69,8 @@ void app_main(void)
     // ainda não sabemos se AP está ativo
     atuadores_set_ap_status(false);
 
-    // Inicializa sensores
-    sensores_init();
+    // Inicializa sensores via APP (que usa BSP internamente)
+    ESP_ERROR_CHECK(sensor_manager_init());
 
     // Inicializa logger (SPIFFS e calibração)
     ESP_ERROR_CHECK(data_logger_init());
@@ -96,5 +104,5 @@ void app_main(void)
         NULL
     );
 
-    ESP_LOGI(TAG, "Sistema iniciado");
+    ESP_LOGI(TAG, "Sistema iniciado - Arquitetura BSP/APP/GUI");
 }

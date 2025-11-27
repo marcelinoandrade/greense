@@ -695,6 +695,12 @@ esp_err_t bsp_sdcard_rename_file(const char* old_filename, const char* new_filen
     
     ESP_LOGI(TAG, "Renomeando arquivo: %s -> %s", old_filename, new_filename);
     
+    // Verifica se arquivo fonte existe
+    if (access(old_path, F_OK) != 0) {
+        ESP_LOGE(TAG, "Arquivo fonte não existe: %s", old_filename);
+        return ESP_ERR_NOT_FOUND;
+    }
+    
     // Remove arquivo de destino se já existir (evita erro EEXIST)
     if (access(new_path, F_OK) == 0) {
         ESP_LOGW(TAG, "Arquivo de destino já existe, removendo: %s", new_filename);

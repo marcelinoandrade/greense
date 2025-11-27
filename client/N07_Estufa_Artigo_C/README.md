@@ -8,7 +8,7 @@ Sistema embarcado em **C (ESP-IDF)** para captura de imagens usando **ESP32-S3 W
 
 ## ⚙️ Descrição Geral
 
-O firmware executa em uma placa **ESP32-S3 WROOM (N16R8)** com câmera e slot SD integrados, capturando imagens JPEG periodicamente e enviando-as via HTTPS para um endpoint configurável. As imagens também são salvas localmente em um cartão SD para backup.
+O firmware executa em uma placa **ESP32-S3 WROOM (N16R8)** com câmera e slot SD integrados, capturando imagens JPEG periodicamente e enviando-as via HTTPS para um endpoint configurável. As imagens são enviadas diretamente para o servidor (salvamento local no SD card desativado).
 
 O sistema realiza:
 - 📸 Captura de imagens JPEG (XGA - 1024×768) da câmera visual
@@ -16,15 +16,15 @@ O sistema realiza:
 - ⏰ Agendamento independente para câmera visual e térmica
 - 🕐 Sincronização NTP para timestamps precisos e agendamento baseado em horários
 - 📊 Logs informativos com próxima aquisição agendada
-- 💾 Armazenamento local em cartão SD (imagens JPEG e dados térmicos binários)
-- 🌐 Conexão Wi-Fi com reconexão automática
-- 🔒 Envio seguro via HTTPS com certificado SSL
-- 💡 Sinalização por LED RGB (WS2812) para indicar estado do Wi-Fi
+- 💾 Armazenamento local em cartão SD (apenas dados térmicos binários - imagens JPG não são salvas)
+- 🌐 Conexão Wi-Fi com reconexão automática  
+- 🔒 Envio seguro via HTTPS com certificado SSL  
+- 💡 Sinalização por LED RGB (WS2812) para indicar estado do Wi-Fi  
 - ⚡ Flash LED para iluminação durante captura visual
 - 🧠 Arquitetura modular (BSP/APP/GUI)
 - 🐍 Script Python para visualização de dados térmicos
 - 🔄 **Sistema de acumulação térmica em SPIFFS com migração automática para SD card**
-- 📤 **Envio assíncrono de dados térmicos para servidor com controle de progresso**
+- 📤 **Envio imediato de dados térmicos após captura (sem duplicação ou reenvio)**
 - ✅ **Verificação de integridade de dados (checksums CRC32 e read-after-write)**
 - 📝 **Metadados com timestamps separados dos dados binários**
 - 📦 **Preservação de histórico completo (todos os frames enviados acumulados)**
@@ -133,7 +133,6 @@ app_main()
 │   ├── Ativação do flash LED
 │   ├── Captura de imagem JPEG
 │   ├── Envio HTTPS POST
-│   ├── Salvamento no SD Card
 │   └── Liberação do buffer
 ├── Task de captura térmica (agendamento independente)
 │   ├── Verificação de horário agendado
@@ -141,14 +140,13 @@ app_main()
 │   ├── Captura de frame térmico (24×32)
 │   ├── Cálculo de estatísticas (min/max/média)
 │   ├── Acumulação em SPIFFS (com timestamp)
-│   ├── Migração para SD Card (quando atinge limite)
+│   ├── Envio imediato para servidor (se Wi-Fi conectado)
+│   ├── Migração para SD Card (quando atinge limite, apenas arquivamento)
 │   └── Verificação de integridade (checksums)
-├── Task de envio térmico (assíncrono)
-│   ├── Verificação de arquivos pendentes
-│   ├── Leitura de índice de progresso
-│   ├── Envio individual de frames
-│   ├── Atualização de progresso
-│   └── Finalização (anexa ao histórico)
+└── Task de arquivamento térmico (sem reenvio HTTP)
+    ├── Verifica arquivos acumulativos no SD card
+    ├── Move para histórico (THERMS.BIN)
+    └── Remove arquivos temporários
 └── Loop principal (monitoramento Wi-Fi e reconexão)
 ```
 
@@ -156,12 +154,21 @@ app_main()
 
 ## ⚙️ Configuração
 
-Defina as credenciais Wi-Fi e o endpoint no arquivo `main/secrets.h`:
+Defina as credenciais Wi-Fi, endpoints HTTP e configurações MQTT no arquivo `main/secrets.h`:
 
 ```c
 #define WIFI_SSID "sua_rede"
 #define WIFI_PASS "sua_senha"
-#define CAMERA_UPLOAD_URL "https://seu-servidor.com/upload"
+
+// MQTT (futuramente)
+#define MQTT_BROKER "mqtt.greense.com.br"
+#define MQTT_TOPIC "estufa/artigo"
+#define MQTT_CLIENT_ID "Estufa_Artigo"
+#define MQTT_KEEPALIVE 60
+
+// HTTP/HTTPS Upload
+#define CAMERA_UPLOAD_URL "https://camera02.greense.com.br/upload"
+#define CAMERA_THERMAL_UPLOAD_URL "https://camera02.greense.com.br/termica"
 ```
 
 **Importante:** O certificado SSL do servidor deve estar em `main/certs/greense_cert.pem` (ou ajuste o caminho no `CMakeLists.txt`).
@@ -215,7 +222,7 @@ Configurados em `main/config.h`:
 - **THERMAL_SAVE_INTERVAL:** Número de frames para acumular antes de migrar para SD (padrão: 3)
 - **THERMAL_SPIFFS_MAX_SIZE:** Tamanho máximo em SPIFFS antes de migração (calculado automaticamente)
 - **THERMAL_MIGRATION_CHUNK_SIZE:** Tamanho dos chunks para migração (padrão: 10 frames = ~30 KB)
-- **CAMERA_THERMAL_UPLOAD_URL:** Endpoint para envio de dados térmicos (padrão: `https://camera02.greense.com.br/termica`)
+- **CAMERA_THERMAL_UPLOAD_URL:** Endpoint para envio de dados térmicos (definido em `secrets.h`, padrão: `https://camera02.greense.com.br/termica`)
 - **Agendamento:** Baseado em horários definidos em `config.h` (independente da câmera visual)
 
 ---
@@ -264,9 +271,11 @@ O sistema integra uma câmera térmica MLX90640 conectada via UART:
 ### Funcionamento
 - Captura frames térmicos baseado em agendamento independente
 - Calcula estatísticas (temperatura mínima, máxima e média)
+- **Envia imediatamente** para servidor após captura e salvamento no SPIFFS
 - **Acumula frames em SPIFFS** antes de migrar para SD Card
-- **Migração automática** quando atinge limite configurado
-- **Envio assíncrono** para servidor com controle de progresso
+- **Migração automática** quando atinge limite configurado (SD card serve como backup/histórico)
+- **Sem envio duplicado** - cada frame é enviado apenas uma vez (não há reenvio após migração)
+- **Apenas arquivamento** - task de envio térmico agora apenas arquiva dados no SD card (sem reenvio HTTP)
 - Armazena dados em formato binário (floats) com metadados separados
 
 ### Sistema de Acumulação e Migração
@@ -274,31 +283,33 @@ O sistema integra uma câmera térmica MLX90640 conectada via UART:
 O sistema utiliza uma arquitetura de dois níveis para armazenamento térmico:
 
 ```
-Captura → SPIFFS (buffer rápido) → Migração → SD Card → Envio → Servidor
-           ↓                          ↓                    ↓
-      Metadados                   Verificação         Índice Progresso
+Captura → SPIFFS → Envio Imediato → Servidor
+              ↓
+         Migração (quando buffer cheio)
+              ↓
+         SD Card (backup/histórico)
 ```
 
 **Fluxo detalhado:**
 
 1. **Captura:** Cada frame térmico (768 floats = 3072 bytes) é capturado e anexado ao arquivo acumulativo em SPIFFS
-2. **Metadados:** Timestamp de cada frame é salvo em arquivo JSON separado em SPIFFS
-3. **Migração:** Quando SPIFFS atinge `THERMAL_SPIFFS_MAX_SIZE`, os dados são migrados para SD card em chunks
-4. **Verificação:** Durante migração, cada chunk é verificado com read-after-write e checksum CRC32
-5. **Envio:** Task separada envia frames do SD card para servidor, um por vez
-6. **Progresso:** Arquivo de índice (`THERML.idx`) rastreia quantos frames foram enviados
-7. **Recuperação:** Se envio for interrompido, retoma do último frame enviado
-8. **Histórico:** Após envio completo, dados são anexados ao arquivo histórico (`THERMS.BIN`)
+2. **Envio Imediato:** Frame é enviado imediatamente para servidor via HTTPS após salvamento no SPIFFS (se Wi-Fi conectado)
+3. **Metadados:** Timestamp de cada frame é salvo em arquivo JSON separado em SPIFFS
+4. **Migração:** Quando SPIFFS atinge `THERMAL_SPIFFS_MAX_SIZE`, os dados são migrados para SD card em chunks (apenas arquivamento)
+5. **Verificação:** Durante migração, cada chunk é verificado com read-after-write e checksum CRC32
+6. **Arquivamento:** Task de arquivamento move dados do SD card para histórico (`THERMS.BIN`) - sem reenvio HTTP
+7. **Histórico:** Dados migrados são anexados ao arquivo histórico (`THERMS.BIN`) no SD card (já foram enviados anteriormente)
 
 **Arquivos no SD Card:**
 
 | Arquivo | Descrição | Formato |
 |---------|-----------|---------|
-| `THERML.BIN` | Dados térmicos acumulativos (pendentes de envio) | Binário: frames concatenados (768 floats cada) |
-| `THERMLM.TXT` | Metadados com timestamps (pendentes) | JSON: `{"frames":[{"timestamp":...},...]}\n` |
-| `THERML.idx` | Índice de progresso de envio | Binário: 4 bytes (uint32_t) |
-| `THERMS.BIN` | Dados térmicos já enviados (histórico acumulado) | Binário: todos os frames enviados concatenados |
-| `THERMSM.TXT` | Metadados já enviados (histórico acumulado) | JSON: todos os timestamps concatenados |
+| `THERML.BIN` | Dados térmicos acumulativos (migrados do SPIFFS) | Binário: frames concatenados (768 floats cada) |
+| `THERMLM.TXT` | Metadados com timestamps (migrados do SPIFFS) | JSON: `{"frames":[{"timestamp":...},...]}\n` |
+| `THERMS.BIN` | Dados térmicos históricos (backup completo) | Binário: todos os frames migrados concatenados |
+| `THERMSM.TXT` | Metadados históricos (backup completo) | JSON: todos os timestamps concatenados |
+
+**Nota:** Os frames em `THERML.BIN` já foram enviados para o servidor antes da migração. O SD card serve apenas como backup/histórico. Não há reenvio HTTP após migração - a task de envio térmico foi convertida para apenas arquivamento.
 
 **Configuração em `main/config.h`:**
 
@@ -312,8 +323,8 @@ Captura → SPIFFS (buffer rápido) → Migração → SD Card → Envio → Ser
 // Tamanho do chunk para migração (reduz uso de memória)
 #define THERMAL_MIGRATION_CHUNK_SIZE (10 * 768 * sizeof(float))  // ~30 KB por chunk
 
-// URL do endpoint para envio de dados térmicos
-#define CAMERA_THERMAL_UPLOAD_URL "https://camera02.greense.com.br/termica"
+// URL do endpoint para envio de dados térmicos (definido em secrets.h)
+// #define CAMERA_THERMAL_UPLOAD_URL "https://camera02.greense.com.br/termica"
 ```
 
 ### Verificação de Integridade
@@ -328,21 +339,18 @@ O sistema implementa múltiplas camadas de verificação para garantir a integri
 6. **Verificação de metadados:** Metadados são validados antes de limpar dados temporários em SPIFFS
 7. **Migração atômica:** SPIFFS só é limpo após confirmação completa de migração (dados + metadados)
 
-### Envio Assíncrono para Servidor
+### Envio Imediato para Servidor
 
-Uma task dedicada (`task_envio_termica`) gerencia o envio de dados térmicos:
+O sistema envia frames térmicos **imediatamente após captura**:
 
-- **Verificação periódica:** Verifica arquivos pendentes a cada 60 segundos
-- **Retomada inteligente:** Lê índice de progresso e retoma do último frame enviado
-- **Tratamento de erros:** Detecta erros HTTP (502, 503, etc.) e não marca como enviado
-- **Retry automático:** 3 tentativas com backoff exponencial (1s, 2s, 4s) para erros de rede
+- **Envio Imediato:** Frame é enviado logo após captura e salvamento no SPIFFS
+- **Sem Duplicação:** Cada frame é enviado apenas uma vez (não há reenvio após migração)
+- **Apenas Arquivamento:** Task de envio térmico foi convertida para apenas arquivamento no SD card (sem reenvio HTTP)
+- **Retry automático:** HTTP client tem retry com backoff exponencial (3 tentativas: 1s, 2s, 4s)
 - **Validação de status:** Apenas códigos HTTP 2xx são considerados sucesso
-- **Envio individual:** Cada frame é enviado separadamente como JSON para o servidor
 - **Callback HTTP:** Reseta watchdog durante toda a transferência HTTP (previne timeouts)
 - **Timeout robusto:** Aguarda até 30 segundos por resposta do servidor sem resetar o sistema
-- **Atualização de progresso:** Índice é atualizado após cada envio bem-sucedido
-- **Finalização:** Após todos os frames, dados são anexados ao histórico e índice é removido
-- **Preservação de histórico:** Todos os frames enviados são acumulados em `THERMS.BIN`
+- **SD Card como Backup:** Dados migrados para SD card servem apenas como backup/histórico (já foram enviados)
 
 **Formato de envio para servidor:**
 
@@ -353,7 +361,7 @@ Uma task dedicada (`task_envio_termica`) gerencia o envio de dados térmicos:
 }
 ```
 
-**Endpoint:** Configurado em `CAMERA_THERMAL_UPLOAD_URL` (padrão: `https://camera02.greense.com.br/termica`)
+**Endpoint:** Configurado em `CAMERA_THERMAL_UPLOAD_URL` em `secrets.h` (padrão: `https://camera02.greense.com.br/termica`)
 
 ### Dados Capturados
 
@@ -390,9 +398,7 @@ O Flash LED (GPIO21) é ativado durante a captura de imagem para iluminação.
 
 ### Imagens Visuais
 
-As imagens JPEG são salvas no cartão SD com o seguinte formato de nome:
-- **Formato:** `IMG#####.JPG` (8.3 - compatível com FAT32)
-- **Nomenclatura:** Baseada em timestamp Unix (últimos 5 dígitos)
+**Nota:** O salvamento de imagens JPG no SD card foi desativado. As imagens são enviadas diretamente para o servidor via HTTPS e não são salvas localmente.
 
 ### Dados Térmicos
 
@@ -407,20 +413,21 @@ Os dados térmicos são salvos em arquivos acumulativos que crescem ao longo do 
 
 **Fluxo de armazenamento:**
 
-1. **SPIFFS (temporário):** Frames são acumulados até atingir `THERMAL_SPIFFS_MAX_SIZE`
-2. **Migração:** Dados são migrados para SD card em chunks com verificação de integridade
-3. **SD Card (persistente):** Arquivo acumulativo cresce com cada migração
-4. **Envio:** Frames são enviados individualmente para servidor
-5. **Finalização:** Após envio completo, dados são anexados ao histórico (`THERMS.BIN`)
+1. **Captura e Envio:** Frame é capturado, salvo no SPIFFS e enviado imediatamente para servidor
+2. **SPIFFS (temporário):** Frames são acumulados até atingir `THERMAL_SPIFFS_MAX_SIZE`
+3. **Migração:** Dados são migrados para SD card em chunks com verificação de integridade (apenas arquivamento)
+4. **SD Card (backup):** Arquivo acumulativo cresce com cada migração (dados já foram enviados)
+5. **Arquivamento:** Task de arquivamento move dados para histórico (`THERMS.BIN`) - sem reenvio HTTP
+6. **Histórico:** Dados migrados são anexados ao histórico (`THERMS.BIN`) no SD card
 
 **Vantagens do sistema acumulativo:**
 
 - ✅ **Eficiência:** Reduz número de operações de escrita no SD card
 - ✅ **Robustez:** Dados em SPIFFS são protegidos durante migração
-- ✅ **Recuperação:** Índice de progresso permite retomar envio após falhas
 - ✅ **Integridade:** Verificação de dados em múltiplas etapas
 - ✅ **Escalabilidade:** Suporta milhares de frames sem fragmentação excessiva
 - ✅ **Histórico completo:** Todos os frames enviados são preservados em `THERMS.BIN`
+- ✅ **Sem duplicação:** Cada frame é enviado apenas uma vez (não há reenvio após migração)
 
 O cartão SD é montado em `/sdcard` e deve ser formatado em FAT32.
 
@@ -581,7 +588,7 @@ As imagens são enviadas como:
 - **Content-Type:** `image/jpeg`
 - **Método:** POST
 - **Body:** Dados binários da imagem JPEG
-- **Endpoint:** Configurável via `CAMERA_UPLOAD_URL` em `secrets.h`
+- **Endpoint:** Configurável via `CAMERA_UPLOAD_URL` em `secrets.h` (padrão: `https://camera02.greense.com.br/upload`)
 
 ### Dados Térmicos
 
@@ -589,7 +596,7 @@ Os dados térmicos são enviados como:
 - **Content-Type:** `application/json`
 - **Método:** POST
 - **Body:** JSON com array de temperaturas e timestamp
-- **Endpoint:** Configurável via `CAMERA_THERMAL_UPLOAD_URL` em `config.h`
+- **Endpoint:** Configurável via `CAMERA_THERMAL_UPLOAD_URL` em `secrets.h` (padrão: `https://camera02.greense.com.br/termica`)
 
 **Formato JSON:**
 ```json
@@ -663,15 +670,15 @@ Os logs são exibidos periodicamente (a cada ~2.5 minutos) e mostram:
 
 ## 🧪 Próximos Passos
 
-- [x] Sincronização NTP para timestamps precisos
+- [x] Sincronização NTP para timestamps precisos  
 - [x] Agendamento independente para câmera visual e térmica
 - [x] Câmera térmica MLX90640 integrada
 - [x] Logs informativos sobre próxima aquisição
 - [x] Script Python para visualização de dados térmicos
 - [x] **Sistema de acumulação térmica em SPIFFS**
 - [x] **Migração automática para SD card com verificação**
-- [x] **Envio assíncrono de dados térmicos para servidor**
-- [x] **Controle de progresso com recuperação após falhas**
+- [x] **Envio imediato de dados térmicos após captura (sem duplicação ou reenvio)**
+- [x] **Arquivamento automático no SD card (sem reenvio HTTP)**
 - [x] **Verificação de integridade (checksums e read-after-write)**
 - [x] **Preservação de histórico completo (todos os frames enviados)**
 - [x] **Thread safety completo com mutexes**
@@ -680,11 +687,12 @@ Os logs são exibidos periodicamente (a cada ~2.5 minutos) e mostram:
 - [x] **Alocação inteligente de memória (PSRAM primeiro)**
 - [x] **Proteção contra buffer overflow**
 - [x] **Retry HTTP com backoff exponencial**
-- [ ] Configuração via web interface
-- [ ] Compressão adicional de imagens
-- [ ] Detecção de movimento para captura sob demanda
-- [ ] Stream de vídeo em tempo real
-- [ ] Integração com sistema de monitoramento
+- [x] **Configurações centralizadas em secrets.h**
+- [ ] Configuração via web interface  
+- [ ] Compressão adicional de imagens  
+- [ ] Detecção de movimento para captura sob demanda  
+- [ ] Stream de vídeo em tempo real  
+- [ ] Integração com sistema de monitoramento  
 - [ ] Suporte a múltiplas resoluções de captura
 - [ ] Dashboard web para visualização de dados térmicos
 

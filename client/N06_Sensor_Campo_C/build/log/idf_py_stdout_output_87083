@@ -1,0 +1,503 @@
+Command: /home/mrclnndrd/.espressif/python_env/idf5.5_py3.11_env/bin/python /home/mrclnndrd/esp/esp-idf/tools/idf_monitor.py -p /dev/ttyUSB0 -b 115200 --toolchain-prefix xtensa-esp32-elf- --target esp32 --revision 0 /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/sensor_campo.elf /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/bootloader/bootloader.elf -m '/home/mrclnndrd/.espressif/python_env/idf5.5_py3.11_env/bin/python' '/home/mrclnndrd/esp/esp-idf/tools/idf.py'
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x17 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:6380
+ho 0 tail 12 room 4
+load:0x40078000,len:15904
+load:0x40080400,len:3860
+entry 0x40080638
+[0;32mI (29) boot: ESP-IDF v5.5-dev-3372-g38628f98b9 2nd stage bootloader[0m
+[0;32mI (29) boot: compile time Nov 25 2025 11:53:58[0m
+[0;32mI (29) boot: Multicore bootloader[0m
+[0;32mI (32) boot: chip revision: v3.1[0m
+[0;32mI (35) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (39) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (42) boot.esp32: SPI Flash Size : 4MB[0m
+[0;32mI (46) boot: Enabling RNG early entropy source...[0m
+[0;32mI (50) boot: Partition Table:[0m
+[0;32mI (53) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (59) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (66) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (72) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (79) boot:  3 spiffs           Unknown data     01 82 00110000 002f0000[0m
+[0;32mI (85) boot: End of partition table[0m
+[0;32mI (89) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=269bch (158140) map[0m
+[0;32mI (150) esp_image: segment 1: paddr=000369e4 vaddr=3ff80000 size=0001ch (    28) load[0m
+[0;32mI (150) esp_image: segment 2: paddr=00036a08 vaddr=3ffb0000 size=03ebch ( 16060) load[0m
+[0;32mI (160) esp_image: segment 3: paddr=0003a8cc vaddr=40080000 size=0574ch ( 22348) load[0m
+[0;32mI (170) esp_image: segment 4: paddr=00040020 vaddr=400d0020 size=9cea0h (642720) map[0m
+[0;32mI (390) esp_image: segment 5: paddr=000dcec8 vaddr=4008574c size=125c8h ( 75208) load[0m
+[0;32mI (431) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (431) boot: Disabling RNG early entropy source...[0m
+[0;32mI (442) cpu_start: Multicore app[0m
+[0;32mI (450) cpu_start: Pro cpu start user code[0m
+[0;32mI (450) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (450) app_init: Application information:[0m
+[0;32mI (453) app_init: Project name:     sensor_campo[0m
+[0;32mI (459) app_init: App version:      9006bb6b-dirty[0m
+[0;32mI (464) app_init: Compile time:     Nov 25 2025 11:53:18[0m
+[0;32mI (470) app_init: ELF file SHA256:  6d565cc2f...[0m
+[0;32mI (475) app_init: ESP-IDF:          v5.5-dev-3372-g38628f98b9[0m
+[0;32mI (482) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (486) efuse_init: Max chip rev:     v3.99 [0m
+[0;32mI (491) efuse_init: Chip rev:         v3.1[0m
+[0;32mI (496) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (504) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (510) heap_init: At 3FFB8040 len 00027FC0 (159 KiB): DRAM[0m
+[0;32mI (516) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (522) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (529) heap_init: At 40097D14 len 000082EC (32 KiB): IRAM[0m
+[0;32mI (536) spi_flash: detected chip: generic[0m
+[0;32mI (539) spi_flash: flash io: dio[0m
+[0;32mI (544) main_task: Started on CPU0[0m
+[0;32mI (554) main_task: Calling app_main()[0m
+[0;32mI (574) BSP_LED: LED inicializado no GPIO 2[0m
+[0;32mI (574) BSP_DS18B20: DS18B20 inicializado no GPIO 4[0m
+[0;32mI (574) BSP_ADC: ADC umidade solo inicializado. canal=6 bitwidth=12 atten=3[0m
+[0;32mI (574) BSP_SENSORS: Sensores BSP inicializados[0m
+[0;32mI (584) APP_SENSOR_MGR: Sensor Manager inicializado[0m
+[0;32mI (584) APP_DATA_LOGGER: Inicializando SPIFFS...[0m
+[0;32mI (894) APP_DATA_LOGGER: SPIFFS montado em /spiffs[0m
+[0;32mI (894) APP_DATA_LOGGER: Total=2293769 bytes, Usado=2038 bytes[0m
+[0;32mI (1044) APP_DATA_LOGGER: Proximo indice de log sera: 4[0m
+[0;33mW (1234) APP_DATA_LOGGER: Arquivo /spiffs/soil_calib.json nao encontrado. Usando padrao (Seco: 4000, Molhado: 400)[0m
+[0;32mI (1234) APP_DATA_LOGGER: --- Lendo /spiffs/log_temp.csv ---[0m
+[0;32mI (1234) APP_DATA_LOGGER: 1,25.00,50.00,26.69,0.00
+[0m
+[0;32mI (1244) APP_DATA_LOGGER: 2,25.00,50.00,26.75,0.00
+[0m
+[0;32mI (1244) APP_DATA_LOGGER: 3,25.00,50.00,26.75,0.00
+[0m
+[0;32mI (1254) APP_DATA_LOGGER: --- Fim do arquivo ---[0m
+[0;32mI (1254) APP_DATA_LOGGER: Limpando todos os dados armazenados...[0m
+[0;32mI (1264) APP_DATA_LOGGER: Arquivo /spiffs/log_temp.csv removido[0m
+[0;33mW (1464) APP_DATA_LOGGER: Nao foi possivel remover /spiffs/soil_calib.json (pode nao existir)[0m
+[0;32mI (1464) APP_DATA_LOGGER: Dados limpos. Sistema reiniciado do zero.[0m
+[0;32mI (1464) APP_GUI_SERVICES: Serviços GUI registrados[0m
+[0;32mI (1484) wifi:wifi driver task: 3ffc2244, prio:23, stack:6656, core=0[0m
+[0;32mI (1494) wifi:wifi firmware version: 7d2994f4b[0m
+[0;32mI (1494) wifi:wifi certification version: v7.0[0m
+[0;32mI (1494) wifi:config NVS flash: enabled[0m
+[0;32mI (1494) wifi:config nano formatting: disabled[0m
+[0;32mI (1494) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (1504) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (1504) wifi:Init management short buffer num: 32[0m
+[0;32mI (1514) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (1514) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (1514) wifi:Init static rx buffer num: 10[0m
+[0;32mI (1524) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (1524) wifi_init: rx ba win: 6[0m
+[0;32mI (1534) wifi_init: accept mbox: 6[0m
+[0;32mI (1534) wifi_init: tcpip mbox: 32[0m
+[0;32mI (1534) wifi_init: udp mbox: 6[0m
+[0;32mI (1544) wifi_init: tcp mbox: 6[0m
+[0;32mI (1544) wifi_init: tcp tx win: 5760[0m
+[0;32mI (1554) wifi_init: tcp rx win: 5760[0m
+[0;32mI (1554) wifi_init: tcp mss: 1440[0m
+[0;32mI (1554) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (1564) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (1574) phy_init: phy_version 4860,6b7a6e5,Feb  6 2025,14:47:07[0m
+[0;32mI (1654) phy_init: Saving new calibration data due to checksum failure or outdated calibration data, mode(0)[0m
+[0;32mI (1694) wifi:mode : softAP (38:18:2b:ea:b7:cd)[0m
+[0;32mI (1694) wifi:Total power save buffer number: 16[0m
+[0;32mI (1704) wifi:Init max length of beacon: 752/752[0m
+[0;32mI (1704) wifi:Init max length of beacon: 752/752[0m
+[0;32mI (1704) BSP_WIFI_AP: Modo AP iniciado. SSID='ESP32_TEMP' senha='12345678'[0m
+[0;32mI (1704) esp_netif_lwip: DHCP server started on interface WIFI_AP_DEF with IP: 192.168.4.1[0m
+[0;32mI (1724) GUI_HTTP_SERVER: Servidor HTTP iniciado e rotas registradas. Acesse http://192.168.4.1/[0m
+[0;32mI (1734) APP_MAIN: Sistema iniciado - Arquitetura BSP/APP/GUI[0m
+[0;32mI (1734) main_task: Returned from app_main()[0m
+[0;32mI (3244) APP_MAIN: Log salvo! Temp Solo: 26.75 C, Umid Solo: 0.00 %[0m
+[0;32mI (5234) APP_MAIN: Log salvo! Temp Solo: 26.75 C, Umid Solo: 0.00 %[0m
+[0;32mI (6994) APP_MAIN: Log salvo! Temp Solo: 26.75 C, Umid Solo: 0.00 %[0m
+[0;32mI (8984) APP_MAIN: Log salvo! Temp Solo: 26.69 C, Umid Solo: 0.00 %[0m
+[0;32mI (10974) APP_MAIN: Log salvo! Temp Solo: 26.69 C, Umid Solo: 0.00 %[0m
+[0;32mI (12734) APP_MAIN: Log salvo! Temp Solo: 26.69 C, Umid Solo: 0.00 %[0m
+[0;32mI (13704) wifi:new:<1,0>, old:<1,1>, ap:<1,1>, sta:<255,255>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (13704) wifi:station: 96:62:32:cc:84:05 join, AID=1, bgn, 20[0m
+[0;32mI (13774) BSP_WIFI_AP: Cliente 96:62:32:cc:84:05 conectou, AID=1[0m
+[0;32mI (14004) wifi:<ba-add>idx:2 (ifx:1, 96:62:32:cc:84:05), tid:0, ssn:0, winSize:64[0m
+[0;32mI (14044) esp_netif_lwip: DHCP server assigned IP to a client, IP is: 192.168.4.2[0m
+[0;32mI (14724) APP_MAIN: Log salvo! Temp Solo: 26.69 C, Umid Solo: 0.00 %[0m
+Guru Meditation Error: Core  0 panic'ed (InstrFetchProhibited). Exception was unhandled.
+
+Core  0 register dump:
+PC      : 0x0008cdb7  PS      : 0x00060730  A0      : 0x800ec0bc  A1      : 0x3ffcda70  
+A2      : 0x3ffca18c  A3      : 0x3ffca194  A4      : 0x3ffba300  A5      : 0x00000000  
+A6      : 0x3ffcea90  A7      : 0x00000000  A8      : 0x800d9540  A9      : 0x3ffcda50  
+A10     : 0x0008cdb7  A11     : 0x3ffca194  A12     : 0x00000001  A13     : 0xffffffff  
+A14     : 0x3ffca3b0  A15     : 0x3ffceae0  SAR     : 0x00000020  EXCCAUSE: 0x00000014  
+EXCVADDR: 0x0008cdb4  LBEG    : 0x400014fd  LEND    : 0x4000150d  LCOUNT  : 0xffffffff  
+
+
+Backtrace: 0x0008cdb4:0x3ffcda70 0x400ec0b9:0x3ffcea80 0x400eaf5d:0x3ffceac0 0x400eb002:0x3ffceb50 0x400eb5d8:0x3ffceb70 0x400e9f2e:0x3ffceb90 0x4016447b:0x3ffcebb0 0x400ea62e:0x3ffcebd0 0x400ea696:0x3ffcec20 0x4008973d:0x3ffcec40
+
+
+
+
+ELF file SHA256: 6d565cc2f
+
+Rebooting...
+ets Jul 29 2019 12:21:46
+
+rst:0xc (SW_CPU_RESET),boot:0x17 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:6380
+ho 0 tail 12 room 4
+load:0x40078000,len:15904
+load:0x40080400,len:3860
+entry 0x40080638
+[0;32mI (29) boot: ESP-IDF v5.5-dev-3372-g38628f98b9 2nd stage bootloader[0m
+[0;32mI (29) boot: compile time Nov 25 2025 11:53:58[0m
+[0;32mI (29) boot: Multicore bootloader[0m
+[0;32mI (32) boot: chip revision: v3.1[0m
+[0;32mI (35) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (39) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (42) boot.esp32: SPI Flash Size : 4MB[0m
+[0;32mI (46) boot: Enabling RNG early entropy source...[0m
+[0;32mI (50) boot: Partition Table:[0m
+[0;32mI (53) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (59) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (66) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (72) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (79) boot:  3 spiffs           Unknown data     01 82 00110000 002f0000[0m
+[0;32mI (85) boot: End of partition table[0m
+[0;32mI (89) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=269bch (158140) map[0m
+[0;32mI (150) esp_image: segment 1: paddr=000369e4 vaddr=3ff80000 size=0001ch (    28) load[0m
+[0;32mI (150) esp_image: segment 2: paddr=00036a08 vaddr=3ffb0000 size=03ebch ( 16060) load[0m
+[0;32mI (160) esp_image: segment 3: paddr=0003a8cc vaddr=40080000 size=0574ch ( 22348) load[0m
+[0;32mI (170) esp_image: segment 4: paddr=00040020 vaddr=400d0020 size=9cea0h (642720) map[0m
+[0;32mI (390) esp_image: segment 5: paddr=000dcec8 vaddr=4008574c size=125c8h ( 75208) load[0m
+[0;32mI (431) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (431) boot: Disabling RNG early entropy source...[0m
+[0;32mI (442) cpu_start: Multicore app[0m
+[0;32mI (450) cpu_start: Pro cpu start user code[0m
+[0;32mI (450) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (450) app_init: Application information:[0m
+[0;32mI (453) app_init: Project name:     sensor_campo[0m
+[0;32mI (458) app_init: App version:      9006bb6b-dirty[0m
+[0;32mI (464) app_init: Compile time:     Nov 25 2025 11:53:18[0m
+[0;32mI (470) app_init: ELF file SHA256:  6d565cc2f...[0m
+[0;32mI (475) app_init: ESP-IDF:          v5.5-dev-3372-g38628f98b9[0m
+[0;32mI (482) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (486) efuse_init: Max chip rev:     v3.99 [0m
+[0;32mI (491) efuse_init: Chip rev:         v3.1[0m
+[0;32mI (496) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (504) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (509) heap_init: At 3FFB8040 len 00027FC0 (159 KiB): DRAM[0m
+[0;32mI (516) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (522) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (528) heap_init: At 40097D14 len 000082EC (32 KiB): IRAM[0m
+[0;32mI (536) spi_flash: detected chip: generic[0m
+[0;32mI (539) spi_flash: flash io: dio[0m
+[0;32mI (544) main_task: Started on CPU0[0m
+[0;32mI (554) main_task: Calling app_main()[0m
+[0;32mI (574) BSP_LED: LED inicializado no GPIO 2[0m
+[0;32mI (574) BSP_DS18B20: DS18B20 inicializado no GPIO 4[0m
+[0;32mI (574) BSP_ADC: ADC umidade solo inicializado. canal=6 bitwidth=12 atten=3[0m
+[0;32mI (574) BSP_SENSORS: Sensores BSP inicializados[0m
+[0;32mI (584) APP_SENSOR_MGR: Sensor Manager inicializado[0m
+[0;32mI (584) APP_DATA_LOGGER: Inicializando SPIFFS...[0m
+[0;32mI (894) APP_DATA_LOGGER: SPIFFS montado em /spiffs[0m
+[0;32mI (894) APP_DATA_LOGGER: Total=2293769 bytes, Usado=2038 bytes[0m
+[0;32mI (1044) APP_DATA_LOGGER: Proximo indice de log sera: 8[0m
+[0;33mW (1234) APP_DATA_LOGGER: Arquivo /spiffs/soil_calib.json nao encontrado. Usando padrao (Seco: 4000, Molhado: 400)[0m
+[0;32mI (1234) APP_DATA_LOGGER: --- Lendo /spiffs/log_temp.csv ---[0m
+[0;32mI (1244) APP_DATA_LOGGER: 1,25.00,50.00,26.75,0.00
+[0m
+[0;32mI (1244) APP_DATA_LOGGER: 2,25.00,50.00,26.75,0.00
+[0m
+[0;32mI (1254) APP_DATA_LOGGER: 3,25.00,50.00,26.75,0.00
+[0m
+[0;32mI (1254) APP_DATA_LOGGER: 4,25.00,50.00,26.69,0.00
+[0m
+[0;32mI (1264) APP_DATA_LOGGER: 5,25.00,50.00,26.69,0.00
+[0m
+[0;32mI (1264) APP_DATA_LOGGER: 6,25.00,50.00,26.69,0.00
+[0m
+[0;32mI (1274) APP_DATA_LOGGER: 7,25.00,50.00,26.69,0.00
+[0m
+[0;32mI (1274) APP_DATA_LOGGER: --- Fim do arquivo ---[0m
+[0;32mI (1284) APP_DATA_LOGGER: Limpando todos os dados armazenados...[0m
+[0;32mI (1294) APP_DATA_LOGGER: Arquivo /spiffs/log_temp.csv removido[0m
+[0;33mW (1484) APP_DATA_LOGGER: Nao foi possivel remover /spiffs/soil_calib.json (pode nao existir)[0m
+[0;32mI (1484) APP_DATA_LOGGER: Dados limpos. Sistema reiniciado do zero.[0m
+[0;32mI (1494) APP_GUI_SERVICES: Serviços GUI registrados[0m
+[0;32mI (1504) wifi:wifi driver task: 3ffc2244, prio:23, stack:6656, core=0[0m
+[0;32mI (1514) wifi:wifi firmware version: 7d2994f4b[0m
+[0;32mI (1514) wifi:wifi certification version: v7.0[0m
+[0;32mI (1514) wifi:config NVS flash: enabled[0m
+[0;32mI (1514) wifi:config nano formatting: disabled[0m
+[0;32mI (1524) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (1524) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (1524) wifi:Init management short buffer num: 32[0m
+[0;32mI (1534) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (1534) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (1544) wifi:Init static rx buffer num: 10[0m
+[0;32mI (1544) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (1554) wifi_init: rx ba win: 6[0m
+[0;32mI (1554) wifi_init: accept mbox: 6[0m
+[0;32mI (1554) wifi_init: tcpip mbox: 32[0m
+[0;32mI (1564) wifi_init: udp mbox: 6[0m
+[0;32mI (1564) wifi_init: tcp mbox: 6[0m
+[0;32mI (1574) wifi_init: tcp tx win: 5760[0m
+[0;32mI (1574) wifi_init: tcp rx win: 5760[0m
+[0;32mI (1574) wifi_init: tcp mss: 1440[0m
+[0;32mI (1584) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (1584) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (1594) phy_init: phy_version 4860,6b7a6e5,Feb  6 2025,14:47:07[0m
+[0;32mI (1684) wifi:mode : softAP (38:18:2b:ea:b7:cd)[0m
+[0;32mI (1684) wifi:Total power save buffer number: 16[0m
+[0;32mI (1684) wifi:Init max length of beacon: 752/752[0m
+[0;32mI (1684) wifi:Init max length of beacon: 752/752[0m
+[0;32mI (1694) BSP_WIFI_AP: Modo AP iniciado. SSID='ESP32_TEMP' senha='12345678'[0m
+[0;32mI (1694) esp_netif_lwip: DHCP server started on interface WIFI_AP_DEF with IP: 192.168.4.1[0m
+[0;32mI (1714) GUI_HTTP_SERVER: Servidor HTTP iniciado e rotas registradas. Acesse http://192.168.4.1/[0m
+[0;32mI (1714) APP_MAIN: Sistema iniciado - Arquitetura BSP/APP/GUI[0m
+[0;32mI (1724) main_task: Returned from app_main()[0m
+[0;32mI (3234) APP_MAIN: Log salvo! Temp Solo: 26.75 C, Umid Solo: 0.00 %[0m
+[0;32mI (3504) wifi:new:<1,0>, old:<1,1>, ap:<1,1>, sta:<255,255>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (3504) wifi:station: 96:62:32:cc:84:05 join, AID=1, bgn, 20[0m
+[0;32mI (3554) BSP_WIFI_AP: Cliente 96:62:32:cc:84:05 conectou, AID=1[0m
+[0;32mI (3694) wifi:<ba-add>idx:2 (ifx:1, 96:62:32:cc:84:05), tid:0, ssn:0, winSize:64[0m
+[0;32mI (3704) esp_netif_lwip: DHCP server assigned IP to a client, IP is: 192.168.4.2[0m
+Guru Meditation Error: Core  0 panic'ed (InstrFetchProhibited). Exception was unhandled.
+
+Core  0 register dump:
+PC      : 0x0000200b  PS      : 0x00060b30  A0      : 0x800ec0bc  A1      : 0x3ffcda70  
+A2      : 0x3ffca164  A3      : 0x3ffca16c  A4      : 0x3ffba300  A5      : 0x00000000  
+A6      : 0x3ffcea90  A7      : 0x00000000  A8      : 0x800d9540  A9      : 0x3ffcda50  
+A10     : 0x0000200b  A11     : 0x3ffca16c  A12     : 0x00000001  A13     : 0xffffffff  
+A14     : 0x3ffca388  A15     : 0x3ffceae0  SAR     : 0x00000020  EXCCAUSE: 0x00000014  
+EXCVADDR: 0x00002008  LBEG    : 0x400014fd  LEND    : 0x4000150d  LCOUNT  : 0xffffffff  
+
+
+Backtrace: 0x00002008:0x3ffcda70 0x400ec0b9:0x3ffcea80 0x400eaf5d:0x3ffceac0 0x400eb002:0x3ffceb50 0x400eb5d8:0x3ffceb70 0x400e9f2e:0x3ffceb90 0x4016447b:0x3ffcebb0 0x400ea62e:0x3ffcebd0 0x400ea696:0x3ffcec20 0x4008973d:0x3ffcec40
+
+
+
+
+ELF file SHA256: 6d565cc2f
+
+Rebooting...
+ets Jul 29 2019 12:21:46
+
+rst:0xc (SW_CPU_RESET),boot:0x17 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:6380
+ho 0 tail 12 room 4
+load:0x40078000,len:15904
+load:0x40080400,len:3860
+entry 0x40080638
+[0;32mI (29) boot: ESP-IDF v5.5-dev-3372-g38628f98b9 2nd stage bootloader[0m
+[0;32mI (29) boot: compile time Nov 25 2025 11:53:58[0m
+[0;32mI (29) boot: Multicore bootloader[0m
+[0;32mI (32) boot: chip revision: v3.1[0m
+[0;32mI (35) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (39) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (42) boot.esp32: SPI Flash Size : 4MB[0m
+[0;32mI (46) boot: Enabling RNG early entropy source...[0m
+[0;32mI (50) boot: Partition Table:[0m
+[0;32mI (53) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (59) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (66) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (72) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (79) boot:  3 spiffs           Unknown data     01 82 00110000 002f0000[0m
+[0;32mI (85) boot: End of partition table[0m
+[0;32mI (89) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=269bch (158140) map[0m
+[0;32mI (150) esp_image: segment 1: paddr=000369e4 vaddr=3ff80000 size=0001ch (    28) load[0m
+[0;32mI (150) esp_image: segment 2: paddr=00036a08 vaddr=3ffb0000 size=03ebch ( 16060) load[0m
+[0;32mI (160) esp_image: segment 3: paddr=0003a8cc vaddr=40080000 size=0574ch ( 22348) load[0m
+[0;32mI (170) esp_image: segment 4: paddr=00040020 vaddr=400d0020 size=9cea0h (642720) map[0m
+[0;32mI (390) esp_image: segment 5: paddr=000dcec8 vaddr=4008574c size=125c8h ( 75208) load[0m
+[0;32mI (431) boot: Loaded app from partition at offset 0x10000[0m
+I (431) boot: Disabling RNG early entropy source...
+[0;32mI (442) cpu_start: Multicore app[0m
+[0;32mI (450) cpu_start: Pro cpu start user code[0m
+[0;32mI (450) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (450) app_init: Application information:[0m
+[0;32mI (453) app_init: Project name:     sensor_campo[0m
+[0;32mI (458) app_init: App version:      9006bb6b-dirty[0m
+[0;32mI (464) app_init: Compile time:     Nov 25 2025 11:53:18[0m
+[0;32mI (470) app_init: ELF file SHA256:  6d565cc2f...[0m
+[0;32mI (475) app_init: ESP-IDF:          v5.5-dev-3372-g38628f98b9[0m
+[0;32mI (482) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (486) efuse_init: Max chip rev:     v3.99 [0m
+[0;32mI (491) efuse_init: Chip rev:         v3.1[0m
+[0;32mI (496) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (504) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (509) heap_init: At 3FFB8040 len 00027FC0 (159 KiB): DRAM[0m
+[0;32mI (516) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (522) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (528) heap_init: At 40097D14 len 000082EC (32 KiB): IRAM[0m
+[0;32mI (536) spi_flash: detected chip: generic[0m
+[0;32mI (539) spi_flash: flash io: dio[0m
+[0;32mI (544) main_task: Started on CPU0[0m
+[0;32mI (554) main_task: Calling app_main()[0m
+[0;32mI (574) BSP_LED: LED inicializado no GPIO 2[0m
+[0;32mI (574) BSP_DS18B20: DS18B20 inicializado no GPIO 4[0m
+[0;32mI (574) BSP_ADC: ADC umidade solo inicializado. canal=6 bitwidth=12 atten=3[0m
+[0;32mI (574) BSP_SENSORS: Sensores BSP inicializados[0m
+[0;32mI (584) APP_SENSOR_MGR: Sensor Manager inicializado[0m
+[0;32mI (584) APP_DATA_LOGGER: Inicializando SPIFFS...[0m
+[0;32mI (894) APP_DATA_LOGGER: SPIFFS montado em /spiffs[0m
+[0;32mI (894) APP_DATA_LOGGER: Total=2293769 bytes, Usado=2038 bytes[0m
+[0;32mI (1044) APP_DATA_LOGGER: Proximo indice de log sera: 1[0m
+[0;33mW (1234) APP_DATA_LOGGER: Arquivo /spiffs/soil_calib.json nao encontrado. Usando padrao (Seco: 4000, Molhado: 400)[0m
+[0;32mI (1234) APP_DATA_LOGGER: --- Lendo /spiffs/log_temp.csv ---[0m
+[0;32mI (1234) APP_DATA_LOGGER: 1,25.00,50.00,26.75,0.00
+[0m
+[0;32mI (1244) APP_DATA_LOGGER: --- Fim do arquivo ---[0m
+[0;32mI (1244) APP_DATA_LOGGER: Limpando todos os dados armazenados...[0m
+[0;32mI (1254) APP_DATA_LOGGER: Arquivo /spiffs/log_temp.csv removido[0m
+[0;33mW (1454) APP_DATA_LOGGER: Nao foi possivel remover /spiffs/soil_calib.json (pode nao existir)[0m
+[0;32mI (1454) APP_DATA_LOGGER: Dados limpos. Sistema reiniciado do zero.[0m
+[0;32mI (1454) APP_GUI_SERVICES: Serviços GUI registrados[0m
+[0;32mI (1474) wifi:wifi driver task: 3ffc2244, prio:23, stack:6656, core=0[0m
+[0;32mI (1484) wifi:wifi firmware version: 7d2994f4b[0m
+[0;32mI (1484) wifi:wifi certification version: v7.0[0m
+[0;32mI (1484) wifi:config NVS flash: enabled[0m
+[0;32mI (1484) wifi:config nano formatting: disabled[0m
+[0;32mI (1484) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (1494) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (1494) wifi:Init management short buffer num: 32[0m
+[0;32mI (1504) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (1504) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (1504) wifi:Init static rx buffer num: 10[0m
+[0;32mI (1514) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (1514) wifi_init: rx ba win: 6[0m
+[0;32mI (1524) wifi_init: accept mbox: 6[0m
+[0;32mI (1524) wifi_init: tcpip mbox: 32[0m
+[0;32mI (1524) wifi_init: udp mbox: 6[0m
+[0;32mI (1534) wifi_init: tcp mbox: 6[0m
+[0;32mI (1534) wifi_init: tcp tx win: 5760[0m
+[0;32mI (1544) wifi_init: tcp rx win: 5760[0m
+[0;32mI (1544) wifi_init: tcp mss: 1440[0m
+[0;32mI (1544) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (1554) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (1564) phy_init: phy_version 4860,6b7a6e5,Feb  6 2025,14:47:07[0m
+[0;32mI (1654) wifi:mode : softAP (38:18:2b:ea:b7:cd)[0m
+[0;32mI (1654) wifi:Total power save buffer number: 16[0m
+[0;32mI (1664) wifi:Init max length of beacon: 752/752[0m
+[0;32mI (1664) wifi:Init max length of beacon: 752/752[0m
+[0;32mI (1664) BSP_WIFI_AP: Modo AP iniciado. SSID='ESP32_TEMP' senha='12345678'[0m
+[0;32mI (1664) esp_netif_lwip: DHCP server started on interface WIFI_AP_DEF with IP: 192.168.4.1[0m
+[0;32mI (1684) GUI_HTTP_SERVER: Servidor HTTP iniciado e rotas registradas. Acesse http://192.168.4.1/[0m
+[0;32mI (1694) APP_MAIN: Sistema iniciado - Arquitetura BSP/APP/GUI[0m
+[0;32mI (1694) main_task: Returned from app_main()[0m
+[0;32mI (3204) APP_MAIN: Log salvo! Temp Solo: 26.75 C, Umid Solo: 0.00 %[0m
+[0;32mI (5194) APP_MAIN: Log salvo! Temp Solo: 26.75 C, Umid Solo: 0.00 %[0m
+[0;32mI (6954) APP_MAIN: Log salvo! Temp Solo: 26.69 C, Umid Solo: 0.00 %[0m
+[0;32mI (8944) APP_MAIN: Log salvo! Temp Solo: 26.75 C, Umid Solo: 0.00 %[0m
+[0;32mI (10934) APP_MAIN: Log salvo! Temp Solo: 26.75 C, Umid Solo: 0.00 %[0m
+[0;32mI (12694) APP_MAIN: Log salvo! Temp Solo: 26.75 C, Umid Solo: 0.00 %[0m
+[0;32mI (14684) APP_MAIN: Log salvo! Temp Solo: 26.75 C, Umid Solo: 0.00 %[0m
+[0;32mI (16674) APP_MAIN: Log salvo! Temp Solo: 26.75 C, Umid Solo: 0.00 %[0m
+[0;32mI (18434) APP_MAIN: Log salvo! Temp Solo: 26.75 C, Umid Solo: 0.00 %[0m
+[0;32mI (20424) APP_MAIN: Log salvo! Temp Solo: 26.75 C, Umid Solo: 0.00 %[0m
+[0;32mI (22414) APP_MAIN: Log salvo! Temp Solo: 26.69 C, Umid Solo: 0.00 %[0m
+[0;32mI (24174) APP_MAIN: Log salvo! Temp Solo: 26.69 C, Umid Solo: 0.00 %[0m
+[0;32mI (26164) APP_MAIN: Log salvo! Temp Solo: 26.75 C, Umid Solo: 0.00 %[0m
+[0;32mI (28154) APP_MAIN: Log salvo! Temp Solo: 26.69 C, Umid Solo: 0.00 %[0m
+[0;32mI (29914) APP_MAIN: Log salvo! Temp Solo: 26.69 C, Umid Solo: 0.00 %[0m
+[0;32mI (31904) APP_MAIN: Log salvo! Temp Solo: 26.75 C, Umid Solo: 0.00 %[0m
+[0;32mI (33894) APP_MAIN: Log salvo! Temp Solo: 26.75 C, Umid Solo: 0.00 %[0m
+[0;32mI (35654) APP_MAIN: Log salvo! Temp Solo: 26.75 C, Umid Solo: 0.00 %[0m
+[0;32mI (37644) APP_MAIN: Log salvo! Temp Solo: 26.75 C, Umid Solo: 0.00 %[0m
+[0;32mI (39634) APP_MAIN: Log salvo! Temp Solo: 26.75 C, Umid Solo: 0.00 %[0m
+[0;32mI (41394) APP_MAIN: Log salvo! Temp Solo: 26.75 C, Umid Solo: 0.00 %[0m
+[0;32mI (43384) APP_MAIN: Log salvo! Temp Solo: 26.75 C, Umid Solo: 0.00 %[0m
+[0;32mI (45374) APP_MAIN: Log salvo! Temp Solo: 26.75 C, Umid Solo: 0.00 %[0m
+[0;32mI (47134) APP_MAIN: Log salvo! Temp Solo: 26.75 C, Umid Solo: 0.00 %[0m
+[0;32mI (49124) APP_MAIN: Log salvo! Temp Solo: 26.75 C, Umid Solo: 0.00 %[0m
+[0;32mI (51114) APP_MAIN: Log salvo! Temp Solo: 26.75 C, Umid Solo: 0.00 %[0m
+[0;32mI (52874) APP_MAIN: Log salvo! Temp Solo: 26.75 C, Umid Solo: 0.00 %[0m
+[0;32mI (54864) APP_MAIN: Log salvo! Temp Solo: 26.75 C, Umid Solo: 0.00 %[0m
+[0;32mI (56854) APP_MAIN: Log salvo! Temp Solo: 26.75 C, Umid Solo: 0.00 %[0m
+[0;32mI (58614) APP_MAIN: Log salvo! Temp Solo: 26.75 C, Umid Solo: 0.00 %[0m
+[0;32mI (60604) APP_MAIN: Log salvo! Temp Solo: 26.75 C, Umid Solo: 0.00 %[0m
+[0;32mI (62594) APP_MAIN: Log salvo! Temp Solo: 26.75 C, Umid Solo: 0.00 %[0m
+[0;32mI (64354) APP_MAIN: Log salvo! Temp Solo: 26.75 C, Umid Solo: 0.00 %[0m
+[0;32mI (66344) APP_MAIN: Log salvo! Temp Solo: 26.75 C, Umid Solo: 0.00 %[0m
+[0;32mI (68334) APP_MAIN: Log salvo! Temp Solo: 26.75 C, Umid Solo: 0.00 %[0m
+[0;32mI (70094) APP_MAIN: Log salvo! Temp Solo: 26.69 C, Umid Solo: 0.00 %[0m
+[0;32mI (72084) APP_MAIN: Log salvo! Temp Solo: 26.69 C, Umid Solo: 0.00 %[0m
+[0;32mI (74074) APP_MAIN: Log salvo! Temp Solo: 26.75 C, Umid Solo: 0.00 %[0m
+[0;32mI (75834) APP_MAIN: Log salvo! Temp Solo: 26.75 C, Umid Solo: 0.00 %[0m
+[0;32mI (77824) APP_MAIN: Log salvo! Temp Solo: 26.75 C, Umid Solo: 0.00 %[0m
+[0;32mI (79814) APP_MAIN: Log salvo! Temp Solo: 26.75 C, Umid Solo: 0.00 %[0m
+����������������������������������������������������������������alvo! Temp Solo: 26.75 C, Umid Solo: 0.00 %[0m
+[0;32mI (83564) APP_MAIN: Log salvo! Temp Solo: 26.75 C, Umid Solo: 0.00 %[0m
+[0;32mI (85554) APP_MAIN: Log salvo! Temp Solo: 26.75 C, Umid Solo: 0.00 %[0m
+[0;32mI (87544) APP_MAIN: Log salvo! Temp Solo: 26.69 C, Umid Solo: 0.00 %[0m
+[0;32mI (89304) APP_MAIN: Log salvo! Temp Solo: 26.69 C, Umid Solo: 0.00 %[0m
+[0;32mI (91294) APP_MAIN: Log salvo! Temp Solo: 26.75 C, Umid Solo: 0.00 %[0m
+[0;32mI (93284) APP_MAIN: Log salvo! Temp Solo: 26.75 C, Umid Solo: 0.00 %[0m
+[0;32mI (95044) APP_MAIN: Log salvo! Temp Solo: 26.75 C, Umid Solo: 0.00 %[0m
+[0;32mI (97034) APP_MAIN: Log salvo! Temp Solo: 26.69 C, Umid Solo: 0.00 %[0m
+[0;32mI (99024) APP_MAIN: Log salvo! Temp Solo: 26.75 C, Umid Solo: 0.00 %[0m
+[0;32mI (100784) APP_MAIN: Log salvo! Temp Solo: 26.69 C, Umid Solo: 0.00 %[0m
+[0;32mI (102774) APP_MAIN: Log salvo! Temp Solo: 26.75 C, Umid Solo: 0.00 %[0m
+[0;32mI (104764) APP_MAIN: Log salvo! Temp Solo: 26.75 C, Umid Solo: 0.00 %[0m
+[0;32mI (106524) APP_MAIN: Log salvo! Temp Solo: 26.75 C, Umid Solo: 0.00 %[0m
+[0;32mI (108514) APP_MAIN: Log salvo! Temp Solo: 26.75 C, Umid Solo: 0.00 %[0m
+[0;32mI (110504) APP_MAIN: Log salvo! Temp Solo: 26.75 C, Umid Solo: 0.00 %[0m
+[0;32mI (112264) APP_MAIN: Log salvo! Temp Solo: 26.75 C, Umid Solo: 0.00 %[0m
+[0;32mI (114254) APP_MAIN: Log salvo! Temp Solo: 26.69 C, Umid Solo: 0.00 %[0m
+[0;32mI (116244) APP_MAIN: Log salvo! Temp Solo: 26.75 C, Umid Solo: 0.00 %[0m
+[0;32mI (118004) APP_MAIN: Log salvo! Temp Solo: 26.75 C, Umid Solo: 0.00 %[0m
+[0;32mI (119994) APP_MAIN: Log salvo! Temp Solo: 26.69 C, Umid Solo: 0.00 %[0m
+[0;32mI (121984) APP_MAIN: Log salvo! Temp Solo: 26.69 C, Umid Solo: 0.00 %[0m
+[0;32mI (123744) APP_MAIN: Log salvo! Temp Solo: 26.69 C, Umid Solo: 0.00 %[0m
+[0;32mI (125734) APP_MAIN: Log salvo! Temp Solo: 26.69 C, Umid Solo: 0.00 %[0m
+[0;32mI (127724) APP_MAIN: Log salvo! Temp Solo: 26.69 C, Umid Solo: 0.00 %[0m
+[0;32mI (129484) APP_MAIN: Log salvo! Temp Solo: 26.69 C, Umid Solo: 0.00 %[0m
+[0;32mI (131474) APP_MAIN: Log salvo! Temp Solo: 26.69 C, Umid Solo: 0.00 %[0m
+[0;32mI (133464) APP_MAIN: Log salvo! Temp Solo: 26.69 C, Umid Solo: 0.00 %[0m
+[0;32mI (135224) APP_MAIN: Log salvo! Temp Solo: 26.69 C, Umid Solo: 0.00 %[0m
+[0;32mI (137214) APP_MAIN: Log salvo! Temp Solo: 26.69 C, Umid Solo: 0.00 %[0m
+[0;32mI (139204) APP_MAIN: Log salvo! Temp Solo: 26.69 C, Umid Solo: 26.22 %[0m
+[0;32mI (140964) APP_MAIN: Log salvo! Temp Solo: 26.69 C, Umid Solo: 0.00 %[0m
+[0;32mI (142954) APP_MAIN: Log salvo! Temp Solo: 26.69 C, Umid Solo: 0.00 %[0m
+[0;32mI (144944) APP_MAIN: Log salvo! Temp Solo: 26.62 C, Umid Solo: 0.00 %[0m
+[0;32mI (146704) APP_MAIN: Log salvo! Temp Solo: 26.69 C, Umid Solo: 0.00 %[0m
+[0;32mI (148694) APP_MAIN: Log salvo! Temp Solo: 26.69 C, Umid Solo: 0.00 %[0m
+[0;32mI (150684) APP_MAIN: Log salvo! Temp Solo: 26.62 C, Umid Solo: 0.00 %[0m
+[0;32mI (152444) APP_MAIN: Log salvo! Temp Solo: 26.62 C, Umid Solo: 0.00 %[0m
+[0;32mI (154434) APP_MAIN: Log salvo! Temp Solo: 26.62 C, Umid Solo: 0.00 %[0m
+[0;32mI (156424) APP_MAIN: Log salvo! Temp Solo: 26.62 C, Umid Solo: 0.00 %[0m
+[0;32mI (158414) APP_MAIN: Log salvo! Temp Solo: 26.62 C, Umid Solo: 0.00 %[0m
+[0;32mI (160174) APP_MAIN: Log salvo! Temp Solo: 26.56 C, Umid Solo: 0.00 %[0m
+[0;32mI (162164) APP_MAIN: Log salvo! Temp Solo: 26.62 C, Umid Solo: 0.00 %[0m
+[0;32mI (164154) APP_MAIN: Log salvo! Temp Solo: 26.56 C, Umid Solo: 0.00 %[0m
+[0;32mI (165914) APP_MAIN: Log salvo! Temp Solo: 26.56 C, Umid Solo: 0.00 %[0m
+[0;32mI (167904) APP_MAIN: Log salvo! Temp Solo: 26.56 C, Umid Solo: 0.00 %[0m
+[0;32mI (169894) APP_MAIN: Log salvo! Temp Solo: 26.62 C, Umid Solo: 0.00 %[0m
+[0;32mI (171654) APP_MAIN: Log salvo! Temp Solo: 26.81 C, Umid Solo: 0.00 %[0m
+[0;32mI (173644) APP_MAIN: Log salvo! Temp Solo: 26.94 C, Umid Solo: 0.00 %[0m
+[0;32mI (175634) APP_MAIN: Log salvo! Temp Solo: 26.94 C, Umid Solo: 0.00 %[0m
+[0;32mI (177394) APP_MAIN: Log salvo! Temp Solo: 27.00 C, Umid Solo: 0.00 %[0m
+[0;32mI (179384) APP_MAIN: Log salvo! Temp Solo: 27.00 C, Umid Solo: 0.00 %[0m
+[0;32mI (181374) APP_MAIN: Log salvo! Temp Solo: 27.00 C, Umid Solo: 0.00 %[0m
+[0;32mI (183134) APP_MAIN: Log salvo! Temp Solo: 26.94 C, Umid Solo: 0.00 %[0m
+[0;32mI (185124) APP_MAIN: Log salvo! Temp Solo: 26.94 C, Umid Solo: 0.00 %[0m
+[0;32mI (187114) APP_MAIN: Log salvo! Temp Solo: 26.94 C, Umid Solo: 0.00 %[0m
+[0;32mI (188874) APP_MAIN: Log salvo! Temp Solo: 26.94 C, Umid Solo: 0.00 %[0m
+[0;32mI (190864) APP_MAIN: Log salvo! Temp Solo: 26.94 C, Umid Solo: 0.00 %[0m
+[0;32mI (192854) APP_MAIN: Log salvo! Temp Solo: 26.94 C, Umid Solo: 0.00 %[0m
+[0;32mI (194614) APP_MAIN: Log salvo! Temp Solo: 26.88 C, Umid Solo: 0.00 %[0m
+[0;32mI (196604) APP_MAIN: Log salvo! Temp Solo: 26.88 C, Umid Solo: 0.00 %[0m
+[0;32mI (198594) APP_MAIN: Log salvo! Temp Solo: 26.88 C, Umid Solo: 0.00 %[0m
+[0;32mI (200354) APP_MAIN: Log salvo! Temp Solo: 26.88 C, Umid Solo: 0.00 %[0m
+[0;32mI (202344) APP_MAIN: Log salvo! Temp Solo: 26.88 C, Umid Solo: 0.00 %[0m
+[0;32mI (204334) APP_MAIN: Log salvo! Temp Solo: 26.81 C, Umid Solo: 0.00 %[0m
+[0;32mI (206094) APP_MAIN: Log salvo! Temp Solo: 26.81 C, Umid Solo: 0.00 %[0m
+[0;32mI (208084) APP_MAIN: Log salvo! Temp Solo: 26.81 C, Umid Solo: 0.00 %[0m

@@ -1,0 +1,31 @@
+Command: /home/mrclnndrd/.espressif/python_env/idf5.5_py3.11_env/bin/python /home/mrclnndrd/esp/esp-idf/tools/idf_monitor.py -p /dev/ttyUSB0 -b 115200 --toolchain-prefix xtensa-esp32-elf- --target esp32 --revision 0 /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/sensor_campo.elf /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/bootloader/bootloader.elf -m '/home/mrclnndrd/.espressif/python_env/idf5.5_py3.11_env/bin/python' '/home/mrclnndrd/esp/esp-idf/tools/idf.py'
+[0;33m--- esp-idf-monitor 1.8.0 on /dev/ttyUSB0 115200[0m
+[0;33m--- Quit: Ctrl+] | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H[0m
+[0m--- 0x40080400: [0;33m_invalid_pc_placeholder[0m[0m at [0;32m/home/mrclnndrd/esp/esp-idf/components/xtensa/xtensa_vectors.S[0m[0m:[1;31m2235[0m
+[0m--- 0x40080638: [0;33mcall_start_cpu0[0m[0m at [0;32m/home/mrclnndrd/esp/esp-idf/components/bootloader/subproject/main/bootloader_start.c[0m[0m:[1;31m25[0m
+[0m--- 0x400014fd: [0;33mstrlen[0m[0m in [0;32mROM[0m
+[0m--- 0x4000150d: [0;33mstrlen[0m[0m in [0;32mROM[0m
+[0m--- 0x400ec0b9: [0;33mhttpd_uri[0m[0m at [0;32m/home/mrclnndrd/esp/esp-idf/components/esp_http_server/src/httpd_uri.c[0m[0m:[1;31m331[0m
+[0m--- 0x400eaf5d: [0;33mhttpd_parse_req[0m[0m at [0;32m/home/mrclnndrd/esp/esp-idf/components/esp_http_server/src/httpd_parse.c[0m[0m:[1;31m685[0m
+[0m--- 0x400eb002: [0;33mhttpd_req_new[0m[0m at [0;32m/home/mrclnndrd/esp/esp-idf/components/esp_http_server/src/httpd_parse.c[0m[0m:[1;31m821[0m
+[0m--- 0x400eb5d8: [0;33mhttpd_sess_process[0m[0m at [0;32m/home/mrclnndrd/esp/esp-idf/components/esp_http_server/src/httpd_sess.c[0m[0m:[1;31m427[0m
+[0m--- 0x400e9f2e: [0;33mhttpd_process_session[0m[0m at [0;32m/home/mrclnndrd/esp/esp-idf/components/esp_http_server/src/httpd_main.c[0m[0m:[1;31m267[0m
+[0m--- 0x4016447b: [0;33mhttpd_sess_enum[0m[0m at [0;32m/home/mrclnndrd/esp/esp-idf/components/esp_http_server/src/httpd_sess.c[0m[0m:[1;31m50[0m
+[0m--- 0x400ea62e: [0;33mhttpd_server[0m[0m at [0;32m/home/mrclnndrd/esp/esp-idf/components/esp_http_server/src/httpd_main.c[0m[0m:[1;31m317[0m
+[0m--- 0x400ea696: [0;33mhttpd_thread[0m[0m at [0;32m/home/mrclnndrd/esp/esp-idf/components/esp_http_server/src/httpd_main.c[0m[0m:[1;31m339[0m
+[0m--- 0x4008973d: [0;33mvPortTaskWrapper[0m[0m at [0;32m/home/mrclnndrd/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/port.c[0m[0m:[1;31m139[0m
+[0m--- 0x40080400: [0;33m_invalid_pc_placeholder[0m[0m at [0;32m/home/mrclnndrd/esp/esp-idf/components/xtensa/xtensa_vectors.S[0m[0m:[1;31m2235[0m
+[0m--- 0x40080638: [0;33mcall_start_cpu0[0m[0m at [0;32m/home/mrclnndrd/esp/esp-idf/components/bootloader/subproject/main/bootloader_start.c[0m[0m:[1;31m25[0m
+[0m--- 0x400014fd: [0;33mstrlen[0m[0m in [0;32mROM[0m
+[0m--- 0x4000150d: [0;33mstrlen[0m[0m in [0;32mROM[0m
+[0m--- 0x400ec0b9: [0;33mhttpd_uri[0m[0m at [0;32m/home/mrclnndrd/esp/esp-idf/components/esp_http_server/src/httpd_uri.c[0m[0m:[1;31m331[0m
+[0m--- 0x400eaf5d: [0;33mhttpd_parse_req[0m[0m at [0;32m/home/mrclnndrd/esp/esp-idf/components/esp_http_server/src/httpd_parse.c[0m[0m:[1;31m685[0m
+[0m--- 0x400eb002: [0;33mhttpd_req_new[0m[0m at [0;32m/home/mrclnndrd/esp/esp-idf/components/esp_http_server/src/httpd_parse.c[0m[0m:[1;31m821[0m
+[0m--- 0x400eb5d8: [0;33mhttpd_sess_process[0m[0m at [0;32m/home/mrclnndrd/esp/esp-idf/components/esp_http_server/src/httpd_sess.c[0m[0m:[1;31m427[0m
+[0m--- 0x400e9f2e: [0;33mhttpd_process_session[0m[0m at [0;32m/home/mrclnndrd/esp/esp-idf/components/esp_http_server/src/httpd_main.c[0m[0m:[1;31m267[0m
+[0m--- 0x4016447b: [0;33mhttpd_sess_enum[0m[0m at [0;32m/home/mrclnndrd/esp/esp-idf/components/esp_http_server/src/httpd_sess.c[0m[0m:[1;31m50[0m
+[0m--- 0x400ea62e: [0;33mhttpd_server[0m[0m at [0;32m/home/mrclnndrd/esp/esp-idf/components/esp_http_server/src/httpd_main.c[0m[0m:[1;31m317[0m
+[0m--- 0x400ea696: [0;33mhttpd_thread[0m[0m at [0;32m/home/mrclnndrd/esp/esp-idf/components/esp_http_server/src/httpd_main.c[0m[0m:[1;31m339[0m
+[0m--- 0x4008973d: [0;33mvPortTaskWrapper[0m[0m at [0;32m/home/mrclnndrd/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/port.c[0m[0m:[1;31m139[0m
+[0m--- 0x40080400: [0;33m_invalid_pc_placeholder[0m[0m at [0;32m/home/mrclnndrd/esp/esp-idf/components/xtensa/xtensa_vectors.S[0m[0m:[1;31m2235[0m
+[0m--- 0x40080638: [0;33mcall_start_cpu0[0m[0m at [0;32m/home/mrclnndrd/esp/esp-idf/components/bootloader/subproject/main/bootloader_start.c[0m[0m:[1;31m25[0m

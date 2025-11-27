@@ -1,26 +1,37 @@
 # Este é o CMakeLists para o componente "main"
+# Arquitetura BSP/APP/GUI
 
 idf_component_register(
     SRCS
-    # Fontes principais e de log
-    "main.c"
-    "libs/data_logger.c"
+    # Main
+    "app/app_main.c"
     
-    # Fontes dos Sensores
-    "sensores/sensores.c"
-    "sensores/ds18b20.c"
-    "sensores/soil_moisture.c"
-    "atuadores/atuadores.c"
-
-    # NOVA FONTE: O servidor web
-    "libs/http_server.c"
-
+    # BSP - Board Support Package
+    "bsp/sensors/bsp_ds18b20.c"
+    "bsp/sensors/bsp_adc.c"
+    "bsp/sensors/bsp_sensors.c"
+    "bsp/actuators/bsp_led.c"
+    "bsp/network/bsp_wifi_ap.c"
+    
+    # APP - Lógica de Aplicação
+    "app/app_sensor_manager.c"
+    "app/app_data_logger.c"
+    "app/app_atuadores.c"
+    "app/gui_services.c"
+    
+    # GUI - Interface Gráfica
+    "gui/web/gui_http_server.c"
+    
     INCLUDE_DIRS
     "."
-    "sensores"
-    "atuadores"
-    "libs"
-
+    "bsp"
+    "bsp/sensors"
+    "bsp/actuators"
+    "bsp/network"
+    "app"
+    "gui"
+    "gui/web"
+    
     # Lista de dependências de componentes do ESP-IDF
     PRIV_REQUIRES
     
@@ -30,14 +41,13 @@ idf_component_register(
     "esp_http_server"
     "esp_event"
     "lwip" 
-
-    # Dependências dos Sensores e Log (Corrigidas)
-    "esp_adc"           # Para o sensor de umidade (soil_moisture)
+    
+    # Dependências dos Sensores e Log
+    "esp_adc"           # Para o sensor de umidade (adc_bsp)
     "nvs_flash"         # Para o nvs_flash_init() em main.c
     "spiffs"            # Para o data_logger (esp_vfs_spiffs_register)
-    "driver"            # Para GPIO (ao invés de esp_driver_gpio)
+    "driver"            # Para GPIO
     "esp_rom"           # Para o ds18b20 (esp_rom_sys.h)
-    "freertos"          # Para o ds18b20 (freertos/task.h)
-    "vfs"               # CORREÇÃO: Para esp_vfs.h no soil_moisture.c
+    "freertos"          # Para o ds18b20 e tarefas
+    "vfs"               # Para esp_vfs.h
 )
-
