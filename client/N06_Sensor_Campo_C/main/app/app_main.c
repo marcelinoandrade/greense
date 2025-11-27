@@ -17,6 +17,7 @@
 #include "app_sensor_manager.h"
 #include "app_data_logger.h"
 #include "app_atuadores.h"
+#include "app_sampling_period.h"
 #include "gui_services.h"
 
 // GUI
@@ -56,7 +57,8 @@ static void tarefa_log(void *pvParameter)
             }
         }
 
-        vTaskDelay(pdMS_TO_TICKS(BSP_SENSOR_SAMPLE_INTERVAL_MS));
+        uint32_t intervalo_ms = sampling_period_get_ms();
+        vTaskDelay(pdMS_TO_TICKS(intervalo_ms));
     }
 }
 
@@ -84,6 +86,9 @@ void app_main(void)
     // Limpa todos os dados armazenados (reinicia do zero)
     ESP_ERROR_CHECK(data_logger_clear_all());
 
+    // Carrega período de amostragem atual (NVS)
+    ESP_ERROR_CHECK(sampling_period_init());
+
     // ============================================================
     // CONECTA CAMADAS (remove dependência circular)
     // ============================================================
@@ -102,6 +107,8 @@ void app_main(void)
     gui_services_impl.get_soil_pct       = data_logger_raw_to_pct;
     gui_services_impl.get_calibration    = data_logger_get_calibracao;
     gui_services_impl.set_calibration    = data_logger_set_calibracao;
+    gui_services_impl.get_sampling_period_ms = sampling_period_get_ms;
+    gui_services_impl.set_sampling_period_ms = sampling_period_set_ms;
     gui_services_impl.build_history_json = data_logger_build_history_json;
     gui_services_impl.clear_logged_data  = data_logger_clear_all;
     gui_services_register(&gui_services_impl);

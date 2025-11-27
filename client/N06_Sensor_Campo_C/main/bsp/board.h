@@ -33,7 +33,7 @@
 #define BSP_SPIFFS_MAX_FILES    5
 
 /* Intervalo de amostragem dos sensores (em milissegundos) */
-#define BSP_SENSOR_SAMPLE_INTERVAL_MS    10000  // 10 segundos
+#define BSP_SENSOR_SAMPLE_INTERVAL_MS    60000  // 1 minuto (valor padrão)
 
 /* Validação de configuração */
 #if !defined(BSP_GPIO_DS18B20) || !defined(BSP_GPIO_LED_STATUS)

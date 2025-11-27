@@ -10,19 +10,17 @@ O firmware cria uma rede **Wi-Fi Access Point (AP)** local e hospeda uma página
 
 ### Funcionalidades principais
 
-- 📡 Cria rede Wi-Fi local “ESP32_TEMP” com IP fixo `192.168.4.1`.
+- 📡 Cria uma rede Wi-Fi local “ESP32_TEMP” com IP fixo `192.168.4.1`.
 - 🌤️ Lê sensores de:
   - Temperatura e umidade do ar (AHT/DHT ou similar)
   - Temperatura do solo (DS18B20)
   - Umidade do solo (sensor resistivo ou capacitivo via ADC)
-- 💾 Armazena leituras em `log_temp.csv` no **SPIFFS**.
-- 📈 Exibe **dashboard com 4 gráficos**:
-  - Temperatura do ar (°C)
-  - Umidade do ar (%)
-  - Temperatura do solo (°C)
-  - Umidade do solo (%)
-- ⚙️ Permite **calibração da umidade do solo** (parâmetros “seco” e “molhado”).
-- ⬇️ Oferece **download direto** do log em CSV.
+- 💾 Armazena leituras em `log_temp.csv` no **SPIFFS** e expõe JSON com histórico.
+- 📈 Exibe **dashboard responsivo** com 4 gráficos e cards de status em tempo real.
+- 🔁 Permite ajustar o **período de amostragem** (1 s, 1 min, 10 min, 1 h, 6 h, 12 h) diretamente na interface web.
+- ⚙️ Possui **calibração guiada** da umidade do solo (parâmetros “seco” e “molhado”).
+- ⬇️ Oferece **download direto** do log em CSV e limpeza total dos dados.
+- 🧠 Quando algum sensor está ausente, gera dados simulados para manter o dashboard ativo.
 - 🔧 Possui servidor HTTP leve com rotas dedicadas.
 
 ---
@@ -31,17 +29,21 @@ O firmware cria uma rede **Wi-Fi Access Point (AP)** local e hospeda uma página
 
 ```
 main/
-├── main.c                     # Inicialização, tarefas e loop principal
-├── libs/
-│   ├── data_logger.c/.h       # Registro de dados no SPIFFS e histórico JSON
-│   ├── http_server.c/.h       # Servidor HTTP e páginas web
-│
-├── sensores/
-│   ├── sensores.c/.h          # Integração dos sensores
-│   ├── ds18b20.c/.h           # Leitura do sensor de temperatura do solo
-│   ├── soil_moisture.c/.h     # Leitura e calibração do sensor de umidade do solo
-│
-├── CMakeLists.txt             # Configuração de build e dependências
+├── app/
+│   ├── app_main.c             # Inicialização, tarefas FreeRTOS e laço principal
+│   ├── app_data_logger.c/.h   # Registro em SPIFFS e geração de JSON/CSV
+│   ├── app_sensor_manager.c/.h# Integração com BSP dos sensores
+│   ├── app_sampling_period.c/.h # Configuração dinâmica do período de amostragem (NVS)
+│   └── gui_services.c/.h      # Ponte entre camada APP e GUI
+├── bsp/
+│   ├── board.h                # Definições da placa (GPIOs, SPIFFS, intervalos)
+│   ├── sensors/               # Drivers DS18B20, ADC e camada `bsp_sensors.c`
+│   └── network/               # SoftAP (`bsp_wifi_ap`)
+├── gui/
+│   └── web/
+│       ├── gui_http_server.c  # Servidor HTTP e páginas HTML inline
+│       └── gui_http_server.h
+├── CMakeLists.txt             # Registro de fontes no componente `main`
 └── README.md                  # Este arquivo
 ```
 
@@ -58,14 +60,25 @@ main/
 
 ### Rotas HTTP
 
-| Rota             | Método | Descrição |
-|------------------|---------|-----------|
-| `/`              | GET     | Página principal com 4 gráficos e botões de ação |
-| `/history`       | GET     | Retorna JSON com últimas leituras |
-| `/calibra`       | GET     | Página para calibração manual |
-| `/set_calibra`   | GET     | Aplica calibração (via query string) |
-| `/download`      | GET     | Baixa `log_temp.csv` completo |
-| `/favicon.ico`   | GET     | Ícone da página (1×1 PNG) |
+| Rota           | Método | Descrição |
+|----------------|--------|-----------|
+| `/`            | GET    | Painel principal (ação rápidas, branding greenSe Campo) |
+| `/dashboard`   | GET    | Dashboard com cards, gráficos e leituras instantâneas |
+| `/history`     | GET    | JSON com as últimas amostras para alimentar o dashboard |
+| `/sampling`    | GET    | Página para escolher o período de amostragem (1 s até 12 h) |
+| `/set_sampling`| GET    | Aplica o período selecionado (persistido em NVS) |
+| `/calibra`     | GET    | Calibração guiada da umidade do solo |
+| `/set_calibra` | GET    | Salva novos valores “seco/molhado” |
+| `/download`    | GET    | Baixa `log_temp.csv` completo |
+| `/clear_data`  | POST   | Limpa o log + calibração diretamente no dispositivo |
+| `/favicon.ico` | GET    | Ícone da página (1×1 PNG) |
+
+### Experiência da Interface Web
+
+- **Painel principal**: cartão único com tag “greenSe Campo”, textos explicativos e botões para dashboard, amostragem, calibração, download e limpeza.
+- **Dashboard**: hero com resumo das leituras, tabela textual e quatro gráficos personalizados desenhados via canvas.
+- **Período de amostragem**: formulário com múltipla escolha (1 s → 12 h), descrições de impacto e botões responsivos.
+- **Calibração**: cards destacando leitura bruta e faixa atual, inputs com labels claros, dica prática e botão verde padrão para retorno ao painel.
 
 ---
 

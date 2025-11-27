@@ -2,6 +2,7 @@
 
 #include "esp_err.h"
 #include <stdbool.h>
+#include <stdint.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -25,6 +26,10 @@ typedef struct {
     float (*get_soil_pct)(int raw);
     void  (*get_calibration)(float *seco, float *molhado);
     esp_err_t (*set_calibration)(float seco, float molhado);
+    
+    /* Período de amostragem */
+    uint32_t (*get_sampling_period_ms)(void);
+    esp_err_t (*set_sampling_period_ms)(uint32_t period_ms);
     
     /* Histórico */
     char* (*build_history_json)(void);

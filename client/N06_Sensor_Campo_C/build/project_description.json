@@ -1,7 +1,7 @@
 {
     "version":            "1.2",
     "project_name":       "sensor_campo",
-    "project_version":    "9006bb6b-dirty",
+    "project_version":    "237dcb4f-dirty",
     "project_path":       "/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C",
     "idf_path":           "/home/mrclnndrd/esp/esp-idf",
     "build_dir":          "/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build",
@@ -1240,7 +1240,7 @@
             "managed_reqs": [],
             "managed_priv_reqs": [ "espressif__cjson" ],
             "file": "/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/esp-idf/main/libmain.a",
-            "sources": [ "/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/app/app_main.c", "/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/bsp/sensors/bsp_ds18b20.c", "/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/bsp/sensors/bsp_adc.c", "/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/bsp/sensors/bsp_sensors.c", "/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/bsp/actuators/bsp_led.c", "/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/bsp/network/bsp_wifi_ap.c", "/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/app/app_sensor_manager.c", "/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/app/app_data_logger.c", "/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/app/app_atuadores.c", "/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/app/gui_services.c", "/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/gui/web/gui_http_server.c" ],
+            "sources": [ "/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/app/app_main.c", "/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/bsp/sensors/bsp_ds18b20.c", "/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/bsp/sensors/bsp_adc.c", "/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/bsp/sensors/bsp_sensors.c", "/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/bsp/actuators/bsp_led.c", "/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/bsp/network/bsp_wifi_ap.c", "/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/app/app_sensor_manager.c", "/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/app/app_data_logger.c", "/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/app/app_sampling_period.c", "/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/app/app_atuadores.c", "/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/app/gui_services.c", "/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/gui/web/gui_http_server.c" ],
             "include_dirs": [ ".", "bsp", "bsp/sensors", "bsp/actuators", "bsp/network", "app", "gui", "gui/web" ]
         },
         "mbedtls": {
