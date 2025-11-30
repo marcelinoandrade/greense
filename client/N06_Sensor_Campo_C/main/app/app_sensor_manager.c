@@ -7,6 +7,42 @@
 static const char *TAG = "APP_SENSOR_MGR";
 static bool initialized = false;
 
+/**
+ * @brief Calcula o Déficit de Pressão de Vapor (DPV) em kPa
+ * 
+ * DPV = es - ea
+ * onde:
+ *   es = pressão de vapor de saturação (kPa) - função da temperatura
+ *   ea = pressão de vapor atual (kPa) = es * (umidade_relativa / 100)
+ * 
+ * Fórmula de Magnus para es (em kPa):
+ *   es = 0.6108 * exp(17.27 * T / (T + 237.3))
+ *   onde T é a temperatura em °C
+ * 
+ * @param temp_c Temperatura do ar em °C
+ * @param humid_pct Umidade relativa do ar em %
+ * @return DPV em kPa, ou NAN se dados inválidos
+ */
+static float calculate_dpv(float temp_c, float humid_pct)
+{
+    if (isnan(temp_c) || isnan(humid_pct) || 
+        temp_c < -50.0f || temp_c > 60.0f ||
+        humid_pct < 0.0f || humid_pct > 100.0f) {
+        return NAN;
+    }
+    
+    // Pressão de vapor de saturação (es) usando fórmula de Magnus
+    float es = 0.6108f * expf(17.27f * temp_c / (temp_c + 237.3f));
+    
+    // Pressão de vapor atual (ea)
+    float ea = es * (humid_pct / 100.0f);
+    
+    // Déficit de Pressão de Vapor
+    float dpv = es - ea;
+    
+    return dpv;
+}
+
 esp_err_t sensor_manager_init(void)
 {
     if (initialized) {
@@ -57,9 +93,13 @@ esp_err_t sensor_manager_read(sensor_reading_t *reading)
     reading->temp_air = bsp_data.temp_air;
     reading->humid_air = bsp_data.humid_air;
     reading->temp_soil = bsp_data.temp_soil;
+    reading->luminosity = bsp_data.luminosity;
     
     // Converte umidade do solo de raw para %
     reading->humid_soil = data_logger_raw_to_pct(bsp_data.soil_raw);
+    
+    // Calcula DPV (Déficit de Pressão de Vapor) a partir de temperatura e umidade do ar
+    reading->dpv = calculate_dpv(reading->temp_air, reading->humid_air);
     
     return ESP_OK;
 }

@@ -1,0 +1,256 @@
+Command: /home/mrclnndrd/.espressif/python_env/idf5.5_py3.11_env/bin/python /home/mrclnndrd/esp/esp-idf/tools/idf_monitor.py -p /dev/ttyUSB0 -b 115200 --toolchain-prefix xtensa-esp32-elf- --target esp32 --revision 0 /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/sensor_campo.elf /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/bootloader/bootloader.elf -m '/home/mrclnndrd/.espressif/python_env/idf5.5_py3.11_env/bin/python' '/home/mrclnndrd/esp/esp-idf/tools/idf.py'
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x17 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:6380
+ho 0 tail 12 room 4
+load:0x40078000,len:15904
+load:0x40080400,len:3860
+entry 0x40080638
+[0;32mI (29) boot: ESP-IDF v5.5-dev-3372-g38628f98b9 2nd stage bootloader[0m
+[0;32mI (29) boot: compile time Nov 28 2025 06:27:02[0m
+[0;32mI (29) boot: Multicore bootloader[0m
+[0;32mI (32) boot: chip revision: v3.1[0m
+[0;32mI (35) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (39) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (42) boot.esp32: SPI Flash Size : 4MB[0m
+[0;32mI (46) boot: Enabling RNG early entropy source...[0m
+[0;32mI (50) boot: Partition Table:[0m
+[0;32mI (53) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (59) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (66) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (72) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (79) boot:  3 spiffs           Unknown data     01 82 00110000 002f0000[0m
+[0;32mI (85) boot: End of partition table[0m
+[0;32mI (89) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=2a87ch (174204) map[0m
+[0;32mI (156) esp_image: segment 1: paddr=0003a8a4 vaddr=3ff80000 size=0001ch (    28) load[0m
+[0;32mI (156) esp_image: segment 2: paddr=0003a8c8 vaddr=3ffb0000 size=03eech ( 16108) load[0m
+[0;32mI (166) esp_image: segment 3: paddr=0003e7bc vaddr=40080000 size=0185ch (  6236) load[0m
+[0;32mI (170) esp_image: segment 4: paddr=00040020 vaddr=400d0020 size=9ef0ch (651020) map[0m
+[0;32mI (397) esp_image: segment 5: paddr=000def34 vaddr=4008185c size=164b8h ( 91320) load[0m
+[0;32mI (444) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (444) boot: Disabling RNG early entropy source...[0m
+[0;32mI (455) cpu_start: Multicore app[0m
+[0;32mI (463) cpu_start: Pro cpu start user code[0m
+[0;32mI (463) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (463) app_init: Application information:[0m
+[0;32mI (466) app_init: Project name:     sensor_campo[0m
+[0;32mI (472) app_init: App version:      c4d3e91a-dirty[0m
+[0;32mI (477) app_init: Compile time:     Nov 28 2025 06:26:09[0m
+[0;32mI (483) app_init: ELF file SHA256:  d595064e7...[0m
+[0;32mI (488) app_init: ESP-IDF:          v5.5-dev-3372-g38628f98b9[0m
+[0;32mI (495) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (500) efuse_init: Max chip rev:     v3.99 [0m
+[0;32mI (504) efuse_init: Chip rev:         v3.1[0m
+[0;32mI (510) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (517) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (523) heap_init: At 3FFB80B8 len 00027F48 (159 KiB): DRAM[0m
+[0;32mI (529) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (535) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (542) heap_init: At 40097D14 len 000082EC (32 KiB): IRAM[0m
+[0;32mI (549) spi_flash: detected chip: generic[0m
+[0;32mI (552) spi_flash: flash io: dio[0m
+[0;32mI (557) main_task: Started on CPU0[0m
+[0;32mI (567) main_task: Calling app_main()[0m
+[0;32mI (587) BSP_LED: LED inicializado no GPIO 2[0m
+[0;32mI (587) BSP_DS18B20: DS18B20 inicializado no GPIO 4[0m
+[0;32mI (587) BSP_ADC: ADC umidade solo inicializado. canal=6 bitwidth=12 atten=3[0m
+[0;32mI (2687) BSP_DHT11: ✓ DHT11 GPIO 5 está em HIGH (pull-up OK)[0m
+[0;32mI (2707) BSP_DHT11: Bit 0: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;32mI (2707) BSP_DHT11: Bit 1: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;32mI (2707) BSP_DHT11: Bit 2: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;33mW (2717) BSP_DHT11: Tentativa 1/3 de leitura inicial do DHT11 falhou: ESP_ERR_TIMEOUT[0m
+[0;32mI (4737) BSP_DHT11: Bit 0: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;32mI (4737) BSP_DHT11: Bit 1: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;32mI (4737) BSP_DHT11: Bit 2: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;33mW (4747) BSP_DHT11: Tentativa 2/3 de leitura inicial do DHT11 falhou: ESP_ERR_TIMEOUT[0m
+[0;32mI (6767) BSP_DHT11: Bit 0: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;32mI (6767) BSP_DHT11: Bit 1: high_time=16 us, bit=0, byte[0]=0x00[0m
+[0;32mI (6767) BSP_DHT11: Bit 2: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;33mW (6777) BSP_DHT11: Tentativa 3/3 de leitura inicial do DHT11 falhou: ESP_ERR_TIMEOUT[0m
+[0;33mW (6777) BSP_DHT11: ⚠️ DHT11 no GPIO 5 não respondeu após 3 tentativas[0m
+[0;33mW (6787) BSP_DHT11:    Checklist:[0m
+[0;33mW (6787) BSP_DHT11:    [ ] Sensor conectado na GPIO 5 (não GPIO19!)[0m
+[0;33mW (6797) BSP_DHT11:    [ ] Pull-up 10kΩ entre DATA (GPIO 5) e VCC (3.3V)[0m
+[0;33mW (6807) BSP_DHT11:    [ ] VCC do DHT11 conectado a 3.3V ou 5V[0m
+[0;33mW (6817) BSP_DHT11:    [ ] GND do DHT11 conectado ao GND do ESP32[0m
+[0;33mW (6817) BSP_DHT11:    [ ] Cabos curtos (< 20cm recomendado)[0m
+[0;32mI (6827) BSP_DHT11: DHT11 configurado no GPIO 5[0m
+[0;32mI (6827) BSP_SENSORS: Sensores BSP inicializados[0m
+[0;32mI (6837) APP_SENSOR_MGR: Sensor Manager inicializado[0m
+[0;32mI (6837) APP_DATA_LOGGER: Inicializando SPIFFS...[0m
+[0;32mI (7147) APP_DATA_LOGGER: SPIFFS montado em /spiffs[0m
+[0;32mI (7157) APP_DATA_LOGGER: Total=2293769 bytes, Usado=2038 bytes[0m
+[0;32mI (7157) APP_DATA_LOGGER: Proximo indice de log sera: 4[0m
+[0;33mW (7347) APP_DATA_LOGGER: Arquivo /spiffs/soil_calib.json nao encontrado. Usando padrao (Seco: 4000, Molhado: 400)[0m
+[0;32mI (7347) APP_DATA_LOGGER: --- Lendo /spiffs/log_temp.csv ---[0m
+[0;32mI (7357) APP_DATA_LOGGER: N,temp_ar_C,umid_ar_pct,temp_solo_C,umid_solo_pct
+[0m
+[0;32mI (7367) APP_DATA_LOGGER: 1,27.81,55.45,27.00,0.00
+[0m
+[0;32mI (7367) APP_DATA_LOGGER: 2,28.19,53.13,27.00,0.00
+[0m
+[0;32mI (7377) APP_DATA_LOGGER: 3,26.15,61.06,27.00,0.00
+[0m
+[0;32mI (7377) APP_DATA_LOGGER: --- Fim do arquivo ---[0m
+[0;32mI (7387) APP_SAMPLING: Período carregado do NVS: 10000 ms[0m
+[0;32mI (7387) APP_GUI_SERVICES: Serviços GUI registrados[0m
+[0;32mI (7407) wifi:wifi driver task: 3ffc22dc, prio:23, stack:6656, core=0[0m
+[0;32mI (7417) wifi:wifi firmware version: 7d2994f4b[0m
+[0;32mI (7417) wifi:wifi certification version: v7.0[0m
+[0;32mI (7417) wifi:config NVS flash: enabled[0m
+[0;32mI (7417) wifi:config nano formatting: disabled[0m
+[0;32mI (7417) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (7427) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (7427) wifi:Init management short buffer num: 32[0m
+[0;32mI (7437) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (7437) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (7447) wifi:Init static rx buffer num: 10[0m
+[0;32mI (7447) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (7447) wifi_init: rx ba win: 6[0m
+[0;32mI (7457) wifi_init: accept mbox: 6[0m
+[0;32mI (7457) wifi_init: tcpip mbox: 32[0m
+[0;32mI (7467) wifi_init: udp mbox: 6[0m
+[0;32mI (7467) wifi_init: tcp mbox: 6[0m
+[0;32mI (7467) wifi_init: tcp tx win: 5760[0m
+[0;32mI (7477) wifi_init: tcp rx win: 5760[0m
+[0;32mI (7477) wifi_init: tcp mss: 1440[0m
+[0;32mI (7487) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (7487) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (7497) phy_init: phy_version 4860,6b7a6e5,Feb  6 2025,14:47:07[0m
+[0;32mI (7577) phy_init: Saving new calibration data due to checksum failure or outdated calibration data, mode(0)[0m
+[0;32mI (7607) wifi:mode : softAP (38:18:2b:ea:b7:cd)[0m
+[0;32mI (7607) wifi:Total power save buffer number: 16[0m
+[0;32mI (7607) wifi:Init max length of beacon: 752/752[0m
+[0;32mI (7617) wifi:Init max length of beacon: 752/752[0m
+[0;32mI (7617) BSP_WIFI_AP: Modo AP iniciado. SSID='ESP32_TEMP' senha='12345678'[0m
+[0;32mI (7617) esp_netif_lwip: DHCP server started on interface WIFI_AP_DEF with IP: 192.168.4.1[0m
+[0;32mI (7637) GUI_HTTP_SERVER: Servidor HTTP iniciado e rotas registradas. Acesse http://192.168.4.1/[0m
+[0;32mI (7637) APP_MAIN: Sistema iniciado - Arquitetura BSP/APP/GUI[0m
+[0;32mI (7647) main_task: Returned from app_main()[0m
+[0;32mI (7657) BSP_DHT11: Bit 0: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;33mW (7657) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT) e não há valor válido anterior. Usando simulação.[0m
+[0;32mI (8687) APP_MAIN: Log salvo! Ar: 25.62 C / 57.68 %, Solo: 27.00 C / 0.00 %[0m
+[0;32mI (17657) BSP_DHT11: Bit 0: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;32mI (17657) BSP_DHT11: Bit 1: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;32mI (17657) BSP_DHT11: Bit 2: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;33mW (17667) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT) e não há valor válido anterior. Usando simulação.[0m
+[0;32mI (18667) APP_MAIN: Log salvo! Ar: 25.95 C / 55.62 %, Solo: 27.00 C / 0.00 %[0m
+[0;32mI (27647) BSP_DHT11: Bit 0: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;32mI (27647) BSP_DHT11: Bit 1: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;32mI (27647) BSP_DHT11: Bit 2: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;33mW (27657) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT) e não há valor válido anterior. Usando simulação.[0m
+[0;32mI (28667) APP_MAIN: Log salvo! Ar: 26.03 C / 55.10 %, Solo: 27.00 C / 0.00 %[0m
+[0;32mI (37637) BSP_DHT11: Bit 0: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;32mI (37637) BSP_DHT11: Bit 1: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;32mI (37637) BSP_DHT11: Bit 2: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;33mW (37647) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT) e não há valor válido anterior. Usando simulação.[0m
+[0;32mI (38427) APP_MAIN: Log salvo! Ar: 25.54 C / 53.14 %, Solo: 27.00 C / 0.00 %[0m
+[0;32mI (47627) BSP_DHT11: Bit 0: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;32mI (47627) BSP_DHT11: Bit 1: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;32mI (47627) BSP_DHT11: Bit 2: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;33mW (47637) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT) e não há valor válido anterior. Usando simulação.[0m
+[0;32mI (48637) APP_MAIN: Log salvo! Ar: 25.63 C / 53.86 %, Solo: 27.00 C / 0.00 %[0m
+[0;32mI (57617) BSP_DHT11: Bit 0: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;32mI (57617) BSP_DHT11: Bit 1: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;32mI (57617) BSP_DHT11: Bit 2: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;33mW (57627) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT) e não há valor válido anterior. Usando simulação.[0m
+[0;32mI (58637) APP_MAIN: Log salvo! Ar: 25.22 C / 54.48 %, Solo: 27.00 C / 0.00 %[0m
+[0;32mI (67607) BSP_DHT11: Bit 0: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;32mI (67607) BSP_DHT11: Bit 1: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;32mI (67607) BSP_DHT11: Bit 2: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;33mW (67617) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT) e não há valor válido anterior. Usando simulação.[0m
+[0;32mI (68397) APP_MAIN: Log salvo! Ar: 25.62 C / 56.75 %, Solo: 27.00 C / 0.00 %[0m
+[0;32mI (77597) BSP_DHT11: Bit 0: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;32mI (77597) BSP_DHT11: Bit 1: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;32mI (77597) BSP_DHT11: Bit 2: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;33mW (77607) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT) e não há valor válido anterior. Usando simulação.[0m
+[0;32mI (78607) APP_MAIN: Log salvo! Ar: 25.99 C / 57.50 %, Solo: 27.00 C / 0.00 %[0m
+[0;32mI (87587) BSP_DHT11: Bit 0: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;32mI (87587) BSP_DHT11: Bit 1: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;32mI (87587) BSP_DHT11: Bit 2: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;33mW (87597) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT) e não há valor válido anterior. Usando simulação.[0m
+[0;32mI (88607) APP_MAIN: Log salvo! Ar: 25.76 C / 57.84 %, Solo: 27.00 C / 0.00 %[0m
+[0;32mI (97577) BSP_DHT11: Bit 0: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;32mI (97577) BSP_DHT11: Bit 1: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;32mI (97577) BSP_DHT11: Bit 2: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;33mW (97587) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT) e não há valor válido anterior. Usando simulação.[0m
+[0;32mI (98367) APP_MAIN: Log salvo! Ar: 25.43 C / 56.45 %, Solo: 27.00 C / 0.00 %[0m
+[0;32mI (107567) BSP_DHT11: Bit 0: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;32mI (107567) BSP_DHT11: Bit 1: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;32mI (107567) BSP_DHT11: Bit 2: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;33mW (107577) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT) e não há valor válido anterior. Usando simulação.[0m
+[0;32mI (108577) APP_MAIN: Log salvo! Ar: 25.71 C / 56.09 %, Solo: 26.94 C / 0.00 %[0m
+[0;32mI (117557) BSP_DHT11: Bit 0: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;32mI (117557) BSP_DHT11: Bit 1: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;32mI (117557) BSP_DHT11: Bit 2: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;33mW (117567) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT) e não há valor válido anterior. Usando simulação.[0m
+[0;32mI (118577) APP_MAIN: Log salvo! Ar: 25.59 C / 53.93 %, Solo: 27.00 C / 0.00 %[0m
+[0;32mI (127547) BSP_DHT11: Bit 0: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;32mI (127547) BSP_DHT11: Bit 1: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;32mI (127547) BSP_DHT11: Bit 2: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;33mW (127557) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT) e não há valor válido anterior. Usando simulação.[0m
+[0;32mI (128337) APP_MAIN: Log salvo! Ar: 25.79 C / 51.71 %, Solo: 27.00 C / 0.00 %[0m
+[0;32mI (137537) BSP_DHT11: Bit 0: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;32mI (137537) BSP_DHT11: Bit 1: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;32mI (137537) BSP_DHT11: Bit 2: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;33mW (137547) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT) e não há valor válido anterior. Usando simulação.[0m
+[0;32mI (138547) APP_MAIN: Log salvo! Ar: 25.93 C / 51.91 %, Solo: 27.00 C / 0.00 %[0m
+[0;32mI (147527) BSP_DHT11: Bit 0: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;32mI (147527) BSP_DHT11: Bit 1: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;32mI (147527) BSP_DHT11: Bit 2: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;33mW (147537) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT) e não há valor válido anterior. Usando simulação.[0m
+[0;32mI (148547) APP_MAIN: Log salvo! Ar: 26.39 C / 53.25 %, Solo: 27.00 C / 0.00 %[0m
+[0;32mI (157517) BSP_DHT11: Bit 0: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;32mI (157517) BSP_DHT11: Bit 1: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;32mI (157517) BSP_DHT11: Bit 2: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;33mW (157527) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT) e não há valor válido anterior. Usando simulação.[0m
+[0;32mI (158307) APP_MAIN: Log salvo! Ar: 26.78 C / 54.91 %, Solo: 27.00 C / 0.00 %[0m
+[0;32mI (167507) BSP_DHT11: Bit 0: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;32mI (167507) BSP_DHT11: Bit 1: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;32mI (167507) BSP_DHT11: Bit 2: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;33mW (167517) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT) e não há valor válido anterior. Usando simulação.[0m
+[0;32mI (168517) APP_MAIN: Log salvo! Ar: 26.41 C / 56.50 %, Solo: 26.94 C / 0.00 %[0m
+[0;32mI (177497) BSP_DHT11: Bit 0: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;32mI (177497) BSP_DHT11: Bit 1: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;32mI (177497) BSP_DHT11: Bit 2: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;33mW (177507) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT) e não há valor válido anterior. Usando simulação.[0m
+[0;32mI (178517) APP_MAIN: Log salvo! Ar: 26.23 C / 54.27 %, Solo: 26.94 C / 0.00 %[0m
+[0;32mI (187487) BSP_DHT11: Bit 0: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;32mI (187487) BSP_DHT11: Bit 1: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;32mI (187487) BSP_DHT11: Bit 2: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;33mW (187497) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT) e não há valor válido anterior. Usando simulação.[0m
+[0;32mI (188277) APP_MAIN: Log salvo! Ar: 26.05 C / 53.53 %, Solo: 27.00 C / 0.00 %[0m
+[0;32mI (197477) BSP_DHT11: Bit 0: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;32mI (197477) BSP_DHT11: Bit 1: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;32mI (197477) BSP_DHT11: Bit 2: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;33mW (197487) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT) e não há valor válido anterior. Usando simulação.[0m
+[0;32mI (198487) APP_MAIN: Log salvo! Ar: 25.96 C / 51.60 %, Solo: 26.94 C / 0.00 %[0m
+[0;32mI (207467) BSP_DHT11: Bit 0: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;32mI (207467) BSP_DHT11: Bit 1: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;32mI (207467) BSP_DHT11: Bit 2: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;33mW (207477) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT) e não há valor válido anterior. Usando simulação.[0m
+[0;32mI (208487) APP_MAIN: Log salvo! Ar: 25.71 C / 51.07 %, Solo: 26.94 C / 0.00 %[0m
+[0;32mI (217457) BSP_DHT11: Bit 0: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;32mI (217457) BSP_DHT11: Bit 1: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;32mI (217457) BSP_DHT11: Bit 2: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;33mW (217467) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT) e não há valor válido anterior. Usando simulação.[0m
+[0;32mI (218247) APP_MAIN: Log salvo! Ar: 25.88 C / 50.55 %, Solo: 27.00 C / 0.00 %[0m
+[0;32mI (227447) BSP_DHT11: Bit 0: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;32mI (227447) BSP_DHT11: Bit 1: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;32mI (227447) BSP_DHT11: Bit 2: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;33mW (227457) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT) e não há valor válido anterior. Usando simulação.[0m
+[0;32mI (228457) APP_MAIN: Log salvo! Ar: 25.97 C / 51.00 %, Solo: 26.94 C / 0.00 %[0m
+[0;32mI (237437) BSP_DHT11: Bit 0: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;32mI (237437) BSP_DHT11: Bit 1: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;32mI (237437) BSP_DHT11: Bit 2: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;33mW (237447) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT) e não há valor válido anterior. Usando simulação.[0m
+[0;32mI (238457) APP_MAIN: Log salvo! Ar: 26.41 C / 53.00 %, Solo: 26.94 C / 0.00 %[0m
+[0;32mI (247427) BSP_DHT11: Bit 0: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;32mI (247427) BSP_DHT11: Bit 1: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;32mI (247427) BSP_DHT11: Bit 2: high_time=0 us, bit=0, byte[0]=0x00[0m
+[0;33mW (247437) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT) e não há valor válido anterior. Usando simulação.[0m
+[0;32mI (248217) APP_MAIN: Log salvo! Ar: 26.16 C / 50.51 %, Solo: 27.00 C / 0.00 %[0m

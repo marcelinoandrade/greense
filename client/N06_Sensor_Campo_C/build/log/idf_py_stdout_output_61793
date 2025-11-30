@@ -1,0 +1,26 @@
+Command: ninja all
+[1/17] Performing build step for 'bootloader'
+[1/1] cd /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/bootloader/esp-idf/esptool_py && /home/mrclnndrd/.espressif/python_env/idf5.5_py3.11_env/bin/python /home/mrclnndrd/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x1000 /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/bootloader/bootloader.bin
+Bootloader binary size 0x6680 bytes. 0x980 bytes (8%) free.
+[2/17] No install step for 'bootloader'
+[3/17] Completed 'bootloader'
+[4/17] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/bsp/sensors/bsp_adc.c.obj
+[5/17] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/bsp/actuators/bsp_led.c.obj
+[6/17] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/bsp/sensors/bsp_ds18b20.c.obj
+[7/17] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/bsp/sensors/bsp_dht11.c.obj
+[8/17] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/app/app_sampling_period.c.obj
+[9/17] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/bsp/network/bsp_wifi_ap.c.obj
+[10/17] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/app/app_main.c.obj
+[11/17] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/gui/web/gui_http_server.c.obj
+[12/17] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/app/app_data_logger.c.obj
+[13/17] Linking C static library esp-idf/main/libmain.a
+[14/17] Generating esp-idf/esp_system/ld/sections.ld
+[15/17] Linking CXX executable sensor_campo.elf
+[16/17] Generating binary image from built executable
+esptool.py v4.10.0
+Creating esp32 image...
+Merged 2 ELF sections
+Successfully created esp32 image.
+Generated /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/sensor_campo.bin
+[17/17] cd /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/esp-idf/esptool_py && /home/mrclnndrd/.espressif/python_env/idf5.5_py3.11_env/bin/python /home/mrclnndrd/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 partition --type app /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/partition_table/partition-table.bin /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/sensor_campo.bin
+sensor_campo.bin binary size 0xe4a60 bytes. Smallest app partition is 0x100000 bytes. 0x1b5a0 bytes (11%) free.

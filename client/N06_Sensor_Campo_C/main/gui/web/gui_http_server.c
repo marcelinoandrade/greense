@@ -33,7 +33,7 @@ typedef struct {
 } sampling_option_def_t;
 
 static const sampling_option_def_t SAMPLING_OPTIONS[] = {
-    { 1 * 1000,         "1 segundo" },
+    { 10 * 1000,        "10 segundos" },
     { 60 * 1000,        "1 minuto" },
     { 10 * 60 * 1000,   "10 minutos" },
     { 60 * 60 * 1000,   "1 hora" },
@@ -54,6 +54,59 @@ static const sampling_option_def_t* find_sampling_option(uint32_t ms)
     return NULL;
 }
 
+static void format_duration_ms(uint64_t duration_ms, char *out, size_t out_len)
+{
+    if (!out || out_len == 0) {
+        return;
+    }
+
+    if (duration_ms == 0) {
+        snprintf(out, out_len, "0 ms");
+        return;
+    }
+
+    const uint64_t second = 1000ULL;
+    const uint64_t minute = 60ULL * second;
+    const uint64_t hour   = 60ULL * minute;
+    const uint64_t day    = 24ULL * hour;
+
+    if (duration_ms >= day) {
+        unsigned long long days  = duration_ms / day;
+        unsigned long long hours = (duration_ms % day) / hour;
+        if (hours > 0) {
+            snprintf(out, out_len, "%llu d %llu h", days, hours);
+        } else {
+            snprintf(out, out_len, "%llu d", days);
+        }
+    } else if (duration_ms >= hour) {
+        unsigned long long hours   = duration_ms / hour;
+        unsigned long long minutes = (duration_ms % hour) / minute;
+        if (minutes > 0) {
+            snprintf(out, out_len, "%llu h %llu min", hours, minutes);
+        } else {
+            snprintf(out, out_len, "%llu h", hours);
+        }
+    } else if (duration_ms >= minute) {
+        unsigned long long minutes = duration_ms / minute;
+        unsigned long long seconds = (duration_ms % minute) / second;
+        if (seconds > 0) {
+            snprintf(out, out_len, "%llu min %llu s", minutes, seconds);
+        } else {
+            snprintf(out, out_len, "%llu min", minutes);
+        }
+    } else if (duration_ms >= second) {
+        unsigned long long seconds = duration_ms / second;
+        unsigned long long ms_rem  = duration_ms % second;
+        if (ms_rem > 0) {
+            snprintf(out, out_len, "%llu s %llu ms", seconds, ms_rem);
+        } else {
+            snprintf(out, out_len, "%llu s", seconds);
+        }
+    } else {
+        snprintf(out, out_len, "%llu ms", duration_ms);
+    }
+}
+
 /* -------------------------------------------------------------------------- */
 /* Handlers HTTP                                                              */
 /* -------------------------------------------------------------------------- */
@@ -67,25 +120,304 @@ static esp_err_t handle_dashboard(httpd_req_t *req)
         return ESP_FAIL;
     }
     
-    float temp_ar      = svc->get_temp_air();
-    float umid_ar      = svc->get_humid_air();
-    float temp_solo    = svc->get_temp_soil();
-    int   umid_raw     = svc->get_soil_raw();
+    gui_recent_stats_t recent_stats;
+    memset(&recent_stats, 0, sizeof(recent_stats));
+    bool stats_available = false;
+    if (svc->get_recent_stats) {
+        stats_available = svc->get_recent_stats(20, &recent_stats);
+    }
 
-    float seco, molhado;
-    svc->get_calibration(&seco, &molhado);
+    int window_samples = (stats_available) ? recent_stats.window_samples : 0;
 
-    float umid_solo_pct = svc->get_soil_pct(umid_raw);
+    uint32_t sampling_ms = 0;
+    if (svc->get_sampling_period_ms) {
+        sampling_ms = svc->get_sampling_period_ms();
+    }
+
+    const sampling_option_def_t *sampling_opt = find_sampling_option(sampling_ms);
+    char sampling_period_text[48];
+    if (sampling_opt) {
+        snprintf(sampling_period_text, sizeof(sampling_period_text), "%s", sampling_opt->label);
+    } else if (sampling_ms > 0) {
+        format_duration_ms((uint64_t)sampling_ms, sampling_period_text, sizeof(sampling_period_text));
+    } else {
+        snprintf(sampling_period_text, sizeof(sampling_period_text), "--");
+    }
+
+    char window_span_text[48];
+    if (sampling_ms > 0 && window_samples > 0) {
+        format_duration_ms((uint64_t)sampling_ms * (uint64_t)window_samples,
+                           window_span_text,
+                           sizeof(window_span_text));
+    } else {
+        snprintf(window_span_text, sizeof(window_span_text), "--");
+    }
+
+    char stats_info_text[256];
+    if (stats_available && window_samples > 0) {
+        snprintf(stats_info_text,
+                 sizeof(stats_info_text),
+                 "&Uacute;ltimas %d amostras (~%s). Per&iacute;odo configurado: %s. Limite considerado: 20 amostras.",
+                 window_samples,
+                 window_span_text,
+                 sampling_period_text);
+    } else {
+        snprintf(stats_info_text,
+                 sizeof(stats_info_text),
+                 "Ainda sem leituras suficientes. Assim que novas amostras forem registradas, o resumo ficar&aacute; dispon&iacute;vel.");
+    }
+
+    char window_summary_text[128];
+    char total_samples_text[96];
+    char memory_text[96];
+    snprintf(window_summary_text, sizeof(window_summary_text), "--");
+    snprintf(total_samples_text, sizeof(total_samples_text), "--");
+    snprintf(memory_text, sizeof(memory_text), "--");
+
+    if (stats_available) {
+        if (window_samples > 0 && sampling_ms > 0 && window_span_text[0] != '\0') {
+            snprintf(window_summary_text,
+                     sizeof(window_summary_text),
+                     "%d amostras (~%s)",
+                     window_samples,
+                     window_span_text);
+        } else if (window_samples > 0) {
+            snprintf(window_summary_text,
+                     sizeof(window_summary_text),
+                     "%d amostras recentes",
+                     window_samples);
+        } else {
+            snprintf(window_summary_text,
+                     sizeof(window_summary_text),
+                     "0 amostras registradas");
+        }
+
+        snprintf(total_samples_text,
+                 sizeof(total_samples_text),
+                 "%d leituras acumuladas",
+                 recent_stats.total_samples);
+
+        if (recent_stats.storage_total_bytes > 0) {
+            double used_kb  = (double)recent_stats.storage_used_bytes / 1024.0;
+            double total_kb = (double)recent_stats.storage_total_bytes / 1024.0;
+            double pct      = (total_kb > 0.0) ? (used_kb / total_kb) * 100.0 : 0.0;
+            snprintf(memory_text,
+                     sizeof(memory_text),
+                     "%.1f%% (%.1f kB de %.1f kB)",
+                     pct,
+                     used_kb,
+                     total_kb);
+        }
+    }
+
+    char temp_ar_avg_text[32], temp_ar_min_text[32], temp_ar_max_text[32], temp_ar_last_text[32];
+    char umid_ar_avg_text[32], umid_ar_min_text[32], umid_ar_max_text[32], umid_ar_last_text[32];
+    char temp_solo_avg_text[32], temp_solo_min_text[32], temp_solo_max_text[32], temp_solo_last_text[32];
+    char umid_solo_avg_text[32], umid_solo_min_text[32], umid_solo_max_text[32], umid_solo_last_text[32];
+    char luminosidade_avg_text[32], luminosidade_min_text[32], luminosidade_max_text[32], luminosidade_last_text[32];
+    char dpv_avg_text[32], dpv_min_text[32], dpv_max_text[32], dpv_last_text[32];
+
+    if (stats_available && recent_stats.temp_ar.has_data) {
+        snprintf(temp_ar_avg_text, sizeof(temp_ar_avg_text), "%.1f&nbsp;&deg;C", recent_stats.temp_ar.avg);
+        snprintf(temp_ar_min_text, sizeof(temp_ar_min_text), "%.1f&nbsp;&deg;C", recent_stats.temp_ar.min);
+        snprintf(temp_ar_max_text, sizeof(temp_ar_max_text), "%.1f&nbsp;&deg;C", recent_stats.temp_ar.max);
+        snprintf(temp_ar_last_text, sizeof(temp_ar_last_text), "%.1f&nbsp;&deg;C", recent_stats.temp_ar.latest);
+    } else {
+        snprintf(temp_ar_avg_text, sizeof(temp_ar_avg_text), "--");
+        snprintf(temp_ar_min_text, sizeof(temp_ar_min_text), "--");
+        snprintf(temp_ar_max_text, sizeof(temp_ar_max_text), "--");
+        snprintf(temp_ar_last_text, sizeof(temp_ar_last_text), "--");
+    }
+
+    if (stats_available && recent_stats.umid_ar.has_data) {
+        snprintf(umid_ar_avg_text, sizeof(umid_ar_avg_text), "%.1f&nbsp;%%", recent_stats.umid_ar.avg);
+        snprintf(umid_ar_min_text, sizeof(umid_ar_min_text), "%.1f&nbsp;%%", recent_stats.umid_ar.min);
+        snprintf(umid_ar_max_text, sizeof(umid_ar_max_text), "%.1f&nbsp;%%", recent_stats.umid_ar.max);
+        snprintf(umid_ar_last_text, sizeof(umid_ar_last_text), "%.1f&nbsp;%%", recent_stats.umid_ar.latest);
+    } else {
+        snprintf(umid_ar_avg_text, sizeof(umid_ar_avg_text), "--");
+        snprintf(umid_ar_min_text, sizeof(umid_ar_min_text), "--");
+        snprintf(umid_ar_max_text, sizeof(umid_ar_max_text), "--");
+        snprintf(umid_ar_last_text, sizeof(umid_ar_last_text), "--");
+    }
+
+    if (stats_available && recent_stats.temp_solo.has_data) {
+        snprintf(temp_solo_avg_text, sizeof(temp_solo_avg_text), "%.1f&nbsp;&deg;C", recent_stats.temp_solo.avg);
+        snprintf(temp_solo_min_text, sizeof(temp_solo_min_text), "%.1f&nbsp;&deg;C", recent_stats.temp_solo.min);
+        snprintf(temp_solo_max_text, sizeof(temp_solo_max_text), "%.1f&nbsp;&deg;C", recent_stats.temp_solo.max);
+        snprintf(temp_solo_last_text, sizeof(temp_solo_last_text), "%.1f&nbsp;&deg;C", recent_stats.temp_solo.latest);
+    } else {
+        snprintf(temp_solo_avg_text, sizeof(temp_solo_avg_text), "--");
+        snprintf(temp_solo_min_text, sizeof(temp_solo_min_text), "--");
+        snprintf(temp_solo_max_text, sizeof(temp_solo_max_text), "--");
+        snprintf(temp_solo_last_text, sizeof(temp_solo_last_text), "--");
+    }
+
+    if (stats_available && recent_stats.umid_solo.has_data) {
+        snprintf(umid_solo_avg_text, sizeof(umid_solo_avg_text), "%.1f&nbsp;%%", recent_stats.umid_solo.avg);
+        snprintf(umid_solo_min_text, sizeof(umid_solo_min_text), "%.1f&nbsp;%%", recent_stats.umid_solo.min);
+        snprintf(umid_solo_max_text, sizeof(umid_solo_max_text), "%.1f&nbsp;%%", recent_stats.umid_solo.max);
+        snprintf(umid_solo_last_text, sizeof(umid_solo_last_text), "%.1f&nbsp;%%", recent_stats.umid_solo.latest);
+    } else {
+        snprintf(umid_solo_avg_text, sizeof(umid_solo_avg_text), "--");
+        snprintf(umid_solo_min_text, sizeof(umid_solo_min_text), "--");
+        snprintf(umid_solo_max_text, sizeof(umid_solo_max_text), "--");
+        snprintf(umid_solo_last_text, sizeof(umid_solo_last_text), "--");
+    }
+
+    if (stats_available && recent_stats.luminosidade.has_data) {
+        snprintf(luminosidade_avg_text, sizeof(luminosidade_avg_text), "%.0f&nbsp;lux", recent_stats.luminosidade.avg);
+        snprintf(luminosidade_min_text, sizeof(luminosidade_min_text), "%.0f&nbsp;lux", recent_stats.luminosidade.min);
+        snprintf(luminosidade_max_text, sizeof(luminosidade_max_text), "%.0f&nbsp;lux", recent_stats.luminosidade.max);
+        snprintf(luminosidade_last_text, sizeof(luminosidade_last_text), "%.0f&nbsp;lux", recent_stats.luminosidade.latest);
+    } else {
+        snprintf(luminosidade_avg_text, sizeof(luminosidade_avg_text), "--");
+        snprintf(luminosidade_min_text, sizeof(luminosidade_min_text), "--");
+        snprintf(luminosidade_max_text, sizeof(luminosidade_max_text), "--");
+        snprintf(luminosidade_last_text, sizeof(luminosidade_last_text), "--");
+    }
+
+    if (stats_available && recent_stats.dpv.has_data) {
+        snprintf(dpv_avg_text, sizeof(dpv_avg_text), "%.3f&nbsp;kPa", recent_stats.dpv.avg);
+        snprintf(dpv_min_text, sizeof(dpv_min_text), "%.3f&nbsp;kPa", recent_stats.dpv.min);
+        snprintf(dpv_max_text, sizeof(dpv_max_text), "%.3f&nbsp;kPa", recent_stats.dpv.max);
+        snprintf(dpv_last_text, sizeof(dpv_last_text), "%.3f&nbsp;kPa", recent_stats.dpv.latest);
+    } else {
+        snprintf(dpv_avg_text, sizeof(dpv_avg_text), "--");
+        snprintf(dpv_min_text, sizeof(dpv_min_text), "--");
+        snprintf(dpv_max_text, sizeof(dpv_max_text), "--");
+        snprintf(dpv_last_text, sizeof(dpv_last_text), "--");
+    }
+
+    char card_temp_ar[512];
+    char card_umid_ar[512];
+    char card_temp_solo[512];
+    char card_umid_solo[512];
+    char card_luminosidade[512];
+    char card_dpv[512];
+
+    snprintf(card_temp_ar, sizeof(card_temp_ar),
+             "<div class='stats-card'>"
+             "<h3>Temp. do ar</h3>"
+             "<ul>"
+             "<li><span>M&eacute;dia</span><strong>%s</strong></li>"
+             "<li><span>M&iacute;nimo</span><strong>%s</strong></li>"
+             "<li><span>M&aacute;ximo</span><strong>%s</strong></li>"
+             "<li><span>&Uacute;ltima</span><strong>%s</strong></li>"
+             "</ul>"
+             "</div>",
+             temp_ar_avg_text,
+             temp_ar_min_text,
+             temp_ar_max_text,
+             temp_ar_last_text);
+
+    snprintf(card_umid_ar, sizeof(card_umid_ar),
+             "<div class='stats-card'>"
+             "<h3>Umidade do ar</h3>"
+             "<ul>"
+             "<li><span>M&eacute;dia</span><strong>%s</strong></li>"
+             "<li><span>M&iacute;nimo</span><strong>%s</strong></li>"
+             "<li><span>M&aacute;ximo</span><strong>%s</strong></li>"
+             "<li><span>&Uacute;ltima</span><strong>%s</strong></li>"
+             "</ul>"
+             "</div>",
+             umid_ar_avg_text,
+             umid_ar_min_text,
+             umid_ar_max_text,
+             umid_ar_last_text);
+
+    snprintf(card_temp_solo, sizeof(card_temp_solo),
+             "<div class='stats-card'>"
+             "<h3>Temp. do solo</h3>"
+             "<ul>"
+             "<li><span>M&eacute;dia</span><strong>%s</strong></li>"
+             "<li><span>M&iacute;nimo</span><strong>%s</strong></li>"
+             "<li><span>M&aacute;ximo</span><strong>%s</strong></li>"
+             "<li><span>&Uacute;ltima</span><strong>%s</strong></li>"
+             "</ul>"
+             "</div>",
+             temp_solo_avg_text,
+             temp_solo_min_text,
+             temp_solo_max_text,
+             temp_solo_last_text);
+
+    snprintf(card_umid_solo, sizeof(card_umid_solo),
+             "<div class='stats-card'>"
+             "<h3>Umidade do solo</h3>"
+             "<ul>"
+             "<li><span>M&eacute;dia</span><strong>%s</strong></li>"
+             "<li><span>M&iacute;nimo</span><strong>%s</strong></li>"
+             "<li><span>M&aacute;ximo</span><strong>%s</strong></li>"
+             "<li><span>&Uacute;ltima</span><strong>%s</strong></li>"
+             "</ul>"
+             "</div>",
+             umid_solo_avg_text,
+             umid_solo_min_text,
+             umid_solo_max_text,
+             umid_solo_last_text);
+
+    snprintf(card_luminosidade, sizeof(card_luminosidade),
+             "<div class='stats-card'>"
+             "<h3>Luminosidade</h3>"
+             "<ul>"
+             "<li><span>M&eacute;dia</span><strong>%s</strong></li>"
+             "<li><span>M&iacute;nimo</span><strong>%s</strong></li>"
+             "<li><span>M&aacute;ximo</span><strong>%s</strong></li>"
+             "<li><span>&Uacute;ltima</span><strong>%s</strong></li>"
+             "</ul>"
+             "</div>",
+             luminosidade_avg_text,
+             luminosidade_min_text,
+             luminosidade_max_text,
+             luminosidade_last_text);
+
+    snprintf(card_dpv, sizeof(card_dpv),
+             "<div class='stats-card'>"
+             "<h3>DPV</h3>"
+             "<ul>"
+             "<li><span>M&eacute;dia</span><strong>%s</strong></li>"
+             "<li><span>M&iacute;nimo</span><strong>%s</strong></li>"
+             "<li><span>M&aacute;ximo</span><strong>%s</strong></li>"
+             "<li><span>&Uacute;ltima</span><strong>%s</strong></li>"
+             "</ul>"
+             "</div>",
+             dpv_avg_text,
+             dpv_min_text,
+             dpv_max_text,
+             dpv_last_text);
+
+    char stats_grid_html[3500];
+    snprintf(stats_grid_html,
+             sizeof(stats_grid_html),
+             "<div class='stats-grid'>%s%s%s%s%s%s</div>",
+             card_temp_ar,
+             card_umid_ar,
+             card_temp_solo,
+             card_umid_solo,
+             card_luminosidade,
+             card_dpv);
+
+    char stats_meta_html[640];
+    snprintf(stats_meta_html,
+             sizeof(stats_meta_html),
+             "<div class='meta-grid'>"
+             "<div class='meta-item'><strong>Janela analisada</strong>%s</div>"
+             "<div class='meta-item'><strong>Total de amostras</strong>%s</div>"
+             "<div class='meta-item'><strong>Mem&oacute;ria ocupada</strong>%s</div>"
+             "</div>",
+             window_summary_text,
+             total_samples_text,
+             memory_text);
 
     /* Buffer alocado no heap para evitar stack overflow */
-    char *page = (char *)malloc(6000);
+    char *page = (char *)malloc(12000);
     if (!page) {
         httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "Erro de memória");
         return ESP_FAIL;
     }
     
     int len = snprintf(
-        page, 6000,
+        page, 12000,
         "<!DOCTYPE html>"
         "<html>"
         "<head>"
@@ -111,8 +443,22 @@ static esp_err_t handle_dashboard(httpd_req_t *req)
         ".badge{display:inline-flex;align-items:center;gap:6px;background:#c8e6c9;"
         "color:#1b5e20;font-size:12px;font-weight:700;border-radius:999px;padding:4px 12px}"
         ".caption{font-size:12px;color:#78909c;margin-top:10px}"
-        "table{font-size:14px;width:100%%;border-collapse:separate;border-spacing:0 6px}"
-        "td{padding:6px 8px;vertical-align:top}"
+        "table{font-size:14px;width:100%%;border-collapse:separate;border-spacing:0;margin-top:12px}"
+        "table tr:first-child td{background:#e8f5e9;font-weight:600;color:#1b5e20;padding:10px 12px;border-bottom:2px solid #a5d6a7}"
+        "table tr:not(:first-child) td{padding:10px 12px;border-bottom:1px solid #e0e8e1}"
+        "table tr:not(:first-child):hover td{background:#f1f8e9}"
+        "td:first-child{font-weight:500;color:#2e4a34;min-width:140px}"
+        "td:nth-child(2){color:#388e3c;font-weight:500}"
+        "td:nth-child(3){color:#546e7a;font-size:13px}"
+        ".stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:16px}"
+        ".stats-card{border:1px solid #e0e8e1;border-radius:14px;padding:14px 16px;background:#f9fbf8}"
+        ".stats-card h3{margin:0;font-size:15px;color:#1b5e20}"
+        ".stats-card ul{list-style:none;padding:0;margin:12px 0 0}"
+        ".stats-card li{display:flex;justify-content:space-between;font-size:13px;margin:4px 0;color:#455a64}"
+        ".stats-card li strong{color:#1f2a24}"
+        ".meta-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:16px}"
+        ".meta-item{background:#f1f8e9;border:1px solid #dfe8d7;border-radius:12px;padding:10px 14px;font-size:13px;color:#2e4a34}"
+        ".meta-item strong{display:block;font-size:11px;color:#5a6c57;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}"
         "</style>"
         "</head>"
         "<body>"
@@ -123,18 +469,18 @@ static esp_err_t handle_dashboard(httpd_req_t *req)
         "<h1>Painel em tempo real</h1>"
         "<p class='subtitle'>Monitore o microclima e a umidade do solo sem sair do campo. "
         "Atualizamos os dados automaticamente a cada período de amostragem configurado.</p>"
-        "<p class='info-text'>A tabela abaixo resume as leituras capturadas pelo sensor instalado. "
-        "Use-a para decidir rapidamente sobre irrigação, ventilação ou manutenção.</p>"
-        "<table>"
-        "<tr><td>Temp Ar:</td><td>%.2f &deg;C</td></tr>"
-        "<tr><td>UR Ar:</td><td>%.2f %%</td></tr>"
-        "<tr><td>Temp Solo:</td><td>%.2f &deg;C</td></tr>"
-        "<tr><td>Umid Solo Atual:</td><td>%.2f %% (raw=%d)</td></tr>"
-        "<tr><td>Calibra&ccedil;&atilde;o:</td><td>seco=%.0f molhado=%.0f</td></tr>"
-        "</table>"
+        "<p class='info-text'>Use o resumo estat&iacute;stico e os gr&aacute;ficos abaixo para reagir rapidamente no campo. "
+        "Quando precisar de an&aacute;lises mais profundas, baixe o CSV completo.</p>"
         "<div style='display:flex;gap:12px;flex-wrap:wrap;margin-top:8px'>"
         "  <a class='button' href='/' style='background:#388e3c'>Voltar ao painel principal</a>"
         "</div>"
+        "</div>"
+
+        "<div class='card stats'>"
+        "<h2>Estat&iacute;sticas recentes</h2>"
+        "<p class='info-text'>%s</p>"
+        "%s"
+        "%s"
         "</div>"
 
         "<div class='card'>"
@@ -146,8 +492,24 @@ static esp_err_t handle_dashboard(httpd_req_t *req)
         "<div><canvas id='chart_umid_ar' width='320' height='180'></canvas></div>"
         "<div><canvas id='chart_temp_solo' width='320' height='180'></canvas></div>"
         "<div><canvas id='chart_umid_solo' width='320' height='180'></canvas></div>"
+        "<div><canvas id='chart_luminosidade' width='320' height='180'></canvas></div>"
+        "<div><canvas id='chart_dpv' width='320' height='180'></canvas></div>"
         "</div>"
         "<p class='caption'>Exibindo at&eacute; 10 &uacute;ltimos pontos.</p>"
+        "</div>"
+
+        "<div class='card'>"
+        "<h2>Valores de toler&acirc;ncia para cultivo</h2>"
+        "<p class='info-text'>Refer&ecirc;ncia de faixas ideais para um bom desenvolvimento das plantas em estufa ou campo protegido.</p>"
+        "<table>"
+        "<tr><td><strong>Vari&aacute;vel</strong></td><td><strong>Faixa ideal</strong></td><td><strong>Observa&ccedil;&otilde;es</strong></td></tr>"
+        "<tr><td>Temp. do ar</td><td>20-30&nbsp;&deg;C</td><td>Evitar varia&ccedil;&otilde;es bruscas. Ideal: 22-28&nbsp;&deg;C</td></tr>"
+        "<tr><td>Umidade do ar</td><td>50-80%%</td><td>Muito baixa favorece pragas. Muito alta favorece fungos</td></tr>"
+        "<tr><td>Temp. do solo</td><td>18-25&nbsp;&deg;C</td><td>Essencial para germina&ccedil;&atilde;o e desenvolvimento radicular</td></tr>"
+        "<tr><td>Umidade do solo</td><td>40-80%%</td><td>Depende da cultura. Evitar encharcamento ou seca extrema</td></tr>"
+        "<tr><td>Luminosidade</td><td>500-2000&nbsp;lux</td><td>Varia conforme cultura e fase. Folhosas: 1000-2000&nbsp;lux</td></tr>"
+        "<tr><td>DPV</td><td>0.5-2.0&nbsp;kPa</td><td>Indica demanda evaporativa. Valores altos indicam necessidade de irriga&ccedil;&atilde;o</td></tr>"
+        "</table>"
         "</div>"
 
         /* Chart mínimo inline. Só inclua este bloco se você NÃO
@@ -220,11 +582,15 @@ static esp_err_t handle_dashboard(httpd_req_t *req)
         "  const uAr   = extrairXY(j.umid_ar_points||[]);"
         "  const tSolo = extrairXY(j.temp_solo_points||[]);"
         "  const uSolo = extrairXY(j.umid_solo_points||[]);"
+        "  const lum   = extrairXY(j.luminosidade_points||[]);"
+        "  const dpv   = extrairXY(j.dpv_points||[]);"
 
         "  desenha('chart_temp_ar','Temp Ar (C)',tAr.xs,tAr.ys,20,40);"
         "  desenha('chart_umid_ar','UR Ar (%%)',uAr.xs,uAr.ys,0,100);"
         "  desenha('chart_temp_solo','Temp Solo (C)',tSolo.xs,tSolo.ys,20,40);"
         "  desenha('chart_umid_solo','Umid Solo (%%)',uSolo.xs,uSolo.ys,0,100);"
+        "  desenha('chart_luminosidade','Luminosidade (lux)',lum.xs,lum.ys,0,2500);"
+        "  desenha('chart_dpv','DPV (kPa)',dpv.xs,dpv.ys,0,3);"
         " }catch(e){console.log('erro /history',e);}"
         "}"
 
@@ -253,12 +619,9 @@ static esp_err_t handle_dashboard(httpd_req_t *req)
         "</div>"
         "</body>"
         "</html>",
-        (double)temp_ar,
-        (double)umid_ar,
-        (double)temp_solo,
-        (double)umid_solo_pct, umid_raw,
-        (double)seco,
-        (double)molhado
+        stats_info_text,
+        stats_grid_html,
+        stats_meta_html
     );
 
     httpd_resp_set_type(req, "text/html");

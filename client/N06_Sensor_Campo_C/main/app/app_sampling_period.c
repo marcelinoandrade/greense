@@ -13,7 +13,7 @@ typedef struct {
 } sampling_option_t;
 
 static const sampling_option_t k_sampling_options[] = {
-    { 1 * 1000 },           // 1 segundo
+    { 10 * 1000 },          // 10 segundos
     { 60 * 1000 },          // 1 minuto
     { 10 * 60 * 1000 },     // 10 minutos
     { 60 * 60 * 1000 },     // 1 hora

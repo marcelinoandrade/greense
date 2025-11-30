@@ -1,0 +1,1038 @@
+Command: /home/mrclnndrd/.espressif/python_env/idf5.5_py3.11_env/bin/python /home/mrclnndrd/esp/esp-idf/tools/idf_monitor.py -p /dev/ttyUSB0 -b 115200 --toolchain-prefix xtensa-esp32-elf- --target esp32 --revision 0 /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/sensor_campo.elf /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/bootloader/bootloader.elf -m '/home/mrclnndrd/.espressif/python_env/idf5.5_py3.11_env/bin/python' '/home/mrclnndrd/esp/esp-idf/tools/idf.py'
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x17 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:6380
+ho 0 tail 12 room 4
+load:0x40078000,len:15904
+load:0x40080400,len:3860
+entry 0x40080638
+[0;32mI (29) boot: ESP-IDF v5.5-dev-3372-g38628f98b9 2nd stage bootloader[0m
+[0;32mI (29) boot: compile time Nov 28 2025 06:27:02[0m
+[0;32mI (29) boot: Multicore bootloader[0m
+[0;32mI (32) boot: chip revision: v3.1[0m
+[0;32mI (35) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (39) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (42) boot.esp32: SPI Flash Size : 4MB[0m
+[0;32mI (46) boot: Enabling RNG early entropy source...[0m
+[0;32mI (50) boot: Partition Table:[0m
+[0;32mI (53) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (59) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (66) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (72) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (79) boot:  3 spiffs           Unknown data     01 82 00110000 002f0000[0m
+[0;32mI (85) boot: End of partition table[0m
+[0;32mI (89) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=2a50ch (173324) map[0m
+[0;32mI (155) esp_image: segment 1: paddr=0003a534 vaddr=3ff80000 size=0001ch (    28) load[0m
+[0;32mI (156) esp_image: segment 2: paddr=0003a558 vaddr=3ffb0000 size=03edch ( 16092) load[0m
+[0;32mI (165) esp_image: segment 3: paddr=0003e43c vaddr=40080000 size=01bdch (  7132) load[0m
+[0;32mI (170) esp_image: segment 4: paddr=00040020 vaddr=400d0020 size=9ed84h (650628) map[0m
+[0;32mI (397) esp_image: segment 5: paddr=000dedac vaddr=40081bdc size=1618ch ( 90508) load[0m
+[0;32mI (444) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (444) boot: Disabling RNG early entropy source...[0m
+[0;32mI (454) cpu_start: Multicore app[0m
+[0;32mI (463) cpu_start: Pro cpu start user code[0m
+[0;32mI (463) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (463) app_init: Application information:[0m
+[0;32mI (466) app_init: Project name:     sensor_campo[0m
+[0;32mI (471) app_init: App version:      c4d3e91a-dirty[0m
+[0;32mI (476) app_init: Compile time:     Nov 28 2025 06:26:09[0m
+[0;32mI (482) app_init: ELF file SHA256:  e3df3f0e9...[0m
+[0;32mI (488) app_init: ESP-IDF:          v5.5-dev-3372-g38628f98b9[0m
+[0;32mI (494) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (499) efuse_init: Max chip rev:     v3.99 [0m
+[0;32mI (504) efuse_init: Chip rev:         v3.1[0m
+[0;32mI (509) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (516) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (522) heap_init: At 3FFB80B8 len 00027F48 (159 KiB): DRAM[0m
+[0;32mI (528) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (534) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (541) heap_init: At 40097D68 len 00008298 (32 KiB): IRAM[0m
+[0;32mI (549) spi_flash: detected chip: generic[0m
+[0;32mI (552) spi_flash: flash io: dio[0m
+[0;32mI (557) main_task: Started on CPU0[0m
+[0;32mI (567) main_task: Calling app_main()[0m
+[0;32mI (587) BSP_LED: LED inicializado no GPIO 2[0m
+[0;32mI (587) BSP_DS18B20: DS18B20 inicializado no GPIO 4[0m
+[0;32mI (587) BSP_ADC: ADC umidade solo inicializado. canal=6 bitwidth=12 atten=3[0m
+[0;32mI (2687) BSP_DHT: ✓ DHT11 GPIO 5 está em HIGH (pull-up OK)[0m
+[0;32mI (2707) BSP_DHT: DHT11 interpretado: Umidade=2.0%, Temperatura=1.0°C[0m
+[0;33mW (2707) BSP_DHT: DHT11 umidade fora da faixa válida (20.0-90.0%): H=2.0%[0m
+[0;33mW (2707) BSP_DHT: Tentativa 1/3 de leitura inicial do DHT11 falhou: ESP_ERR_INVALID_RESPONSE[0m
+[0;32mI (4737) BSP_DHT: DHT11 interpretado: Umidade=2.0%, Temperatura=1.0°C[0m
+[0;33mW (4737) BSP_DHT: DHT11 umidade fora da faixa válida (20.0-90.0%): H=2.0%[0m
+[0;33mW (4737) BSP_DHT: Tentativa 2/3 de leitura inicial do DHT11 falhou: ESP_ERR_INVALID_RESPONSE[0m
+[0;32mI (6767) BSP_DHT: DHT11 interpretado: Umidade=2.0%, Temperatura=1.0°C[0m
+[0;33mW (6767) BSP_DHT: DHT11 umidade fora da faixa válida (20.0-90.0%): H=2.0%[0m
+[0;33mW (6767) BSP_DHT: Tentativa 3/3 de leitura inicial do DHT11 falhou: ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (6777) BSP_DHT: ⚠️ DHT11 no GPIO 5 não respondeu após 3 tentativas[0m
+[0;33mW (6787) BSP_DHT:    Checklist:[0m
+[0;33mW (6787) BSP_DHT:    [ ] Sensor conectado na GPIO 5 (não GPIO19!)[0m
+[0;33mW (6797) BSP_DHT:    [ ] Pull-up 10kΩ entre DATA (GPIO 5) e VCC (3.3V ou 5V)[0m
+[0;33mW (6807) BSP_DHT:    [ ] VCC do DHT11 conectado à alimentação correta[0m
+[0;33mW (6807) BSP_DHT:    [ ] GND do DHT11 conectado ao GND do ESP32[0m
+[0;33mW (6817) BSP_DHT:    [ ] Cabos curtos (< 20cm recomendado)[0m
+[0;32mI (6827) BSP_DHT: DHT11 configurado no GPIO 5[0m
+[0;32mI (6827) BSP_SENSORS: Sensores BSP inicializados[0m
+[0;32mI (6837) APP_SENSOR_MGR: Sensor Manager inicializado[0m
+[0;32mI (6837) APP_DATA_LOGGER: Inicializando SPIFFS...[0m
+[0;32mI (7147) APP_DATA_LOGGER: SPIFFS montado em /spiffs[0m
+[0;32mI (7147) APP_DATA_LOGGER: Total=2293769 bytes, Usado=9171 bytes[0m
+[0;32mI (7217) APP_DATA_LOGGER: Proximo indice de log sera: 349[0m
+[0;33mW (7407) APP_DATA_LOGGER: Arquivo /spiffs/soil_calib.json nao encontrado. Usando padrao (Seco: 4000, Molhado: 400)[0m
+[0;32mI (7407) APP_DATA_LOGGER: --- Lendo /spiffs/log_temp.csv ---[0m
+[0;32mI (7417) APP_DATA_LOGGER: N,temp_ar_C,umid_ar_pct,temp_solo_C,umid_solo_pct
+[0m
+[0;32mI (7427) APP_DATA_LOGGER: 1,26.48,60.93,24.50,0.00
+[0m
+[0;32mI (7427) APP_DATA_LOGGER: 2,26.66,58.68,24.44,0.00
+[0m
+[0;32mI (7437) APP_DATA_LOGGER: 3,26.65,61.00,24.50,0.00
+[0m
+[0;32mI (7437) APP_DATA_LOGGER: 4,26.93,60.55,24.50,0.00
+[0m
+[0;32mI (7447) APP_DATA_LOGGER: 5,26.65,62.20,24.50,0.00
+[0m
+[0;32mI (7457) APP_DATA_LOGGER: 6,26.54,63.10,24.50,0.00
+[0m
+[0;32mI (7457) APP_DATA_LOGGER: 7,26.26,62.05,24.50,0.00
+[0m
+[0;32mI (7467) APP_DATA_LOGGER: 8,26.17,60.11,24.56,0.00
+[0m
+[0;32mI (7467) APP_DATA_LOGGER: 9,25.92,61.43,24.56,0.00
+[0m
+[0;32mI (7477) APP_DATA_LOGGER: 10,26.03,59.60,24.56,0.00
+[0m
+[0;32mI (7477) APP_DATA_LOGGER: 11,25.64,58.11,24.56,0.00
+[0m
+[0;32mI (7487) APP_DATA_LOGGER: 12,25.62,57.06,24.56,0.00
+[0m
+[0;32mI (7497) APP_DATA_LOGGER: 13,25.50,55.45,24.56,0.00
+[0m
+[0;32mI (7497) APP_DATA_LOGGER: 14,25.48,53.21,24.56,0.00
+[0m
+[0;32mI (7507) APP_DATA_LOGGER: 15,nan,nan,24.62,0.00
+[0m
+[0;32mI (7507) APP_DATA_LOGGER: 16,nan,nan,24.62,0.00
+[0m
+[0;32mI (7517) APP_DATA_LOGGER: 17,nan,nan,24.37,0.00
+[0m
+[0;32mI (7517) APP_DATA_LOGGER: 18,nan,nan,24.62,0.00
+[0m
+[0;32mI (7527) APP_DATA_LOGGER: 19,nan,nan,24.62,0.00
+[0m
+[0;32mI (7527) APP_DATA_LOGGER: 20,nan,nan,24.62,0.00
+[0m
+[0;32mI (7537) APP_DATA_LOGGER: 21,nan,nan,24.62,0.00
+[0m
+[0;32mI (7537) APP_DATA_LOGGER: 22,nan,nan,24.69,0.00
+[0m
+[0;32mI (7547) APP_DATA_LOGGER: 23,nan,nan,24.69,0.00
+[0m
+[0;32mI (7557) APP_DATA_LOGGER: 24,nan,nan,24.69,0.00
+[0m
+[0;32mI (7557) APP_DATA_LOGGER: 25,nan,nan,24.69,0.00
+[0m
+[0;32mI (7567) APP_DATA_LOGGER: 26,nan,nan,24.69,0.00
+[0m
+[0;32mI (7567) APP_DATA_LOGGER: 27,nan,nan,24.69,0.00
+[0m
+[0;32mI (7577) APP_DATA_LOGGER: 28,nan,nan,24.69,0.00
+[0m
+[0;32mI (7577) APP_DATA_LOGGER: 29,nan,nan,24.69,0.00
+[0m
+[0;32mI (7587) APP_DATA_LOGGER: 30,nan,nan,24.69,0.00
+[0m
+[0;32mI (7587) APP_DATA_LOGGER: 31,nan,nan,24.69,0.00
+[0m
+[0;32mI (7597) APP_DATA_LOGGER: 32,nan,nan,24.69,0.00
+[0m
+[0;32mI (7597) APP_DATA_LOGGER: 33,nan,nan,24.69,0.00
+[0m
+[0;32mI (7607) APP_DATA_LOGGER: 34,nan,nan,24.69,0.00
+[0m
+[0;32mI (7607) APP_DATA_LOGGER: 35,nan,nan,24.69,0.00
+[0m
+[0;32mI (7617) APP_DATA_LOGGER: 36,nan,nan,24.75,0.00
+[0m
+[0;32mI (7627) APP_DATA_LOGGER: 37,nan,nan,24.69,0.00
+[0m
+[0;32mI (7627) APP_DATA_LOGGER: 38,nan,nan,24.69,0.00
+[0m
+[0;32mI (7637) APP_DATA_LOGGER: 39,nan,nan,24.75,0.00
+[0m
+[0;32mI (7637) APP_DATA_LOGGER: 40,nan,nan,24.75,0.00
+[0m
+[0;32mI (7647) APP_DATA_LOGGER: 41,nan,nan,24.75,0.00
+[0m
+[0;32mI (7647) APP_DATA_LOGGER: 42,nan,nan,24.75,0.00
+[0m
+[0;32mI (7657) APP_DATA_LOGGER: 43,nan,nan,24.75,0.00
+[0m
+[0;32mI (7657) APP_DATA_LOGGER: 44,nan,nan,24.75,0.00
+[0m
+[0;32mI (7667) APP_DATA_LOGGER: 45,nan,nan,24.75,0.00
+[0m
+[0;32mI (7667) APP_DATA_LOGGER: 46,nan,nan,24.75,0.00
+[0m
+[0;32mI (7677) APP_DATA_LOGGER: 47,nan,nan,24.75,0.00
+[0m
+[0;32mI (7677) APP_DATA_LOGGER: 48,nan,nan,24.75,0.00
+[0m
+[0;32mI (7687) APP_DATA_LOGGER: 49,nan,nan,24.75,0.00
+[0m
+[0;32mI (7687) APP_DATA_LOGGER: 50,nan,nan,24.75,0.00
+[0m
+[0;32mI (7697) APP_DATA_LOGGER: 51,nan,nan,24.75,0.00
+[0m
+[0;32mI (7707) APP_DATA_LOGGER: 52,nan,nan,24.81,0.00
+[0m
+[0;32mI (7707) APP_DATA_LOGGER: 53,nan,nan,24.75,0.00
+[0m
+[0;32mI (7717) APP_DATA_LOGGER: 54,nan,nan,24.75,0.00
+[0m
+[0;32mI (7717) APP_DATA_LOGGER: 55,nan,nan,24.75,0.00
+[0m
+[0;32mI (7727) APP_DATA_LOGGER: 56,nan,nan,24.81,0.00
+[0m
+[0;32mI (7727) APP_DATA_LOGGER: 57,nan,nan,24.81,0.00
+[0m
+[0;32mI (7737) APP_DATA_LOGGER: 58,nan,nan,24.75,0.00
+[0m
+[0;32mI (7737) APP_DATA_LOGGER: 59,nan,nan,24.81,0.00
+[0m
+[0;32mI (7747) APP_DATA_LOGGER: 60,nan,nan,24.81,0.00
+[0m
+[0;32mI (7747) APP_DATA_LOGGER: 61,nan,nan,24.81,0.00
+[0m
+[0;32mI (7757) APP_DATA_LOGGER: 62,nan,nan,24.81,0.00
+[0m
+[0;32mI (7757) APP_DATA_LOGGER: 63,nan,nan,24.81,0.00
+[0m
+[0;32mI (7767) APP_DATA_LOGGER: 64,nan,nan,24.81,0.00
+[0m
+[0;32mI (7777) APP_DATA_LOGGER: 65,nan,nan,24.81,0.00
+[0m
+[0;32mI (7777) APP_DATA_LOGGER: 66,nan,nan,24.81,0.00
+[0m
+[0;32mI (7787) APP_DATA_LOGGER: 67,nan,nan,24.81,0.00
+[0m
+[0;32mI (7787) APP_DATA_LOGGER: 68,nan,nan,24.88,0.00
+[0m
+[0;32mI (7797) APP_DATA_LOGGER: 69,nan,nan,24.81,0.00
+[0m
+[0;32mI (7797) APP_DATA_LOGGER: 70,nan,nan,24.81,0.00
+[0m
+[0;32mI (7807) APP_DATA_LOGGER: 71,nan,nan,24.81,0.00
+[0m
+[0;32mI (7807) APP_DATA_LOGGER: 72,nan,nan,24.81,0.00
+[0m
+[0;32mI (7817) APP_DATA_LOGGER: 73,nan,nan,24.81,0.00
+[0m
+[0;32mI (7817) APP_DATA_LOGGER: 74,nan,nan,24.88,0.00
+[0m
+[0;32mI (7827) APP_DATA_LOGGER: 75,nan,nan,24.81,0.00
+[0m
+[0;32mI (7827) APP_DATA_LOGGER: 76,nan,nan,24.88,0.00
+[0m
+[0;32mI (7837) APP_DATA_LOGGER: 77,nan,nan,24.88,0.00
+[0m
+[0;32mI (7847) APP_DATA_LOGGER: 78,nan,nan,25.06,0.00
+[0m
+[0;32mI (7847) APP_DATA_LOGGER: 79,nan,nan,25.06,0.00
+[0m
+[0;32mI (7857) APP_DATA_LOGGER: 80,nan,nan,25.06,0.00
+[0m
+[0;32mI (7857) APP_DATA_LOGGER: 81,nan,nan,25.06,0.00
+[0m
+[0;32mI (7867) APP_DATA_LOGGER: 82,nan,nan,25.06,0.00
+[0m
+[0;32mI (7867) APP_DATA_LOGGER: 83,nan,nan,25.06,0.00
+[0m
+[0;32mI (7877) APP_DATA_LOGGER: 84,nan,nan,25.06,0.00
+[0m
+[0;32mI (7877) APP_DATA_LOGGER: 85,nan,nan,25.06,0.00
+[0m
+[0;32mI (7887) APP_DATA_LOGGER: 86,nan,nan,25.06,0.00
+[0m
+[0;32mI (7887) APP_DATA_LOGGER: 87,nan,nan,25.06,0.00
+[0m
+[0;32mI (7897) APP_DATA_LOGGER: 88,nan,nan,25.06,0.00
+[0m
+[0;32mI (7897) APP_DATA_LOGGER: 89,nan,nan,25.06,0.00
+[0m
+[0;32mI (7907) APP_DATA_LOGGER: 90,nan,nan,25.06,0.00
+[0m
+[0;32mI (7917) APP_DATA_LOGGER: 91,nan,nan,25.06,0.00
+[0m
+[0;32mI (7917) APP_DATA_LOGGER: 92,nan,nan,25.06,0.00
+[0m
+[0;32mI (7927) APP_DATA_LOGGER: 93,nan,nan,25.06,0.00
+[0m
+[0;32mI (7927) APP_DATA_LOGGER: 94,nan,nan,25.06,0.00
+[0m
+[0;32mI (7937) APP_DATA_LOGGER: 95,nan,nan,25.06,0.00
+[0m
+[0;32mI (7937) APP_DATA_LOGGER: 96,nan,nan,25.06,0.00
+[0m
+[0;32mI (7947) APP_DATA_LOGGER: 97,nan,nan,25.06,0.00
+[0m
+[0;32mI (7947) APP_DATA_LOGGER: 98,nan,nan,25.06,0.00
+[0m
+[0;32mI (7957) APP_DATA_LOGGER: 99,nan,nan,25.06,0.00
+[0m
+[0;32mI (7957) APP_DATA_LOGGER: 100,nan,nan,25.06,0.00
+[0m
+[0;32mI (7967) APP_DATA_LOGGER: 101,nan,nan,25.06,0.00
+[0m
+[0;32mI (7967) APP_DATA_LOGGER: 102,nan,nan,25.12,0.00
+[0m
+[0;32mI (7977) APP_DATA_LOGGER: 103,nan,nan,25.06,0.00
+[0m
+[0;32mI (7987) APP_DATA_LOGGER: 104,nan,nan,25.06,0.00
+[0m
+[0;32mI (7987) APP_DATA_LOGGER: 105,nan,nan,25.06,0.00
+[0m
+[0;32mI (7997) APP_DATA_LOGGER: 106,nan,nan,25.06,0.00
+[0m
+[0;32mI (7997) APP_DATA_LOGGER: 107,nan,nan,25.06,0.00
+[0m
+[0;32mI (8007) APP_DATA_LOGGER: 108,nan,nan,25.06,0.00
+[0m
+[0;32mI (8007) APP_DATA_LOGGER: 109,nan,nan,25.06,0.00
+[0m
+[0;32mI (8017) APP_DATA_LOGGER: 110,nan,nan,25.12,0.00
+[0m
+[0;32mI (8017) APP_DATA_LOGGER: 111,nan,nan,25.12,0.00
+[0m
+[0;32mI (8027) APP_DATA_LOGGER: 112,nan,nan,25.12,0.00
+[0m
+[0;32mI (8037) APP_DATA_LOGGER: 113,nan,nan,25.12,0.00
+[0m
+[0;32mI (8037) APP_DATA_LOGGER: 114,nan,nan,25.12,0.00
+[0m
+[0;32mI (8047) APP_DATA_LOGGER: 115,nan,nan,25.12,0.00
+[0m
+[0;32mI (8047) APP_DATA_LOGGER: 116,nan,nan,25.06,0.00
+[0m
+[0;32mI (8057) APP_DATA_LOGGER: 117,nan,nan,25.12,0.00
+[0m
+[0;32mI (8057) APP_DATA_LOGGER: 118,nan,nan,25.12,0.00
+[0m
+[0;32mI (8067) APP_DATA_LOGGER: 119,nan,nan,25.12,0.00
+[0m
+[0;32mI (8067) APP_DATA_LOGGER: 120,nan,nan,25.12,0.00
+[0m
+[0;32mI (8077) APP_DATA_LOGGER: 121,nan,nan,25.12,0.00
+[0m
+[0;32mI (8077) APP_DATA_LOGGER: 122,nan,nan,25.12,0.00
+[0m
+[0;32mI (8087) APP_DATA_LOGGER: 123,nan,nan,25.12,0.00
+[0m
+[0;32mI (8097) APP_DATA_LOGGER: 124,nan,nan,25.12,0.00
+[0m
+[0;32mI (8097) APP_DATA_LOGGER: 125,nan,nan,25.12,0.00
+[0m
+[0;32mI (8107) APP_DATA_LOGGER: 126,nan,nan,25.12,0.00
+[0m
+[0;32mI (8107) APP_DATA_LOGGER: 127,nan,nan,25.12,0.00
+[0m
+[0;32mI (8117) APP_DATA_LOGGER: 128,nan,nan,25.12,0.00
+[0m
+[0;32mI (8117) APP_DATA_LOGGER: 129,nan,nan,25.12,0.00
+[0m
+[0;32mI (8127) APP_DATA_LOGGER: 130,nan,nan,25.12,0.00
+[0m
+[0;32mI (8127) APP_DATA_LOGGER: 131,nan,nan,25.12,0.00
+[0m
+[0;32mI (8137) APP_DATA_LOGGER: 132,nan,nan,25.12,0.00
+[0m
+[0;32mI (8137) APP_DATA_LOGGER: 133,nan,nan,25.12,0.00
+[0m
+[0;32mI (8147) APP_DATA_LOGGER: 134,nan,nan,25.12,0.00
+[0m
+[0;32mI (8157) APP_DATA_LOGGER: 135,nan,nan,25.12,0.00
+[0m
+[0;32mI (8157) APP_DATA_LOGGER: 136,nan,nan,25.12,0.00
+[0m
+[0;32mI (8167) APP_DATA_LOGGER: 137,nan,nan,25.12,0.00
+[0m
+[0;32mI (8167) APP_DATA_LOGGER: 138,nan,nan,25.12,0.00
+[0m
+[0;32mI (8177) APP_DATA_LOGGER: 139,nan,nan,25.12,0.00
+[0m
+[0;32mI (8177) APP_DATA_LOGGER: 140,nan,nan,25.12,0.00
+[0m
+[0;32mI (8187) APP_DATA_LOGGER: 141,nan,nan,25.12,0.00
+[0m
+[0;32mI (8187) APP_DATA_LOGGER: 142,nan,nan,25.19,0.00
+[0m
+[0;32mI (8197) APP_DATA_LOGGER: 143,nan,nan,25.12,0.00
+[0m
+[0;32mI (8197) APP_DATA_LOGGER: 144,nan,nan,25.19,0.00
+[0m
+[0;32mI (8207) APP_DATA_LOGGER: 145,nan,nan,25.19,0.00
+[0m
+[0;32mI (8217) APP_DATA_LOGGER: 146,nan,nan,25.19,0.00
+[0m
+[0;32mI (8217) APP_DATA_LOGGER: 147,nan,nan,25.19,0.00
+[0m
+[0;32mI (8227) APP_DATA_LOGGER: 148,nan,nan,25.12,0.00
+[0m
+[0;32mI (8227) APP_DATA_LOGGER: 149,nan,nan,25.19,0.00
+[0m
+[0;32mI (8237) APP_DATA_LOGGER: 150,nan,nan,25.19,0.00
+[0m
+[0;32mI (8237) APP_DATA_LOGGER: 151,nan,nan,25.19,0.00
+[0m
+[0;32mI (8247) APP_DATA_LOGGER: 152,nan,nan,25.19,0.00
+[0m
+[0;32mI (8247) APP_DATA_LOGGER: 153,nan,nan,25.19,0.00
+[0m
+[0;32mI (8257) APP_DATA_LOGGER: 154,nan,nan,25.19,0.00
+[0m
+[0;32mI (8257) APP_DATA_LOGGER: 155,nan,nan,25.19,0.00
+[0m
+[0;32mI (8267) APP_DATA_LOGGER: 156,nan,nan,25.19,0.00
+[0m
+[0;32mI (8277) APP_DATA_LOGGER: 157,nan,nan,25.19,0.00
+[0m
+[0;32mI (8277) APP_DATA_LOGGER: 158,nan,nan,25.19,0.00
+[0m
+[0;32mI (8287) APP_DATA_LOGGER: 159,nan,nan,25.19,0.00
+[0m
+[0;32mI (8287) APP_DATA_LOGGER: 160,nan,nan,25.19,0.00
+[0m
+[0;32mI (8297) APP_DATA_LOGGER: 161,nan,nan,25.19,0.00
+[0m
+[0;32mI (8297) APP_DATA_LOGGER: 162,nan,nan,23.93,0.00
+[0m
+[0;32mI (8307) APP_DATA_LOGGER: 163,nan,nan,25.19,0.00
+[0m
+[0;32mI (8307) APP_DATA_LOGGER: 164,nan,nan,25.19,0.00
+[0m
+[0;32mI (8317) APP_DATA_LOGGER: 165,nan,nan,25.25,0.00
+[0m
+[0;32mI (8317) APP_DATA_LOGGER: 166,nan,nan,25.19,0.00
+[0m
+[0;32mI (8327) APP_DATA_LOGGER: 167,nan,nan,25.19,0.00
+[0m
+[0;32mI (8337) APP_DATA_LOGGER: 168,nan,nan,25.19,0.00
+[0m
+[0;32mI (8337) APP_DATA_LOGGER: 169,nan,nan,25.19,0.00
+[0m
+[0;32mI (8347) APP_DATA_LOGGER: 170,nan,nan,25.19,0.00
+[0m
+[0;32mI (8347) APP_DATA_LOGGER: 171,nan,nan,25.25,0.00
+[0m
+[0;32mI (8357) APP_DATA_LOGGER: 172,nan,nan,25.19,0.00
+[0m
+[0;32mI (8357) APP_DATA_LOGGER: 173,nan,nan,25.19,0.00
+[0m
+[0;32mI (8367) APP_DATA_LOGGER: 174,nan,nan,25.25,0.00
+[0m
+[0;32mI (8367) APP_DATA_LOGGER: 175,nan,nan,25.25,0.00
+[0m
+[0;32mI (8377) APP_DATA_LOGGER: 176,nan,nan,25.19,0.00
+[0m
+[0;32mI (8387) APP_DATA_LOGGER: 177,nan,nan,25.19,0.00
+[0m
+[0;32mI (8387) APP_DATA_LOGGER: 178,nan,nan,25.25,0.00
+[0m
+[0;32mI (8397) APP_DATA_LOGGER: 179,nan,nan,25.19,0.00
+[0m
+[0;32mI (8397) APP_DATA_LOGGER: 180,nan,nan,25.25,0.00
+[0m
+[0;32mI (8407) APP_DATA_LOGGER: 181,nan,nan,25.25,0.00
+[0m
+[0;32mI (8407) APP_DATA_LOGGER: 182,nan,nan,25.19,0.00
+[0m
+[0;32mI (8417) APP_DATA_LOGGER: 183,nan,nan,25.25,0.00
+[0m
+[0;32mI (8417) APP_DATA_LOGGER: 184,nan,nan,25.19,0.00
+[0m
+[0;32mI (8427) APP_DATA_LOGGER: 185,nan,nan,25.25,0.00
+[0m
+[0;32mI (8427) APP_DATA_LOGGER: 186,nan,nan,25.25,0.00
+[0m
+[0;32mI (8437) APP_DATA_LOGGER: 187,nan,nan,25.25,0.00
+[0m
+[0;32mI (8447) APP_DATA_LOGGER: 188,nan,nan,25.25,0.00
+[0m
+[0;32mI (8447) APP_DATA_LOGGER: 189,nan,nan,25.25,0.00
+[0m
+[0;32mI (8457) APP_DATA_LOGGER: 190,nan,nan,25.25,0.00
+[0m
+[0;32mI (8457) APP_DATA_LOGGER: 191,nan,nan,25.25,0.00
+[0m
+[0;32mI (8467) APP_DATA_LOGGER: 192,nan,nan,25.25,0.00
+[0m
+[0;32mI (8467) APP_DATA_LOGGER: 193,nan,nan,25.25,0.00
+[0m
+[0;32mI (8477) APP_DATA_LOGGER: 194,nan,nan,25.25,0.00
+[0m
+[0;32mI (8477) APP_DATA_LOGGER: 195,nan,nan,25.25,0.00
+[0m
+[0;32mI (8487) APP_DATA_LOGGER: 196,nan,nan,25.25,0.00
+[0m
+[0;32mI (8487) APP_DATA_LOGGER: 197,nan,nan,25.25,0.00
+[0m
+[0;32mI (8497) APP_DATA_LOGGER: 198,nan,nan,25.25,0.00
+[0m
+[0;32mI (8507) APP_DATA_LOGGER: 199,nan,nan,25.25,0.00
+[0m
+[0;32mI (8507) APP_DATA_LOGGER: 200,nan,nan,25.25,0.00
+[0m
+[0;32mI (8517) APP_DATA_LOGGER: 201,nan,nan,25.31,0.00
+[0m
+[0;32mI (8517) APP_DATA_LOGGER: 202,nan,nan,25.31,0.00
+[0m
+[0;32mI (8527) APP_DATA_LOGGER: 203,nan,nan,25.25,0.00
+[0m
+[0;32mI (8527) APP_DATA_LOGGER: 204,nan,nan,25.25,0.00
+[0m
+[0;32mI (8537) APP_DATA_LOGGER: 205,nan,nan,25.25,0.00
+[0m
+[0;32mI (8537) APP_DATA_LOGGER: 206,nan,nan,25.25,0.00
+[0m
+[0;32mI (8547) APP_DATA_LOGGER: 207,nan,nan,25.25,0.00
+[0m
+[0;32mI (8547) APP_DATA_LOGGER: 208,nan,nan,25.25,0.00
+[0m
+[0;32mI (8557) APP_DATA_LOGGER: 209,nan,nan,25.31,0.00
+[0m
+[0;32mI (8567) APP_DATA_LOGGER: 210,nan,nan,25.31,0.00
+[0m
+[0;32mI (8567) APP_DATA_LOGGER: 211,nan,nan,25.31,0.00
+[0m
+[0;32mI (8577) APP_DATA_LOGGER: 212,nan,nan,25.31,0.00
+[0m
+[0;32mI (8577) APP_DATA_LOGGER: 213,nan,nan,25.25,0.00
+[0m
+[0;32mI (8587) APP_DATA_LOGGER: 214,nan,nan,25.31,0.00
+[0m
+[0;32mI (8587) APP_DATA_LOGGER: 215,nan,nan,25.31,0.00
+[0m
+[0;32mI (8597) APP_DATA_LOGGER: 216,nan,nan,25.31,0.00
+[0m
+[0;32mI (8597) APP_DATA_LOGGER: 217,nan,nan,25.31,0.00
+[0m
+[0;32mI (8607) APP_DATA_LOGGER: 218,nan,nan,25.31,0.00
+[0m
+[0;32mI (8607) APP_DATA_LOGGER: 219,nan,nan,25.25,0.00
+[0m
+[0;32mI (8617) APP_DATA_LOGGER: 220,nan,nan,25.31,0.00
+[0m
+[0;32mI (8627) APP_DATA_LOGGER: 221,nan,nan,25.31,0.00
+[0m
+[0;32mI (8627) APP_DATA_LOGGER: 222,nan,nan,25.31,0.00
+[0m
+[0;32mI (8637) APP_DATA_LOGGER: 223,nan,nan,25.31,0.00
+[0m
+[0;32mI (8637) APP_DATA_LOGGER: 224,nan,nan,25.31,0.00
+[0m
+[0;32mI (8647) APP_DATA_LOGGER: 225,nan,nan,25.31,0.00
+[0m
+[0;32mI (8647) APP_DATA_LOGGER: 226,nan,nan,25.31,0.00
+[0m
+[0;32mI (8657) APP_DATA_LOGGER: 227,nan,nan,25.31,0.00
+[0m
+[0;32mI (8657) APP_DATA_LOGGER: 228,nan,nan,25.31,0.00
+[0m
+[0;32mI (8667) APP_DATA_LOGGER: 229,nan,nan,25.31,0.00
+[0m
+[0;32mI (8667) APP_DATA_LOGGER: 230,nan,nan,25.31,0.00
+[0m
+[0;32mI (8677) APP_DATA_LOGGER: 231,nan,nan,25.31,0.00
+[0m
+[0;32mI (8687) APP_DATA_LOGGER: 232,nan,nan,25.31,0.00
+[0m
+[0;32mI (8687) APP_DATA_LOGGER: 233,nan,nan,25.31,0.00
+[0m
+[0;32mI (8697) APP_DATA_LOGGER: 234,nan,nan,25.31,0.00
+[0m
+[0;32mI (8697) APP_DATA_LOGGER: 235,nan,nan,25.31,0.00
+[0m
+[0;32mI (8707) APP_DATA_LOGGER: 236,nan,nan,25.31,0.00
+[0m
+[0;32mI (8707) APP_DATA_LOGGER: 237,nan,nan,25.31,0.00
+[0m
+[0;32mI (8717) APP_DATA_LOGGER: 238,nan,nan,25.31,0.00
+[0m
+[0;32mI (8717) APP_DATA_LOGGER: 239,nan,nan,25.31,0.00
+[0m
+[0;32mI (8727) APP_DATA_LOGGER: 240,nan,nan,25.38,0.00
+[0m
+[0;32mI (8737) APP_DATA_LOGGER: 241,nan,nan,25.31,0.00
+[0m
+[0;32mI (8737) APP_DATA_LOGGER: 242,nan,nan,25.31,0.00
+[0m
+[0;32mI (8747) APP_DATA_LOGGER: 243,nan,nan,23.67,0.00
+[0m
+[0;32mI (8747) APP_DATA_LOGGER: 244,nan,nan,25.38,0.00
+[0m
+[0;32mI (8757) APP_DATA_LOGGER: 245,nan,nan,25.31,0.00
+[0m
+[0;32mI (8757) APP_DATA_LOGGER: 246,nan,nan,25.31,0.00
+[0m
+[0;32mI (8767) APP_DATA_LOGGER: 247,nan,nan,25.31,0.00
+[0m
+[0;32mI (8767) APP_DATA_LOGGER: 248,nan,nan,25.38,0.00
+[0m
+[0;32mI (8777) APP_DATA_LOGGER: 249,nan,nan,25.31,0.00
+[0m
+[0;32mI (8777) APP_DATA_LOGGER: 250,nan,nan,25.31,0.00
+[0m
+[0;32mI (8787) APP_DATA_LOGGER: 251,nan,nan,25.31,0.00
+[0m
+[0;32mI (8797) APP_DATA_LOGGER: 252,nan,nan,25.31,0.00
+[0m
+[0;32mI (8797) APP_DATA_LOGGER: 253,nan,nan,25.38,0.00
+[0m
+[0;32mI (8807) APP_DATA_LOGGER: 254,nan,nan,25.38,0.00
+[0m
+[0;32mI (8807) APP_DATA_LOGGER: 255,nan,nan,25.38,0.00
+[0m
+[0;32mI (8817) APP_DATA_LOGGER: 256,nan,nan,25.38,0.00
+[0m
+[0;32mI (8817) APP_DATA_LOGGER: 257,nan,nan,25.31,0.00
+[0m
+[0;32mI (8827) APP_DATA_LOGGER: 258,nan,nan,25.31,0.00
+[0m
+[0;32mI (8827) APP_DATA_LOGGER: 259,nan,nan,25.38,0.00
+[0m
+[0;32mI (8837) APP_DATA_LOGGER: 260,nan,nan,25.38,0.00
+[0m
+[0;32mI (8837) APP_DATA_LOGGER: 261,nan,nan,25.38,0.00
+[0m
+[0;32mI (8847) APP_DATA_LOGGER: 262,nan,nan,25.38,0.00
+[0m
+[0;32mI (8857) APP_DATA_LOGGER: 263,nan,nan,25.38,0.00
+[0m
+[0;32mI (8857) APP_DATA_LOGGER: 264,nan,nan,25.38,0.00
+[0m
+[0;32mI (8867) APP_DATA_LOGGER: 265,nan,nan,25.38,0.00
+[0m
+[0;32mI (8867) APP_DATA_LOGGER: 266,nan,nan,25.38,0.00
+[0m
+[0;32mI (8877) APP_DATA_LOGGER: 267,nan,nan,25.38,0.00
+[0m
+[0;32mI (8877) APP_DATA_LOGGER: 268,nan,nan,25.38,0.00
+[0m
+[0;32mI (8887) APP_DATA_LOGGER: 269,nan,nan,25.38,0.00
+[0m
+[0;32mI (8887) APP_DATA_LOGGER: 270,nan,nan,25.38,0.00
+[0m
+[0;32mI (8897) APP_DATA_LOGGER: 271,nan,nan,25.38,0.00
+[0m
+[0;32mI (8897) APP_DATA_LOGGER: 272,nan,nan,25.38,0.00
+[0m
+[0;32mI (8907) APP_DATA_LOGGER: 273,nan,nan,25.38,0.00
+[0m
+[0;32mI (8917) APP_DATA_LOGGER: 274,nan,nan,25.38,0.00
+[0m
+[0;32mI (8917) APP_DATA_LOGGER: 275,nan,nan,25.38,0.00
+[0m
+[0;32mI (8927) APP_DATA_LOGGER: 276,nan,nan,25.38,0.00
+[0m
+[0;32mI (8927) APP_DATA_LOGGER: 277,nan,nan,25.38,0.00
+[0m
+[0;32mI (8937) APP_DATA_LOGGER: 278,nan,nan,25.38,0.00
+[0m
+[0;32mI (8937) APP_DATA_LOGGER: 279,nan,nan,25.38,0.00
+[0m
+[0;32mI (8947) APP_DATA_LOGGER: 280,nan,nan,25.38,0.00
+[0m
+[0;32mI (8947) APP_DATA_LOGGER: 281,nan,nan,25.38,0.00
+[0m
+[0;32mI (8957) APP_DATA_LOGGER: 282,nan,nan,25.38,0.00
+[0m
+[0;32mI (8957) APP_DATA_LOGGER: 283,nan,nan,25.38,0.00
+[0m
+[0;32mI (8967) APP_DATA_LOGGER: 284,nan,nan,25.38,0.00
+[0m
+[0;32mI (8977) APP_DATA_LOGGER: 285,nan,nan,25.38,0.00
+[0m
+[0;32mI (8977) APP_DATA_LOGGER: 286,nan,nan,25.44,0.00
+[0m
+[0;32mI (8987) APP_DATA_LOGGER: 287,nan,nan,25.38,0.00
+[0m
+[0;32mI (8987) APP_DATA_LOGGER: 288,nan,nan,25.38,0.00
+[0m
+[0;32mI (8997) APP_DATA_LOGGER: 289,nan,nan,25.38,0.00
+[0m
+[0;32mI (8997) APP_DATA_LOGGER: 290,nan,nan,25.38,0.00
+[0m
+[0;32mI (9007) APP_DATA_LOGGER: 291,nan,nan,25.44,0.00
+[0m
+[0;32mI (9007) APP_DATA_LOGGER: 292,nan,nan,25.44,0.00
+[0m
+[0;32mI (9017) APP_DATA_LOGGER: 293,nan,nan,25.38,0.00
+[0m
+[0;32mI (9017) APP_DATA_LOGGER: 294,nan,nan,25.44,0.00
+[0m
+[0;32mI (9027) APP_DATA_LOGGER: 295,nan,nan,25.38,0.00
+[0m
+[0;32mI (9037) APP_DATA_LOGGER: 296,nan,nan,25.38,0.00
+[0m
+[0;32mI (9037) APP_DATA_LOGGER: 297,nan,nan,25.38,0.00
+[0m
+[0;32mI (9047) APP_DATA_LOGGER: 298,nan,nan,25.38,0.00
+[0m
+[0;32mI (9047) APP_DATA_LOGGER: 299,nan,nan,25.44,0.00
+[0m
+[0;32mI (9057) APP_DATA_LOGGER: 300,nan,nan,25.44,0.00
+[0m
+[0;32mI (9057) APP_DATA_LOGGER: 301,nan,nan,25.44,0.00
+[0m
+[0;32mI (9067) APP_DATA_LOGGER: 302,nan,nan,25.44,0.00
+[0m
+[0;32mI (9067) APP_DATA_LOGGER: 303,nan,nan,25.44,0.00
+[0m
+[0;32mI (9077) APP_DATA_LOGGER: 304,nan,nan,25.44,0.00
+[0m
+[0;32mI (9087) APP_DATA_LOGGER: 305,nan,nan,25.44,0.00
+[0m
+[0;32mI (9087) APP_DATA_LOGGER: 306,nan,nan,25.44,0.00
+[0m
+[0;32mI (9097) APP_DATA_LOGGER: 307,nan,nan,25.44,0.00
+[0m
+[0;32mI (9097) APP_DATA_LOGGER: 308,nan,nan,25.44,0.00
+[0m
+[0;32mI (9107) APP_DATA_LOGGER: 309,nan,nan,25.44,0.00
+[0m
+[0;32mI (9107) APP_DATA_LOGGER: 310,nan,nan,23.80,0.00
+[0m
+[0;32mI (9117) APP_DATA_LOGGER: 311,nan,nan,25.44,0.00
+[0m
+[0;32mI (9117) APP_DATA_LOGGER: 312,nan,nan,25.44,0.00
+[0m
+[0;32mI (9127) APP_DATA_LOGGER: 313,nan,nan,25.44,0.00
+[0m
+[0;32mI (9127) APP_DATA_LOGGER: 314,nan,nan,25.44,0.00
+[0m
+[0;32mI (9137) APP_DATA_LOGGER: 315,nan,nan,25.50,0.00
+[0m
+[0;32mI (9147) APP_DATA_LOGGER: 316,nan,nan,25.44,0.00
+[0m
+[0;32mI (9147) APP_DATA_LOGGER: 317,nan,nan,25.44,0.00
+[0m
+[0;32mI (9157) APP_DATA_LOGGER: 318,nan,nan,25.44,0.00
+[0m
+[0;32mI (9157) APP_DATA_LOGGER: 319,nan,nan,25.50,0.00
+[0m
+[0;32mI (9167) APP_DATA_LOGGER: 320,nan,nan,25.44,0.00
+[0m
+[0;32mI (9167) APP_DATA_LOGGER: 321,nan,nan,25.44,0.00
+[0m
+[0;32mI (9177) APP_DATA_LOGGER: 322,nan,nan,25.44,0.00
+[0m
+[0;32mI (9177) APP_DATA_LOGGER: 323,nan,nan,25.50,0.00
+[0m
+[0;32mI (9187) APP_DATA_LOGGER: 324,nan,nan,25.44,0.00
+[0m
+[0;32mI (9187) APP_DATA_LOGGER: 325,nan,nan,25.50,0.00
+[0m
+[0;32mI (9197) APP_DATA_LOGGER: 326,nan,nan,25.50,0.00
+[0m
+[0;32mI (9207) APP_DATA_LOGGER: 327,nan,nan,25.50,0.00
+[0m
+[0;32mI (9207) APP_DATA_LOGGER: 328,nan,nan,25.50,0.00
+[0m
+[0;32mI (9217) APP_DATA_LOGGER: 329,nan,nan,25.50,0.00
+[0m
+[0;32mI (9217) APP_DATA_LOGGER: 330,nan,nan,25.50,0.00
+[0m
+[0;32mI (9227) APP_DATA_LOGGER: 331,nan,nan,25.50,0.00
+[0m
+[0;32mI (9227) APP_DATA_LOGGER: 332,nan,nan,25.50,0.00
+[0m
+[0;32mI (9237) APP_DATA_LOGGER: 333,nan,nan,25.50,0.00
+[0m
+[0;32mI (9237) APP_DATA_LOGGER: 334,nan,nan,25.50,0.00
+[0m
+[0;32mI (9247) APP_DATA_LOGGER: 335,nan,nan,25.50,0.00
+[0m
+[0;32mI (9247) APP_DATA_LOGGER: 336,nan,nan,25.50,0.00
+[0m
+[0;32mI (9257) APP_DATA_LOGGER: 337,nan,nan,25.50,0.00
+[0m
+[0;32mI (9267) APP_DATA_LOGGER: 338,nan,nan,25.50,0.00
+[0m
+[0;32mI (9267) APP_DATA_LOGGER: 339,nan,nan,25.50,0.00
+[0m
+[0;32mI (9277) APP_DATA_LOGGER: 340,nan,nan,25.50,0.00
+[0m
+[0;32mI (9277) APP_DATA_LOGGER: 341,nan,nan,25.50,0.00
+[0m
+[0;32mI (9287) APP_DATA_LOGGER: 342,nan,nan,25.50,0.00
+[0m
+[0;32mI (9287) APP_DATA_LOGGER: 343,nan,nan,25.50,0.00
+[0m
+[0;32mI (9297) APP_DATA_LOGGER: 344,nan,nan,25.50,0.00
+[0m
+[0;32mI (9297) APP_DATA_LOGGER: 345,nan,nan,25.50,0.00
+[0m
+[0;32mI (9307) APP_DATA_LOGGER: 346,nan,nan,25.50,0.00
+[0m
+[0;32mI (9307) APP_DATA_LOGGER: 347,nan,nan,25.56,0.00
+[0m
+[0;32mI (9317) APP_DATA_LOGGER: 348,nan,nan,25.50,0.00
+[0m
+[0;32mI (9327) APP_DATA_LOGGER: --- Fim do arquivo ---[0m
+[0;32mI (9327) APP_SAMPLING: Período carregado do NVS: 10000 ms[0m
+[0;32mI (9337) APP_GUI_SERVICES: Serviços GUI registrados[0m
+[0;32mI (9357) wifi:wifi driver task: 3ffc22d0, prio:23, stack:6656, core=0[0m
+[0;32mI (9367) wifi:wifi firmware version: 7d2994f4b[0m
+[0;32mI (9367) wifi:wifi certification version: v7.0[0m
+[0;32mI (9367) wifi:config NVS flash: enabled[0m
+[0;32mI (9367) wifi:config nano formatting: disabled[0m
+[0;32mI (9367) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (9377) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (9377) wifi:Init management short buffer num: 32[0m
+[0;32mI (9387) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (9387) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (9387) wifi:Init static rx buffer num: 10[0m
+[0;32mI (9397) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (9397) wifi_init: rx ba win: 6[0m
+[0;32mI (9407) wifi_init: accept mbox: 6[0m
+[0;32mI (9407) wifi_init: tcpip mbox: 32[0m
+[0;32mI (9407) wifi_init: udp mbox: 6[0m
+[0;32mI (9417) wifi_init: tcp mbox: 6[0m
+[0;32mI (9417) wifi_init: tcp tx win: 5760[0m
+[0;32mI (9427) wifi_init: tcp rx win: 5760[0m
+[0;32mI (9427) wifi_init: tcp mss: 1440[0m
+[0;32mI (9427) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (9437) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (9447) phy_init: phy_version 4860,6b7a6e5,Feb  6 2025,14:47:07[0m
+[0;32mI (9527) phy_init: Saving new calibration data due to checksum failure or outdated calibration data, mode(0)[0m
+[0;32mI (9547) wifi:mode : softAP (38:18:2b:ea:b7:cd)[0m
+[0;32mI (9547) wifi:Total power save buffer number: 16[0m
+[0;32mI (9547) wifi:Init max length of beacon: 752/752[0m
+[0;32mI (9557) wifi:Init max length of beacon: 752/752[0m
+[0;32mI (9557) BSP_WIFI_AP: Modo AP iniciado. SSID='ESP32_TEMP' senha='12345678'[0m
+[0;32mI (9557) esp_netif_lwip: DHCP server started on interface WIFI_AP_DEF with IP: 192.168.4.1[0m
+[0;32mI (9577) GUI_HTTP_SERVER: Servidor HTTP iniciado e rotas registradas. Acesse http://192.168.4.1/[0m
+[0;32mI (9607) BSP_DHT: DHT11 interpretado: Umidade=2.0%, Temperatura=1.0°C[0m
+[0;33mW (9607) BSP_DHT: DHT11 umidade fora da faixa válida (20.0-90.0%): H=2.0%[0m
+[0;33mW (9607) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_INVALID_RESPONSE); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (9617) APP_MAIN: Sistema iniciado - Arquitetura BSP/APP/GUI[0m
+[0;32mI (9627) main_task: Returned from app_main()[0m
+[0;32mI (10647) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 25.50 C / 0.00 %[0m
+[0;31mE (19597) DHT11: Timeout dentro dos bits[0m
+[0;33mW (19597) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_INVALID_RESPONSE); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (20367) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 25.50 C / 0.00 %[0m
+[0;32mI (29587) BSP_DHT: DHT11 interpretado: Umidade=2.0%, Temperatura=1.0°C[0m
+[0;33mW (29587) BSP_DHT: DHT11 umidade fora da faixa válida (20.0-90.0%): H=2.0%[0m
+[0;33mW (29587) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_INVALID_RESPONSE); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (30587) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 25.50 C / 0.00 %[0m
+[0;31mE (39577) DHT11: Timeout dentro dos bits[0m
+[0;33mW (39577) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_INVALID_RESPONSE); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (40567) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 25.50 C / 0.00 %[0m
+[0;32mI (49567) BSP_DHT: DHT11 interpretado: Umidade=2.0%, Temperatura=1.0°C[0m
+[0;33mW (49567) BSP_DHT: DHT11 umidade fora da faixa válida (20.0-90.0%): H=2.0%[0m
+[0;33mW (49567) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_INVALID_RESPONSE); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (50347) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 25.50 C / 0.00 %[0m
+[0;31mE (59557) DHT11: Timeout dentro dos bits[0m
+[0;33mW (59557) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_INVALID_RESPONSE); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (60557) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 25.50 C / 0.00 %[0m
+[0;32mI (69547) BSP_DHT: DHT11 interpretado: Umidade=2.0%, Temperatura=1.0°C[0m
+[0;33mW (69547) BSP_DHT: DHT11 umidade fora da faixa válida (20.0-90.0%): H=2.0%[0m
+[0;33mW (69547) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_INVALID_RESPONSE); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (70557) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 25.50 C / 0.00 %[0m
+[0;32mI (79537) BSP_DHT: DHT11 interpretado: Umidade=2.0%, Temperatura=1.0°C[0m
+[0;33mW (79537) BSP_DHT: DHT11 umidade fora da faixa válida (20.0-90.0%): H=2.0%[0m
+[0;33mW (79537) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_INVALID_RESPONSE); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (80547) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 25.50 C / 0.00 %[0m
+[0;32mI (89527) BSP_DHT: DHT11 interpretado: Umidade=2.0%, Temperatura=1.0°C[0m
+[0;33mW (89527) BSP_DHT: DHT11 umidade fora da faixa válida (20.0-90.0%): H=2.0%[0m
+[0;33mW (89527) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_INVALID_RESPONSE); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (90307) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 25.50 C / 0.00 %[0m
+[0;32mI (99517) BSP_DHT: DHT11 interpretado: Umidade=2.0%, Temperatura=1.0°C[0m
+[0;33mW (99517) BSP_DHT: DHT11 umidade fora da faixa válida (20.0-90.0%): H=2.0%[0m
+[0;33mW (99517) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_INVALID_RESPONSE); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (100517) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 25.50 C / 0.00 %[0m
+[0;32mI (109507) BSP_DHT: DHT11 interpretado: Umidade=2.0%, Temperatura=1.0°C[0m
+[0;33mW (109507) BSP_DHT: DHT11 umidade fora da faixa válida (20.0-90.0%): H=2.0%[0m
+[0;33mW (109507) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_INVALID_RESPONSE); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (110517) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 25.50 C / 0.00 %[0m
+[0;32mI (119497) BSP_DHT: DHT11 interpretado: Umidade=2.0%, Temperatura=1.0°C[0m
+[0;33mW (119497) BSP_DHT: DHT11 umidade fora da faixa válida (20.0-90.0%): H=2.0%[0m
+[0;33mW (119497) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_INVALID_RESPONSE); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (120277) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 25.50 C / 0.00 %[0m
+[0;32mI (129487) BSP_DHT: DHT11 interpretado: Umidade=2.0%, Temperatura=1.0°C[0m
+[0;33mW (129487) BSP_DHT: DHT11 umidade fora da faixa válida (20.0-90.0%): H=2.0%[0m
+[0;33mW (129487) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_INVALID_RESPONSE); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (130497) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 25.56 C / 0.00 %[0m
+[0;32mI (139477) BSP_DHT: DHT11 interpretado: Umidade=2.0%, Temperatura=1.0°C[0m
+[0;33mW (139477) BSP_DHT: DHT11 umidade fora da faixa válida (20.0-90.0%): H=2.0%[0m
+[0;33mW (139477) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_INVALID_RESPONSE); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (140487) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 25.56 C / 0.00 %[0m
+[0;31mE (149467) DHT11: Timeout dentro dos bits[0m
+[0;33mW (149467) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_INVALID_RESPONSE); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (150237) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 25.56 C / 0.00 %[0m
+[0;32mI (159457) BSP_DHT: DHT11 interpretado: Umidade=2.0%, Temperatura=1.0°C[0m
+[0;33mW (159457) BSP_DHT: DHT11 umidade fora da faixa válida (20.0-90.0%): H=2.0%[0m
+[0;33mW (159457) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_INVALID_RESPONSE); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (160467) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 25.56 C / 0.00 %[0m
+[0;32mI (169447) BSP_DHT: DHT11 interpretado: Umidade=2.0%, Temperatura=1.0°C[0m
+[0;33mW (169447) BSP_DHT: DHT11 umidade fora da faixa válida (20.0-90.0%): H=2.0%[0m
+[0;33mW (169447) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_INVALID_RESPONSE); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (170457) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 25.56 C / 0.00 %[0m
+[0;32mI (179437) BSP_DHT: DHT11 interpretado: Umidade=2.0%, Temperatura=1.0°C[0m
+[0;33mW (179437) BSP_DHT: DHT11 umidade fora da faixa válida (20.0-90.0%): H=2.0%[0m
+[0;33mW (179437) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_INVALID_RESPONSE); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (180217) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 25.56 C / 0.00 %[0m
+[0;32mI (189427) BSP_DHT: DHT11 interpretado: Umidade=2.0%, Temperatura=1.0°C[0m
+[0;33mW (189427) BSP_DHT: DHT11 umidade fora da faixa válida (20.0-90.0%): H=2.0%[0m
+[0;33mW (189427) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_INVALID_RESPONSE); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (190437) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 25.56 C / 0.00 %[0m
+[0;32mI (199417) BSP_DHT: DHT11 interpretado: Umidade=2.0%, Temperatura=1.0°C[0m
+[0;33mW (199417) BSP_DHT: DHT11 umidade fora da faixa válida (20.0-90.0%): H=2.0%[0m
+[0;33mW (199417) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_INVALID_RESPONSE); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (200427) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 25.56 C / 0.00 %[0m
+[0;32mI (209407) BSP_DHT: DHT11 interpretado: Umidade=2.0%, Temperatura=1.0°C[0m
+[0;33mW (209407) BSP_DHT: DHT11 umidade fora da faixa válida (20.0-90.0%): H=2.0%[0m
+[0;33mW (209407) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_INVALID_RESPONSE); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (210187) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 25.56 C / 0.00 %[0m
+[0;32mI (219397) BSP_DHT: DHT11 interpretado: Umidade=2.0%, Temperatura=1.0°C[0m
+[0;33mW (219397) BSP_DHT: DHT11 umidade fora da faixa válida (20.0-90.0%): H=2.0%[0m
+[0;33mW (219397) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_INVALID_RESPONSE); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (220397) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 25.56 C / 0.00 %[0m
+[0;32mI (229387) BSP_DHT: DHT11 interpretado: Umidade=2.0%, Temperatura=1.0°C[0m
+[0;33mW (229387) BSP_DHT: DHT11 umidade fora da faixa válida (20.0-90.0%): H=2.0%[0m
+[0;33mW (229387) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_INVALID_RESPONSE); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (230397) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 25.56 C / 0.00 %[0m
+[0;32mI (239377) BSP_DHT: DHT11 interpretado: Umidade=2.0%, Temperatura=1.0°C[0m
+[0;33mW (239377) BSP_DHT: DHT11 umidade fora da faixa válida (20.0-90.0%): H=2.0%[0m
+[0;33mW (239377) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_INVALID_RESPONSE); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (240157) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 25.56 C / 0.00 %[0m
+[0;32mI (249367) BSP_DHT: DHT11 interpretado: Umidade=2.0%, Temperatura=1.0°C[0m
+[0;33mW (249367) BSP_DHT: DHT11 umidade fora da faixa válida (20.0-90.0%): H=2.0%[0m
+[0;33mW (249367) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_INVALID_RESPONSE); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (250377) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 25.56 C / 0.00 %[0m
+[0;32mI (259357) BSP_DHT: DHT11 interpretado: Umidade=2.0%, Temperatura=1.0°C[0m
+[0;33mW (259357) BSP_DHT: DHT11 umidade fora da faixa válida (20.0-90.0%): H=2.0%[0m
+[0;33mW (259357) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_INVALID_RESPONSE); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (260367) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 25.56 C / 0.00 %[0m
+[0;32mI (269347) BSP_DHT: DHT11 interpretado: Umidade=2.0%, Temperatura=1.0°C[0m
+[0;33mW (269347) BSP_DHT: DHT11 umidade fora da faixa válida (20.0-90.0%): H=2.0%[0m
+[0;33mW (269347) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_INVALID_RESPONSE); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (270127) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 25.56 C / 0.00 %[0m
+[0;31mE (279337) DHT11: Timeout dentro dos bits[0m
+[0;33mW (279337) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_INVALID_RESPONSE); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (280327) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 25.56 C / 0.00 %[0m
+[0;32mI (289327) BSP_DHT: DHT11 interpretado: Umidade=2.0%, Temperatura=1.0°C[0m
+[0;33mW (289327) BSP_DHT: DHT11 umidade fora da faixa válida (20.0-90.0%): H=2.0%[0m
+[0;33mW (289327) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_INVALID_RESPONSE); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (290327) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 25.56 C / 0.00 %[0m
+[0;32mI (299317) BSP_DHT: DHT11 interpretado: Umidade=2.0%, Temperatura=1.0°C[0m
+[0;33mW (299317) BSP_DHT: DHT11 umidade fora da faixa válida (20.0-90.0%): H=2.0%[0m
+[0;33mW (299317) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_INVALID_RESPONSE); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (300097) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 25.56 C / 0.00 %[0m
+[0;32mI (309307) BSP_DHT: DHT11 interpretado: Umidade=2.0%, Temperatura=1.0°C[0m
+[0;33mW (309307) BSP_DHT: DHT11 umidade fora da faixa válida (20.0-90.0%): H=2.0%[0m
+[0;33mW (309307) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_INVALID_RESPONSE); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (310307) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 25.56 C / 0.00 %[0m
+[0;32mI (319297) BSP_DHT: DHT11 interpretado: Umidade=2.0%, Temperatura=1.0°C[0m
+[0;33mW (319297) BSP_DHT: DHT11 umidade fora da faixa válida (20.0-90.0%): H=2.0%[0m
+[0;33mW (319297) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_INVALID_RESPONSE); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (320297) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 25.56 C / 0.00 %[0m
+[0;32mI (329287) BSP_DHT: DHT11 interpretado: Umidade=2.0%, Temperatura=1.0°C[0m
+[0;33mW (329287) BSP_DHT: DHT11 umidade fora da faixa válida (20.0-90.0%): H=2.0%[0m
+[0;33mW (329287) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_INVALID_RESPONSE); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (330067) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 25.56 C / 0.00 %[0m
+[0;32mI (339277) BSP_DHT: DHT11 interpretado: Umidade=2.0%, Temperatura=1.0°C[0m
+[0;33mW (339277) BSP_DHT: DHT11 umidade fora da faixa válida (20.0-90.0%): H=2.0%[0m
+[0;33mW (339277) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_INVALID_RESPONSE); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (340277) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 25.56 C / 0.00 %[0m
+[0;32mI (349267) BSP_DHT: DHT11 interpretado: Umidade=2.0%, Temperatura=1.0°C[0m
+[0;33mW (349267) BSP_DHT: DHT11 umidade fora da faixa válida (20.0-90.0%): H=2.0%[0m
+[0;33mW (349267) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_INVALID_RESPONSE); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (350267) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 25.56 C / 0.00 %[0m
+[0;31mE (359257) DHT11: Timeout dentro dos bits[0m
+[0;33mW (359257) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_INVALID_RESPONSE); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (360027) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 25.56 C / 0.00 %[0m
+[0;32mI (369247) BSP_DHT: DHT11 interpretado: Umidade=2.0%, Temperatura=1.0°C[0m
+[0;33mW (369247) BSP_DHT: DHT11 umidade fora da faixa válida (20.0-90.0%): H=2.0%[0m
+[0;33mW (369247) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_INVALID_RESPONSE); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (370257) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 25.56 C / 0.00 %[0m
+[0;32mI (379237) BSP_DHT: DHT11 interpretado: Umidade=2.0%, Temperatura=1.0°C[0m
+[0;33mW (379237) BSP_DHT: DHT11 umidade fora da faixa válida (20.0-90.0%): H=2.0%[0m
+[0;33mW (379237) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_INVALID_RESPONSE); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (380237) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 25.56 C / 0.00 %[0m
+[0;32mI (389227) BSP_DHT: DHT11 interpretado: Umidade=2.0%, Temperatura=1.0°C[0m
+[0;33mW (389227) BSP_DHT: DHT11 umidade fora da faixa válida (20.0-90.0%): H=2.0%[0m
+[0;33mW (389227) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_INVALID_RESPONSE); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (390007) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 25.56 C / 0.00 %[0m
+[0;32mI (399217) BSP_DHT: DHT11 interpretado: Umidade=2.0%, Temperatura=1.0°C[0m
+[0;33mW (399217) BSP_DHT: DHT11 umidade fora da faixa válida (20.0-90.0%): H=2.0%[0m
+[0;33mW (399217) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_INVALID_RESPONSE); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (400217) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 25.56 C / 0.00 %[0m
+[0;32mI (409207) BSP_DHT: DHT11 interpretado: Umidade=2.0%, Temperatura=1.0°C[0m
+[0;33mW (409207) BSP_DHT: DHT11 umidade fora da faixa válida (20.0-90.0%): H=2.0%[0m
+[0;33mW (409207) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_INVALID_RESPONSE); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (410217) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 25.56 C / 0.00 %[0m
+[0;32mI (419197) BSP_DHT: DHT11 interpretado: Umidade=2.0%, Temperatura=1.0°C[0m
+[0;33mW (419197) BSP_DHT: DHT11 umidade fora da faixa válida (20.0-90.0%): H=2.0%[0m
+[0;33mW (419197) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_INVALID_RESPONSE); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (419977) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 25.62 C / 0.00 %[0m
+[0;32mI (429187) BSP_DHT: DHT11 interpretado: Umidade=2.0%, Temperatura=1.0°C[0m
+[0;33mW (429187) BSP_DHT: DHT11 umidade fora da faixa válida (20.0-90.0%): H=2.0%[0m
+[0;33mW (429187) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_INVALID_RESPONSE); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (430187) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 25.56 C / 0.00 %[0m
+[0;32mI (439177) BSP_DHT: DHT11 interpretado: Umidade=2.0%, Temperatura=1.0°C[0m
+[0;33mW (439177) BSP_DHT: DHT11 umidade fora da faixa válida (20.0-90.0%): H=2.0%[0m
+[0;33mW (439177) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_INVALID_RESPONSE); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (440187) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 25.62 C / 0.00 %[0m
+[0;32mI (449167) BSP_DHT: DHT11 interpretado: Umidade=2.0%, Temperatura=1.0°C[0m
+[0;33mW (449167) BSP_DHT: DHT11 umidade fora da faixa válida (20.0-90.0%): H=2.0%[0m
+[0;33mW (449167) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_INVALID_RESPONSE); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (449947) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 25.56 C / 0.00 %[0m
+[0;32mI (459157) BSP_DHT: DHT11 interpretado: Umidade=2.0%, Temperatura=1.0°C[0m
+[0;33mW (459157) BSP_DHT: DHT11 umidade fora da faixa válida (20.0-90.0%): H=2.0%[0m
+[0;33mW (459157) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_INVALID_RESPONSE); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (460167) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 25.56 C / 0.00 %[0m
+[0;32mI (469147) BSP_DHT: DHT11 interpretado: Umidade=2.0%, Temperatura=1.0°C[0m
+[0;33mW (469147) BSP_DHT: DHT11 umidade fora da faixa válida (20.0-90.0%): H=2.0%[0m
+[0;33mW (469147) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_INVALID_RESPONSE); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (470147) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 25.62 C / 0.00 %[0m
+[0;32mI (479137) BSP_DHT: DHT11 interpretado: Umidade=2.0%, Temperatura=1.0°C[0m
+[0;33mW (479137) BSP_DHT: DHT11 umidade fora da faixa válida (20.0-90.0%): H=2.0%[0m
+[0;33mW (479137) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_INVALID_RESPONSE); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (479917) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 25.56 C / 0.00 %[0m
+[0;32mI (489127) BSP_DHT: DHT11 interpretado: Umidade=2.0%, Temperatura=1.0°C[0m
+[0;33mW (489127) BSP_DHT: DHT11 umidade fora da faixa válida (20.0-90.0%): H=2.0%[0m
+[0;33mW (489127) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_INVALID_RESPONSE); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (490127) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 25.56 C / 0.00 %[0m
+[0;32mI (499117) BSP_DHT: DHT11 interpretado: Umidade=2.0%, Temperatura=1.0°C[0m
+[0;33mW (499117) BSP_DHT: DHT11 umidade fora da faixa válida (20.0-90.0%): H=2.0%[0m
+[0;33mW (499117) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_INVALID_RESPONSE); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (500127) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 25.56 C / 0.00 %[0m
+[0;32mI (509107) BSP_DHT: DHT11 interpretado: Umidade=2.0%, Temperatura=1.0°C[0m
+[0;33mW (509107) BSP_DHT: DHT11 umidade fora da faixa válida (20.0-90.0%): H=2.0%[0m
+[0;33mW (509107) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_INVALID_RESPONSE); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (509887) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 25.56 C / 0.00 %[0m
+[0;32mI (519097) BSP_DHT: DHT11 interpretado: Umidade=2.0%, Temperatura=1.0°C[0m
+[0;33mW (519097) BSP_DHT: DHT11 umidade fora da faixa válida (20.0-90.0%): H=2.0%[0m
+[0;33mW (519097) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_INVALID_RESPONSE); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (520097) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 25.62 C / 0.00 %[0m
+[0;32mI (529087) BSP_DHT: DHT11 interpretado: Umidade=2.0%, Temperatura=1.0°C[0m
+[0;33mW (529087) BSP_DHT: DHT11 umidade fora da faixa válida (20.0-90.0%): H=2.0%[0m
+[0;33mW (529087) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_INVALID_RESPONSE); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (530087) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 25.62 C / 0.00 %[0m
+[0;32mI (539077) BSP_DHT: DHT11 interpretado: Umidade=2.0%, Temperatura=1.0°C[0m
+[0;33mW (539077) BSP_DHT: DHT11 umidade fora da faixa válida (20.0-90.0%): H=2.0%[0m
+[0;33mW (539077) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_INVALID_RESPONSE); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (540077) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 25.62 C / 0.00 %[0m
+[0;32mI (549067) BSP_DHT: DHT11 interpretado: Umidade=2.0%, Temperatura=1.0°C[0m
+[0;33mW (549067) BSP_DHT: DHT11 umidade fora da faixa válida (20.0-90.0%): H=2.0%[0m
+[0;33mW (549067) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_INVALID_RESPONSE); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (549847) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 25.62 C / 0.00 %[0m
+[0;32mI (559057) BSP_DHT: DHT11 interpretado: Umidade=2.0%, Temperatura=1.0°C[0m
+[0;33mW (559057) BSP_DHT: DHT11 umidade fora da faixa válida (20.0-90.0%): H=2.0%[0m
+[0;33mW (559057) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_INVALID_RESPONSE); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (560067) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 25.62 C / 0.00 %[0m

@@ -1,7 +1,7 @@
 {
     "version":            "1.2",
     "project_name":       "sensor_campo",
-    "project_version":    "237dcb4f-dirty",
+    "project_version":    "c4d3e91a-dirty",
     "project_path":       "/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C",
     "idf_path":           "/home/mrclnndrd/esp/esp-idf",
     "build_dir":          "/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build",
@@ -1236,7 +1236,7 @@
             "type": "LIBRARY",
             "lib": "__idf_main",
             "reqs": [],
-            "priv_reqs": [ "esp_wifi", "esp_netif", "esp_http_server", "esp_event", "lwip", "esp_adc", "nvs_flash", "spiffs", "driver", "esp_rom", "freertos", "vfs", "espressif__cjson" ],
+            "priv_reqs": [ "esp_wifi", "esp_netif", "esp_http_server", "esp_event", "lwip", "esp_adc", "nvs_flash", "spiffs", "driver", "esp_rom", "esp_timer", "freertos", "vfs", "espressif__cjson" ],
             "managed_reqs": [],
             "managed_priv_reqs": [ "espressif__cjson" ],
             "file": "/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/esp-idf/main/libmain.a",
@@ -2923,7 +2923,7 @@
             "dir": "/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main",
             "lib": "__idf_main",
             "reqs": [],
-            "priv_reqs": [ "esp_wifi", "esp_netif", "esp_http_server", "esp_event", "lwip", "esp_adc", "nvs_flash", "spiffs", "driver", "esp_rom", "freertos", "vfs", "espressif__cjson" ],
+            "priv_reqs": [ "esp_wifi", "esp_netif", "esp_http_server", "esp_event", "lwip", "esp_adc", "nvs_flash", "spiffs", "driver", "esp_rom", "esp_timer", "freertos", "vfs", "espressif__cjson" ],
             "managed_reqs": [],
             "managed_priv_reqs": [ "espressif__cjson" ],
             "include_dirs": [ ".", "bsp", "bsp/sensors", "bsp/actuators", "bsp/network", "app", "gui", "gui/web" ]

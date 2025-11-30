@@ -12,6 +12,8 @@ typedef struct {
     float humid_air;
     float temp_soil;
     float humid_soil;  // Já convertido para %
+    float luminosity;  // lux (intensidade de luminosidade)
+    float dpv;         // kPa (Déficit de Pressão de Vapor)
 } sensor_reading_t;
 
 esp_err_t sensor_manager_init(void);

@@ -14,6 +14,13 @@
 /* GPIOs */
 #define BSP_GPIO_DS18B20        GPIO_NUM_4
 #define BSP_GPIO_LED_STATUS     GPIO_NUM_2
+/* DHT11 removido - aguardando AHT10 I2C */
+// #define BSP_GPIO_DHT11          GPIO_NUM_5  /* GPIO5 liberada para uso futuro */
+
+/* I2C para AHT10 (quando chegar) */
+// #define BSP_I2C_NUM             I2C_NUM_0
+// #define BSP_I2C_SDA             GPIO_NUM_21
+// #define BSP_I2C_SCL             GPIO_NUM_22
 
 /* ADC - Umidade do Solo */
 #define BSP_ADC_SOIL_UNIT       ADC_UNIT_1
@@ -33,7 +40,7 @@
 #define BSP_SPIFFS_MAX_FILES    5
 
 /* Intervalo de amostragem dos sensores (em milissegundos) */
-#define BSP_SENSOR_SAMPLE_INTERVAL_MS    60000  // 1 minuto (valor padrão)
+#define BSP_SENSOR_SAMPLE_INTERVAL_MS    10000  // 10 segundos (valor padrão)
 
 /* Validação de configuração */
 #if !defined(BSP_GPIO_DS18B20) || !defined(BSP_GPIO_LED_STATUS)

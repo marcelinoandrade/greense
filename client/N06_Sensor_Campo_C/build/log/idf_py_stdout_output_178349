@@ -1,0 +1,408 @@
+Command: /home/mrclnndrd/.espressif/python_env/idf5.5_py3.11_env/bin/python /home/mrclnndrd/esp/esp-idf/tools/idf_monitor.py -p /dev/ttyUSB0 -b 115200 --toolchain-prefix xtensa-esp32-elf- --target esp32 --revision 0 /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/sensor_campo.elf /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/bootloader/bootloader.elf -m '/home/mrclnndrd/.espressif/python_env/idf5.5_py3.11_env/bin/python' '/home/mrclnndrd/esp/esp-idf/tools/idf.py'
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x17 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:6380
+ho 0 tail 12 room 4
+load:0x40078000,len:15904
+load:0x40080400,len:3860
+entry 0x40080638
+[0;32mI (29) boot: ESP-IDF v5.5-dev-3372-g38628f98b9 2nd stage bootloader[0m
+[0;32mI (29) boot: compile time Nov 28 2025 06:27:02[0m
+[0;32mI (29) boot: Multicore bootloader[0m
+[0;32mI (32) boot: chip revision: v3.1[0m
+[0;32mI (35) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (39) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (42) boot.esp32: SPI Flash Size : 4MB[0m
+[0;32mI (46) boot: Enabling RNG early entropy source...[0m
+[0;32mI (50) boot: Partition Table:[0m
+[0;32mI (53) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (59) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (66) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (72) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (79) boot:  3 spiffs           Unknown data     01 82 00110000 002f0000[0m
+[0;32mI (85) boot: End of partition table[0m
+[0;32mI (89) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=2a87ch (174204) map[0m
+[0;32mI (156) esp_image: segment 1: paddr=0003a8a4 vaddr=3ff80000 size=0001ch (    28) load[0m
+[0;32mI (156) esp_image: segment 2: paddr=0003a8c8 vaddr=3ffb0000 size=03eech ( 16108) load[0m
+[0;32mI (166) esp_image: segment 3: paddr=0003e7bc vaddr=40080000 size=0185ch (  6236) load[0m
+[0;32mI (170) esp_image: segment 4: paddr=00040020 vaddr=400d0020 size=9ef3ch (651068) map[0m
+[0;32mI (397) esp_image: segment 5: paddr=000def64 vaddr=4008185c size=164b8h ( 91320) load[0m
+[0;32mI (444) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (444) boot: Disabling RNG early entropy source...[0m
+[0;32mI (455) cpu_start: Multicore app[0m
+[0;32mI (463) cpu_start: Pro cpu start user code[0m
+[0;32mI (463) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (463) app_init: Application information:[0m
+[0;32mI (466) app_init: Project name:     sensor_campo[0m
+[0;32mI (472) app_init: App version:      c4d3e91a-dirty[0m
+[0;32mI (477) app_init: Compile time:     Nov 28 2025 06:26:09[0m
+[0;32mI (483) app_init: ELF file SHA256:  b491809a6...[0m
+[0;32mI (488) app_init: ESP-IDF:          v5.5-dev-3372-g38628f98b9[0m
+[0;32mI (495) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (500) efuse_init: Max chip rev:     v3.99 [0m
+[0;32mI (504) efuse_init: Chip rev:         v3.1[0m
+[0;32mI (510) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (517) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (523) heap_init: At 3FFB80B8 len 00027F48 (159 KiB): DRAM[0m
+[0;32mI (529) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (535) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (542) heap_init: At 40097D14 len 000082EC (32 KiB): IRAM[0m
+[0;32mI (549) spi_flash: detected chip: generic[0m
+[0;32mI (552) spi_flash: flash io: dio[0m
+[0;32mI (557) main_task: Started on CPU0[0m
+[0;32mI (567) main_task: Calling app_main()[0m
+[0;32mI (587) BSP_LED: LED inicializado no GPIO 2[0m
+[0;32mI (587) BSP_DS18B20: DS18B20 inicializado no GPIO 4[0m
+[0;32mI (587) BSP_ADC: ADC umidade solo inicializado. canal=6 bitwidth=12 atten=3[0m
+[0;32mI (2687) BSP_DHT11: ✓ DHT11 GPIO 5 está em HIGH (pull-up OK)[0m
+[0;32mI (2707) BSP_DHT11: Bit 0: high_time=24 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (2707) BSP_DHT11: Bit 1: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (2707) BSP_DHT11: Bit 2: high_time=26 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;33mW (2717) BSP_DHT11: Tentativa 1/3 de leitura inicial do DHT11 falhou: ESP_ERR_TIMEOUT[0m
+[0;32mI (4737) BSP_DHT11: Bit 0: high_time=24 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (4737) BSP_DHT11: Bit 1: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (4737) BSP_DHT11: Bit 2: high_time=70 us (th=50) -> 1 | byte[0]=0x01[0m
+[0;33mW (4747) BSP_DHT11: Tentativa 2/3 de leitura inicial do DHT11 falhou: ESP_ERR_TIMEOUT[0m
+[0;32mI (6767) BSP_DHT11: Bit 0: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (6767) BSP_DHT11: Bit 1: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (6767) BSP_DHT11: Bit 2: high_time=72 us (th=50) -> 1 | byte[0]=0x01[0m
+[0;33mW (6777) BSP_DHT11: Tentativa 3/3 de leitura inicial do DHT11 falhou: ESP_ERR_TIMEOUT[0m
+[0;33mW (6777) BSP_DHT11: ⚠️ DHT11 no GPIO 5 não respondeu após 3 tentativas[0m
+[0;33mW (6787) BSP_DHT11:    Checklist:[0m
+[0;33mW (6797) BSP_DHT11:    [ ] Sensor conectado na GPIO 5 (não GPIO19!)[0m
+[0;33mW (6797) BSP_DHT11:    [ ] Pull-up 10kΩ entre DATA (GPIO 5) e VCC (3.3V)[0m
+[0;33mW (6807) BSP_DHT11:    [ ] VCC do DHT11 conectado a 3.3V ou 5V[0m
+[0;33mW (6817) BSP_DHT11:    [ ] GND do DHT11 conectado ao GND do ESP32[0m
+[0;33mW (6817) BSP_DHT11:    [ ] Cabos curtos (< 20cm recomendado)[0m
+[0;32mI (6827) BSP_DHT11: DHT11 configurado no GPIO 5[0m
+[0;32mI (6837) BSP_SENSORS: Sensores BSP inicializados[0m
+[0;32mI (6837) APP_SENSOR_MGR: Sensor Manager inicializado[0m
+[0;32mI (6847) APP_DATA_LOGGER: Inicializando SPIFFS...[0m
+[0;32mI (7157) APP_DATA_LOGGER: SPIFFS montado em /spiffs[0m
+[0;32mI (7157) APP_DATA_LOGGER: Total=2293769 bytes, Usado=5095 bytes[0m
+[0;32mI (7317) APP_DATA_LOGGER: Proximo indice de log sera: 120[0m
+[0;33mW (7507) APP_DATA_LOGGER: Arquivo /spiffs/soil_calib.json nao encontrado. Usando padrao (Seco: 4000, Molhado: 400)[0m
+[0;32mI (7507) APP_DATA_LOGGER: --- Lendo /spiffs/log_temp.csv ---[0m
+[0;32mI (7517) APP_DATA_LOGGER: N,temp_ar_C,umid_ar_pct,temp_solo_C,umid_solo_pct
+[0m
+[0;32mI (7517) APP_DATA_LOGGER: 1,27.81,55.45,27.00,0.00
+[0m
+[0;32mI (7527) APP_DATA_LOGGER: 2,28.19,53.13,27.00,0.00
+[0m
+[0;32mI (7527) APP_DATA_LOGGER: 3,26.15,61.06,27.00,0.00
+[0m
+[0;32mI (7537) APP_DATA_LOGGER: 4,25.62,57.68,27.00,0.00
+[0m
+[0;32mI (7547) APP_DATA_LOGGER: 5,25.95,55.62,27.00,0.00
+[0m
+[0;32mI (7547) APP_DATA_LOGGER: 6,26.03,55.10,27.00,0.00
+[0m
+[0;32mI (7557) APP_DATA_LOGGER: 7,25.54,53.14,27.00,0.00
+[0m
+[0;32mI (7557) APP_DATA_LOGGER: 8,25.63,53.86,27.00,0.00
+[0m
+[0;32mI (7567) APP_DATA_LOGGER: 9,25.22,54.48,27.00,0.00
+[0m
+[0;32mI (7567) APP_DATA_LOGGER: 10,25.62,56.75,27.00,0.00
+[0m
+[0;32mI (7577) APP_DATA_LOGGER: 11,25.99,57.50,27.00,0.00
+[0m
+[0;32mI (7587) APP_DATA_LOGGER: 12,25.76,57.84,27.00,0.00
+[0m
+[0;32mI (7587) APP_DATA_LOGGER: 13,25.43,56.45,27.00,0.00
+[0m
+[0;32mI (7597) APP_DATA_LOGGER: 14,25.71,56.09,26.94,0.00
+[0m
+[0;32mI (7597) APP_DATA_LOGGER: 15,25.59,53.93,27.00,0.00
+[0m
+[0;32mI (7607) APP_DATA_LOGGER: 16,25.79,51.71,27.00,0.00
+[0m
+[0;32mI (7607) APP_DATA_LOGGER: 17,25.93,51.91,27.00,0.00
+[0m
+[0;32mI (7617) APP_DATA_LOGGER: 18,26.39,53.25,27.00,0.00
+[0m
+[0;32mI (7627) APP_DATA_LOGGER: 19,26.78,54.91,27.00,0.00
+[0m
+[0;32mI (7627) APP_DATA_LOGGER: 20,26.41,56.50,26.94,0.00
+[0m
+[0;32mI (7637) APP_DATA_LOGGER: 21,26.23,54.27,26.94,0.00
+[0m
+[0;32mI (7637) APP_DATA_LOGGER: 22,26.05,53.53,27.00,0.00
+[0m
+[0;32mI (7647) APP_DATA_LOGGER: 23,25.96,51.60,26.94,0.00
+[0m
+[0;32mI (7647) APP_DATA_LOGGER: 24,25.71,51.07,26.94,0.00
+[0m
+[0;32mI (7657) APP_DATA_LOGGER: 25,25.88,50.55,27.00,0.00
+[0m
+[0;32mI (7667) APP_DATA_LOGGER: 26,25.97,51.00,26.94,0.00
+[0m
+[0;32mI (7667) APP_DATA_LOGGER: 27,26.41,53.00,26.94,0.00
+[0m
+[0;32mI (7677) APP_DATA_LOGGER: 28,26.16,50.51,27.00,0.00
+[0m
+[0;32mI (7677) APP_DATA_LOGGER: 29,26.43,49.14,26.94,0.00
+[0m
+[0;32mI (7687) APP_DATA_LOGGER: 30,25.64,62.13,26.94,0.00
+[0m
+[0;32mI (7687) APP_DATA_LOGGER: 31,26.12,58.12,27.00,0.00
+[0m
+[0;32mI (7697) APP_DATA_LOGGER: 32,26.62,57.66,26.94,0.00
+[0m
+[0;32mI (7707) APP_DATA_LOGGER: 33,26.68,59.31,26.94,0.00
+[0m
+[0;32mI (7707) APP_DATA_LOGGER: 34,26.95,60.25,26.94,0.00
+[0m
+[0;32mI (7717) APP_DATA_LOGGER: 35,27.23,62.70,26.94,0.00
+[0m
+[0;32mI (7717) APP_DATA_LOGGER: 36,26.98,61.74,26.94,0.00
+[0m
+[0;32mI (7727) APP_DATA_LOGGER: 37,26.80,60.41,26.94,0.00
+[0m
+[0;32mI (7727) APP_DATA_LOGGER: 38,26.48,58.68,27.00,0.00
+[0m
+[0;32mI (7737) APP_DATA_LOGGER: 39,26.40,59.13,26.94,0.00
+[0m
+[0;32mI (7747) APP_DATA_LOGGER: 40,26.40,59.46,26.94,0.00
+[0m
+[0;32mI (7747) APP_DATA_LOGGER: 41,26.67,58.50,27.00,0.00
+[0m
+[0;32mI (7757) APP_DATA_LOGGER: 42,26.89,60.65,26.94,0.00
+[0m
+[0;32mI (7757) APP_DATA_LOGGER: 43,27.38,60.87,26.94,0.00
+[0m
+[0;32mI (7767) APP_DATA_LOGGER: 44,27.30,61.99,27.00,0.00
+[0m
+[0;32mI (7767) APP_DATA_LOGGER: 45,26.99,62.71,26.94,0.00
+[0m
+[0;32mI (7777) APP_DATA_LOGGER: 46,27.37,64.63,27.00,0.00
+[0m
+[0;32mI (7787) APP_DATA_LOGGER: 47,27.36,66.08,26.94,0.00
+[0m
+[0;32mI (7787) APP_DATA_LOGGER: 48,27.45,63.92,26.94,0.00
+[0m
+[0;32mI (7797) APP_DATA_LOGGER: 49,27.35,64.92,26.94,0.00
+[0m
+[0;32mI (7797) APP_DATA_LOGGER: 50,27.65,65.65,27.00,0.00
+[0m
+[0;32mI (7807) APP_DATA_LOGGER: 51,27.71,68.09,26.94,0.00
+[0m
+[0;32mI (7807) APP_DATA_LOGGER: 52,7.90,24.80,26.94,0.00
+[0m
+[0;32mI (7817) APP_DATA_LOGGER: 53,26.25,62.21,26.94,0.00
+[0m
+[0;32mI (7827) APP_DATA_LOGGER: 54,26.51,62.72,26.94,0.00
+[0m
+[0;32mI (7827) APP_DATA_LOGGER: 55,26.25,63.44,26.94,0.00
+[0m
+[0;32mI (7837) APP_DATA_LOGGER: 56,25.83,65.24,27.00,0.00
+[0m
+[0;32mI (7837) APP_DATA_LOGGER: 57,8.00,25.10,26.94,0.00
+[0m
+[0;32mI (7847) APP_DATA_LOGGER: 58,7.70,24.00,27.00,0.00
+[0m
+[0;32mI (7847) APP_DATA_LOGGER: 59,7.70,23.20,26.94,0.00
+[0m
+[0;32mI (7857) APP_DATA_LOGGER: 60,7.60,22.70,27.00,0.00
+[0m
+[0;32mI (7867) APP_DATA_LOGGER: 61,7.50,22.30,27.00,0.00
+[0m
+[0;32mI (7867) APP_DATA_LOGGER: 62,7.40,22.40,27.00,0.00
+[0m
+[0;32mI (7877) APP_DATA_LOGGER: 63,7.40,22.90,27.00,0.00
+[0m
+[0;32mI (7877) APP_DATA_LOGGER: 64,7.40,24.60,27.00,0.00
+[0m
+[0;32mI (7887) APP_DATA_LOGGER: 65,7.40,24.10,27.00,0.00
+[0m
+[0;32mI (7887) APP_DATA_LOGGER: 66,7.40,23.40,27.00,0.00
+[0m
+[0;32mI (7897) APP_DATA_LOGGER: 67,7.30,22.90,27.00,0.00
+[0m
+[0;32mI (7897) APP_DATA_LOGGER: 68,7.00,22.70,26.94,0.00
+[0m
+[0;32mI (7907) APP_DATA_LOGGER: 69,7.00,22.50,27.00,0.00
+[0m
+[0;32mI (7917) APP_DATA_LOGGER: 70,7.00,22.70,27.00,0.00
+[0m
+[0;32mI (7917) APP_DATA_LOGGER: 71,7.00,23.40,27.00,0.00
+[0m
+[0;32mI (7927) APP_DATA_LOGGER: 72,7.00,23.40,27.00,0.00
+[0m
+[0;32mI (7927) APP_DATA_LOGGER: 73,7.00,23.40,27.00,0.00
+[0m
+[0;32mI (7937) APP_DATA_LOGGER: 74,7.00,23.40,27.00,0.00
+[0m
+[0;32mI (7937) APP_DATA_LOGGER: 75,7.00,23.40,27.00,0.00
+[0m
+[0;32mI (7947) APP_DATA_LOGGER: 76,7.00,23.40,27.06,0.00
+[0m
+[0;32mI (7957) APP_DATA_LOGGER: 77,7.70,26.30,27.00,0.00
+[0m
+[0;32mI (7957) APP_DATA_LOGGER: 78,7.70,26.30,27.00,0.00
+[0m
+[0;32mI (7967) APP_DATA_LOGGER: 79,7.70,26.30,27.00,0.00
+[0m
+[0;32mI (7967) APP_DATA_LOGGER: 80,7.70,26.30,27.06,0.00
+[0m
+[0;32mI (7977) APP_DATA_LOGGER: 81,7.70,24.80,27.00,0.00
+[0m
+[0;32mI (7977) APP_DATA_LOGGER: 82,7.60,24.20,27.00,0.00
+[0m
+[0;32mI (7987) APP_DATA_LOGGER: 83,7.70,26.40,27.00,0.00
+[0m
+[0;32mI (7997) APP_DATA_LOGGER: 84,26.02,59.17,27.00,0.00
+[0m
+[0;32mI (7997) APP_DATA_LOGGER: 85,25.82,58.52,27.00,0.00
+[0m
+[0;32mI (8007) APP_DATA_LOGGER: 86,26.27,60.32,27.00,0.00
+[0m
+[0;32mI (8007) APP_DATA_LOGGER: 87,26.31,61.31,27.06,0.00
+[0m
+[0;32mI (8017) APP_DATA_LOGGER: 88,26.34,60.49,27.00,0.00
+[0m
+[0;32mI (8017) APP_DATA_LOGGER: 89,7.70,25.20,27.06,0.00
+[0m
+[0;32mI (8027) APP_DATA_LOGGER: 90,7.70,24.20,27.06,0.00
+[0m
+[0;32mI (8037) APP_DATA_LOGGER: 91,7.70,24.70,27.00,0.00
+[0m
+[0;32mI (8037) APP_DATA_LOGGER: 92,7.70,24.30,27.00,0.00
+[0m
+[0;32mI (8047) APP_DATA_LOGGER: 93,7.60,23.40,27.00,0.00
+[0m
+[0;32mI (8047) APP_DATA_LOGGER: 94,7.60,23.40,27.00,0.00
+[0m
+[0;32mI (8057) APP_DATA_LOGGER: 95,7.40,22.80,27.00,0.00
+[0m
+[0;32mI (8057) APP_DATA_LOGGER: 96,7.40,22.80,27.00,0.00
+[0m
+[0;32mI (8067) APP_DATA_LOGGER: 97,7.40,22.60,27.00,0.00
+[0m
+[0;32mI (8067) APP_DATA_LOGGER: 98,7.40,22.60,27.00,0.00
+[0m
+[0;32mI (8077) APP_DATA_LOGGER: 99,7.00,22.30,27.00,0.00
+[0m
+[0;32mI (8087) APP_DATA_LOGGER: 100,7.00,22.20,27.00,0.00
+[0m
+[0;32mI (8087) APP_DATA_LOGGER: 101,7.00,22.20,27.00,0.00
+[0m
+[0;32mI (8097) APP_DATA_LOGGER: 102,7.00,22.60,27.00,0.00
+[0m
+[0;32mI (8097) APP_DATA_LOGGER: 103,7.00,22.60,27.00,0.00
+[0m
+[0;32mI (8107) APP_DATA_LOGGER: 104,7.20,23.10,27.00,0.00
+[0m
+[0;32mI (8107) APP_DATA_LOGGER: 105,7.00,22.60,27.00,0.00
+[0m
+[0;32mI (8117) APP_DATA_LOGGER: 106,7.00,22.40,27.00,0.00
+[0m
+[0;32mI (8127) APP_DATA_LOGGER: 107,7.00,23.40,27.00,0.00
+[0m
+[0;32mI (8127) APP_DATA_LOGGER: 108,7.00,24.70,27.00,0.00
+[0m
+[0;32mI (8137) APP_DATA_LOGGER: 109,7.10,25.60,27.00,0.00
+[0m
+[0;32mI (8137) APP_DATA_LOGGER: 110,7.40,26.20,27.00,0.00
+[0m
+[0;32mI (8147) APP_DATA_LOGGER: 111,7.40,26.20,27.00,0.00
+[0m
+[0;32mI (8147) APP_DATA_LOGGER: 112,7.40,26.20,27.00,0.00
+[0m
+[0;32mI (8157) APP_DATA_LOGGER: 113,7.40,26.40,27.00,0.00
+[0m
+[0;32mI (8167) APP_DATA_LOGGER: 114,7.40,26.40,27.00,0.00
+[0m
+[0;32mI (8167) APP_DATA_LOGGER: 115,7.40,26.40,27.00,0.00
+[0m
+[0;32mI (8177) APP_DATA_LOGGER: 116,7.40,26.40,27.00,0.00
+[0m
+[0;32mI (8177) APP_DATA_LOGGER: 117,7.40,26.40,27.00,0.00
+[0m
+[0;32mI (8187) APP_DATA_LOGGER: 118,7.40,26.40,27.00,0.00
+[0m
+[0;32mI (8187) APP_DATA_LOGGER: 119,26.20,61.17,27.00,0.00
+[0m
+[0;32mI (8197) APP_DATA_LOGGER: --- Fim do arquivo ---[0m
+[0;32mI (8207) APP_SAMPLING: Período carregado do NVS: 10000 ms[0m
+[0;32mI (8207) APP_GUI_SERVICES: Serviços GUI registrados[0m
+[0;32mI (8227) wifi:wifi driver task: 3ffc22dc, prio:23, stack:6656, core=0[0m
+[0;32mI (8237) wifi:wifi firmware version: 7d2994f4b[0m
+[0;32mI (8237) wifi:wifi certification version: v7.0[0m
+[0;32mI (8237) wifi:config NVS flash: enabled[0m
+[0;32mI (8237) wifi:config nano formatting: disabled[0m
+[0;32mI (8237) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (8247) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (8247) wifi:Init management short buffer num: 32[0m
+[0;32mI (8257) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (8257) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (8257) wifi:Init static rx buffer num: 10[0m
+[0;32mI (8267) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (8267) wifi_init: rx ba win: 6[0m
+[0;32mI (8277) wifi_init: accept mbox: 6[0m
+[0;32mI (8277) wifi_init: tcpip mbox: 32[0m
+[0;32mI (8277) wifi_init: udp mbox: 6[0m
+[0;32mI (8287) wifi_init: tcp mbox: 6[0m
+[0;32mI (8287) wifi_init: tcp tx win: 5760[0m
+[0;32mI (8297) wifi_init: tcp rx win: 5760[0m
+[0;32mI (8297) wifi_init: tcp mss: 1440[0m
+[0;32mI (8297) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (8307) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (8317) phy_init: phy_version 4860,6b7a6e5,Feb  6 2025,14:47:07[0m
+[0;32mI (8397) wifi:mode : softAP (38:18:2b:ea:b7:cd)[0m
+[0;32mI (8407) wifi:Total power save buffer number: 16[0m
+[0;32mI (8407) wifi:Init max length of beacon: 752/752[0m
+[0;32mI (8407) wifi:Init max length of beacon: 752/752[0m
+[0;32mI (8417) BSP_WIFI_AP: Modo AP iniciado. SSID='ESP32_TEMP' senha='12345678'[0m
+[0;32mI (8417) esp_netif_lwip: DHCP server started on interface WIFI_AP_DEF with IP: 192.168.4.1[0m
+[0;32mI (8427) GUI_HTTP_SERVER: Servidor HTTP iniciado e rotas registradas. Acesse http://192.168.4.1/[0m
+[0;32mI (8437) APP_MAIN: Sistema iniciado - Arquitetura BSP/APP/GUI[0m
+[0;32mI (8447) main_task: Returned from app_main()[0m
+[0;32mI (8457) BSP_DHT11: Bit 0: high_time=24 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (8457) BSP_DHT11: Bit 1: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;33mW (8467) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT) e não há valor válido anterior. Usando simulação.[0m
+[0;32mI (9617) APP_MAIN: Log salvo! Ar: 25.67 C / 61.98 %, Solo: 27.00 C / 0.00 %[0m
+[0;32mI (18457) BSP_DHT11: Bit 0: high_time=24 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (18457) BSP_DHT11: Bit 1: high_time=69 us (th=50) -> 1 | byte[0]=0x01[0m
+[0;33mW (18457) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT) e não há valor válido anterior. Usando simulação.[0m
+[0;32mI (19457) APP_MAIN: Log salvo! Ar: 25.78 C / 62.22 %, Solo: 27.00 C / 0.00 %[0m
+[0;32mI (28447) BSP_DHT11: Bit 0: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (28447) BSP_DHT11: Bit 1: high_time=68 us (th=50) -> 1 | byte[0]=0x01[0m
+[0;33mW (28447) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT) e não há valor válido anterior. Usando simulação.[0m
+[0;32mI (29217) APP_MAIN: Log salvo! Ar: 25.85 C / 59.89 %, Solo: 27.00 C / 0.00 %[0m
+[0;32mI (38437) BSP_DHT11: Bit 0: high_time=24 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (38437) BSP_DHT11: Bit 1: high_time=70 us (th=50) -> 1 | byte[0]=0x01[0m
+[0;33mW (38437) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT) e não há valor válido anterior. Usando simulação.[0m
+[0;32mI (39437) APP_MAIN: Log salvo! Ar: 26.16 C / 57.87 %, Solo: 27.00 C / 0.00 %[0m
+[0;32mI (48427) BSP_DHT11: Bit 0: high_time=24 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (48427) BSP_DHT11: Bit 1: high_time=69 us (th=50) -> 1 | byte[0]=0x01[0m
+[0;33mW (48427) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT) e não há valor válido anterior. Usando simulação.[0m
+[0;32mI (49427) APP_MAIN: Log salvo! Ar: 25.71 C / 59.07 %, Solo: 27.00 C / 0.00 %[0m
+[0;32mI (58417) BSP_DHT11: Bit 0: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (58417) BSP_DHT11: Bit 1: high_time=69 us (th=50) -> 1 | byte[0]=0x01[0m
+[0;33mW (58417) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT) e não há valor válido anterior. Usando simulação.[0m
+[0;32mI (59187) APP_MAIN: Log salvo! Ar: 25.37 C / 59.06 %, Solo: 27.00 C / 0.00 %[0m
+[0;32mI (68407) BSP_DHT11: Bit 0: high_time=24 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (68407) BSP_DHT11: Bit 1: high_time=70 us (th=50) -> 1 | byte[0]=0x01[0m
+[0;33mW (68407) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT) e não há valor válido anterior. Usando simulação.[0m
+[0;32mI (69407) APP_MAIN: Log salvo! Ar: 25.50 C / 61.44 %, Solo: 27.00 C / 0.00 %[0m
+[0;32mI (78397) BSP_DHT11: Bit 0: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (78397) BSP_DHT11: Bit 1: high_time=70 us (th=50) -> 1 | byte[0]=0x01[0m
+[0;33mW (78397) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT) e não há valor válido anterior. Usando simulação.[0m
+[0;32mI (79397) APP_MAIN: Log salvo! Ar: 25.97 C / 61.66 %, Solo: 27.00 C / 0.00 %[0m
+[0;32mI (88387) BSP_DHT11: Bit 0: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (88387) BSP_DHT11: Bit 1: high_time=69 us (th=50) -> 1 | byte[0]=0x01[0m
+[0;33mW (88387) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT) e não há valor válido anterior. Usando simulação.[0m
+[0;32mI (89157) APP_MAIN: Log salvo! Ar: 25.71 C / 59.92 %, Solo: 27.00 C / 0.00 %[0m
+[0;32mI (98377) BSP_DHT11: Bit 0: high_time=24 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (98377) BSP_DHT11: Bit 1: high_time=69 us (th=50) -> 1 | byte[0]=0x01[0m
+[0;33mW (98377) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT) e não há valor válido anterior. Usando simulação.[0m
+[0;32mI (99377) APP_MAIN: Log salvo! Ar: 25.64 C / 58.83 %, Solo: 27.00 C / 0.00 %[0m
+[0;32mI (108367) BSP_DHT11: Bit 0: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (108367) BSP_DHT11: Bit 1: high_time=70 us (th=50) -> 1 | byte[0]=0x01[0m
+[0;33mW (108367) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT) e não há valor válido anterior. Usando simulação.[0m
+[0;32mI (109367) APP_MAIN: Log salvo! Ar: 25.49 C / 61.23 %, Solo: 27.00 C / 0.00 %[0m

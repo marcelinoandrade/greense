@@ -8,6 +8,7 @@ sys.path.append('/sensores')
 sys.path.append('/webserver')
 
 from sensores.temp_sensor import TempSensorDS18B20
+from sensores.dht_sensor import DHT11Sensor
 from sensores.soil_sensor import SoilMoistureSensor
 from data_logger import LoggerInterno
 from webserver.http_server import TempWebServer
@@ -23,6 +24,7 @@ def blink_led():
 
 def main():
     temp_sensor = TempSensorDS18B20(data_pin=4)
+    dht_sensor = DHT11Sensor(data_pin=19)
     solo_sensor = SoilMoistureSensor(adc_pin=34)
     logger = LoggerInterno(path="/log_temp.csv")
 
@@ -47,20 +49,21 @@ def main():
         web.poll_once()
 
         agora = time.time()
-        if agora - ultimo_log >= 10:
+        sample_interval = web.get_sample_interval()
+        if agora - ultimo_log >= sample_interval:
             # lê sensores
-            temp_ar = temp_sensor.ler_celsius()
+            temp_solo = temp_sensor.ler_celsius()
+            temp_ar, umid_ar = dht_sensor.ler()
             umid_solo = solo_sensor.umidade_percentual()
 
-            umid_ar = -1.0    # placeholder futuro
-            temp_solo = -1.0  # placeholder futuro
+            if temp_ar is not None and umid_ar is not None:
+                temp_solo_val = temp_solo if temp_solo is not None else -1.0
 
-            if temp_ar is not None:
                 # grava no CSV interno (flash)
                 logger.append(
                     temp_ar=temp_ar,
                     umid_ar=umid_ar,
-                    temp_solo=temp_solo,
+                    temp_solo=temp_solo_val,
                     umid_solo=umid_solo
                 )
 
@@ -68,9 +71,12 @@ def main():
                 blink_led()
 
                 # log serial para debug
+                temp_solo_text = "{:.1f}".format(temp_solo) if temp_solo is not None else "n/a"
                 print(
                     "log:", logger.idx,
-                    "temp_ar=", "{:.1f}".format(temp_ar),
+                    "temp_ar_C=", "{:.1f}".format(temp_ar),
+                    "umid_ar%=", "{:.1f}".format(umid_ar),
+                    "temp_solo_C=", temp_solo_text,
                     "umid_solo%=", "{:.1f}".format(umid_solo)
                 )
 

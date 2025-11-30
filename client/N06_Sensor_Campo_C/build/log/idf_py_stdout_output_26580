@@ -1,0 +1,224 @@
+Command: /home/mrclnndrd/.espressif/python_env/idf5.5_py3.11_env/bin/python /home/mrclnndrd/esp/esp-idf/tools/idf_monitor.py -p /dev/ttyUSB0 -b 115200 --toolchain-prefix xtensa-esp32-elf- --target esp32 --revision 0 /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/sensor_campo.elf /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/bootloader/bootloader.elf -m '/home/mrclnndrd/.espressif/python_env/idf5.5_py3.11_env/bin/python' '/home/mrclnndrd/esp/esp-idf/tools/idf.py'
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x17 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:6380
+ho 0 tail 12 room 4
+load:0x40078000,len:15904
+load:0x40080400,len:3860
+entry 0x40080638
+[0;32mI (29) boot: ESP-IDF v5.5-dev-3372-g38628f98b9 2nd stage bootloader[0m
+[0;32mI (29) boot: compile time Nov 28 2025 06:27:02[0m
+[0;32mI (29) boot: Multicore bootloader[0m
+[0;32mI (32) boot: chip revision: v3.1[0m
+[0;32mI (35) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (39) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (42) boot.esp32: SPI Flash Size : 4MB[0m
+[0;32mI (46) boot: Enabling RNG early entropy source...[0m
+[0;32mI (50) boot: Partition Table:[0m
+[0;32mI (53) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (59) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (66) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (72) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (79) boot:  3 spiffs           Unknown data     01 82 00110000 002f0000[0m
+[0;32mI (85) boot: End of partition table[0m
+[0;32mI (89) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=29c5ch (171100) map[0m
+[0;32mI (155) esp_image: segment 1: paddr=00039c84 vaddr=3ff80000 size=0001ch (    28) load[0m
+[0;32mI (155) esp_image: segment 2: paddr=00039ca8 vaddr=3ffb0000 size=03ecch ( 16076) load[0m
+[0;32mI (164) esp_image: segment 3: paddr=0003db7c vaddr=40080000 size=0249ch (  9372) load[0m
+[0;32mI (170) esp_image: segment 4: paddr=00040020 vaddr=400d0020 size=9e2bch (647868) map[0m
+[0;32mI (395) esp_image: segment 5: paddr=000de2e4 vaddr=4008249c size=15878h ( 88184) load[0m
+[0;32mI (441) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (441) boot: Disabling RNG early entropy source...[0m
+[0;32mI (452) cpu_start: Multicore app[0m
+[0;32mI (460) cpu_start: Pro cpu start user code[0m
+[0;32mI (460) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (460) app_init: Application information:[0m
+[0;32mI (463) app_init: Project name:     sensor_campo[0m
+[0;32mI (468) app_init: App version:      c4d3e91a-dirty[0m
+[0;32mI (474) app_init: Compile time:     Nov 28 2025 06:26:09[0m
+[0;32mI (480) app_init: ELF file SHA256:  6a68f08e0...[0m
+[0;32mI (485) app_init: ESP-IDF:          v5.5-dev-3372-g38628f98b9[0m
+[0;32mI (491) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (496) efuse_init: Max chip rev:     v3.99 [0m
+[0;32mI (501) efuse_init: Chip rev:         v3.1[0m
+[0;32mI (506) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (513) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (519) heap_init: At 3FFB8080 len 00027F80 (159 KiB): DRAM[0m
+[0;32mI (525) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (532) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (538) heap_init: At 40097D14 len 000082EC (32 KiB): IRAM[0m
+[0;32mI (546) spi_flash: detected chip: generic[0m
+[0;32mI (549) spi_flash: flash io: dio[0m
+[0;32mI (554) main_task: Started on CPU0[0m
+[0;32mI (564) main_task: Calling app_main()[0m
+[0;32mI (584) BSP_LED: LED inicializado no GPIO 2[0m
+[0;32mI (584) BSP_DS18B20: DS18B20 inicializado no GPIO 4[0m
+[0;32mI (584) BSP_ADC: ADC umidade solo inicializado. canal=6 bitwidth=12 atten=3[0m
+[0;32mI (584) BSP_SENSORS: Sensores BSP inicializados[0m
+[0;32mI (594) APP_SENSOR_MGR: Sensor Manager inicializado[0m
+[0;32mI (594) APP_DATA_LOGGER: Inicializando SPIFFS...[0m
+[0;32mI (904) APP_DATA_LOGGER: SPIFFS montado em /spiffs[0m
+[0;32mI (914) APP_DATA_LOGGER: Total=2293769 bytes, Usado=2038 bytes[0m
+[0;32mI (924) APP_DATA_LOGGER: Proximo indice de log sera: 8[0m
+[0;33mW (1104) APP_DATA_LOGGER: Arquivo /spiffs/soil_calib.json nao encontrado. Usando padrao (Seco: 4000, Molhado: 400)[0m
+[0;32mI (1114) APP_DATA_LOGGER: --- Lendo /spiffs/log_temp.csv ---[0m
+[0;32mI (1114) APP_DATA_LOGGER: N,temp_ar_C,umid_ar_pct,temp_solo_C,umid_solo_pct
+[0m
+[0;32mI (1124) APP_DATA_LOGGER: 709,23.98,58.07,23.98,68.89
+[0m
+[0;32mI (1124) APP_DATA_LOGGER: 2,23.78,58.09,25.00,68.86
+[0m
+[0;32mI (1134) APP_DATA_LOGGER: 3,23.87,59.49,25.00,68.89
+[0m
+[0;32mI (1144) APP_DATA_LOGGER: 4,23.89,61.31,25.00,68.92
+[0m
+[0;32mI (1144) APP_DATA_LOGGER: 5,23.83,62.02,25.00,68.47
+[0m
+[0;32mI (1154) APP_DATA_LOGGER: 6,23.75,62.41,25.00,67.58
+[0m
+[0;32mI (1154) APP_DATA_LOGGER: 7,24.14,63.48,25.00,68.69
+[0m
+[0;32mI (1164) APP_DATA_LOGGER: --- Fim do arquivo ---[0m
+[0;32mI (1174) APP_SAMPLING: Período carregado do NVS: 1000 ms[0m
+[0;32mI (1174) APP_GUI_SERVICES: Serviços GUI registrados[0m
+[0;32mI (1194) wifi:wifi driver task: 3ffc22a4, prio:23, stack:6656, core=0[0m
+[0;32mI (1204) wifi:wifi firmware version: 7d2994f4b[0m
+[0;32mI (1204) wifi:wifi certification version: v7.0[0m
+[0;32mI (1204) wifi:config NVS flash: enabled[0m
+[0;32mI (1204) wifi:config nano formatting: disabled[0m
+[0;32mI (1204) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (1214) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (1214) wifi:Init management short buffer num: 32[0m
+[0;32mI (1224) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (1224) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (1224) wifi:Init static rx buffer num: 10[0m
+[0;32mI (1234) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (1234) wifi_init: rx ba win: 6[0m
+[0;32mI (1244) wifi_init: accept mbox: 6[0m
+[0;32mI (1244) wifi_init: tcpip mbox: 32[0m
+[0;32mI (1244) wifi_init: udp mbox: 6[0m
+[0;32mI (1254) wifi_init: tcp mbox: 6[0m
+[0;32mI (1254) wifi_init: tcp tx win: 5760[0m
+[0;32mI (1264) wifi_init: tcp rx win: 5760[0m
+[0;32mI (1264) wifi_init: tcp mss: 1440[0m
+[0;32mI (1264) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (1274) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (1284) phy_init: phy_version 4860,6b7a6e5,Feb  6 2025,14:47:07[0m
+[0;32mI (1364) phy_init: Saving new calibration data due to checksum failure or outdated calibration data, mode(0)[0m
+[0;32mI (1404) wifi:mode : softAP (38:18:2b:ea:b7:cd)[0m
+[0;32mI (1404) wifi:Total power save buffer number: 16[0m
+[0;32mI (1414) wifi:Init max length of beacon: 752/752[0m
+[0;32mI (1414) wifi:Init max length of beacon: 752/752[0m
+[0;32mI (1414) BSP_WIFI_AP: Modo AP iniciado. SSID='ESP32_TEMP' senha='12345678'[0m
+[0;32mI (1414) esp_netif_lwip: DHCP server started on interface WIFI_AP_DEF with IP: 192.168.4.1[0m
+[0;32mI (1434) GUI_HTTP_SERVER: Servidor HTTP iniciado e rotas registradas. Acesse http://192.168.4.1/[0m
+[0;32mI (1444) APP_MAIN: Sistema iniciado - Arquitetura BSP/APP/GUI[0m
+[0;32mI (1444) main_task: Returned from app_main()[0m
+[0;32mI (2444) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 68.47 %[0m
+[0;32mI (4204) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 68.47 %[0m
+[0;32mI (6194) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 67.92 %[0m
+[0;32mI (6284) wifi:new:<1,0>, old:<1,1>, ap:<1,1>, sta:<255,255>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (6294) wifi:station: 96:62:32:cc:84:05 join, AID=1, bgn, 20[0m
+[0;32mI (6364) BSP_WIFI_AP: Cliente 96:62:32:cc:84:05 conectou, AID=1[0m
+[0;32mI (6484) wifi:<ba-add>idx:2 (ifx:1, 96:62:32:cc:84:05), tid:0, ssn:0, winSize:64[0m
+[0;32mI (6514) esp_netif_lwip: DHCP server assigned IP to a client, IP is: 192.168.4.2[0m
+[0;32mI (8184) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 68.97 %[0m
+[0;32mI (9944) APP_MAIN: Log salvo! Temp Solo: 25.06 C, Umid Solo: 68.89 %[0m
+[0;32mI (11944) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 68.47 %[0m
+[0;32mI (13934) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 68.47 %[0m
+[0;32mI (15694) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 67.86 %[0m
+[0;32mI (17684) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 68.47 %[0m
+[0;32mI (19674) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 68.53 %[0m
+[0;32mI (21434) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 67.17 %[0m
+[0;32mI (23424) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 67.06 %[0m
+[0;32mI (25414) APP_MAIN: Log salvo! Temp Solo: -0.06 C, Umid Solo: 70.28 %[0m
+[0;32mI (27174) APP_MAIN: Log salvo! Temp Solo: 25.06 C, Umid Solo: 66.75 %[0m
+[0;32mI (29164) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 66.94 %[0m
+[0;32mI (31154) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 66.67 %[0m
+[0;32mI (32914) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 67.72 %[0m
+[0;32mI (34904) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 67.08 %[0m
+[0;32mI (36894) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 67.53 %[0m
+[0;32mI (38654) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 67.47 %[0m
+[0;32mI (40644) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 67.53 %[0m
+[0;32mI (42634) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 67.58 %[0m
+[0;32mI (44394) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 67.47 %[0m
+[0;32mI (46384) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 67.19 %[0m
+[0;32mI (48374) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 67.53 %[0m
+[0;32mI (50134) APP_MAIN: Log salvo! Temp Solo: 25.06 C, Umid Solo: 67.14 %[0m
+[0;32mI (52124) APP_MAIN: Log salvo! Temp Solo: 25.06 C, Umid Solo: 66.53 %[0m
+[0;32mI (54114) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 68.47 %[0m
+[0;32mI (55874) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 67.25 %[0m
+[0;32mI (57864) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 66.72 %[0m
+[0;32mI (59854) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 67.64 %[0m
+[0;32mI (61844) APP_MAIN: Log salvo! Temp Solo: 25.06 C, Umid Solo: 68.69 %[0m
+[0;32mI (63604) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 68.72 %[0m
+[0;32mI (65594) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 67.25 %[0m
+[0;32mI (67584) APP_MAIN: Log salvo! Temp Solo: 25.06 C, Umid Solo: 68.47 %[0m
+[0;32mI (69344) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 68.92 %[0m
+[0;32mI (71334) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 69.17 %[0m
+[0;32mI (73324) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 69.06 %[0m
+[0;32mI (75084) APP_MAIN: Log salvo! Temp Solo: 25.06 C, Umid Solo: 68.47 %[0m
+[0;32mI (77074) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 68.92 %[0m
+[0;32mI (79064) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 69.39 %[0m
+[0;32mI (80824) APP_MAIN: Log salvo! Temp Solo: 25.06 C, Umid Solo: 68.53 %[0m
+[0;32mI (82814) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 68.47 %[0m
+[0;32mI (84804) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 68.89 %[0m
+[0;32mI (86564) APP_MAIN: Log salvo! Temp Solo: 25.06 C, Umid Solo: 67.86 %[0m
+[0;32mI (88554) APP_MAIN: Log salvo! Temp Solo: 25.06 C, Umid Solo: 68.58 %[0m
+[0;32mI (90544) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 70.31 %[0m
+[0;32mI (92304) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 69.89 %[0m
+[0;32mI (94294) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 69.08 %[0m
+[0;32mI (96284) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 68.81 %[0m
+[0;32mI (98044) APP_MAIN: Log salvo! Temp Solo: 25.06 C, Umid Solo: 67.83 %[0m
+[0;32mI (100034) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 68.47 %[0m
+[0;32mI (102024) APP_MAIN: Log salvo! Temp Solo: 25.06 C, Umid Solo: 68.53 %[0m
+[0;32mI (103784) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 67.86 %[0m
+[0;32mI (105774) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 68.53 %[0m
+[0;32mI (107764) APP_MAIN: Log salvo! Temp Solo: 25.06 C, Umid Solo: 67.72 %[0m
+[0;32mI (109524) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 67.53 %[0m
+[0;32mI (111514) APP_MAIN: Log salvo! Temp Solo: 25.06 C, Umid Solo: 67.58 %[0m
+[0;32mI (113504) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 68.47 %[0m
+[0;32mI (115264) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 67.92 %[0m
+[0;32mI (117254) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 67.81 %[0m
+[0;32mI (119244) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 68.47 %[0m
+[0;32mI (121004) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 68.47 %[0m
+[0;32mI (122994) APP_MAIN: Log salvo! Temp Solo: 25.06 C, Umid Solo: 67.75 %[0m
+[0;32mI (124984) APP_MAIN: Log salvo! Temp Solo: 25.06 C, Umid Solo: 67.39 %[0m
+[0;32mI (126744) APP_MAIN: Log salvo! Temp Solo: 25.06 C, Umid Solo: 68.47 %[0m
+[0;32mI (128734) APP_MAIN: Log salvo! Temp Solo: 25.06 C, Umid Solo: 67.67 %[0m
+[0;32mI (130724) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 68.75 %[0m
+[0;32mI (132714) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 67.83 %[0m
+[0;32mI (134474) APP_MAIN: Log salvo! Temp Solo: 25.06 C, Umid Solo: 67.75 %[0m
+[0;32mI (136464) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 68.47 %[0m
+[0;32mI (138454) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 68.47 %[0m
+[0;32mI (140214) APP_MAIN: Log salvo! Temp Solo: 25.06 C, Umid Solo: 68.64 %[0m
+[0;32mI (142214) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 68.47 %[0m
+[0;32mI (144204) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 67.58 %[0m
+[0;32mI (145964) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 68.47 %[0m
+[0;32mI (147954) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 68.47 %[0m
+[0;32mI (149944) APP_MAIN: Log salvo! Temp Solo: 25.06 C, Umid Solo: 67.86 %[0m
+[0;32mI (151704) APP_MAIN: Log salvo! Temp Solo: 25.06 C, Umid Solo: 68.47 %[0m
+[0;32mI (153694) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 67.39 %[0m
+[0;32mI (155684) APP_MAIN: Log salvo! Temp Solo: 25.06 C, Umid Solo: 68.47 %[0m
+[0;32mI (157444) APP_MAIN: Log salvo! Temp Solo: 25.06 C, Umid Solo: 67.86 %[0m
+[0;32mI (159434) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 67.86 %[0m
+[0;32mI (161424) APP_MAIN: Log salvo! Temp Solo: 25.06 C, Umid Solo: 68.47 %[0m
+[0;32mI (163184) APP_MAIN: Log salvo! Temp Solo: 25.06 C, Umid Solo: 67.44 %[0m
+[0;32mI (165174) APP_MAIN: Log salvo! Temp Solo: 25.06 C, Umid Solo: 68.47 %[0m
+[0;32mI (167164) APP_MAIN: Log salvo! Temp Solo: 25.06 C, Umid Solo: 67.50 %[0m
+[0;32mI (168924) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 68.47 %[0m
+[0;32mI (170914) APP_MAIN: Log salvo! Temp Solo: 25.06 C, Umid Solo: 67.69 %[0m
+[0;32mI (172154) APP_MAIN: Log salvo! Temp Solo: 24.39 C, Umid Solo: 68.47 %[0m
+[0;32mI (173914) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 68.47 %[0m
+[0;32mI (175894) APP_MAIN: Log salvo! Temp Solo: 25.06 C, Umid Solo: 67.86 %[0m
+[0;32mI (177874) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 68.47 %[0m
+[0;32mI (179634) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 67.53 %[0m
+[0;32mI (181624) APP_MAIN: Log salvo! Temp Solo: 25.06 C, Umid Solo: 67.58 %[0m
+[0;32mI (183614) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 68.47 %[0m
+[0;32mI (185374) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 68.47 %[0m
+[0;32mI (187364) APP_MAIN: Log salvo! Temp Solo: 25.06 C, Umid Solo: 68.47 %[0m
+[0;32mI (189354) APP_MAIN: Log salvo! Temp Solo: 25.00 C, Umid Solo: 68.89 %[0m

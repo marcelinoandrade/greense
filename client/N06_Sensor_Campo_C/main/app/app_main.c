@@ -7,6 +7,7 @@
 #include "esp_log.h"
 #include "esp_err.h"
 #include "nvs_flash.h"
+#include "esp_timer.h"
 
 // BSP
 #include "bsp/sensors/bsp_sensors.h"
@@ -28,37 +29,113 @@ static const char *TAG = "APP_MAIN";
 /* Estrutura estática para expor serviços da camada APP para a GUI */
 static gui_services_t gui_services_impl;
 
+static const uint32_t SENSOR_JANELA_MS = 5000;
+static const uint32_t SENSOR_RETRY_MS  = 2000;
+
+static void format_sensor_text(char *buffer, size_t buffer_len, float value)
+{
+    if (isfinite(value)) {
+        snprintf(buffer, buffer_len, "%.2f", value);
+    } else {
+        snprintf(buffer, buffer_len, "--");
+    }
+}
+
+static bool capturar_primeiro_valido(sensor_reading_t *dest)
+{
+    int64_t deadline_us = esp_timer_get_time() + (int64_t)SENSOR_JANELA_MS * 1000;
+
+    while (esp_timer_get_time() < deadline_us) {
+        sensor_reading_t leitura = {0};
+        if (sensor_manager_read(&leitura) == ESP_OK &&
+            sensor_manager_is_valid(&leitura)) {
+            *dest = leitura;
+            return true;
+        }
+        vTaskDelay(pdMS_TO_TICKS(SENSOR_RETRY_MS));
+    }
+    return false;
+}
+
 // Tarefa periódica que lê sensores e registra no SPIFFS
 static void tarefa_log(void *pvParameter)
 {
+    static log_entry_t ultimo_entry = {0};
+    static bool ultimo_entry_valido = false;
+
     while (1)
     {
+        uint32_t intervalo_ms = sampling_period_get_ms();
+        int64_t janela_inicio = esp_timer_get_time();
+
         sensor_reading_t reading;
-        if (sensor_manager_read(&reading) == ESP_OK)
+        bool leitura_valida = capturar_primeiro_valido(&reading);
+
+        log_entry_t entry;
+        bool deve_registrar = false;
+
+        if (leitura_valida)
         {
-            if (sensor_manager_is_valid(&reading))
+            entry.temp_ar   = reading.temp_air;
+            entry.umid_ar   = reading.humid_air;
+            entry.temp_solo = reading.temp_soil;
+            entry.umid_solo = reading.humid_soil;
+            entry.luminosidade = reading.luminosity;
+            entry.dpv = reading.dpv;
+
+            ultimo_entry       = entry;
+            ultimo_entry_valido = true;
+            deve_registrar      = true;
+        }
+        else if (ultimo_entry_valido)
+        {
+            entry = ultimo_entry;
+            deve_registrar = true;
+            ESP_LOGW(TAG,
+                     "Sem leitura válida na janela de %u ms; reutilizando valor anterior",
+                     (unsigned)SENSOR_JANELA_MS);
+        }
+        else
+        {
+            ESP_LOGW(TAG,
+                     "Nenhuma leitura válida disponível na janela de %u ms",
+                     (unsigned)SENSOR_JANELA_MS);
+        }
+
+        if (deve_registrar)
+        {
+            if (data_logger_append(&entry))
             {
-                log_entry_t entry;
-                entry.temp_ar    = reading.temp_air;
-                entry.umid_ar    = reading.humid_air;
-                entry.temp_solo  = reading.temp_soil;
-                entry.umid_solo = reading.humid_soil;
+                char ar_temp_text[16];
+                char ar_hum_text[16];
+                format_sensor_text(ar_temp_text, sizeof(ar_temp_text), entry.temp_ar);
+                format_sensor_text(ar_hum_text, sizeof(ar_hum_text), entry.umid_ar);
 
-                if (data_logger_append(&entry))
-                {
-                    ESP_LOGI(TAG,
-                             "Log salvo! Temp Solo: %.2f C, Umid Solo: %.2f %%",
-                             entry.temp_solo,
-                             entry.umid_solo);
+                ESP_LOGI(TAG,
+                         "Log salvo! Ar: %s C / %s %%, Solo: %.2f C / %.2f %%, Lux: %.1f, DPV: %.3f kPa",
+                         ar_temp_text,
+                         ar_hum_text,
+                         entry.temp_solo,
+                         entry.umid_solo,
+                         entry.luminosidade,
+                         entry.dpv);
 
-                    // sinaliza flash de gravação
-                    atuadores_sinalizar_gravacao();
-                }
+                // sinaliza flash de gravação
+                atuadores_sinalizar_gravacao();
             }
         }
 
-        uint32_t intervalo_ms = sampling_period_get_ms();
-        vTaskDelay(pdMS_TO_TICKS(intervalo_ms));
+        int64_t elapsed_ms = (esp_timer_get_time() - janela_inicio) / 1000;
+        if (elapsed_ms < (int64_t)intervalo_ms) {
+            uint32_t sleep_ms = (uint32_t)(intervalo_ms - elapsed_ms);
+            if (sleep_ms > 0) {
+                vTaskDelay(pdMS_TO_TICKS(sleep_ms));
+            } else {
+                taskYIELD();
+            }
+        } else {
+            taskYIELD();
+        }
     }
 }
 
@@ -82,9 +159,6 @@ void app_main(void)
 
     // Inicializa logger (SPIFFS e calibração)
     ESP_ERROR_CHECK(data_logger_init());
-    
-    // Limpa todos os dados armazenados (reinicia do zero)
-    ESP_ERROR_CHECK(data_logger_clear_all());
 
     // Carrega período de amostragem atual (NVS)
     ESP_ERROR_CHECK(sampling_period_init());
@@ -110,6 +184,7 @@ void app_main(void)
     gui_services_impl.get_sampling_period_ms = sampling_period_get_ms;
     gui_services_impl.set_sampling_period_ms = sampling_period_set_ms;
     gui_services_impl.build_history_json = data_logger_build_history_json;
+    gui_services_impl.get_recent_stats  = data_logger_get_recent_stats;
     gui_services_impl.clear_logged_data  = data_logger_clear_all;
     gui_services_register(&gui_services_impl);
 

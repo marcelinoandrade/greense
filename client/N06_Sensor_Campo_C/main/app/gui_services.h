@@ -3,6 +3,7 @@
 #include "esp_err.h"
 #include <stdbool.h>
 #include <stdint.h>
+#include <stddef.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -14,6 +15,27 @@ extern "C" {
  * Esta interface permite que GUI acesse serviços do APP
  * sem conhecer detalhes de implementação.
  */
+
+typedef struct {
+    float min;
+    float max;
+    float avg;
+    float latest;
+    bool  has_data;
+} gui_sensor_stats_t;
+
+typedef struct gui_recent_stats {
+    int window_samples;
+    int total_samples;
+    size_t storage_used_bytes;
+    size_t storage_total_bytes;
+    gui_sensor_stats_t temp_ar;
+    gui_sensor_stats_t umid_ar;
+    gui_sensor_stats_t temp_solo;
+    gui_sensor_stats_t umid_solo;
+    gui_sensor_stats_t luminosidade;
+    gui_sensor_stats_t dpv;
+} gui_recent_stats_t;
 
 typedef struct {
     /* Sensores */
@@ -33,6 +55,7 @@ typedef struct {
     
     /* Histórico */
     char* (*build_history_json)(void);
+    bool  (*get_recent_stats)(int max_samples, gui_recent_stats_t *stats_out);
     
     /* Manutenção */
     esp_err_t (*clear_logged_data)(void);

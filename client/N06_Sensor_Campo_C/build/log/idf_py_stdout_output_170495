@@ -1,0 +1,348 @@
+Command: /home/mrclnndrd/.espressif/python_env/idf5.5_py3.11_env/bin/python /home/mrclnndrd/esp/esp-idf/tools/idf_monitor.py -p /dev/ttyUSB0 -b 115200 --toolchain-prefix xtensa-esp32-elf- --target esp32 --revision 0 /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/sensor_campo.elf /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/bootloader/bootloader.elf -m '/home/mrclnndrd/.espressif/python_env/idf5.5_py3.11_env/bin/python' '/home/mrclnndrd/esp/esp-idf/tools/idf.py'
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x17 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:6380
+ho 0 tail 12 room 4
+load:0x40078000,len:15904
+load:0x40080400,len:3860
+entry 0x40080638
+[0;32mI (29) boot: ESP-IDF v5.5-dev-3372-g38628f98b9 2nd stage bootloader[0m
+[0;32mI (29) boot: compile time Nov 28 2025 06:27:02[0m
+[0;32mI (29) boot: Multicore bootloader[0m
+[0;32mI (32) boot: chip revision: v3.1[0m
+[0;32mI (35) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (39) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (42) boot.esp32: SPI Flash Size : 4MB[0m
+[0;32mI (46) boot: Enabling RNG early entropy source...[0m
+[0;32mI (50) boot: Partition Table:[0m
+[0;32mI (53) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (59) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (66) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (72) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (79) boot:  3 spiffs           Unknown data     01 82 00110000 002f0000[0m
+[0;32mI (85) boot: End of partition table[0m
+[0;32mI (89) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=2a82ch (174124) map[0m
+[0;32mI (156) esp_image: segment 1: paddr=0003a854 vaddr=3ff80000 size=0001ch (    28) load[0m
+[0;32mI (156) esp_image: segment 2: paddr=0003a878 vaddr=3ffb0000 size=03eech ( 16108) load[0m
+[0;32mI (166) esp_image: segment 3: paddr=0003e76c vaddr=40080000 size=018ach (  6316) load[0m
+[0;32mI (170) esp_image: segment 4: paddr=00040020 vaddr=400d0020 size=9eedch (650972) map[0m
+[0;32mI (397) esp_image: segment 5: paddr=000def04 vaddr=400818ac size=16468h ( 91240) load[0m
+[0;32mI (444) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (444) boot: Disabling RNG early entropy source...[0m
+[0;32mI (455) cpu_start: Multicore app[0m
+[0;32mI (463) cpu_start: Pro cpu start user code[0m
+[0;32mI (463) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (463) app_init: Application information:[0m
+[0;32mI (466) app_init: Project name:     sensor_campo[0m
+[0;32mI (472) app_init: App version:      c4d3e91a-dirty[0m
+[0;32mI (477) app_init: Compile time:     Nov 28 2025 06:26:09[0m
+[0;32mI (483) app_init: ELF file SHA256:  a89e5c523...[0m
+[0;32mI (488) app_init: ESP-IDF:          v5.5-dev-3372-g38628f98b9[0m
+[0;32mI (495) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (499) efuse_init: Max chip rev:     v3.99 [0m
+[0;32mI (504) efuse_init: Chip rev:         v3.1[0m
+[0;32mI (509) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (517) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (522) heap_init: At 3FFB80B8 len 00027F48 (159 KiB): DRAM[0m
+[0;32mI (529) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (535) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (542) heap_init: At 40097D14 len 000082EC (32 KiB): IRAM[0m
+[0;32mI (549) spi_flash: detected chip: generic[0m
+[0;32mI (552) spi_flash: flash io: dio[0m
+[0;32mI (557) main_task: Started on CPU0[0m
+[0;32mI (567) main_task: Calling app_main()[0m
+[0;32mI (587) BSP_LED: LED inicializado no GPIO 2[0m
+[0;32mI (587) BSP_DS18B20: DS18B20 inicializado no GPIO 4[0m
+[0;32mI (587) BSP_ADC: ADC umidade solo inicializado. canal=6 bitwidth=12 atten=3[0m
+[0;32mI (2687) BSP_DHT11: ✓ DHT11 GPIO 5 está em HIGH (pull-up OK)[0m
+[0;32mI (2707) BSP_DHT11: DHT11 raw data: [2,5,1,70,78] checksum_calc=78 checksum_recv=78 OK[0m
+[0;32mI (2707) BSP_DHT11: Byte 0 (umidade int): 0x02 = 2 = 0b00000010[0m
+[0;32mI (2707) BSP_DHT11: Byte 2 (temp int):   0x01 = 1 = 0b00000001[0m
+[0;32mI (2717) BSP_DHT11: DHT11 interpretado: Umidade=2.5%, Temperatura=8.0°C[0m
+[0;33mW (2727) BSP_DHT11: DHT11 umidade fora da faixa válida (20-90%): H=2.5%. Raw: [2,5,1,70,78][0m
+[0;33mW (2737) BSP_DHT11: Tentativa 1/3 de leitura inicial do DHT11 falhou: ESP_ERR_INVALID_RESPONSE[0m
+[0;32mI (4767) BSP_DHT11: DHT11 raw data: [2,8,1,70,81] checksum_calc=81 checksum_recv=81 OK[0m
+[0;32mI (4767) BSP_DHT11: Byte 0 (umidade int): 0x02 = 2 = 0b00000010[0m
+[0;32mI (4767) BSP_DHT11: Byte 2 (temp int):   0x01 = 1 = 0b00000001[0m
+[0;32mI (4777) BSP_DHT11: DHT11 interpretado: Umidade=2.8%, Temperatura=8.0°C[0m
+[0;33mW (4787) BSP_DHT11: DHT11 umidade fora da faixa válida (20-90%): H=2.8%. Raw: [2,8,1,70,81][0m
+[0;33mW (4797) BSP_DHT11: Tentativa 2/3 de leitura inicial do DHT11 falhou: ESP_ERR_INVALID_RESPONSE[0m
+[0;32mI (6827) BSP_DHT11: DHT11 raw data: [2,9,1,70,82] checksum_calc=82 checksum_recv=82 OK[0m
+[0;32mI (6827) BSP_DHT11: Byte 0 (umidade int): 0x02 = 2 = 0b00000010[0m
+[0;32mI (6827) BSP_DHT11: Byte 2 (temp int):   0x01 = 1 = 0b00000001[0m
+[0;32mI (6837) BSP_DHT11: DHT11 interpretado: Umidade=2.9%, Temperatura=8.0°C[0m
+[0;33mW (6847) BSP_DHT11: DHT11 umidade fora da faixa válida (20-90%): H=2.9%. Raw: [2,9,1,70,82][0m
+[0;33mW (6857) BSP_DHT11: Tentativa 3/3 de leitura inicial do DHT11 falhou: ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (6867) BSP_DHT11: ⚠️ DHT11 no GPIO 5 não respondeu após 3 tentativas[0m
+[0;33mW (6867) BSP_DHT11:    Checklist:[0m
+[0;33mW (6877) BSP_DHT11:    [ ] Sensor conectado na GPIO 5 (não GPIO19!)[0m
+[0;33mW (6877) BSP_DHT11:    [ ] Pull-up 10kΩ entre DATA (GPIO 5) e VCC (3.3V)[0m
+[0;33mW (6887) BSP_DHT11:    [ ] VCC do DHT11 conectado a 3.3V ou 5V[0m
+[0;33mW (6897) BSP_DHT11:    [ ] GND do DHT11 conectado ao GND do ESP32[0m
+[0;33mW (6897) BSP_DHT11:    [ ] Cabos curtos (< 20cm recomendado)[0m
+[0;32mI (6907) BSP_DHT11: DHT11 configurado no GPIO 5[0m
+[0;32mI (6917) BSP_SENSORS: Sensores BSP inicializados[0m
+[0;32mI (6917) APP_SENSOR_MGR: Sensor Manager inicializado[0m
+[0;32mI (6927) APP_DATA_LOGGER: Inicializando SPIFFS...[0m
+[0;32mI (7237) APP_DATA_LOGGER: SPIFFS montado em /spiffs[0m
+[0;32mI (7237) APP_DATA_LOGGER: Total=2293769 bytes, Usado=3057 bytes[0m
+[0;32mI (7377) APP_DATA_LOGGER: Proximo indice de log sera: 53[0m
+[0;33mW (7567) APP_DATA_LOGGER: Arquivo /spiffs/soil_calib.json nao encontrado. Usando padrao (Seco: 4000, Molhado: 400)[0m
+[0;32mI (7567) APP_DATA_LOGGER: --- Lendo /spiffs/log_temp.csv ---[0m
+[0;32mI (7577) APP_DATA_LOGGER: N,temp_ar_C,umid_ar_pct,temp_solo_C,umid_solo_pct
+[0m
+[0;32mI (7587) APP_DATA_LOGGER: 1,27.81,55.45,27.00,0.00
+[0m
+[0;32mI (7587) APP_DATA_LOGGER: 2,28.19,53.13,27.00,0.00
+[0m
+[0;32mI (7597) APP_DATA_LOGGER: 3,26.15,61.06,27.00,0.00
+[0m
+[0;32mI (7597) APP_DATA_LOGGER: 4,25.62,57.68,27.00,0.00
+[0m
+[0;32mI (7607) APP_DATA_LOGGER: 5,25.95,55.62,27.00,0.00
+[0m
+[0;32mI (7607) APP_DATA_LOGGER: 6,26.03,55.10,27.00,0.00
+[0m
+[0;32mI (7617) APP_DATA_LOGGER: 7,25.54,53.14,27.00,0.00
+[0m
+[0;32mI (7617) APP_DATA_LOGGER: 8,25.63,53.86,27.00,0.00
+[0m
+[0;32mI (7627) APP_DATA_LOGGER: 9,25.22,54.48,27.00,0.00
+[0m
+[0;32mI (7637) APP_DATA_LOGGER: 10,25.62,56.75,27.00,0.00
+[0m
+[0;32mI (7637) APP_DATA_LOGGER: 11,25.99,57.50,27.00,0.00
+[0m
+[0;32mI (7647) APP_DATA_LOGGER: 12,25.76,57.84,27.00,0.00
+[0m
+[0;32mI (7647) APP_DATA_LOGGER: 13,25.43,56.45,27.00,0.00
+[0m
+[0;32mI (7657) APP_DATA_LOGGER: 14,25.71,56.09,26.94,0.00
+[0m
+[0;32mI (7657) APP_DATA_LOGGER: 15,25.59,53.93,27.00,0.00
+[0m
+[0;32mI (7667) APP_DATA_LOGGER: 16,25.79,51.71,27.00,0.00
+[0m
+[0;32mI (7677) APP_DATA_LOGGER: 17,25.93,51.91,27.00,0.00
+[0m
+[0;32mI (7677) APP_DATA_LOGGER: 18,26.39,53.25,27.00,0.00
+[0m
+[0;32mI (7687) APP_DATA_LOGGER: 19,26.78,54.91,27.00,0.00
+[0m
+[0;32mI (7687) APP_DATA_LOGGER: 20,26.41,56.50,26.94,0.00
+[0m
+[0;32mI (7697) APP_DATA_LOGGER: 21,26.23,54.27,26.94,0.00
+[0m
+[0;32mI (7697) APP_DATA_LOGGER: 22,26.05,53.53,27.00,0.00
+[0m
+[0;32mI (7707) APP_DATA_LOGGER: 23,25.96,51.60,26.94,0.00
+[0m
+[0;32mI (7717) APP_DATA_LOGGER: 24,25.71,51.07,26.94,0.00
+[0m
+[0;32mI (7717) APP_DATA_LOGGER: 25,25.88,50.55,27.00,0.00
+[0m
+[0;32mI (7727) APP_DATA_LOGGER: 26,25.97,51.00,26.94,0.00
+[0m
+[0;32mI (7727) APP_DATA_LOGGER: 27,26.41,53.00,26.94,0.00
+[0m
+[0;32mI (7737) APP_DATA_LOGGER: 28,26.16,50.51,27.00,0.00
+[0m
+[0;32mI (7737) APP_DATA_LOGGER: 29,26.43,49.14,26.94,0.00
+[0m
+[0;32mI (7747) APP_DATA_LOGGER: 30,25.64,62.13,26.94,0.00
+[0m
+[0;32mI (7757) APP_DATA_LOGGER: 31,26.12,58.12,27.00,0.00
+[0m
+[0;32mI (7757) APP_DATA_LOGGER: 32,26.62,57.66,26.94,0.00
+[0m
+[0;32mI (7767) APP_DATA_LOGGER: 33,26.68,59.31,26.94,0.00
+[0m
+[0;32mI (7767) APP_DATA_LOGGER: 34,26.95,60.25,26.94,0.00
+[0m
+[0;32mI (7777) APP_DATA_LOGGER: 35,27.23,62.70,26.94,0.00
+[0m
+[0;32mI (7777) APP_DATA_LOGGER: 36,26.98,61.74,26.94,0.00
+[0m
+[0;32mI (7787) APP_DATA_LOGGER: 37,26.80,60.41,26.94,0.00
+[0m
+[0;32mI (7797) APP_DATA_LOGGER: 38,26.48,58.68,27.00,0.00
+[0m
+[0;32mI (7797) APP_DATA_LOGGER: 39,26.40,59.13,26.94,0.00
+[0m
+[0;32mI (7807) APP_DATA_LOGGER: 40,26.40,59.46,26.94,0.00
+[0m
+[0;32mI (7807) APP_DATA_LOGGER: 41,26.67,58.50,27.00,0.00
+[0m
+[0;32mI (7817) APP_DATA_LOGGER: 42,26.89,60.65,26.94,0.00
+[0m
+[0;32mI (7827) APP_DATA_LOGGER: 43,27.38,60.87,26.94,0.00
+[0m
+[0;32mI (7827) APP_DATA_LOGGER: 44,27.30,61.99,27.00,0.00
+[0m
+[0;32mI (7837) APP_DATA_LOGGER: 45,26.99,62.71,26.94,0.00
+[0m
+[0;32mI (7837) APP_DATA_LOGGER: 46,27.37,64.63,27.00,0.00
+[0m
+[0;32mI (7847) APP_DATA_LOGGER: 47,27.36,66.08,26.94,0.00
+[0m
+[0;32mI (7847) APP_DATA_LOGGER: 48,27.45,63.92,26.94,0.00
+[0m
+[0;32mI (7857) APP_DATA_LOGGER: 49,27.35,64.92,26.94,0.00
+[0m
+[0;32mI (7867) APP_DATA_LOGGER: 50,27.65,65.65,27.00,0.00
+[0m
+[0;32mI (7867) APP_DATA_LOGGER: 51,27.71,68.09,26.94,0.00
+[0m
+[0;32mI (7877) APP_DATA_LOGGER: 52,7.90,24.80,26.94,0.00
+[0m
+[0;32mI (7877) APP_DATA_LOGGER: --- Fim do arquivo ---[0m
+[0;32mI (7887) APP_SAMPLING: Período carregado do NVS: 10000 ms[0m
+[0;32mI (7887) APP_GUI_SERVICES: Serviços GUI registrados[0m
+[0;32mI (7907) wifi:wifi driver task: 3ffc22d0, prio:23, stack:6656, core=0[0m
+[0;32mI (7917) wifi:wifi firmware version: 7d2994f4b[0m
+[0;32mI (7917) wifi:wifi certification version: v7.0[0m
+[0;32mI (7917) wifi:config NVS flash: enabled[0m
+[0;32mI (7917) wifi:config nano formatting: disabled[0m
+[0;32mI (7917) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (7927) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (7927) wifi:Init management short buffer num: 32[0m
+[0;32mI (7937) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (7937) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (7947) wifi:Init static rx buffer num: 10[0m
+[0;32mI (7947) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (7947) wifi_init: rx ba win: 6[0m
+[0;32mI (7957) wifi_init: accept mbox: 6[0m
+[0;32mI (7957) wifi_init: tcpip mbox: 32[0m
+[0;32mI (7967) wifi_init: udp mbox: 6[0m
+[0;32mI (7967) wifi_init: tcp mbox: 6[0m
+[0;32mI (7967) wifi_init: tcp tx win: 5760[0m
+[0;32mI (7977) wifi_init: tcp rx win: 5760[0m
+[0;32mI (7977) wifi_init: tcp mss: 1440[0m
+[0;32mI (7987) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (7987) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (7997) phy_init: phy_version 4860,6b7a6e5,Feb  6 2025,14:47:07[0m
+[0;32mI (8077) phy_init: Saving new calibration data due to checksum failure or outdated calibration data, mode(0)[0m
+[0;32mI (8107) wifi:mode : softAP (38:18:2b:ea:b7:cd)[0m
+[0;32mI (8107) wifi:Total power save buffer number: 16[0m
+[0;32mI (8107) wifi:Init max length of beacon: 752/752[0m
+[0;32mI (8117) wifi:Init max length of beacon: 752/752[0m
+[0;32mI (8117) BSP_WIFI_AP: Modo AP iniciado. SSID='ESP32_TEMP' senha='12345678'[0m
+[0;32mI (8117) esp_netif_lwip: DHCP server started on interface WIFI_AP_DEF with IP: 192.168.4.1[0m
+[0;32mI (8137) GUI_HTTP_SERVER: Servidor HTTP iniciado e rotas registradas. Acesse http://192.168.4.1/[0m
+[0;32mI (8137) APP_MAIN: Sistema iniciado - Arquitetura BSP/APP/GUI[0m
+[0;32mI (8147) main_task: Returned from app_main()[0m
+[0;32mI (8157) BSP_DHT11: DHT11 raw data: [2,13,1,71,87] checksum_calc=87 checksum_recv=87 OK[0m
+[0;32mI (8157) BSP_DHT11: Byte 0 (umidade int): 0x02 = 2 = 0b00000010[0m
+[0;32mI (8167) BSP_DHT11: Byte 2 (temp int):   0x01 = 1 = 0b00000001[0m
+[0;32mI (8177) BSP_DHT11: DHT11 interpretado: Umidade=3.3%, Temperatura=8.1°C[0m
+[0;33mW (8177) BSP_DHT11: DHT11 umidade fora da faixa válida (20-90%): H=3.3%. Raw: [2,13,1,71,87][0m
+[0;33mW (8187) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_INVALID_RESPONSE) e não há valor válido anterior. Usando simulação.[0m
+[0;32mI (9337) APP_MAIN: Log salvo! Ar: 26.25 C / 62.21 %, Solo: 26.94 C / 0.00 %[0m
+[0;33mW (18157) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT) e não há valor válido anterior. Usando simulação.[0m
+[0;32mI (18917) APP_MAIN: Log salvo! Ar: 26.51 C / 62.72 %, Solo: 26.94 C / 0.00 %[0m
+[0;32mI (28147) BSP_DHT11: DHT11 raw data: [2,13,1,71,87] checksum_calc=87 checksum_recv=87 OK[0m
+[0;32mI (28147) BSP_DHT11: Byte 0 (umidade int): 0x02 = 2 = 0b00000010[0m
+[0;32mI (28147) BSP_DHT11: Byte 2 (temp int):   0x01 = 1 = 0b00000001[0m
+[0;32mI (28157) BSP_DHT11: DHT11 interpretado: Umidade=3.3%, Temperatura=8.1°C[0m
+[0;33mW (28167) BSP_DHT11: DHT11 umidade fora da faixa válida (20-90%): H=3.3%. Raw: [2,13,1,71,87][0m
+[0;33mW (28177) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_INVALID_RESPONSE) e não há valor válido anterior. Usando simulação.[0m
+[0;32mI (29177) APP_MAIN: Log salvo! Ar: 26.25 C / 63.44 %, Solo: 26.94 C / 0.00 %[0m
+[0;32mI (38137) BSP_DHT11: DHT11 raw data: [2,1,1,71,75] checksum_calc=75 checksum_recv=75 OK[0m
+[0;32mI (38137) BSP_DHT11: Byte 0 (umidade int): 0x02 = 2 = 0b00000010[0m
+[0;32mI (38137) BSP_DHT11: Byte 2 (temp int):   0x01 = 1 = 0b00000001[0m
+[0;32mI (38147) BSP_DHT11: DHT11 interpretado: Umidade=2.1%, Temperatura=8.1°C[0m
+[0;33mW (38157) BSP_DHT11: DHT11 umidade fora da faixa válida (20-90%): H=2.1%. Raw: [2,1,1,71,75][0m
+[0;33mW (38167) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_INVALID_RESPONSE) e não há valor válido anterior. Usando simulação.[0m
+[0;32mI (39167) APP_MAIN: Log salvo! Ar: 25.83 C / 65.24 %, Solo: 27.00 C / 0.00 %[0m
+[0;32mI (48127) BSP_DHT11: DHT11 raw data: [1,241,1,70,57] checksum_calc=57 checksum_recv=57 OK[0m
+[0;32mI (48127) BSP_DHT11: Byte 0 (umidade int): 0x01 = 1 = 0b00000001[0m
+[0;32mI (48127) BSP_DHT11: Byte 2 (temp int):   0x01 = 1 = 0b00000001[0m
+[0;32mI (48137) BSP_DHT11: DHT11 interpretado: Umidade=25.1%, Temperatura=8.0°C[0m
+[0;32mI (48907) APP_MAIN: Log salvo! Ar: 8.00 C / 25.10 %, Solo: 26.94 C / 0.00 %[0m
+[0;32mI (58117) BSP_DHT11: DHT11 raw data: [1,230,1,67,43] checksum_calc=43 checksum_recv=43 OK[0m
+[0;32mI (58117) BSP_DHT11: Byte 0 (umidade int): 0x01 = 1 = 0b00000001[0m
+[0;32mI (58117) BSP_DHT11: Byte 2 (temp int):   0x01 = 1 = 0b00000001[0m
+[0;32mI (58127) BSP_DHT11: DHT11 interpretado: Umidade=24.0%, Temperatura=7.7°C[0m
+[0;32mI (59127) APP_MAIN: Log salvo! Ar: 7.70 C / 24.00 %, Solo: 27.00 C / 0.00 %[0m
+[0;32mI (68107) BSP_DHT11: DHT11 raw data: [1,222,1,67,35] checksum_calc=35 checksum_recv=35 OK[0m
+[0;32mI (68107) BSP_DHT11: Byte 0 (umidade int): 0x01 = 1 = 0b00000001[0m
+[0;32mI (68107) BSP_DHT11: Byte 2 (temp int):   0x01 = 1 = 0b00000001[0m
+[0;32mI (68117) BSP_DHT11: DHT11 interpretado: Umidade=23.2%, Temperatura=7.7°C[0m
+[0;32mI (69117) APP_MAIN: Log salvo! Ar: 7.70 C / 23.20 %, Solo: 26.94 C / 0.00 %[0m
+[0;32mI (78097) BSP_DHT11: DHT11 raw data: [1,217,1,66,29] checksum_calc=29 checksum_recv=29 OK[0m
+[0;32mI (78097) BSP_DHT11: Byte 0 (umidade int): 0x01 = 1 = 0b00000001[0m
+[0;32mI (78097) BSP_DHT11: Byte 2 (temp int):   0x01 = 1 = 0b00000001[0m
+[0;32mI (78107) BSP_DHT11: DHT11 interpretado: Umidade=22.7%, Temperatura=7.6°C[0m
+[0;32mI (78877) APP_MAIN: Log salvo! Ar: 7.60 C / 22.70 %, Solo: 27.00 C / 0.00 %[0m
+[0;32mI (88087) BSP_DHT11: DHT11 raw data: [1,213,1,65,24] checksum_calc=24 checksum_recv=24 OK[0m
+[0;32mI (88087) BSP_DHT11: Byte 0 (umidade int): 0x01 = 1 = 0b00000001[0m
+[0;32mI (88087) BSP_DHT11: Byte 2 (temp int):   0x01 = 1 = 0b00000001[0m
+[0;32mI (88097) BSP_DHT11: DHT11 interpretado: Umidade=22.3%, Temperatura=7.5°C[0m
+[0;32mI (89097) APP_MAIN: Log salvo! Ar: 7.50 C / 22.30 %, Solo: 27.00 C / 0.00 %[0m
+[0;32mI (98077) BSP_DHT11: DHT11 raw data: [1,214,1,64,24] checksum_calc=24 checksum_recv=24 OK[0m
+[0;32mI (98077) BSP_DHT11: Byte 0 (umidade int): 0x01 = 1 = 0b00000001[0m
+[0;32mI (98077) BSP_DHT11: Byte 2 (temp int):   0x01 = 1 = 0b00000001[0m
+[0;32mI (98087) BSP_DHT11: DHT11 interpretado: Umidade=22.4%, Temperatura=7.4°C[0m
+[0;32mI (99087) APP_MAIN: Log salvo! Ar: 7.40 C / 22.40 %, Solo: 27.00 C / 0.00 %[0m
+[0;32mI (108067) BSP_DHT11: DHT11 raw data: [1,219,1,64,29] checksum_calc=29 checksum_recv=29 OK[0m
+[0;32mI (108067) BSP_DHT11: Byte 0 (umidade int): 0x01 = 1 = 0b00000001[0m
+[0;32mI (108067) BSP_DHT11: Byte 2 (temp int):   0x01 = 1 = 0b00000001[0m
+[0;32mI (108077) BSP_DHT11: DHT11 interpretado: Umidade=22.9%, Temperatura=7.4°C[0m
+[0;32mI (108847) APP_MAIN: Log salvo! Ar: 7.40 C / 22.90 %, Solo: 27.00 C / 0.00 %[0m
+[0;32mI (118057) BSP_DHT11: DHT11 raw data: [1,236,1,64,46] checksum_calc=46 checksum_recv=46 OK[0m
+[0;32mI (118057) BSP_DHT11: Byte 0 (umidade int): 0x01 = 1 = 0b00000001[0m
+[0;32mI (118057) BSP_DHT11: Byte 2 (temp int):   0x01 = 1 = 0b00000001[0m
+[0;32mI (118067) BSP_DHT11: DHT11 interpretado: Umidade=24.6%, Temperatura=7.4°C[0m
+[0;32mI (119067) APP_MAIN: Log salvo! Ar: 7.40 C / 24.60 %, Solo: 27.00 C / 0.00 %[0m
+[0;32mI (128047) BSP_DHT11: DHT11 raw data: [1,231,1,64,41] checksum_calc=41 checksum_recv=41 OK[0m
+[0;32mI (128047) BSP_DHT11: Byte 0 (umidade int): 0x01 = 1 = 0b00000001[0m
+[0;32mI (128047) BSP_DHT11: Byte 2 (temp int):   0x01 = 1 = 0b00000001[0m
+[0;32mI (128057) BSP_DHT11: DHT11 interpretado: Umidade=24.1%, Temperatura=7.4°C[0m
+[0;32mI (129057) APP_MAIN: Log salvo! Ar: 7.40 C / 24.10 %, Solo: 27.00 C / 0.00 %[0m
+[0;32mI (138037) BSP_DHT11: DHT11 raw data: [1,224,1,64,34] checksum_calc=34 checksum_recv=34 OK[0m
+[0;32mI (138037) BSP_DHT11: Byte 0 (umidade int): 0x01 = 1 = 0b00000001[0m
+[0;32mI (138037) BSP_DHT11: Byte 2 (temp int):   0x01 = 1 = 0b00000001[0m
+[0;32mI (138047) BSP_DHT11: DHT11 interpretado: Umidade=23.4%, Temperatura=7.4°C[0m
+[0;32mI (138817) APP_MAIN: Log salvo! Ar: 7.40 C / 23.40 %, Solo: 27.00 C / 0.00 %[0m
+[0;32mI (148027) BSP_DHT11: DHT11 raw data: [1,219,1,63,28] checksum_calc=28 checksum_recv=28 OK[0m
+[0;32mI (148027) BSP_DHT11: Byte 0 (umidade int): 0x01 = 1 = 0b00000001[0m
+[0;32mI (148027) BSP_DHT11: Byte 2 (temp int):   0x01 = 1 = 0b00000001[0m
+[0;32mI (148037) BSP_DHT11: DHT11 interpretado: Umidade=22.9%, Temperatura=7.3°C[0m
+[0;32mI (149037) APP_MAIN: Log salvo! Ar: 7.30 C / 22.90 %, Solo: 27.00 C / 0.00 %[0m
+[0;32mI (158017) BSP_DHT11: DHT11 raw data: [1,217,1,60,23] checksum_calc=23 checksum_recv=23 OK[0m
+[0;32mI (158017) BSP_DHT11: Byte 0 (umidade int): 0x01 = 1 = 0b00000001[0m
+[0;32mI (158017) BSP_DHT11: Byte 2 (temp int):   0x01 = 1 = 0b00000001[0m
+[0;32mI (158027) BSP_DHT11: DHT11 interpretado: Umidade=22.7%, Temperatura=7.0°C[0m
+[0;32mI (159027) APP_MAIN: Log salvo! Ar: 7.00 C / 22.70 %, Solo: 26.94 C / 0.00 %[0m
+[0;32mI (168007) BSP_DHT11: DHT11 raw data: [1,215,1,60,21] checksum_calc=21 checksum_recv=21 OK[0m
+[0;32mI (168007) BSP_DHT11: Byte 0 (umidade int): 0x01 = 1 = 0b00000001[0m
+[0;32mI (168007) BSP_DHT11: Byte 2 (temp int):   0x01 = 1 = 0b00000001[0m
+[0;32mI (168017) BSP_DHT11: DHT11 interpretado: Umidade=22.5%, Temperatura=7.0°C[0m
+[0;32mI (168787) APP_MAIN: Log salvo! Ar: 7.00 C / 22.50 %, Solo: 27.00 C / 0.00 %[0m
+[0;32mI (177997) BSP_DHT11: DHT11 raw data: [1,217,1,60,23] checksum_calc=23 checksum_recv=23 OK[0m
+[0;32mI (177997) BSP_DHT11: Byte 0 (umidade int): 0x01 = 1 = 0b00000001[0m
+[0;32mI (177997) BSP_DHT11: Byte 2 (temp int):   0x01 = 1 = 0b00000001[0m
+[0;32mI (178007) BSP_DHT11: DHT11 interpretado: Umidade=22.7%, Temperatura=7.0°C[0m
+[0;32mI (179007) APP_MAIN: Log salvo! Ar: 7.00 C / 22.70 %, Solo: 27.00 C / 0.00 %[0m
+[0;32mI (187987) BSP_DHT11: DHT11 raw data: [1,224,1,60,30] checksum_calc=30 checksum_recv=30 OK[0m
+[0;32mI (187987) BSP_DHT11: Byte 0 (umidade int): 0x01 = 1 = 0b00000001[0m
+[0;32mI (187987) BSP_DHT11: Byte 2 (temp int):   0x01 = 1 = 0b00000001[0m
+[0;32mI (187997) BSP_DHT11: DHT11 interpretado: Umidade=23.4%, Temperatura=7.0°C[0m
+[0;32mI (188997) APP_MAIN: Log salvo! Ar: 7.00 C / 23.40 %, Solo: 27.00 C / 0.00 %[0m
+[0;32mI (198737) APP_MAIN: Log salvo! Ar: 7.00 C / 23.40 %, Solo: 27.00 C / 0.00 %[0m
+[0;32mI (207967) BSP_DHT11: DHT11 raw data: [2,18,1,64,85] checksum_calc=85 checksum_recv=85 OK[0m
+[0;32mI (207967) BSP_DHT11: Byte 0 (umidade int): 0x02 = 2 = 0b00000010[0m
+[0;32mI (207967) BSP_DHT11: Byte 2 (temp int):   0x01 = 1 = 0b00000001[0m
+[0;32mI (207977) BSP_DHT11: DHT11 interpretado: Umidade=3.8%, Temperatura=7.4°C[0m
+[0;33mW (207987) BSP_DHT11: DHT11 umidade fora da faixa válida (20-90%): H=3.8%. Raw: [2,18,1,64,85][0m
+[0;32mI (208987) APP_MAIN: Log salvo! Ar: 7.00 C / 23.40 %, Solo: 27.00 C / 0.00 %[0m
+[0;32mI (217957) BSP_DHT11: DHT11 raw data: [2,26,1,65,94] checksum_calc=94 checksum_recv=94 OK[0m
+[0;32mI (217957) BSP_DHT11: Byte 0 (umidade int): 0x02 = 2 = 0b00000010[0m
+[0;32mI (217957) BSP_DHT11: Byte 2 (temp int):   0x01 = 1 = 0b00000001[0m
+[0;32mI (217967) BSP_DHT11: DHT11 interpretado: Umidade=4.6%, Temperatura=7.5°C[0m
+[0;33mW (217977) BSP_DHT11: DHT11 umidade fora da faixa válida (20-90%): H=4.6%. Raw: [2,26,1,65,94][0m
+[0;32mI (218977) APP_MAIN: Log salvo! Ar: 7.00 C / 23.40 %, Solo: 27.00 C / 0.00 %[0m

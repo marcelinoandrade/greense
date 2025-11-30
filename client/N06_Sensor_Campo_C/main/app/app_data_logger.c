@@ -3,6 +3,7 @@
 #include <sys/stat.h>
 #include <math.h>
 #include <errno.h>
+#include <float.h>
 
 #include "esp_log.h"
 #include "esp_err.h"
@@ -12,12 +13,14 @@
 
 #include "app_data_logger.h"
 #include "../bsp/board.h"
+#include "gui_services.h"
 #include "cJSON.h"
 
 static const char *TAG = "APP_DATA_LOGGER";
 
 #define LOG_FILE_PATH  BSP_SPIFFS_MOUNT "/log_temp.csv"
 #define CALIB_FILE     BSP_SPIFFS_MOUNT "/soil_calib.json"
+#define RECENT_STATS_MAX_WINDOW 64
 
 /* calibração persistida */
 static float calib_seco    = 4000.0f;
@@ -136,7 +139,7 @@ esp_err_t data_logger_init(void)
             return ESP_FAIL;
         }
         fprintf(f,
-                "N,temp_ar_C,umid_ar_pct,temp_solo_C,umid_solo_pct\n");
+                "N,temp_ar_C,umid_ar_pct,temp_solo_C,umid_solo_pct,luminosidade_lux,dpv_kPa\n");
         fclose(f);
         linha_idx = 1;
     } else {
@@ -145,10 +148,11 @@ esp_err_t data_logger_init(void)
         int last_idx = 0;
         while (fgets(line, sizeof(line), f)) {
             int n_local;
-            float ta, ua, ts, us;
+            float ta, ua, ts, us, lum, dpv;
+            // Tenta ler formato antigo (4 variáveis) ou novo (6 variáveis)
             if (sscanf(line,
-                       "%d,%f,%f,%f,%f",
-                       &n_local, &ta, &ua, &ts, &us) == 5)
+                       "%d,%f,%f,%f,%f,%f,%f",
+                       &n_local, &ta, &ua, &ts, &us, &lum, &dpv) >= 5)
             {
                 last_idx = n_local;
             }
@@ -216,12 +220,14 @@ bool data_logger_append(const log_entry_t *entry)
     }
 
     fprintf(f,
-            "%d,%.2f,%.2f,%.2f,%.2f\n",
+            "%d,%.2f,%.2f,%.2f,%.2f,%.2f,%.3f\n",
             linha_idx,
             entry->temp_ar,
             entry->umid_ar,
             entry->temp_solo,
-            entry->umid_solo);
+            entry->umid_solo,
+            entry->luminosidade,
+            entry->dpv);
     fclose(f);
 
     linha_idx++;
@@ -248,13 +254,15 @@ void data_logger_dump_to_logcat(void)
 }
 
 /*
-   Agora retorna 4 séries independentes:
+   Retorna 6 séries independentes:
 
    {
      "temp_ar_points":   [ [idx, temp_ar_C], ... ],
      "umid_ar_points":   [ [idx, umid_ar_pct], ... ],
      "temp_solo_points": [ [idx, temp_solo_C], ... ],
-     "umid_solo_points": [ [idx, umid_solo_pct], ... ]
+     "umid_solo_points": [ [idx, umid_solo_pct], ... ],
+     "luminosidade_points": [ [idx, luminosidade_lux], ... ],
+     "dpv_points":       [ [idx, dpv_kPa], ... ]
    }
 
    Pegamos só os últimos HIST_MAX pontos para não encher RAM.
@@ -287,14 +295,18 @@ char *data_logger_build_history_json(void)
     float umid_ar_arr[HIST_MAX];
     float temp_solo_arr[HIST_MAX];
     float umid_solo_arr[HIST_MAX];
+    float luminosidade_arr[HIST_MAX];
+    float dpv_arr[HIST_MAX];
     int count = 0;
 
     while (fgets(line, sizeof(line), f)) {
         int   n_local;
-        float ta, ua, ts, us;
-        if (sscanf(line,
-                   "%d,%f,%f,%f,%f",
-                   &n_local, &ta, &ua, &ts, &us) == 5)
+        float ta, ua, ts, us, lum = NAN, dpv = NAN;
+        // Tenta ler formato novo (6 variáveis) ou antigo (4 variáveis)
+        int fields = sscanf(line,
+                           "%d,%f,%f,%f,%f,%f,%f",
+                           &n_local, &ta, &ua, &ts, &us, &lum, &dpv);
+        if (fields >= 5)  // Aceita formato antigo (4 variáveis) ou novo (6 variáveis)
         {
             int pos = count % HIST_MAX;
             idx_arr[pos]        = n_local;
@@ -302,6 +314,8 @@ char *data_logger_build_history_json(void)
             umid_ar_arr[pos]    = ua;
             temp_solo_arr[pos]  = ts;
             umid_solo_arr[pos]  = us;
+            luminosidade_arr[pos] = (fields >= 6) ? lum : NAN;
+            dpv_arr[pos]        = (fields >= 7) ? dpv : NAN;
             count++;
         }
     }
@@ -320,12 +334,14 @@ char *data_logger_build_history_json(void)
     cJSON *umid_ar_points    = cJSON_CreateArray();
     cJSON *temp_solo_points  = cJSON_CreateArray();
     cJSON *umid_solo_points  = cJSON_CreateArray();
+    cJSON *luminosidade_points = cJSON_CreateArray();
+    cJSON *dpv_points       = cJSON_CreateArray();
 
     for (int k = 0; k < num; k++) {
         int pos = (start + k) % HIST_MAX;
 
         /* temp_ar_points: [idx, temp_ar] */
-        {
+        if (isfinite(temp_ar_arr[pos])) {
             cJSON *p = cJSON_CreateArray();
             cJSON_AddItemToArray(p, cJSON_CreateNumber(idx_arr[pos]));
             cJSON_AddItemToArray(p, cJSON_CreateNumber(temp_ar_arr[pos]));
@@ -333,7 +349,7 @@ char *data_logger_build_history_json(void)
         }
 
         /* umid_ar_points: [idx, umid_ar] */
-        {
+        if (isfinite(umid_ar_arr[pos])) {
             cJSON *p = cJSON_CreateArray();
             cJSON_AddItemToArray(p, cJSON_CreateNumber(idx_arr[pos]));
             cJSON_AddItemToArray(p, cJSON_CreateNumber(umid_ar_arr[pos]));
@@ -341,7 +357,7 @@ char *data_logger_build_history_json(void)
         }
 
         /* temp_solo_points: [idx, temp_solo] */
-        {
+        if (isfinite(temp_solo_arr[pos])) {
             cJSON *p = cJSON_CreateArray();
             cJSON_AddItemToArray(p, cJSON_CreateNumber(idx_arr[pos]));
             cJSON_AddItemToArray(p, cJSON_CreateNumber(temp_solo_arr[pos]));
@@ -349,11 +365,27 @@ char *data_logger_build_history_json(void)
         }
 
         /* umid_solo_points: [idx, umid_solo] */
-        {
+        if (isfinite(umid_solo_arr[pos])) {
             cJSON *p = cJSON_CreateArray();
             cJSON_AddItemToArray(p, cJSON_CreateNumber(idx_arr[pos]));
             cJSON_AddItemToArray(p, cJSON_CreateNumber(umid_solo_arr[pos]));
             cJSON_AddItemToArray(umid_solo_points, p);
+        }
+
+        /* luminosidade_points: [idx, luminosidade] */
+        if (isfinite(luminosidade_arr[pos])) {
+            cJSON *p = cJSON_CreateArray();
+            cJSON_AddItemToArray(p, cJSON_CreateNumber(idx_arr[pos]));
+            cJSON_AddItemToArray(p, cJSON_CreateNumber(luminosidade_arr[pos]));
+            cJSON_AddItemToArray(luminosidade_points, p);
+        }
+
+        /* dpv_points: [idx, dpv] */
+        if (isfinite(dpv_arr[pos])) {
+            cJSON *p = cJSON_CreateArray();
+            cJSON_AddItemToArray(p, cJSON_CreateNumber(idx_arr[pos]));
+            cJSON_AddItemToArray(p, cJSON_CreateNumber(dpv_arr[pos]));
+            cJSON_AddItemToArray(dpv_points, p);
         }
     }
 
@@ -361,6 +393,8 @@ char *data_logger_build_history_json(void)
     cJSON_AddItemToObject(root, "umid_ar_points",   umid_ar_points);
     cJSON_AddItemToObject(root, "temp_solo_points", temp_solo_points);
     cJSON_AddItemToObject(root, "umid_solo_points", umid_solo_points);
+    cJSON_AddItemToObject(root, "luminosidade_points", luminosidade_points);
+    cJSON_AddItemToObject(root, "dpv_points",       dpv_points);
 
     char *json_txt = cJSON_PrintUnformatted(root);
     if (json_txt == NULL) {
@@ -371,6 +405,158 @@ char *data_logger_build_history_json(void)
     
     cJSON_Delete(root);
     return json_txt; /* caller da free() */
+}
+
+static void gui_stats_reset(gui_sensor_stats_t *stat)
+{
+    if (!stat) {
+        return;
+    }
+    stat->min      = 0.0f;
+    stat->max      = 0.0f;
+    stat->avg      = 0.0f;
+    stat->latest   = 0.0f;
+    stat->has_data = false;
+}
+
+static void gui_stats_compute(gui_sensor_stats_t *dest,
+                              const float *buffer,
+                              int total_samples,
+                              int max_window,
+                              int window_samples)
+{
+    gui_stats_reset(dest);
+    if (!dest || !buffer || window_samples <= 0 || total_samples <= 0) {
+        return;
+    }
+
+    float  min_v        = FLT_MAX;
+    float  max_v        = -FLT_MAX;
+    double sum          = 0.0;
+    int    valid_samples = 0;
+    float  latest_value  = 0.0f;
+    bool   latest_valid  = false;
+
+    int start_idx = (total_samples <= max_window) ? 0 : (total_samples % max_window);
+
+    for (int i = 0; i < window_samples; ++i) {
+        int idx = (total_samples <= max_window) ? i : ((start_idx + i) % max_window);
+        float value = buffer[idx];
+        if (!isfinite(value)) {
+            continue;
+        }
+        if (value < min_v) min_v = value;
+        if (value > max_v) max_v = value;
+        sum += value;
+        valid_samples++;
+        latest_value = value;
+        latest_valid = true;
+    }
+
+    if (valid_samples == 0 || !latest_valid) {
+        return;
+    }
+
+    dest->has_data = true;
+    dest->min      = min_v;
+    dest->max      = max_v;
+    dest->avg      = (float)(sum / valid_samples);
+    dest->latest   = latest_value;
+}
+
+bool data_logger_get_recent_stats(int max_samples, gui_recent_stats_t *out)
+{
+    if (!out) {
+        return false;
+    }
+
+    if (max_samples <= 0) {
+        max_samples = RECENT_STATS_MAX_WINDOW;
+    } else if (max_samples > RECENT_STATS_MAX_WINDOW) {
+        max_samples = RECENT_STATS_MAX_WINDOW;
+    }
+
+    memset(out, 0, sizeof(*out));
+    gui_stats_reset(&out->temp_ar);
+    gui_stats_reset(&out->umid_ar);
+    gui_stats_reset(&out->temp_solo);
+    gui_stats_reset(&out->umid_solo);
+    gui_stats_reset(&out->luminosidade);
+    gui_stats_reset(&out->dpv);
+
+    if (file_mutex == NULL) {
+        ESP_LOGE(TAG, "Mutex nao inicializado para estatisticas");
+        return false;
+    }
+
+    float temp_ar_buf[RECENT_STATS_MAX_WINDOW]   = {0};
+    float umid_ar_buf[RECENT_STATS_MAX_WINDOW]   = {0};
+    float temp_solo_buf[RECENT_STATS_MAX_WINDOW] = {0};
+    float umid_solo_buf[RECENT_STATS_MAX_WINDOW] = {0};
+    float luminosidade_buf[RECENT_STATS_MAX_WINDOW] = {0};
+    float dpv_buf[RECENT_STATS_MAX_WINDOW] = {0};
+    int   total_samples = 0;
+
+    if (xSemaphoreTake(file_mutex, pdMS_TO_TICKS(2000)) != pdTRUE) {
+        ESP_LOGE(TAG, "Timeout ao obter mutex para estatisticas");
+        return false;
+    }
+
+    FILE *f = fopen(LOG_FILE_PATH, "r");
+    if (f) {
+        char line[160];
+        /* descarta header se existir */
+        fgets(line, sizeof(line), f);
+
+        while (fgets(line, sizeof(line), f)) {
+            int   idx_local;
+            float ta, ua, ts, us, lum = NAN, dpv = NAN;
+            // Tenta ler formato novo (6 variáveis) ou antigo (4 variáveis)
+            int fields = sscanf(line, "%d,%f,%f,%f,%f,%f,%f",
+                       &idx_local, &ta, &ua, &ts, &us, &lum, &dpv);
+            if (fields >= 5) {  // Aceita formato antigo ou novo
+                int pos             = total_samples % max_samples;
+                temp_ar_buf[pos]    = ta;
+                umid_ar_buf[pos]    = ua;
+                temp_solo_buf[pos]  = ts;
+                umid_solo_buf[pos]  = us;
+                luminosidade_buf[pos] = (fields >= 6) ? lum : NAN;
+                dpv_buf[pos]        = (fields >= 7) ? dpv : NAN;
+                total_samples++;
+            }
+        }
+        fclose(f);
+    } else {
+        ESP_LOGW(TAG, "Nao consegui abrir %s para estatisticas", LOG_FILE_PATH);
+    }
+
+    xSemaphoreGive(file_mutex);
+
+    int window_samples = (total_samples < max_samples) ? total_samples : max_samples;
+    out->window_samples = window_samples;
+    out->total_samples  = total_samples;
+
+    if (window_samples > 0) {
+        gui_stats_compute(&out->temp_ar,   temp_ar_buf,   total_samples, max_samples, window_samples);
+        gui_stats_compute(&out->umid_ar,   umid_ar_buf,   total_samples, max_samples, window_samples);
+        gui_stats_compute(&out->temp_solo, temp_solo_buf, total_samples, max_samples, window_samples);
+        gui_stats_compute(&out->umid_solo, umid_solo_buf, total_samples, max_samples, window_samples);
+        gui_stats_compute(&out->luminosidade, luminosidade_buf, total_samples, max_samples, window_samples);
+        gui_stats_compute(&out->dpv,       dpv_buf,       total_samples, max_samples, window_samples);
+    }
+
+    size_t total_bytes = 0;
+    size_t used_bytes  = 0;
+    if (esp_spiffs_info(BSP_SPIFFS_LABEL, &total_bytes, &used_bytes) == ESP_OK) {
+        out->storage_total_bytes = total_bytes;
+        out->storage_used_bytes  = used_bytes;
+    } else {
+        out->storage_total_bytes = 0;
+        out->storage_used_bytes  = 0;
+        ESP_LOGW(TAG, "Falha ao obter info do SPIFFS");
+    }
+
+    return true;
 }
 
 esp_err_t data_logger_clear_all(void)
@@ -386,7 +572,7 @@ esp_err_t data_logger_clear_all(void)
     /* Recria arquivo com header padrão para manter histórico funcionando */
     FILE *f = fopen(LOG_FILE_PATH, "w");
     if (f) {
-        fprintf(f, "N,temp_ar_C,umid_ar_pct,temp_solo_C,umid_solo_pct\n");
+        fprintf(f, "N,temp_ar_C,umid_ar_pct,temp_solo_C,umid_solo_pct,luminosidade_lux,dpv_kPa\n");
         fclose(f);
         ESP_LOGI(TAG, "Arquivo %s recriado com header", LOG_FILE_PATH);
     } else {

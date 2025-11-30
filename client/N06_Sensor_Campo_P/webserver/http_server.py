@@ -12,7 +12,12 @@ class TempWebServer:
     - /download         CSV bruto
     - /calibra          página de calibração do solo
     - /set_calibra      aplica calibração (via query seco=...&molhado=...)
+    - /set_interval     define intervalo de amostragem (mínimo 5 s)
     """
+
+    SAMPLE_CFG_PATH = "/sample_interval.json"
+    DEFAULT_SAMPLE_INTERVAL_S = 10
+    MIN_SAMPLE_INTERVAL_S = 5
 
     def __init__(self, logger, soil_sensor, ap_ssid="ESP32_TEMP", ap_password="12345678"):
         self.logger = logger
@@ -20,6 +25,7 @@ class TempWebServer:
         self.csv_path = logger.path
         self.ip = None
         self.sock = None
+        self.sample_interval_s = self._load_sample_interval()
 
         self._start_ap(ap_ssid, ap_password)
         self._start_http_server()
@@ -48,6 +54,38 @@ class TempWebServer:
         s.setblocking(False)
         self.sock = s
         print("Servidor HTTP escutando porta 80")
+
+    # ---------- Intervalo de amostragem ----------
+    def _normalize_interval(self, seconds):
+        try:
+            val = int(seconds)
+        except (TypeError, ValueError):
+            val = self.DEFAULT_SAMPLE_INTERVAL_S
+        if val < self.MIN_SAMPLE_INTERVAL_S:
+            val = self.MIN_SAMPLE_INTERVAL_S
+        return val
+
+    def _load_sample_interval(self):
+        try:
+            with open(self.SAMPLE_CFG_PATH, "r") as f:
+                data = json.load(f)
+            return self._normalize_interval(data.get("sample_interval_s"))
+        except (OSError, ValueError):
+            return self.DEFAULT_SAMPLE_INTERVAL_S
+
+    def _save_sample_interval(self):
+        try:
+            with open(self.SAMPLE_CFG_PATH, "w") as f:
+                json.dump({"sample_interval_s": self.sample_interval_s}, f)
+        except OSError:
+            pass
+
+    def get_sample_interval(self):
+        return self.sample_interval_s
+
+    def set_sample_interval(self, seconds):
+        self.sample_interval_s = self._normalize_interval(seconds)
+        self._save_sample_interval()
 
     # ---------- HTTP util ----------
     def _http_response(self, client, status, content_type, body, extra_headers=None):
@@ -191,6 +229,41 @@ a { color:#4af; }
             </body></html>""" % (msg, seco_val, molh_val)
         )
 
+    # ---------- /set_interval ----------
+    def _handle_set_interval(self, path_full, client):
+        intervalo_val = None
+
+        m = ure.search(r"\?(.*)", path_full)
+        if m:
+            qs = m.group(1)
+            for kv in qs.split("&"):
+                if "=" in kv:
+                    k, v = kv.split("=", 1)
+                    if k == "interval":
+                        intervalo_val = v
+                        break
+
+        ok = False
+        if intervalo_val is not None:
+            try:
+                self.set_sample_interval(int(intervalo_val))
+                ok = True
+            except:
+                ok = False
+
+        msg = "Intervalo atualizado para %d s." % self.sample_interval_s if ok else "Falha ao atualizar intervalo."
+        detalhe = "(mínimo %d s)" % self.MIN_SAMPLE_INTERVAL_S
+        self._http_response(
+            client,
+            "200 OK",
+            "text/html",
+            """<html><body style='background:#111;color:#eee;font-family:sans-serif;padding:1rem;'>
+            <h3>%s</h3>
+            <p>%s</p>
+            <p><a style='color:#4af;' href='/'>Voltar ao painel</a></p>
+            </body></html>""" % (msg, detalhe)
+        )
+
     # ---------- Página principal ----------
     def _page_main(self):
         return """<!DOCTYPE html>
@@ -204,12 +277,23 @@ h1 { color:#fff; }
 canvas { background:#222; border:1px solid #444; width:100%%; max-width:400px; height:200px; }
 a.btn { display:inline-block; background:#222; color:#eee; border:1px solid #444; padding:0.5rem 1rem; margin-right:0.5rem; border-radius:4px; text-decoration:none; }
 #status { font-size:0.8rem; color:#888; margin-top:0.5rem; }
+form.interval { margin-top:1rem; background:#181818; padding:0.75rem; border:1px solid #333; border-radius:4px; display:inline-block; }
+form.interval input { background:#222; color:#eee; border:1px solid #444; padding:0.3rem; width:6rem; }
+form.interval button { background:#222; color:#eee; border:1px solid #444; padding:0.4rem 0.9rem; border-radius:4px; margin-left:0.5rem; }
 </style>
 </head>
 <body>
 <h1>Unidade Eletrônica de Cultivo Remoto - greenSE</h1>
 <a class="btn" href="/download">Baixar CSV</a>
 <a class="btn" href="/calibra">Calibrar Solo</a>
+<h3>Intervalo de Amostragem</h3>
+<p>Amostragem atual: <b>%d s</b> (mínimo %d s)</p>
+<form class="interval" action="/set_interval" method="get">
+<label>Intervalo (s):
+<input type="number" name="interval" value="%d" min="%d" max="3600">
+</label>
+<button type="submit">Aplicar</button>
+</form>
 <h3>Temperatura do Ar (°C)</h3>
 <canvas id="chartTemp"></canvas>
 <h3>Umidade do Solo (%%)</h3>
@@ -235,13 +319,19 @@ function loadData(){
  fetch('/history').then(r=>r.json()).then(obj=>{
   drawChart('chartTemp',obj.temp_points||[],'Temp');
   drawChart('chartSolo',obj.solo_points||[],'Solo');
-  document.getElementById('status').innerText='Total pontos: '+(obj.temp_points.length);
+  document.getElementById('status').innerText='Total pontos: '+(obj.temp_points.length)+' | Intervalo atual: %d s';
  });
 }
 loadData();
 </script>
 </body></html>
-"""
+""" % (
+            self.sample_interval_s,
+            self.MIN_SAMPLE_INTERVAL_S,
+            self.sample_interval_s,
+            self.MIN_SAMPLE_INTERVAL_S,
+            self.sample_interval_s
+        )
 
     # ---------- loop principal ----------
     def poll_once(self):
@@ -266,6 +356,8 @@ loadData();
         try:
             if path.startswith("/set_calibra"):
                 self._handle_set_calibra(path, client)
+            elif path.startswith("/set_interval"):
+                self._handle_set_interval(path, client)
             elif path == "/":
                 self._http_response(client, "200 OK", "text/html", self._page_main())
             elif path == "/history":

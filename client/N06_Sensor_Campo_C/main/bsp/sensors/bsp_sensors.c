@@ -3,6 +3,7 @@
 #include "bsp_adc.h"
 #include "esp_log.h"
 #include "esp_random.h"
+#include "esp_err.h"
 #include <math.h>
 #include <stdbool.h>
 #include <stdint.h>
@@ -13,11 +14,14 @@ static const char *TAG = "BSP_SENSORS";
 static float last_temp_soil = NAN;
 static int last_soil_raw = -1;
 
-/* Geração de dados simulados para sensores sem hardware */
-static float simulated_temp_air = 26.0f;
-static float simulated_humid_air = 60.0f;
+/* Geração de dados simulados para sensores que ainda não existem no hardware */
 static float simulated_temp_soil = 24.0f;
 static int   simulated_soil_raw  = 2500;
+/* Dados simulados para temperatura/umidade do ar (aguardando AHT10) */
+static float simulated_temp_air = 25.0f;
+static float simulated_humid_air = 60.0f;
+/* Dados simulados para luminosidade (aguardando BH1750 GY-30) */
+static float simulated_luminosity = 500.0f;  // lux (simula ambiente interno/estufa)
 
 static float random_between(float min, float max)
 {
@@ -62,6 +66,9 @@ static esp_err_t bsp_sensors_init_impl(void)
         ESP_LOGE(TAG, "Falha ao inicializar ADC");
         return err;
     }
+
+    /* DHT11 removido - aguardando AHT10 I2C */
+    ESP_LOGI(TAG, "Sensor de ar (AHT10) não disponível - usando dados simulados");
     
     ESP_LOGI(TAG, "Sensores BSP inicializados");
     return ESP_OK;
@@ -103,12 +110,18 @@ static esp_err_t bsp_sensors_read_all_impl(bsp_sensor_data_t *data)
 {
     if (data == NULL) return ESP_ERR_INVALID_ARG;
     
-    // Atualiza valores simulados para sensores que não existem no hardware
-    simulated_temp_air  = update_simulated_value(simulated_temp_air, 20.0f, 40.0f, 0.5f);
-    simulated_humid_air = update_simulated_value(simulated_humid_air, 0.0f, 100.0f, 2.5f);
-
+    /* Dados simulados para temperatura/umidade do ar (aguardando AHT10) */
+    /* Simula variação realista: temperatura 20-30°C, umidade 40-80% */
+    simulated_temp_air = update_simulated_value(simulated_temp_air, 20.0f, 30.0f, 0.3f);
+    simulated_humid_air = update_simulated_value(simulated_humid_air, 40.0f, 80.0f, 1.0f);
+    
+    /* Dados simulados para luminosidade (aguardando BH1750 GY-30) */
+    /* Simula variação realista para estufa: 200-2000 lux */
+    simulated_luminosity = update_simulated_value(simulated_luminosity, 200.0f, 2000.0f, 50.0f);
+    
     data->temp_air  = simulated_temp_air;
     data->humid_air = simulated_humid_air;
+    data->luminosity = simulated_luminosity;
     
     // Temperatura do solo (gera simulação se não houver hardware)
     float temp_soil = NAN;

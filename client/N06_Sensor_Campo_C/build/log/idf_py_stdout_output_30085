@@ -1,0 +1,370 @@
+Command: /home/mrclnndrd/.espressif/python_env/idf5.5_py3.11_env/bin/python /home/mrclnndrd/esp/esp-idf/tools/idf_monitor.py -p /dev/ttyUSB0 -b 115200 --toolchain-prefix xtensa-esp32-elf- --target esp32 --revision 0 /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/sensor_campo.elf /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/bootloader/bootloader.elf -m '/home/mrclnndrd/.espressif/python_env/idf5.5_py3.11_env/bin/python' '/home/mrclnndrd/esp/esp-idf/tools/idf.py'
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x17 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:6380
+ho 0 tail 12 room 4
+load:0x40078000,len:15904
+load:0x40080400,len:3860
+entry 0x40080638
+[0;32mI (29) boot: ESP-IDF v5.5-dev-3372-g38628f98b9 2nd stage bootloader[0m
+[0;32mI (29) boot: compile time Nov 28 2025 06:27:02[0m
+[0;32mI (29) boot: Multicore bootloader[0m
+[0;32mI (32) boot: chip revision: v3.1[0m
+[0;32mI (35) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (39) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (42) boot.esp32: SPI Flash Size : 4MB[0m
+[0;32mI (46) boot: Enabling RNG early entropy source...[0m
+[0;32mI (50) boot: Partition Table:[0m
+[0;32mI (53) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (59) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (66) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (72) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (79) boot:  3 spiffs           Unknown data     01 82 00110000 002f0000[0m
+[0;32mI (85) boot: End of partition table[0m
+[0;32mI (89) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=2a8cch (174284) map[0m
+[0;32mI (156) esp_image: segment 1: paddr=0003a8f4 vaddr=3ff80000 size=0001ch (    28) load[0m
+[0;32mI (156) esp_image: segment 2: paddr=0003a918 vaddr=3ffb0000 size=03edch ( 16092) load[0m
+[0;32mI (166) esp_image: segment 3: paddr=0003e7fc vaddr=40080000 size=0181ch (  6172) load[0m
+[0;32mI (170) esp_image: segment 4: paddr=00040020 vaddr=400d0020 size=9f074h (651380) map[0m
+[0;32mI (397) esp_image: segment 5: paddr=000df09c vaddr=4008181c size=164f8h ( 91384) load[0m
+[0;32mI (445) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (445) boot: Disabling RNG early entropy source...[0m
+[0;32mI (455) cpu_start: Multicore app[0m
+[0;32mI (463) cpu_start: Pro cpu start user code[0m
+[0;32mI (464) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (464) app_init: Application information:[0m
+[0;32mI (466) app_init: Project name:     sensor_campo[0m
+[0;32mI (472) app_init: App version:      c4d3e91a-dirty[0m
+[0;32mI (477) app_init: Compile time:     Nov 28 2025 06:26:09[0m
+[0;32mI (483) app_init: ELF file SHA256:  8596df70d...[0m
+[0;32mI (489) app_init: ESP-IDF:          v5.5-dev-3372-g38628f98b9[0m
+[0;32mI (495) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (500) efuse_init: Max chip rev:     v3.99 [0m
+[0;32mI (505) efuse_init: Chip rev:         v3.1[0m
+[0;32mI (510) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (517) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (523) heap_init: At 3FFB80A8 len 00027F58 (159 KiB): DRAM[0m
+[0;32mI (529) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (535) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (542) heap_init: At 40097D14 len 000082EC (32 KiB): IRAM[0m
+[0;32mI (550) spi_flash: detected chip: generic[0m
+[0;32mI (553) spi_flash: flash io: dio[0m
+[0;32mI (558) main_task: Started on CPU0[0m
+[0;32mI (568) main_task: Calling app_main()[0m
+[0;32mI (588) BSP_LED: LED inicializado no GPIO 2[0m
+[0;32mI (588) BSP_DS18B20: DS18B20 inicializado no GPIO 4[0m
+[0;32mI (588) BSP_ADC: ADC umidade solo inicializado. canal=6 bitwidth=12 atten=3[0m
+[0;32mI (2688) BSP_DHT: ✓ DHT11 GPIO 5 está em HIGH (pull-up OK)[0m
+[0;32mI (2708) BSP_DHT: Bit 0: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (2708) BSP_DHT: Bit 1: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (2708) BSP_DHT: Bit 2: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;33mW (2718) BSP_DHT: Tentativa 1/3 de leitura inicial do DHT11 falhou: ESP_ERR_TIMEOUT[0m
+[0;32mI (4738) BSP_DHT: Bit 0: high_time=24 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (4738) BSP_DHT: Bit 1: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (4738) BSP_DHT: Bit 2: high_time=69 us (th=50) -> 1 | byte[0]=0x01[0m
+[0;33mW (4748) BSP_DHT: Tentativa 2/3 de leitura inicial do DHT11 falhou: ESP_ERR_TIMEOUT[0m
+[0;32mI (6768) BSP_DHT: Bit 0: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (6768) BSP_DHT: Bit 1: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (6768) BSP_DHT: Bit 2: high_time=69 us (th=50) -> 1 | byte[0]=0x01[0m
+[0;33mW (6778) BSP_DHT: Tentativa 3/3 de leitura inicial do DHT11 falhou: ESP_ERR_TIMEOUT[0m
+[0;33mW (6778) BSP_DHT: ⚠️ DHT11 no GPIO 5 não respondeu após 3 tentativas[0m
+[0;33mW (6788) BSP_DHT:    Checklist:[0m
+[0;33mW (6798) BSP_DHT:    [ ] Sensor conectado na GPIO 5 (não GPIO19!)[0m
+[0;33mW (6798) BSP_DHT:    [ ] Pull-up 10kΩ entre DATA (GPIO 5) e VCC (3.3V ou 5V)[0m
+[0;33mW (6808) BSP_DHT:    [ ] VCC do DHT11 conectado à alimentação correta[0m
+[0;33mW (6818) BSP_DHT:    [ ] GND do DHT11 conectado ao GND do ESP32[0m
+[0;33mW (6818) BSP_DHT:    [ ] Cabos curtos (< 20cm recomendado)[0m
+[0;32mI (6828) BSP_DHT: DHT11 configurado no GPIO 5[0m
+[0;32mI (6828) BSP_SENSORS: Sensores BSP inicializados[0m
+[0;32mI (6838) APP_SENSOR_MGR: Sensor Manager inicializado[0m
+[0;32mI (6848) APP_DATA_LOGGER: Inicializando SPIFFS...[0m
+[0;32mI (7158) APP_DATA_LOGGER: SPIFFS montado em /spiffs[0m
+[0;32mI (7158) APP_DATA_LOGGER: Total=2293769 bytes, Usado=2038 bytes[0m
+[0;32mI (7328) APP_DATA_LOGGER: Proximo indice de log sera: 15[0m
+[0;33mW (7518) APP_DATA_LOGGER: Arquivo /spiffs/soil_calib.json nao encontrado. Usando padrao (Seco: 4000, Molhado: 400)[0m
+[0;32mI (7518) APP_DATA_LOGGER: --- Lendo /spiffs/log_temp.csv ---[0m
+[0;32mI (7528) APP_DATA_LOGGER: N,temp_ar_C,umid_ar_pct,temp_solo_C,umid_solo_pct
+[0m
+[0;32mI (7528) APP_DATA_LOGGER: 1,26.48,60.93,24.50,0.00
+[0m
+[0;32mI (7538) APP_DATA_LOGGER: 2,26.66,58.68,24.44,0.00
+[0m
+[0;32mI (7538) APP_DATA_LOGGER: 3,26.65,61.00,24.50,0.00
+[0m
+[0;32mI (7548) APP_DATA_LOGGER: 4,26.93,60.55,24.50,0.00
+[0m
+[0;32mI (7558) APP_DATA_LOGGER: 5,26.65,62.20,24.50,0.00
+[0m
+[0;32mI (7558) APP_DATA_LOGGER: 6,26.54,63.10,24.50,0.00
+[0m
+[0;32mI (7568) APP_DATA_LOGGER: 7,26.26,62.05,24.50,0.00
+[0m
+[0;32mI (7568) APP_DATA_LOGGER: 8,26.17,60.11,24.56,0.00
+[0m
+[0;32mI (7578) APP_DATA_LOGGER: 9,25.92,61.43,24.56,0.00
+[0m
+[0;32mI (7578) APP_DATA_LOGGER: 10,26.03,59.60,24.56,0.00
+[0m
+[0;32mI (7588) APP_DATA_LOGGER: 11,25.64,58.11,24.56,0.00
+[0m
+[0;32mI (7598) APP_DATA_LOGGER: 12,25.62,57.06,24.56,0.00
+[0m
+[0;32mI (7598) APP_DATA_LOGGER: 13,25.50,55.45,24.56,0.00
+[0m
+[0;32mI (7608) APP_DATA_LOGGER: 14,25.48,53.21,24.56,0.00
+[0m
+[0;32mI (7608) APP_DATA_LOGGER: --- Fim do arquivo ---[0m
+[0;32mI (7618) APP_SAMPLING: Período carregado do NVS: 10000 ms[0m
+[0;32mI (7618) APP_GUI_SERVICES: Serviços GUI registrados[0m
+[0;32mI (7638) wifi:wifi driver task: 3ffc22cc, prio:23, stack:6656, core=0[0m
+[0;32mI (7648) wifi:wifi firmware version: 7d2994f4b[0m
+[0;32mI (7648) wifi:wifi certification version: v7.0[0m
+[0;32mI (7648) wifi:config NVS flash: enabled[0m
+[0;32mI (7648) wifi:config nano formatting: disabled[0m
+[0;32mI (7648) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (7658) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (7658) wifi:Init management short buffer num: 32[0m
+[0;32mI (7668) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (7668) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (7668) wifi:Init static rx buffer num: 10[0m
+[0;32mI (7678) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (7678) wifi_init: rx ba win: 6[0m
+[0;32mI (7688) wifi_init: accept mbox: 6[0m
+[0;32mI (7688) wifi_init: tcpip mbox: 32[0m
+[0;32mI (7688) wifi_init: udp mbox: 6[0m
+[0;32mI (7698) wifi_init: tcp mbox: 6[0m
+[0;32mI (7698) wifi_init: tcp tx win: 5760[0m
+[0;32mI (7708) wifi_init: tcp rx win: 5760[0m
+[0;32mI (7708) wifi_init: tcp mss: 1440[0m
+[0;32mI (7708) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (7718) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (7728) phy_init: phy_version 4860,6b7a6e5,Feb  6 2025,14:47:07[0m
+[0;32mI (7808) phy_init: Saving new calibration data due to checksum failure or outdated calibration data, mode(0)[0m
+[0;32mI (7828) wifi:mode : softAP (38:18:2b:ea:b7:cd)[0m
+[0;32mI (7828) wifi:Total power save buffer number: 16[0m
+[0;32mI (7828) wifi:Init max length of beacon: 752/752[0m
+[0;32mI (7838) wifi:Init max length of beacon: 752/752[0m
+[0;32mI (7838) BSP_WIFI_AP: Modo AP iniciado. SSID='ESP32_TEMP' senha='12345678'[0m
+[0;32mI (7838) esp_netif_lwip: DHCP server started on interface WIFI_AP_DEF with IP: 192.168.4.1[0m
+[0;32mI (7858) GUI_HTTP_SERVER: Servidor HTTP iniciado e rotas registradas. Acesse http://192.168.4.1/[0m
+[0;32mI (7858) APP_MAIN: Sistema iniciado - Arquitetura BSP/APP/GUI[0m
+[0;32mI (7868) main_task: Returned from app_main()[0m
+[0;32mI (7878) BSP_DHT: Bit 0: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;33mW (7878) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (9058) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 24.62 C / 0.00 %[0m
+[0;32mI (17878) BSP_DHT: Bit 0: high_time=24 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (17878) BSP_DHT: Bit 1: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;33mW (17878) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (18648) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 24.62 C / 0.00 %[0m
+[0;32mI (27868) BSP_DHT: Bit 0: high_time=24 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (27868) BSP_DHT: Bit 1: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;33mW (27868) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (28868) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 24.37 C / 0.00 %[0m
+[0;32mI (37858) BSP_DHT: Bit 0: high_time=24 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (37858) BSP_DHT: Bit 1: high_time=26 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;33mW (37858) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (38858) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 24.62 C / 0.00 %[0m
+[0;32mI (47848) BSP_DHT: Bit 0: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (47848) BSP_DHT: Bit 1: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;33mW (47848) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (48618) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 24.62 C / 0.00 %[0m
+[0;32mI (57838) BSP_DHT: Bit 0: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (57838) BSP_DHT: Bit 1: high_time=70 us (th=50) -> 1 | byte[0]=0x01[0m
+[0;33mW (57838) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (58838) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 24.62 C / 0.00 %[0m
+[0;32mI (67828) BSP_DHT: Bit 0: high_time=24 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (67828) BSP_DHT: Bit 1: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;33mW (67828) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (68828) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 24.62 C / 0.00 %[0m
+[0;32mI (77818) BSP_DHT: Bit 0: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (77818) BSP_DHT: Bit 1: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;33mW (77818) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (78588) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 24.69 C / 0.00 %[0m
+[0;32mI (87808) BSP_DHT: Bit 0: high_time=24 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (87808) BSP_DHT: Bit 1: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;33mW (87808) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (88808) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 24.69 C / 0.00 %[0m
+[0;32mI (97798) BSP_DHT: Bit 0: high_time=24 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (97798) BSP_DHT: Bit 1: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;33mW (97798) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (98798) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 24.69 C / 0.00 %[0m
+[0;32mI (107788) BSP_DHT: Bit 0: high_time=24 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (107788) BSP_DHT: Bit 1: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;33mW (107788) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (108558) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 24.69 C / 0.00 %[0m
+[0;32mI (117778) BSP_DHT: Bit 0: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (117778) BSP_DHT: Bit 1: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;33mW (117778) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (118778) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 24.69 C / 0.00 %[0m
+[0;32mI (127768) BSP_DHT: Bit 0: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (127768) BSP_DHT: Bit 1: high_time=24 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;33mW (127768) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (128768) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 24.69 C / 0.00 %[0m
+[0;32mI (137758) BSP_DHT: Bit 0: high_time=24 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (137758) BSP_DHT: Bit 1: high_time=69 us (th=50) -> 1 | byte[0]=0x01[0m
+[0;33mW (137758) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (138528) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 24.69 C / 0.00 %[0m
+[0;32mI (147748) BSP_DHT: Bit 0: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (147748) BSP_DHT: Bit 1: high_time=22 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;33mW (147748) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (148748) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 24.69 C / 0.00 %[0m
+[0;32mI (157738) BSP_DHT: Bit 0: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (157738) BSP_DHT: Bit 1: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;33mW (157738) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (158738) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 24.69 C / 0.00 %[0m
+[0;32mI (167728) BSP_DHT: Bit 0: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (167728) BSP_DHT: Bit 1: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;33mW (167728) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (168498) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 24.69 C / 0.00 %[0m
+[0;32mI (177718) BSP_DHT: Bit 0: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (177718) BSP_DHT: Bit 1: high_time=69 us (th=50) -> 1 | byte[0]=0x01[0m
+[0;33mW (177718) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (178718) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 24.69 C / 0.00 %[0m
+[0;32mI (187708) BSP_DHT: Bit 0: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (187708) BSP_DHT: Bit 1: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;33mW (187708) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (188708) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 24.69 C / 0.00 %[0m
+[0;32mI (197698) BSP_DHT: Bit 0: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (197698) BSP_DHT: Bit 1: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;33mW (197698) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (198468) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 24.69 C / 0.00 %[0m
+[0;32mI (207688) BSP_DHT: Bit 0: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (207688) BSP_DHT: Bit 1: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;33mW (207688) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (208688) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 24.69 C / 0.00 %[0m
+[0;32mI (217678) BSP_DHT: Bit 0: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (217678) BSP_DHT: Bit 1: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;33mW (217678) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (218678) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 24.75 C / 0.00 %[0m
+[0;32mI (227668) BSP_DHT: Bit 0: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (227668) BSP_DHT: Bit 1: high_time=22 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;33mW (227668) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (228438) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 24.69 C / 0.00 %[0m
+[0;32mI (237658) BSP_DHT: Bit 0: high_time=24 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (237658) BSP_DHT: Bit 1: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;33mW (237658) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (238658) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 24.69 C / 0.00 %[0m
+[0;32mI (247648) BSP_DHT: Bit 0: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (247648) BSP_DHT: Bit 1: high_time=24 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;33mW (247648) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (248648) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 24.75 C / 0.00 %[0m
+[0;32mI (257638) BSP_DHT: Bit 0: high_time=24 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (257638) BSP_DHT: Bit 1: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;33mW (257638) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (258408) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 24.75 C / 0.00 %[0m
+[0;32mI (267628) BSP_DHT: Bit 0: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (267628) BSP_DHT: Bit 1: high_time=26 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;33mW (267628) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (268628) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 24.75 C / 0.00 %[0m
+[0;32mI (277618) BSP_DHT: Bit 0: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (277618) BSP_DHT: Bit 1: high_time=24 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;33mW (277618) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (278618) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 24.75 C / 0.00 %[0m
+[0;32mI (287608) BSP_DHT: Bit 0: high_time=24 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (287608) BSP_DHT: Bit 1: high_time=24 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;33mW (287608) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (288608) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 24.75 C / 0.00 %[0m
+[0;32mI (297598) BSP_DHT: Bit 0: high_time=24 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (297598) BSP_DHT: Bit 1: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;33mW (297598) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (298368) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 24.75 C / 0.00 %[0m
+[0;32mI (307588) BSP_DHT: Bit 0: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (307588) BSP_DHT: Bit 1: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;33mW (307588) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (308588) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 24.75 C / 0.00 %[0m
+[0;32mI (317578) BSP_DHT: Bit 0: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (317578) BSP_DHT: Bit 1: high_time=24 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;33mW (317578) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (318578) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 24.75 C / 0.00 %[0m
+[0;32mI (327568) BSP_DHT: Bit 0: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (327568) BSP_DHT: Bit 1: high_time=26 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;33mW (327568) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (328338) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 24.75 C / 0.00 %[0m
+[0;32mI (337558) BSP_DHT: Bit 0: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (337558) BSP_DHT: Bit 1: high_time=24 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;33mW (337558) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (338558) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 24.75 C / 0.00 %[0m
+[0;32mI (347548) BSP_DHT: Bit 0: high_time=24 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (347548) BSP_DHT: Bit 1: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;33mW (347548) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (348548) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 24.75 C / 0.00 %[0m
+[0;32mI (357538) BSP_DHT: Bit 0: high_time=24 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (357538) BSP_DHT: Bit 1: high_time=69 us (th=50) -> 1 | byte[0]=0x01[0m
+[0;33mW (357538) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (358308) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 24.75 C / 0.00 %[0m
+[0;32mI (367528) BSP_DHT: Bit 0: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (367528) BSP_DHT: Bit 1: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;33mW (367528) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (368528) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 24.75 C / 0.00 %[0m
+[0;32mI (377518) BSP_DHT: Bit 0: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (377518) BSP_DHT: Bit 1: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;33mW (377518) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (378518) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 24.81 C / 0.00 %[0m
+[0;32mI (387508) BSP_DHT: Bit 0: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (387508) BSP_DHT: Bit 1: high_time=24 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;33mW (387508) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (388278) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 24.75 C / 0.00 %[0m
+[0;32mI (397498) BSP_DHT: Bit 0: high_time=24 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (397498) BSP_DHT: Bit 1: high_time=24 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;33mW (397498) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (398498) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 24.75 C / 0.00 %[0m
+[0;32mI (407488) BSP_DHT: Bit 0: high_time=24 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (407488) BSP_DHT: Bit 1: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;33mW (407488) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (408488) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 24.75 C / 0.00 %[0m
+[0;32mI (417478) BSP_DHT: Bit 0: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (417478) BSP_DHT: Bit 1: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;33mW (417478) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (418248) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 24.81 C / 0.00 %[0m
+[0;32mI (427468) BSP_DHT: Bit 0: high_time=24 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (427468) BSP_DHT: Bit 1: high_time=22 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;33mW (427468) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (428468) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 24.81 C / 0.00 %[0m
+[0;32mI (437458) BSP_DHT: Bit 0: high_time=24 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (437458) BSP_DHT: Bit 1: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;33mW (437458) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (438458) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 24.75 C / 0.00 %[0m
+[0;32mI (447448) BSP_DHT: Bit 0: high_time=24 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (447448) BSP_DHT: Bit 1: high_time=24 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;33mW (447448) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (448218) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 24.81 C / 0.00 %[0m
+[0;32mI (457438) BSP_DHT: Bit 0: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (457438) BSP_DHT: Bit 1: high_time=24 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;33mW (457438) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (458438) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 24.81 C / 0.00 %[0m
+[0;32mI (467428) BSP_DHT: Bit 0: high_time=24 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (467428) BSP_DHT: Bit 1: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;33mW (467428) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (468428) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 24.81 C / 0.00 %[0m
+[0;32mI (477418) BSP_DHT: Bit 0: high_time=24 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (477418) BSP_DHT: Bit 1: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;33mW (477418) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (478188) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 24.81 C / 0.00 %[0m
+[0;32mI (487408) BSP_DHT: Bit 0: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (487408) BSP_DHT: Bit 1: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;33mW (487408) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (488408) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 24.81 C / 0.00 %[0m
+[0;32mI (497398) BSP_DHT: Bit 0: high_time=24 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (497398) BSP_DHT: Bit 1: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;33mW (497398) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (498398) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 24.81 C / 0.00 %[0m
+[0;32mI (507388) BSP_DHT: Bit 0: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (507388) BSP_DHT: Bit 1: high_time=24 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;33mW (507388) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (508158) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 24.81 C / 0.00 %[0m
+[0;32mI (517378) BSP_DHT: Bit 0: high_time=24 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (517378) BSP_DHT: Bit 1: high_time=24 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;33mW (517378) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (518378) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 24.81 C / 0.00 %[0m
+[0;32mI (527368) BSP_DHT: Bit 0: high_time=24 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (527368) BSP_DHT: Bit 1: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;33mW (527368) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (528368) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 24.81 C / 0.00 %[0m
+[0;32mI (537358) BSP_DHT: Bit 0: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;32mI (537358) BSP_DHT: Bit 1: high_time=23 us (th=50) -> 0 | byte[0]=0x00[0m
+[0;33mW (537358) BSP_SENSORS: Leitura DHT11 falhou (ESP_ERR_TIMEOUT); temperatura/umidade do ar marcadas como não lidas[0m
+[0;32mI (538128) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 24.88 C / 0.00 %[0m

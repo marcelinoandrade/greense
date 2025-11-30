@@ -49,6 +49,7 @@ idf_component_register(
     "spiffs"            # Para o data_logger (esp_vfs_spiffs_register)
     "driver"            # Para GPIO
     "esp_rom"           # Para o ds18b20 (esp_rom_sys.h)
+    "esp_timer"         # Para medição de tempo em app_main.c
     "freertos"          # Para o ds18b20 e tarefas
     "vfs"               # Para esp_vfs.h
 )

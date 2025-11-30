@@ -20,6 +20,7 @@ typedef struct {
     float humid_air;     // % (0-100)
     float temp_soil;     // °C
     int   soil_raw;      // ADC raw (0-4095)
+    float luminosity;    // lux (intensidade de luminosidade)
 } bsp_sensor_data_t;
 
 typedef struct {

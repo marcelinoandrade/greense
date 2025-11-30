@@ -3,12 +3,16 @@
 #include <stdbool.h>
 #include "esp_err.h"
 
+typedef struct gui_recent_stats gui_recent_stats_t;
+
 /* Estrutura de uma amostra registrada no CSV */
 typedef struct {
     float temp_ar;     /* °C ar */
     float umid_ar;     /* % ar */
     float temp_solo;   /* °C solo */
     float umid_solo;   /* % solo convertida via calibração */
+    float luminosidade; /* lux (intensidade de luminosidade) */
+    float dpv;         /* kPa (Déficit de Pressão de Vapor) */
 } log_entry_t;
 
 /* Inicializa SPIFFS, carrega/calibra solo, prepara/analisa log_temp.csv.
@@ -43,6 +47,12 @@ void data_logger_dump_to_logcat(void);
  * Retorna NULL se falhar.
  */
 char *data_logger_build_history_json(void);
+
+/* Calcula estatísticas simples (mín/máx/média/última leitura) para cada sensor
+ * considerando até max_samples mais recentes armazenadas.
+ * Retorna true em caso de sucesso na leitura do arquivo.
+ */
+bool data_logger_get_recent_stats(int max_samples, gui_recent_stats_t *stats_out);
 
 /* Converte leitura ADC bruta de umidade do solo (solo seco = valor alto)
  * em % [0..100] usando a calibração em RAM.
