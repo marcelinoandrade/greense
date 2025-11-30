@@ -87,12 +87,6 @@ O sistema captura imagens térmicas a cada 30 minutos, permitindo monitoramento 
 
 ![Imagens Térmicas - Conjunto 2](imagens/imagensTermicas1.png)
 
-### Imagens de Teste e Validação
-
-Imagens capturadas durante testes de aquisição e validação do sistema:
-
-![Testes de Aquisição](imagens/imagensTermicas.png)
-
 ---
 
 ## 🧠 Arquitetura de Software
