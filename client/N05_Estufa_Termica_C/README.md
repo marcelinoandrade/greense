@@ -1,12 +1,12 @@
 # 🔥 Sistema de Monitoramento Térmico para Estufa NFT com ESP32-S3 (ESP-IDF)
 
-Sistema embarcado em **C (ESP-IDF)** para aquisição de imagens térmicas usando o sensor **MLX90640** (módulo GY-MCU90640) e envio automático via **HTTP POST** para um servidor remoto, com sincronização NTP e aquisições agendadas por horários. O sistema monitora uma estufa NFT (Nutrient Film Technique) capturando imagens visuais e térmicas para análise de temperatura e condições de cultivo. O firmware executa em uma **placa ESP32-S3** que integra capacidades de processamento avançado, conectividade Wi-Fi robusta e interface com câmera para captura simultânea de imagens visuais e térmicas, permitindo monitoramento completo e análise precisa das condições ambientais da estufa.
+Sistema embarcado em **C (ESP-IDF)** para aquisição de imagens térmicas usando o sensor **MLX90640** (módulo GY-MCU90640) e envio automático via **HTTP POST** para um servidor remoto, com sincronização NTP e aquisições agendadas por horários. O sistema monitora uma estufa NFT (Nutrient Film Technique) capturando imagens visuais e térmicas para análise de temperatura e condições de cultivo. O firmware executa em uma **placa ESP32-S3** que integra capacidades de processamento avançado, conectividade Wi-Fi robusta e interface com câmera **OV2640 com lente de 120 graus** para captura simultânea de imagens visuais e térmicas, permitindo monitoramento completo e análise precisa das condições ambientais da estufa. **Todas as imagens capturadas são salvas automaticamente no cartão SD** para backup local e análise posterior, garantindo que nenhum dado seja perdido mesmo em caso de falha de comunicação.
 
 ---
 
 ## ⚙️ Descrição Geral
 
-O firmware executa em uma **placa ESP32-S3** conectada ao módulo **MLX90640BAB/BAA**, capturando quadros térmicos (24 × 32 pixels) via UART e enviando os dados como JSON para um endpoint HTTP configurável em horários pré-definidos. A ESP32-S3 oferece recursos avançados de processamento, maior capacidade de memória e melhor desempenho de Wi-Fi, permitindo operações mais complexas e confiáveis para o monitoramento contínuo da estufa.
+O firmware executa em uma **placa ESP32-S3** conectada ao módulo **MLX90640BAB/BAA**, capturando quadros térmicos (24 × 32 pixels) via UART e enviando os dados como JSON para um endpoint HTTP configurável em horários pré-definidos. A ESP32-S3 oferece recursos avançados de processamento, maior capacidade de memória e melhor desempenho de Wi-Fi, permitindo operações mais complexas e confiáveis para o monitoramento contínuo da estufa. O sistema utiliza uma **câmera visual OV2640 com lente de 120 graus** integrada ao módulo ESP32-S3 Camera, proporcionando campo de visão amplo para captura completa da estufa.
 
 O sistema realiza:
 - 🧠 Captura e decodificação de frames (0x5A 0x5A)  
@@ -15,8 +15,9 @@ O sistema realiza:
 - ⏰ Sincronização NTP para horário real  
 - 📅 Aquisições agendadas por horários configuráveis (16 horários diários)  
 - 🔄 Envio de dados em JSON via HTTP POST  
+- 💾 Salvamento automático de imagens no cartão SD (visual, térmica e sobreposta)
 - 💡 Sinalização por LED em diferentes estados de operação  
-- 📸 Integração com câmera visual ESP32-S3 para captura de imagens visuais e térmicas da estufa
+- 📸 Integração com câmera visual OV2640 (lente de 120°) para captura de imagens visuais e térmicas da estufa
 
 ---
 
@@ -28,7 +29,8 @@ O sistema realiza:
 |-------------|---------|-----------|
 | **MLX90640BAB/BAA** | Câmera térmica 24 × 32 px | UART |
 | **ESP32-S3** | Microcontrolador principal | USB-C, Wi-Fi, GPIO |
-| **ESP32-S3 Camera** | Câmera visual para captura de imagens | Wi-Fi, HTTP |
+| **OV2640 (ESP32-S3 Camera)** | Câmera visual com lente de 120° para captura de imagens | Wi-Fi, HTTP |
+| **Cartão SD** | Armazenamento local de imagens (visual, térmica e sobreposta) | SPI/SDMMC |
 | **LED GPIO 8** | Indicador de status | Digital |
 | **UART TX/RX (5/4)** | Comunicação com MLX90640 | UART1 |
 
@@ -37,7 +39,9 @@ O sistema realiza:
 #### Câmera Térmica MLX90640
 ![Câmera Térmica](imagens/camera_termica.png)
 
-#### Câmera Visual ESP32-S3
+#### Câmera Visual OV2640 com Lente de 120 Graus
+Câmera visual OV2640 integrada ao módulo ESP32-S3 Camera, equipada com lente de 120 graus para captura de campo de visão amplo da estufa.
+
 ![Câmera Visual](imagens/camera_visual.png)
 
 #### ESP32-S3 Camera Module
@@ -127,6 +131,8 @@ main/
    - Calcula próximo horário de aquisição (16 horários configurados)
    - Aguarda até o horário programado (verifica a cada minuto)
    - Captura frame térmico (24×32 = 768 pontos)
+   - Captura imagens visual, térmica e sobreposta da estufa
+   - Salva imagens no cartão SD
    - Envia dados via HTTP POST
    - Feedback visual via LED
 
@@ -254,6 +260,54 @@ Content-Type: application/json
 
 ---
 
+## 💾 Armazenamento no Cartão SD
+
+O sistema salva automaticamente todas as imagens capturadas no **cartão SD** para backup local e análise posterior. Isso garante que nenhum dado seja perdido mesmo em caso de falha de comunicação ou problemas de rede.
+
+### Tipos de Imagens Salvas
+
+1. **Imagens Visuais**: Capturas da estufa em espectro visível (formato JPG)
+2. **Imagens Térmicas**: Visualizações térmicas da estufa (formato JPG)
+3. **Imagens Sobrepostas**: Combinação de visual e térmica (formato JPG)
+
+### Estrutura de Armazenamento
+
+As imagens são organizadas no cartão SD com a seguinte estrutura:
+
+```
+/sd/
+├── visual/
+│   ├── estufa_2024-01-15_10-10-00.jpg
+│   ├── estufa_2024-01-15_10-40-00.jpg
+│   └── ...
+├── termica/
+│   ├── estufa_2024-01-15_10-10-00.jpg
+│   ├── estufa_2024-01-15_10-40-00.jpg
+│   └── ...
+└── sobreposta/
+    ├── estufa_2024-01-15_10-10-00.jpg
+    ├── estufa_2024-01-15_10-40-00.jpg
+    └── ...
+```
+
+### Características do Armazenamento
+
+- **Formato de arquivo**: JPG para todas as imagens
+- **Nomenclatura**: `estufa_YYYY-MM-DD_HH-MM-SS.jpg` (baseado em timestamp NTP)
+- **Frequência**: A cada aquisição térmica (16 vezes por dia)
+- **Backup automático**: Imagens salvas antes do envio HTTP
+- **Recuperação**: Dados podem ser recuperados do SD mesmo se o envio falhar
+
+### Vantagens do Armazenamento Local
+
+- ✅ **Backup seguro**: Dados preservados localmente
+- ✅ **Análise offline**: Imagens disponíveis mesmo sem internet
+- ✅ **Histórico completo**: Registro de todas as capturas
+- ✅ **Recuperação de dados**: Possibilidade de reenvio em caso de falha
+- ✅ **Análise posterior**: Dados disponíveis para processamento futuro
+
+---
+
 ## ⏰ Sincronização NTP e Agendamento
 
 O sistema utiliza **NTP (Network Time Protocol)** para sincronização de horário:
@@ -351,6 +405,7 @@ idf_component_register(
 - Frame: 24×32 = 768 pontos float
 - Intervalo válido: –40 °C a 200 °C
 - Wi-Fi 2.4 GHz ativo
+- Cartão SD (formato FAT32) para armazenamento de imagens
 
 ### Software
 
@@ -439,10 +494,9 @@ I (15002) APP_MAIN: ✅ Dados enviados com sucesso na tentativa 1
 - [ ] Adicionar modo de aquisição contínua (não agendada)
 - [ ] Visualização térmica em tempo real
 - [ ] IA para detecção de eventos térmicos
-- [ ] Armazenamento local em caso de falha de envio
 - [ ] Interface web para configuração remota
-- [ ] Integração completa com ESP32-S3 Camera para captura automática de imagens visuais e térmicas
 - [ ] Dashboard web para visualização de dados históricos
+- [ ] Sistema de sincronização automática de imagens do SD para servidor
 
 ---
 
@@ -467,6 +521,7 @@ Desenvolvido por **Prof. Marcelino Monteiro de Andrade**
 - ✅ Verificação periódica de conectividade
 - ✅ Validação de horários e timestamps
 - ✅ Logs formatados e legíveis
-- ✅ Integração com câmera visual ESP32-S3
+- ✅ Integração com câmera visual OV2640 (lente de 120°)
 - ✅ Captura de imagens visuais, térmicas e sobrepostas da estufa NFT
+- ✅ Salvamento automático de imagens no cartão SD
 - ✅ Monitoramento contínuo com 16 aquisições diárias
