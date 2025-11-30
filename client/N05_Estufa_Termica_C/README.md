@@ -1,6 +1,6 @@
-# 🔥 Câmera Térmica MLX90640 com ESP32-C3 (ESP-IDF)
+# 🔥 Sistema de Monitoramento Térmico para Estufa NFT com ESP32-C3 (ESP-IDF)
 
-Sistema embarcado em **C (ESP-IDF)** para aquisição de imagens térmicas usando o sensor **MLX90640** (módulo GY-MCU90640) e envio automático via **HTTP POST** para um servidor remoto, com sincronização NTP e aquisições agendadas por horários.
+Sistema embarcado em **C (ESP-IDF)** para aquisição de imagens térmicas usando o sensor **MLX90640** (módulo GY-MCU90640) e envio automático via **HTTP POST** para um servidor remoto, com sincronização NTP e aquisições agendadas por horários. O sistema monitora uma estufa NFT (Nutrient Film Technique) capturando imagens visuais e térmicas para análise de temperatura e condições de cultivo.
 
 ---
 
@@ -13,24 +13,35 @@ O sistema realiza:
 - 🌡️ Conversão binária → temperatura (°C)  
 - 🌐 Conexão Wi-Fi com reconexão automática  
 - ⏰ Sincronização NTP para horário real  
-- 📅 Aquisições agendadas por horários configuráveis  
+- 📅 Aquisições agendadas por horários configuráveis (16 horários diários)  
 - 🔄 Envio de dados em JSON via HTTP POST  
 - 💡 Sinalização por LED em diferentes estados de operação  
+- 📸 Integração com câmera visual ESP32-S3 para captura de imagens visuais e térmicas da estufa
 
 ---
 
 ## 🧩 Hardware Utilizado
 
+### Componentes Principais
+
 | Componente | Função | Interface |
 |-------------|---------|-----------|
 | **MLX90640BAB/BAA** | Câmera térmica 24 × 32 px | UART |
 | **ESP32-C3 SuperMini** | Microcontrolador principal | USB-C, Wi-Fi, GPIO |
+| **ESP32-S3 Camera** | Câmera visual para captura de imagens | Wi-Fi, HTTP |
 | **LED GPIO 8** | Indicador de status | Digital |
 | **UART TX/RX (5/4)** | Comunicação com MLX90640 | UART1 |
 
-| Sensor MLX90640 | ESP32-C3 SuperMini | Testes de Aquisição |
-|-----------------|-------------------|-------------------|
-| ![MLX90640](camera_termica.png) | ![ESP32-C3](esp32_c3.png) |![ESP32-C3](imagensTermicas.png) |
+### Imagens do Hardware
+
+#### Câmera Térmica MLX90640
+![Câmera Térmica](imagens/camera_termica.png)
+
+#### Câmera Visual ESP32-S3
+![Câmera Visual](imagens/camera_visual.png)
+
+#### ESP32-S3 Camera Module
+![ESP32-S3 Camera](imagens/esp32S3Camera.png)
 
 ### Conexões
 
@@ -40,6 +51,43 @@ O sistema realiza:
 | GND | G |
 | RX | GPIO 5 |
 | TX | GPIO 4 |
+
+---
+
+## 📸 Imagens Coletadas
+
+### Sequência de Imagens da Estufa NFT
+
+O sistema captura três tipos de imagens da estufa para análise completa:
+
+#### 1. Imagem Visual da Estufa
+Captura da estufa NFT em espectro visível, mostrando a estrutura física e as plantas.
+
+![Estufa NFT - Visual](imagens/estufaNFTVisual.jpg)
+
+#### 2. Imagem Térmica da Estufa
+Captura térmica da estufa NFT mostrando a distribuição de temperatura em toda a estrutura.
+
+![Estufa NFT - Térmica](imagens/estufaNFTTermica.jpg)
+
+#### 3. Imagem Sobreposta (Visual + Térmica)
+Imagem combinada mostrando a sobreposição da imagem visual com a térmica, permitindo análise precisa da temperatura em relação à estrutura física.
+
+![Estufa NFT - Sobreposta](imagens/EstufaNFTSobreposta.jpg)
+
+### Conjunto de Imagens Térmicas
+
+O sistema captura imagens térmicas a cada 30 minutos, permitindo monitoramento contínuo da temperatura:
+
+![Imagens Térmicas - Conjunto 1](imagens/imagensTermicas.png)
+
+![Imagens Térmicas - Conjunto 2](imagens/imagensTermicas1.png)
+
+### Imagens de Teste e Validação
+
+Imagens capturadas durante testes de aquisição e validação do sistema:
+
+![Testes de Aquisição](imagens/imagensTermicas.png)
 
 ---
 
@@ -56,7 +104,8 @@ main/
 ├── bsp/                      # Board Support Package (Hardware)
 │   ├── bsp_gpio.c/h          # Controle de GPIO (LED)
 │   ├── bsp_uart.c/h          # Comunicação UART com MLX90640
-│   └── bsp_wifi.c/h          # Conexão Wi-Fi e eventos
+│   ├── bsp_wifi.c/h          # Conexão Wi-Fi e eventos
+│   └── conexoes.c/h          # Definições de conexões
 │
 ├── app/                      # Camada de Aplicação
 │   ├── app_main.c/h          # Loop principal e orquestração
@@ -75,8 +124,8 @@ main/
 3. **Verificação de Internet**: Teste de conectividade HTTP
 4. **Sincronização NTP**: Obtenção de horário real
 5. **Loop Principal**:
-   - Calcula próximo horário de aquisição
-   - Aguarda até o horário programado
+   - Calcula próximo horário de aquisição (16 horários configurados)
+   - Aguarda até o horário programado (verifica a cada minuto)
    - Captura frame térmico (24×32 = 768 pontos)
    - Envia dados via HTTP POST
    - Feedback visual via LED
@@ -101,17 +150,29 @@ main/
 // Intervalo de leitura do sensor (segundos)
 #define SENSOR_READ_INTERVAL 5
 
-// Horários de aquisição (HH:MM)
+// Horários de aquisição (HH:MM) - 16 horários diários
 #define ACQUISITION_TIMES \
     { \
-        {12, 10},   \
-        {12, 12},   \
-        {12, 14},   \
-        {12, 16}    \
+        {22, 50},   \
+        {23, 50},   \
+        {0, 50},    \
+        {1, 50},    \
+        {2, 50},    \
+        {3, 50},    \
+        {4, 50},    \
+        {5, 50},    \
+        {6, 50},    \
+        {7, 50},    \
+        {8, 50},    \
+        {9, 50},    \
+        {10, 10},   \
+        {16, 0},    \
+        {21, 50},   \
+        {22, 10}    \
     }
 ```
 
-**Nota**: Os horários devem estar em ordem crescente e no formato 24 horas.
+**Nota**: Os horários devem estar em ordem crescente e no formato 24 horas. O sistema atual possui 16 horários de aquisição configurados para monitoramento contínuo ao longo do dia.
 
 ---
 
@@ -156,7 +217,7 @@ idf.py monitor
 ### Primeira Execução
 
 1. Configure as credenciais Wi-Fi em `main/secrets.h`
-2. Ajuste os horários de aquisição em `main/config.h`
+2. Ajuste os horários de aquisição em `main/config.h` (atualmente 16 horários)
 3. Compile e grave o firmware
 4. Observe o LED:
    - Apagado → Conectando ao Wi-Fi
@@ -204,8 +265,15 @@ O sistema utiliza **NTP (Network Time Protocol)** para sincronização de horár
 
 ### Horários de Aquisição
 
-As aquisições são agendadas conforme a tabela `ACQUISITION_TIMES` em `config.h`. O sistema:
+As aquisições são agendadas conforme a tabela `ACQUISITION_TIMES` em `config.h`. O sistema atual possui **16 horários de aquisição** distribuídos ao longo do dia:
 
+- **22:50, 23:50** (noite)
+- **00:50, 01:50, 02:50, 03:50, 04:50, 05:50, 06:50, 07:50, 08:50, 09:50** (madrugada/manhã)
+- **10:10** (manhã)
+- **16:00** (tarde)
+- **21:50, 22:10** (noite)
+
+O sistema:
 1. Calcula o próximo horário de aquisição baseado na hora atual
 2. Aguarda até o horário programado (verifica a cada minuto)
 3. Executa a aquisição quando o horário é atingido
@@ -230,12 +298,14 @@ As aquisições são agendadas conforme a tabela `ACQUISITION_TIMES` em `config.
 - **Delay de 3 segundos** entre tentativas
 - **Timeout de 30 segundos** por requisição
 - **Validação de status HTTP** (2xx = sucesso)
+- **Verificação periódica de conectividade** a cada 5 ciclos
 
 ### NTP
 
 - **Retry automático** se sincronização falhar
 - **Validação de timestamp** antes de calcular horários
 - **Re-sincronização** quando detecta timestamp inválido
+- **Validação de horários** (não permite esperas maiores que 24 horas)
 
 ---
 
@@ -295,6 +365,7 @@ idf_component_register(
 - **Tempo de envio HTTP**: ~5-15 segundos (depende da rede)
 - **Ciclo completo**: ~1-1.5 minutos (incluindo delays)
 - **Consumo**: Baixo (Wi-Fi em modo STA, sem power saving)
+- **Frequência de aquisição**: 16 vezes por dia (a cada ~1.5 horas em média)
 
 ---
 
@@ -324,6 +395,11 @@ idf_component_register(
 - Verifique o timezone configurado (BRT3)
 - Valide os horários em `config.h`
 
+### Múltiplas aquisições no mesmo minuto
+
+- O sistema possui um delay de 1 minuto após cada aquisição para evitar duplicatas
+- Verifique se os horários em `config.h` não estão muito próximos
+
 ---
 
 ## 📊 Logs e Debug
@@ -335,8 +411,25 @@ O sistema gera logs detalhados para facilitar o debug:
 - **APP_TIME**: Sincronização NTP e cálculo de horários
 - **APP_THERMAL**: Captura de frames térmicos
 - **GUI_LED**: Mudanças de estado do LED
+- **APP_MAIN**: Orquestração principal e ciclo de aquisição
 
 Use `idf.py monitor` para visualizar os logs em tempo real.
+
+### Exemplo de Logs
+
+```
+I (12345) APP_MAIN: Hora atual: 2024-01-15 10:10:00
+I (12346) APP_MAIN: Próxima aquisição: 2024-01-15 10:10:00 (em 0 segundos)
+I (12347) APP_MAIN: ⏰ Hora de aquisição!
+I (12348) APP_MAIN: Ciclo 1 - Iniciando aquisição...
+I (12349) APP_THERMAL: Capturando frame térmico...
+I (12500) APP_HTTP: Preparando dados HTTP...
+I (12501) APP_HTTP: JSON completo (8500 bytes): {"temperaturas":[...],"timestamp":1734269400}
+I (12502) APP_HTTP: Enviando POST... (JSON: 8500 bytes)
+I (15000) APP_HTTP: Status HTTP: 200
+I (15001) APP_HTTP: ✅ POST 200 - Sucesso!
+I (15002) APP_MAIN: ✅ Dados enviados com sucesso na tentativa 1
+```
 
 ---
 
@@ -348,6 +441,8 @@ Use `idf.py monitor` para visualizar os logs em tempo real.
 - [ ] IA para detecção de eventos térmicos
 - [ ] Armazenamento local em caso de falha de envio
 - [ ] Interface web para configuração remota
+- [ ] Integração completa com ESP32-S3 Camera para captura automática de imagens visuais e térmicas
+- [ ] Dashboard web para visualização de dados históricos
 
 ---
 
@@ -364,9 +459,14 @@ Desenvolvido por **Prof. Marcelino Monteiro de Andrade**
 
 ### Versão Atual
 - ✅ Arquitetura modular (BSP, APP, GUI)
-- ✅ Sincronização NTP
-- ✅ Aquisições agendadas por horários
+- ✅ Sincronização NTP com validação robusta
+- ✅ Aquisições agendadas por horários (16 horários diários)
 - ✅ Sistema de LED com feedback visual
 - ✅ Reconexão automática Wi-Fi
 - ✅ Retry automático de envio HTTP
+- ✅ Verificação periódica de conectividade
+- ✅ Validação de horários e timestamps
 - ✅ Logs formatados e legíveis
+- ✅ Integração com câmera visual ESP32-S3
+- ✅ Captura de imagens visuais, térmicas e sobrepostas da estufa NFT
+- ✅ Monitoramento contínuo com 16 aquisições diárias
