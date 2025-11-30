@@ -1,12 +1,12 @@
-# 🔥 Sistema de Monitoramento Térmico para Estufa NFT com ESP32-C3 (ESP-IDF)
+# 🔥 Sistema de Monitoramento Térmico para Estufa NFT com ESP32-S3 (ESP-IDF)
 
-Sistema embarcado em **C (ESP-IDF)** para aquisição de imagens térmicas usando o sensor **MLX90640** (módulo GY-MCU90640) e envio automático via **HTTP POST** para um servidor remoto, com sincronização NTP e aquisições agendadas por horários. O sistema monitora uma estufa NFT (Nutrient Film Technique) capturando imagens visuais e térmicas para análise de temperatura e condições de cultivo.
+Sistema embarcado em **C (ESP-IDF)** para aquisição de imagens térmicas usando o sensor **MLX90640** (módulo GY-MCU90640) e envio automático via **HTTP POST** para um servidor remoto, com sincronização NTP e aquisições agendadas por horários. O sistema monitora uma estufa NFT (Nutrient Film Technique) capturando imagens visuais e térmicas para análise de temperatura e condições de cultivo. O firmware executa em uma **placa ESP32-S3** que integra capacidades de processamento avançado, conectividade Wi-Fi robusta e interface com câmera para captura simultânea de imagens visuais e térmicas, permitindo monitoramento completo e análise precisa das condições ambientais da estufa.
 
 ---
 
 ## ⚙️ Descrição Geral
 
-O firmware executa em uma **placa ESP32-C3 SuperMini** conectada ao módulo **MLX90640BAB/BAA**, capturando quadros térmicos (24 × 32 pixels) via UART e enviando os dados como JSON para um endpoint HTTP configurável em horários pré-definidos.
+O firmware executa em uma **placa ESP32-S3** conectada ao módulo **MLX90640BAB/BAA**, capturando quadros térmicos (24 × 32 pixels) via UART e enviando os dados como JSON para um endpoint HTTP configurável em horários pré-definidos. A ESP32-S3 oferece recursos avançados de processamento, maior capacidade de memória e melhor desempenho de Wi-Fi, permitindo operações mais complexas e confiáveis para o monitoramento contínuo da estufa.
 
 O sistema realiza:
 - 🧠 Captura e decodificação de frames (0x5A 0x5A)  
@@ -27,7 +27,7 @@ O sistema realiza:
 | Componente | Função | Interface |
 |-------------|---------|-----------|
 | **MLX90640BAB/BAA** | Câmera térmica 24 × 32 px | UART |
-| **ESP32-C3 SuperMini** | Microcontrolador principal | USB-C, Wi-Fi, GPIO |
+| **ESP32-S3** | Microcontrolador principal | USB-C, Wi-Fi, GPIO |
 | **ESP32-S3 Camera** | Câmera visual para captura de imagens | Wi-Fi, HTTP |
 | **LED GPIO 8** | Indicador de status | Digital |
 | **UART TX/RX (5/4)** | Comunicação com MLX90640 | UART1 |
@@ -45,7 +45,7 @@ O sistema realiza:
 
 ### Conexões
 
-| MLX90640 | ESP32-C3 |
+| MLX90640 | ESP32-S3 |
 |-----------|-----------|
 | VIN | 5 V |
 | GND | G |

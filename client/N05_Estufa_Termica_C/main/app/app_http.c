@@ -88,7 +88,7 @@ bool app_http_send_thermal_data(const float temps[APP_THERMAL_TOTAL]) {
     // Headers necessários
     esp_http_client_set_header(client, "Content-Type", "application/json");
     esp_http_client_set_header(client, "Accept", "application/json");
-    esp_http_client_set_header(client, "User-Agent", "ESP32-C3-Thermal/1.0");
+    esp_http_client_set_header(client, "User-Agent", "ESP32-S3-Thermal/1.0");
     esp_http_client_set_post_field(client, json_buffer, json_len);
     
     ESP_LOGI(TAG, "Enviando POST... (JSON: %d bytes)", json_len);
