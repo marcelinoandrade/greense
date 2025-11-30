@@ -50,12 +50,14 @@ main/
 │   └── web/
 │       ├── gui_http_server.c  # Servidor HTTP e páginas HTML inline
 │       └── gui_http_server.h
-├── imagens/                   # Imagens dos hardwares utilizados
+├── imagens/                   # Imagens dos hardwares e interface
 │   ├── esp32_battery.png
 │   ├── sensorDs18b20.png
 │   ├── sensorumidade.png
 │   ├── sensorAHT10.png
-│   └── sensorBH1750.png
+│   ├── sensorBH1750.png
+│   ├── dashboardEstatisticas.png
+│   └── dashboardTolerancias.png
 ├── CMakeLists.txt             # Registro de fontes no componente `main`
 └── README.md                  # Este arquivo
 ```
@@ -124,6 +126,22 @@ main/
 - **Dashboard**: hero com resumo das leituras, tabela textual e gráficos personalizados desenhados via canvas para todos os sensores (temperatura do ar, umidade do ar, temperatura do solo, umidade do solo, luminosidade e DPV).
 - **Período de amostragem**: formulário com múltipla escolha (1 s → 12 h), descrições de impacto e botões responsivos.
 - **Calibração**: cards destacando leitura bruta e faixa atual, inputs com labels claros, dica prática e botão verde padrão para retorno ao painel.
+
+### Capturas de Tela do Dashboard
+
+#### Estatísticas dos Sensores
+
+| Dashboard - Estatísticas |
+|--------------------------|
+| ![Dashboard Estatísticas](imagens/dashboardEstatisticas.png) |
+| Visão geral das estatísticas dos sensores, incluindo valores mínimos, máximos, médios e últimas leituras para cada parâmetro monitorado. |
+
+#### Tabela de Tolerâncias
+
+| Dashboard - Tabela de Tolerâncias |
+|-----------------------------------|
+| ![Dashboard Tolerâncias](imagens/dashboardTolerancias.png) |
+| Tabela de tolerâncias que define os limites aceitáveis para cada parâmetro ambiental, auxiliando na interpretação dos dados coletados e na tomada de decisões para o manejo da cultura. |
 
 ---
 
