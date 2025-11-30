@@ -1,6 +1,6 @@
 # 🌱 Projeto GreenSe – Sensor de Campo IoT (ESP32)
 
-Sistema embarcado desenvolvido com **ESP-IDF (v5.x)** para monitoramento ambiental e de solo, integrando sensores de temperatura, umidade e armazenamento local, com interface web embarcada em servidor HTTP.  
+Sistema embarcado desenvolvido com **ESP-IDF (v5.x)** para monitoramento ambiental e de solo em aplicações de **agricultura inteligente**. O projeto integra múltiplos sensores (temperatura do solo, umidade do solo, temperatura e umidade do ar, luminosidade) com armazenamento local de dados em formato CSV, cálculo de parâmetros agronômicos (Déficit de Pressão de Vapor - DPV) e interface web embarcada acessível via Wi-Fi Access Point. O sistema permite visualização em tempo real de gráficos e estatísticas, calibração de sensores, configuração de períodos de amostragem e download de histórico de medições, proporcionando uma solução completa para monitoramento de campo autônomo e independente de infraestrutura de rede externa.  
 
 ## ⚙️ Visão Geral
 
