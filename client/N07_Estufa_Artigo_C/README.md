@@ -2,8 +2,6 @@
 
 Sistema embarcado em **C (ESP-IDF)** para captura de imagens usando **ESP32-S3 WROOM (N16R8)** com câmera visual, câmera térmica MLX90640, slot SD integrado, e envio automático via **HTTPS POST** para um servidor remoto, com armazenamento local em cartão SD. Sistema de agendamento independente para ambas as câmeras com sincronização NTP.
 
-![ESP32-S3](imagens/esp32s3.jpg)
-
 ---
 
 ## ⚙️ Descrição Geral
@@ -37,6 +35,21 @@ O sistema realiza:
 
 ## 🧩 Hardware Utilizado
 
+### Placa Principal ESP32-S3 WROOM
+
+![ESP32-S3 WROOM](imagens/esp32s3.jpg)
+
+A placa principal **ESP32-S3 WROOM (N16R8)** é o núcleo do sistema, integrando:
+- **Microcontrolador:** ESP32-S3 (Dual-core Xtensa LX7, 240MHz)
+- **Flash:** 16MB (N16R8)
+- **PSRAM:** 8MB (OCT SPI PSRAM)
+- **Câmera Visual:** OV2640 integrada
+- **Slot SD Card:** Integrado (SDMMC)
+- **Wi-Fi:** 2.4 GHz (802.11 b/g/n)
+- **Interface:** USB-C para programação e alimentação
+
+### Componentes do Sistema
+
 | Componente | Função | Interface |
 |-------------|---------|-----------|
 | **ESP32-S3 WROOM (N16R8)** | Microcontrolador principal | USB-C, Wi-Fi, GPIO |
@@ -67,14 +80,6 @@ A câmera térmica MLX90640 conectada via UART possui:
 - **GPIO RX:** GPIO14
 - **Faixa de Temperatura:** -40°C a +200°C
 - **Precisão:** ±0.5°C (em condições ideais)
-
-### Especificações da Placa
-
-- **Chip:** ESP32-S3 (Dual-core Xtensa LX7, 240MHz)
-- **Flash:** 16MB (N16R8)
-- **PSRAM:** 8MB (OCT SPI PSRAM)
-- **Câmera:** Integrada (OV2640 ou similar)
-- **SD Card:** Slot integrado (SDMMC)
 
 ### Pinos da ESP32-S3 WROOM
 
