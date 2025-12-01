@@ -39,19 +39,12 @@ O sistema realiza:
 
 | Componente | Função | Interface |
 |-------------|---------|-----------|
-| **ESP32-S3 WROOM (N16R8)** | Microcontrolador + Câmera integrada | USB-C, Wi-Fi, GPIO |
+| **ESP32-S3 WROOM (N16R8)** | Microcontrolador principal | USB-C, Wi-Fi, GPIO |
+| **Câmera Visual OV2640** | Captura de imagens JPEG (1024×768) | DVP integrada |
 | **Câmera Térmica MLX90640** | Sensor térmico 24×32 pixels | UART (GPIO14) |
 | **Cartão SD** | Armazenamento local | SDMMC (slot integrado) |
 | **LED RGB WS2812 (GPIO48)** | Indicador de status Wi-Fi | Digital (SPI/RMT) |
 | **Flash LED (GPIO21)** | Iluminação para fotos | Digital |
-
-### Especificações da Placa
-
-- **Chip:** ESP32-S3 (Dual-core Xtensa LX7, 240MHz)
-- **Flash:** 16MB (N16R8)
-- **PSRAM:** 8MB (OCT SPI PSRAM)
-- **Câmera:** Integrada (OV2640 ou similar)
-- **SD Card:** Slot integrado (SDMMC)
 
 ### Câmera Visual OV2640
 
@@ -63,6 +56,25 @@ A câmera visual OV2640 integrada na placa ESP32-S3 possui:
 - **Formato:** JPEG comprimido
 - **Qualidade:** Configurável (padrão: 12)
 - **Interface:** DVP (Digital Video Port) integrada
+
+### Câmera Térmica MLX90640
+
+![Câmera Térmica MLX90640](imagens/camera_termica.png)
+
+A câmera térmica MLX90640 conectada via UART possui:
+- **Resolução:** 24 linhas × 32 colunas = 768 pixels
+- **Interface:** UART (115200 baud)
+- **GPIO RX:** GPIO14
+- **Faixa de Temperatura:** -40°C a +200°C
+- **Precisão:** ±0.5°C (em condições ideais)
+
+### Especificações da Placa
+
+- **Chip:** ESP32-S3 (Dual-core Xtensa LX7, 240MHz)
+- **Flash:** 16MB (N16R8)
+- **PSRAM:** 8MB (OCT SPI PSRAM)
+- **Câmera:** Integrada (OV2640 ou similar)
+- **SD Card:** Slot integrado (SDMMC)
 
 ### Pinos da ESP32-S3 WROOM
 
@@ -268,16 +280,7 @@ Configurados em `main/config.h`:
 
 ## 🌡️ Câmera Térmica MLX90640
 
-![Câmera Térmica MLX90640](imagens/camera_termica.png)
-
-O sistema integra uma câmera térmica MLX90640 conectada via UART:
-
-### Especificações
-- **Resolução:** 24 linhas × 32 colunas = 768 pixels
-- **Interface:** UART (115200 baud)
-- **GPIO RX:** GPIO14
-- **Faixa de Temperatura:** -40°C a +200°C
-- **Precisão:** ±0.5°C (em condições ideais)
+O sistema integra uma câmera térmica MLX90640 conectada via UART (veja imagem na seção Hardware Utilizado acima).
 
 ### Funcionamento
 - Captura frames térmicos baseado em agendamento independente
