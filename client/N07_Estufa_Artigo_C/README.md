@@ -2,7 +2,7 @@
 
 Sistema embarcado em **C (ESP-IDF)** para captura de imagens usando **ESP32-S3 WROOM (N16R8)** com câmera visual, câmera térmica MLX90640, slot SD integrado, e envio automático via **HTTPS POST** para um servidor remoto, com armazenamento local em cartão SD. Sistema de agendamento independente para ambas as câmeras com sincronização NTP.
 
-![ESP32-S3](esp32s3.jpg)
+![ESP32-S3](imagens/esp32s3.jpg)
 
 ---
 
@@ -52,6 +52,17 @@ O sistema realiza:
 - **PSRAM:** 8MB (OCT SPI PSRAM)
 - **Câmera:** Integrada (OV2640 ou similar)
 - **SD Card:** Slot integrado (SDMMC)
+
+### Câmera Visual OV2640
+
+![Câmera Visual OV2640](imagens/camera_visual.png)
+
+A câmera visual OV2640 integrada na placa ESP32-S3 possui:
+- **Resolução:** XGA (1024×768 pixels)
+- **Campo de visão:** 120° (ângulo amplo)
+- **Formato:** JPEG comprimido
+- **Qualidade:** Configurável (padrão: 12)
+- **Interface:** DVP (Digital Video Port) integrada
 
 ### Pinos da ESP32-S3 WROOM
 
@@ -257,7 +268,7 @@ Configurados em `main/config.h`:
 
 ## 🌡️ Câmera Térmica MLX90640
 
-![Câmera Térmica MLX90640](camera_termica.png)
+![Câmera Térmica MLX90640](imagens/camera_termica.png)
 
 O sistema integra uma câmera térmica MLX90640 conectada via UART:
 
@@ -616,6 +627,35 @@ O sistema utiliza uma lógica robusta de conexão Wi-Fi baseada no projeto N02:
 - **Monitoramento:** Loop principal verifica conexão a cada 5 segundos
 - **Reconexão:** Em caso de desconexão, tenta reconectar automaticamente
 - **Sinalização:** LED RGB indica estado da conexão em tempo real
+
+---
+
+## 📸 Aplicação: Monitoramento de Estufa NFT
+
+O sistema foi desenvolvido para monitoramento de estufas NFT (Nutrient Film Technique), capturando imagens visuais e dados térmicos para análise do ambiente de cultivo.
+
+### Imagens da Estufa
+
+#### Visão Visual
+![Estufa NFT - Visão Visual](imagens/estufaNFTVisual.jpg)
+
+A câmera visual OV2640 captura imagens da estufa com campo de visão de 120°, permitindo monitoramento amplo do ambiente de cultivo.
+
+#### Visão Térmica
+![Estufa NFT - Visão Térmica](imagens/estufaNFTTermica.jpg)
+
+A câmera térmica MLX90640 captura dados de temperatura (24×32 pixels) que são processados e visualizados como mapas de calor, permitindo identificar variações térmicas no ambiente.
+
+#### Visão Sobreposta (Térmica + Visual)
+![Estufa NFT - Visão Sobreposta](imagens/EstufaNFTSobreposta.jpg)
+
+A sobreposição de dados térmicos sobre a imagem visual permite análise combinada, identificando áreas específicas com problemas térmicos no contexto visual da estufa.
+
+### Sequência Temporal de Dados Térmicos
+
+![Sequência de Imagens Térmicas](imagens/imagensTermicas.png)
+
+O sistema captura dados térmicos a cada 30 minutos (conforme agendamento configurado), permitindo análise temporal da evolução da temperatura na estufa ao longo do dia.
 
 ---
 
