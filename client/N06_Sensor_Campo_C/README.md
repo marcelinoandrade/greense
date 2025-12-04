@@ -53,11 +53,9 @@ Ao alterar o período de amostragem, o sistema:
 
 ## 🌐 Interface Web
 
-<div align="center">
-<img src="imagens/dashboardPrincipal.png" width="300" alt="Dashboard Principal">
-<img src="imagens/dashboardEstatisticas.png" width="300" alt="Dashboard Estatísticas">
-<img src="imagens/dashboardTolerancias.png" width="300" alt="Dashboard Tolerâncias">
-</div>
+| Dashboard Principal | Dashboard Estatísticas | Dashboard Tolerâncias |
+|:-------------------:|:---------------------:|:-------------------:|
+| <img src="imagens/dashboardPrincipal.png" width="250" alt="Dashboard Principal"> | <img src="imagens/dashboardEstatisticas.png" width="250" alt="Dashboard Estatísticas"> | <img src="imagens/dashboardTolerancias.png" width="250" alt="Dashboard Tolerâncias"> |
 
 ### Rotas HTTP
 
