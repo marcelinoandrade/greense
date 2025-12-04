@@ -9,6 +9,8 @@ idf_component_register(
     # BSP - Board Support Package
     "bsp/sensors/bsp_ds18b20.c"
     "bsp/sensors/bsp_adc.c"
+    "bsp/sensors/bsp_aht10.c"
+    "bsp/sensors/bsp_bh1750.c"
     "bsp/sensors/bsp_sensors.c"
     "bsp/actuators/bsp_led.c"
     "bsp/network/bsp_wifi_ap.c"
@@ -47,7 +49,7 @@ idf_component_register(
     "esp_adc"           # Para o sensor de umidade (adc_bsp)
     "nvs_flash"         # Para o nvs_flash_init() em main.c
     "spiffs"            # Para o data_logger (esp_vfs_spiffs_register)
-    "driver"            # Para GPIO
+    "driver"            # Para GPIO e I2C (i2c_master.h está em driver)
     "esp_rom"           # Para o ds18b20 (esp_rom_sys.h)
     "esp_timer"         # Para medição de tempo em app_main.c
     "freertos"          # Para o ds18b20 e tarefas

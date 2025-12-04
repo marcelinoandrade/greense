@@ -163,7 +163,8 @@ esp_err_t data_logger_init(void)
     }
 
     carregar_calibracao();
-    data_logger_dump_to_logcat();
+    // data_logger_dump_to_logcat(); // Removido: causa watchdog timer ao imprimir arquivos grandes
+    ESP_LOGI(TAG, "Data logger inicializado. Proximo indice: %d", linha_idx);
     return ESP_OK;
 }
 

@@ -12,17 +12,17 @@ O firmware cria uma rede **Wi-Fi Access Point (AP)** local e hospeda uma página
 
 - 📡 Cria uma rede Wi-Fi local “ESP32_TEMP” com IP fixo `192.168.4.1`.
 - 🌤️ Lê sensores de:
-  - **Temperatura do solo** (DS18B20) ✅ *Implementado*
-  - **Umidade do solo** (sensor resistivo/capacitivo via ADC) ✅ *Implementado*
-  - **Temperatura e umidade do ar** (AHT10 via I2C) 🔄 *Hardware futuro - atualmente simulado*
-  - **Luminosidade** (BH1750 GY-30 via I2C) 🔄 *Hardware futuro - atualmente simulado*
+  - **Temperatura do solo** (DS18B20) ✅ *Implementado e funcionando*
+  - **Umidade do solo** (sensor resistivo/capacitivo via ADC) ✅ *Implementado e funcionando*
+  - **Temperatura e umidade do ar** (AHT10 via I2C) ✅ *Implementado e funcionando*
+  - **Luminosidade** (BH1750 GY-30 via I2C) ✅ *Implementado e funcionando*
   - **Déficit de Pressão de Vapor (DPV)** (calculado a partir de temperatura e umidade do ar) ✅ *Implementado*
 - 💾 Armazena leituras em `log_temp.csv` no **SPIFFS** e expõe JSON com histórico (inclui luminosidade e DPV).
 - 📈 Exibe **dashboard responsivo** com gráficos e cards de status em tempo real para todos os sensores.
 - 🔁 Permite ajustar o **período de amostragem** (1 s, 1 min, 10 min, 1 h, 6 h, 12 h) diretamente na interface web.
 - ⚙️ Possui **calibração guiada** da umidade do solo (parâmetros “seco” e “molhado”).
 - ⬇️ Oferece **download direto** do log em CSV e limpeza total dos dados.
-- 🧠 Quando algum sensor está ausente, gera dados simulados para manter o dashboard ativo.
+- 🧠 Sistema robusto: quando algum sensor está ausente, mantém a última leitura válida (ou NAN se nunca houve leitura).
 - 🔧 Possui servidor HTTP leve com rotas dedicadas.
 - 💡 Sistema de **LED de status** que indica estado do AP e gravação de dados.
 
@@ -41,10 +41,12 @@ main/
 │   └── gui_services.c/.h      # Ponte entre camada APP e GUI
 ├── bsp/
 │   ├── board.h                # Definições da placa (GPIOs, SPIFFS, intervalos)
-│   ├── sensors/               # Drivers DS18B20, ADC e camada `bsp_sensors.c`
+│   ├── sensors/               # Drivers de sensores
 │   │   ├── bsp_sensors.c/.h   # Interface abstrata de sensores
 │   │   ├── bsp_ds18b20.c/.h   # Driver DS18B20 (OneWire)
-│   │   └── bsp_adc.c/.h       # Driver ADC para umidade do solo
+│   │   ├── bsp_adc.c/.h       # Driver ADC para umidade do solo
+│   │   ├── bsp_aht10.c/.h     # Driver AHT10 (I2C - temperatura e umidade do ar)
+│   │   └── bsp_bh1750.c/.h    # Driver BH1750 (I2C - luxímetro)
 │   └── network/               # SoftAP (`bsp_wifi_ap`)
 ├── gui/
 │   └── web/
@@ -74,13 +76,13 @@ main/
 | **Status:** ✅ *Em uso* |
 | Placa ESP32-WROOM-32 com módulo de bateria para operação autônoma em campo. |
 
-### Sensores Implementados (Atuais)
+### Sensores Implementados
 
 | DS18B20 - Sensor de Temperatura do Solo |
 |------------------------------------------|
 | ![DS18B20](imagens/sensorDs18b20.png) |
 | **Status:** ✅ *Implementado e funcionando* |
-| Sensor digital de temperatura do solo com interface OneWire. Precisão de ±0.5°C no range de -10°C a +85°C. |
+| Sensor digital de temperatura do solo com interface OneWire. Precisão de ±0.5°C no range de -10°C a +85°C. Conectado ao GPIO4. |
 
 | Sensor de Umidade do Solo |
 |---------------------------|
@@ -88,19 +90,17 @@ main/
 | **Status:** ✅ *Implementado e funcionando* |
 | Sensor resistivo/capacitivo de umidade do solo conectado via ADC (GPIO34). Requer calibração para valores "seco" e "molhado". |
 
-### Sensores Futuros (Hardware a ser integrado)
-
 | AHT10 - Sensor de Temperatura e Umidade do Ar |
 |------------------------------------------------|
 | ![AHT10](imagens/sensorAHT10.png) |
-| **Status:** 🔄 *Hardware futuro - código preparado, atualmente usando dados simulados* |
-| Sensor I2C de temperatura e umidade do ar com alta precisão. Interface I2C (SDA: GPIO21, SCL: GPIO22). |
+| **Status:** ✅ *Implementado e funcionando* |
+| Sensor I2C de temperatura e umidade do ar com alta precisão. Interface I2C (SDA: GPIO21, SCL: GPIO22, endereço: 0x38). Compartilha barramento I2C com BH1750. |
 
 | BH1750 GY-30 - Luxímetro |
 |--------------------------|
 | ![BH1750](imagens/sensorBH1750.png) |
-| **Status:** 🔄 *Hardware futuro - código preparado, atualmente usando dados simulados* |
-| Sensor de luminosidade digital via I2C. Range de medição: 1-65535 lux. Interface I2C (SDA: GPIO21, SCL: GPIO22). |
+| **Status:** ✅ *Implementado e funcionando* |
+| Sensor de luminosidade digital via I2C. Range de medição: 1-65535 lux. Interface I2C (SDA: GPIO21, SCL: GPIO22, endereço: 0x23). Compartilha barramento I2C com AHT10. |
 
 
 ## 🌐 Servidor Web Integrado
@@ -154,11 +154,11 @@ O arquivo CSV armazena todas as leituras dos sensores com timestamp implícito (
 | Campo | Descrição | Unidade | Sensor |
 |--------|------------|---------|--------|
 | N | Índice sequencial | — | — |
-| temp_ar_C | Temperatura do ar | °C | AHT10 🔄 *Futuro* |
-| umid_ar_pct | Umidade relativa do ar | % | AHT10 🔄 *Futuro* |
+| temp_ar_C | Temperatura do ar | °C | AHT10 ✅ |
+| umid_ar_pct | Umidade relativa do ar | % | AHT10 ✅ |
 | temp_solo_C | Temperatura do solo | °C | DS18B20 ✅ |
 | umid_solo_pct | Umidade do solo calibrada | % | Sensor ADC ✅ |
-| luminosidade_lux | Intensidade luminosa | lux | BH1750 🔄 *Futuro* |
+| luminosidade_lux | Intensidade luminosa | lux | BH1750 ✅ |
 | dpv_kPa | Déficit de Pressão de Vapor | kPa | Calculado ✅ |
 
 **Formato do cabeçalho CSV:**
@@ -201,8 +201,18 @@ N,temp_ar_C,umid_ar_pct,temp_solo_C,umid_solo_pct,luminosidade_lux,dpv_kPa
    ```bash
    idf.py build flash monitor
    ```
-3. Conecte-se ao Wi-Fi **ESP32_TEMP** (senha: `12345678`).
-4. Acesse **http://192.168.4.1/** no navegador.
+3. Conecte os sensores conforme a seção [Conexões dos Sensores](#-conexões-dos-sensores).
+4. Conecte-se ao Wi-Fi **ESP32_TEMP** (senha: `12345678`).
+5. Acesse **http://192.168.4.1/** no navegador.
+
+### Comportamento quando Sensores não estão Disponíveis
+
+O sistema foi projetado para ser robusto e continuar funcionando mesmo quando alguns sensores não estão conectados:
+
+- **Sensores disponíveis**: Leitura em tempo real e atualização do cache
+- **Sensores não disponíveis**: Sistema mantém a última leitura válida (ou retorna NAN se nunca houve leitura)
+- **Logs**: O sistema registra no log de inicialização quais sensores foram detectados e quais não estão disponíveis
+- **Dashboard**: Continua funcionando normalmente, mostrando os valores disponíveis ou NAN para sensores ausentes
 
 ---
 
@@ -216,11 +226,31 @@ N,temp_ar_C,umid_ar_pct,temp_solo_C,umid_solo_pct,luminosidade_lux,dpv_kPa
 
 ---
 
-## 🧰 Extensões futuras
+## 🔌 Conexões dos Sensores
 
-### Hardware
-- ✅ Integração física do **AHT10** (temperatura e umidade do ar) - código já preparado
-- ✅ Integração física do **BH1750 GY-30** (luxímetro) - código já preparado
+### I2C (Barramento Compartilhado)
+- **SDA**: GPIO21
+- **SCL**: GPIO22
+- **VCC**: 3.3V
+- **GND**: GND
+- **Pull-ups**: 4.7kΩ (geralmente já incluídos nos módulos)
+
+**Sensores I2C:**
+- **AHT10**: Endereço 0x38
+- **BH1750**: Endereço 0x23
+
+### OneWire
+- **DS18B20**: GPIO4 (com pull-up de 4.7kΩ)
+
+### ADC
+- **Sensor de Umidade do Solo**: GPIO34 (ADC1_CH6)
+
+### Outros
+- **LED de Status**: GPIO2
+
+---
+
+## 🧰 Extensões futuras
 
 ### Software
 - Envio MQTT para servidor remoto.
@@ -229,6 +259,7 @@ N,temp_ar_C,umid_ar_pct,temp_solo_C,umid_solo_pct,luminosidade_lux,dpv_kPa
 - Modo STA (conexão em rede existente).
 - Suporte a OTA update.
 - Expansão do histórico JSON para incluir séries de luminosidade e DPV.
+- Melhorias na interface web (gráficos interativos, exportação de dados).
 
 ---
 

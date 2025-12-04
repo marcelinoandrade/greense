@@ -1,0 +1,59 @@
+Command: /home/mrclnndrd/.espressif/python_env/idf5.5_py3.11_env/bin/python /home/mrclnndrd/esp/esp-idf/tools/idf_monitor.py -p /dev/ttyUSB0 -b 115200 --toolchain-prefix xtensa-esp32-elf- --target esp32 --revision 0 /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/sensor_campo.elf /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/bootloader/bootloader.elf -m '/home/mrclnndrd/.espressif/python_env/idf5.5_py3.11_env/bin/python' '/home/mrclnndrd/esp/esp-idf/tools/idf.py'
+[0;33m--- esp-idf-monitor 1.8.0 on /dev/ttyUSB0 115200[0m
+[0;33m--- Quit: Ctrl+] | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H[0m
+[0m--- 0x40080400: [0;33m_invalid_pc_placeholder[0m[0m at [0;32m/home/mrclnndrd/esp/esp-idf/components/xtensa/xtensa_vectors.S[0m[0m:[1;31m2235[0m
+[0m--- 0x40080638: [0;33mcall_start_cpu0[0m[0m at [0;32m/home/mrclnndrd/esp/esp-idf/components/bootloader/subproject/main/bootloader_start.c[0m[0m:[1;31m25[0m
+[0m--- 0x400e5486: [0;33mtask_wdt_timeout_handling[0m[0m at [0;32m/home/mrclnndrd/esp/esp-idf/components/esp_system/task_wdt/task_wdt.c[0m[0m:[1;31m436[0m
+[0m--- 0x400e5848: [0;33mtask_wdt_isr[0m[0m at [0;32m/home/mrclnndrd/esp/esp-idf/components/esp_system/task_wdt/task_wdt.c[0m[0m:[1;31m509[0m
+[0m--- 0x400832ed: [0;33m_xt_lowint1[0m[0m at [0;32m/home/mrclnndrd/esp/esp-idf/components/xtensa/xtensa_vectors.S[0m[0m:[1;31m1240[0m
+[0m--- 0x400d5e5f: [0;33muart_ll_get_txfifo_len[0m[0m at [0;32m/home/mrclnndrd/esp/esp-idf/components/hal/esp32/include/hal/uart_ll.h[0m[0m:[1;31m439[0m
+[0m--- (inlined by) [0;33muart_tx_char[0m[0m at [0;32m/home/mrclnndrd/esp/esp-idf/components/esp_driver_uart/src/uart_vfs.c[0m[0m:[1;31m190[0m
+[0m--- 0x400d6584: [0;33muart_write[0m[0m at [0;32m/home/mrclnndrd/esp/esp-idf/components/esp_driver_uart/src/uart_vfs.c[0m[0m:[1;31m245[0m
+[0m--- 0x400d79aa: [0;33mesp_vfs_write[0m[0m at [0;32m/home/mrclnndrd/esp/esp-idf/components/vfs/vfs.c[0m[0m:[1;31m982[0m
+[0m--- 0x4000bd83: [0;33m_write_r[0m[0m in [0;32mROM[0m
+[0m--- 0x4000182a: [0;33mwrite[0m[0m in [0;32mROM[0m
+[0m--- 0x400d6ee1: [0;33mconsole_write[0m[0m at [0;32m/home/mrclnndrd/esp/esp-idf/components/esp_vfs_console/vfs_console.c[0m[0m:[1;31m83[0m
+[0m--- 0x400d79aa: [0;33mesp_vfs_write[0m[0m at [0;32m/home/mrclnndrd/esp/esp-idf/components/vfs/vfs.c[0m[0m:[1;31m982[0m
+[0m--- 0x4000bd83: [0;33m_write_r[0m[0m in [0;32mROM[0m
+[0m--- 0x4000117d: [0;33m__swrite[0m[0m in [0;32mROM[0m
+[0m--- 0x400592fe: [0;33m__sflush_r[0m[0m in [0;32mROM[0m
+[0m--- 0x4005937a: [0;33m_fflush_r[0m[0m in [0;32mROM[0m
+[0m--- 0x40154a8d: [0;33m__sfvwrite_r[0m[0m at [0;32m/builds/idf/crosstool-NG/.build/xtensa-esp-elf/src/newlib/newlib/libc/stdio/fvwrite.c[0m[0m:[1;31m251[0m
+[0m--- 0x40161643: [0;33m__sprint_r[0m[0m at [0;32m/builds/idf/crosstool-NG/.build/xtensa-esp-elf/src/newlib/newlib/libc/stdio/vfprintf.c[0m[0m:[1;31m429[0m
+[0m--- (inlined by) [0;33m__sprint_r[0m[0m at [0;32m/builds/idf/crosstool-NG/.build/xtensa-esp-elf/src/newlib/newlib/libc/stdio/vfprintf.c[0m[0m:[1;31m399[0m
+[0m--- 0x4016083a: [0;33m_vfprintf_r[0m[0m at [0;32m/builds/idf/crosstool-NG/.build/xtensa-esp-elf/src/newlib/newlib/libc/stdio/vfprintf.c[0m[0m:[1;31m1766[0m
+[0m--- 0x40154fe5: [0;33mvprintf[0m[0m at [0;32m/builds/idf/crosstool-NG/.build/xtensa-esp-elf/src/newlib/newlib/libc/stdio/vprintf.c[0m[0m:[1;31m34[0m
+[0m--- 0x4008f68b: [0;33mesp_log_va[0m[0m at [0;32m/home/mrclnndrd/esp/esp-idf/components/log/src/log.c[0m[0m:[1;31m43[0m
+[0m--- (inlined by) [0;33mesp_log[0m[0m at [0;32m/home/mrclnndrd/esp/esp-idf/components/log/src/log.c[0m[0m:[1;31m88[0m
+[0m--- 0x400d95cf: [0;33mdata_logger_dump_to_logcat[0m[0m at [0;32m/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/app/app_data_logger.c[0m[0m:[1;31m249[0m
+[0m--- 0x400d97c2: [0;33mdata_logger_init[0m[0m at [0;32m/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/app/app_data_logger.c[0m[0m:[1;31m166[0m
+[0m--- 0x400d8a6f: [0;33mapp_main[0m[0m at [0;32m/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/app/app_main.c[0m[0m:[1;31m161[0m
+[0m--- 0x40170080: [0;33mmain_task[0m[0m at [0;32m/home/mrclnndrd/esp/esp-idf/components/freertos/app_startup.c[0m[0m:[1;31m208[0m
+[0m--- 0x40089a55: [0;33mvPortTaskWrapper[0m[0m at [0;32m/home/mrclnndrd/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/port.c[0m[0m:[1;31m139[0m
+[0m--- 0x400e5486: [0;33mtask_wdt_timeout_handling[0m[0m at [0;32m/home/mrclnndrd/esp/esp-idf/components/esp_system/task_wdt/task_wdt.c[0m[0m:[1;31m436[0m
+[0m--- 0x400e5848: [0;33mtask_wdt_isr[0m[0m at [0;32m/home/mrclnndrd/esp/esp-idf/components/esp_system/task_wdt/task_wdt.c[0m[0m:[1;31m509[0m
+[0m--- 0x400832ed: [0;33m_xt_lowint1[0m[0m at [0;32m/home/mrclnndrd/esp/esp-idf/components/xtensa/xtensa_vectors.S[0m[0m:[1;31m1240[0m
+[0m--- 0x400d5e5f: [0;33muart_ll_get_txfifo_len[0m[0m at [0;32m/home/mrclnndrd/esp/esp-idf/components/hal/esp32/include/hal/uart_ll.h[0m[0m:[1;31m439[0m
+[0m--- (inlined by) [0;33muart_tx_char[0m[0m at [0;32m/home/mrclnndrd/esp/esp-idf/components/esp_driver_uart/src/uart_vfs.c[0m[0m:[1;31m190[0m
+[0m--- 0x400d6584: [0;33muart_write[0m[0m at [0;32m/home/mrclnndrd/esp/esp-idf/components/esp_driver_uart/src/uart_vfs.c[0m[0m:[1;31m245[0m
+[0m--- 0x400d79aa: [0;33mesp_vfs_write[0m[0m at [0;32m/home/mrclnndrd/esp/esp-idf/components/vfs/vfs.c[0m[0m:[1;31m982[0m
+[0m--- 0x4000bd83: [0;33m_write_r[0m[0m in [0;32mROM[0m
+[0m--- 0x4000182a: [0;33mwrite[0m[0m in [0;32mROM[0m
+[0m--- 0x400d6ee1: [0;33mconsole_write[0m[0m at [0;32m/home/mrclnndrd/esp/esp-idf/components/esp_vfs_console/vfs_console.c[0m[0m:[1;31m83[0m
+[0m--- 0x400d79aa: [0;33mesp_vfs_write[0m[0m at [0;32m/home/mrclnndrd/esp/esp-idf/components/vfs/vfs.c[0m[0m:[1;31m982[0m
+[0m--- 0x4000bd83: [0;33m_write_r[0m[0m in [0;32mROM[0m
+[0m--- 0x4000117d: [0;33m__swrite[0m[0m in [0;32mROM[0m
+[0m--- 0x400592fe: [0;33m__sflush_r[0m[0m in [0;32mROM[0m
+[0m--- 0x4005937a: [0;33m_fflush_r[0m[0m in [0;32mROM[0m
+[0m--- 0x40154a8d: [0;33m__sfvwrite_r[0m[0m at [0;32m/builds/idf/crosstool-NG/.build/xtensa-esp-elf/src/newlib/newlib/libc/stdio/fvwrite.c[0m[0m:[1;31m251[0m
+[0m--- 0x40161643: [0;33m__sprint_r[0m[0m at [0;32m/builds/idf/crosstool-NG/.build/xtensa-esp-elf/src/newlib/newlib/libc/stdio/vfprintf.c[0m[0m:[1;31m429[0m
+[0m--- (inlined by) [0;33m__sprint_r[0m[0m at [0;32m/builds/idf/crosstool-NG/.build/xtensa-esp-elf/src/newlib/newlib/libc/stdio/vfprintf.c[0m[0m:[1;31m399[0m
+[0m--- 0x4016083a: [0;33m_vfprintf_r[0m[0m at [0;32m/builds/idf/crosstool-NG/.build/xtensa-esp-elf/src/newlib/newlib/libc/stdio/vfprintf.c[0m[0m:[1;31m1766[0m
+[0m--- 0x40154fe5: [0;33mvprintf[0m[0m at [0;32m/builds/idf/crosstool-NG/.build/xtensa-esp-elf/src/newlib/newlib/libc/stdio/vprintf.c[0m[0m:[1;31m34[0m
+[0m--- 0x4008f68b: [0;33mesp_log_va[0m[0m at [0;32m/home/mrclnndrd/esp/esp-idf/components/log/src/log.c[0m[0m:[1;31m43[0m
+[0m--- (inlined by) [0;33mesp_log[0m[0m at [0;32m/home/mrclnndrd/esp/esp-idf/components/log/src/log.c[0m[0m:[1;31m88[0m
+[0m--- 0x400d95cf: [0;33mdata_logger_dump_to_logcat[0m[0m at [0;32m/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/app/app_data_logger.c[0m[0m:[1;31m249[0m
+[0m--- 0x400d97c2: [0;33mdata_logger_init[0m[0m at [0;32m/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/app/app_data_logger.c[0m[0m:[1;31m166[0m
+[0m--- 0x400d8a6f: [0;33mapp_main[0m[0m at [0;32m/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/app/app_main.c[0m[0m:[1;31m161[0m
+[0m--- 0x40170080: [0;33mmain_task[0m[0m at [0;32m/home/mrclnndrd/esp/esp-idf/components/freertos/app_startup.c[0m[0m:[1;31m208[0m
+[0m--- 0x40089a55: [0;33mvPortTaskWrapper[0m[0m at [0;32m/home/mrclnndrd/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/port.c[0m[0m:[1;31m139[0m

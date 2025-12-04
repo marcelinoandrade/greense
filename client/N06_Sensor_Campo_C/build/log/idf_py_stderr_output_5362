@@ -1,0 +1,12 @@
+Command: ninja all
+CMake Error at /home/mrclnndrd/esp/esp-idf/tools/cmake/build.cmake:328 (message):
+  Failed to resolve component 'i2c' required by component 'main': unknown
+  name.
+Call Stack (most recent call first):
+  /home/mrclnndrd/esp/esp-idf/tools/cmake/build.cmake:377 (__build_resolve_and_add_req)
+  /home/mrclnndrd/esp/esp-idf/tools/cmake/build.cmake:676 (__build_expand_requirements)
+  /home/mrclnndrd/esp/esp-idf/tools/cmake/project.cmake:736 (idf_build_process)
+  CMakeLists.txt:6 (project)
+
+
+ninja: error: rebuilding 'build.ninja': subcommand failed

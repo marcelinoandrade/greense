@@ -17,10 +17,10 @@
 /* DHT11 removido - aguardando AHT10 I2C */
 // #define BSP_GPIO_DHT11          GPIO_NUM_5  /* GPIO5 liberada para uso futuro */
 
-/* I2C para AHT10 (quando chegar) */
-// #define BSP_I2C_NUM             I2C_NUM_0
-// #define BSP_I2C_SDA             GPIO_NUM_21
-// #define BSP_I2C_SCL             GPIO_NUM_22
+/* I2C para AHT10 e BH1750 */
+#define BSP_I2C_NUM             I2C_NUM_0
+#define BSP_I2C_SDA             GPIO_NUM_21
+#define BSP_I2C_SCL             GPIO_NUM_22
 
 /* ADC - Umidade do Solo */
 #define BSP_ADC_SOIL_UNIT       ADC_UNIT_1
