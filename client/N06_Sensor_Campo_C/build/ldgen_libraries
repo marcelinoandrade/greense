@@ -144,6 +144,8 @@
 /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/esp-idf/esp_local_ctrl/libesp_local_ctrl.a
 /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/esp-idf/protocomm/libprotocomm.a
 /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/esp-idf/esp_https_server/libesp_https_server.a
+/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/esp-idf/espressif__mdns/libespressif__mdns.a
+/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/esp-idf/esp_eth/libesp_eth.a
 /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/esp-idf/espcoredump/libespcoredump.a
 /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/esp-idf/wear_levelling/libwear_levelling.a
 /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/esp-idf/fatfs/libfatfs.a
@@ -157,6 +159,7 @@
 /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/esp-idf/wifi_provisioning/libwifi_provisioning.a
 /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/esp-idf/json/libjson.a
 /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/esp-idf/espressif__cjson/libespressif__cjson.a
+/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/esp-idf/espressif__mdns/libespressif__mdns.a
 /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/esp-idf/main/libmain.a
 /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/esp-idf/spiffs/libspiffs.a
 /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/esp-idf/espressif__cjson/libespressif__cjson.a

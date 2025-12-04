@@ -12,6 +12,7 @@ extern "C" {
  *   SSID: "greenSe_Campo" (do board.h)
  *   senha: "12345678" (do board.h)
  *   IP padrão: 192.168.4.1
+ *   mDNS: greense.local
  *
  * Rotas HTTP:
  *   GET /            -> dashboard HTML com gráfico e status

@@ -564,6 +564,11 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
+  include("/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/esp-idf/espressif__mdns/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
   include("/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/esp-idf/main/cmake_install.cmake")
 endif()
 

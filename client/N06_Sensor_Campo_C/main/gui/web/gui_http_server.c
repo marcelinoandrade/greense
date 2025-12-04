@@ -22,6 +22,10 @@
 
 #include "esp_log.h"
 #include "esp_http_server.h"
+#include "esp_system.h"
+#include "mdns.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
 
 static const char *TAG = "GUI_HTTP_SERVER";
 
@@ -892,7 +896,8 @@ static esp_err_t handle_sampling_page(httpd_req_t *req)
         "<span class='tag'>greenSe Campo</span>"
         "<h1>Amostragem e Estatísticas</h1>"
         "<p class='lead'>Configure a frequência de coleta de dados e o número de amostras usadas para cálculos estatísticos e visualização nos gráficos.</p>"
-        "<form action='/set_sampling' method='get'>"
+        "<p style='background:#fff3cd;border:1px solid #ffc107;border-radius:8px;padding:12px;margin:16px 0;color:#856404;font-size:13px'><strong>⚠️ Atenção:</strong> Alterar a frequência de amostragem apagará todos os dados gravados e reiniciará o dispositivo.</p>"
+        "<form action='/set_sampling' method='get' id='samplingForm' onsubmit='return confirmSamplingChange()'>"
         "<div class='section'>"
         "<h2>Frequência de Amostragem</h2>"
         "<p class='lead'>Defina o intervalo entre cada registro de dados. Intervalos menores fornecem dados mais detalhados, enquanto intervalos maiores economizam energia e memória.</p>"
@@ -909,11 +914,24 @@ static esp_err_t handle_sampling_page(httpd_req_t *req)
         "</form>"
         "<a class='button-back' href='/'>Voltar ao painel principal</a>"
         "</div>"
+        "<script>"
+        "const currentPeriod = %lu;"
+        "function confirmSamplingChange() {"
+        "  const form = document.getElementById('samplingForm');"
+        "  const formData = new FormData(form);"
+        "  const newPeriod = formData.get('periodo');"
+        "  if (newPeriod && parseInt(newPeriod) !== currentPeriod) {"
+        "    return confirm('⚠️ ATENÇÃO: Alterar a frequência de amostragem apagará TODOS os dados gravados e reiniciará o dispositivo.\\n\\nDeseja continuar?');"
+        "  }"
+        "  return true;"
+        "}"
+        "</script>"
         "</body></html>",
         radios,
         current_label,
         stats_radios,
-        current_stats_window
+        current_stats_window,
+        (unsigned long)current_ms
     );
 
     if (len < 0 || len >= (int)page_capacity) {
@@ -959,9 +977,20 @@ static esp_err_t handle_set_sampling(httpd_req_t *req)
 
     char period_label[128] = "";
     char stats_label[64] = "";
+    bool period_changed = false;
+    uint32_t old_period = 0;
 
     if (has_period) {
         uint32_t new_period = (uint32_t)strtoul(buf_period, NULL, 10);
+        old_period = svc->get_sampling_period_ms();
+        
+        // Verifica se a frequência realmente mudou
+        if (new_period != old_period) {
+            period_changed = true;
+            ESP_LOGI(TAG, "Frequência de amostragem mudou de %lu ms para %lu ms", 
+                     (unsigned long)old_period, (unsigned long)new_period);
+        }
+        
         if (svc->set_sampling_period_ms(new_period) != ESP_OK) {
             httpd_resp_send_err(req, HTTPD_400_BAD_REQUEST, "Frequência de amostragem não suportada");
             return ESP_FAIL;
@@ -997,6 +1026,61 @@ static esp_err_t handle_set_sampling(httpd_req_t *req)
         snprintf(stats_label, sizeof(stats_label), "%d amostras", current_stats);
     }
 
+    // Se a frequência mudou, limpar dados e reiniciar
+    if (period_changed) {
+        ESP_LOGI(TAG, "Frequência de amostragem alterada. Limpando dados e reiniciando...");
+        
+        // Limpar dados gravados
+        if (svc->clear_logged_data != NULL) {
+            esp_err_t clear_err = svc->clear_logged_data();
+            if (clear_err != ESP_OK) {
+                ESP_LOGW(TAG, "Erro ao limpar dados: %s", esp_err_to_name(clear_err));
+            } else {
+                ESP_LOGI(TAG, "Dados limpos com sucesso");
+            }
+        }
+        
+        // Enviar página de resposta antes de reiniciar
+        const size_t page_capacity = 1024;
+        char *page = malloc(page_capacity);
+        if (page) {
+            int len = snprintf(
+                page,
+                page_capacity,
+                "<!DOCTYPE html><html><head><meta charset='utf-8'/><meta name='viewport' content='width=device-width,initial-scale=1'/>"
+                "<title>Reiniciando...</title>"
+                "<meta http-equiv='refresh' content='5;url=/'>"
+                "</head><body style='font-family:sans-serif;padding:20px;text-align:center'>"
+                "<h2>Configuração aplicada com sucesso!</h2>"
+                "<p>Frequência de amostragem alterada para: <strong>%s</strong></p>"
+                "<p>Janela de análise estatística: <strong>%s</strong></p>"
+                "<p style='margin-top:30px;padding:20px;background:#fff3cd;border:1px solid #ffc107;border-radius:8px;color:#856404'>"
+                "<strong>⚠️ Dados apagados e dispositivo reiniciando...</strong><br>"
+                "O dispositivo será reiniciado em instantes. Aguarde alguns segundos e recarregue a página."
+                "</p>"
+                "<p style='margin-top:20px;color:#666'>Redirecionando automaticamente em 5 segundos...</p>"
+                "</body></html>",
+                period_label,
+                stats_label
+            );
+            
+            if (len > 0 && len < (int)page_capacity) {
+                httpd_resp_set_type(req, "text/html");
+                httpd_resp_send(req, page, len);
+            }
+            free(page);
+        }
+        
+        // Dar tempo para enviar a resposta antes de reiniciar
+        vTaskDelay(pdMS_TO_TICKS(500));
+        
+        ESP_LOGI(TAG, "Reiniciando dispositivo...");
+        esp_restart();
+        // Nunca chega aqui, mas para evitar warning do compilador
+        return ESP_OK;
+    }
+    
+    // Se apenas a janela estatística mudou ou nenhuma mudança na frequência
     const size_t page_capacity = 1024;
     char *page = malloc(page_capacity);
     if (!page) {
@@ -1475,8 +1559,18 @@ esp_err_t http_server_start(void)
  
     /* Inicializa Wi-Fi AP sem callbacks (serão registrados por app_main) */
     ESP_ERROR_CHECK(wifi_ap_init());
- 
+    
+    // Inicializa mDNS para acesso via nome de domínio
+    ESP_ERROR_CHECK(mdns_init());
+    
+    // Define o hostname (nome do dispositivo na rede)
+    ESP_ERROR_CHECK(mdns_hostname_set("greense"));
+    
+    // Define o nome do serviço
+    ESP_ERROR_CHECK(mdns_instance_name_set("greenSe Campo Sensor"));
+    
     httpd_config_t config = HTTPD_DEFAULT_CONFIG();
+    uint16_t http_port = config.server_port;  // Guarda a porta para usar no mDNS depois
 
     /* Robustez - stack maior para evitar overflow */
     config.stack_size        = 16384;  /* aumentado para evitar stack overflow */
@@ -1648,8 +1742,15 @@ esp_err_t http_server_start(void)
         return ESP_FAIL;
     }
  
+    // Registra o serviço HTTP no mDNS (porta já obtida acima)
+    mdns_txt_item_t serviceTxtData[] = {
+        {"path", "/"},
+        {"version", "1.0"}
+    };
+    ESP_ERROR_CHECK(mdns_service_add("greenSe Campo", "_http", "_tcp", http_port, serviceTxtData, 2));
+    
     ESP_LOGI(TAG,
-             "Servidor HTTP iniciado e rotas registradas. Acesse http://192.168.4.1/");
+             "Servidor HTTP iniciado e rotas registradas. Acesse http://greense.local/ ou http://192.168.4.1/");
     return ESP_OK;
 }
  

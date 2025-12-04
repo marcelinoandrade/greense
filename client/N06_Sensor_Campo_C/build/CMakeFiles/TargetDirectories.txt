@@ -845,6 +845,13 @@
 /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/esp-idf/espressif__cjson/CMakeFiles/install.dir
 /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/esp-idf/espressif__cjson/CMakeFiles/install/local.dir
 /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/esp-idf/espressif__cjson/CMakeFiles/install/strip.dir
+/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/esp-idf/espressif__mdns/CMakeFiles/__idf_espressif__mdns.dir
+/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/esp-idf/espressif__mdns/CMakeFiles/edit_cache.dir
+/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/esp-idf/espressif__mdns/CMakeFiles/rebuild_cache.dir
+/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/esp-idf/espressif__mdns/CMakeFiles/list_install_components.dir
+/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/esp-idf/espressif__mdns/CMakeFiles/install.dir
+/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/esp-idf/espressif__mdns/CMakeFiles/install/local.dir
+/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/esp-idf/espressif__mdns/CMakeFiles/install/strip.dir
 /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/esp-idf/main/CMakeFiles/__idf_main.dir
 /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/esp-idf/main/CMakeFiles/edit_cache.dir
 /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/esp-idf/main/CMakeFiles/rebuild_cache.dir

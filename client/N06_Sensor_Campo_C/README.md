@@ -1,339 +1,191 @@
-# 🌱 Projeto GreenSe – Sensor de Campo IoT (ESP32)
+# 🌱 GreenSe – Sensor de Campo IoT (ESP32)
 
-Sistema embarcado desenvolvido com **ESP-IDF (v5.x)** para monitoramento ambiental e de solo em aplicações de **agricultura inteligente**. O projeto integra múltiplos sensores (temperatura do solo, umidade do solo, temperatura e umidade do ar, luminosidade) com armazenamento local de dados em formato CSV, cálculo de parâmetros agronômicos (Déficit de Pressão de Vapor - DPV) e interface web embarcada acessível via Wi-Fi Access Point. O sistema permite visualização em tempo real de gráficos e estatísticas, calibração de sensores, configuração de períodos de amostragem e download de histórico de medições, proporcionando uma solução completa para monitoramento de campo autônomo e independente de infraestrutura de rede externa.  
+Sistema embarcado para monitoramento ambiental e de solo em agricultura inteligente. Desenvolvido com **ESP-IDF v5.x**, integra múltiplos sensores com armazenamento local, interface web embarcada e análise estatística configurável.
 
 ## ⚙️ Visão Geral
 
-O projeto implementa um nó de coleta de dados ambientais e de solo para aplicações de **agricultura inteligente**.  
+O firmware cria uma rede Wi-Fi Access Point local e hospeda uma interface web acessível via navegador. O sistema coleta dados de sensores ambientais e de solo, armazena em CSV e permite visualização em tempo real com gráficos, estatísticas e configuração de tolerâncias de cultivo.
 
-O firmware cria uma rede **Wi-Fi Access Point (AP)** local e hospeda uma página interativa acessível via navegador (`http://192.168.4.1/`), permitindo visualizar gráficos, calibrar sensores e baixar o histórico de medições em CSV.
+**Acesso:** `http://greense.local/` ou `http://192.168.4.1/`  
+**Rede Wi-Fi:** `greenSe_Campo` (senha: `12345678`)
 
-### Funcionalidades principais
+## 📡 Sensores Implementados
 
-- 📡 Cria uma rede Wi-Fi local "greenSe_Campo" com IP fixo `192.168.4.1`.
-- 🌤️ Lê sensores de:
-  - **Temperatura do solo** (DS18B20) ✅ *Implementado e funcionando*
-  - **Umidade do solo** (sensor resistivo/capacitivo via ADC) ✅ *Implementado e funcionando*
-  - **Temperatura e umidade do ar** (AHT10 via I2C) ✅ *Implementado e funcionando*
-  - **Luminosidade** (BH1750 GY-30 via I2C) ✅ *Implementado e funcionando*
-  - **Déficit de Pressão de Vapor (DPV)** (calculado a partir de temperatura e umidade do ar) ✅ *Implementado*
-- 💾 Armazena leituras em `log_temp.csv` no **SPIFFS** e expõe JSON com histórico (inclui luminosidade e DPV).
-- 📈 Exibe **dashboard responsivo** com gráficos e cards de status em tempo real para todos os sensores.
-- 🔁 Permite ajustar o **período de amostragem** (1 s, 1 min, 10 min, 1 h, 6 h, 12 h) diretamente na interface web.
-- ⚙️ Possui **calibração guiada** da umidade do solo (parâmetros “seco” e “molhado”).
-- ⬇️ Oferece **download direto** do log em CSV e limpeza total dos dados.
-- 🧠 Sistema robusto: quando algum sensor está ausente, mantém a última leitura válida (ou NAN se nunca houve leitura).
-- 🔧 Possui servidor HTTP leve com rotas dedicadas.
-- 💡 Sistema de **LED de status** que indica estado do AP e gravação de dados.
+| Sensor | Tipo | Interface | GPIO | Status |
+|--------|------|-----------|------|--------|
+| **DS18B20** | Temperatura do solo | OneWire | GPIO4 | ✅ |
+| **ADC** | Umidade do solo | ADC | GPIO34 | ✅ |
+| **AHT10** | Temperatura e umidade do ar | I2C | SDA:21, SCL:22 | ✅ |
+| **BH1750** | Luminosidade | I2C | SDA:21, SCL:22 | ✅ |
+| **DPV** | Déficit de Pressão de Vapor | Calculado | — | ✅ |
 
----
+**Nota:** O sistema é robusto e continua funcionando mesmo com sensores ausentes, mantendo a última leitura válida ou retornando NAN.
 
-## 🧩 Estrutura de Diretórios
+## 🎯 Funcionalidades
 
-```
-main/
-├── app/
-│   ├── app_main.c             # Inicialização, tarefas FreeRTOS e laço principal
-│   ├── app_data_logger.c/.h   # Registro em SPIFFS e geração de JSON/CSV (inclui luminosidade e DPV)
-│   ├── app_sensor_manager.c/.h# Integração com BSP dos sensores
-│   ├── app_sampling_period.c/.h # Configuração dinâmica do período de amostragem (NVS)
-│   ├── app_atuadores.c/.h     # Controle de LED de status e feedback visual
-│   └── gui_services.c/.h      # Ponte entre camada APP e GUI
-├── bsp/
-│   ├── board.h                # Definições da placa (GPIOs, SPIFFS, intervalos)
-│   ├── sensors/               # Drivers de sensores
-│   │   ├── bsp_sensors.c/.h   # Interface abstrata de sensores
-│   │   ├── bsp_ds18b20.c/.h   # Driver DS18B20 (OneWire)
-│   │   ├── bsp_adc.c/.h       # Driver ADC para umidade do solo
-│   │   ├── bsp_aht10.c/.h     # Driver AHT10 (I2C - temperatura e umidade do ar)
-│   │   └── bsp_bh1750.c/.h    # Driver BH1750 (I2C - luxímetro)
-│   └── network/               # SoftAP (`bsp_wifi_ap`)
-├── gui/
-│   └── web/
-│       ├── gui_http_server.c  # Servidor HTTP e páginas HTML inline
-│       └── gui_http_server.h
-├── imagens/                   # Imagens dos hardwares e interface
-│   ├── esp32_battery.png
-│   ├── sensorDs18b20.png
-│   ├── sensorumidade.png
-│   ├── sensorAHT10.png
-│   ├── sensorBH1750.png
-│   ├── dashboardEstatisticas.png
-│   └── dashboardTolerancias.png
-├── CMakeLists.txt             # Registro de fontes no componente `main`
-└── README.md                  # Este arquivo
-```
+- **Dashboard em tempo real** com gráficos e estatísticas (min/max/média)
+- **Configuração de período de amostragem:** 10s, 1min, 10min, 1h, 6h, 12h
+- **Janela estatística configurável:** 5, 10, 15 ou 20 amostras
+- **Tolerâncias de cultivo personalizáveis** para cada parâmetro (linhas de referência nos gráficos)
+- **Calibração do sensor de umidade do solo** (valores seco/molhado)
+- **Download do histórico completo** em CSV
+- **Limpeza de dados** via interface web
+- **mDNS** para acesso por nome (`greense.local`)
+- **LED de status** indicando estado do AP e gravação
 
----
+### Protocolo de Mudança de Frequência
 
-## 🖼️ Hardware Utilizado
+Ao alterar o período de amostragem, o sistema:
+1. Exibe confirmação com aviso sobre perda de dados
+2. Limpa todos os dados registrados (garantindo integridade estatística)
+3. Reinicia o dispositivo automaticamente
 
-### Placa Principal
-
-| ESP32 com Bateria |
-|-------------------|
-| ![ESP32 com Bateria](imagens/esp32_battery.png) |
-| **Status:** ✅ *Em uso* |
-| Placa ESP32-WROOM-32 com módulo de bateria para operação autônoma em campo. |
-
-### Sensores Implementados
-
-| DS18B20 - Sensor de Temperatura do Solo |
-|------------------------------------------|
-| ![DS18B20](imagens/sensorDs18b20.png) |
-| **Status:** ✅ *Implementado e funcionando* |
-| Sensor digital de temperatura do solo com interface OneWire. Precisão de ±0.5°C no range de -10°C a +85°C. Conectado ao GPIO4. |
-
-| Sensor de Umidade do Solo |
-|---------------------------|
-| ![Sensor de Umidade](imagens/sensorumidade.png) |
-| **Status:** ✅ *Implementado e funcionando* |
-| Sensor resistivo/capacitivo de umidade do solo conectado via ADC (GPIO34). Requer calibração para valores "seco" e "molhado". |
-
-| AHT10 - Sensor de Temperatura e Umidade do Ar |
-|------------------------------------------------|
-| ![AHT10](imagens/sensorAHT10.png) |
-| **Status:** ✅ *Implementado e funcionando* |
-| Sensor I2C de temperatura e umidade do ar com alta precisão. Interface I2C (SDA: GPIO21, SCL: GPIO22, endereço: 0x38). Compartilha barramento I2C com BH1750. |
-
-| BH1750 GY-30 - Luxímetro |
-|--------------------------|
-| ![BH1750](imagens/sensorBH1750.png) |
-| **Status:** ✅ *Implementado e funcionando* |
-| Sensor de luminosidade digital via I2C. Range de medição: 1-65535 lux. Interface I2C (SDA: GPIO21, SCL: GPIO22, endereço: 0x23). Compartilha barramento I2C com AHT10. |
-
-
-## 🌐 Servidor Web Integrado
+## 🌐 Interface Web
 
 ### Rotas HTTP
 
-| Rota           | Método | Descrição |
-|----------------|--------|-----------|
-| `/`            | GET    | Painel principal (ação rápidas, branding greenSe Campo) |
-| `/dashboard`   | GET    | Dashboard com cards, gráficos e leituras instantâneas |
-| `/history`     | GET    | JSON com as últimas amostras para alimentar o dashboard |
-| `/sampling`    | GET    | Página para escolher o período de amostragem (1 s até 12 h) |
-| `/set_sampling`| GET    | Aplica o período selecionado (persistido em NVS) |
-| `/calibra`     | GET    | Calibração guiada da umidade do solo |
-| `/set_calibra` | GET    | Salva novos valores “seco/molhado” |
-| `/download`    | GET    | Baixa `log_temp.csv` completo |
-| `/clear_data`  | POST   | Limpa o log + calibração diretamente no dispositivo |
-| `/favicon.ico` | GET    | Ícone da página (1×1 PNG) |
+| Rota | Método | Descrição |
+|------|--------|-----------|
+| `/` | GET | Painel principal com ações rápidas |
+| `/dashboard` | GET | Dashboard com gráficos e estatísticas |
+| `/history` | GET | JSON com histórico de amostras |
+| `/sampling` | GET | Configuração de período e janela estatística |
+| `/set_sampling` | GET | Aplica configurações de amostragem |
+| `/calibra` | GET | Calibração do sensor de umidade |
+| `/set_calibra` | GET | Salva valores de calibração |
+| `/download` | GET | Download do arquivo CSV completo |
+| `/clear_data` | POST | Limpa todos os dados registrados |
 
-### Experiência da Interface Web
+## 📊 Estrutura de Dados
 
-- **Painel principal**: cartão único com tag “greenSe Campo”, textos explicativos e botões para dashboard, amostragem, calibração, download e limpeza.
-- **Dashboard**: hero com resumo das leituras, tabela textual e gráficos personalizados desenhados via canvas para todos os sensores (temperatura do ar, umidade do ar, temperatura do solo, umidade do solo, luminosidade e DPV).
-- **Período de amostragem**: formulário com múltipla escolha (1 s → 12 h), descrições de impacto e botões responsivos.
-- **Calibração**: cards destacando leitura bruta e faixa atual, inputs com labels claros, dica prática e botão verde padrão para retorno ao painel.
+### Arquivo CSV (`/spiffs/log_temp.csv`)
 
-### Capturas de Tela do Dashboard
-
-#### Estatísticas dos Sensores
-
-| Dashboard - Estatísticas |
-|--------------------------|
-| ![Dashboard Estatísticas](imagens/dashboardEstatisticas.png) |
-| Visão geral das estatísticas dos sensores, incluindo valores mínimos, máximos, médios e últimas leituras para cada parâmetro monitorado. |
-
-#### Tabela de Tolerâncias
-
-| Dashboard - Tabela de Tolerâncias |
-|-----------------------------------|
-| ![Dashboard Tolerâncias](imagens/dashboardTolerancias.png) |
-| Tabela de tolerâncias que define os limites aceitáveis para cada parâmetro ambiental, auxiliando na interpretação dos dados coletados e na tomada de decisões para o manejo da cultura. |
-
----
-
-## 📊 Estrutura do Arquivo CSV
-
-Local: `/spiffs/log_temp.csv`
-
-O arquivo CSV armazena todas as leituras dos sensores com timestamp implícito (índice sequencial). Cada linha representa uma amostra coletada no período configurado.
-
-| Campo | Descrição | Unidade | Sensor |
-|--------|------------|---------|--------|
-| N | Índice sequencial | — | — |
-| temp_ar_C | Temperatura do ar | °C | AHT10 ✅ |
-| umid_ar_pct | Umidade relativa do ar | % | AHT10 ✅ |
-| temp_solo_C | Temperatura do solo | °C | DS18B20 ✅ |
-| umid_solo_pct | Umidade do solo calibrada | % | Sensor ADC ✅ |
-| luminosidade_lux | Intensidade luminosa | lux | BH1750 ✅ |
-| dpv_kPa | Déficit de Pressão de Vapor | kPa | Calculado ✅ |
-
-**Formato do cabeçalho CSV:**
+Formato do cabeçalho:
 ```
 N,temp_ar_C,umid_ar_pct,temp_solo_C,umid_solo_pct,luminosidade_lux,dpv_kPa
 ```
 
-**Exemplo de linha:**
+Exemplo:
 ```
 1,25.30,65.20,22.15,45.80,850.50,1.234
 ```
 
----
+| Campo | Descrição | Unidade |
+|-------|-----------|---------|
+| `N` | Índice sequencial | — |
+| `temp_ar_C` | Temperatura do ar | °C |
+| `umid_ar_pct` | Umidade relativa do ar | % |
+| `temp_solo_C` | Temperatura do solo | °C |
+| `umid_solo_pct` | Umidade do solo calibrada | % |
+| `luminosidade_lux` | Intensidade luminosa | lux |
+| `dpv_kPa` | Déficit de Pressão de Vapor | kPa |
 
-## 💾 Requisitos de Build
+## 🏗️ Arquitetura
 
-### Ferramentas
+```
+main/
+├── app/                    # Lógica de aplicação
+│   ├── app_main.c         # Inicialização e tarefas FreeRTOS
+│   ├── app_data_logger.c  # Armazenamento em SPIFFS
+│   ├── app_sensor_manager.c
+│   ├── app_sampling_period.c  # Período de amostragem (NVS)
+│   ├── app_stats_window.c     # Janela estatística (NVS)
+│   ├── app_cultivation_tolerance.c  # Tolerâncias configuráveis (NVS)
+│   ├── app_atuadores.c    # Controle de LED
+│   └── gui_services.c     # Interface APP ↔ GUI
+├── bsp/                    # Board Support Package
+│   ├── board.h            # Configurações da placa
+│   ├── sensors/           # Drivers de sensores
+│   ├── actuators/         # Controle de atuadores
+│   └── network/           # Wi-Fi AP
+└── gui/web/               # Servidor HTTP e páginas HTML
+```
 
-- ESP-IDF ≥ **v5.0**
+## 🚀 Como Executar
+
+### Requisitos
+
+- ESP-IDF ≥ v5.0
 - Python 3.x
-- Ferramentas padrão (`idf.py`, `esptool.py`)
+- Ferramentas: `idf.py`, `esptool.py`
 
-### Componentes ESP-IDF utilizados
+### Build e Flash
+
+```bash
+idf.py set-target esp32
+idf.py build flash monitor
+```
+
+### Conexão
+
+1. Conecte os sensores conforme [Conexões](#-conexões)
+2. Conecte-se ao Wi-Fi **greenSe_Campo** (senha: `12345678`)
+3. Acesse `http://greense.local/` ou `http://192.168.4.1/`
+
+## 🔌 Conexões
+
+### I2C (Barramento Compartilhado)
+- **SDA:** GPIO21
+- **SCL:** GPIO22
+- **VCC:** 3.3V
+- **GND:** GND
+- **Pull-ups:** 4.7kΩ (geralmente incluídos nos módulos)
+
+**Sensores:**
+- AHT10: endereço 0x38
+- BH1750: endereço 0x23
+
+### OneWire
+- **DS18B20:** GPIO4 (com pull-up 4.7kΩ)
+
+### ADC
+- **Sensor de Umidade do Solo:** GPIO34 (ADC1_CH6)
+
+### Outros
+- **LED de Status:** GPIO2
+
+## 🔧 Componentes ESP-IDF
 
 - `esp_wifi`, `esp_netif`, `esp_http_server`
 - `esp_event`, `lwip`
 - `esp_adc`, `nvs_flash`, `spiffs`, `driver`
 - `freertos`, `esp_rom`, `vfs`
+- `mdns` (via Component Manager: `espressif/mdns`)
 
----
+## 🧪 Testes
 
-## 🚀 Como Executar
+Testado em:
+- ESP32-WROOM-32
+- ESP32-S3
 
-1. Clone este repositório e configure o ambiente ESP-IDF:
-   ```bash
-   idf.py set-target esp32
-   idf.py menuconfig
-   ```
-2. Compile e grave na placa:
-   ```bash
-   idf.py build flash monitor
-   ```
-3. Conecte os sensores conforme a seção [Conexões dos Sensores](#-conexões-dos-sensores).
-4. Conecte-se ao Wi-Fi **greenSe_Campo** (senha: `12345678`).
-5. Acesse **http://192.168.4.1/** no navegador.
-
-### Comportamento quando Sensores não estão Disponíveis
-
-O sistema foi projetado para ser robusto e continuar funcionando mesmo quando alguns sensores não estão conectados:
-
-- **Sensores disponíveis**: Leitura em tempo real e atualização do cache
-- **Sensores não disponíveis**: Sistema mantém a última leitura válida (ou retorna NAN se nunca houve leitura)
-- **Logs**: O sistema registra no log de inicialização quais sensores foram detectados e quais não estão disponíveis
-- **Dashboard**: Continua funcionando normalmente, mostrando os valores disponíveis ou NAN para sensores ausentes
-
----
-
-## 🧪 Testes de Campo
-
-- Testado em ESP32-WROOM-32 e ESP32-S3.
-- Funcionamento validado em:
-  - **Chrome** (Android e Desktop)
-  - **Edge** (Desktop)
-  - **Samsung Browser** — com restrições de cabeçalhos HTTP (erro 431 sem impacto funcional).
-
----
+Navegadores validados:
+- Chrome (Android e Desktop)
+- Edge (Desktop)
+- Samsung Browser
 
 ## 🔧 Troubleshooting
 
-### Problemas Comuns
+### Sensores não detectados
 
-#### 1. Caracteres Estranhos no Monitor Serial
+**I2C:**
+- Verifique conexões SDA/SCL (GPIO21/22)
+- Confirme pull-ups de 4.7kΩ
+- Verifique alimentação 3.3V e GND
+- Confirme endereços: AHT10 (0x38), BH1750 (0x23)
 
-**Sintoma:** Aparecem caracteres estranhos () no monitor serial.
+**DS18B20:**
+- Verifique pull-up de 4.7kΩ no GPIO4
+- Confirme alimentação e GND
 
-**Causa:** Problema de decodificação do serial, geralmente relacionado a baud rate ou frequência do cristal.
+### Valores NAN
 
-**Solução:**
-```bash
-# Verifique a configuração do baud rate e XTAL no menuconfig
-idf.py menuconfig
-# Navegue até: Component config → ESP32-specific → Main XTAL frequency
-# Certifique-se de que está configurado corretamente (40MHz ou 26MHz conforme sua placa)
-```
+Comportamento esperado quando o sensor não está conectado. O sistema mantém a última leitura válida ou retorna NAN se nunca houve leitura.
 
-#### 2. Erros HTTP 104 (Connection Reset)
+### Erros HTTP 104 (Connection Reset)
 
-**Sintoma:** 
-```
-W (970617) httpd_txrx: httpd_sock_err: error in send : 104
-W (970617) httpd_uri: httpd_uri: uri handler execution failed
-```
+Comportamento normal quando o navegador fecha a conexão. Não afeta o funcionamento do sistema.
 
-**Causa:** O cliente (navegador) fecha a conexão antes de completar a requisição. Isso é normal e pode ocorrer quando:
-- O navegador cancela a requisição
-- Timeout de conexão
-- Navegador fecha a aba/página
-
-**Solução:** Este é um comportamento esperado e não afeta o funcionamento do sistema. O servidor HTTP continua funcionando normalmente.
-
-#### 3. Sensores não Detectados
-
-**Sintoma:** Logs mostram "não disponível" para AHT10 ou BH1750.
-
-**Verificações:**
-1. **Conexões I2C:**
-   - Verifique se SDA está em GPIO21
-   - Verifique se SCL está em GPIO22
-   - Verifique se há pull-ups de 4.7kΩ (geralmente já incluídos nos módulos)
-   - Verifique alimentação 3.3V e GND
-
-2. **Endereços I2C:**
-   - AHT10: 0x38
-   - BH1750: 0x23 (ou 0x5C se ADDR estiver em VCC)
-
-3. **Barramento I2C compartilhado:**
-   - Ambos os sensores devem estar no mesmo barramento I2C
-   - Verifique se não há conflito de endereços
-
-#### 4. Watchdog Timer durante Inicialização
-
-**Sintoma:** Erro de watchdog durante o boot.
-
-**Causa:** Operações bloqueantes durante a inicialização (ex: impressão de arquivos grandes).
-
-**Solução:** Já corrigido no código - a função `data_logger_dump_to_logcat()` foi removida da inicialização.
-
-#### 5. Valores NAN nos Sensores
-
-**Sintoma:** Dashboard mostra NAN para alguns sensores.
-
-**Causa:** Sensor não está conectado ou falhou na leitura.
-
-**Comportamento:** O sistema mantém a última leitura válida ou retorna NAN se nunca houve leitura. Isso é esperado e permite que o sistema continue funcionando mesmo com sensores ausentes.
-
----
-
-## 🔌 Conexões dos Sensores
-
-### I2C (Barramento Compartilhado)
-- **SDA**: GPIO21
-- **SCL**: GPIO22
-- **VCC**: 3.3V
-- **GND**: GND
-- **Pull-ups**: 4.7kΩ (geralmente já incluídos nos módulos)
-
-**Sensores I2C:**
-- **AHT10**: Endereço 0x38
-- **BH1750**: Endereço 0x23
-
-### OneWire
-- **DS18B20**: GPIO4 (com pull-up de 4.7kΩ)
-
-### ADC
-- **Sensor de Umidade do Solo**: GPIO34 (ADC1_CH6)
-
-### Outros
-- **LED de Status**: GPIO2
-
----
-
-## 🧰 Extensões futuras
-
-### Software
-- Envio MQTT para servidor remoto.
-- Dashboard remoto via Flask/InfluxDB.
-- Integração com AI (modelo embarcado de previsão de irrigação).
-- Modo STA (conexão em rede existente).
-- Suporte a OTA update.
-- Expansão do histórico JSON para incluir séries de luminosidade e DPV.
-- Melhorias na interface web (gráficos interativos, exportação de dados).
-
----
-
-## 🧑‍🔬 Autoria e Créditos
+## 📝 Licença e Autoria
 
 **Projeto GreenSe | Agricultura Inteligente**  
 Coordenação: *Prof. Marcelino Monteiro de Andrade* e *Prof. Ronne Toledo*  
