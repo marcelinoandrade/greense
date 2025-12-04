@@ -4,6 +4,10 @@ Sistema embarcado para monitoramento ambiental e de solo em agricultura intelige
 
 ## ⚙️ Visão Geral
 
+<div align="center">
+<img src="imagens/esp32_battery.png" width="200" alt="ESP32 com Bateria">
+</div>
+
 O firmware cria uma rede Wi-Fi Access Point local e hospeda uma interface web acessível via navegador. O sistema coleta dados de sensores ambientais e de solo, armazena em CSV e permite visualização em tempo real com gráficos, estatísticas e configuração de tolerâncias de cultivo.
 
 **Acesso:** `http://greense.local/` ou `http://192.168.4.1/`  
@@ -18,6 +22,13 @@ O firmware cria uma rede Wi-Fi Access Point local e hospeda uma interface web ac
 | **AHT10** | Temperatura e umidade do ar | I2C | SDA:21, SCL:22 | ✅ |
 | **BH1750** | Luminosidade | I2C | SDA:21, SCL:22 | ✅ |
 | **DPV** | Déficit de Pressão de Vapor | Calculado | — | ✅ |
+
+<div align="center">
+<img src="imagens/sensorDs18b20.png" width="120" alt="DS18B20">
+<img src="imagens/sensorumidade.png" width="120" alt="Sensor Umidade">
+<img src="imagens/sensorAHT10.png" width="120" alt="AHT10">
+<img src="imagens/sensorBH1750.png" width="120" alt="BH1750">
+</div>
 
 **Nota:** O sistema é robusto e continua funcionando mesmo com sensores ausentes, mantendo a última leitura válida ou retornando NAN.
 
@@ -41,6 +52,11 @@ Ao alterar o período de amostragem, o sistema:
 3. Reinicia o dispositivo automaticamente
 
 ## 🌐 Interface Web
+
+<div align="center">
+<img src="imagens/dashboardEstatisticas.png" width="400" alt="Dashboard Estatísticas">
+<img src="imagens/dashboardTolerancias.png" width="400" alt="Dashboard Tolerâncias">
+</div>
 
 ### Rotas HTTP
 
@@ -83,22 +99,38 @@ Exemplo:
 ## 🏗️ Arquitetura
 
 ```
-main/
-├── app/                    # Lógica de aplicação
-│   ├── app_main.c         # Inicialização e tarefas FreeRTOS
-│   ├── app_data_logger.c  # Armazenamento em SPIFFS
-│   ├── app_sensor_manager.c
-│   ├── app_sampling_period.c  # Período de amostragem (NVS)
-│   ├── app_stats_window.c     # Janela estatística (NVS)
-│   ├── app_cultivation_tolerance.c  # Tolerâncias configuráveis (NVS)
-│   ├── app_atuadores.c    # Controle de LED
-│   └── gui_services.c     # Interface APP ↔ GUI
-├── bsp/                    # Board Support Package
-│   ├── board.h            # Configurações da placa
-│   ├── sensors/           # Drivers de sensores
-│   ├── actuators/         # Controle de atuadores
-│   └── network/           # Wi-Fi AP
-└── gui/web/               # Servidor HTTP e páginas HTML
+projeto/
+├── CMakeLists.txt         # Configuração do projeto ESP-IDF
+├── partitions.csv         # Tabela de partições
+├── sdkconfig              # Configurações do ESP-IDF
+├── idf_component.yml      # Dependências do Component Manager
+├── main/
+│   ├── CMakeLists.txt     # Registro de fontes do componente main
+│   ├── idf_component.yml  # Dependências (cjson, mdns)
+│   ├── app/               # Lógica de aplicação
+│   │   ├── app_main.c                    # Inicialização e tarefas FreeRTOS
+│   │   ├── app_data_logger.c/.h          # Armazenamento em SPIFFS
+│   │   ├── app_sensor_manager.c/.h        # Gerenciamento de sensores
+│   │   ├── app_sampling_period.c/.h      # Período de amostragem (NVS)
+│   │   ├── app_stats_window.c/.h         # Janela estatística (NVS)
+│   │   ├── app_cultivation_tolerance.c/.h # Tolerâncias configuráveis (NVS)
+│   │   ├── app_atuadores.c/.h            # Controle de LED
+│   │   └── gui_services.c/.h             # Interface APP ↔ GUI
+│   ├── bsp/               # Board Support Package
+│   │   ├── board.h                       # Configurações da placa
+│   │   ├── sensors/                      # Drivers de sensores
+│   │   │   ├── bsp_sensors.c/.h          # Interface abstrata
+│   │   │   ├── bsp_ds18b20.c/.h          # DS18B20 (OneWire)
+│   │   │   ├── bsp_adc.c/.h              # ADC umidade do solo
+│   │   │   ├── bsp_aht10.c/.h            # AHT10 (I2C)
+│   │   │   └── bsp_bh1750.c/.h           # BH1750 (I2C)
+│   │   ├── actuators/                    # Controle de atuadores
+│   │   │   └── bsp_led.c/.h              # LED de status
+│   │   └── network/                      # Wi-Fi AP
+│   │       └── bsp_wifi_ap.c/.h          # Access Point
+│   └── gui/web/           # Interface web
+│       └── gui_http_server.c/.h          # Servidor HTTP e páginas HTML
+└── imagens/               # Imagens de hardware e interface
 ```
 
 ## 🚀 Como Executar
