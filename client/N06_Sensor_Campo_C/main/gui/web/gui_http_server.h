@@ -9,7 +9,7 @@ extern "C" {
 /* Sobe o Wi-Fi em modo AP e inicia o servidor HTTP.
  *
  * AP:
- *   SSID: "ESP32_TEMP" (do board.h)
+ *   SSID: "greenSe_Campo" (do board.h)
  *   senha: "12345678" (do board.h)
  *   IP padrão: 192.168.4.1
  *

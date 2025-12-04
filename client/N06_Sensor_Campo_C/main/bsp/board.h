@@ -29,7 +29,7 @@
 #define BSP_ADC_SOIL_ATTEN      ADC_ATTEN_DB_12  // ADC_ATTEN_DB_11 deprecated, usa DB_12
 
 /* Wi-Fi AP */
-#define BSP_WIFI_AP_SSID        "ESP32_TEMP"
+#define BSP_WIFI_AP_SSID        "greenSe_Campo"
 #define BSP_WIFI_AP_PASSWORD    "12345678"
 #define BSP_WIFI_AP_CHANNEL     1
 #define BSP_WIFI_AP_MAX_CONN    4

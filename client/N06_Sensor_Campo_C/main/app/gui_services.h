@@ -53,9 +53,27 @@ typedef struct {
     uint32_t (*get_sampling_period_ms)(void);
     esp_err_t (*set_sampling_period_ms)(uint32_t period_ms);
     
+    /* Período estatístico (número de amostras) */
+    int (*get_stats_window_count)(void);
+    esp_err_t (*set_stats_window_count)(int count);
+    
     /* Histórico */
     char* (*build_history_json)(void);
     bool  (*get_recent_stats)(int max_samples, gui_recent_stats_t *stats_out);
+    
+    /* Tolerâncias de cultivo */
+    void (*get_cultivation_tolerance)(float *temp_ar_min, float *temp_ar_max,
+                                      float *umid_ar_min, float *umid_ar_max,
+                                      float *temp_solo_min, float *temp_solo_max,
+                                      float *umid_solo_min, float *umid_solo_max,
+                                      float *luminosidade_min, float *luminosidade_max,
+                                      float *dpv_min, float *dpv_max);
+    esp_err_t (*set_cultivation_tolerance)(float temp_ar_min, float temp_ar_max,
+                                           float umid_ar_min, float umid_ar_max,
+                                           float temp_solo_min, float temp_solo_max,
+                                           float umid_solo_min, float umid_solo_max,
+                                           float luminosidade_min, float luminosidade_max,
+                                           float dpv_min, float dpv_max);
     
     /* Manutenção */
     esp_err_t (*clear_logged_data)(void);

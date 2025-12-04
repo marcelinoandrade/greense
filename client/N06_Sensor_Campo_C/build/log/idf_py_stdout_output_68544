@@ -1,0 +1,194 @@
+Command: /home/mrclnndrd/.espressif/python_env/idf5.5_py3.11_env/bin/python /home/mrclnndrd/esp/esp-idf/tools/idf_monitor.py -p /dev/ttyUSB0 -b 115200 --toolchain-prefix xtensa-esp32-elf- --target esp32 --revision 0 /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/sensor_campo.elf /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/bootloader/bootloader.elf -m '/home/mrclnndrd/.espressif/python_env/idf5.5_py3.11_env/bin/python' '/home/mrclnndrd/esp/esp-idf/tools/idf.py'
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x17 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:6380
+ho 0 tail 12 room 4
+load:0x40078000,len:15904
+load:0x40080400,len:3860
+entry 0x40080638
+[0;32mI (29) boot: ESP-IDF v5.5-dev-3372-g38628f98b9 2nd stage bootloader[0m
+[0;32mI (29) boot: compile time Nov 28 2025 06:27:02[0m
+[0;32mI (29) boot: Multicore bootloader[0m
+[0;32mI (32) boot: chip revision: v3.1[0m
+[0;32mI (35) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (39) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (42) boot.esp32: SPI Flash Size : 4MB[0m
+[0;32mI (46) boot: Enabling RNG early entropy source...[0m
+[0;32mI (50) boot: Partition Table:[0m
+[0;32mI (53) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (59) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (66) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (72) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (79) boot:  3 spiffs           Unknown data     01 82 00110000 002f0000[0m
+[0;32mI (85) boot: End of partition table[0m
+[0;32mI (89) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=2e35ch (189276) map[0m
+[0;32mI (161) esp_image: segment 1: paddr=0003e384 vaddr=3ff80000 size=0001ch (    28) load[0m
+[0;32mI (161) esp_image: segment 2: paddr=0003e3a8 vaddr=3ffb0000 size=01c70h (  7280) load[0m
+[0;32mI (167) esp_image: segment 3: paddr=00040020 vaddr=400d0020 size=a3114h (667924) map[0m
+[0;32mI (400) esp_image: segment 4: paddr=000e313c vaddr=3ffb1c70 size=0225ch (  8796) load[0m
+[0;32mI (404) esp_image: segment 5: paddr=000e53a0 vaddr=40080000 size=1802ch ( 98348) load[0m
+[0;32mI (454) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (454) boot: Disabling RNG early entropy source...[0m
+[0;32mI (465) cpu_start: Multicore app[0m
+[0;32mI (473) cpu_start: Pro cpu start user code[0m
+[0;32mI (473) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (473) app_init: Application information:[0m
+[0;32mI (476) app_init: Project name:     sensor_campo[0m
+[0;32mI (481) app_init: App version:      2de3fb72-dirty[0m
+[0;32mI (487) app_init: Compile time:     Dec  4 2025 14:15:48[0m
+[0;32mI (493) app_init: ELF file SHA256:  65e6a4194...[0m
+[0;32mI (498) app_init: ESP-IDF:          v5.5-dev-3372-g38628f98b9[0m
+[0;32mI (505) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (509) efuse_init: Max chip rev:     v3.99 [0m
+[0;32mI (514) efuse_init: Chip rev:         v3.1[0m
+[0;32mI (519) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (526) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (532) heap_init: At 3FFB8110 len 00027EF0 (159 KiB): DRAM[0m
+[0;32mI (539) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (545) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (551) heap_init: At 4009802C len 00007FD4 (31 KiB): IRAM[0m
+[0;32mI (559) spi_flash: detected chip: generic[0m
+[0;32mI (562) spi_flash: flash io: dio[0m
+[0;32mI (567) main_task: Started on CPU0[0m
+[0;32mI (577) main_task: Calling app_main()[0m
+[0;32mI (597) BSP_LED: LED inicializado no GPIO 2[0m
+[0;32mI (597) BSP_DS18B20: DS18B20 inicializado no GPIO 4[0m
+[0;32mI (597) BSP_ADC: ADC umidade solo inicializado. canal=6 bitwidth=12 atten=3[0m
+[0;32mI (637) BSP_AHT10: AHT10 inicializado com sucesso (I2C addr: 0x38)[0m
+[0;32mI (637) BSP_SENSORS: AHT10 inicializado com sucesso[0m
+[0;32mI (777) BSP_BH1750: BH1750 inicializado com sucesso (I2C addr: 0x23)[0m
+[0;32mI (777) BSP_SENSORS: BH1750 inicializado com sucesso[0m
+[0;32mI (777) BSP_SENSORS: Sensores BSP inicializados[0m
+[0;32mI (777) APP_SENSOR_MGR: Sensor Manager inicializado[0m
+[0;32mI (787) APP_DATA_LOGGER: Inicializando SPIFFS...[0m
+[0;32mI (1097) APP_DATA_LOGGER: SPIFFS montado em /spiffs[0m
+[0;32mI (1097) APP_DATA_LOGGER: Total=2293769 bytes, Usado=19361 bytes[0m
+[0;32mI (1227) APP_DATA_LOGGER: Proximo indice de log sera: 399[0m
+[0;32mI (1417) APP_DATA_LOGGER: Calibracao carregada. seco=4000 molhado=400[0m
+[0;32mI (1417) APP_DATA_LOGGER: Data logger inicializado. Proximo indice: 399[0m
+[0;32mI (1417) APP_SAMPLING: Período carregado do NVS: 10000 ms[0m
+[0;32mI (1427) APP_STATS_WINDOW: Período estatístico carregado do NVS: 10 amostras[0m
+[0;32mI (1437) APP_CULTIVATION: Tolerâncias de cultivo carregadas do NVS[0m
+[0;32mI (1437) APP_GUI_SERVICES: Serviços GUI registrados[0m
+[0;32mI (1457) wifi:wifi driver task: 3ffc2880, prio:23, stack:6656, core=0[0m
+[0;32mI (1467) wifi:wifi firmware version: 7d2994f4b[0m
+[0;32mI (1467) wifi:wifi certification version: v7.0[0m
+[0;32mI (1467) wifi:config NVS flash: enabled[0m
+[0;32mI (1467) wifi:config nano formatting: disabled[0m
+[0;32mI (1467) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (1477) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (1477) wifi:Init management short buffer num: 32[0m
+[0;32mI (1487) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (1487) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (1487) wifi:Init static rx buffer num: 10[0m
+[0;32mI (1497) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (1497) wifi_init: rx ba win: 6[0m
+[0;32mI (1507) wifi_init: accept mbox: 6[0m
+[0;32mI (1507) wifi_init: tcpip mbox: 32[0m
+[0;32mI (1507) wifi_init: udp mbox: 6[0m
+[0;32mI (1517) wifi_init: tcp mbox: 6[0m
+[0;32mI (1517) wifi_init: tcp tx win: 5760[0m
+[0;32mI (1527) wifi_init: tcp rx win: 5760[0m
+[0;32mI (1527) wifi_init: tcp mss: 1440[0m
+[0;32mI (1527) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (1537) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (1547) phy_init: phy_version 4860,6b7a6e5,Feb  6 2025,14:47:07[0m
+[0;32mI (1637) wifi:mode : softAP (38:18:2b:ea:b7:cd)[0m
+[0;32mI (1637) wifi:Total power save buffer number: 16[0m
+[0;32mI (1637) wifi:Init max length of beacon: 752/752[0m
+[0;32mI (1637) wifi:Init max length of beacon: 752/752[0m
+[0;32mI (1647) BSP_WIFI_AP: Modo AP iniciado. SSID='ESP32_TEMP' senha='12345678'[0m
+[0;32mI (1647) esp_netif_lwip: DHCP server started on interface WIFI_AP_DEF with IP: 192.168.4.1[0m
+[0;32mI (1667) GUI_HTTP_SERVER: Servidor HTTP iniciado e rotas registradas. Acesse http://192.168.4.1/[0m
+[0;32mI (1667) APP_MAIN: Sistema iniciado - Arquitetura BSP/APP/GUI[0m
+[0;32mI (1677) main_task: Returned from app_main()[0m
+[0;32mI (2877) APP_MAIN: Log salvo! Ar: 27.23 C / 67.34 %, Solo: 25.56 C / 69.83 %, Lux: 100.8, DPV: 1.180 kPa[0m
+[0;32mI (3727) wifi:new:<1,1>, old:<1,1>, ap:<1,1>, sta:<255,255>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (3737) wifi:station: 40:23:43:e9:b3:a7 join, AID=1, bgn, 40U[0m
+[0;32mI (3747) BSP_WIFI_AP: Cliente 40:23:43:e9:b3:a7 conectou, AID=1[0m
+[0;32mI (3777) wifi:<ba-add>idx:2 (ifx:1, 40:23:43:e9:b3:a7), tid:0, ssn:0, winSize:64[0m
+[0;32mI (3787) esp_netif_lwip: DHCP server assigned IP to a client, IP is: 192.168.4.2[0m
+[0;32mI (3797) wifi:<ba-add>idx:3 (ifx:1, 40:23:43:e9:b3:a7), tid:6, ssn:2, winSize:64[0m
+[0;32mI (12587) APP_MAIN: Log salvo! Ar: 27.23 C / 67.30 %, Solo: 25.56 C / 70.14 %, Lux: 100.8, DPV: 1.181 kPa[0m
+[0;32mI (16057) APP_SAMPLING: Período atualizado para 10000 ms[0m
+[0;32mI (16067) APP_STATS_WINDOW: Período estatístico atualizado para 20 amostras[0m
+[0;33mW (16067) httpd_txrx: httpd_resp_send_err: 500 Internal Server Error - Erro gerando resposta[0m
+[0;33mW (16077) httpd_uri: httpd_uri: uri handler execution failed[0m
+[0;32mI (22807) APP_MAIN: Log salvo! Ar: 27.21 C / 67.26 %, Solo: 25.56 C / 69.78 %, Lux: 100.8, DPV: 1.182 kPa[0m
+[0;32mI (26177) APP_SAMPLING: Período atualizado para 10000 ms[0m
+[0;32mI (26187) APP_STATS_WINDOW: Período estatístico atualizado para 15 amostras[0m
+[0;33mW (26187) httpd_txrx: httpd_resp_send_err: 500 Internal Server Error - Erro gerando resposta[0m
+[0;33mW (26197) httpd_uri: httpd_uri: uri handler execution failed[0m
+[0;32mI (32797) APP_MAIN: Log salvo! Ar: 27.17 C / 67.37 %, Solo: 25.56 C / 70.69 %, Lux: 100.8, DPV: 1.175 kPa[0m
+[0;32mI (33667) APP_SAMPLING: Período atualizado para 60000 ms[0m
+[0;32mI (33667) APP_STATS_WINDOW: Período estatístico atualizado para 15 amostras[0m
+[0;32mI (42557) APP_MAIN: Log salvo! Ar: 27.17 C / 67.44 %, Solo: 25.56 C / 70.36 %, Lux: 100.8, DPV: 1.172 kPa[0m
+[0;32mI (58187) APP_SAMPLING: Período atualizado para 60000 ms[0m
+[0;32mI (58197) APP_STATS_WINDOW: Período estatístico atualizado para 20 amostras[0m
+����������������������������������������������������������������eríodo atualizado para 10000 ms[0m
+[0;32mI (67847) APP_STATS_WINDOW: Período estatístico atualizado para 20 amostras[0m
+[0;33mW (67847) httpd_txrx: httpd_resp_send_err: 500 Internal Server Error - Erro gerando resposta[0m
+[0;33mW (67867) httpd_uri: httpd_uri: uri handler execution failed[0m
+[0;32mI (77637) APP_SAMPLING: Período atualizado para 60000 ms[0m
+[0;32mI (77637) APP_STATS_WINDOW: Período estatístico atualizado para 20 amostras[0m
+����������������������������������������������������������������salvo! Ar: 27.08 C / 68.15 %, Solo: 25.56 C / 70.92 %, Lux: 101.7, DPV: 1.141 kPa[0m
+����������������������������������������������������������������Período atualizado para 10000 ms[0m
+[0;32mI (158827) APP_STATS_WINDOW: Período estatístico atualizado para 20 amostras[0m
+[0;33mW (158827) httpd_txrx: httpd_resp_send_err: 500 Internal Server Error - Erro gerando resposta[0m
+[0;33mW (158837) httpd_uri: httpd_uri: uri handler execution failed[0m
+[0;32mI (162427) APP_SAMPLING: Período atualizado para 10000 ms[0m
+[0;32mI (162437) APP_STATS_WINDOW: Período estatístico atualizado para 5 amostras[0m
+[0;33mW (162437) httpd_txrx: httpd_resp_send_err: 500 Internal Server Error - Erro gerando resposta[0m
+[0;33mW (162447) httpd_uri: httpd_uri: uri handler execution failed[0m
+[0;32mI (162767) APP_MAIN: Log salvo! Ar: 27.09 C / 67.60 %, Solo: 25.56 C / 72.03 %, Lux: 102.5, DPV: 1.162 kPa[0m
+[0;32mI (165967) APP_SAMPLING: Período atualizado para 10000 ms[0m
+[0;32mI (165977) APP_STATS_WINDOW: Período estatístico atualizado para 10 amostras[0m
+[0;33mW (165977) httpd_txrx: httpd_resp_send_err: 500 Internal Server Error - Erro gerando resposta[0m
+[0;33mW (165987) httpd_uri: httpd_uri: uri handler execution failed[0m
+[0;32mI (169257) APP_SAMPLING: Período atualizado para 10000 ms[0m
+[0;32mI (169267) APP_STATS_WINDOW: Período estatístico atualizado para 15 amostras[0m
+[0;33mW (169267) httpd_txrx: httpd_resp_send_err: 500 Internal Server Error - Erro gerando resposta[0m
+[0;33mW (169277) httpd_uri: httpd_uri: uri handler execution failed[0m
+[0;32mI (172577) APP_SAMPLING: Período atualizado para 10000 ms[0m
+[0;32mI (172777) APP_MAIN: Log salvo! Ar: 27.10 C / 67.66 %, Solo: 25.56 C / 71.44 %, Lux: 102.5, DPV: 1.160 kPa[0m
+[0;32mI (172777) APP_STATS_WINDOW: Período estatístico atualizado para 20 amostras[0m
+[0;33mW (172787) httpd_txrx: httpd_resp_send_err: 500 Internal Server Error - Erro gerando resposta[0m
+[0;33mW (172797) httpd_uri: httpd_uri: uri handler execution failed[0m
+[0;32mI (180617) APP_SAMPLING: Período atualizado para 60000 ms[0m
+[0;32mI (180617) APP_STATS_WINDOW: Período estatístico atualizado para 20 amostras[0m
+[0;32mI (182517) APP_MAIN: Log salvo! Ar: 27.12 C / 67.60 %, Solo: 25.56 C / 70.69 %, Lux: 102.5, DPV: 1.163 kPa[0m
+[0;32mI (185927) APP_SAMPLING: Período atualizado para 10000 ms[0m
+[0;32mI (185927) APP_STATS_WINDOW: Período estatístico atualizado para 20 amostras[0m
+[0;33mW (185927) httpd_txrx: httpd_resp_send_err: 500 Internal Server Error - Erro gerando resposta[0m
+[0;33mW (185947) httpd_uri: httpd_uri: uri handler execution failed[0m
+[0;32mI (194347) APP_SAMPLING: Período atualizado para 60000 ms[0m
+[0;32mI (194347) APP_STATS_WINDOW: Período estatístico atualizado para 20 amostras[0m
+����������������������������������������������������������������Período atualizado para 600000 ms[0m
+[0;32mI (209707) APP_STATS_WINDOW: Período estatístico atualizado para 20 amostras[0m
+[0;33mW (209707) httpd_txrx: httpd_resp_send_err: 500 Internal Server Error - Erro gerando resposta[0m
+[0;33mW (209727) httpd_uri: httpd_uri: uri handler execution failed[0m
+[0;32mI (215197) APP_SAMPLING: Período atualizado para 3600000 ms[0m
+[0;32mI (215197) APP_STATS_WINDOW: Período estatístico atualizado para 20 amostras[0m
+[0;32mI (218507) APP_SAMPLING: Período atualizado para 3600000 ms[0m
+[0;32mI (218517) APP_STATS_WINDOW: Período estatístico atualizado para 5 amostras[0m
+[0;32mI (223417) APP_SAMPLING: Período atualizado para 10000 ms[0m
+[0;32mI (223417) APP_STATS_WINDOW: Período estatístico atualizado para 5 amostras[0m
+[0;33mW (223417) httpd_txrx: httpd_resp_send_err: 500 Internal Server Error - Erro gerando resposta[0m
+[0;33mW (223437) httpd_uri: httpd_uri: uri handler execution failed[0m
+����������������������������������������������������������������Período atualizado para 10000 ms[0m
+[0;32mI (227397) APP_STATS_WINDOW: Período estatístico atualizado para 15 amostras[0m
+[0;33mW (227397) httpd_txrx: httpd_resp_send_err: 500 Internal Server Error - Erro gerando resposta[0m
+[0;33mW (227407) httpd_uri: httpd_uri: uri handler execution failed[0m
+[0;32mI (234047) APP_SAMPLING: Período atualizado para 43200000 ms[0m
+[0;32mI (234047) APP_STATS_WINDOW: Período estatístico atualizado para 5 amostras[0m
+[0;32mI (240417) APP_SAMPLING: Período atualizado para 3600000 ms[0m
+[0;32mI (240417) APP_STATS_WINDOW: Período estatístico atualizado para 5 amostras[0m
+[0;32mI (242737) APP_MAIN: Log salvo! Ar: 27.20 C / 67.21 %, Solo: 25.56 C / 71.81 %, Lux: 104.2, DPV: 1.183 kPa[0m
+[0;32mI (245087) APP_SAMPLING: Período atualizado para 600000 ms[0m
+[0;32mI (245087) APP_STATS_WINDOW: Período estatístico atualizado para 5 amostras[0m
+[0;33mW (245087) httpd_txrx: httpd_resp_send_err: 500 Internal Server Error - Erro gerando resposta[0m
+[0;33mW (245107) httpd_uri: httpd_uri: uri handler execution failed[0m

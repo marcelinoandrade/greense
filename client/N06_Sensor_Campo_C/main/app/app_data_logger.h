@@ -40,13 +40,16 @@ void data_logger_dump_to_logcat(void);
  *   "temp_ar_points":   [ [idx, temp_ar_C], ... ],
  *   "umid_ar_points":   [ [idx, umid_ar_pct], ... ],
  *   "temp_solo_points": [ [idx, temp_solo_C], ... ],
- *   "umid_solo_points": [ [idx, umid_solo_pct], ... ]
+ *   "umid_solo_points": [ [idx, umid_solo_pct], ... ],
+ *   "luminosidade_points": [ [idx, luminosidade_lux], ... ],
+ *   "dpv_points":       [ [idx, dpv_kPa], ... ]
  * }
  *
+ * @param max_samples Número máximo de amostras a retornar (5, 10, 15 ou 20)
  * Retorna ponteiro malloc(). O chamador deve dar free().
  * Retorna NULL se falhar.
  */
-char *data_logger_build_history_json(void);
+char *data_logger_build_history_json(int max_samples);
 
 /* Calcula estatísticas simples (mín/máx/média/última leitura) para cada sensor
  * considerando até max_samples mais recentes armazenadas.

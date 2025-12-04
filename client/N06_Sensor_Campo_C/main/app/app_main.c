@@ -19,6 +19,8 @@
 #include "app_data_logger.h"
 #include "app_atuadores.h"
 #include "app_sampling_period.h"
+#include "app_stats_window.h"
+#include "app_cultivation_tolerance.h"
 #include "gui_services.h"
 
 // GUI
@@ -29,17 +31,63 @@ static const char *TAG = "APP_MAIN";
 /* Estrutura estática para expor serviços da camada APP para a GUI */
 static gui_services_t gui_services_impl;
 
+/* Wrapper para build_history_json que usa a configuração de stats_window */
+static char* build_history_json_wrapper(void)
+{
+    int max_samples = stats_window_get_count();
+    ESP_LOGD(TAG, "build_history_json_wrapper: usando %d amostras", max_samples);
+    return data_logger_build_history_json(max_samples);
+}
+
+/* Wrappers para tolerâncias de cultivo */
+static void get_cultivation_tolerance_wrapper(float *temp_ar_min, float *temp_ar_max,
+                                              float *umid_ar_min, float *umid_ar_max,
+                                              float *temp_solo_min, float *temp_solo_max,
+                                              float *umid_solo_min, float *umid_solo_max,
+                                              float *luminosidade_min, float *luminosidade_max,
+                                              float *dpv_min, float *dpv_max)
+{
+    cultivation_tolerance_t tol;
+    cultivation_tolerance_get(&tol);
+    if (temp_ar_min) *temp_ar_min = tol.temp_ar_min;
+    if (temp_ar_max) *temp_ar_max = tol.temp_ar_max;
+    if (umid_ar_min) *umid_ar_min = tol.umid_ar_min;
+    if (umid_ar_max) *umid_ar_max = tol.umid_ar_max;
+    if (temp_solo_min) *temp_solo_min = tol.temp_solo_min;
+    if (temp_solo_max) *temp_solo_max = tol.temp_solo_max;
+    if (umid_solo_min) *umid_solo_min = tol.umid_solo_min;
+    if (umid_solo_max) *umid_solo_max = tol.umid_solo_max;
+    if (luminosidade_min) *luminosidade_min = tol.luminosidade_min;
+    if (luminosidade_max) *luminosidade_max = tol.luminosidade_max;
+    if (dpv_min) *dpv_min = tol.dpv_min;
+    if (dpv_max) *dpv_max = tol.dpv_max;
+}
+
+static esp_err_t set_cultivation_tolerance_wrapper(float temp_ar_min, float temp_ar_max,
+                                                    float umid_ar_min, float umid_ar_max,
+                                                    float temp_solo_min, float temp_solo_max,
+                                                    float umid_solo_min, float umid_solo_max,
+                                                    float luminosidade_min, float luminosidade_max,
+                                                    float dpv_min, float dpv_max)
+{
+    cultivation_tolerance_t tol;
+    tol.temp_ar_min = temp_ar_min;
+    tol.temp_ar_max = temp_ar_max;
+    tol.umid_ar_min = umid_ar_min;
+    tol.umid_ar_max = umid_ar_max;
+    tol.temp_solo_min = temp_solo_min;
+    tol.temp_solo_max = temp_solo_max;
+    tol.umid_solo_min = umid_solo_min;
+    tol.umid_solo_max = umid_solo_max;
+    tol.luminosidade_min = luminosidade_min;
+    tol.luminosidade_max = luminosidade_max;
+    tol.dpv_min = dpv_min;
+    tol.dpv_max = dpv_max;
+    return cultivation_tolerance_set(&tol);
+}
+
 static const uint32_t SENSOR_JANELA_MS = 5000;
 static const uint32_t SENSOR_RETRY_MS  = 2000;
-
-static void format_sensor_text(char *buffer, size_t buffer_len, float value)
-{
-    if (isfinite(value)) {
-        snprintf(buffer, buffer_len, "%.2f", value);
-    } else {
-        snprintf(buffer, buffer_len, "--");
-    }
-}
 
 static bool capturar_primeiro_valido(sensor_reading_t *dest)
 {
@@ -106,19 +154,24 @@ static void tarefa_log(void *pvParameter)
         {
             if (data_logger_append(&entry))
             {
-                char ar_temp_text[16];
-                char ar_hum_text[16];
-                format_sensor_text(ar_temp_text, sizeof(ar_temp_text), entry.temp_ar);
-                format_sensor_text(ar_hum_text, sizeof(ar_hum_text), entry.umid_ar);
-
-                ESP_LOGI(TAG,
-                         "Log salvo! Ar: %s C / %s %%, Solo: %.2f C / %.2f %%, Lux: %.1f, DPV: %.3f kPa",
-                         ar_temp_text,
-                         ar_hum_text,
-                         entry.temp_solo,
-                         entry.umid_solo,
-                         entry.luminosidade,
-                         entry.dpv);
+                // Formatação direta no log para evitar corrupção de buffer
+                if (isfinite(entry.temp_ar) && isfinite(entry.umid_ar)) {
+                    ESP_LOGI(TAG,
+                             "Log salvo! Ar: %.2f C / %.2f %%, Solo: %.2f C / %.2f %%, Lux: %.1f, DPV: %.3f kPa",
+                             entry.temp_ar,
+                             entry.umid_ar,
+                             entry.temp_solo,
+                             entry.umid_solo,
+                             entry.luminosidade,
+                             entry.dpv);
+                } else {
+                    ESP_LOGI(TAG,
+                             "Log salvo! Ar: -- C / -- %%, Solo: %.2f C / %.2f %%, Lux: %.1f, DPV: %.3f kPa",
+                             entry.temp_solo,
+                             entry.umid_solo,
+                             entry.luminosidade,
+                             entry.dpv);
+                }
 
                 // sinaliza flash de gravação
                 atuadores_sinalizar_gravacao();
@@ -162,6 +215,12 @@ void app_main(void)
 
     // Carrega período de amostragem atual (NVS)
     ESP_ERROR_CHECK(sampling_period_init());
+    
+    // Carrega período estatístico atual (NVS)
+    ESP_ERROR_CHECK(stats_window_init());
+    
+    // Carrega tolerâncias de cultivo (NVS)
+    ESP_ERROR_CHECK(cultivation_tolerance_init());
 
     // ============================================================
     // CONECTA CAMADAS (remove dependência circular)
@@ -183,8 +242,12 @@ void app_main(void)
     gui_services_impl.set_calibration    = data_logger_set_calibracao;
     gui_services_impl.get_sampling_period_ms = sampling_period_get_ms;
     gui_services_impl.set_sampling_period_ms = sampling_period_set_ms;
-    gui_services_impl.build_history_json = data_logger_build_history_json;
+    gui_services_impl.get_stats_window_count = stats_window_get_count;
+    gui_services_impl.set_stats_window_count = stats_window_set_count;
+    gui_services_impl.build_history_json = build_history_json_wrapper;
     gui_services_impl.get_recent_stats  = data_logger_get_recent_stats;
+    gui_services_impl.get_cultivation_tolerance = get_cultivation_tolerance_wrapper;
+    gui_services_impl.set_cultivation_tolerance = set_cultivation_tolerance_wrapper;
     gui_services_impl.clear_logged_data  = data_logger_clear_all;
     gui_services_register(&gui_services_impl);
 

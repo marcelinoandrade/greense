@@ -19,6 +19,8 @@ idf_component_register(
     "app/app_sensor_manager.c"
     "app/app_data_logger.c"
     "app/app_sampling_period.c"
+    "app/app_stats_window.c"
+    "app/app_cultivation_tolerance.c"
     "app/app_atuadores.c"
     "app/gui_services.c"
     

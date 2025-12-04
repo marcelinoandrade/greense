@@ -10,7 +10,7 @@ O firmware cria uma rede **Wi-Fi Access Point (AP)** local e hospeda uma página
 
 ### Funcionalidades principais
 
-- 📡 Cria uma rede Wi-Fi local “ESP32_TEMP” com IP fixo `192.168.4.1`.
+- 📡 Cria uma rede Wi-Fi local "greenSe_Campo" com IP fixo `192.168.4.1`.
 - 🌤️ Lê sensores de:
   - **Temperatura do solo** (DS18B20) ✅ *Implementado e funcionando*
   - **Umidade do solo** (sensor resistivo/capacitivo via ADC) ✅ *Implementado e funcionando*
@@ -202,7 +202,7 @@ N,temp_ar_C,umid_ar_pct,temp_solo_C,umid_solo_pct,luminosidade_lux,dpv_kPa
    idf.py build flash monitor
    ```
 3. Conecte os sensores conforme a seção [Conexões dos Sensores](#-conexões-dos-sensores).
-4. Conecte-se ao Wi-Fi **ESP32_TEMP** (senha: `12345678`).
+4. Conecte-se ao Wi-Fi **greenSe_Campo** (senha: `12345678`).
 5. Acesse **http://192.168.4.1/** no navegador.
 
 ### Comportamento quando Sensores não estão Disponíveis
@@ -223,6 +223,76 @@ O sistema foi projetado para ser robusto e continuar funcionando mesmo quando al
   - **Chrome** (Android e Desktop)
   - **Edge** (Desktop)
   - **Samsung Browser** — com restrições de cabeçalhos HTTP (erro 431 sem impacto funcional).
+
+---
+
+## 🔧 Troubleshooting
+
+### Problemas Comuns
+
+#### 1. Caracteres Estranhos no Monitor Serial
+
+**Sintoma:** Aparecem caracteres estranhos () no monitor serial.
+
+**Causa:** Problema de decodificação do serial, geralmente relacionado a baud rate ou frequência do cristal.
+
+**Solução:**
+```bash
+# Verifique a configuração do baud rate e XTAL no menuconfig
+idf.py menuconfig
+# Navegue até: Component config → ESP32-specific → Main XTAL frequency
+# Certifique-se de que está configurado corretamente (40MHz ou 26MHz conforme sua placa)
+```
+
+#### 2. Erros HTTP 104 (Connection Reset)
+
+**Sintoma:** 
+```
+W (970617) httpd_txrx: httpd_sock_err: error in send : 104
+W (970617) httpd_uri: httpd_uri: uri handler execution failed
+```
+
+**Causa:** O cliente (navegador) fecha a conexão antes de completar a requisição. Isso é normal e pode ocorrer quando:
+- O navegador cancela a requisição
+- Timeout de conexão
+- Navegador fecha a aba/página
+
+**Solução:** Este é um comportamento esperado e não afeta o funcionamento do sistema. O servidor HTTP continua funcionando normalmente.
+
+#### 3. Sensores não Detectados
+
+**Sintoma:** Logs mostram "não disponível" para AHT10 ou BH1750.
+
+**Verificações:**
+1. **Conexões I2C:**
+   - Verifique se SDA está em GPIO21
+   - Verifique se SCL está em GPIO22
+   - Verifique se há pull-ups de 4.7kΩ (geralmente já incluídos nos módulos)
+   - Verifique alimentação 3.3V e GND
+
+2. **Endereços I2C:**
+   - AHT10: 0x38
+   - BH1750: 0x23 (ou 0x5C se ADDR estiver em VCC)
+
+3. **Barramento I2C compartilhado:**
+   - Ambos os sensores devem estar no mesmo barramento I2C
+   - Verifique se não há conflito de endereços
+
+#### 4. Watchdog Timer durante Inicialização
+
+**Sintoma:** Erro de watchdog durante o boot.
+
+**Causa:** Operações bloqueantes durante a inicialização (ex: impressão de arquivos grandes).
+
+**Solução:** Já corrigido no código - a função `data_logger_dump_to_logcat()` foi removida da inicialização.
+
+#### 5. Valores NAN nos Sensores
+
+**Sintoma:** Dashboard mostra NAN para alguns sensores.
+
+**Causa:** Sensor não está conectado ou falhou na leitura.
+
+**Comportamento:** O sistema mantém a última leitura válida ou retorna NAN se nunca houve leitura. Isso é esperado e permite que o sistema continue funcionando mesmo com sensores ausentes.
 
 ---
 

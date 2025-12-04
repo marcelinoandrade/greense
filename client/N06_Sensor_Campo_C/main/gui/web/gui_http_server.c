@@ -123,8 +123,28 @@ static esp_err_t handle_dashboard(httpd_req_t *req)
     gui_recent_stats_t recent_stats;
     memset(&recent_stats, 0, sizeof(recent_stats));
     bool stats_available = false;
+    int stats_window = 10; // padrão
+    if (svc->get_stats_window_count) {
+        stats_window = svc->get_stats_window_count();
+    }
     if (svc->get_recent_stats) {
-        stats_available = svc->get_recent_stats(20, &recent_stats);
+        stats_available = svc->get_recent_stats(stats_window, &recent_stats);
+    }
+    
+    // Obtém valores de tolerância configurados
+    float temp_ar_min = 20.0f, temp_ar_max = 30.0f;
+    float umid_ar_min = 50.0f, umid_ar_max = 80.0f;
+    float temp_solo_min = 18.0f, temp_solo_max = 25.0f;
+    float umid_solo_min = 40.0f, umid_solo_max = 80.0f;
+    float luminosidade_min = 500.0f, luminosidade_max = 2000.0f;
+    float dpv_min = 0.5f, dpv_max = 2.0f;
+    if (svc->get_cultivation_tolerance) {
+        svc->get_cultivation_tolerance(&temp_ar_min, &temp_ar_max,
+                                      &umid_ar_min, &umid_ar_max,
+                                      &temp_solo_min, &temp_solo_max,
+                                      &umid_solo_min, &umid_solo_max,
+                                      &luminosidade_min, &luminosidade_max,
+                                      &dpv_min, &dpv_max);
     }
 
     int window_samples = (stats_available) ? recent_stats.window_samples : 0;
@@ -157,14 +177,16 @@ static esp_err_t handle_dashboard(httpd_req_t *req)
     if (stats_available && window_samples > 0) {
         snprintf(stats_info_text,
                  sizeof(stats_info_text),
-                 "&Uacute;ltimas %d amostras (~%s). Per&iacute;odo configurado: %s. Limite considerado: 20 amostras.",
+                 "An&aacute;lise baseada nas &uacute;ltimas %d amostras coletadas (per&iacute;odo aproximado: %s). "
+                 "Frequ&ecirc;ncia de amostragem atual: %s.",
                  window_samples,
                  window_span_text,
                  sampling_period_text);
     } else {
         snprintf(stats_info_text,
                  sizeof(stats_info_text),
-                 "Ainda sem leituras suficientes. Assim que novas amostras forem registradas, o resumo ficar&aacute; dispon&iacute;vel.");
+                 "Aguardando leituras suficientes para calcular estat&iacute;sticas. "
+                 "As estat&iacute;sticas ficar&atilde;o dispon&iacute;veis assim que houver amostras registradas.");
     }
 
     char window_summary_text[128];
@@ -184,12 +206,12 @@ static esp_err_t handle_dashboard(httpd_req_t *req)
         } else if (window_samples > 0) {
             snprintf(window_summary_text,
                      sizeof(window_summary_text),
-                     "%d amostras recentes",
+                     "%d amostras na janela de an&aacute;lise",
                      window_samples);
         } else {
             snprintf(window_summary_text,
                      sizeof(window_summary_text),
-                     "0 amostras registradas");
+                     "Nenhuma amostra registrada ainda");
         }
 
         snprintf(total_samples_text,
@@ -401,9 +423,9 @@ static esp_err_t handle_dashboard(httpd_req_t *req)
     snprintf(stats_meta_html,
              sizeof(stats_meta_html),
              "<div class='meta-grid'>"
-             "<div class='meta-item'><strong>Janela analisada</strong>%s</div>"
-             "<div class='meta-item'><strong>Total de amostras</strong>%s</div>"
-             "<div class='meta-item'><strong>Mem&oacute;ria ocupada</strong>%s</div>"
+             "<div class='meta-item'><strong>Janela de an&aacute;lise</strong>%s</div>"
+             "<div class='meta-item'><strong>Total de leituras</strong>%s</div>"
+             "<div class='meta-item'><strong>Armazenamento usado</strong>%s</div>"
              "</div>",
              window_summary_text,
              total_samples_text,
@@ -467,10 +489,11 @@ static esp_err_t handle_dashboard(httpd_req_t *req)
         "<div class='card hero'>"
         "<div class='badge'>greenSe Campo</div>"
         "<h1>Painel em tempo real</h1>"
-        "<p class='subtitle'>Monitore o microclima e a umidade do solo sem sair do campo. "
-        "Atualizamos os dados automaticamente a cada período de amostragem configurado.</p>"
-        "<p class='info-text'>Use o resumo estat&iacute;stico e os gr&aacute;ficos abaixo para reagir rapidamente no campo. "
-        "Quando precisar de an&aacute;lises mais profundas, baixe o CSV completo.</p>"
+        "<p class='subtitle'>Monitore o microclima e a umidade do solo diretamente no campo. "
+        "Os dados são atualizados automaticamente conforme a frequência de amostragem configurada.</p>"
+        "<p class='info-text'>Utilize o resumo estat&iacute;stico e os gr&aacute;ficos para identificar rapidamente variações nas condições ambientais. "
+        "As linhas pontilhadas nos gr&aacute;ficos indicam os limites ideais configurados para seu cultivo. "
+        "Para an&aacute;lises detalhadas, baixe o arquivo CSV completo.</p>"
         "<div style='display:flex;gap:12px;flex-wrap:wrap;margin-top:8px'>"
         "  <a class='button' href='/' style='background:#388e3c'>Voltar ao painel principal</a>"
         "</div>"
@@ -478,6 +501,8 @@ static esp_err_t handle_dashboard(httpd_req_t *req)
 
         "<div class='card stats'>"
         "<h2>Estat&iacute;sticas recentes</h2>"
+        "<p class='info-text'>Resumo das leituras baseado na janela de an&aacute;lise configurada. "
+        "Os valores mostram m&eacute;dia, m&iacute;nimo, m&aacute;ximo e &uacute;ltima leitura de cada vari&aacute;vel medida.</p>"
         "<p class='info-text'>%s</p>"
         "%s"
         "%s"
@@ -485,8 +510,9 @@ static esp_err_t handle_dashboard(httpd_req_t *req)
 
         "<div class='card'>"
         "<h2>Hist&oacute;rico recente</h2>"
-        "<p class='info-text'>Os gráficos apresentam a evolução das últimas leituras. "
-        "Observe tendências para planejar ações e validar o desempenho do greenSe Campo.</p>"
+        "<p class='info-text'>Gr&aacute;ficos mostrando a evolu&ccedil;&atilde;o temporal das vari&aacute;veis ambientais. "
+        "As linhas pontilhadas laranja indicam os limites m&iacute;nimo e m&aacute;ximo ideais para cultivo. "
+        "Use essas visualiza&ccedil;&otilde;es para identificar tend&ecirc;ncias e tomar decis&otilde;es r&aacute;pidas no campo.</p>"
         "<div class='grid'>"
         "<div><canvas id='chart_temp_ar' width='320' height='180'></canvas></div>"
         "<div><canvas id='chart_umid_ar' width='320' height='180'></canvas></div>"
@@ -495,22 +521,9 @@ static esp_err_t handle_dashboard(httpd_req_t *req)
         "<div><canvas id='chart_luminosidade' width='320' height='180'></canvas></div>"
         "<div><canvas id='chart_dpv' width='320' height='180'></canvas></div>"
         "</div>"
-        "<p class='caption'>Exibindo at&eacute; 10 &uacute;ltimos pontos.</p>"
+        "<p class='caption'>Gr&aacute;ficos exibindo at&eacute; %d amostras mais recentes conforme a janela de an&aacute;lise configurada.</p>"
         "</div>"
 
-        "<div class='card'>"
-        "<h2>Valores de toler&acirc;ncia para cultivo</h2>"
-        "<p class='info-text'>Refer&ecirc;ncia de faixas ideais para um bom desenvolvimento das plantas em estufa ou campo protegido.</p>"
-        "<table>"
-        "<tr><td><strong>Vari&aacute;vel</strong></td><td><strong>Faixa ideal</strong></td><td><strong>Observa&ccedil;&otilde;es</strong></td></tr>"
-        "<tr><td>Temp. do ar</td><td>20-30&nbsp;&deg;C</td><td>Evitar varia&ccedil;&otilde;es bruscas. Ideal: 22-28&nbsp;&deg;C</td></tr>"
-        "<tr><td>Umidade do ar</td><td>50-80%%</td><td>Muito baixa favorece pragas. Muito alta favorece fungos</td></tr>"
-        "<tr><td>Temp. do solo</td><td>18-25&nbsp;&deg;C</td><td>Essencial para germina&ccedil;&atilde;o e desenvolvimento radicular</td></tr>"
-        "<tr><td>Umidade do solo</td><td>40-80%%</td><td>Depende da cultura. Evitar encharcamento ou seca extrema</td></tr>"
-        "<tr><td>Luminosidade</td><td>500-2000&nbsp;lux</td><td>Varia conforme cultura e fase. Folhosas: 1000-2000&nbsp;lux</td></tr>"
-        "<tr><td>DPV</td><td>0.5-2.0&nbsp;kPa</td><td>Indica demanda evaporativa. Valores altos indicam necessidade de irriga&ccedil;&atilde;o</td></tr>"
-        "</table>"
-        "</div>"
 
         /* Chart mínimo inline. Só inclua este bloco se você NÃO
            já estiver servindo Chart.js de CDN. Se você já tem Chart.js
@@ -547,7 +560,37 @@ static esp_err_t handle_dashboard(httpd_req_t *req)
         "   ctx.stroke();"
         "   ctx.fillText(value.toFixed(0),8,y-2);"
         " }"
-        " ctx.beginPath();ctx.strokeStyle='#1976d2';"
+        " if(isFinite(this.options.toleranceMin)&&isFinite(this.options.toleranceMax)){"
+        "   const tolMin=this.options.toleranceMin;"
+        "   const tolMax=this.options.toleranceMax;"
+        "   if(tolMin>=minVal&&tolMin<=maxVal){"
+        "     const yMin=h-((tolMin-minVal)/range)*h;"
+        "     ctx.setLineDash([4,4]);"
+        "     ctx.strokeStyle='#ff9800';"
+        "     ctx.lineWidth=1.5;"
+        "     ctx.beginPath();"
+        "     ctx.moveTo(0,yMin);ctx.lineTo(w,yMin);"
+        "     ctx.stroke();"
+        "     ctx.setLineDash([]);"
+        "     ctx.fillStyle='#ff9800';"
+        "     ctx.font='8px sans-serif';"
+        "     ctx.fillText('Min: '+tolMin.toFixed(1),w-50,yMin-2);"
+        "   }"
+        "   if(tolMax>=minVal&&tolMax<=maxVal){"
+        "     const yMax=h-((tolMax-minVal)/range)*h;"
+        "     ctx.setLineDash([4,4]);"
+        "     ctx.strokeStyle='#ff9800';"
+        "     ctx.lineWidth=1.5;"
+        "     ctx.beginPath();"
+        "     ctx.moveTo(0,yMax);ctx.lineTo(w,yMax);"
+        "     ctx.stroke();"
+        "     ctx.setLineDash([]);"
+        "     ctx.fillStyle='#ff9800';"
+        "     ctx.font='8px sans-serif';"
+        "     ctx.fillText('Max: '+tolMax.toFixed(1),w-50,yMax+10);"
+        "   }"
+        " }"
+        " ctx.beginPath();ctx.strokeStyle='#1976d2';ctx.lineWidth=2;"
         " if(vals.length===0){ctx.moveTo(0,h);ctx.lineTo(w,h);}"
         " for(let i=0;i<vals.length;i++){"
         "   const clamped=Math.min(Math.max(vals[i],minVal),maxVal);"
@@ -585,22 +628,25 @@ static esp_err_t handle_dashboard(httpd_req_t *req)
         "  const lum   = extrairXY(j.luminosidade_points||[]);"
         "  const dpv   = extrairXY(j.dpv_points||[]);"
 
-        "  desenha('chart_temp_ar','Temp Ar (C)',tAr.xs,tAr.ys,20,40);"
-        "  desenha('chart_umid_ar','UR Ar (%%)',uAr.xs,uAr.ys,0,100);"
-        "  desenha('chart_temp_solo','Temp Solo (C)',tSolo.xs,tSolo.ys,20,40);"
-        "  desenha('chart_umid_solo','Umid Solo (%%)',uSolo.xs,uSolo.ys,0,100);"
-        "  desenha('chart_luminosidade','Luminosidade (lux)',lum.xs,lum.ys,0,2500);"
-        "  desenha('chart_dpv','DPV (kPa)',dpv.xs,dpv.ys,0,3);"
+        "  const tol={temp_ar_min:%.1f,temp_ar_max:%.1f,umid_ar_min:%.1f,umid_ar_max:%.1f,"
+        "temp_solo_min:%.1f,temp_solo_max:%.1f,umid_solo_min:%.1f,umid_solo_max:%.1f,"
+        "luminosidade_min:%.0f,luminosidade_max:%.0f,dpv_min:%.1f,dpv_max:%.1f};"
+        "  desenha('chart_temp_ar','Temp Ar (C)',tAr.xs,tAr.ys,20,40,tol.temp_ar_min,tol.temp_ar_max);"
+        "  desenha('chart_umid_ar','UR Ar (%%)',uAr.xs,uAr.ys,0,100,tol.umid_ar_min,tol.umid_ar_max);"
+        "  desenha('chart_temp_solo','Temp Solo (C)',tSolo.xs,tSolo.ys,20,40,tol.temp_solo_min,tol.temp_solo_max);"
+        "  desenha('chart_umid_solo','Umid Solo (%%)',uSolo.xs,uSolo.ys,0,100,tol.umid_solo_min,tol.umid_solo_max);"
+        "  desenha('chart_luminosidade','Luminosidade (lux)',lum.xs,lum.ys,0,2500,tol.luminosidade_min,tol.luminosidade_max);"
+        "  desenha('chart_dpv','DPV (kPa)',dpv.xs,dpv.ys,0,3,tol.dpv_min,tol.dpv_max);"
         " }catch(e){console.log('erro /history',e);}"
         "}"
 
-        "function desenha(id,titulo,labels,data,minY,maxY){"
+        "function desenha(id,titulo,labels,data,minY,maxY,tolMin,tolMax){"
         "  const ctx=document.getElementById(id).getContext('2d');"
         "  if(!ctx._chartRef){"
         "    ctx._chartRef=new Chart(ctx,{"
         "      type:'line',"
         "      data:{labels:labels,datasets:[{label:titulo,data:data,fill:false}]},"
-        "      options:{fixedMin:minY,fixedMax:maxY}"
+        "      options:{fixedMin:minY,fixedMax:maxY,toleranceMin:tolMin,toleranceMax:tolMax}"
         "    });"
         "  }else{"
         "    ctx._chartRef.data.labels=labels;"
@@ -608,6 +654,8 @@ static esp_err_t handle_dashboard(httpd_req_t *req)
         "    ctx._chartRef.data.datasets[0].label=titulo;"
         "    ctx._chartRef.options.fixedMin=minY;"
         "    ctx._chartRef.options.fixedMax=maxY;"
+        "    if(isFinite(tolMin)) ctx._chartRef.options.toleranceMin=tolMin;"
+        "    if(isFinite(tolMax)) ctx._chartRef.options.toleranceMax=tolMax;"
         "    ctx._chartRef.update();"
         "  }"
         "}"
@@ -621,7 +669,14 @@ static esp_err_t handle_dashboard(httpd_req_t *req)
         "</html>",
         stats_info_text,
         stats_grid_html,
-        stats_meta_html
+        stats_meta_html,
+        stats_window,
+        temp_ar_min, temp_ar_max,
+        umid_ar_min, umid_ar_max,
+        temp_solo_min, temp_solo_max,
+        umid_solo_min, umid_solo_max,
+        luminosidade_min, luminosidade_max,
+        dpv_min, dpv_max
     );
 
     httpd_resp_set_type(req, "text/html");
@@ -692,29 +747,30 @@ static esp_err_t handle_config(httpd_req_t *req)
         "<div class='card'>"
         "<span class='tag'>greenSe Campo</span>"
         "<h1>Painel principal</h1>"
-        "<p class='lead'>Selecione uma das ações para administrar seu sensor. "
-        "Use este painel para centralizar monitoramento, calibrações e manutenção de dados.</p>"
+        "<p class='lead'>Centralize o gerenciamento do seu sensor greenSe Campo. "
+        "Acesse o dashboard para monitoramento em tempo real, configure par&acirc;metros de amostragem e cultivo, "
+        "ou fa&ccedil;a o download dos dados para an&aacute;lises externas.</p>"
         "<div class='actions'>"
         "<div class='action'>"
         "<a class='button' href='/dashboard'>Ver dashboard</a>"
-        "<p>Acompanhe gráficos, históricos e um resumo das leituras mais recentes.</p>"
+        "<p>Visualize gr&aacute;ficos em tempo real, estat&iacute;sticas recentes e a evolu&ccedil;&atilde;o das vari&aacute;veis ambientais medidas pelo sensor.</p>"
         "</div>"
         "<div class='action'>"
-        "<a class='button secondary' href='/sampling'>Período de amostragem</a>"
-        "<p>Defina de quanto em quanto tempo o greenSe Campo deve registrar novas amostras.</p>"
+        "<a class='button secondary' href='/sampling'>Amostragem e Estatísticas</a>"
+        "<p>Configure a frequência de coleta de dados e o número de amostras para análise estatística e gráficos.</p>"
         "</div>"
         "<div class='action'>"
-        "<a class='button secondary' href='/calibra'>Calibrar umidade do solo</a>"
-        "<p>Atualize o ponto seco e molhado para manter a leitura de solo mais precisa.</p>"
+        "<a class='button secondary' href='/calibra'>Configurações de Cultivo</a>"
+        "<p>Configure as faixas ideais de cultivo para cada vari&aacute;vel e calibre o sensor de umidade do solo para leituras mais precisas.</p>"
         "</div>"
         "<div class='action'>"
         "<a class='button neutral' href='/download'>Baixar log em CSV</a>"
-        "<p>Exporte todo o histórico e analise com mais detalhes em ferramentas externas.</p>"
+        "<p>Exporte todo o hist&oacute;rico de dados coletados para an&aacute;lise em planilhas ou ferramentas de an&aacute;lise de dados.</p>"
         "</div>"
         "<div class='action'>"
         "<form id='clearForm' method='post' action='/clear_data' onsubmit='return confirmaApagar();'>"
         "<button class='delete' type='submit'>Apagar dados gravados</button>"
-        "<p>Limpa o log e reinicia o armazenamento. Útil para novos testes de campo.</p>"
+        "<p>Remove todos os dados armazenados e reinicia o sistema de registro. Use apenas quando iniciar um novo ciclo de monitoramento.</p>"
         "</form>"
         "</div>"
         "</div>"
@@ -730,7 +786,7 @@ static esp_err_t handle_config(httpd_req_t *req)
 static esp_err_t handle_sampling_page(httpd_req_t *req)
 {
     const gui_services_t *svc = gui_services_get();
-    if (svc == NULL || svc->get_sampling_period_ms == NULL) {
+    if (svc == NULL || svc->get_sampling_period_ms == NULL || svc->get_stats_window_count == NULL) {
         httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "Serviços não disponíveis");
         return ESP_FAIL;
     }
@@ -744,6 +800,8 @@ static esp_err_t handle_sampling_page(httpd_req_t *req)
     } else {
         snprintf(current_label, sizeof(current_label), "%lu ms", (unsigned long)current_ms);
     }
+
+    int current_stats_window = svc->get_stats_window_count();
 
     char radios[1024] = {0};
     size_t used = 0;
@@ -766,7 +824,32 @@ static esp_err_t handle_sampling_page(httpd_req_t *req)
         used += (size_t)written;
     }
 
-    const size_t page_capacity = 4096;
+    /* Opções de período estatístico (número de amostras) */
+    static const int stats_window_options[] = { 5, 10, 15, 20 };
+    static const size_t stats_window_count = sizeof(stats_window_options) / sizeof(stats_window_options[0]);
+    
+    char stats_radios[512] = {0};
+    size_t stats_used = 0;
+    for (size_t i = 0; i < stats_window_count && stats_used < sizeof(stats_radios) - 1; ++i) {
+        int value = stats_window_options[i];
+        int written = snprintf(
+            stats_radios + stats_used,
+            sizeof(stats_radios) - stats_used,
+            "<label class='option'>"
+            "<input type='radio' name='stats_window' value='%d' %s>"
+            "<span>%d amostras</span>"
+            "</label>",
+            value,
+            (current_stats_window == value) ? "checked" : "",
+            value
+        );
+        if (written < 0) {
+            break;
+        }
+        stats_used += (size_t)written;
+    }
+
+    const size_t page_capacity = 6144;
     char *page = malloc(page_capacity);
     if (!page) {
         httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "Erro de memória");
@@ -779,7 +862,7 @@ static esp_err_t handle_sampling_page(httpd_req_t *req)
         "<!DOCTYPE html>"
         "<html><head><meta charset='utf-8'/>"
         "<meta name='viewport' content='width=device-width,initial-scale=1'/>"
-        "<title>Período de amostragem</title>"
+        "<title>Amostragem e Estatísticas</title>"
         "<style>"
         "body{font-family:'Inter',sans-serif;background:#f0f4f1;color:#1f2a24;margin:0;padding:28px}"
         ".card{background:#fff;border-radius:20px;padding:26px;max-width:520px;margin:auto;"
@@ -787,6 +870,7 @@ static esp_err_t handle_sampling_page(httpd_req_t *req)
         ".tag{display:inline-block;padding:4px 12px;border-radius:999px;background:#c8e6c9;"
         "color:#1b5e20;font-size:12px;font-weight:600}"
         "h1{margin:10px 0 6px;font-size:26px;color:#1b5e20}"
+        "h2{margin:20px 0 8px;font-size:20px;color:#2e7d32}"
         ".lead{color:#4f5b62;line-height:1.5;margin-bottom:18px}"
         ".options{display:flex;flex-direction:column;gap:12px;margin:16px 0}"
         ".option{display:flex;align-items:center;gap:10px;font-size:15px;background:#f7faf6;"
@@ -800,23 +884,36 @@ static esp_err_t handle_sampling_page(httpd_req_t *req)
         "background:#388e3c;color:#fff;text-decoration:none;text-align:center;"
         "border:1px solid #2e7d32;width:100%%;margin-top:16px;font-weight:600;"
         "box-shadow:0 10px 24px rgba(56,142,60,0.25);box-sizing:border-box}"
+        ".section{margin-bottom:28px;padding-bottom:24px;border-bottom:1px solid #e0e8e1}"
+        ".section:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}"
         "</style>"
         "</head><body>"
         "<div class='card'>"
         "<span class='tag'>greenSe Campo</span>"
-        "<h1>Período de amostragem</h1>"
-        "<p class='lead'>Selecione com que frequência uma nova amostra será registrada. "
-        "Períodos menores deixam o dashboard mais responsivo; períodos maiores economizam energia.</p>"
+        "<h1>Amostragem e Estatísticas</h1>"
+        "<p class='lead'>Configure a frequência de coleta de dados e o número de amostras usadas para cálculos estatísticos e visualização nos gráficos.</p>"
         "<form action='/set_sampling' method='get'>"
+        "<div class='section'>"
+        "<h2>Frequência de Amostragem</h2>"
+        "<p class='lead'>Defina o intervalo entre cada registro de dados. Intervalos menores fornecem dados mais detalhados, enquanto intervalos maiores economizam energia e memória.</p>"
         "<div class='options'>%s</div>"
-        "<button type='submit'>Salvar período</button>"
+        "<p class='hint'>Intervalo atual: <strong>%s</strong></p>"
+        "</div>"
+        "<div class='section'>"
+        "<h2>Janela de Análise Estatística</h2>"
+        "<p class='lead'>Configure quantas amostras serão consideradas para calcular médias, mínimos e máximos, além de definir quantos pontos aparecem nos gráficos. Mais amostras revelam tendências de longo prazo; menos amostras destacam variações recentes.</p>"
+        "<div class='options'>%s</div>"
+        "<p class='hint'>Janela atual: <strong>%d amostras</strong></p>"
+        "</div>"
+        "<button type='submit'>Salvar configurações</button>"
         "</form>"
-        "<p class='hint'>Período atual: <strong>%s</strong>. Sua escolha é salva no dispositivo e aplicada imediatamente.</p>"
         "<a class='button-back' href='/'>Voltar ao painel principal</a>"
         "</div>"
         "</body></html>",
         radios,
-        current_label
+        current_label,
+        stats_radios,
+        current_stats_window
     );
 
     if (len < 0 || len >= (int)page_capacity) {
@@ -834,56 +931,111 @@ static esp_err_t handle_sampling_page(httpd_req_t *req)
 static esp_err_t handle_set_sampling(httpd_req_t *req)
 {
     const gui_services_t *svc = gui_services_get();
-    if (svc == NULL || svc->set_sampling_period_ms == NULL) {
+    if (svc == NULL || svc->set_sampling_period_ms == NULL || svc->set_stats_window_count == NULL) {
         httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "Serviços não disponíveis");
         return ESP_FAIL;
     }
 
-    char qs[64];
-    if (httpd_req_get_url_query_str(req, qs, sizeof(qs)) != ESP_OK) {
+    char qs[256];
+    int qs_len = httpd_req_get_url_query_str(req, qs, sizeof(qs));
+    if (qs_len < 0) {
         httpd_resp_send_err(req, HTTPD_400_BAD_REQUEST, "Parâmetro ausente");
+        return ESP_FAIL;
+    }
+    if (qs_len >= (int)sizeof(qs) - 1) {
+        httpd_resp_send_err(req, HTTPD_400_BAD_REQUEST, "Query string muito longa");
         return ESP_FAIL;
     }
 
     char buf_period[32];
-    if (httpd_query_key_value(qs, "periodo", buf_period, sizeof(buf_period)) != ESP_OK) {
-        httpd_resp_send_err(req, HTTPD_400_BAD_REQUEST, "periodo inválido");
+    char buf_stats_window[32];
+    bool has_period = (httpd_query_key_value(qs, "periodo", buf_period, sizeof(buf_period)) == ESP_OK);
+    bool has_stats_window = (httpd_query_key_value(qs, "stats_window", buf_stats_window, sizeof(buf_stats_window)) == ESP_OK);
+
+    if (!has_period && !has_stats_window) {
+        httpd_resp_send_err(req, HTTPD_400_BAD_REQUEST, "Nenhum parâmetro fornecido");
         return ESP_FAIL;
     }
 
-    uint32_t new_period = (uint32_t)strtoul(buf_period, NULL, 10);
-    if (svc->set_sampling_period_ms(new_period) != ESP_OK) {
-        httpd_resp_send_err(req, HTTPD_400_BAD_REQUEST, "Valor não suportado");
-        return ESP_FAIL;
-    }
+    char period_label[128] = "";
+    char stats_label[64] = "";
 
-    const sampling_option_def_t *opt = find_sampling_option(new_period);
-    char label[64];
-    if (opt) {
-        snprintf(label, sizeof(label), "%s", opt->label);
+    if (has_period) {
+        uint32_t new_period = (uint32_t)strtoul(buf_period, NULL, 10);
+        if (svc->set_sampling_period_ms(new_period) != ESP_OK) {
+            httpd_resp_send_err(req, HTTPD_400_BAD_REQUEST, "Frequência de amostragem não suportada");
+            return ESP_FAIL;
+        }
+
+        const sampling_option_def_t *opt = find_sampling_option(new_period);
+        if (opt) {
+            snprintf(period_label, sizeof(period_label), "%s", opt->label);
+        } else {
+            snprintf(period_label, sizeof(period_label), "%lu ms", (unsigned long)new_period);
+        }
     } else {
-        snprintf(label, sizeof(label), "%lu ms", (unsigned long)new_period);
+        // Mantém o valor atual
+        uint32_t current_ms = svc->get_sampling_period_ms();
+        const sampling_option_def_t *opt = find_sampling_option(current_ms);
+        if (opt) {
+            snprintf(period_label, sizeof(period_label), "%s", opt->label);
+        } else {
+            snprintf(period_label, sizeof(period_label), "%lu ms", (unsigned long)current_ms);
+        }
     }
 
-    const size_t page_capacity = 512;
-    char page[page_capacity];
+    if (has_stats_window) {
+        int new_stats_window = (int)strtol(buf_stats_window, NULL, 10);
+        if (svc->set_stats_window_count(new_stats_window) != ESP_OK) {
+            httpd_resp_send_err(req, HTTPD_400_BAD_REQUEST, "Janela de análise estatística não suportada");
+            return ESP_FAIL;
+        }
+        snprintf(stats_label, sizeof(stats_label), "%d amostras", new_stats_window);
+    } else {
+        // Mantém o valor atual
+        int current_stats = svc->get_stats_window_count();
+        snprintf(stats_label, sizeof(stats_label), "%d amostras", current_stats);
+    }
+
+    const size_t page_capacity = 1024;
+    char *page = malloc(page_capacity);
+    if (!page) {
+        httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "Erro de memória");
+        return ESP_FAIL;
+    }
+    
     int len = snprintf(
         page,
         page_capacity,
-        "<!DOCTYPE html><html><body>"
-        "<p>Período atualizado para <strong>%s</strong>.</p>"
-        "<p><a href='/sampling'>Voltar</a></p>"
+        "<!DOCTYPE html><html><head><meta charset='utf-8'/><meta name='viewport' content='width=device-width,initial-scale=1'/>"
+        "<title>Configuração Salva</title></head><body style='font-family:sans-serif;padding:20px'>"
+        "<h2>Configurações salvas com sucesso!</h2>"
+        "<p>Frequência de amostragem: <strong>%s</strong></p>"
+        "<p>Janela de análise estatística: <strong>%s</strong></p>"
+        "<p style='margin-top:20px'><a href='/sampling'>Voltar às configurações</a> | <a href='/'>Painel principal</a></p>"
         "</body></html>",
-        label
+        period_label,
+        stats_label
     );
 
-    if (len < 0 || len >= (int)page_capacity) {
+    if (len < 0) {
+        ESP_LOGE(TAG, "Erro no snprintf: %d", len);
+        free(page);
+        httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "Erro gerando resposta");
+        return ESP_FAIL;
+    }
+    
+    if (len >= (int)page_capacity) {
+        ESP_LOGE(TAG, "Buffer insuficiente: necessário %d, disponível %zu", len, page_capacity);
+        free(page);
         httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "Erro gerando resposta");
         return ESP_FAIL;
     }
 
     httpd_resp_set_type(req, "text/html");
-    return httpd_resp_send(req, page, len);
+    esp_err_t resp = httpd_resp_send(req, page, len);
+    free(page);
+    return resp;
 }
 
 /* /download -> CSV inteiro */
@@ -918,11 +1070,11 @@ static esp_err_t handle_download(httpd_req_t *req)
     return ESP_OK;
 }
 
-/* /calibra -> página HTML com calibração atual e leitura atual */
+/* /calibra -> página HTML com configurações de cultivo e calibração */
 static esp_err_t handle_calibra(httpd_req_t *req)
 {
     const gui_services_t *svc = gui_services_get();
-    if (svc == NULL) {
+    if (svc == NULL || svc->get_cultivation_tolerance == NULL) {
         httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "Serviços não disponíveis");
         return ESP_FAIL;
     }
@@ -931,8 +1083,18 @@ static esp_err_t handle_calibra(httpd_req_t *req)
     svc->get_calibration(&seco, &molhado);
  
     int leitura_raw = svc->get_soil_raw();
+    
+    float temp_ar_min, temp_ar_max, umid_ar_min, umid_ar_max;
+    float temp_solo_min, temp_solo_max, umid_solo_min, umid_solo_max;
+    float luminosidade_min, luminosidade_max, dpv_min, dpv_max;
+    svc->get_cultivation_tolerance(&temp_ar_min, &temp_ar_max,
+                                    &umid_ar_min, &umid_ar_max,
+                                    &temp_solo_min, &temp_solo_max,
+                                    &umid_solo_min, &umid_solo_max,
+                                    &luminosidade_min, &luminosidade_max,
+                                    &dpv_min, &dpv_max);
  
-    const size_t page_capacity = 4096;
+    const size_t page_capacity = 8192;
     char *page = malloc(page_capacity);
     if (!page) {
         httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "Erro de memória");
@@ -943,21 +1105,26 @@ static esp_err_t handle_calibra(httpd_req_t *req)
              "<!DOCTYPE html><html><head>"
              "<meta charset='utf-8'/>"
              "<meta name='viewport' content='width=device-width, initial-scale=1'/>"
-             "<title>Calibração greenSe Campo</title>"
+             "<title>Configurações de Cultivo</title>"
              "<style>"
              "body{font-family:'Inter',sans-serif;background:#f0f4f1;color:#1f2a24;margin:0;padding:24px;}"
-             ".card{background:#fff;border-radius:20px;padding:26px;max-width:520px;margin:auto;"
-             "box-shadow:0 24px 46px rgba(0,0,0,0.12)}"
+             ".card{background:#fff;border-radius:20px;padding:26px;max-width:600px;margin:auto;"
+             "box-shadow:0 24px 46px rgba(0,0,0,0.12);margin-bottom:20px}"
              ".tag{display:inline-block;padding:4px 12px;border-radius:999px;background:#c8e6c9;"
              "color:#1b5e20;font-size:12px;font-weight:600}"
              "h2{margin:12px 0 6px;font-size:24px;color:#1b5e20}"
+             "h3{margin:20px 0 8px;font-size:18px;color:#2e7d32;border-top:2px solid #e0e8e1;padding-top:16px}"
+             "h3:first-of-type{border-top:none;padding-top:0;margin-top:0}"
              ".lead{color:#4f5b62;line-height:1.5;margin-bottom:18px}"
              ".info{display:flex;gap:12px;margin:18px 0}"
              ".info-box{flex:1;background:#f7faf6;border:1px solid #e0e8e1;border-radius:14px;"
              "padding:12px 14px;text-align:center;font-size:14px}"
              "form label{display:block;margin:12px 0 4px;font-weight:600;font-size:14px;color:#37474f}"
+             ".tolerance-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}"
+             ".tolerance-row label{grid-column:1/-1;margin-bottom:4px}"
+             ".tolerance-row input{width:100%%}"
              "input{width:100%%;padding:10px;border:1px solid #cddbd2;border-radius:10px;"
-             "font-size:15px}"
+             "font-size:15px;box-sizing:border-box}"
              "button{width:100%%;padding:12px 18px;border:none;border-radius:12px;background:#388e3c;"
              "color:#fff;font-size:15px;font-weight:600;margin-top:18px;box-shadow:0 10px 24px rgba(56,142,60,0.25)}"
              "a.button{display:inline-block;width:100%%;text-align:center;padding:12px 18px;"
@@ -968,9 +1135,62 @@ static esp_err_t handle_calibra(httpd_req_t *req)
              "</style></head><body>"
              "<div class='card'>"
              "<span class='tag'>greenSe Campo</span>"
-             "<h2>Calibração da umidade do solo</h2>"
-             "<p class='lead'>Informe novos valores para representar o solo seco e totalmente molhado. "
-             "Isso garante que o percentual exibido pelo greenSe Campo corresponda à realidade do seu canteiro.</p>"
+             "<h2>Configurações de Cultivo</h2>"
+             "<p class='lead'>Personalize as faixas ideais de cultivo para cada vari&aacute;vel ambiental medida. "
+             "Esses valores definem os limites m&iacute;nimo e m&aacute;ximo que aparecem como linhas de refer&ecirc;ncia nos gr&aacute;ficos, "
+             "facilitando a identifica&ccedil;&atilde;o visual de quando as condi&ccedil;&otilde;es est&atilde;o dentro ou fora da faixa ideal para seu cultivo.</p>"
+             
+             "<form action='/set_tolerance' method='get'>"
+             "<h3>Faixas Ideais de Cultivo</h3>"
+             
+             "<div class='tolerance-row'>"
+             "<label>Temperatura do Ar (°C)</label>"
+             "<input type='number' step='0.1' name='temp_ar_min' value='%.1f' placeholder='Mínimo'>"
+             "<input type='number' step='0.1' name='temp_ar_max' value='%.1f' placeholder='Máximo'>"
+             "</div>"
+             
+             "<div class='tolerance-row'>"
+             "<label>Umidade do Ar (%%)</label>"
+             "<input type='number' step='0.1' name='umid_ar_min' value='%.1f' placeholder='Mínimo'>"
+             "<input type='number' step='0.1' name='umid_ar_max' value='%.1f' placeholder='Máximo'>"
+             "</div>"
+             
+             "<div class='tolerance-row'>"
+             "<label>Temperatura do Solo (°C)</label>"
+             "<input type='number' step='0.1' name='temp_solo_min' value='%.1f' placeholder='Mínimo'>"
+             "<input type='number' step='0.1' name='temp_solo_max' value='%.1f' placeholder='Máximo'>"
+             "</div>"
+             
+             "<div class='tolerance-row'>"
+             "<label>Umidade do Solo (%%)</label>"
+             "<input type='number' step='0.1' name='umid_solo_min' value='%.1f' placeholder='Mínimo'>"
+             "<input type='number' step='0.1' name='umid_solo_max' value='%.1f' placeholder='Máximo'>"
+             "</div>"
+             
+             "<div class='tolerance-row'>"
+             "<label>Luminosidade (lux)</label>"
+             "<input type='number' step='1' name='luminosidade_min' value='%.0f' placeholder='Mínimo'>"
+             "<input type='number' step='1' name='luminosidade_max' value='%.0f' placeholder='Máximo'>"
+             "</div>"
+             
+             "<div class='tolerance-row'>"
+             "<label>DPV (kPa)</label>"
+             "<input type='number' step='0.1' name='dpv_min' value='%.1f' placeholder='Mínimo'>"
+             "<input type='number' step='0.1' name='dpv_max' value='%.1f' placeholder='Máximo'>"
+             "</div>"
+             
+             "<button type='submit'>Salvar Faixas Ideais</button>"
+             "</form>"
+             "<form action='/reset_tolerance' method='get' style='margin-top:12px'>"
+             "<button type='submit' style='background:#ff9800;box-shadow:0 10px 24px rgba(255,152,0,0.25)'>Restaurar Valores Padrão</button>"
+             "</form>"
+             "<p class='tip' style='margin-top:8px'><strong>Restaurar padrões:</strong> O bot&atilde;o acima restaura os valores padr&atilde;o recomendados para cultivos gerais "
+             "(20-30°C ar, 50-80%% umidade ar, 18-25°C solo, 40-80%% umidade solo, 500-2000 lux, 0.5-2.0 kPa DPV). "
+             "Use quando quiser voltar aos valores iniciais do sistema.</p>"
+             
+             "<h3>Calibração do Sensor de Umidade do Solo</h3>"
+             "<p class='lead'>Ajuste os valores de refer&ecirc;ncia para solo seco e totalmente molhado conforme as condi&ccedil;&otilde;es reais do seu canteiro. "
+             "Esta calibra&ccedil;&atilde;o garante que as leituras de umidade do solo reflitam com precis&atilde;o a condi&ccedil;&atilde;o atual do solo.</p>"
              "<div class='info'>"
              "<div class='info-box'><strong>Leitura bruta</strong><br>%d</div>"
              "<div class='info-box'><strong>Faixa atual</strong><br>Seco %.0f | Molhado %.0f</div>"
@@ -982,15 +1202,20 @@ static esp_err_t handle_calibra(httpd_req_t *req)
              "<input type='number' name='molhado' value='%.0f'>"
              "<button type='submit'>Salvar calibração</button>"
              "</form>"
-             "<p class='tip'>Dica: realize a calibração logo após irrigar e depois de um período de seca para captar os extremos.</p>"
+             "<p class='tip'><strong>Dica:</strong> Para uma calibra&ccedil;&atilde;o precisa, registre o valor do sensor logo ap&oacute;s uma irriga&ccedil;&atilde;o completa (solo molhado) "
+             "e ap&oacute;s um per&iacute;odo prolongado sem irriga&ccedil;&atilde;o (solo seco). Isso garante que o sistema capture toda a faixa de varia&ccedil;&atilde;o real do seu solo.</p>"
              "<a class='button' href='/'>Voltar ao painel principal</a>"
              "</div>"
              "</body></html>",
+             temp_ar_min, temp_ar_max,
+             umid_ar_min, umid_ar_max,
+             temp_solo_min, temp_solo_max,
+             umid_solo_min, umid_solo_max,
+             luminosidade_min, luminosidade_max,
+             dpv_min, dpv_max,
              leitura_raw,
-             seco,
-             molhado,
-             seco,
-             molhado);
+             seco, molhado,
+             seco, molhado);
  
     if (len < 0 || len >= (int)page_capacity) {
         free(page);
@@ -1004,6 +1229,108 @@ static esp_err_t handle_calibra(httpd_req_t *req)
     esp_err_t resp = httpd_resp_send(req, page, len);
     free(page);
     return resp;
+}
+
+/* /set_tolerance -> salva tolerâncias de cultivo */
+static esp_err_t handle_set_tolerance(httpd_req_t *req)
+{
+    const gui_services_t *svc = gui_services_get();
+    if (svc == NULL || svc->set_cultivation_tolerance == NULL) {
+        httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "Serviços não disponíveis");
+        return ESP_FAIL;
+    }
+
+    char qs[512];
+    if (httpd_req_get_url_query_str(req, qs, sizeof(qs)) != ESP_OK) {
+        httpd_resp_send_err(req, HTTPD_400_BAD_REQUEST, "Parâmetros ausentes");
+        return ESP_FAIL;
+    }
+
+    char buf[32];
+    float temp_ar_min = 20.0f, temp_ar_max = 30.0f;
+    float umid_ar_min = 50.0f, umid_ar_max = 80.0f;
+    float temp_solo_min = 18.0f, temp_solo_max = 25.0f;
+    float umid_solo_min = 40.0f, umid_solo_max = 80.0f;
+    float luminosidade_min = 500.0f, luminosidade_max = 2000.0f;
+    float dpv_min = 0.5f, dpv_max = 2.0f;
+
+    if (httpd_query_key_value(qs, "temp_ar_min", buf, sizeof(buf)) == ESP_OK) temp_ar_min = atof(buf);
+    if (httpd_query_key_value(qs, "temp_ar_max", buf, sizeof(buf)) == ESP_OK) temp_ar_max = atof(buf);
+    if (httpd_query_key_value(qs, "umid_ar_min", buf, sizeof(buf)) == ESP_OK) umid_ar_min = atof(buf);
+    if (httpd_query_key_value(qs, "umid_ar_max", buf, sizeof(buf)) == ESP_OK) umid_ar_max = atof(buf);
+    if (httpd_query_key_value(qs, "temp_solo_min", buf, sizeof(buf)) == ESP_OK) temp_solo_min = atof(buf);
+    if (httpd_query_key_value(qs, "temp_solo_max", buf, sizeof(buf)) == ESP_OK) temp_solo_max = atof(buf);
+    if (httpd_query_key_value(qs, "umid_solo_min", buf, sizeof(buf)) == ESP_OK) umid_solo_min = atof(buf);
+    if (httpd_query_key_value(qs, "umid_solo_max", buf, sizeof(buf)) == ESP_OK) umid_solo_max = atof(buf);
+    if (httpd_query_key_value(qs, "luminosidade_min", buf, sizeof(buf)) == ESP_OK) luminosidade_min = atof(buf);
+    if (httpd_query_key_value(qs, "luminosidade_max", buf, sizeof(buf)) == ESP_OK) luminosidade_max = atof(buf);
+    if (httpd_query_key_value(qs, "dpv_min", buf, sizeof(buf)) == ESP_OK) dpv_min = atof(buf);
+    if (httpd_query_key_value(qs, "dpv_max", buf, sizeof(buf)) == ESP_OK) dpv_max = atof(buf);
+
+    if (svc->set_cultivation_tolerance(temp_ar_min, temp_ar_max,
+                                      umid_ar_min, umid_ar_max,
+                                      temp_solo_min, temp_solo_max,
+                                      umid_solo_min, umid_solo_max,
+                                      luminosidade_min, luminosidade_max,
+                                      dpv_min, dpv_max) != ESP_OK) {
+        httpd_resp_send_err(req, HTTPD_400_BAD_REQUEST, "Valores inválidos");
+        return ESP_FAIL;
+    }
+
+    const char *ok_page =
+        "<!DOCTYPE html><html><head><meta charset='utf-8'/><meta name='viewport' content='width=device-width, initial-scale=1'/>"
+        "<title>Configuração Salva</title></head><body style='font-family:sans-serif;padding:20px'>"
+        "<h2>Faixas ideais salvas com sucesso!</h2>"
+        "<p><a href='/calibra'>Voltar</a> | <a href='/'>Painel principal</a></p>"
+        "</body></html>";
+    httpd_resp_set_type(req, "text/html");
+    return httpd_resp_send(req, ok_page, HTTPD_RESP_USE_STRLEN);
+}
+
+/* /reset_tolerance -> restaura valores padrão de tolerância */
+static esp_err_t handle_reset_tolerance(httpd_req_t *req)
+{
+    const gui_services_t *svc = gui_services_get();
+    if (svc == NULL || svc->set_cultivation_tolerance == NULL) {
+        httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "Serviços não disponíveis");
+        return ESP_FAIL;
+    }
+
+    // Valores padrão
+    float temp_ar_min = 20.0f, temp_ar_max = 30.0f;
+    float umid_ar_min = 50.0f, umid_ar_max = 80.0f;
+    float temp_solo_min = 18.0f, temp_solo_max = 25.0f;
+    float umid_solo_min = 40.0f, umid_solo_max = 80.0f;
+    float luminosidade_min = 500.0f, luminosidade_max = 2000.0f;
+    float dpv_min = 0.5f, dpv_max = 2.0f;
+
+    if (svc->set_cultivation_tolerance(temp_ar_min, temp_ar_max,
+                                      umid_ar_min, umid_ar_max,
+                                      temp_solo_min, temp_solo_max,
+                                      umid_solo_min, umid_solo_max,
+                                      luminosidade_min, luminosidade_max,
+                                      dpv_min, dpv_max) != ESP_OK) {
+        httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "Erro ao restaurar valores padrão");
+        return ESP_FAIL;
+    }
+
+    const char *ok_page =
+        "<!DOCTYPE html><html><head><meta charset='utf-8'/><meta name='viewport' content='width=device-width, initial-scale=1'/>"
+        "<title>Valores Restaurados</title></head><body style='font-family:sans-serif;padding:20px'>"
+        "<h2>Valores padrão restaurados com sucesso!</h2>"
+        "<p>As faixas ideais foram restauradas para os valores padrão:</p>"
+        "<ul>"
+        "<li>Temp. do ar: 20-30&deg;C</li>"
+        "<li>Umidade do ar: 50-80%%</li>"
+        "<li>Temp. do solo: 18-25&deg;C</li>"
+        "<li>Umidade do solo: 40-80%%</li>"
+        "<li>Luminosidade: 500-2000 lux</li>"
+        "<li>DPV: 0.5-2.0 kPa</li>"
+        "</ul>"
+        "<p><a href='/calibra'>Voltar às configurações</a> | <a href='/'>Painel principal</a></p>"
+        "</body></html>";
+    httpd_resp_set_type(req, "text/html");
+    return httpd_resp_send(req, ok_page, HTTPD_RESP_USE_STRLEN);
 }
 
 /* /set_calibra -> salva calibração e redireciona */
@@ -1052,9 +1379,12 @@ static esp_err_t handle_set_calibra(httpd_req_t *req)
  
     /* resposta simples tipo redirect manual */
     const char *ok_page =
-        "<!DOCTYPE html><html><body>"
-        "<p>Calibracao salva.</p>"
-        "<p><a href='/calibra'>Voltar</a></p>"
+        "<!DOCTYPE html><html><head><meta charset='utf-8'/><meta name='viewport' content='width=device-width, initial-scale=1'/>"
+        "<title>Calibração Salva</title></head><body style='font-family:sans-serif;padding:20px'>"
+        "<h2>Calibração salva com sucesso!</h2>"
+        "<p>Os valores de calibra&ccedil;&atilde;o do sensor de umidade do solo foram atualizados. "
+        "As leituras agora refletem com maior precis&atilde;o as condi&ccedil;&otilde;es reais do seu canteiro.</p>"
+        "<p><a href='/calibra'>Voltar às configurações</a> | <a href='/'>Painel principal</a></p>"
         "</body></html>";
  
     httpd_resp_set_type(req, "text/html");
@@ -1154,7 +1484,7 @@ esp_err_t http_server_start(void)
     config.send_wait_timeout = 5;
     config.max_open_sockets  = 4;
     config.lru_purge_enable  = true;
-    config.max_uri_handlers  = 12;    /* garante espaço para todos os handlers */
+    config.max_uri_handlers  = 16;    /* garante espaço para todos os handlers (atual: 14) */
  
     if (httpd_start(&server_handle, &config) != ESP_OK) {
         ESP_LOGE(TAG, "Falha ao iniciar httpd");
@@ -1247,6 +1577,28 @@ esp_err_t http_server_start(void)
     };
     if (httpd_register_uri_handler(server_handle, &uri_cal) != ESP_OK) {
         ESP_LOGE(TAG, "Falha ao registrar handler /calibra");
+        return ESP_FAIL;
+    }
+
+    httpd_uri_t uri_tolerance = {
+        .uri      = "/set_tolerance",
+        .method   = HTTP_GET,
+        .handler  = handle_set_tolerance,
+        .user_ctx = NULL,
+    };
+    if (httpd_register_uri_handler(server_handle, &uri_tolerance) != ESP_OK) {
+        ESP_LOGE(TAG, "Falha ao registrar handler /set_tolerance");
+        return ESP_FAIL;
+    }
+
+    httpd_uri_t uri_reset_tolerance = {
+        .uri      = "/reset_tolerance",
+        .method   = HTTP_GET,
+        .handler  = handle_reset_tolerance,
+        .user_ctx = NULL,
+    };
+    if (httpd_register_uri_handler(server_handle, &uri_reset_tolerance) != ESP_OK) {
+        ESP_LOGE(TAG, "Falha ao registrar handler /reset_tolerance");
         return ESP_FAIL;
     }
 

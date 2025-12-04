@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <sys/stat.h>
 #include <math.h>
@@ -266,13 +267,20 @@ void data_logger_dump_to_logcat(void)
      "dpv_points":       [ [idx, dpv_kPa], ... ]
    }
 
-   Pegamos só os últimos HIST_MAX pontos para não encher RAM.
+   Pegamos só os últimos max_samples pontos para não encher RAM.
 */
-char *data_logger_build_history_json(void)
+char *data_logger_build_history_json(int max_samples)
 {
     if (file_mutex == NULL) {
         ESP_LOGE(TAG, "Mutex nao inicializado");
         return NULL;
+    }
+
+    /* Valida e limita max_samples */
+    if (max_samples <= 0) {
+        max_samples = 10; // padrão
+    } else if (max_samples > 20) {
+        max_samples = 20; // máximo
     }
 
     /* Protege acesso ao arquivo */
@@ -290,14 +298,30 @@ char *data_logger_build_history_json(void)
     char line[160];
     fgets(line, sizeof(line), f); // descarta header
 
-    #define HIST_MAX 10
-    int   idx_arr[HIST_MAX];
-    float temp_ar_arr[HIST_MAX];
-    float umid_ar_arr[HIST_MAX];
-    float temp_solo_arr[HIST_MAX];
-    float umid_solo_arr[HIST_MAX];
-    float luminosidade_arr[HIST_MAX];
-    float dpv_arr[HIST_MAX];
+    /* Aloca arrays dinamicamente baseado em max_samples */
+    int   *idx_arr = malloc(max_samples * sizeof(int));
+    float *temp_ar_arr = malloc(max_samples * sizeof(float));
+    float *umid_ar_arr = malloc(max_samples * sizeof(float));
+    float *temp_solo_arr = malloc(max_samples * sizeof(float));
+    float *umid_solo_arr = malloc(max_samples * sizeof(float));
+    float *luminosidade_arr = malloc(max_samples * sizeof(float));
+    float *dpv_arr = malloc(max_samples * sizeof(float));
+    
+    if (!idx_arr || !temp_ar_arr || !umid_ar_arr || !temp_solo_arr || 
+        !umid_solo_arr || !luminosidade_arr || !dpv_arr) {
+        ESP_LOGE(TAG, "Falha ao alocar memória para histórico");
+        if (idx_arr) free(idx_arr);
+        if (temp_ar_arr) free(temp_ar_arr);
+        if (umid_ar_arr) free(umid_ar_arr);
+        if (temp_solo_arr) free(temp_solo_arr);
+        if (umid_solo_arr) free(umid_solo_arr);
+        if (luminosidade_arr) free(luminosidade_arr);
+        if (dpv_arr) free(dpv_arr);
+        fclose(f);
+        xSemaphoreGive(file_mutex);
+        return NULL;
+    }
+
     int count = 0;
 
     while (fgets(line, sizeof(line), f)) {
@@ -309,7 +333,7 @@ char *data_logger_build_history_json(void)
                            &n_local, &ta, &ua, &ts, &us, &lum, &dpv);
         if (fields >= 5)  // Aceita formato antigo (4 variáveis) ou novo (6 variáveis)
         {
-            int pos = count % HIST_MAX;
+            int pos = count % max_samples;
             idx_arr[pos]        = n_local;
             temp_ar_arr[pos]    = ta;
             umid_ar_arr[pos]    = ua;
@@ -325,9 +349,9 @@ char *data_logger_build_history_json(void)
 
     int start = 0;
     int num   = count;
-    if (num > HIST_MAX) {
-        start = count - HIST_MAX;
-        num   = HIST_MAX;
+    if (num > max_samples) {
+        start = count - max_samples;
+        num   = max_samples;
     }
 
     cJSON *root              = cJSON_CreateObject();
@@ -339,7 +363,7 @@ char *data_logger_build_history_json(void)
     cJSON *dpv_points       = cJSON_CreateArray();
 
     for (int k = 0; k < num; k++) {
-        int pos = (start + k) % HIST_MAX;
+        int pos = (start + k) % max_samples;
 
         /* temp_ar_points: [idx, temp_ar] */
         if (isfinite(temp_ar_arr[pos])) {
@@ -398,6 +422,16 @@ char *data_logger_build_history_json(void)
     cJSON_AddItemToObject(root, "dpv_points",       dpv_points);
 
     char *json_txt = cJSON_PrintUnformatted(root);
+    
+    /* Libera arrays alocados */
+    free(idx_arr);
+    free(temp_ar_arr);
+    free(umid_ar_arr);
+    free(temp_solo_arr);
+    free(umid_solo_arr);
+    free(luminosidade_arr);
+    free(dpv_arr);
+    
     if (json_txt == NULL) {
         ESP_LOGE(TAG, "Falha ao gerar JSON");
         cJSON_Delete(root);
