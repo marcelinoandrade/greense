@@ -1,0 +1,158 @@
+Command: /home/mrclnndrd/.espressif/python_env/idf5.5_py3.11_env/bin/python /home/mrclnndrd/esp/esp-idf/tools/idf_monitor.py -p /dev/ttyUSB0 -b 115200 --toolchain-prefix xtensa-esp32-elf- --target esp32 --revision 0 /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/sensor_campo.elf /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/bootloader/bootloader.elf -m '/home/mrclnndrd/.espressif/python_env/idf5.5_py3.11_env/bin/python' '/home/mrclnndrd/esp/esp-idf/tools/idf.py'
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x17 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:6380
+ho 0 tail 12 room 4
+load:0x40078000,len:15904
+load:0x40080400,len:3860
+entry 0x40080638
+[0;32mI (29) boot: ESP-IDF v5.5-dev-3372-g38628f98b9 2nd stage bootloader[0m
+[0;32mI (29) boot: compile time Nov 28 2025 06:27:02[0m
+[0;32mI (29) boot: Multicore bootloader[0m
+[0;32mI (32) boot: chip revision: v3.1[0m
+[0;32mI (35) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (39) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (42) boot.esp32: SPI Flash Size : 4MB[0m
+[0;32mI (46) boot: Enabling RNG early entropy source...[0m
+[0;32mI (50) boot: Partition Table:[0m
+[0;32mI (53) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (59) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (66) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (72) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (79) boot:  3 spiffs           Unknown data     01 82 00110000 002f0000[0m
+[0;32mI (85) boot: End of partition table[0m
+[0;32mI (89) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=33b44h (211780) map[0m
+[0;32mI (169) esp_image: segment 1: paddr=00043b6c vaddr=3ff80000 size=0001ch (    28) load[0m
+[0;32mI (169) esp_image: segment 2: paddr=00043b90 vaddr=3ffb0000 size=03efch ( 16124) load[0m
+[0;32mI (178) esp_image: segment 3: paddr=00047a94 vaddr=40080000 size=08584h ( 34180) load[0m
+[0;32mI (193) esp_image: segment 4: paddr=00050020 vaddr=400d0020 size=ab6a0h (702112) map[0m
+[0;32mI (433) esp_image: segment 5: paddr=000fb6c8 vaddr=40088584 size=0faa8h ( 64168) load[0m
+[0;32mI (470) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (470) boot: Disabling RNG early entropy source...[0m
+[0;32mI (481) cpu_start: Multicore app[0m
+[0;32mI (489) cpu_start: Pro cpu start user code[0m
+[0;32mI (489) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (489) app_init: Application information:[0m
+[0;32mI (492) app_init: Project name:     sensor_campo[0m
+[0;32mI (498) app_init: App version:      a38b24d3-dirty[0m
+[0;32mI (503) app_init: Compile time:     Dec  5 2025 14:31:59[0m
+[0;32mI (509) app_init: ELF file SHA256:  f63839622...[0m
+[0;32mI (514) app_init: ESP-IDF:          v5.5-dev-3372-g38628f98b9[0m
+[0;32mI (521) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (525) efuse_init: Max chip rev:     v3.99 [0m
+[0;32mI (530) efuse_init: Chip rev:         v3.1[0m
+[0;32mI (536) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (543) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (549) heap_init: At 3FFB8A18 len 000275E8 (157 KiB): DRAM[0m
+[0;32mI (555) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (561) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (568) heap_init: At 4009802C len 00007FD4 (31 KiB): IRAM[0m
+[0;32mI (575) spi_flash: detected chip: generic[0m
+[0;32mI (578) spi_flash: flash io: dio[0m
+[0;32mI (583) main_task: Started on CPU0[0m
+[0;32mI (593) main_task: Calling app_main()[0m
+[0;32mI (613) BSP_LED: LED inicializado no GPIO 2[0m
+[0;32mI (613) BSP_DS18B20: DS18B20 inicializado no GPIO 4[0m
+[0;32mI (613) BSP_ADC: ADC umidade solo inicializado. canal=6 bitwidth=12 atten=3[0m
+[0;32mI (653) BSP_AHT10: AHT10 inicializado com sucesso (I2C addr: 0x38)[0m
+[0;32mI (653) BSP_SENSORS: AHT10 inicializado com sucesso[0m
+[0;32mI (793) BSP_BH1750: BH1750 inicializado com sucesso (I2C addr: 0x23)[0m
+[0;32mI (793) BSP_SENSORS: BH1750 inicializado com sucesso[0m
+[0;32mI (793) BSP_SENSORS: Sensores BSP inicializados[0m
+[0;32mI (793) APP_SENSOR_MGR: Sensor Manager inicializado[0m
+[0;32mI (803) APP_DATA_LOGGER: Inicializando SPIFFS...[0m
+[0;32mI (1113) APP_DATA_LOGGER: SPIFFS montado em /spiffs[0m
+[0;32mI (1113) APP_DATA_LOGGER: Total=2293769 bytes, Usado=81520 bytes[0m
+[0;32mI (1453) APP_DATA_LOGGER: Proximo indice de log sera: 2021[0m
+[0;33mW (1643) APP_DATA_LOGGER: Arquivo /spiffs/soil_calib.json nao encontrado. Usando padrao (Seco: 4000, Molhado: 400)[0m
+[0;32mI (1643) APP_DATA_LOGGER: Data logger inicializado. Proximo indice: 2021[0m
+[0;32mI (1653) APP_SAMPLING: Período carregado do NVS: 10000 ms[0m
+[0;32mI (1653) APP_STATS_WINDOW: Período estatístico carregado do NVS: 15 amostras[0m
+[0;32mI (1663) APP_CULTIVATION: Tolerâncias de cultivo carregadas do NVS[0m
+[0;32mI (1673) APP_GUI_SERVICES: Serviços GUI registrados[0m
+[0;32mI (1693) wifi:wifi driver task: 3ffc3188, prio:23, stack:6656, core=0[0m
+[0;32mI (1703) wifi:wifi firmware version: 7d2994f4b[0m
+[0;32mI (1703) wifi:wifi certification version: v7.0[0m
+[0;32mI (1703) wifi:config NVS flash: enabled[0m
+[0;32mI (1703) wifi:config nano formatting: disabled[0m
+[0;32mI (1703) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (1713) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (1713) wifi:Init management short buffer num: 32[0m
+[0;32mI (1723) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (1723) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (1733) wifi:Init static rx buffer num: 10[0m
+[0;32mI (1733) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (1733) wifi_init: rx ba win: 6[0m
+[0;32mI (1743) wifi_init: accept mbox: 6[0m
+[0;32mI (1743) wifi_init: tcpip mbox: 32[0m
+[0;32mI (1753) wifi_init: udp mbox: 6[0m
+[0;32mI (1753) wifi_init: tcp mbox: 6[0m
+[0;32mI (1753) wifi_init: tcp tx win: 5760[0m
+[0;32mI (1763) wifi_init: tcp rx win: 5760[0m
+[0;32mI (1763) wifi_init: tcp mss: 1440[0m
+[0;32mI (1773) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (1773) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (1783) phy_init: phy_version 4860,6b7a6e5,Feb  6 2025,14:47:07[0m
+[0;32mI (1863) phy_init: Saving new calibration data due to checksum failure or outdated calibration data, mode(0)[0m
+[0;32mI (1913) wifi:mode : softAP (38:18:2b:ea:b7:cd)[0m
+[0;32mI (1923) wifi:Total power save buffer number: 16[0m
+[0;32mI (1923) wifi:Init max length of beacon: 752/752[0m
+[0;32mI (1923) wifi:Init max length of beacon: 752/752[0m
+[0;32mI (1923) BSP_WIFI_AP: Modo AP iniciado. SSID='greenSe_Campo' senha='12345678'[0m
+[0;32mI (1923) esp_netif_lwip: DHCP server started on interface WIFI_AP_DEF with IP: 192.168.4.1[0m
+[0;32mI (1943) mdns_mem: mDNS task will be created from internal RAM[0m
+[0;32mI (1953) GUI_HTTP_SERVER: Servidor HTTP iniciado e rotas registradas. Acesse http://greense.local/ ou http://192.168.4.1/[0m
+[0;32mI (1953) APP_MAIN: Sistema iniciado - Arquitetura BSP/APP/GUI[0m
+[0;31mE (1963) i2c.master: I2C software timeout[0m
+[0;31mE (1973) i2c.master: s_i2c_synchronous_transaction(943): I2C transaction failed[0m
+[0;31mE (1973) i2c.master: i2c_master_multi_buffer_transmit(1212): I2C transaction failed[0m
+[0;31mE (1983) BSP_AHT10: Falha ao enviar comando trigger: ESP_ERR_INVALID_STATE[0m
+[0;32mI (1993) main_task: Returned from app_main()[0m
+[0;31mE (1993) i2c.master: I2C hardware NACK detected[0m
+[0;31mE (2003) i2c.master: I2C transaction unexpected nack detected[0m
+[0;31mE (2013) i2c.master: s_i2c_synchronous_transaction(943): I2C transaction failed[0m
+[0;31mE (2013) i2c.master: i2c_master_multi_buffer_transmit(1212): I2C transaction failed[0m
+[0;31mE (2023) BSP_AHT10: Falha ao enviar comando trigger: ESP_ERR_INVALID_STATE[0m
+[0;32mI (3083) APP_MAIN: Log salvo! Ar: -- C / -- %, Solo: 24.06 C / 0.00 %, Lux: 21.7, DPV: nan kPa[0m
+[0;32mI (6703) wifi:new:<1,0>, old:<1,1>, ap:<1,1>, sta:<255,255>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (6713) wifi:station: 32:2a:5f:51:e8:85 join, AID=1, bgn, 20[0m
+[0;32mI (6763) BSP_WIFI_AP: Cliente 32:2a:5f:51:e8:85 conectou, AID=1[0m
+[0;32mI (6873) wifi:<ba-add>idx:2 (ifx:1, 32:2a:5f:51:e8:85), tid:0, ssn:0, winSize:64[0m
+[0;32mI (6943) esp_netif_lwip: DHCP server assigned IP to a client, IP is: 192.168.4.2[0m
+[0;32mI (13103) APP_MAIN: Log salvo! Ar: 26.13 C / 63.49 %, Solo: 24.06 C / 0.00 %, Lux: 22.5, DPV: 1.236 kPa[0m
+[0;32mI (22863) APP_MAIN: Log salvo! Ar: 26.13 C / 63.58 %, Solo: 24.06 C / 0.00 %, Lux: 22.5, DPV: 1.234 kPa[0m
+[0;32mI (33083) APP_MAIN: Log salvo! Ar: 26.17 C / 63.53 %, Solo: 24.06 C / 0.00 %, Lux: 20.8, DPV: 1.239 kPa[0m
+[0;32mI (35493) GUI_HTTP_SERVER: Parâmetro current_preset recebido: resultado=0, valor='__GENERIC__'[0m
+[0;32mI (35493) GUI_HTTP_SERVER: Preset recebido do cliente: '__GENERIC__'[0m
+[0;32mI (35503) GUI_HTTP_SERVER: Salvando tolerâncias [Preset escolhido: Genérico]: temp_ar=[20.0-30.0], umid_ar=[50.0-80.0], temp_solo=[18.0-25.0], umid_solo=[40.0-80.0], lum=[500-2000], dpv=[0.5-2.0][0m
+[0;32mI (35523) APP_CULTIVATION: Tolerâncias de cultivo atualizadas[0m
+[0;32mI (35523) GUI_HTTP_SERVER: Tolerâncias salvas com sucesso no NVS [Preset ativo: Genérico][0m
+[0;32mI (43073) APP_MAIN: Log salvo! Ar: 26.17 C / 63.45 %, Solo: 24.06 C / 0.00 %, Lux: 20.8, DPV: 1.241 kPa[0m
+[0;32mI (46343) GUI_HTTP_SERVER: Parâmetro current_preset recebido: resultado=0, valor='__GENERIC__'[0m
+[0;32mI (46343) GUI_HTTP_SERVER: Preset recebido do cliente: '__GENERIC__'[0m
+[0;32mI (46343) GUI_HTTP_SERVER: Salvando tolerâncias [Preset escolhido: Genérico]: temp_ar=[20.0-30.0], umid_ar=[50.0-80.0], temp_solo=[18.0-25.0], umid_solo=[40.0-80.0], lum=[500-2000], dpv=[0.5-2.0][0m
+[0;32mI (46363) APP_CULTIVATION: Tolerâncias de cultivo atualizadas[0m
+[0;32mI (46373) GUI_HTTP_SERVER: Tolerâncias salvas com sucesso no NVS [Preset ativo: Genérico][0m
+[0;32mI (52833) APP_MAIN: Log salvo! Ar: 26.19 C / 63.35 %, Solo: 24.06 C / 0.00 %, Lux: 21.7, DPV: 1.246 kPa[0m
+[0;32mI (63053) APP_MAIN: Log salvo! Ar: 26.18 C / 63.31 %, Solo: 24.06 C / 0.00 %, Lux: 20.8, DPV: 1.246 kPa[0m
+[0;33mW (65483) httpd_txrx: httpd_sock_err: error in recv : 104[0m
+[0;33mW (65483) httpd_txrx: httpd_sock_err: error in recv : 104[0m
+[0;32mI (73043) APP_MAIN: Log salvo! Ar: 26.16 C / 63.34 %, Solo: 24.06 C / 0.00 %, Lux: 24.2, DPV: 1.244 kPa[0m
+[0;32mI (82803) APP_MAIN: Log salvo! Ar: 26.20 C / 63.37 %, Solo: 24.06 C / 0.00 %, Lux: 21.7, DPV: 1.246 kPa[0m
+[0;32mI (93023) APP_MAIN: Log salvo! Ar: 26.23 C / 63.52 %, Solo: 24.06 C / 0.00 %, Lux: 24.2, DPV: 1.243 kPa[0m
+[0;32mI (103013) APP_MAIN: Log salvo! Ar: 26.22 C / 63.75 %, Solo: 24.06 C / 0.00 %, Lux: 20.8, DPV: 1.234 kPa[0m
+[0;32mI (112773) APP_MAIN: Log salvo! Ar: 26.25 C / 63.64 %, Solo: 24.06 C / 0.00 %, Lux: 24.2, DPV: 1.240 kPa[0m
+[0;32mI (122993) APP_MAIN: Log salvo! Ar: 26.23 C / 63.70 %, Solo: 24.06 C / 0.00 %, Lux: 23.3, DPV: 1.237 kPa[0m
+[0;32mI (132983) APP_MAIN: Log salvo! Ar: 26.26 C / 63.67 %, Solo: 24.06 C / 0.00 %, Lux: 22.5, DPV: 1.240 kPa[0m
+[0;32mI (142973) APP_MAIN: Log salvo! Ar: 26.32 C / 63.65 %, Solo: 24.06 C / 0.00 %, Lux: 22.5, DPV: 1.245 kPa[0m
+[0;32mI (152733) APP_MAIN: Log salvo! Ar: 26.34 C / 63.63 %, Solo: 24.06 C / 0.00 %, Lux: 21.7, DPV: 1.247 kPa[0m
+[0;32mI (162953) APP_MAIN: Log salvo! Ar: 26.32 C / 63.58 %, Solo: 24.06 C / 0.00 %, Lux: 22.5, DPV: 1.247 kPa[0m
+[0;32mI (172953) APP_MAIN: Log salvo! Ar: 26.31 C / 63.53 %, Solo: 24.00 C / 0.00 %, Lux: 22.5, DPV: 1.249 kPa[0m
+[0;32mI (182943) APP_MAIN: Log salvo! Ar: 26.36 C / 63.33 %, Solo: 24.25 C / 0.00 %, Lux: 22.5, DPV: 1.259 kPa[0m
+[0;32mI (192933) APP_MAIN: Log salvo! Ar: 26.33 C / 63.31 %, Solo: 24.06 C / 0.00 %, Lux: 22.5, DPV: 1.257 kPa[0m
+[0;32mI (202693) APP_MAIN: Log salvo! Ar: 26.35 C / 63.27 %, Solo: 24.06 C / 0.00 %, Lux: 22.5, DPV: 1.260 kPa[0m
+[0;32mI (212913) APP_MAIN: Log salvo! Ar: 26.38 C / 63.24 %, Solo: 24.00 C / 0.00 %, Lux: 22.5, DPV: 1.263 kPa[0m

@@ -1,0 +1,549 @@
+Command: ninja all
+[1/9] Performing build step for 'bootloader'
+[1/1] cd /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/bootloader/esp-idf/esptool_py && /home/mrclnndrd/.espressif/python_env/idf5.5_py3.11_env/bin/python /home/mrclnndrd/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x1000 /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/bootloader/bootloader.bin
+Bootloader binary size 0x6680 bytes. 0x980 bytes (8%) free.
+[2/9] No install step for 'bootloader'
+[3/9] Completed 'bootloader'
+[4/9] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/gui/web/gui_http_server.c.obj
+FAILED: esp-idf/main/CMakeFiles/__idf_main.dir/gui/web/gui_http_server.c.obj 
+/home/mrclnndrd/.espressif/tools/xtensa-esp-elf/esp-14.2.0_20241119/xtensa-esp-elf/bin/xtensa-esp32-elf-gcc -DESP_MDNS_VERSION_NUMBER=\"1.9.1\" -DESP_PLATFORM -DIDF_VER=\"v5.5-dev-3372-g38628f98b9\" -DSOC_MMU_PAGE_SIZE=CONFIG_MMU_PAGE_SIZE -DSOC_XTAL_FREQ_MHZ=CONFIG_XTAL_FREQ -D_GLIBCXX_HAVE_POSIX_SEMAPHORE -D_GLIBCXX_USE_POSIX_SEMAPHORE -D_GNU_SOURCE -D_POSIX_READER_WRITER_LOCKS -I/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/config -I/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main -I/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/bsp -I/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/bsp/sensors -I/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/bsp/actuators -I/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/bsp/network -I/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/app -I/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/gui -I/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/gui/web -I/home/mrclnndrd/esp/esp-idf/components/newlib/platform_include -I/home/mrclnndrd/esp/esp-idf/components/freertos/config/include -I/home/mrclnndrd/esp/esp-idf/components/freertos/config/include/freertos -I/home/mrclnndrd/esp/esp-idf/components/freertos/config/xtensa/include -I/home/mrclnndrd/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include -I/home/mrclnndrd/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/include -I/home/mrclnndrd/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/include/freertos -I/home/mrclnndrd/esp/esp-idf/components/freertos/esp_additions/include -I/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/include -I/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/include/soc -I/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/include/soc/esp32 -I/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/dma/include -I/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/ldo/include -I/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/debug_probe/include -I/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/mspi_timing_tuning/include -I/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/power_supply/include -I/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/port/esp32/. -I/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/port/esp32/include -I/home/mrclnndrd/esp/esp-idf/components/heap/include -I/home/mrclnndrd/esp/esp-idf/components/heap/tlsf -I/home/mrclnndrd/esp/esp-idf/components/log/include -I/home/mrclnndrd/esp/esp-idf/components/soc/include -I/home/mrclnndrd/esp/esp-idf/components/soc/esp32 -I/home/mrclnndrd/esp/esp-idf/components/soc/esp32/include -I/home/mrclnndrd/esp/esp-idf/components/soc/esp32/register -I/home/mrclnndrd/esp/esp-idf/components/hal/platform_port/include -I/home/mrclnndrd/esp/esp-idf/components/hal/esp32/include -I/home/mrclnndrd/esp/esp-idf/components/hal/include -I/home/mrclnndrd/esp/esp-idf/components/esp_rom/include -I/home/mrclnndrd/esp/esp-idf/components/esp_rom/esp32/include -I/home/mrclnndrd/esp/esp-idf/components/esp_rom/esp32/include/esp32 -I/home/mrclnndrd/esp/esp-idf/components/esp_rom/esp32 -I/home/mrclnndrd/esp/esp-idf/components/esp_common/include -I/home/mrclnndrd/esp/esp-idf/components/esp_system/include -I/home/mrclnndrd/esp/esp-idf/components/esp_system/port/soc -I/home/mrclnndrd/esp/esp-idf/components/esp_system/port/include/private -I/home/mrclnndrd/esp/esp-idf/components/xtensa/esp32/include -I/home/mrclnndrd/esp/esp-idf/components/xtensa/include -I/home/mrclnndrd/esp/esp-idf/components/xtensa/deprecated_include -I/home/mrclnndrd/esp/esp-idf/components/lwip/include -I/home/mrclnndrd/esp/esp-idf/components/lwip/include/apps -I/home/mrclnndrd/esp/esp-idf/components/lwip/include/apps/sntp -I/home/mrclnndrd/esp/esp-idf/components/lwip/lwip/src/include -I/home/mrclnndrd/esp/esp-idf/components/lwip/port/include -I/home/mrclnndrd/esp/esp-idf/components/lwip/port/freertos/include -I/home/mrclnndrd/esp/esp-idf/components/lwip/port/esp32xx/include -I/home/mrclnndrd/esp/esp-idf/components/lwip/port/esp32xx/include/arch -I/home/mrclnndrd/esp/esp-idf/components/lwip/port/esp32xx/include/sys -I/home/mrclnndrd/esp/esp-idf/components/esp_wifi/include -I/home/mrclnndrd/esp/esp-idf/components/esp_wifi/include/local -I/home/mrclnndrd/esp/esp-idf/components/esp_wifi/wifi_apps/include -I/home/mrclnndrd/esp/esp-idf/components/esp_wifi/wifi_apps/nan_app/include -I/home/mrclnndrd/esp/esp-idf/components/esp_event/include -I/home/mrclnndrd/esp/esp-idf/components/esp_phy/include -I/home/mrclnndrd/esp/esp-idf/components/esp_phy/esp32/include -I/home/mrclnndrd/esp/esp-idf/components/esp_netif/include -I/home/mrclnndrd/esp/esp-idf/components/esp_http_server/include -I/home/mrclnndrd/esp/esp-idf/components/http_parser -I/home/mrclnndrd/esp/esp-idf/components/esp_adc/include -I/home/mrclnndrd/esp/esp-idf/components/esp_adc/interface -I/home/mrclnndrd/esp/esp-idf/components/esp_adc/esp32/include -I/home/mrclnndrd/esp/esp-idf/components/esp_adc/deprecated/include -I/home/mrclnndrd/esp/esp-idf/components/nvs_flash/include -I/home/mrclnndrd/esp/esp-idf/components/esp_partition/include -I/home/mrclnndrd/esp/esp-idf/components/spiffs/include -I/home/mrclnndrd/esp/esp-idf/components/driver/deprecated -I/home/mrclnndrd/esp/esp-idf/components/driver/i2c/include -I/home/mrclnndrd/esp/esp-idf/components/driver/touch_sensor/include -I/home/mrclnndrd/esp/esp-idf/components/driver/twai/include -I/home/mrclnndrd/esp/esp-idf/components/driver/touch_sensor/esp32/include -I/home/mrclnndrd/esp/esp-idf/components/esp_pm/include -I/home/mrclnndrd/esp/esp-idf/components/esp_ringbuf/include -I/home/mrclnndrd/esp/esp-idf/components/esp_driver_gpio/include -I/home/mrclnndrd/esp/esp-idf/components/esp_driver_pcnt/include -I/home/mrclnndrd/esp/esp-idf/components/esp_driver_gptimer/include -I/home/mrclnndrd/esp/esp-idf/components/esp_driver_spi/include -I/home/mrclnndrd/esp/esp-idf/components/esp_driver_mcpwm/include -I/home/mrclnndrd/esp/esp-idf/components/esp_driver_ana_cmpr/include -I/home/mrclnndrd/esp/esp-idf/components/esp_driver_i2s/include -I/home/mrclnndrd/esp/esp-idf/components/esp_driver_sdmmc/include -I/home/mrclnndrd/esp/esp-idf/components/sdmmc/include -I/home/mrclnndrd/esp/esp-idf/components/esp_driver_sdspi/include -I/home/mrclnndrd/esp/esp-idf/components/esp_driver_sdio/include -I/home/mrclnndrd/esp/esp-idf/components/esp_driver_dac/include -I/home/mrclnndrd/esp/esp-idf/components/esp_driver_rmt/include -I/home/mrclnndrd/esp/esp-idf/components/esp_driver_tsens/include -I/home/mrclnndrd/esp/esp-idf/components/esp_driver_sdm/include -I/home/mrclnndrd/esp/esp-idf/components/esp_driver_i2c/include -I/home/mrclnndrd/esp/esp-idf/components/esp_driver_uart/include -I/home/mrclnndrd/esp/esp-idf/components/vfs/include -I/home/mrclnndrd/esp/esp-idf/components/esp_driver_ledc/include -I/home/mrclnndrd/esp/esp-idf/components/esp_driver_parlio/include -I/home/mrclnndrd/esp/esp-idf/components/esp_driver_usb_serial_jtag/include -I/home/mrclnndrd/esp/esp-idf/components/esp_timer/include -I/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/managed_components/espressif__cjson/cJSON -I/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/managed_components/espressif__mdns/include -I/home/mrclnndrd/esp/esp-idf/components/console -I/home/mrclnndrd/esp/esp-idf/components/esp_vfs_console/include -mlongcalls -Wno-frame-address  -fno-builtin-memcpy -fno-builtin-memset -fno-builtin-bzero -fno-builtin-stpcpy -fno-builtin-strncpy -fdiagnostics-color=always -ffunction-sections -fdata-sections -Wall -Werror=all -Wno-error=unused-function -Wno-error=unused-variable -Wno-error=unused-but-set-variable -Wno-error=deprecated-declarations -Wextra -Wno-error=extra -Wno-unused-parameter -Wno-sign-compare -Wno-enum-conversion -gdwarf-4 -ggdb -Og -fno-shrink-wrap -fmacro-prefix-map=/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C=. -fmacro-prefix-map=/home/mrclnndrd/esp/esp-idf=/IDF -fstrict-volatile-bitfields -fno-jump-tables -fno-tree-switch-conversion -std=gnu17 -Wno-old-style-declaration -MD -MT esp-idf/main/CMakeFiles/__idf_main.dir/gui/web/gui_http_server.c.obj -MF esp-idf/main/CMakeFiles/__idf_main.dir/gui/web/gui_http_server.c.obj.d -o esp-idf/main/CMakeFiles/__idf_main.dir/gui/web/gui_http_server.c.obj -c /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/gui/web/gui_http_server.c
+/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/gui/web/gui_http_server.c: In function 'handle_calibra':
+/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/gui/web/gui_http_server.c:1189:14: error: ''><button type='submit'>Salv...' directive output truncated writing 3053 bytes into a region of size between 0 and 2048 [-Werror=format-truncation=]
+ 1189 |              "<!DOCTYPE html><html><head>"
+      |              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/gui/web/gui_http_server.c:1360:26: note: format string is defined here
+ 1305 |              "<input type='number' name='molhado' value='%.0f'>"
+      |                                                              ~~~
+ 1306 |              "<button type='submit'>Salvar calibração</button>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1307 |              "</form>"
+      |              ~~~~~~~~~    
+ 1308 |              "<p class='tip'><strong>Dica:</strong> Para uma calibra&ccedil;&atilde;o precisa, registre o valor do sensor logo ap&oacute;s uma irriga&ccedil;&atilde;o completa (solo molhado) "
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1309 |              "e ap&oacute;s um per&iacute;odo prolongado sem irriga&ccedil;&atilde;o (solo seco). Isso garante que o sistema capture toda a faixa de varia&ccedil;&atilde;o real do seu solo.</p>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1310 |              "<a class='button' href='/'>Voltar ao painel principal</a>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1311 |              "</div>"
+      |              ~~~~~~~~     
+ 1312 |              "<script>"
+      |              ~~~~~~~~~~   
+ 1313 |              "const presets = {"
+      |              ~~~~~~~~~~~~~~~~~~~
+ 1314 |              "  'padrao': {"
+      |              ~~~~~~~~~~~~~~~
+ 1315 |              "    temp_ar_min: 20.0, temp_ar_max: 30.0,"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1316 |              "    umid_ar_min: 50.0, umid_ar_max: 80.0,"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1317 |              "    temp_solo_min: 18.0, temp_solo_max: 25.0,"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1318 |              "    umid_solo_min: 40.0, umid_solo_max: 80.0,"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1319 |              "    luminosidade_min: 500, luminosidade_max: 2000,"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1320 |              "    dpv_min: 0.5, dpv_max: 2.0"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1321 |              "  },"
+      |              ~~~~~~       
+ 1322 |              "  'tomate': {"
+      |              ~~~~~~~~~~~~~~~
+ 1323 |              "    temp_ar_min: 18.0, temp_ar_max: 28.0,"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1324 |              "    umid_ar_min: 60.0, umid_ar_max: 85.0,"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1325 |              "    temp_solo_min: 16.0, temp_solo_max: 24.0,"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1326 |              "    umid_solo_min: 60.0, umid_solo_max: 85.0,"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1327 |              "    luminosidade_min: 1000, luminosidade_max: 3000,"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1328 |              "    dpv_min: 0.8, dpv_max: 1.8"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1329 |              "  },"
+      |              ~~~~~~       
+ 1330 |              "  'morango': {"
+      |              ~~~~~~~~~~~~~~~~
+ 1331 |              "    temp_ar_min: 15.0, temp_ar_max: 25.0,"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1332 |              "    umid_ar_min: 70.0, umid_ar_max: 90.0,"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1333 |              "    temp_solo_min: 14.0, temp_solo_max: 22.0,"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1334 |              "    umid_solo_min: 70.0, umid_solo_max: 90.0,"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1335 |              "    luminosidade_min: 800, luminosidade_max: 2500,"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1336 |              "    dpv_min: 0.6, dpv_max: 1.5"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1337 |              "  },"
+      |              ~~~~~~       
+ 1338 |              "  'alface': {"
+      |              ~~~~~~~~~~~~~~~
+ 1339 |              "    temp_ar_min: 10.0, temp_ar_max: 22.0,"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1340 |              "    umid_ar_min: 65.0, umid_ar_max: 85.0,"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1341 |              "    temp_solo_min: 10.0, temp_solo_max: 20.0,"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1342 |              "    umid_solo_min: 60.0, umid_solo_max: 85.0,"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1343 |              "    luminosidade_min: 600, luminosidade_max: 2000,"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1344 |              "    dpv_min: 0.5, dpv_max: 1.8"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1345 |              "  },"
+      |              ~~~~~~       
+ 1346 |              "  'rucula': {"
+      |              ~~~~~~~~~~~~~~~
+ 1347 |              "    temp_ar_min: 12.0, temp_ar_max: 24.0,"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1348 |              "    umid_ar_min: 60.0, umid_ar_max: 80.0,"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1349 |              "    temp_solo_min: 12.0, temp_solo_max: 22.0,"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1350 |              "    umid_solo_min: 55.0, umid_solo_max: 80.0,"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1351 |              "    luminosidade_min: 700, luminosidade_max: 2200,"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1352 |              "    dpv_min: 0.6, dpv_max: 1.7"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1353 |              "  }"
+      |              ~~~~~        
+ 1354 |              "};"
+      |              ~~~~         
+ 1355 |              "function applyPreset() {"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1356 |              "  const select = document.getElementById('presetSelect');"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1357 |              "  const preset = select.value;"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1358 |              "  if (!preset || !presets[preset]) return;"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1359 |              "  const values = presets[preset];"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1360 |              "  document.querySelector('input[name=\"temp_ar_min\"]').value = values.temp_ar_min;"
+      |              ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1361 |              "  document.querySelector('input[name=\"temp_ar_max\"]').value = values.temp_ar_max;"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1362 |              "  document.querySelector('input[name=\"umid_ar_min\"]').value = values.umid_ar_min;"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1363 |              "  document.querySelector('input[name=\"umid_ar_max\"]').value = values.umid_ar_max;"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1364 |              "  document.querySelector('input[name=\"temp_solo_min\"]').value = values.temp_solo_min;"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1365 |              "  document.querySelector('input[name=\"temp_solo_max\"]').value = values.temp_solo_max;"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1366 |              "  document.querySelector('input[name=\"umid_solo_min\"]').value = values.umid_solo_min;"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1367 |              "  document.querySelector('input[name=\"umid_solo_max\"]').value = values.umid_solo_max;"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1368 |              "  document.querySelector('input[name=\"luminosidade_min\"]').value = values.luminosidade_min;"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1369 |              "  document.querySelector('input[name=\"luminosidade_max\"]').value = values.luminosidade_max;"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1370 |              "  document.querySelector('input[name=\"dpv_min\"]').value = values.dpv_min;"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1371 |              "  document.querySelector('input[name=\"dpv_max\"]').value = values.dpv_max;"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1372 |              "}"
+      |              ~~~          
+ 1373 |              "</script>"
+      |              ~~~~~~~~~~~  
+ 1374 |              "</body></html>",
+      |              ~~~~~~~~~~~~~~~
+/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/gui/web/gui_http_server.c:1188:15: note: 'snprintf' output between 9198 and 14152 bytes into a destination of size 8192
+ 1188 |     int len = snprintf(page, page_capacity,
+      |               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1189 |              "<!DOCTYPE html><html><head>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1190 |              "<meta charset='utf-8'/>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1191 |              "<meta name='viewport' content='width=device-width, initial-scale=1'/>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1192 |              "<title>Configurações de Cultivo</title>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1193 |              "<style>"
+      |              ~~~~~~~~~
+ 1194 |              "body{font-family:'Inter',sans-serif;background:#f0f4f1;color:#1f2a24;margin:0;padding:24px;}"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1195 |              ".card{background:#fff;border-radius:20px;padding:26px;max-width:600px;margin:auto;"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1196 |              "box-shadow:0 24px 46px rgba(0,0,0,0.12);margin-bottom:20px}"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1197 |              ".tag{display:inline-block;padding:4px 12px;border-radius:999px;background:#c8e6c9;"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1198 |              "color:#1b5e20;font-size:12px;font-weight:600}"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1199 |              "h2{margin:12px 0 6px;font-size:24px;color:#1b5e20}"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1200 |              "h3{margin:20px 0 8px;font-size:18px;color:#2e7d32;border-top:2px solid #e0e8e1;padding-top:16px}"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1201 |              "h3:first-of-type{border-top:none;padding-top:0;margin-top:0}"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1202 |              ".lead{color:#4f5b62;line-height:1.5;margin-bottom:18px}"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1203 |              ".info{display:flex;gap:12px;margin:18px 0}"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1204 |              ".info-box{flex:1;background:#f7faf6;border:1px solid #e0e8e1;border-radius:14px;"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1205 |              "padding:12px 14px;text-align:center;font-size:14px}"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1206 |              "form label{display:block;margin:12px 0 4px;font-weight:600;font-size:14px;color:#37474f}"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1207 |              ".tolerance-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1208 |              ".tolerance-row label{grid-column:1/-1;margin-bottom:4px}"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1209 |              ".tolerance-row input{width:100%%}"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1210 |              "input{width:100%%;padding:10px;border:1px solid #cddbd2;border-radius:10px;"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1211 |              "font-size:15px;box-sizing:border-box}"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1212 |              "select{width:100%%;padding:10px;border:1px solid #cddbd2;border-radius:10px;"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1213 |              "font-size:15px;box-sizing:border-box;background:#fff;color:#1f2a24;cursor:pointer}"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1214 |              "select:hover{border-color:#388e3c}"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1215 |              ".preset-box{background:#f7faf6;border:1px solid #e0e8e1;border-radius:14px;"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1216 |              "padding:16px;margin-bottom:20px}"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1217 |              ".preset-label{display:block;margin-bottom:8px;font-weight:600;font-size:14px;color:#37474f}"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1218 |              "button{width:100%%;padding:12px 18px;border:none;border-radius:12px;background:#388e3c;"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1219 |              "color:#fff;font-size:15px;font-weight:600;margin-top:18px;box-shadow:0 10px 24px rgba(56,142,60,0.25)}"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1220 |              "a.button{display:inline-block;width:100%%;text-align:center;padding:12px 18px;"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1221 |              "border-radius:12px;background:#388e3c;color:#fff;text-decoration:none;font-weight:600;"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1222 |              "margin-top:12px;border:1px solid #2e7d32;box-shadow:0 8px 20px rgba(56,142,60,0.25);"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1223 |              "box-sizing:border-box}"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~
+ 1224 |              ".tip{font-size:13px;color:#546e7a;margin-top:14px}"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1225 |              "</style></head><body>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~
+ 1226 |              "<div class='card'>"
+      |              ~~~~~~~~~~~~~~~~~~~~
+ 1227 |              "<span class='tag'>greenSe Campo</span>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1228 |              "<h2>Configurações de Cultivo</h2>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1229 |              "<p class='lead'>Personalize as faixas ideais de cultivo para cada vari&aacute;vel ambiental medida. "
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1230 |              "Esses valores definem os limites m&iacute;nimo e m&aacute;ximo que aparecem como linhas de refer&ecirc;ncia nos gr&aacute;ficos, "
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1231 |              "facilitando a identifica&ccedil;&atilde;o visual de quando as condi&ccedil;&otilde;es est&atilde;o dentro ou fora da faixa ideal para seu cultivo.</p>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1232 | 
+      |                
+ 1233 |              "<form action='/set_tolerance' method='get' id='toleranceForm'>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1234 |              "<h3>Faixas Ideais de Cultivo</h3>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1235 | 
+      |                
+ 1236 |              "<div class='preset-box'>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1237 |              "<label class='preset-label' for='presetSelect'>Selecione um preset de cultivo:</label>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1238 |              "<select id='presetSelect' onchange='applyPreset()'>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1239 |              "<option value=''>-- Escolha um preset --</option>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1240 |              "<option value='padrao'>Padrão (Genérico)</option>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1241 |              "<option value='tomate'>Tomate</option>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1242 |              "<option value='morango'>Morango</option>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1243 |              "<option value='alface'>Alface</option>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1244 |              "<option value='rucula'>Rúcula</option>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1245 |              "</select>"
+      |              ~~~~~~~~~~~
+ 1246 |              "<p class='tip' style='margin-top:8px'>Ao escolher um preset, os campos abaixo são preenchidos automaticamente. Você pode ajustar manualmente depois se necessário.</p>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1247 |              "</div>"
+      |              ~~~~~~~~
+ 1248 | 
+      |                
+ 1249 |              "<div class='tolerance-row'>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1250 |              "<label>Temperatura do Ar (°C)</label>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1251 |              "<input type='number' step='0.1' name='temp_ar_min' value='%.1f' placeholder='Mínimo'>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1252 |              "<input type='number' step='0.1' name='temp_ar_max' value='%.1f' placeholder='Máximo'>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1253 |              "</div>"
+      |              ~~~~~~~~
+ 1254 | 
+      |                
+ 1255 |              "<div class='tolerance-row'>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1256 |              "<label>Umidade do Ar (%%)</label>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1257 |              "<input type='number' step='0.1' name='umid_ar_min' value='%.1f' placeholder='Mínimo'>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1258 |              "<input type='number' step='0.1' name='umid_ar_max' value='%.1f' placeholder='Máximo'>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1259 |              "</div>"
+      |              ~~~~~~~~
+ 1260 | 
+      |                
+ 1261 |              "<div class='tolerance-row'>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1262 |              "<label>Temperatura do Solo (°C)</label>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1263 |              "<input type='number' step='0.1' name='temp_solo_min' value='%.1f' placeholder='Mínimo'>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1264 |              "<input type='number' step='0.1' name='temp_solo_max' value='%.1f' placeholder='Máximo'>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1265 |              "</div>"
+      |              ~~~~~~~~
+ 1266 | 
+      |                
+ 1267 |              "<div class='tolerance-row'>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1268 |              "<label>Umidade do Solo (%%)</label>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1269 |              "<input type='number' step='0.1' name='umid_solo_min' value='%.1f' placeholder='Mínimo'>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1270 |              "<input type='number' step='0.1' name='umid_solo_max' value='%.1f' placeholder='Máximo'>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1271 |              "</div>"
+      |              ~~~~~~~~
+ 1272 | 
+      |                
+ 1273 |              "<div class='tolerance-row'>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1274 |              "<label>Luminosidade (lux)</label>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1275 |              "<input type='number' step='1' name='luminosidade_min' value='%.0f' placeholder='Mínimo'>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1276 |              "<input type='number' step='1' name='luminosidade_max' value='%.0f' placeholder='Máximo'>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1277 |              "</div>"
+      |              ~~~~~~~~
+ 1278 | 
+      |                
+ 1279 |              "<div class='tolerance-row'>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1280 |              "<label>DPV (kPa)</label>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1281 |              "<input type='number' step='0.1' name='dpv_min' value='%.1f' placeholder='Mínimo'>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1282 |              "<input type='number' step='0.1' name='dpv_max' value='%.1f' placeholder='Máximo'>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1283 |              "</div>"
+      |              ~~~~~~~~
+ 1284 | 
+      |                
+ 1285 |              "<button type='submit'>Salvar Faixas Ideais</button>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1286 |              "</form>"
+      |              ~~~~~~~~~
+ 1287 |              "<form action='/reset_tolerance' method='get' style='margin-top:12px'>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1288 |              "<button type='submit' style='background:#ff9800;box-shadow:0 10px 24px rgba(255,152,0,0.25)'>Restaurar Valores Padrão</button>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1289 |              "</form>"
+      |              ~~~~~~~~~
+ 1290 |              "<p class='tip' style='margin-top:8px'><strong>Restaurar padrões:</strong> O bot&atilde;o acima restaura os valores padr&atilde;o recomendados para cultivos gerais "
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1291 |              "(20-30°C ar, 50-80%% umidade ar, 18-25°C solo, 40-80%% umidade solo, 500-2000 lux, 0.5-2.0 kPa DPV). "
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1292 |              "Use quando quiser voltar aos valores iniciais do sistema.</p>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1293 | 
+      |                
+ 1294 |              "<h3>Calibração do Sensor de Umidade do Solo</h3>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1295 |              "<p class='lead'>Ajuste os valores de refer&ecirc;ncia para solo seco e totalmente molhado conforme as condi&ccedil;&otilde;es reais do seu canteiro. "
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1296 |              "Esta calibra&ccedil;&atilde;o garante que as leituras de umidade do solo reflitam com precis&atilde;o a condi&ccedil;&atilde;o atual do solo.</p>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1297 |              "<div class='info'>"
+      |              ~~~~~~~~~~~~~~~~~~~~
+ 1298 |              "<div class='info-box'><strong>Leitura bruta</strong><br>%d</div>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1299 |              "<div class='info-box'><strong>Faixa atual</strong><br>Seco %.0f | Molhado %.0f</div>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1300 |              "</div>"
+      |              ~~~~~~~~
+ 1301 |              "<form action='/set_calibra' method='get'>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1302 |              "<label>Novo valor para solo seco</label>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1303 |              "<input type='number' name='seco' value='%.0f'>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1304 |              "<label>Novo valor para solo molhado</label>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1305 |              "<input type='number' name='molhado' value='%.0f'>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1306 |              "<button type='submit'>Salvar calibração</button>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1307 |              "</form>"
+      |              ~~~~~~~~~
+ 1308 |              "<p class='tip'><strong>Dica:</strong> Para uma calibra&ccedil;&atilde;o precisa, registre o valor do sensor logo ap&oacute;s uma irriga&ccedil;&atilde;o completa (solo molhado) "
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1309 |              "e ap&oacute;s um per&iacute;odo prolongado sem irriga&ccedil;&atilde;o (solo seco). Isso garante que o sistema capture toda a faixa de varia&ccedil;&atilde;o real do seu solo.</p>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1310 |              "<a class='button' href='/'>Voltar ao painel principal</a>"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1311 |              "</div>"
+      |              ~~~~~~~~
+ 1312 |              "<script>"
+      |              ~~~~~~~~~~
+ 1313 |              "const presets = {"
+      |              ~~~~~~~~~~~~~~~~~~~
+ 1314 |              "  'padrao': {"
+      |              ~~~~~~~~~~~~~~~
+ 1315 |              "    temp_ar_min: 20.0, temp_ar_max: 30.0,"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1316 |              "    umid_ar_min: 50.0, umid_ar_max: 80.0,"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1317 |              "    temp_solo_min: 18.0, temp_solo_max: 25.0,"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1318 |              "    umid_solo_min: 40.0, umid_solo_max: 80.0,"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1319 |              "    luminosidade_min: 500, luminosidade_max: 2000,"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1320 |              "    dpv_min: 0.5, dpv_max: 2.0"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1321 |              "  },"
+      |              ~~~~~~
+ 1322 |              "  'tomate': {"
+      |              ~~~~~~~~~~~~~~~
+ 1323 |              "    temp_ar_min: 18.0, temp_ar_max: 28.0,"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1324 |              "    umid_ar_min: 60.0, umid_ar_max: 85.0,"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1325 |              "    temp_solo_min: 16.0, temp_solo_max: 24.0,"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1326 |              "    umid_solo_min: 60.0, umid_solo_max: 85.0,"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1327 |              "    luminosidade_min: 1000, luminosidade_max: 3000,"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1328 |              "    dpv_min: 0.8, dpv_max: 1.8"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1329 |              "  },"
+      |              ~~~~~~
+ 1330 |              "  'morango': {"
+      |              ~~~~~~~~~~~~~~~~
+ 1331 |              "    temp_ar_min: 15.0, temp_ar_max: 25.0,"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1332 |              "    umid_ar_min: 70.0, umid_ar_max: 90.0,"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1333 |              "    temp_solo_min: 14.0, temp_solo_max: 22.0,"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1334 |              "    umid_solo_min: 70.0, umid_solo_max: 90.0,"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1335 |              "    luminosidade_min: 800, luminosidade_max: 2500,"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1336 |              "    dpv_min: 0.6, dpv_max: 1.5"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1337 |              "  },"
+      |              ~~~~~~
+ 1338 |              "  'alface': {"
+      |              ~~~~~~~~~~~~~~~
+ 1339 |              "    temp_ar_min: 10.0, temp_ar_max: 22.0,"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1340 |              "    umid_ar_min: 65.0, umid_ar_max: 85.0,"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1341 |              "    temp_solo_min: 10.0, temp_solo_max: 20.0,"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1342 |              "    umid_solo_min: 60.0, umid_solo_max: 85.0,"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1343 |              "    luminosidade_min: 600, luminosidade_max: 2000,"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1344 |              "    dpv_min: 0.5, dpv_max: 1.8"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1345 |              "  },"
+      |              ~~~~~~
+ 1346 |              "  'rucula': {"
+      |              ~~~~~~~~~~~~~~~
+ 1347 |              "    temp_ar_min: 12.0, temp_ar_max: 24.0,"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1348 |              "    umid_ar_min: 60.0, umid_ar_max: 80.0,"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1349 |              "    temp_solo_min: 12.0, temp_solo_max: 22.0,"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1350 |              "    umid_solo_min: 55.0, umid_solo_max: 80.0,"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1351 |              "    luminosidade_min: 700, luminosidade_max: 2200,"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1352 |              "    dpv_min: 0.6, dpv_max: 1.7"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1353 |              "  }"
+      |              ~~~~~
+ 1354 |              "};"
+      |              ~~~~
+ 1355 |              "function applyPreset() {"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1356 |              "  const select = document.getElementById('presetSelect');"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1357 |              "  const preset = select.value;"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1358 |              "  if (!preset || !presets[preset]) return;"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1359 |              "  const values = presets[preset];"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1360 |              "  document.querySelector('input[name=\"temp_ar_min\"]').value = values.temp_ar_min;"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1361 |              "  document.querySelector('input[name=\"temp_ar_max\"]').value = values.temp_ar_max;"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1362 |              "  document.querySelector('input[name=\"umid_ar_min\"]').value = values.umid_ar_min;"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1363 |              "  document.querySelector('input[name=\"umid_ar_max\"]').value = values.umid_ar_max;"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1364 |              "  document.querySelector('input[name=\"temp_solo_min\"]').value = values.temp_solo_min;"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1365 |              "  document.querySelector('input[name=\"temp_solo_max\"]').value = values.temp_solo_max;"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1366 |              "  document.querySelector('input[name=\"umid_solo_min\"]').value = values.umid_solo_min;"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1367 |              "  document.querySelector('input[name=\"umid_solo_max\"]').value = values.umid_solo_max;"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1368 |              "  document.querySelector('input[name=\"luminosidade_min\"]').value = values.luminosidade_min;"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1369 |              "  document.querySelector('input[name=\"luminosidade_max\"]').value = values.luminosidade_max;"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1370 |              "  document.querySelector('input[name=\"dpv_min\"]').value = values.dpv_min;"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1371 |              "  document.querySelector('input[name=\"dpv_max\"]').value = values.dpv_max;"
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1372 |              "}"
+      |              ~~~
+ 1373 |              "</script>"
+      |              ~~~~~~~~~~~
+ 1374 |              "</body></html>",
+      |              ~~~~~~~~~~~~~~~~~
+ 1375 |              temp_ar_min, temp_ar_max,
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1376 |              umid_ar_min, umid_ar_max,
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1377 |              temp_solo_min, temp_solo_max,
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1378 |              umid_solo_min, umid_solo_max,
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1379 |              luminosidade_min, luminosidade_max,
+      |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1380 |              dpv_min, dpv_max,
+      |              ~~~~~~~~~~~~~~~~~
+ 1381 |              leitura_raw,
+      |              ~~~~~~~~~~~~
+ 1382 |              seco, molhado,
+      |              ~~~~~~~~~~~~~~
+ 1383 |              seco, molhado);
+      |              ~~~~~~~~~~~~~~
+cc1: some warnings being treated as errors
+ninja: build stopped: subcommand failed.

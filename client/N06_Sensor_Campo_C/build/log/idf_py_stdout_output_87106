@@ -1,0 +1,78 @@
+Command: ninja all
+[1/9] Performing build step for 'bootloader'
+[1/1] cd /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/bootloader/esp-idf/esptool_py && /home/mrclnndrd/.espressif/python_env/idf5.5_py3.11_env/bin/python /home/mrclnndrd/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x1000 /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/bootloader/bootloader.bin
+Bootloader binary size 0x6680 bytes. 0x980 bytes (8%) free.
+[2/9] No install step for 'bootloader'
+[3/9] Completed 'bootloader'
+[4/9] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/gui/web/gui_http_server.c.obj
+FAILED: esp-idf/main/CMakeFiles/__idf_main.dir/gui/web/gui_http_server.c.obj 
+/home/mrclnndrd/.espressif/tools/xtensa-esp-elf/esp-14.2.0_20241119/xtensa-esp-elf/bin/xtensa-esp32-elf-gcc -DESP_MDNS_VERSION_NUMBER=\"1.9.1\" -DESP_PLATFORM -DIDF_VER=\"v5.5-dev-3372-g38628f98b9\" -DSOC_MMU_PAGE_SIZE=CONFIG_MMU_PAGE_SIZE -DSOC_XTAL_FREQ_MHZ=CONFIG_XTAL_FREQ -D_GLIBCXX_HAVE_POSIX_SEMAPHORE -D_GLIBCXX_USE_POSIX_SEMAPHORE -D_GNU_SOURCE -D_POSIX_READER_WRITER_LOCKS -I/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/config -I/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main -I/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/bsp -I/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/bsp/sensors -I/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/bsp/actuators -I/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/bsp/network -I/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/app -I/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/gui -I/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/gui/web -I/home/mrclnndrd/esp/esp-idf/components/newlib/platform_include -I/home/mrclnndrd/esp/esp-idf/components/freertos/config/include -I/home/mrclnndrd/esp/esp-idf/components/freertos/config/include/freertos -I/home/mrclnndrd/esp/esp-idf/components/freertos/config/xtensa/include -I/home/mrclnndrd/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include -I/home/mrclnndrd/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/include -I/home/mrclnndrd/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/include/freertos -I/home/mrclnndrd/esp/esp-idf/components/freertos/esp_additions/include -I/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/include -I/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/include/soc -I/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/include/soc/esp32 -I/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/dma/include -I/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/ldo/include -I/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/debug_probe/include -I/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/mspi_timing_tuning/include -I/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/power_supply/include -I/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/port/esp32/. -I/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/port/esp32/include -I/home/mrclnndrd/esp/esp-idf/components/heap/include -I/home/mrclnndrd/esp/esp-idf/components/heap/tlsf -I/home/mrclnndrd/esp/esp-idf/components/log/include -I/home/mrclnndrd/esp/esp-idf/components/soc/include -I/home/mrclnndrd/esp/esp-idf/components/soc/esp32 -I/home/mrclnndrd/esp/esp-idf/components/soc/esp32/include -I/home/mrclnndrd/esp/esp-idf/components/soc/esp32/register -I/home/mrclnndrd/esp/esp-idf/components/hal/platform_port/include -I/home/mrclnndrd/esp/esp-idf/components/hal/esp32/include -I/home/mrclnndrd/esp/esp-idf/components/hal/include -I/home/mrclnndrd/esp/esp-idf/components/esp_rom/include -I/home/mrclnndrd/esp/esp-idf/components/esp_rom/esp32/include -I/home/mrclnndrd/esp/esp-idf/components/esp_rom/esp32/include/esp32 -I/home/mrclnndrd/esp/esp-idf/components/esp_rom/esp32 -I/home/mrclnndrd/esp/esp-idf/components/esp_common/include -I/home/mrclnndrd/esp/esp-idf/components/esp_system/include -I/home/mrclnndrd/esp/esp-idf/components/esp_system/port/soc -I/home/mrclnndrd/esp/esp-idf/components/esp_system/port/include/private -I/home/mrclnndrd/esp/esp-idf/components/xtensa/esp32/include -I/home/mrclnndrd/esp/esp-idf/components/xtensa/include -I/home/mrclnndrd/esp/esp-idf/components/xtensa/deprecated_include -I/home/mrclnndrd/esp/esp-idf/components/lwip/include -I/home/mrclnndrd/esp/esp-idf/components/lwip/include/apps -I/home/mrclnndrd/esp/esp-idf/components/lwip/include/apps/sntp -I/home/mrclnndrd/esp/esp-idf/components/lwip/lwip/src/include -I/home/mrclnndrd/esp/esp-idf/components/lwip/port/include -I/home/mrclnndrd/esp/esp-idf/components/lwip/port/freertos/include -I/home/mrclnndrd/esp/esp-idf/components/lwip/port/esp32xx/include -I/home/mrclnndrd/esp/esp-idf/components/lwip/port/esp32xx/include/arch -I/home/mrclnndrd/esp/esp-idf/components/lwip/port/esp32xx/include/sys -I/home/mrclnndrd/esp/esp-idf/components/esp_wifi/include -I/home/mrclnndrd/esp/esp-idf/components/esp_wifi/include/local -I/home/mrclnndrd/esp/esp-idf/components/esp_wifi/wifi_apps/include -I/home/mrclnndrd/esp/esp-idf/components/esp_wifi/wifi_apps/nan_app/include -I/home/mrclnndrd/esp/esp-idf/components/esp_event/include -I/home/mrclnndrd/esp/esp-idf/components/esp_phy/include -I/home/mrclnndrd/esp/esp-idf/components/esp_phy/esp32/include -I/home/mrclnndrd/esp/esp-idf/components/esp_netif/include -I/home/mrclnndrd/esp/esp-idf/components/esp_http_server/include -I/home/mrclnndrd/esp/esp-idf/components/http_parser -I/home/mrclnndrd/esp/esp-idf/components/esp_adc/include -I/home/mrclnndrd/esp/esp-idf/components/esp_adc/interface -I/home/mrclnndrd/esp/esp-idf/components/esp_adc/esp32/include -I/home/mrclnndrd/esp/esp-idf/components/esp_adc/deprecated/include -I/home/mrclnndrd/esp/esp-idf/components/nvs_flash/include -I/home/mrclnndrd/esp/esp-idf/components/esp_partition/include -I/home/mrclnndrd/esp/esp-idf/components/spiffs/include -I/home/mrclnndrd/esp/esp-idf/components/driver/deprecated -I/home/mrclnndrd/esp/esp-idf/components/driver/i2c/include -I/home/mrclnndrd/esp/esp-idf/components/driver/touch_sensor/include -I/home/mrclnndrd/esp/esp-idf/components/driver/twai/include -I/home/mrclnndrd/esp/esp-idf/components/driver/touch_sensor/esp32/include -I/home/mrclnndrd/esp/esp-idf/components/esp_pm/include -I/home/mrclnndrd/esp/esp-idf/components/esp_ringbuf/include -I/home/mrclnndrd/esp/esp-idf/components/esp_driver_gpio/include -I/home/mrclnndrd/esp/esp-idf/components/esp_driver_pcnt/include -I/home/mrclnndrd/esp/esp-idf/components/esp_driver_gptimer/include -I/home/mrclnndrd/esp/esp-idf/components/esp_driver_spi/include -I/home/mrclnndrd/esp/esp-idf/components/esp_driver_mcpwm/include -I/home/mrclnndrd/esp/esp-idf/components/esp_driver_ana_cmpr/include -I/home/mrclnndrd/esp/esp-idf/components/esp_driver_i2s/include -I/home/mrclnndrd/esp/esp-idf/components/esp_driver_sdmmc/include -I/home/mrclnndrd/esp/esp-idf/components/sdmmc/include -I/home/mrclnndrd/esp/esp-idf/components/esp_driver_sdspi/include -I/home/mrclnndrd/esp/esp-idf/components/esp_driver_sdio/include -I/home/mrclnndrd/esp/esp-idf/components/esp_driver_dac/include -I/home/mrclnndrd/esp/esp-idf/components/esp_driver_rmt/include -I/home/mrclnndrd/esp/esp-idf/components/esp_driver_tsens/include -I/home/mrclnndrd/esp/esp-idf/components/esp_driver_sdm/include -I/home/mrclnndrd/esp/esp-idf/components/esp_driver_i2c/include -I/home/mrclnndrd/esp/esp-idf/components/esp_driver_uart/include -I/home/mrclnndrd/esp/esp-idf/components/vfs/include -I/home/mrclnndrd/esp/esp-idf/components/esp_driver_ledc/include -I/home/mrclnndrd/esp/esp-idf/components/esp_driver_parlio/include -I/home/mrclnndrd/esp/esp-idf/components/esp_driver_usb_serial_jtag/include -I/home/mrclnndrd/esp/esp-idf/components/esp_timer/include -I/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/managed_components/espressif__cjson/cJSON -I/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/managed_components/espressif__mdns/include -I/home/mrclnndrd/esp/esp-idf/components/console -I/home/mrclnndrd/esp/esp-idf/components/esp_vfs_console/include -mlongcalls -Wno-frame-address  -fno-builtin-memcpy -fno-builtin-memset -fno-builtin-bzero -fno-builtin-stpcpy -fno-builtin-strncpy -fdiagnostics-color=always -ffunction-sections -fdata-sections -Wall -Werror=all -Wno-error=unused-function -Wno-error=unused-variable -Wno-error=unused-but-set-variable -Wno-error=deprecated-declarations -Wextra -Wno-error=extra -Wno-unused-parameter -Wno-sign-compare -Wno-enum-conversion -gdwarf-4 -ggdb -Og -fno-shrink-wrap -fmacro-prefix-map=/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C=. -fmacro-prefix-map=/home/mrclnndrd/esp/esp-idf=/IDF -fstrict-volatile-bitfields -fno-jump-tables -fno-tree-switch-conversion -std=gnu17 -Wno-old-style-declaration -MD -MT esp-idf/main/CMakeFiles/__idf_main.dir/gui/web/gui_http_server.c.obj -MF esp-idf/main/CMakeFiles/__idf_main.dir/gui/web/gui_http_server.c.obj.d -o esp-idf/main/CMakeFiles/__idf_main.dir/gui/web/gui_http_server.c.obj -c /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/gui/web/gui_http_server.c
+/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/gui/web/gui_http_server.c: In function 'handle_dashboard':
+/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/gui/web/gui_http_server.c:465:9: error: format '%s' expects argument of type 'char *', but argument 7 has type 'int' [-Werror=format=]
+  465 |         "<!DOCTYPE html>"
+      |         ^~~~~~~~~~~~~~~~~
+......
+  696 |         stats_window,
+      |         ~~~~~~~~~~~~
+      |         |
+      |         int
+/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/gui/web/gui_http_server.c:531:11: note: format string is defined here
+  531 |         "%s"
+      |          ~^
+      |           |
+      |           char *
+      |          %d
+/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/gui/web/gui_http_server.c:465:9: error: format '%d' expects argument of type 'int', but argument 8 has type 'double' [-Werror=format=]
+  465 |         "<!DOCTYPE html>"
+      |         ^~~~~~~~~~~~~~~~~
+......
+  697 |         temp_ar_min, temp_ar_max,
+      |         ~~~~~~~~~~~
+      |         |
+      |         double
+/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/gui/web/gui_http_server.c:547:66: note: format string is defined here
+  547 |         "<p class='caption'>Gr&aacute;ficos exibindo at&eacute; %d amostras mais recentes conforme a janela de an&aacute;lise configurada.</p>"
+      |                                                                 ~^
+      |                                                                  |
+      |                                                                  int
+      |                                                                 %f
+/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/gui/web/gui_http_server.c:465:9: error: format '%f' expects a matching 'double' argument [-Werror=format=]
+  465 |         "<!DOCTYPE html>"
+      |         ^~~~~~~~~~~~~~~~~
+/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/gui/web/gui_http_server.c:656:78: note: format string is defined here
+  656 |         "luminosidade_min:%.0f,luminosidade_max:%.0f,dpv_min:%.1f,dpv_max:%.1f};"
+      |                                                                           ~~~^
+      |                                                                              |
+      |                                                                              double
+/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/gui/web/gui_http_server.c: In function 'handle_config':
+/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/gui/web/gui_http_server.c:808:23: error: expected '=', ',', ';', 'asm' or '__attribute__' before ')' token
+  808 |         window_samples);
+      |                       ^
+/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/gui/web/gui_http_server.c:812:10: warning: passing argument 1 of 'free' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  812 |     free(page);
+      |          ^~~~
+In file included from /home/mrclnndrd/esp/esp-idf/components/newlib/platform_include/assert.h:12,
+                 from /home/mrclnndrd/.espressif/tools/xtensa-esp-elf/esp-14.2.0_20241119/xtensa-esp-elf/xtensa-esp-elf/include/sys/reent.h:458,
+                 from /home/mrclnndrd/esp/esp-idf/components/newlib/platform_include/sys/reent.h:15,
+                 from /home/mrclnndrd/.espressif/tools/xtensa-esp-elf/esp-14.2.0_20241119/xtensa-esp-elf/xtensa-esp-elf/include/stdio.h:60,
+                 from /home/mrclnndrd/esp/esp-idf/components/newlib/platform_include/stdio.h:10,
+                 from /home/mrclnndrd/esp/esp-idf/components/esp_common/include/esp_err.h:10,
+                 from /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/gui/web/gui_http_server.h:3,
+                 from /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/gui/web/gui_http_server.c:13:
+/home/mrclnndrd/.espressif/tools/xtensa-esp-elf/esp-14.2.0_20241119/xtensa-esp-elf/xtensa-esp-elf/include/stdlib.h:94:15: note: expected 'void *' but argument is of type 'const char *'
+   94 | void    free (void *) _NOTHROW;
+      |               ^~~~~~
+/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/gui/web/gui_http_server.c:807:9: warning: unused variable 'stats_meta_html' [-Wunused-variable]
+  807 |         stats_meta_html,
+      |         ^~~~~~~~~~~~~~~
+/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/gui/web/gui_http_server.c:806:9: warning: unused variable 'stats_grid_html' [-Wunused-variable]
+  806 |         stats_grid_html,
+      |         ^~~~~~~~~~~~~~~
+/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/gui/web/gui_http_server.c:805:9: warning: unused variable 'stats_info_text' [-Wunused-variable]
+  805 |         stats_info_text,
+      |         ^~~~~~~~~~~~~~~
+/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/main/gui/web/gui_http_server.c:804:9: warning: unused variable 'preset_display_text' [-Wunused-variable]
+  804 |         preset_display_text,
+      |         ^~~~~~~~~~~~~~~~~~~
+cc1: some warnings being treated as errors
+ninja: build stopped: subcommand failed.

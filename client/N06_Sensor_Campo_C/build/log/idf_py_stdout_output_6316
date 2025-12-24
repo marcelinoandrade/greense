@@ -1,0 +1,1668 @@
+Command: /home/mrclnndrd/.espressif/python_env/idf5.5_py3.11_env/bin/python /home/mrclnndrd/esp/esp-idf/tools/idf_monitor.py -p /dev/ttyUSB0 -b 115200 --toolchain-prefix xtensa-esp32-elf- --target esp32 --revision 0 /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/sensor_campo.elf /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_C/build/bootloader/bootloader.elf -m '/home/mrclnndrd/.espressif/python_env/idf5.5_py3.11_env/bin/python' '/home/mrclnndrd/esp/esp-idf/tools/idf.py'
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x17 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:6380
+ho 0 tail 12 room 4
+load:0x40078000,len:15904
+load:0x40080400,len:3860
+entry 0x40080638
+[0;32mI (29) boot: ESP-IDF v5.5-dev-3372-g38628f98b9 2nd stage bootloader[0m
+[0;32mI (29) boot: compile time Nov 28 2025 06:27:02[0m
+[0;32mI (29) boot: Multicore bootloader[0m
+[0;32mI (32) boot: chip revision: v3.1[0m
+[0;32mI (35) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (39) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (42) boot.esp32: SPI Flash Size : 4MB[0m
+[0;32mI (46) boot: Enabling RNG early entropy source...[0m
+[0;32mI (50) boot: Partition Table:[0m
+[0;32mI (53) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (59) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (66) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (72) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (79) boot:  3 spiffs           Unknown data     01 82 00110000 002f0000[0m
+[0;32mI (85) boot: End of partition table[0m
+[0;32mI (89) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=2f424h (193572) map[0m
+[0;32mI (162) esp_image: segment 1: paddr=0003f44c vaddr=3ff80000 size=0001ch (    28) load[0m
+[0;32mI (163) esp_image: segment 2: paddr=0003f470 vaddr=3ffb0000 size=00ba8h (  2984) load[0m
+[0;32mI (167) esp_image: segment 3: paddr=00040020 vaddr=400d0020 size=aabdch (699356) map[0m
+[0;32mI (413) esp_image: segment 4: paddr=000eac04 vaddr=3ffb0ba8 size=03354h ( 13140) load[0m
+[0;32mI (418) esp_image: segment 5: paddr=000edf60 vaddr=40080000 size=1802ch ( 98348) load[0m
+[0;32mI (468) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (468) boot: Disabling RNG early entropy source...[0m
+[0;32mI (478) cpu_start: Multicore app[0m
+[0;32mI (487) cpu_start: Pro cpu start user code[0m
+[0;32mI (487) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (487) app_init: Application information:[0m
+[0;32mI (490) app_init: Project name:     sensor_campo[0m
+[0;32mI (495) app_init: App version:      b4535bc5-dirty[0m
+[0;32mI (501) app_init: Compile time:     Dec  4 2025 17:26:19[0m
+[0;32mI (507) app_init: ELF file SHA256:  8b18ab53f...[0m
+[0;32mI (512) app_init: ESP-IDF:          v5.5-dev-3372-g38628f98b9[0m
+[0;32mI (518) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (523) efuse_init: Max chip rev:     v3.99 [0m
+[0;32mI (528) efuse_init: Chip rev:         v3.1[0m
+[0;32mI (533) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (540) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (546) heap_init: At 3FFB8A18 len 000275E8 (157 KiB): DRAM[0m
+[0;32mI (552) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (559) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (565) heap_init: At 4009802C len 00007FD4 (31 KiB): IRAM[0m
+[0;32mI (573) spi_flash: detected chip: generic[0m
+[0;32mI (576) spi_flash: flash io: dio[0m
+[0;32mI (581) main_task: Started on CPU0[0m
+[0;32mI (591) main_task: Calling app_main()[0m
+[0;32mI (611) BSP_LED: LED inicializado no GPIO 2[0m
+[0;32mI (611) BSP_DS18B20: DS18B20 inicializado no GPIO 4[0m
+[0;32mI (611) BSP_ADC: ADC umidade solo inicializado. canal=6 bitwidth=12 atten=3[0m
+[0;32mI (651) BSP_AHT10: AHT10 inicializado com sucesso (I2C addr: 0x38)[0m
+[0;32mI (651) BSP_SENSORS: AHT10 inicializado com sucesso[0m
+[0;32mI (791) BSP_BH1750: BH1750 inicializado com sucesso (I2C addr: 0x23)[0m
+[0;32mI (791) BSP_SENSORS: BH1750 inicializado com sucesso[0m
+[0;32mI (791) BSP_SENSORS: Sensores BSP inicializados[0m
+[0;32mI (791) APP_SENSOR_MGR: Sensor Manager inicializado[0m
+[0;32mI (801) APP_DATA_LOGGER: Inicializando SPIFFS...[0m
+[0;32mI (1111) APP_DATA_LOGGER: SPIFFS montado em /spiffs[0m
+[0;32mI (1111) APP_DATA_LOGGER: Total=2293769 bytes, Usado=9171 bytes[0m
+[0;32mI (1221) APP_DATA_LOGGER: Proximo indice de log sera: 183[0m
+[0;33mW (1401) APP_DATA_LOGGER: Arquivo /spiffs/soil_calib.json nao encontrado. Usando padrao (Seco: 4000, Molhado: 400)[0m
+[0;32mI (1411) APP_DATA_LOGGER: Data logger inicializado. Proximo indice: 183[0m
+[0;32mI (1411) APP_SAMPLING: Período carregado do NVS: 10000 ms[0m
+[0;32mI (1421) APP_STATS_WINDOW: Período estatístico carregado do NVS: 20 amostras[0m
+[0;32mI (1431) APP_CULTIVATION: Tolerâncias de cultivo carregadas do NVS[0m
+[0;32mI (1431) APP_GUI_SERVICES: Serviços GUI registrados[0m
+[0;32mI (1451) wifi:wifi driver task: 3ffc3188, prio:23, stack:6656, core=0[0m
+[0;32mI (1461) wifi:wifi firmware version: 7d2994f4b[0m
+[0;32mI (1461) wifi:wifi certification version: v7.0[0m
+[0;32mI (1461) wifi:config NVS flash: enabled[0m
+[0;32mI (1461) wifi:config nano formatting: disabled[0m
+[0;32mI (1461) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (1471) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (1471) wifi:Init management short buffer num: 32[0m
+[0;32mI (1481) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (1481) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (1491) wifi:Init static rx buffer num: 10[0m
+[0;32mI (1491) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (1491) wifi_init: rx ba win: 6[0m
+[0;32mI (1501) wifi_init: accept mbox: 6[0m
+[0;32mI (1501) wifi_init: tcpip mbox: 32[0m
+[0;32mI (1511) wifi_init: udp mbox: 6[0m
+[0;32mI (1511) wifi_init: tcp mbox: 6[0m
+[0;32mI (1511) wifi_init: tcp tx win: 5760[0m
+[0;32mI (1521) wifi_init: tcp rx win: 5760[0m
+[0;32mI (1521) wifi_init: tcp mss: 1440[0m
+[0;32mI (1531) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (1531) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (1541) phy_init: phy_version 4860,6b7a6e5,Feb  6 2025,14:47:07[0m
+[0;32mI (1631) phy_init: Saving new calibration data due to checksum failure or outdated calibration data, mode(0)[0m
+[0;32mI (1651) wifi:mode : softAP (38:18:2b:ea:b7:cd)[0m
+[0;32mI (1651) wifi:Total power save buffer number: 16[0m
+[0;32mI (1661) wifi:Init max length of beacon: 752/752[0m
+[0;32mI (1661) wifi:Init max length of beacon: 752/752[0m
+[0;32mI (1661) BSP_WIFI_AP: Modo AP iniciado. SSID='greenSe_Campo' senha='12345678'[0m
+[0;32mI (1661) esp_netif_lwip: DHCP server started on interface WIFI_AP_DEF with IP: 192.168.4.1[0m
+[0;32mI (1681) mdns_mem: mDNS task will be created from internal RAM[0m
+[0;32mI (1691) GUI_HTTP_SERVER: Servidor HTTP iniciado e rotas registradas. Acesse http://greense.local/ ou http://192.168.4.1/[0m
+[0;32mI (1691) APP_MAIN: Sistema iniciado - Arquitetura BSP/APP/GUI[0m
+[0;32mI (1701) main_task: Returned from app_main()[0m
+[0;32mI (2701) APP_MAIN: Log salvo! Ar: 22.41 C / 79.33 %, Solo: 23.12 C / 0.00 %, Lux: 420.0, DPV: 0.560 kPa[0m
+[0;32mI (12851) APP_MAIN: Log salvo! Ar: 22.37 C / 79.56 %, Solo: 23.06 C / 0.00 %, Lux: 409.2, DPV: 0.553 kPa[0m
+[0;32mI (22841) APP_MAIN: Log salvo! Ar: 22.57 C / 80.44 %, Solo: 22.94 C / 0.00 %, Lux: 9.2, DPV: 0.535 kPa[0m
+[0;32mI (32591) APP_MAIN: Log salvo! Ar: 22.91 C / 80.16 %, Solo: 22.88 C / 0.00 %, Lux: 408.3, DPV: 0.555 kPa[0m
+[0;32mI (42821) APP_MAIN: Log salvo! Ar: 22.92 C / 79.17 %, Solo: 26.00 C / 0.00 %, Lux: 440.8, DPV: 0.582 kPa[0m
+[0;32mI (52811) APP_MAIN: Log salvo! Ar: 22.88 C / 78.50 %, Solo: 28.62 C / 0.00 %, Lux: 462.5, DPV: 0.600 kPa[0m
+[0;32mI (62561) APP_MAIN: Log salvo! Ar: 22.78 C / 78.19 %, Solo: 29.00 C / 0.00 %, Lux: 455.8, DPV: 0.605 kPa[0m
+[0;32mI (72791) APP_MAIN: Log salvo! Ar: 22.74 C / 78.30 %, Solo: 28.38 C / 0.00 %, Lux: 450.0, DPV: 0.600 kPa[0m
+[0;32mI (82781) APP_MAIN: Log salvo! Ar: 22.68 C / 78.66 %, Solo: 27.88 C / 0.00 %, Lux: 434.2, DPV: 0.588 kPa[0m
+[0;32mI (92531) APP_MAIN: Log salvo! Ar: 22.66 C / 79.03 %, Solo: 27.50 C / 0.00 %, Lux: 435.0, DPV: 0.577 kPa[0m
+[0;32mI (102761) APP_MAIN: Log salvo! Ar: 22.65 C / 79.37 %, Solo: 27.12 C / 0.00 %, Lux: 455.8, DPV: 0.567 kPa[0m
+[0;32mI (112751) APP_MAIN: Log salvo! Ar: 22.63 C / 79.54 %, Solo: 26.75 C / 0.00 %, Lux: 454.2, DPV: 0.562 kPa[0m
+[0;32mI (122501) APP_MAIN: Log salvo! Ar: 22.65 C / 79.40 %, Solo: 26.44 C / 0.00 %, Lux: 466.7, DPV: 0.567 kPa[0m
+[0;32mI (132731) APP_MAIN: Log salvo! Ar: 22.65 C / 79.17 %, Solo: 26.00 C / 0.00 %, Lux: 467.5, DPV: 0.573 kPa[0m
+[0;32mI (142721) APP_MAIN: Log salvo! Ar: 22.64 C / 78.66 %, Solo: 25.69 C / 0.00 %, Lux: 460.0, DPV: 0.587 kPa[0m
+[0;32mI (152471) APP_MAIN: Log salvo! Ar: 22.63 C / 78.62 %, Solo: 25.44 C / 0.00 %, Lux: 450.0, DPV: 0.587 kPa[0m
+[0;32mI (162701) APP_MAIN: Log salvo! Ar: 22.64 C / 78.57 %, Solo: 25.19 C / 0.00 %, Lux: 453.3, DPV: 0.589 kPa[0m
+[0;32mI (172691) APP_MAIN: Log salvo! Ar: 22.63 C / 78.66 %, Solo: 25.06 C / 0.00 %, Lux: 441.7, DPV: 0.586 kPa[0m
+[0;32mI (182441) APP_MAIN: Log salvo! Ar: 22.58 C / 78.73 %, Solo: 24.88 C / 0.00 %, Lux: 440.0, DPV: 0.583 kPa[0m
+[0;32mI (192671) APP_MAIN: Log salvo! Ar: 22.59 C / 78.83 %, Solo: 24.75 C / 0.00 %, Lux: 455.0, DPV: 0.580 kPa[0m
+[0;32mI (202661) APP_MAIN: Log salvo! Ar: 22.62 C / 78.91 %, Solo: 24.56 C / 0.00 %, Lux: 439.2, DPV: 0.579 kPa[0m
+[0;32mI (212411) APP_MAIN: Log salvo! Ar: 22.64 C / 79.06 %, Solo: 24.44 C / 0.00 %, Lux: 463.3, DPV: 0.576 kPa[0m
+[0;32mI (222641) APP_MAIN: Log salvo! Ar: 22.66 C / 79.14 %, Solo: 24.25 C / 0.00 %, Lux: 445.0, DPV: 0.574 kPa[0m
+[0;32mI (232631) APP_MAIN: Log salvo! Ar: 22.67 C / 79.18 %, Solo: 24.19 C / 0.00 %, Lux: 350.8, DPV: 0.574 kPa[0m
+[0;32mI (242621) APP_MAIN: Log salvo! Ar: 22.69 C / 79.10 %, Solo: 24.00 C / 0.00 %, Lux: 454.2, DPV: 0.576 kPa[0m
+[0;32mI (249931) wifi:new:<1,0>, old:<1,1>, ap:<1,1>, sta:<255,255>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (249931) wifi:station: 32:2a:5f:51:e8:85 join, AID=1, bgn, 20[0m
+[0;32mI (250011) BSP_WIFI_AP: Cliente 32:2a:5f:51:e8:85 conectou, AID=1[0m
+[0;32mI (250081) wifi:<ba-add>idx:2 (ifx:1, 32:2a:5f:51:e8:85), tid:0, ssn:0, winSize:64[0m
+[0;32mI (250171) esp_netif_lwip: DHCP server assigned IP to a client, IP is: 192.168.4.2[0m
+[0;32mI (252371) APP_MAIN: Log salvo! Ar: 22.73 C / 79.05 %, Solo: 23.94 C / 0.00 %, Lux: 413.3, DPV: 0.579 kPa[0m
+[0;32mI (262601) APP_MAIN: Log salvo! Ar: 22.72 C / 78.93 %, Solo: 23.81 C / 0.00 %, Lux: 446.7, DPV: 0.582 kPa[0m
+[0;32mI (272591) APP_MAIN: Log salvo! Ar: 22.74 C / 78.83 %, Solo: 23.69 C / 0.00 %, Lux: 448.3, DPV: 0.586 kPa[0m
+[0;32mI (282351) APP_MAIN: Log salvo! Ar: 22.72 C / 78.83 %, Solo: 23.56 C / 0.00 %, Lux: 451.7, DPV: 0.585 kPa[0m
+[0;32mI (292571) APP_MAIN: Log salvo! Ar: 22.73 C / 78.81 %, Solo: 23.50 C / 0.00 %, Lux: 450.8, DPV: 0.586 kPa[0m
+[0;32mI (300121) APP_SAMPLING: Período atualizado para 10000 ms[0m
+[0;32mI (300141) APP_STATS_WINDOW: Período estatístico atualizado para 15 amostras[0m
+[0;32mI (302561) APP_MAIN: Log salvo! Ar: 22.75 C / 78.92 %, Solo: 23.38 C / 0.00 %, Lux: 417.5, DPV: 0.583 kPa[0m
+[0;32mI (312311) APP_MAIN: Log salvo! Ar: 22.77 C / 78.87 %, Solo: 23.31 C / 0.00 %, Lux: 445.0, DPV: 0.585 kPa[0m
+[0;32mI (322181) APP_DATA_LOGGER: Limpando todos os dados armazenados...[0m
+[0;32mI (322191) APP_DATA_LOGGER: Arquivo /spiffs/log_temp.csv removido[0m
+[0;32mI (322821) APP_DATA_LOGGER: Arquivo /spiffs/log_temp.csv recriado com header[0m
+[0;33mW (323021) APP_DATA_LOGGER: Nao foi possivel remover /spiffs/soil_calib.json (pode nao existir)[0m
+[0;32mI (323021) APP_DATA_LOGGER: Dados limpos. Sistema reiniciado do zero.[0m
+[0;32mI (325501) APP_MAIN: Log salvo! Ar: 22.79 C / 78.73 %, Solo: 23.19 C / 0.00 %, Lux: 457.5, DPV: 0.590 kPa[0m
+[0;32mI (332561) APP_MAIN: Log salvo! Ar: 22.80 C / 78.68 %, Solo: 23.12 C / 0.00 %, Lux: 454.2, DPV: 0.592 kPa[0m
+[0;32mI (342281) APP_MAIN: Log salvo! Ar: 22.85 C / 78.71 %, Solo: 23.06 C / 0.00 %, Lux: 455.0, DPV: 0.593 kPa[0m
+[0;32mI (344011) GUI_HTTP_SERVER: Frequência de amostragem mudou de 10000 ms para 60000 ms[0m
+[0;32mI (344021) APP_SAMPLING: Período atualizado para 60000 ms[0m
+[0;32mI (344021) APP_STATS_WINDOW: Período estatístico atualizado para 15 amostras[0m
+[0;32mI (344021) GUI_HTTP_SERVER: Frequência de amostragem alterada. Limpando dados e reiniciando...[0m
+[0;32mI (344031) APP_DATA_LOGGER: Limpando todos os dados armazenados...[0m
+[0;32mI (344051) APP_DATA_LOGGER: Arquivo /spiffs/log_temp.csv removido[0m
+[0;32mI (344671) APP_DATA_LOGGER: Arquivo /spiffs/log_temp.csv recriado com header[0m
+[0;33mW (344861) APP_DATA_LOGGER: Nao foi possivel remover /spiffs/soil_calib.json (pode nao existir)[0m
+[0;32mI (344861) APP_DATA_LOGGER: Dados limpos. Sistema reiniciado do zero.[0m
+[0;32mI (344871) GUI_HTTP_SERVER: Dados limpos com sucesso[0m
+[0;32mI (345381) GUI_HTTP_SERVER: Reiniciando dispositivo...[0m
+[0;32mI (345381) wifi:station: 32:2a:5f:51:e8:85 leave, AID = 1, reason = 2, bss_flags is 691315, bss:0x3ffb9dcc[0m
+[0;32mI (345381) wifi:new:<1,0>, old:<1,0>, ap:<1,1>, sta:<255,255>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (345391) wifi:<ba-del>idx:2, tid:0[0m
+[0;32mI (345391) BSP_WIFI_AP: Cliente 32:2a:5f:51:e8:85 saiu, AID=1[0m
+[0;32mI (345521) wifi:flush txq[0m
+[0;32mI (345521) wifi:stop sw txq[0m
+[0;32mI (345521) wifi:lmac stop hw txq[0m
+ets Jul 29 2019 12:21:46
+
+rst:0xc (SW_CPU_RESET),boot:0x17 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:6380
+ho 0 tail 12 room 4
+load:0x40078000,len:15904
+load:0x40080400,len:3860
+entry 0x40080638
+[0;32mI (29) boot: ESP-IDF v5.5-dev-3372-g38628f98b9 2nd stage bootloader[0m
+[0;32mI (29) boot: compile time Nov 28 2025 06:27:02[0m
+[0;32mI (29) boot: Multicore bootloader[0m
+[0;32mI (32) boot: chip revision: v3.1[0m
+[0;32mI (35) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (39) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (42) boot.esp32: SPI Flash Size : 4MB[0m
+[0;32mI (46) boot: Enabling RNG early entropy source...[0m
+[0;32mI (50) boot: Partition Table:[0m
+[0;32mI (53) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (59) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (66) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (72) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (79) boot:  3 spiffs           Unknown data     01 82 00110000 002f0000[0m
+[0;32mI (85) boot: End of partition table[0m
+[0;32mI (89) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=2f424h (193572) map[0m
+[0;32mI (162) esp_image: segment 1: paddr=0003f44c vaddr=3ff80000 size=0001ch (    28) load[0m
+[0;32mI (162) esp_image: segment 2: paddr=0003f470 vaddr=3ffb0000 size=00ba8h (  2984) load[0m
+[0;32mI (167) esp_image: segment 3: paddr=00040020 vaddr=400d0020 size=aabdch (699356) map[0m
+[0;32mI (413) esp_image: segment 4: paddr=000eac04 vaddr=3ffb0ba8 size=03354h ( 13140) load[0m
+[0;32mI (418) esp_image: segment 5: paddr=000edf60 vaddr=40080000 size=1802ch ( 98348) load[0m
+[0;32mI (468) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (468) boot: Disabling RNG early entropy source...[0m
+[0;32mI (478) cpu_start: Multicore app[0m
+[0;32mI (487) cpu_start: Pro cpu start user code[0m
+[0;32mI (487) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (487) app_init: Application information:[0m
+[0;32mI (490) app_init: Project name:     sensor_campo[0m
+[0;32mI (495) app_init: App version:      b4535bc5-dirty[0m
+[0;32mI (500) app_init: Compile time:     Dec  4 2025 17:26:19[0m
+[0;32mI (506) app_init: ELF file SHA256:  8b18ab53f...[0m
+[0;32mI (512) app_init: ESP-IDF:          v5.5-dev-3372-g38628f98b9[0m
+[0;32mI (518) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (523) efuse_init: Max chip rev:     v3.99 [0m
+[0;32mI (528) efuse_init: Chip rev:         v3.1[0m
+[0;32mI (533) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (540) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (546) heap_init: At 3FFB8A18 len 000275E8 (157 KiB): DRAM[0m
+[0;32mI (552) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (559) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (565) heap_init: At 4009802C len 00007FD4 (31 KiB): IRAM[0m
+[0;32mI (573) spi_flash: detected chip: generic[0m
+[0;32mI (576) spi_flash: flash io: dio[0m
+[0;32mI (581) main_task: Started on CPU0[0m
+[0;32mI (591) main_task: Calling app_main()[0m
+[0;32mI (611) BSP_LED: LED inicializado no GPIO 2[0m
+[0;32mI (611) BSP_DS18B20: DS18B20 inicializado no GPIO 4[0m
+[0;32mI (611) BSP_ADC: ADC umidade solo inicializado. canal=6 bitwidth=12 atten=3[0m
+[0;32mI (651) BSP_AHT10: AHT10 inicializado com sucesso (I2C addr: 0x38)[0m
+[0;32mI (651) BSP_SENSORS: AHT10 inicializado com sucesso[0m
+[0;32mI (791) BSP_BH1750: BH1750 inicializado com sucesso (I2C addr: 0x23)[0m
+[0;32mI (791) BSP_SENSORS: BH1750 inicializado com sucesso[0m
+[0;32mI (791) BSP_SENSORS: Sensores BSP inicializados[0m
+[0;32mI (791) APP_SENSOR_MGR: Sensor Manager inicializado[0m
+[0;32mI (801) APP_DATA_LOGGER: Inicializando SPIFFS...[0m
+[0;32mI (1111) APP_DATA_LOGGER: SPIFFS montado em /spiffs[0m
+[0;32mI (1111) APP_DATA_LOGGER: Total=2293769 bytes, Usado=2038 bytes[0m
+[0;32mI (1201) APP_DATA_LOGGER: Proximo indice de log sera: 1[0m
+[0;33mW (1381) APP_DATA_LOGGER: Arquivo /spiffs/soil_calib.json nao encontrado. Usando padrao (Seco: 4000, Molhado: 400)[0m
+[0;32mI (1391) APP_DATA_LOGGER: Data logger inicializado. Proximo indice: 1[0m
+[0;32mI (1391) APP_SAMPLING: Período carregado do NVS: 60000 ms[0m
+[0;32mI (1401) APP_STATS_WINDOW: Período estatístico carregado do NVS: 15 amostras[0m
+[0;32mI (1411) APP_CULTIVATION: Tolerâncias de cultivo carregadas do NVS[0m
+[0;32mI (1411) APP_GUI_SERVICES: Serviços GUI registrados[0m
+[0;32mI (1431) wifi:wifi driver task: 3ffc3104, prio:23, stack:6656, core=0[0m
+[0;32mI (1441) wifi:wifi firmware version: 7d2994f4b[0m
+[0;32mI (1441) wifi:wifi certification version: v7.0[0m
+[0;32mI (1441) wifi:config NVS flash: enabled[0m
+[0;32mI (1441) wifi:config nano formatting: disabled[0m
+[0;32mI (1441) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (1451) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (1451) wifi:Init management short buffer num: 32[0m
+[0;32mI (1461) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (1461) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (1471) wifi:Init static rx buffer num: 10[0m
+[0;32mI (1471) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (1471) wifi_init: rx ba win: 6[0m
+[0;32mI (1481) wifi_init: accept mbox: 6[0m
+[0;32mI (1481) wifi_init: tcpip mbox: 32[0m
+[0;32mI (1491) wifi_init: udp mbox: 6[0m
+[0;32mI (1491) wifi_init: tcp mbox: 6[0m
+[0;32mI (1491) wifi_init: tcp tx win: 5760[0m
+[0;32mI (1501) wifi_init: tcp rx win: 5760[0m
+[0;32mI (1501) wifi_init: tcp mss: 1440[0m
+[0;32mI (1511) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (1511) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (1521) phy_init: phy_version 4860,6b7a6e5,Feb  6 2025,14:47:07[0m
+[0;32mI (1611) phy_init: Saving new calibration data due to checksum failure or outdated calibration data, mode(0)[0m
+[0;32mI (1651) wifi:mode : softAP (38:18:2b:ea:b7:cd)[0m
+[0;32mI (1651) wifi:Total power save buffer number: 16[0m
+[0;32mI (1661) wifi:Init max length of beacon: 752/752[0m
+[0;32mI (1661) wifi:Init max length of beacon: 752/752[0m
+[0;32mI (1661) BSP_WIFI_AP: Modo AP iniciado. SSID='greenSe_Campo' senha='12345678'[0m
+[0;32mI (1661) esp_netif_lwip: DHCP server started on interface WIFI_AP_DEF with IP: 192.168.4.1[0m
+[0;32mI (1681) mdns_mem: mDNS task will be created from internal RAM[0m
+[0;32mI (1691) GUI_HTTP_SERVER: Servidor HTTP iniciado e rotas registradas. Acesse http://greense.local/ ou http://192.168.4.1/[0m
+[0;32mI (1691) APP_MAIN: Sistema iniciado - Arquitetura BSP/APP/GUI[0m
+[0;32mI (1701) main_task: Returned from app_main()[0m
+[0;32mI (2951) APP_MAIN: Log salvo! Ar: 22.90 C / 78.68 %, Solo: 23.00 C / 0.00 %, Lux: 441.7, DPV: 0.595 kPa[0m
+[0;32mI (3011) wifi:new:<1,0>, old:<1,1>, ap:<1,1>, sta:<255,255>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (3011) wifi:station: 32:2a:5f:51:e8:85 join, AID=1, bgn, 20[0m
+[0;32mI (3081) BSP_WIFI_AP: Cliente 32:2a:5f:51:e8:85 conectou, AID=1[0m
+[0;32mI (3261) wifi:<ba-add>idx:2 (ifx:1, 32:2a:5f:51:e8:85), tid:0, ssn:0, winSize:64[0m
+[0;32mI (3271) esp_netif_lwip: DHCP server assigned IP to a client, IP is: 192.168.4.2[0m
+[0;32mI (40841) GUI_HTTP_SERVER: Frequência de amostragem mudou de 60000 ms para 10000 ms[0m
+[0;32mI (40851) APP_SAMPLING: Período atualizado para 10000 ms[0m
+[0;32mI (40851) APP_STATS_WINDOW: Período estatístico atualizado para 15 amostras[0m
+[0;32mI (40851) GUI_HTTP_SERVER: Frequência de amostragem alterada. Limpando dados e reiniciando...[0m
+[0;32mI (40861) APP_DATA_LOGGER: Limpando todos os dados armazenados...[0m
+[0;32mI (40871) APP_DATA_LOGGER: Arquivo /spiffs/log_temp.csv removido[0m
+[0;32mI (41501) APP_DATA_LOGGER: Arquivo /spiffs/log_temp.csv recriado com header[0m
+[0;33mW (41691) APP_DATA_LOGGER: Nao foi possivel remover /spiffs/soil_calib.json (pode nao existir)[0m
+[0;32mI (41691) APP_DATA_LOGGER: Dados limpos. Sistema reiniciado do zero.[0m
+[0;32mI (41691) GUI_HTTP_SERVER: Dados limpos com sucesso[0m
+[0;32mI (42201) GUI_HTTP_SERVER: Reiniciando dispositivo...[0m
+[0;32mI (42201) wifi:station: 32:2a:5f:51:e8:85 leave, AID = 1, reason = 2, bss_flags is 691299, bss:0x3ffb9dcc[0m
+[0;32mI (42201) wifi:new:<1,0>, old:<1,0>, ap:<1,1>, sta:<255,255>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (42211) wifi:<ba-del>idx:2, tid:0[0m
+[0;32mI (42211) BSP_WIFI_AP: Cliente 32:2a:5f:51:e8:85 saiu, AID=1[0m
+[0;32mI (42361) wifi:flush txq[0m
+[0;32mI (42361) wifi:stop sw txq[0m
+[0;32mI (42361) wifi:lmac stop hw txq[0m
+ets Jul 29 2019 12:21:46
+
+rst:0xc (SW_CPU_RESET),boot:0x17 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:6380
+ho 0 tail 12 room 4
+load:0x40078000,len:15904
+load:0x40080400,len:3860
+entry 0x40080638
+[0;32mI (29) boot: ESP-IDF v5.5-dev-3372-g38628f98b9 2nd stage bootloader[0m
+[0;32mI (29) boot: compile time Nov 28 2025 06:27:02[0m
+[0;32mI (29) boot: Multicore bootloader[0m
+[0;32mI (32) boot: chip revision: v3.1[0m
+[0;32mI (35) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (39) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (42) boot.esp32: SPI Flash Size : 4MB[0m
+[0;32mI (46) boot: Enabling RNG early entropy source...[0m
+[0;32mI (50) boot: Partition Table:[0m
+[0;32mI (53) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (59) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (66) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (72) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (79) boot:  3 spiffs           Unknown data     01 82 00110000 002f0000[0m
+[0;32mI (85) boot: End of partition table[0m
+[0;32mI (89) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=2f424h (193572) map[0m
+[0;32mI (162) esp_image: segment 1: paddr=0003f44c vaddr=3ff80000 size=0001ch (    28) load[0m
+[0;32mI (162) esp_image: segment 2: paddr=0003f470 vaddr=3ffb0000 size=00ba8h (  2984) load[0m
+[0;32mI (167) esp_image: segment 3: paddr=00040020 vaddr=400d0020 size=aabdch (699356) map[0m
+[0;32mI (413) esp_image: segment 4: paddr=000eac04 vaddr=3ffb0ba8 size=03354h ( 13140) load[0m
+[0;32mI (418) esp_image: segment 5: paddr=000edf60 vaddr=40080000 size=1802ch ( 98348) load[0m
+[0;32mI (468) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (468) boot: Disabling RNG early entropy source...[0m
+[0;32mI (478) cpu_start: Multicore app[0m
+[0;32mI (487) cpu_start: Pro cpu start user code[0m
+[0;32mI (487) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (487) app_init: Application information:[0m
+[0;32mI (490) app_init: Project name:     sensor_campo[0m
+[0;32mI (495) app_init: App version:      b4535bc5-dirty[0m
+[0;32mI (500) app_init: Compile time:     Dec  4 2025 17:26:19[0m
+[0;32mI (506) app_init: ELF file SHA256:  8b18ab53f...[0m
+[0;32mI (512) app_init: ESP-IDF:          v5.5-dev-3372-g38628f98b9[0m
+[0;32mI (518) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (523) efuse_init: Max chip rev:     v3.99 [0m
+[0;32mI (528) efuse_init: Chip rev:         v3.1[0m
+[0;32mI (533) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (540) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (546) heap_init: At 3FFB8A18 len 000275E8 (157 KiB): DRAM[0m
+[0;32mI (552) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (558) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (565) heap_init: At 4009802C len 00007FD4 (31 KiB): IRAM[0m
+[0;32mI (573) spi_flash: detected chip: generic[0m
+[0;32mI (576) spi_flash: flash io: dio[0m
+[0;32mI (581) main_task: Started on CPU0[0m
+[0;32mI (591) main_task: Calling app_main()[0m
+[0;32mI (611) BSP_LED: LED inicializado no GPIO 2[0m
+[0;32mI (611) BSP_DS18B20: DS18B20 inicializado no GPIO 4[0m
+[0;32mI (611) BSP_ADC: ADC umidade solo inicializado. canal=6 bitwidth=12 atten=3[0m
+[0;32mI (651) BSP_AHT10: AHT10 inicializado com sucesso (I2C addr: 0x38)[0m
+[0;32mI (651) BSP_SENSORS: AHT10 inicializado com sucesso[0m
+[0;32mI (791) BSP_BH1750: BH1750 inicializado com sucesso (I2C addr: 0x23)[0m
+[0;32mI (791) BSP_SENSORS: BH1750 inicializado com sucesso[0m
+[0;32mI (791) BSP_SENSORS: Sensores BSP inicializados[0m
+[0;32mI (791) APP_SENSOR_MGR: Sensor Manager inicializado[0m
+[0;32mI (801) APP_DATA_LOGGER: Inicializando SPIFFS...[0m
+[0;32mI (1111) APP_DATA_LOGGER: SPIFFS montado em /spiffs[0m
+[0;32mI (1111) APP_DATA_LOGGER: Total=2293769 bytes, Usado=2038 bytes[0m
+[0;32mI (1201) APP_DATA_LOGGER: Proximo indice de log sera: 1[0m
+[0;33mW (1391) APP_DATA_LOGGER: Arquivo /spiffs/soil_calib.json nao encontrado. Usando padrao (Seco: 4000, Molhado: 400)[0m
+[0;32mI (1391) APP_DATA_LOGGER: Data logger inicializado. Proximo indice: 1[0m
+[0;32mI (1391) APP_SAMPLING: Período carregado do NVS: 10000 ms[0m
+[0;32mI (1401) APP_STATS_WINDOW: Período estatístico carregado do NVS: 15 amostras[0m
+[0;32mI (1411) APP_CULTIVATION: Tolerâncias de cultivo carregadas do NVS[0m
+[0;32mI (1411) APP_GUI_SERVICES: Serviços GUI registrados[0m
+[0;32mI (1431) wifi:wifi driver task: 3ffc3188, prio:23, stack:6656, core=0[0m
+[0;32mI (1441) wifi:wifi firmware version: 7d2994f4b[0m
+[0;32mI (1441) wifi:wifi certification version: v7.0[0m
+[0;32mI (1441) wifi:config NVS flash: enabled[0m
+[0;32mI (1441) wifi:config nano formatting: disabled[0m
+[0;32mI (1441) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (1451) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (1451) wifi:Init management short buffer num: 32[0m
+[0;32mI (1461) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (1461) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (1471) wifi:Init static rx buffer num: 10[0m
+[0;32mI (1471) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (1481) wifi_init: rx ba win: 6[0m
+[0;32mI (1481) wifi_init: accept mbox: 6[0m
+[0;32mI (1481) wifi_init: tcpip mbox: 32[0m
+[0;32mI (1491) wifi_init: udp mbox: 6[0m
+[0;32mI (1491) wifi_init: tcp mbox: 6[0m
+[0;32mI (1491) wifi_init: tcp tx win: 5760[0m
+[0;32mI (1501) wifi_init: tcp rx win: 5760[0m
+[0;32mI (1501) wifi_init: tcp mss: 1440[0m
+[0;32mI (1511) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (1511) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (1521) phy_init: phy_version 4860,6b7a6e5,Feb  6 2025,14:47:07[0m
+[0;32mI (1611) wifi:mode : softAP (38:18:2b:ea:b7:cd)[0m
+[0;32mI (1611) wifi:Total power save buffer number: 16[0m
+[0;32mI (1611) wifi:Init max length of beacon: 752/752[0m
+[0;32mI (1611) wifi:Init max length of beacon: 752/752[0m
+[0;32mI (1621) BSP_WIFI_AP: Modo AP iniciado. SSID='greenSe_Campo' senha='12345678'[0m
+[0;32mI (1621) esp_netif_lwip: DHCP server started on interface WIFI_AP_DEF with IP: 192.168.4.1[0m
+[0;32mI (1641) mdns_mem: mDNS task will be created from internal RAM[0m
+[0;32mI (1651) GUI_HTTP_SERVER: Servidor HTTP iniciado e rotas registradas. Acesse http://greense.local/ ou http://192.168.4.1/[0m
+[0;32mI (1651) APP_MAIN: Sistema iniciado - Arquitetura BSP/APP/GUI[0m
+[0;32mI (1661) main_task: Returned from app_main()[0m
+[0;32mI (2901) APP_MAIN: Log salvo! Ar: 23.10 C / 77.89 %, Solo: 22.81 C / 0.00 %, Lux: 485.0, DPV: 0.625 kPa[0m
+[0;32mI (2921) wifi:new:<1,0>, old:<1,1>, ap:<1,1>, sta:<255,255>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (2931) wifi:station: 32:2a:5f:51:e8:85 join, AID=1, bgn, 20[0m
+[0;32mI (3031) BSP_WIFI_AP: Cliente 32:2a:5f:51:e8:85 conectou, AID=1[0m
+[0;32mI (3151) wifi:<ba-add>idx:2 (ifx:1, 32:2a:5f:51:e8:85), tid:0, ssn:0, winSize:64[0m
+[0;32mI (3471) esp_netif_lwip: DHCP server assigned IP to a client, IP is: 192.168.4.2[0m
+[0;32mI (12571) APP_MAIN: Log salvo! Ar: 23.16 C / 77.30 %, Solo: 22.81 C / 0.00 %, Lux: 465.8, DPV: 0.644 kPa[0m
+[0;32mI (22801) APP_MAIN: Log salvo! Ar: 23.24 C / 77.21 %, Solo: 22.75 C / 0.00 %, Lux: 475.8, DPV: 0.650 kPa[0m
+[0;32mI (32791) APP_MAIN: Log salvo! Ar: 23.21 C / 76.93 %, Solo: 22.69 C / 0.00 %, Lux: 445.0, DPV: 0.656 kPa[0m
+[0;32mI (42541) APP_MAIN: Log salvo! Ar: 23.19 C / 76.96 %, Solo: 22.69 C / 0.00 %, Lux: 462.5, DPV: 0.655 kPa[0m
+[0;33mW (43981) httpd_txrx: httpd_sock_err: error in recv : 104[0m
+[0;33mW (43981) httpd_txrx: httpd_sock_err: error in recv : 104[0m
+[0;32mI (52771) APP_MAIN: Log salvo! Ar: 23.23 C / 77.01 %, Solo: 22.69 C / 0.00 %, Lux: 475.0, DPV: 0.655 kPa[0m
+[0;32mI (62761) APP_MAIN: Log salvo! Ar: 23.30 C / 76.72 %, Solo: 22.62 C / 0.00 %, Lux: 455.0, DPV: 0.666 kPa[0m
+[0;32mI (72511) APP_MAIN: Log salvo! Ar: 23.36 C / 76.37 %, Solo: 22.56 C / 0.00 %, Lux: 460.0, DPV: 0.678 kPa[0m
+[0;32mI (82741) APP_MAIN: Log salvo! Ar: 23.32 C / 76.19 %, Solo: 22.56 C / 0.00 %, Lux: 99.2, DPV: 0.682 kPa[0m
+[0;32mI (92731) APP_MAIN: Log salvo! Ar: 23.29 C / 76.12 %, Solo: 22.50 C / 0.00 %, Lux: 94.2, DPV: 0.683 kPa[0m
+[0;32mI (102481) APP_MAIN: Log salvo! Ar: 23.25 C / 76.20 %, Solo: 22.56 C / 0.00 %, Lux: 94.2, DPV: 0.679 kPa[0m
+[0;32mI (112711) APP_MAIN: Log salvo! Ar: 23.21 C / 76.36 %, Solo: 22.50 C / 0.00 %, Lux: 91.7, DPV: 0.673 kPa[0m
+[0;32mI (122701) APP_MAIN: Log salvo! Ar: 23.22 C / 76.46 %, Solo: 22.50 C / 0.00 %, Lux: 91.7, DPV: 0.670 kPa[0m
+[0;32mI (132451) APP_MAIN: Log salvo! Ar: 23.20 C / 76.49 %, Solo: 22.50 C / 0.00 %, Lux: 90.0, DPV: 0.669 kPa[0m
+[0;32mI (142681) APP_MAIN: Log salvo! Ar: 23.22 C / 76.54 %, Solo: 22.44 C / 0.00 %, Lux: 90.0, DPV: 0.668 kPa[0m
+[0;32mI (152671) APP_MAIN: Log salvo! Ar: 23.20 C / 76.57 %, Solo: 22.44 C / 0.00 %, Lux: 88.3, DPV: 0.666 kPa[0m
+[0;32mI (162421) APP_MAIN: Log salvo! Ar: 23.17 C / 76.54 %, Solo: 22.44 C / 0.00 %, Lux: 86.7, DPV: 0.666 kPa[0m
+[0;32mI (166651) wifi:new:<1,0>, old:<1,0>, ap:<1,1>, sta:<255,255>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (166651) wifi:station: e4:5f:01:6b:13:2d join, AID=2, bgn, 20[0m
+[0;32mI (166811) BSP_WIFI_AP: Cliente e4:5f:01:6b:13:2d conectou, AID=2[0m
+[0;32mI (166841) wifi:<ba-add>idx:3 (ifx:1, e4:5f:01:6b:13:2d), tid:7, ssn:0, winSize:64[0;32mI (166851) esp_netif_lwip: DHCP server assigned IP to a client, IP is: 192.168.4.3[0m[0m
+
+[0;32mI (166911) wifi:<ba-add>idx:4 (ifx:1, e4:5f:01:6b:13:2d), tid:0, ssn:2, winSize:64[0m
+[0;32mI (172651) APP_MAIN: Log salvo! Ar: 23.18 C / 76.56 %, Solo: 22.38 C / 0.00 %, Lux: 85.8, DPV: 0.666 kPa[0m
+[0;32mI (182641) APP_MAIN: Log salvo! Ar: 23.17 C / 76.57 %, Solo: 22.38 C / 0.00 %, Lux: 85.0, DPV: 0.665 kPa[0m
+[0;32mI (192391) APP_MAIN: Log salvo! Ar: 23.15 C / 76.57 %, Solo: 22.38 C / 0.00 %, Lux: 84.2, DPV: 0.664 kPa[0m
+[0;32mI (202621) APP_MAIN: Log salvo! Ar: 23.19 C / 76.56 %, Solo: 22.38 C / 0.00 %, Lux: 84.2, DPV: 0.666 kPa[0m
+[0;32mI (212611) APP_MAIN: Log salvo! Ar: 23.17 C / 76.62 %, Solo: 22.31 C / 0.00 %, Lux: 83.3, DPV: 0.663 kPa[0m
+[0;32mI (219591) wifi:station: 32:2a:5f:51:e8:85 leave, AID = 1, reason = 4, bss_flags is 691299, bss:0x3ffb9dcc[0m
+[0;32mI (219591) wifi:new:<1,0>, old:<1,0>, ap:<1,1>, sta:<255,255>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (219591) wifi:<ba-del>idx:2, tid:0[0m
+[0;32mI (219601) BSP_WIFI_AP: Cliente 32:2a:5f:51:e8:85 saiu, AID=1[0m
+[0;32mI (222361) APP_MAIN: Log salvo! Ar: 23.19 C / 76.59 %, Solo: 22.31 C / 0.00 %, Lux: 80.8, DPV: 0.665 kPa[0m
+[0;32mI (232591) APP_MAIN: Log salvo! Ar: 23.20 C / 76.51 %, Solo: 22.31 C / 0.00 %, Lux: 80.0, DPV: 0.668 kPa[0m
+[0;32mI (242581) APP_MAIN: Log salvo! Ar: 23.19 C / 76.46 %, Solo: 22.31 C / 0.00 %, Lux: 76.7, DPV: 0.669 kPa[0m
+[0;32mI (252571) APP_MAIN: Log salvo! Ar: 23.22 C / 76.43 %, Solo: 22.31 C / 0.00 %, Lux: 81.7, DPV: 0.671 kPa[0m
+[0;32mI (262321) APP_MAIN: Log salvo! Ar: 23.20 C / 76.44 %, Solo: 22.31 C / 0.00 %, Lux: 79.2, DPV: 0.670 kPa[0m
+[0;32mI (272551) APP_MAIN: Log salvo! Ar: 23.18 C / 76.45 %, Solo: 22.25 C / 0.00 %, Lux: 78.3, DPV: 0.669 kPa[0m
+[0;32mI (282541) APP_MAIN: Log salvo! Ar: 23.18 C / 76.44 %, Solo: 22.25 C / 0.00 %, Lux: 77.5, DPV: 0.669 kPa[0m
+[0;32mI (292291) APP_MAIN: Log salvo! Ar: 23.20 C / 76.46 %, Solo: 22.25 C / 0.00 %, Lux: 76.7, DPV: 0.669 kPa[0m
+[0;32mI (302521) APP_MAIN: Log salvo! Ar: 23.19 C / 76.47 %, Solo: 22.25 C / 0.00 %, Lux: 75.8, DPV: 0.669 kPa[0m
+[0;32mI (312511) APP_MAIN: Log salvo! Ar: 23.20 C / 76.49 %, Solo: 22.19 C / 0.00 %, Lux: 76.7, DPV: 0.669 kPa[0m
+[0;32mI (322261) APP_MAIN: Log salvo! Ar: 23.21 C / 76.43 %, Solo: 22.19 C / 0.00 %, Lux: 76.7, DPV: 0.671 kPa[0m
+[0;32mI (332491) APP_MAIN: Log salvo! Ar: 23.22 C / 76.44 %, Solo: -0.06 C / 0.00 %, Lux: 77.5, DPV: 0.671 kPa[0m
+[0;32mI (342481) APP_MAIN: Log salvo! Ar: 23.25 C / 76.39 %, Solo: 22.19 C / 0.00 %, Lux: 76.7, DPV: 0.673 kPa[0m
+[0;32mI (352231) APP_MAIN: Log salvo! Ar: 23.26 C / 76.33 %, Solo: 22.12 C / 0.00 %, Lux: 76.7, DPV: 0.676 kPa[0m
+[0;32mI (362461) APP_MAIN: Log salvo! Ar: 23.26 C / 76.37 %, Solo: 22.12 C / 0.00 %, Lux: 75.8, DPV: 0.674 kPa[0m
+[0;32mI (372451) APP_MAIN: Log salvo! Ar: 23.24 C / 76.34 %, Solo: 22.12 C / 0.00 %, Lux: 75.8, DPV: 0.674 kPa[0m
+[0;32mI (382201) APP_MAIN: Log salvo! Ar: 23.25 C / 76.31 %, Solo: 22.12 C / 0.00 %, Lux: 75.8, DPV: 0.676 kPa[0m
+[0;32mI (392431) APP_MAIN: Log salvo! Ar: 23.25 C / 76.34 %, Solo: 22.12 C / 0.00 %, Lux: 75.0, DPV: 0.675 kPa[0m
+[0;32mI (402421) APP_MAIN: Log salvo! Ar: 23.23 C / 76.42 %, Solo: 22.12 C / 0.00 %, Lux: 75.0, DPV: 0.672 kPa[0m
+[0;32mI (412171) APP_MAIN: Log salvo! Ar: 23.23 C / 76.32 %, Solo: 22.12 C / 0.00 %, Lux: 75.0, DPV: 0.675 kPa[0m
+[0;32mI (422401) APP_MAIN: Log salvo! Ar: 23.19 C / 76.39 %, Solo: 22.06 C / 0.00 %, Lux: 75.0, DPV: 0.671 kPa[0m
+[0;32mI (432391) APP_MAIN: Log salvo! Ar: 23.19 C / 76.44 %, Solo: 22.06 C / 0.00 %, Lux: 75.0, DPV: 0.670 kPa[0m
+[0;32mI (442141) APP_MAIN: Log salvo! Ar: 23.15 C / 76.40 %, Solo: 22.06 C / 0.00 %, Lux: 75.0, DPV: 0.669 kPa[0m
+[0;32mI (452371) APP_MAIN: Log salvo! Ar: 23.17 C / 76.43 %, Solo: 22.06 C / 0.00 %, Lux: 75.0, DPV: 0.669 kPa[0m
+[0;32mI (462351) APP_MAIN: Log salvo! Ar: 23.14 C / 76.47 %, Solo: 22.06 C / 0.00 %, Lux: 75.8, DPV: 0.666 kPa[0m
+[0;32mI (472111) APP_MAIN: Log salvo! Ar: 23.19 C / 76.54 %, Solo: 22.06 C / 0.00 %, Lux: 75.8, DPV: 0.667 kPa[0m
+[0;32mI (482341) APP_MAIN: Log salvo! Ar: 23.14 C / 76.52 %, Solo: 22.06 C / 0.00 %, Lux: 75.8, DPV: 0.665 kPa[0m
+[0;32mI (492331) APP_MAIN: Log salvo! Ar: 23.16 C / 76.58 %, Solo: 22.06 C / 0.00 %, Lux: 75.8, DPV: 0.664 kPa[0m
+[0;32mI (502081) APP_MAIN: Log salvo! Ar: 23.16 C / 76.66 %, Solo: 22.00 C / 0.00 %, Lux: 75.0, DPV: 0.662 kPa[0m
+[0;32mI (512301) APP_MAIN: Log salvo! Ar: 23.18 C / 76.66 %, Solo: 22.00 C / 0.00 %, Lux: 75.8, DPV: 0.663 kPa[0m
+[0;32mI (522301) APP_MAIN: Log salvo! Ar: 23.16 C / 76.63 %, Solo: 22.00 C / 0.00 %, Lux: 75.8, DPV: 0.663 kPa[0m
+[0;32mI (532291) APP_MAIN: Log salvo! Ar: 23.13 C / 76.61 %, Solo: 22.00 C / 0.00 %, Lux: 75.8, DPV: 0.662 kPa[0m
+[0;32mI (542041) APP_MAIN: Log salvo! Ar: 23.15 C / 76.64 %, Solo: 22.00 C / 0.00 %, Lux: 75.8, DPV: 0.662 kPa[0m
+[0;32mI (552271) APP_MAIN: Log salvo! Ar: 23.16 C / 76.59 %, Solo: 22.00 C / 0.00 %, Lux: 75.8, DPV: 0.664 kPa[0m
+[0;32mI (562261) APP_MAIN: Log salvo! Ar: 23.17 C / 76.57 %, Solo: 22.00 C / 0.00 %, Lux: 76.7, DPV: 0.665 kPa[0m
+[0;32mI (572011) APP_MAIN: Log salvo! Ar: 23.20 C / 76.56 %, Solo: 22.00 C / 0.00 %, Lux: 77.5, DPV: 0.667 kPa[0m
+[0;32mI (582241) APP_MAIN: Log salvo! Ar: 23.18 C / 76.40 %, Solo: 22.00 C / 0.00 %, Lux: 76.7, DPV: 0.670 kPa[0m
+[0;32mI (592231) APP_MAIN: Log salvo! Ar: 23.19 C / 76.29 %, Solo: 21.94 C / 0.00 %, Lux: 78.3, DPV: 0.674 kPa[0m
+[0;32mI (601981) APP_MAIN: Log salvo! Ar: 23.21 C / 76.32 %, Solo: 21.94 C / 0.00 %, Lux: 77.5, DPV: 0.674 kPa[0m
+[0;32mI (612211) APP_MAIN: Log salvo! Ar: 23.21 C / 76.37 %, Solo: 21.94 C / 0.00 %, Lux: 78.3, DPV: 0.672 kPa[0m
+[0;32mI (622201) APP_MAIN: Log salvo! Ar: 23.21 C / 76.34 %, Solo: 21.94 C / 0.00 %, Lux: 78.3, DPV: 0.673 kPa[0m
+[0;32mI (631951) APP_MAIN: Log salvo! Ar: 23.22 C / 76.43 %, Solo: 21.94 C / 0.00 %, Lux: 77.5, DPV: 0.671 kPa[0m
+[0;32mI (642181) APP_MAIN: Log salvo! Ar: 23.18 C / 76.42 %, Solo: 21.94 C / 0.00 %, Lux: 77.5, DPV: 0.670 kPa[0m
+[0;32mI (652171) APP_MAIN: Log salvo! Ar: 23.19 C / 76.46 %, Solo: 21.94 C / 0.00 %, Lux: 77.5, DPV: 0.669 kPa[0m
+[0;32mI (661921) APP_MAIN: Log salvo! Ar: 23.21 C / 76.43 %, Solo: 21.94 C / 0.00 %, Lux: 76.7, DPV: 0.671 kPa[0m
+[0;32mI (672141) APP_MAIN: Log salvo! Ar: 23.21 C / 76.41 %, Solo: 21.94 C / 0.00 %, Lux: 79.2, DPV: 0.671 kPa[0m
+[0;32mI (682141) APP_MAIN: Log salvo! Ar: 23.22 C / 76.41 %, Solo: 21.94 C / 0.00 %, Lux: 80.8, DPV: 0.672 kPa[0m
+[0;32mI (691891) APP_MAIN: Log salvo! Ar: 23.21 C / 76.42 %, Solo: 21.94 C / 0.00 %, Lux: 82.5, DPV: 0.671 kPa[0m
+[0;32mI (702121) APP_MAIN: Log salvo! Ar: 23.20 C / 76.41 %, Solo: 21.94 C / 0.00 %, Lux: 83.3, DPV: 0.671 kPa[0m
+[0;32mI (712111) APP_MAIN: Log salvo! Ar: 23.23 C / 76.31 %, Solo: 21.88 C / 0.00 %, Lux: 85.0, DPV: 0.675 kPa[0m
+[0;32mI (721861) APP_MAIN: Log salvo! Ar: 23.24 C / 76.33 %, Solo: 21.88 C / 0.00 %, Lux: 85.0, DPV: 0.675 kPa[0m
+[0;32mI (732091) APP_MAIN: Log salvo! Ar: 23.22 C / 76.27 %, Solo: 21.88 C / 0.00 %, Lux: 88.3, DPV: 0.675 kPa[0m
+[0;32mI (742081) APP_MAIN: Log salvo! Ar: 23.21 C / 76.35 %, Solo: 21.88 C / 0.00 %, Lux: 89.2, DPV: 0.673 kPa[0m
+[0;32mI (751831) APP_MAIN: Log salvo! Ar: 23.24 C / 76.37 %, Solo: 21.88 C / 0.00 %, Lux: 87.5, DPV: 0.673 kPa[0m
+[0;32mI (762061) APP_MAIN: Log salvo! Ar: 23.24 C / 76.32 %, Solo: 21.88 C / 0.00 %, Lux: 86.7, DPV: 0.675 kPa[0m
+[0;32mI (772051) APP_MAIN: Log salvo! Ar: 23.23 C / 76.34 %, Solo: 21.88 C / 0.00 %, Lux: 86.7, DPV: 0.674 kPa[0m
+[0;32mI (781801) APP_MAIN: Log salvo! Ar: 23.25 C / 76.26 %, Solo: 21.88 C / 0.00 %, Lux: 87.5, DPV: 0.677 kPa[0m
+[0;32mI (792031) APP_MAIN: Log salvo! Ar: 23.27 C / 76.13 %, Solo: 21.88 C / 0.00 %, Lux: 87.5, DPV: 0.681 kPa[0m
+[0;32mI (802021) APP_MAIN: Log salvo! Ar: 23.27 C / 76.11 %, Solo: 21.88 C / 0.00 %, Lux: 89.2, DPV: 0.682 kPa[0m
+[0;32mI (812011) APP_MAIN: Log salvo! Ar: 23.27 C / 76.10 %, Solo: 21.88 C / 0.00 %, Lux: 82.5, DPV: 0.683 kPa[0m
+[0;32mI (821761) APP_MAIN: Log salvo! Ar: 23.30 C / 76.09 %, Solo: 21.88 C / 0.00 %, Lux: 80.0, DPV: 0.684 kPa[0m
+[0;32mI (831991) APP_MAIN: Log salvo! Ar: 23.29 C / 76.01 %, Solo: 21.88 C / 0.00 %, Lux: 83.3, DPV: 0.686 kPa[0m
+[0;32mI (841981) APP_MAIN: Log salvo! Ar: 23.29 C / 76.03 %, Solo: 21.88 C / 0.00 %, Lux: 78.3, DPV: 0.685 kPa[0m
+[0;32mI (851731) APP_MAIN: Log salvo! Ar: 23.28 C / 75.96 %, Solo: 21.88 C / 0.00 %, Lux: 78.3, DPV: 0.687 kPa[0m
+[0;32mI (861961) APP_MAIN: Log salvo! Ar: 23.30 C / 75.91 %, Solo: 21.88 C / 0.00 %, Lux: 78.3, DPV: 0.689 kPa[0m
+[0;32mI (871951) APP_MAIN: Log salvo! Ar: 23.31 C / 75.96 %, Solo: 21.81 C / 0.00 %, Lux: 76.7, DPV: 0.688 kPa[0m
+[0;32mI (881701) APP_MAIN: Log salvo! Ar: 23.30 C / 75.98 %, Solo: 21.81 C / 0.00 %, Lux: 79.2, DPV: 0.687 kPa[0m
+[0;32mI (891931) APP_MAIN: Log salvo! Ar: 23.32 C / 75.99 %, Solo: 21.81 C / 0.00 %, Lux: 78.3, DPV: 0.688 kPa[0m
+[0;32mI (901921) APP_MAIN: Log salvo! Ar: 23.32 C / 75.94 %, Solo: 21.88 C / 0.00 %, Lux: 75.8, DPV: 0.689 kPa[0m
+[0;32mI (911671) APP_MAIN: Log salvo! Ar: 23.32 C / 75.89 %, Solo: 21.88 C / 0.00 %, Lux: 81.7, DPV: 0.690 kPa[0m
+[0;32mI (921901) APP_MAIN: Log salvo! Ar: 23.32 C / 75.77 %, Solo: 21.88 C / 0.00 %, Lux: 83.3, DPV: 0.694 kPa[0m
+[0;32mI (931891) APP_MAIN: Log salvo! Ar: 23.31 C / 75.73 %, Solo: 21.81 C / 0.00 %, Lux: 80.8, DPV: 0.695 kPa[0m
+[0;32mI (941641) APP_MAIN: Log salvo! Ar: 23.33 C / 75.73 %, Solo: 21.88 C / 0.00 %, Lux: 78.3, DPV: 0.696 kPa[0m
+[0;32mI (951871) APP_MAIN: Log salvo! Ar: 23.30 C / 75.76 %, Solo: 21.81 C / 0.00 %, Lux: 80.0, DPV: 0.693 kPa[0m
+[0;32mI (961871) APP_MAIN: Log salvo! Ar: 23.32 C / 75.72 %, Solo: 21.81 C / 0.00 %, Lux: 80.0, DPV: 0.695 kPa[0m
+[0;32mI (971611) APP_MAIN: Log salvo! Ar: 23.35 C / 75.67 %, Solo: 21.88 C / 0.00 %, Lux: 80.0, DPV: 0.698 kPa[0m
+[0;32mI (981841) APP_MAIN: Log salvo! Ar: 23.36 C / 75.66 %, Solo: 21.81 C / 0.00 %, Lux: 80.8, DPV: 0.699 kPa[0m
+[0;32mI (991831) APP_MAIN: Log salvo! Ar: 23.35 C / 75.68 %, Solo: 21.81 C / 0.00 %, Lux: 79.2, DPV: 0.698 kPa[0m
+[0;32mI (1001581) APP_MAIN: Log salvo! Ar: 23.38 C / 75.68 %, Solo: 21.81 C / 0.00 %, Lux: 77.5, DPV: 0.699 kPa[0m
+[0;32mI (1011811) APP_MAIN: Log salvo! Ar: 23.41 C / 75.59 %, Solo: 21.81 C / 0.00 %, Lux: 76.7, DPV: 0.703 kPa[0m
+[0;32mI (1021801) APP_MAIN: Log salvo! Ar: 23.41 C / 75.52 %, Solo: 21.81 C / 0.00 %, Lux: 75.8, DPV: 0.705 kPa[0m
+[0;32mI (1031551) APP_MAIN: Log salvo! Ar: 23.41 C / 75.55 %, Solo: 21.81 C / 0.00 %, Lux: 75.0, DPV: 0.704 kPa[0m
+[0;32mI (1041781) APP_MAIN: Log salvo! Ar: 23.40 C / 75.43 %, Solo: 21.81 C / 0.00 %, Lux: 75.0, DPV: 0.707 kPa[0m
+[0;32mI (1051771) APP_MAIN: Log salvo! Ar: 23.41 C / 75.40 %, Solo: 21.81 C / 0.00 %, Lux: 75.0, DPV: 0.709 kPa[0m
+[0;32mI (1061761) APP_MAIN: Log salvo! Ar: 23.39 C / 75.37 %, Solo: 21.81 C / 0.00 %, Lux: 75.0, DPV: 0.709 kPa[0m
+[0;32mI (1071511) APP_MAIN: Log salvo! Ar: 23.38 C / 75.38 %, Solo: 21.81 C / 0.00 %, Lux: 75.0, DPV: 0.708 kPa[0m
+[0;32mI (1081741) APP_MAIN: Log salvo! Ar: 23.39 C / 75.32 %, Solo: 21.81 C / 0.00 %, Lux: 74.2, DPV: 0.710 kPa[0m
+[0;32mI (1091731) APP_MAIN: Log salvo! Ar: 23.39 C / 75.35 %, Solo: 21.81 C / 0.00 %, Lux: 74.2, DPV: 0.709 kPa[0m
+[0;32mI (1101481) APP_MAIN: Log salvo! Ar: 23.43 C / 75.36 %, Solo: 21.81 C / 0.00 %, Lux: 73.3, DPV: 0.710 kPa[0m
+[0;32mI (1111711) APP_MAIN: Log salvo! Ar: 23.41 C / 75.36 %, Solo: 21.81 C / 0.00 %, Lux: 74.2, DPV: 0.710 kPa[0m
+[0;32mI (1121701) APP_MAIN: Log salvo! Ar: 23.42 C / 75.27 %, Solo: 21.81 C / 0.00 %, Lux: 74.2, DPV: 0.713 kPa[0m
+[0;32mI (1131451) APP_MAIN: Log salvo! Ar: 23.39 C / 75.29 %, Solo: 21.81 C / 0.00 %, Lux: 75.0, DPV: 0.711 kPa[0m
+[0;32mI (1141681) APP_MAIN: Log salvo! Ar: 23.40 C / 75.28 %, Solo: 21.81 C / 0.00 %, Lux: 74.2, DPV: 0.712 kPa[0m
+[0;32mI (1151671) APP_MAIN: Log salvo! Ar: 23.41 C / 75.29 %, Solo: 21.81 C / 0.00 %, Lux: 74.2, DPV: 0.712 kPa[0m
+[0;32mI (1161421) APP_MAIN: Log salvo! Ar: 23.40 C / 75.33 %, Solo: 21.81 C / 0.00 %, Lux: 73.3, DPV: 0.710 kPa[0m
+[0;32mI (1171651) APP_MAIN: Log salvo! Ar: 23.40 C / 75.46 %, Solo: 21.81 C / 0.00 %, Lux: 71.7, DPV: 0.706 kPa[0m
+[0;32mI (1181641) APP_MAIN: Log salvo! Ar: 23.39 C / 75.41 %, Solo: 21.81 C / 0.00 %, Lux: 70.8, DPV: 0.708 kPa[0m
+[0;32mI (1191391) APP_MAIN: Log salvo! Ar: 23.39 C / 75.32 %, Solo: 21.81 C / 0.00 %, Lux: 71.7, DPV: 0.710 kPa[0m
+[0;32mI (1201621) APP_MAIN: Log salvo! Ar: 23.39 C / 75.45 %, Solo: 21.81 C / 0.00 %, Lux: 77.5, DPV: 0.706 kPa[0m
+[0;32mI (1211611) APP_MAIN: Log salvo! Ar: 23.39 C / 75.45 %, Solo: 21.81 C / 0.00 %, Lux: 75.0, DPV: 0.706 kPa[0m
+[0;32mI (1221361) APP_MAIN: Log salvo! Ar: 23.39 C / 75.28 %, Solo: 21.81 C / 0.00 %, Lux: 73.3, DPV: 0.711 kPa[0m
+[0;32mI (1231591) APP_MAIN: Log salvo! Ar: 23.39 C / 75.24 %, Solo: 21.81 C / 0.00 %, Lux: 73.3, DPV: 0.712 kPa[0m
+[0;32mI (1241581) APP_MAIN: Log salvo! Ar: 23.41 C / 75.26 %, Solo: 21.81 C / 0.00 %, Lux: 73.3, DPV: 0.713 kPa[0m
+[0;32mI (1251331) APP_MAIN: Log salvo! Ar: 23.41 C / 75.12 %, Solo: 21.81 C / 0.00 %, Lux: 77.5, DPV: 0.716 kPa[0m
+[0;32mI (1261561) APP_MAIN: Log salvo! Ar: 23.41 C / 75.09 %, Solo: 21.81 C / 0.00 %, Lux: 75.8, DPV: 0.718 kPa[0m
+[0;32mI (1271551) APP_MAIN: Log salvo! Ar: 23.43 C / 75.06 %, Solo: 21.81 C / 0.00 %, Lux: 74.2, DPV: 0.719 kPa[0m
+[0;32mI (1281301) APP_MAIN: Log salvo! Ar: 23.44 C / 74.99 %, Solo: 21.81 C / 0.00 %, Lux: 75.0, DPV: 0.722 kPa[0m
+[0;32mI (1291531) APP_MAIN: Log salvo! Ar: 23.46 C / 74.99 %, Solo: 21.81 C / 0.00 %, Lux: 80.0, DPV: 0.722 kPa[0m
+[0;32mI (1301521) APP_MAIN: Log salvo! Ar: 23.45 C / 74.91 %, Solo: 21.81 C / 0.00 %, Lux: 77.5, DPV: 0.724 kPa[0m
+[0;32mI (1311271) APP_MAIN: Log salvo! Ar: 23.46 C / 74.92 %, Solo: 21.81 C / 0.00 %, Lux: 76.7, DPV: 0.724 kPa[0m
+[0;32mI (1321501) APP_MAIN: Log salvo! Ar: 23.44 C / 74.91 %, Solo: 21.81 C / 0.00 %, Lux: 79.2, DPV: 0.724 kPa[0m
+[0;32mI (1331491) APP_MAIN: Log salvo! Ar: 23.47 C / 74.97 %, Solo: 21.81 C / 0.00 %, Lux: 75.0, DPV: 0.723 kPa[0m
+[0;32mI (1341481) APP_MAIN: Log salvo! Ar: 23.49 C / 74.99 %, Solo: 21.81 C / 0.00 %, Lux: 78.3, DPV: 0.724 kPa[0m
+[0;32mI (1351231) APP_MAIN: Log salvo! Ar: 23.47 C / 75.04 %, Solo: 21.81 C / 0.00 %, Lux: 75.8, DPV: 0.721 kPa[0m
+[0;32mI (1361461) APP_MAIN: Log salvo! Ar: 23.48 C / 74.94 %, Solo: 21.81 C / 0.00 %, Lux: 79.2, DPV: 0.725 kPa[0m
+[0;32mI (1371451) APP_MAIN: Log salvo! Ar: 23.50 C / 74.93 %, Solo: 21.75 C / 0.00 %, Lux: 77.5, DPV: 0.726 kPa[0m
+[0;32mI (1381201) APP_MAIN: Log salvo! Ar: 23.49 C / 74.90 %, Solo: 21.75 C / 0.00 %, Lux: 76.7, DPV: 0.726 kPa[0m
+[0;32mI (1391431) APP_MAIN: Log salvo! Ar: 23.51 C / 74.84 %, Solo: 21.81 C / 0.00 %, Lux: 73.3, DPV: 0.729 kPa[0m
+[0;32mI (1401421) APP_MAIN: Log salvo! Ar: 23.50 C / 74.80 %, Solo: 21.81 C / 0.00 %, Lux: 76.7, DPV: 0.729 kPa[0m
+[0;32mI (1402041) wifi:<ba-add>idx:2 (ifx:1, e4:5f:01:6b:13:2d), tid:4, ssn:0, winSize:64[0m
+[0;32mI (1411171) APP_MAIN: Log salvo! Ar: 23.51 C / 74.78 %, Solo: 21.81 C / 0.00 %, Lux: 76.7, DPV: 0.731 kPa[0m
+[0;32mI (1421401) APP_MAIN: Log salvo! Ar: 23.52 C / 74.78 %, Solo: 21.81 C / 0.00 %, Lux: 74.2, DPV: 0.731 kPa[0m
+[0;32mI (1431391) APP_MAIN: Log salvo! Ar: 23.51 C / 74.63 %, Solo: 21.81 C / 0.00 %, Lux: 75.0, DPV: 0.735 kPa[0m
+[0;32mI (1441141) APP_MAIN: Log salvo! Ar: 23.53 C / 74.58 %, Solo: 21.81 C / 0.00 %, Lux: 72.5, DPV: 0.737 kPa[0m
+[0;32mI (1451371) APP_MAIN: Log salvo! Ar: 23.53 C / 74.56 %, Solo: 21.81 C / 0.00 %, Lux: 70.8, DPV: 0.738 kPa[0m
+[0;32mI (1461361) APP_MAIN: Log salvo! Ar: 23.52 C / 74.48 %, Solo: 21.81 C / 0.00 %, Lux: 73.3, DPV: 0.740 kPa[0m
+[0;32mI (1471111) APP_MAIN: Log salvo! Ar: 23.54 C / 74.51 %, Solo: 21.81 C / 0.00 %, Lux: 75.8, DPV: 0.740 kPa[0m
+[0;32mI (1481341) APP_MAIN: Log salvo! Ar: 23.51 C / 74.48 %, Solo: 21.75 C / 0.00 %, Lux: 74.2, DPV: 0.739 kPa[0m
+[0;32mI (1491331) APP_MAIN: Log salvo! Ar: 23.50 C / 74.50 %, Solo: 21.81 C / 0.00 %, Lux: 71.7, DPV: 0.739 kPa[0m
+[0;32mI (1501081) APP_MAIN: Log salvo! Ar: 23.51 C / 74.53 %, Solo: 21.75 C / 0.00 %, Lux: 72.5, DPV: 0.738 kPa[0m
+[0;32mI (1511311) APP_MAIN: Log salvo! Ar: 23.52 C / 74.54 %, Solo: 21.81 C / 0.00 %, Lux: 73.3, DPV: 0.738 kPa[0m
+[0;32mI (1521301) APP_MAIN: Log salvo! Ar: 23.50 C / 74.50 %, Solo: 21.75 C / 0.00 %, Lux: 78.3, DPV: 0.738 kPa[0m
+[0;32mI (1531051) APP_MAIN: Log salvo! Ar: 23.49 C / 74.53 %, Solo: 21.81 C / 0.00 %, Lux: 80.8, DPV: 0.737 kPa[0m
+[0;32mI (1541281) APP_MAIN: Log salvo! Ar: 23.52 C / 74.42 %, Solo: 21.81 C / 0.00 %, Lux: 82.5, DPV: 0.742 kPa[0m
+[0;32mI (1551271) APP_MAIN: Log salvo! Ar: 23.51 C / 74.40 %, Solo: 21.81 C / 0.00 %, Lux: 83.3, DPV: 0.742 kPa[0m
+[0;32mI (1561021) APP_MAIN: Log salvo! Ar: 23.52 C / 74.41 %, Solo: 21.75 C / 0.00 %, Lux: 83.3, DPV: 0.742 kPa[0m
+[0;32mI (1571251) APP_MAIN: Log salvo! Ar: 23.51 C / 74.30 %, Solo: 21.75 C / 0.00 %, Lux: 81.7, DPV: 0.744 kPa[0m
+[0;32mI (1581241) APP_MAIN: Log salvo! Ar: 23.51 C / 74.29 %, Solo: 21.81 C / 0.00 %, Lux: 78.3, DPV: 0.745 kPa[0m
+[0;32mI (1591231) APP_MAIN: Log salvo! Ar: 23.51 C / 74.28 %, Solo: 21.75 C / 0.00 %, Lux: 78.3, DPV: 0.745 kPa[0m
+[0;32mI (1600981) APP_MAIN: Log salvo! Ar: 23.51 C / 74.28 %, Solo: 21.75 C / 0.00 %, Lux: 76.7, DPV: 0.745 kPa[0m
+[0;32mI (1611211) APP_MAIN: Log salvo! Ar: 23.47 C / 74.26 %, Solo: 21.81 C / 0.00 %, Lux: 75.8, DPV: 0.744 kPa[0m
+[0;32mI (1621201) APP_MAIN: Log salvo! Ar: 23.50 C / 74.31 %, Solo: 21.75 C / 0.00 %, Lux: 75.8, DPV: 0.744 kPa[0m
+[0;32mI (1630951) APP_MAIN: Log salvo! Ar: 23.51 C / 74.35 %, Solo: 21.81 C / 0.00 %, Lux: 74.2, DPV: 0.743 kPa[0m
+[0;32mI (1641181) APP_MAIN: Log salvo! Ar: 23.51 C / 74.31 %, Solo: 21.81 C / 0.00 %, Lux: 74.2, DPV: 0.745 kPa[0m
+[0;32mI (1651171) APP_MAIN: Log salvo! Ar: 23.53 C / 74.24 %, Solo: 21.75 C / 0.00 %, Lux: 73.3, DPV: 0.747 kPa[0m
+[0;32mI (1660921) APP_MAIN: Log salvo! Ar: 23.53 C / 74.19 %, Solo: 21.81 C / 0.00 %, Lux: 73.3, DPV: 0.749 kPa[0m
+[0;32mI (1671151) APP_MAIN: Log salvo! Ar: 23.51 C / 74.22 %, Solo: 21.75 C / 0.00 %, Lux: 73.3, DPV: 0.747 kPa[0m
+[0;32mI (1681141) APP_MAIN: Log salvo! Ar: 23.53 C / 74.19 %, Solo: 21.75 C / 0.00 %, Lux: 73.3, DPV: 0.749 kPa[0m
+[0;32mI (1690891) APP_MAIN: Log salvo! Ar: 23.53 C / 74.18 %, Solo: 21.81 C / 0.00 %, Lux: 74.2, DPV: 0.749 kPa[0m
+[0;32mI (1701121) APP_MAIN: Log salvo! Ar: 23.50 C / 74.21 %, Solo: 21.75 C / 0.00 %, Lux: 74.2, DPV: 0.747 kPa[0m
+[0;32mI (1711111) APP_MAIN: Log salvo! Ar: 23.52 C / 74.24 %, Solo: 21.75 C / 0.00 %, Lux: 73.3, DPV: 0.747 kPa[0m
+[0;32mI (1720861) APP_MAIN: Log salvo! Ar: 23.51 C / 74.21 %, Solo: 21.81 C / 0.00 %, Lux: 73.3, DPV: 0.747 kPa[0m
+[0;32mI (1731091) APP_MAIN: Log salvo! Ar: 23.52 C / 74.21 %, Solo: 21.81 C / 0.00 %, Lux: 72.5, DPV: 0.748 kPa[0m
+[0;32mI (1741081) APP_MAIN: Log salvo! Ar: 23.50 C / 74.26 %, Solo: 21.75 C / 0.00 %, Lux: 69.2, DPV: 0.745 kPa[0m
+[0;32mI (1750831) APP_MAIN: Log salvo! Ar: 23.52 C / 74.29 %, Solo: 21.75 C / 0.00 %, Lux: 67.5, DPV: 0.745 kPa[0m
+[0;32mI (1761061) APP_MAIN: Log salvo! Ar: 23.52 C / 74.25 %, Solo: 21.75 C / 0.00 %, Lux: 66.7, DPV: 0.746 kPa[0m
+[0;32mI (1771051) APP_MAIN: Log salvo! Ar: 23.49 C / 74.27 %, Solo: 21.75 C / 0.00 %, Lux: 65.0, DPV: 0.745 kPa[0m
+[0;32mI (1780801) APP_MAIN: Log salvo! Ar: 23.50 C / 74.22 %, Solo: 21.81 C / 0.00 %, Lux: 60.0, DPV: 0.746 kPa[0m
+[0;32mI (1791031) APP_MAIN: Log salvo! Ar: 23.47 C / 74.22 %, Solo: 21.81 C / 0.00 %, Lux: 60.0, DPV: 0.745 kPa[0m
+[0;32mI (1801021) APP_MAIN: Log salvo! Ar: 23.50 C / 74.29 %, Solo: 21.75 C / 0.00 %, Lux: 57.5, DPV: 0.744 kPa[0m
+[0;32mI (1810771) APP_MAIN: Log salvo! Ar: 23.47 C / 74.30 %, Solo: 21.75 C / 0.00 %, Lux: 57.5, DPV: 0.743 kPa[0m
+[0;32mI (1821001) APP_MAIN: Log salvo! Ar: 23.48 C / 74.33 %, Solo: 21.75 C / 0.00 %, Lux: 58.3, DPV: 0.742 kPa[0m
+[0;32mI (1830991) APP_MAIN: Log salvo! Ar: 23.48 C / 74.35 %, Solo: 21.75 C / 0.00 %, Lux: 57.5, DPV: 0.742 kPa[0m
+[0;32mI (1840981) APP_MAIN: Log salvo! Ar: 23.47 C / 74.32 %, Solo: 21.75 C / 0.00 %, Lux: 57.5, DPV: 0.743 kPa[0m
+[0;32mI (1850731) APP_MAIN: Log salvo! Ar: 23.48 C / 74.35 %, Solo: 21.75 C / 0.00 %, Lux: 56.7, DPV: 0.742 kPa[0m
+[0;32mI (1860961) APP_MAIN: Log salvo! Ar: 23.46 C / 74.32 %, Solo: 21.75 C / 0.00 %, Lux: 57.5, DPV: 0.742 kPa[0m
+[0;32mI (1870951) APP_MAIN: Log salvo! Ar: 23.48 C / 74.38 %, Solo: 21.75 C / 0.00 %, Lux: 57.5, DPV: 0.741 kPa[0m
+[0;32mI (1880701) APP_MAIN: Log salvo! Ar: 23.46 C / 74.43 %, Solo: 21.75 C / 0.00 %, Lux: 57.5, DPV: 0.739 kPa[0m
+[0;32mI (1890931) APP_MAIN: Log salvo! Ar: 23.46 C / 74.40 %, Solo: 21.75 C / 0.00 %, Lux: 58.3, DPV: 0.740 kPa[0m
+[0;32mI (1900921) APP_MAIN: Log salvo! Ar: 23.49 C / 74.35 %, Solo: 21.81 C / 0.00 %, Lux: 57.5, DPV: 0.742 kPa[0m
+[0;32mI (1910671) APP_MAIN: Log salvo! Ar: 23.47 C / 74.37 %, Solo: 21.75 C / 0.00 %, Lux: 58.3, DPV: 0.741 kPa[0m
+[0;32mI (1920901) APP_MAIN: Log salvo! Ar: 23.48 C / 74.35 %, Solo: 21.75 C / 0.00 %, Lux: 58.3, DPV: 0.742 kPa[0m
+[0;32mI (1930891) APP_MAIN: Log salvo! Ar: 23.46 C / 74.34 %, Solo: 21.75 C / 0.00 %, Lux: 59.2, DPV: 0.741 kPa[0m
+[0;32mI (1940641) APP_MAIN: Log salvo! Ar: 23.49 C / 74.39 %, Solo: 21.81 C / 0.00 %, Lux: 59.2, DPV: 0.741 kPa[0m
+[0;32mI (1950871) APP_MAIN: Log salvo! Ar: 23.49 C / 74.31 %, Solo: 21.81 C / 0.00 %, Lux: 60.0, DPV: 0.744 kPa[0m
+[0;32mI (1960861) APP_MAIN: Log salvo! Ar: 23.53 C / 74.22 %, Solo: 21.81 C / 0.00 %, Lux: 60.8, DPV: 0.748 kPa[0m
+[0;32mI (1970611) APP_MAIN: Log salvo! Ar: 23.52 C / 74.25 %, Solo: 21.75 C / 0.00 %, Lux: 57.5, DPV: 0.747 kPa[0m
+[0;32mI (1980841) APP_MAIN: Log salvo! Ar: 23.52 C / 74.20 %, Solo: 21.75 C / 0.00 %, Lux: 60.8, DPV: 0.748 kPa[0m
+[0;32mI (1990831) APP_MAIN: Log salvo! Ar: 23.49 C / 74.22 %, Solo: 21.75 C / 0.00 %, Lux: 60.0, DPV: 0.746 kPa[0m
+[0;32mI (2003491) APP_MAIN: Log salvo! Ar: 23.48 C / 74.29 %, Solo: 21.75 C / 0.00 %, Lux: 60.8, DPV: 0.744 kPa[0m
+[0;32mI (2010811) APP_MAIN: Log salvo! Ar: 23.49 C / 74.27 %, Solo: 21.75 C / 0.00 %, Lux: 60.8, DPV: 0.745 kPa[0m
+[0;32mI (2020801) APP_MAIN: Log salvo! Ar: 23.52 C / 74.26 %, Solo: 21.75 C / 0.00 %, Lux: 60.8, DPV: 0.746 kPa[0m
+[0;32mI (2030551) APP_MAIN: Log salvo! Ar: 23.52 C / 74.27 %, Solo: 21.81 C / 0.00 %, Lux: 60.8, DPV: 0.746 kPa[0m
+[0;32mI (2040781) APP_MAIN: Log salvo! Ar: 23.55 C / 74.23 %, Solo: 21.75 C / 0.00 %, Lux: 60.0, DPV: 0.749 kPa[0m
+[0;32mI (2050771) APP_MAIN: Log salvo! Ar: 23.55 C / 74.16 %, Solo: 21.81 C / 0.00 %, Lux: 61.7, DPV: 0.751 kPa[0m
+[0;32mI (2060521) APP_MAIN: Log salvo! Ar: 23.58 C / 74.14 %, Solo: 21.81 C / 0.00 %, Lux: 60.0, DPV: 0.752 kPa[0m
+[0;32mI (2070751) APP_MAIN: Log salvo! Ar: 23.58 C / 74.09 %, Solo: 21.75 C / 0.00 %, Lux: 60.8, DPV: 0.754 kPa[0m
+[0;32mI (2080741) APP_MAIN: Log salvo! Ar: 23.56 C / 74.03 %, Solo: 21.81 C / 0.00 %, Lux: 60.0, DPV: 0.755 kPa[0m
+[0;32mI (2090491) APP_MAIN: Log salvo! Ar: 23.57 C / 74.02 %, Solo: 21.75 C / 0.00 %, Lux: 62.5, DPV: 0.755 kPa[0m
+[0;32mI (2100721) APP_MAIN: Log salvo! Ar: 23.53 C / 74.04 %, Solo: 21.75 C / 0.00 %, Lux: 60.0, DPV: 0.753 kPa[0m
+[0;32mI (2110711) APP_MAIN: Log salvo! Ar: 23.57 C / 74.07 %, Solo: 21.81 C / 0.00 %, Lux: 60.8, DPV: 0.754 kPa[0m
+[0;32mI (2120711) APP_MAIN: Log salvo! Ar: 23.55 C / 74.02 %, Solo: 21.75 C / 0.00 %, Lux: 61.7, DPV: 0.755 kPa[0m
+[0;32mI (2130451) APP_MAIN: Log salvo! Ar: 23.55 C / 74.09 %, Solo: 21.81 C / 0.00 %, Lux: 60.8, DPV: 0.752 kPa[0m
+[0;32mI (2140681) APP_MAIN: Log salvo! Ar: 23.55 C / 74.07 %, Solo: 21.75 C / 0.00 %, Lux: 61.7, DPV: 0.753 kPa[0m
+[0;32mI (2150671) APP_MAIN: Log salvo! Ar: 23.55 C / 74.04 %, Solo: 21.75 C / 0.00 %, Lux: 60.8, DPV: 0.754 kPa[0m
+[0;32mI (2160421) APP_MAIN: Log salvo! Ar: 23.55 C / 74.05 %, Solo: 21.75 C / 0.00 %, Lux: 59.2, DPV: 0.753 kPa[0m
+[0;32mI (2170661) APP_MAIN: Log salvo! Ar: 23.57 C / 74.09 %, Solo: 21.75 C / 0.00 %, Lux: 60.0, DPV: 0.753 kPa[0m
+[0;32mI (2180641) APP_MAIN: Log salvo! Ar: 23.55 C / 73.99 %, Solo: 21.75 C / 0.00 %, Lux: 59.2, DPV: 0.755 kPa[0m
+[0;32mI (2190391) APP_MAIN: Log salvo! Ar: 23.54 C / 73.97 %, Solo: 21.75 C / 0.00 %, Lux: 59.2, DPV: 0.755 kPa[0m
+[0;32mI (2200621) APP_MAIN: Log salvo! Ar: 23.54 C / 73.96 %, Solo: 21.75 C / 0.00 %, Lux: 60.0, DPV: 0.756 kPa[0m
+[0;32mI (2210611) APP_MAIN: Log salvo! Ar: 23.56 C / 73.96 %, Solo: 21.75 C / 0.00 %, Lux: 60.0, DPV: 0.757 kPa[0m
+[0;32mI (2220361) APP_MAIN: Log salvo! Ar: 23.54 C / 73.99 %, Solo: 21.75 C / 0.00 %, Lux: 60.0, DPV: 0.755 kPa[0m
+[0;32mI (2230591) APP_MAIN: Log salvo! Ar: 23.53 C / 74.01 %, Solo: 21.75 C / 0.00 %, Lux: 60.0, DPV: 0.754 kPa[0m
+[0;32mI (2240581) APP_MAIN: Log salvo! Ar: 23.52 C / 74.05 %, Solo: 21.75 C / 0.00 %, Lux: 60.8, DPV: 0.752 kPa[0m
+[0;32mI (2250331) APP_MAIN: Log salvo! Ar: 23.55 C / 74.06 %, Solo: 21.75 C / 0.00 %, Lux: 60.8, DPV: 0.753 kPa[0m
+[0;32mI (2260561) APP_MAIN: Log salvo! Ar: 23.54 C / 74.06 %, Solo: 21.75 C / 0.00 %, Lux: 61.7, DPV: 0.753 kPa[0m
+[0;32mI (2270551) APP_MAIN: Log salvo! Ar: 23.56 C / 74.03 %, Solo: 21.75 C / 0.00 %, Lux: 62.5, DPV: 0.755 kPa[0m
+[0;32mI (2280301) APP_MAIN: Log salvo! Ar: 23.56 C / 73.99 %, Solo: 21.75 C / 0.00 %, Lux: 63.3, DPV: 0.756 kPa[0m
+[0;32mI (2290531) APP_MAIN: Log salvo! Ar: 23.55 C / 73.95 %, Solo: 21.75 C / 0.00 %, Lux: 63.3, DPV: 0.757 kPa[0m
+[0;32mI (2300521) APP_MAIN: Log salvo! Ar: 23.54 C / 73.95 %, Solo: 21.75 C / 0.00 %, Lux: 65.0, DPV: 0.756 kPa[0m
+[0;32mI (2310271) APP_MAIN: Log salvo! Ar: 23.54 C / 74.05 %, Solo: 21.75 C / 0.00 %, Lux: 66.7, DPV: 0.753 kPa[0m
+[0;32mI (2320501) APP_MAIN: Log salvo! Ar: 23.54 C / 73.99 %, Solo: 21.81 C / 0.00 %, Lux: 67.5, DPV: 0.755 kPa[0m
+[0;32mI (2330491) APP_MAIN: Log salvo! Ar: 23.54 C / 73.99 %, Solo: -0.06 C / 0.00 %, Lux: 68.3, DPV: 0.755 kPa[0m
+[0;32mI (2340241) APP_MAIN: Log salvo! Ar: 23.54 C / 73.99 %, Solo: 21.75 C / 0.00 %, Lux: 68.3, DPV: 0.755 kPa[0m
+[0;32mI (2350471) APP_MAIN: Log salvo! Ar: 23.55 C / 74.01 %, Solo: 21.75 C / 0.00 %, Lux: 70.0, DPV: 0.755 kPa[0m
+[0;32mI (2360461) APP_MAIN: Log salvo! Ar: 23.56 C / 74.06 %, Solo: 21.75 C / 0.00 %, Lux: 70.8, DPV: 0.754 kPa[0m
+[0;32mI (2370451) APP_MAIN: Log salvo! Ar: 23.56 C / 74.03 %, Solo: 21.75 C / 0.00 %, Lux: 70.8, DPV: 0.755 kPa[0m
+[0;32mI (2380201) APP_MAIN: Log salvo! Ar: 23.57 C / 73.98 %, Solo: 21.75 C / 0.00 %, Lux: 71.7, DPV: 0.756 kPa[0m
+[0;32mI (2390431) APP_MAIN: Log salvo! Ar: 23.58 C / 74.00 %, Solo: 21.75 C / 0.00 %, Lux: 71.7, DPV: 0.756 kPa[0m
+[0;32mI (2400421) APP_MAIN: Log salvo! Ar: 23.58 C / 73.94 %, Solo: 21.75 C / 0.00 %, Lux: 71.7, DPV: 0.758 kPa[0m
+[0;32mI (2410171) APP_MAIN: Log salvo! Ar: 23.59 C / 73.91 %, Solo: 21.75 C / 0.00 %, Lux: 73.3, DPV: 0.759 kPa[0m
+[0;32mI (2420401) APP_MAIN: Log salvo! Ar: 23.54 C / 73.94 %, Solo: 21.81 C / 0.00 %, Lux: 74.2, DPV: 0.756 kPa[0m
+[0;32mI (2430391) APP_MAIN: Log salvo! Ar: 23.55 C / 73.97 %, Solo: 21.81 C / 0.00 %, Lux: 75.8, DPV: 0.756 kPa[0m
+[0;32mI (2440141) APP_MAIN: Log salvo! Ar: 23.57 C / 73.95 %, Solo: 21.75 C / 0.00 %, Lux: 76.7, DPV: 0.757 kPa[0m
+[0;32mI (2450371) APP_MAIN: Log salvo! Ar: 23.56 C / 73.98 %, Solo: 21.81 C / 0.00 %, Lux: 74.2, DPV: 0.756 kPa[0m
+[0;32mI (2460361) APP_MAIN: Log salvo! Ar: 23.55 C / 74.01 %, Solo: 21.75 C / 0.00 %, Lux: 72.5, DPV: 0.755 kPa[0m
+[0;32mI (2470111) APP_MAIN: Log salvo! Ar: 23.54 C / 73.98 %, Solo: 21.75 C / 0.00 %, Lux: 77.5, DPV: 0.755 kPa[0m
+[0;32mI (2480341) APP_MAIN: Log salvo! Ar: 23.54 C / 73.93 %, Solo: 21.81 C / 0.00 %, Lux: 72.5, DPV: 0.756 kPa[0m
+[0;32mI (2490331) APP_MAIN: Log salvo! Ar: 23.56 C / 73.88 %, Solo: 21.75 C / 0.00 %, Lux: 75.0, DPV: 0.759 kPa[0m
+[0;32mI (2500081) APP_MAIN: Log salvo! Ar: 23.56 C / 73.90 %, Solo: 21.75 C / 0.00 %, Lux: 80.8, DPV: 0.759 kPa[0m
+[0;32mI (2510311) APP_MAIN: Log salvo! Ar: 23.55 C / 73.87 %, Solo: 21.75 C / 0.00 %, Lux: 85.8, DPV: 0.759 kPa[0m
+[0;32mI (2520301) APP_MAIN: Log salvo! Ar: 23.55 C / 73.78 %, Solo: 21.75 C / 0.00 %, Lux: 83.3, DPV: 0.761 kPa[0m
+[0;32mI (2530051) APP_MAIN: Log salvo! Ar: 23.53 C / 73.70 %, Solo: 21.75 C / 0.00 %, Lux: 81.7, DPV: 0.763 kPa[0m
+[0;32mI (2540281) APP_MAIN: Log salvo! Ar: 23.54 C / 73.73 %, Solo: 21.81 C / 0.00 %, Lux: 78.3, DPV: 0.763 kPa[0m
+[0;32mI (2550271) APP_MAIN: Log salvo! Ar: 23.57 C / 73.60 %, Solo: 21.81 C / 0.00 %, Lux: 75.8, DPV: 0.768 kPa[0m
+[0;32mI (2560021) APP_MAIN: Log salvo! Ar: 23.60 C / 73.55 %, Solo: 21.81 C / 0.00 %, Lux: 78.3, DPV: 0.771 kPa[0m
+[0;32mI (2570251) APP_MAIN: Log salvo! Ar: 23.60 C / 73.44 %, Solo: 21.81 C / 0.00 %, Lux: 80.8, DPV: 0.774 kPa[0m
+[0;32mI (2580241) APP_MAIN: Log salvo! Ar: 23.61 C / 73.39 %, Solo: 21.81 C / 0.00 %, Lux: 78.3, DPV: 0.776 kPa[0m
+[0;32mI (2589991) APP_MAIN: Log salvo! Ar: 23.61 C / 73.38 %, Solo: 21.81 C / 0.00 %, Lux: 80.0, DPV: 0.776 kPa[0m
+[0;32mI (2600221) APP_MAIN: Log salvo! Ar: 23.61 C / 73.35 %, Solo: 21.81 C / 0.00 %, Lux: 78.3, DPV: 0.777 kPa[0m
+[0;32mI (2610211) APP_MAIN: Log salvo! Ar: 23.61 C / 73.34 %, Solo: 21.81 C / 0.00 %, Lux: 83.3, DPV: 0.777 kPa[0m
+[0;32mI (2620201) APP_MAIN: Log salvo! Ar: 23.62 C / 73.33 %, Solo: 21.81 C / 0.00 %, Lux: 79.2, DPV: 0.778 kPa[0m
+[0;32mI (2629951) APP_MAIN: Log salvo! Ar: 23.62 C / 73.24 %, Solo: 21.81 C / 0.00 %, Lux: 81.7, DPV: 0.781 kPa[0m
+[0;32mI (2640181) APP_MAIN: Log salvo! Ar: 23.60 C / 73.22 %, Solo: 21.81 C / 0.00 %, Lux: 79.2, DPV: 0.780 kPa[0m
+[0;32mI (2650171) APP_MAIN: Log salvo! Ar: 23.64 C / 73.16 %, Solo: 21.81 C / 0.00 %, Lux: 78.3, DPV: 0.784 kPa[0m
+[0;32mI (2659921) APP_MAIN: Log salvo! Ar: 23.63 C / 73.14 %, Solo: 21.81 C / 0.00 %, Lux: 78.3, DPV: 0.784 kPa[0m
+[0;32mI (2670151) APP_MAIN: Log salvo! Ar: 23.61 C / 73.06 %, Solo: 21.81 C / 0.00 %, Lux: 78.3, DPV: 0.785 kPa[0m
+[0;32mI (2680201) APP_MAIN: Log salvo! Ar: 23.63 C / 73.02 %, Solo: 21.81 C / 0.00 %, Lux: 78.3, DPV: 0.787 kPa[0m
+[0;32mI (2689901) APP_MAIN: Log salvo! Ar: 23.63 C / 72.88 %, Solo: 21.81 C / 0.00 %, Lux: 77.5, DPV: 0.792 kPa[0m
+[0;32mI (2700121) APP_MAIN: Log salvo! Ar: 23.62 C / 72.77 %, Solo: 21.81 C / 0.00 %, Lux: 75.8, DPV: 0.794 kPa[0m
+[0;32mI (2710121) APP_MAIN: Log salvo! Ar: 23.63 C / 72.75 %, Solo: 21.81 C / 0.00 %, Lux: 77.5, DPV: 0.795 kPa[0m
+[0;32mI (2719871) APP_MAIN: Log salvo! Ar: 23.63 C / 72.72 %, Solo: 21.81 C / 0.00 %, Lux: 76.7, DPV: 0.796 kPa[0m
+[0;32mI (2730091) APP_MAIN: Log salvo! Ar: 23.64 C / 72.61 %, Solo: 21.81 C / 0.00 %, Lux: 78.3, DPV: 0.800 kPa[0m
+[0;32mI (2740091) APP_MAIN: Log salvo! Ar: 23.63 C / 72.55 %, Solo: 21.81 C / 0.00 %, Lux: 77.5, DPV: 0.801 kPa[0m
+[0;32mI (2749841) APP_MAIN: Log salvo! Ar: 23.66 C / 72.49 %, Solo: 21.81 C / 0.00 %, Lux: 77.5, DPV: 0.804 kPa[0m
+[0;32mI (2760061) APP_MAIN: Log salvo! Ar: 23.69 C / 72.51 %, Solo: 21.81 C / 0.00 %, Lux: 75.0, DPV: 0.805 kPa[0m
+[0;32mI (2770061) APP_MAIN: Log salvo! Ar: 23.67 C / 72.45 %, Solo: 21.81 C / 0.00 %, Lux: 76.7, DPV: 0.806 kPa[0m
+[0;32mI (2779811) APP_MAIN: Log salvo! Ar: 23.65 C / 72.34 %, Solo: 21.81 C / 0.00 %, Lux: 75.0, DPV: 0.808 kPa[0m
+[0;32mI (2790031) APP_MAIN: Log salvo! Ar: 23.63 C / 72.14 %, Solo: 21.81 C / 0.00 %, Lux: 75.0, DPV: 0.813 kPa[0m
+[0;32mI (2800031) APP_MAIN: Log salvo! Ar: 23.64 C / 72.13 %, Solo: 21.81 C / 0.00 %, Lux: 75.8, DPV: 0.814 kPa[0m
+[0;32mI (2809781) APP_MAIN: Log salvo! Ar: 23.63 C / 72.09 %, Solo: 21.81 C / 0.00 %, Lux: 75.8, DPV: 0.815 kPa[0m
+[0;32mI (2820001) APP_MAIN: Log salvo! Ar: 23.61 C / 72.13 %, Solo: 21.81 C / 0.00 %, Lux: 74.2, DPV: 0.812 kPa[0m
+[0;32mI (2830001) APP_MAIN: Log salvo! Ar: 23.63 C / 72.17 %, Solo: 21.81 C / 0.00 %, Lux: 72.5, DPV: 0.812 kPa[0m
+[0;32mI (2839751) APP_MAIN: Log salvo! Ar: 23.64 C / 72.07 %, Solo: 21.81 C / 0.00 %, Lux: 77.5, DPV: 0.815 kPa[0m
+[0;32mI (2849971) APP_MAIN: Log salvo! Ar: 23.62 C / 71.99 %, Solo: 21.81 C / 0.00 %, Lux: 71.7, DPV: 0.817 kPa[0m
+[0;32mI (2859971) APP_MAIN: Log salvo! Ar: 23.62 C / 71.86 %, Solo: 21.81 C / 0.00 %, Lux: 70.8, DPV: 0.821 kPa[0m
+[0;32mI (2869721) APP_MAIN: Log salvo! Ar: 23.65 C / 71.81 %, Solo: 21.81 C / 0.00 %, Lux: 71.7, DPV: 0.824 kPa[0m
+[0;32mI (2879961) APP_MAIN: Log salvo! Ar: 23.67 C / 71.73 %, Solo: 21.81 C / 0.00 %, Lux: 70.8, DPV: 0.827 kPa[0m
+[0;32mI (2889931) APP_MAIN: Log salvo! Ar: 23.68 C / 71.73 %, Solo: 21.81 C / 0.00 %, Lux: 70.0, DPV: 0.828 kPa[0m
+[0;32mI (2899931) APP_MAIN: Log salvo! Ar: 23.64 C / 71.78 %, Solo: 21.81 C / 0.00 %, Lux: 70.8, DPV: 0.824 kPa[0m
+[0;32mI (2909681) APP_MAIN: Log salvo! Ar: 23.63 C / 71.81 %, Solo: 21.81 C / 0.00 %, Lux: 69.2, DPV: 0.823 kPa[0m
+[0;32mI (2919901) APP_MAIN: Log salvo! Ar: 23.63 C / 71.85 %, Solo: 21.81 C / 0.00 %, Lux: 70.0, DPV: 0.822 kPa[0m
+[0;32mI (2929901) APP_MAIN: Log salvo! Ar: 23.61 C / 71.83 %, Solo: 21.81 C / 0.00 %, Lux: 70.0, DPV: 0.821 kPa[0m
+[0;32mI (2939651) APP_MAIN: Log salvo! Ar: 23.64 C / 71.74 %, Solo: 21.81 C / 0.00 %, Lux: 68.3, DPV: 0.825 kPa[0m
+[0;32mI (2949871) APP_MAIN: Log salvo! Ar: 23.65 C / 71.74 %, Solo: 21.81 C / 0.00 %, Lux: 67.5, DPV: 0.826 kPa[0m
+[0;32mI (2959871) APP_MAIN: Log salvo! Ar: 23.66 C / 71.66 %, Solo: 21.81 C / 0.00 %, Lux: 68.3, DPV: 0.828 kPa[0m
+[0;32mI (2969621) APP_MAIN: Log salvo! Ar: 23.65 C / 71.62 %, Solo: 21.81 C / 0.00 %, Lux: 67.5, DPV: 0.829 kPa[0m
+[0;32mI (2979841) APP_MAIN: Log salvo! Ar: 23.68 C / 71.66 %, Solo: 21.81 C / 0.00 %, Lux: 67.5, DPV: 0.830 kPa[0m
+[0;32mI (2989841) APP_MAIN: Log salvo! Ar: 23.67 C / 71.61 %, Solo: 21.81 C / 0.00 %, Lux: 65.8, DPV: 0.830 kPa[0m
+[0;32mI (2999581) APP_MAIN: Log salvo! Ar: 23.69 C / 71.63 %, Solo: 21.81 C / 0.00 %, Lux: 64.2, DPV: 0.831 kPa[0m
+[0;32mI (3009811) APP_MAIN: Log salvo! Ar: 23.69 C / 71.65 %, Solo: 21.81 C / 0.00 %, Lux: 65.8, DPV: 0.830 kPa[0m
+[0;32mI (3019801) APP_MAIN: Log salvo! Ar: 23.67 C / 71.70 %, Solo: 21.81 C / 0.00 %, Lux: 65.0, DPV: 0.828 kPa[0m
+[0;32mI (3029551) APP_MAIN: Log salvo! Ar: 23.69 C / 71.71 %, Solo: 21.81 C / 0.00 %, Lux: 65.0, DPV: 0.829 kPa[0m
+[0;32mI (3039781) APP_MAIN: Log salvo! Ar: 23.67 C / 71.72 %, Solo: 21.88 C / 0.00 %, Lux: 63.3, DPV: 0.827 kPa[0m
+[0;32mI (3049771) APP_MAIN: Log salvo! Ar: 23.70 C / 71.69 %, Solo: 21.81 C / 0.00 %, Lux: 62.5, DPV: 0.830 kPa[0m
+[0;32mI (3059521) APP_MAIN: Log salvo! Ar: 23.67 C / 71.74 %, Solo: 21.88 C / 0.00 %, Lux: 62.5, DPV: 0.827 kPa[0m
+[0;32mI (3069751) APP_MAIN: Log salvo! Ar: 23.64 C / 71.75 %, Solo: 21.81 C / 0.00 %, Lux: 62.5, DPV: 0.825 kPa[0m
+[0;32mI (3079741) APP_MAIN: Log salvo! Ar: 23.65 C / 71.78 %, Solo: 21.81 C / 0.00 %, Lux: 62.5, DPV: 0.825 kPa[0m
+[0;32mI (3089491) APP_MAIN: Log salvo! Ar: 23.65 C / 71.81 %, Solo: 21.81 C / 0.00 %, Lux: 61.7, DPV: 0.824 kPa[0m
+[0;32mI (3099721) APP_MAIN: Log salvo! Ar: 23.65 C / 71.82 %, Solo: 21.81 C / 0.00 %, Lux: 65.0, DPV: 0.823 kPa[0m
+[0;32mI (3109711) APP_MAIN: Log salvo! Ar: 23.65 C / 71.74 %, Solo: 21.81 C / 0.00 %, Lux: 64.2, DPV: 0.826 kPa[0m
+[0;32mI (3119461) APP_MAIN: Log salvo! Ar: 23.66 C / 71.76 %, Solo: 21.81 C / 0.00 %, Lux: 65.0, DPV: 0.825 kPa[0m
+[0;32mI (3129691) APP_MAIN: Log salvo! Ar: 23.66 C / 71.73 %, Solo: 21.81 C / 0.00 %, Lux: 62.5, DPV: 0.827 kPa[0m
+[0;32mI (3139681) APP_MAIN: Log salvo! Ar: 23.64 C / 71.69 %, Solo: 21.88 C / 0.00 %, Lux: 60.8, DPV: 0.826 kPa[0m
+[0;32mI (3149671) APP_MAIN: Log salvo! Ar: 23.65 C / 71.72 %, Solo: 21.81 C / 0.00 %, Lux: 60.0, DPV: 0.826 kPa[0m
+[0;32mI (3159421) APP_MAIN: Log salvo! Ar: 23.66 C / 71.77 %, Solo: 21.81 C / 0.00 %, Lux: 60.0, DPV: 0.825 kPa[0m
+[0;32mI (3169651) APP_MAIN: Log salvo! Ar: 23.65 C / 71.76 %, Solo: 21.81 C / 0.00 %, Lux: 60.0, DPV: 0.825 kPa[0m
+[0;32mI (3179641) APP_MAIN: Log salvo! Ar: 23.64 C / 71.88 %, Solo: 21.81 C / 0.00 %, Lux: 60.0, DPV: 0.821 kPa[0m
+[0;32mI (3189391) APP_MAIN: Log salvo! Ar: 23.64 C / 71.93 %, Solo: 21.81 C / 0.00 %, Lux: 60.0, DPV: 0.820 kPa[0m
+[0;32mI (3199621) APP_MAIN: Log salvo! Ar: 23.65 C / 71.87 %, Solo: 21.81 C / 0.00 %, Lux: 60.0, DPV: 0.822 kPa[0m
+[0;32mI (3209611) APP_MAIN: Log salvo! Ar: 23.62 C / 71.90 %, Solo: 21.81 C / 0.00 %, Lux: 60.8, DPV: 0.819 kPa[0m
+[0;32mI (3219361) APP_MAIN: Log salvo! Ar: 23.63 C / 71.94 %, Solo: 21.81 C / 0.00 %, Lux: 60.0, DPV: 0.819 kPa[0m
+[0;32mI (3229591) APP_MAIN: Log salvo! Ar: 23.61 C / 71.92 %, Solo: 21.81 C / 0.00 %, Lux: 61.7, DPV: 0.819 kPa[0m
+[0;32mI (3239581) APP_MAIN: Log salvo! Ar: 23.62 C / 71.93 %, Solo: 21.81 C / 0.00 %, Lux: 61.7, DPV: 0.819 kPa[0m
+[0;32mI (3249331) APP_MAIN: Log salvo! Ar: 23.64 C / 71.90 %, Solo: 21.81 C / 0.00 %, Lux: 61.7, DPV: 0.821 kPa[0m
+[0;32mI (3259561) APP_MAIN: Log salvo! Ar: 23.63 C / 71.91 %, Solo: 21.81 C / 0.00 %, Lux: 63.3, DPV: 0.820 kPa[0m
+[0;32mI (3269551) APP_MAIN: Log salvo! Ar: 23.59 C / 71.91 %, Solo: 21.81 C / 0.00 %, Lux: 64.2, DPV: 0.818 kPa[0m
+[0;32mI (3279301) APP_MAIN: Log salvo! Ar: 23.61 C / 71.80 %, Solo: 21.81 C / 0.00 %, Lux: 65.0, DPV: 0.822 kPa[0m
+[0;32mI (3289531) APP_MAIN: Log salvo! Ar: 23.60 C / 71.80 %, Solo: 21.81 C / 0.00 %, Lux: 64.2, DPV: 0.822 kPa[0m
+[0;32mI (3299521) APP_MAIN: Log salvo! Ar: 23.61 C / 71.87 %, Solo: 21.81 C / 0.00 %, Lux: 65.0, DPV: 0.820 kPa[0m
+[0;32mI (3309271) APP_MAIN: Log salvo! Ar: 23.59 C / 71.81 %, Solo: 21.81 C / 0.00 %, Lux: 65.8, DPV: 0.821 kPa[0m
+[0;32mI (3319501) APP_MAIN: Log salvo! Ar: 23.62 C / 71.93 %, Solo: 21.81 C / 0.00 %, Lux: 66.7, DPV: 0.819 kPa[0m
+[0;32mI (3329491) APP_MAIN: Log salvo! Ar: 23.61 C / 71.88 %, Solo: 21.81 C / 0.00 %, Lux: 68.3, DPV: 0.820 kPa[0m
+[0;32mI (3339241) APP_MAIN: Log salvo! Ar: 23.61 C / 71.93 %, Solo: 21.81 C / 0.00 %, Lux: 68.3, DPV: 0.818 kPa[0m
+[0;32mI (3349471) APP_MAIN: Log salvo! Ar: 23.62 C / 71.92 %, Solo: 21.81 C / 0.00 %, Lux: 70.8, DPV: 0.819 kPa[0m
+[0;32mI (3359461) APP_MAIN: Log salvo! Ar: 23.61 C / 71.98 %, Solo: 21.81 C / 0.00 %, Lux: 70.8, DPV: 0.817 kPa[0m
+[0;32mI (3369211) APP_MAIN: Log salvo! Ar: 23.58 C / 71.96 %, Solo: 21.81 C / 0.00 %, Lux: 71.7, DPV: 0.816 kPa[0m
+[0;32mI (3379441) APP_MAIN: Log salvo! Ar: 23.58 C / 71.94 %, Solo: 21.81 C / 0.00 %, Lux: 70.0, DPV: 0.816 kPa[0m
+[0;32mI (3389431) APP_MAIN: Log salvo! Ar: 23.57 C / 71.93 %, Solo: 21.81 C / 0.00 %, Lux: 71.7, DPV: 0.816 kPa[0m
+[0;32mI (3399181) APP_MAIN: Log salvo! Ar: 23.61 C / 71.96 %, Solo: 21.81 C / 0.00 %, Lux: 72.5, DPV: 0.817 kPa[0m
+[0;32mI (3409411) APP_MAIN: Log salvo! Ar: 23.63 C / 71.96 %, Solo: 21.81 C / 0.00 %, Lux: 72.5, DPV: 0.818 kPa[0m
+[0;32mI (3419401) APP_MAIN: Log salvo! Ar: 23.59 C / 71.93 %, Solo: 21.81 C / 0.00 %, Lux: 74.2, DPV: 0.817 kPa[0m
+[0;32mI (3429391) APP_MAIN: Log salvo! Ar: 23.62 C / 71.99 %, Solo: 21.81 C / 0.00 %, Lux: 72.5, DPV: 0.817 kPa[0m
+[0;32mI (3439141) APP_MAIN: Log salvo! Ar: 23.62 C / 72.04 %, Solo: 21.81 C / 0.00 %, Lux: 72.5, DPV: 0.815 kPa[0m
+[0;32mI (3449371) APP_MAIN: Log salvo! Ar: 23.62 C / 72.15 %, Solo: 21.81 C / 0.00 %, Lux: 74.2, DPV: 0.812 kPa[0m
+[0;32mI (3459361) APP_MAIN: Log salvo! Ar: 23.60 C / 72.09 %, Solo: 21.81 C / 0.00 %, Lux: 75.0, DPV: 0.813 kPa[0m
+[0;32mI (3469111) APP_MAIN: Log salvo! Ar: 23.61 C / 72.15 %, Solo: 21.81 C / 0.00 %, Lux: 75.8, DPV: 0.812 kPa[0m
+[0;32mI (3479341) APP_MAIN: Log salvo! Ar: 23.63 C / 72.08 %, Solo: 21.81 C / 0.00 %, Lux: 79.2, DPV: 0.815 kPa[0m
+[0;32mI (3489331) APP_MAIN: Log salvo! Ar: 23.64 C / 72.16 %, Solo: 21.81 C / 0.00 %, Lux: 105.0, DPV: 0.813 kPa[0m
+[0;32mI (3499081) APP_MAIN: Log salvo! Ar: 23.63 C / 72.13 %, Solo: 21.81 C / 0.00 %, Lux: 111.7, DPV: 0.813 kPa[0m
+[0;32mI (3509311) APP_MAIN: Log salvo! Ar: 23.62 C / 72.12 %, Solo: 21.81 C / 0.00 %, Lux: 112.5, DPV: 0.813 kPa[0m
+[0;32mI (3519301) APP_MAIN: Log salvo! Ar: 23.62 C / 72.09 %, Solo: 21.81 C / 0.00 %, Lux: 113.3, DPV: 0.814 kPa[0m
+[0;32mI (3529051) APP_MAIN: Log salvo! Ar: 23.62 C / 72.05 %, Solo: 21.81 C / 0.00 %, Lux: 114.2, DPV: 0.815 kPa[0m
+[0;32mI (3538531) APP_MAIN: Log salvo! Ar: 23.63 C / 72.04 %, Solo: 21.81 C / 0.00 %, Lux: 105.0, DPV: 0.816 kPa[0m
+[0;32mI (3549271) APP_MAIN: Log salvo! Ar: 23.66 C / 72.00 %, Solo: 21.81 C / 0.00 %, Lux: 95.8, DPV: 0.818 kPa[0m
+[0;32mI (3559021) APP_MAIN: Log salvo! Ar: 23.66 C / 71.99 %, Solo: 21.81 C / 0.00 %, Lux: 98.3, DPV: 0.819 kPa[0m
+[0;32mI (3569251) APP_MAIN: Log salvo! Ar: 23.67 C / 72.00 %, Solo: 21.81 C / 0.00 %, Lux: 95.8, DPV: 0.819 kPa[0m
+[0;32mI (3579241) APP_MAIN: Log salvo! Ar: 23.65 C / 72.04 %, Solo: 21.81 C / 0.00 %, Lux: 84.2, DPV: 0.817 kPa[0m
+[0;32mI (3588991) APP_MAIN: Log salvo! Ar: 23.67 C / 71.99 %, Solo: 21.81 C / 0.00 %, Lux: 99.2, DPV: 0.819 kPa[0m
+[0;32mI (3599221) APP_MAIN: Log salvo! Ar: 23.67 C / 72.07 %, Solo: 21.81 C / 0.00 %, Lux: 88.3, DPV: 0.817 kPa[0m
+[0;32mI (3609211) APP_MAIN: Log salvo! Ar: 23.65 C / 72.12 %, Solo: 21.81 C / 0.00 %, Lux: 81.7, DPV: 0.815 kPa[0m
+[0;32mI (3618961) APP_MAIN: Log salvo! Ar: 23.67 C / 72.09 %, Solo: 21.81 C / 0.00 %, Lux: 74.2, DPV: 0.816 kPa[0m
+[0;32mI (3629191) APP_MAIN: Log salvo! Ar: 23.65 C / 72.10 %, Solo: 53.81 C / 0.00 %, Lux: 75.0, DPV: 0.815 kPa[0m
+[0;32mI (3639181) APP_MAIN: Log salvo! Ar: 23.65 C / 72.10 %, Solo: 21.81 C / 0.00 %, Lux: 75.0, DPV: 0.815 kPa[0m
+[0;32mI (3648931) APP_MAIN: Log salvo! Ar: 23.67 C / 72.07 %, Solo: 21.81 C / 0.00 %, Lux: 72.5, DPV: 0.817 kPa[0m
+[0;32mI (3659161) APP_MAIN: Log salvo! Ar: 23.66 C / 72.09 %, Solo: 21.81 C / 0.00 %, Lux: 71.7, DPV: 0.816 kPa[0m
+[0;32mI (3669151) APP_MAIN: Log salvo! Ar: 23.68 C / 72.06 %, Solo: 21.81 C / 0.00 %, Lux: 70.8, DPV: 0.818 kPa[0m
+[0;32mI (3679141) APP_MAIN: Log salvo! Ar: 23.67 C / 72.05 %, Solo: 21.81 C / 0.00 %, Lux: 71.7, DPV: 0.818 kPa[0m
+[0;32mI (3688891) APP_MAIN: Log salvo! Ar: 23.67 C / 72.02 %, Solo: 21.81 C / 0.00 %, Lux: 70.0, DPV: 0.818 kPa[0m
+[0;32mI (3699121) APP_MAIN: Log salvo! Ar: 23.67 C / 71.97 %, Solo: 21.81 C / 0.00 %, Lux: 72.5, DPV: 0.820 kPa[0m
+[0;32mI (3709121) APP_MAIN: Log salvo! Ar: 23.69 C / 72.04 %, Solo: 21.81 C / 0.00 %, Lux: 69.2, DPV: 0.819 kPa[0m
+[0;32mI (3718861) APP_MAIN: Log salvo! Ar: 23.69 C / 72.00 %, Solo: 21.81 C / 0.00 %, Lux: 68.3, DPV: 0.820 kPa[0m
+[0;32mI (3729091) APP_MAIN: Log salvo! Ar: 23.68 C / 72.10 %, Solo: 21.81 C / 0.00 %, Lux: 72.5, DPV: 0.817 kPa[0m
+[0;32mI (3739081) APP_MAIN: Log salvo! Ar: 23.66 C / 72.06 %, Solo: 21.81 C / 0.00 %, Lux: 68.3, DPV: 0.817 kPa[0m
+[0;32mI (3748831) APP_MAIN: Log salvo! Ar: 23.69 C / 72.05 %, Solo: 21.88 C / 0.00 %, Lux: 68.3, DPV: 0.819 kPa[0m
+[0;32mI (3759061) APP_MAIN: Log salvo! Ar: 23.68 C / 72.04 %, Solo: 21.81 C / 0.00 %, Lux: 69.2, DPV: 0.819 kPa[0m
+[0;32mI (3766851) esp_netif_lwip: DHCP server assigned IP to a client, IP is: 192.168.4.3[0m
+[0;32mI (3769051) APP_MAIN: Log salvo! Ar: 23.69 C / 72.07 %, Solo: 21.81 C / 0.00 %, Lux: 69.2, DPV: 0.818 kPa[0m
+[0;32mI (3778801) APP_MAIN: Log salvo! Ar: 23.69 C / 72.05 %, Solo: 21.81 C / 0.00 %, Lux: 69.2, DPV: 0.819 kPa[0m
+[0;32mI (3789031) APP_MAIN: Log salvo! Ar: 23.69 C / 72.10 %, Solo: 21.81 C / 0.00 %, Lux: 68.3, DPV: 0.817 kPa[0m
+[0;32mI (3799021) APP_MAIN: Log salvo! Ar: 23.69 C / 72.12 %, Solo: 21.81 C / 0.00 %, Lux: 68.3, DPV: 0.816 kPa[0m
+[0;32mI (3811681) APP_MAIN: Log salvo! Ar: 23.67 C / 72.13 %, Solo: 21.81 C / 0.00 %, Lux: 69.2, DPV: 0.815 kPa[0m
+[0;32mI (3819001) APP_MAIN: Log salvo! Ar: 23.67 C / 72.18 %, Solo: 21.81 C / 0.00 %, Lux: 69.2, DPV: 0.814 kPa[0m
+[0;32mI (3829001) APP_MAIN: Log salvo! Ar: 23.68 C / 72.16 %, Solo: 21.81 C / 0.00 %, Lux: 69.2, DPV: 0.815 kPa[0m
+[0;32mI (3838741) APP_MAIN: Log salvo! Ar: 23.68 C / 72.11 %, Solo: 21.81 C / 0.00 %, Lux: 69.2, DPV: 0.816 kPa[0m
+[0;32mI (3848971) APP_MAIN: Log salvo! Ar: 23.70 C / 72.05 %, Solo: 21.81 C / 0.00 %, Lux: 71.7, DPV: 0.819 kPa[0m
+[0;32mI (3858961) APP_MAIN: Log salvo! Ar: 23.70 C / 72.05 %, Solo: 21.81 C / 0.00 %, Lux: 70.0, DPV: 0.819 kPa[0m
+[0;32mI (3868711) APP_MAIN: Log salvo! Ar: 23.69 C / 72.05 %, Solo: 21.81 C / 0.00 %, Lux: 70.0, DPV: 0.819 kPa[0m
+[0;32mI (3878941) APP_MAIN: Log salvo! Ar: 23.71 C / 72.04 %, Solo: 21.81 C / 0.00 %, Lux: 70.0, DPV: 0.820 kPa[0m
+[0;32mI (3888931) APP_MAIN: Log salvo! Ar: 23.71 C / 72.06 %, Solo: 21.81 C / 0.00 %, Lux: 70.0, DPV: 0.819 kPa[0m
+[0;32mI (3898681) APP_MAIN: Log salvo! Ar: 23.72 C / 72.01 %, Solo: 21.81 C / 0.00 %, Lux: 71.7, DPV: 0.822 kPa[0m
+[0;32mI (3908911) APP_MAIN: Log salvo! Ar: 23.70 C / 72.02 %, Solo: 21.81 C / 0.00 %, Lux: 70.0, DPV: 0.820 kPa[0m
+[0;32mI (3918901) APP_MAIN: Log salvo! Ar: 23.68 C / 72.02 %, Solo: 21.81 C / 0.00 %, Lux: 70.8, DPV: 0.819 kPa[0m
+[0;32mI (3928891) APP_MAIN: Log salvo! Ar: 23.68 C / 72.04 %, Solo: 21.81 C / 0.00 %, Lux: 70.8, DPV: 0.818 kPa[0m
+[0;32mI (3938641) APP_MAIN: Log salvo! Ar: 23.67 C / 72.01 %, Solo: 21.81 C / 0.00 %, Lux: 72.5, DPV: 0.819 kPa[0m
+[0;32mI (3948871) APP_MAIN: Log salvo! Ar: 23.65 C / 72.00 %, Solo: 21.81 C / 0.00 %, Lux: 72.5, DPV: 0.818 kPa[0m
+[0;32mI (3958861) APP_MAIN: Log salvo! Ar: 23.63 C / 71.93 %, Solo: 21.81 C / 0.00 %, Lux: 74.2, DPV: 0.819 kPa[0m
+[0;32mI (3968611) APP_MAIN: Log salvo! Ar: 23.64 C / 72.05 %, Solo: 21.81 C / 0.00 %, Lux: 70.8, DPV: 0.816 kPa[0m
+[0;32mI (3978841) APP_MAIN: Log salvo! Ar: 23.64 C / 72.13 %, Solo: 21.81 C / 0.00 %, Lux: 70.8, DPV: 0.814 kPa[0m
+[0;32mI (3988831) APP_MAIN: Log salvo! Ar: 23.63 C / 72.12 %, Solo: 21.81 C / 0.00 %, Lux: 69.2, DPV: 0.814 kPa[0m
+[0;32mI (3998581) APP_MAIN: Log salvo! Ar: 23.61 C / 72.20 %, Solo: 21.81 C / 0.00 %, Lux: 69.2, DPV: 0.810 kPa[0m
+[0;32mI (4008811) APP_MAIN: Log salvo! Ar: 23.63 C / 72.21 %, Solo: 21.88 C / 0.00 %, Lux: 68.3, DPV: 0.811 kPa[0m
+[0;32mI (4018801) APP_MAIN: Log salvo! Ar: 23.62 C / 72.32 %, Solo: 21.81 C / 0.00 %, Lux: 68.3, DPV: 0.807 kPa[0m
+[0;32mI (4028551) APP_MAIN: Log salvo! Ar: 23.64 C / 72.33 %, Solo: 21.81 C / 0.00 %, Lux: 70.0, DPV: 0.808 kPa[0m
+[0;32mI (4038781) APP_MAIN: Log salvo! Ar: 23.63 C / 72.28 %, Solo: 21.81 C / 0.00 %, Lux: 70.8, DPV: 0.809 kPa[0m
+[0;32mI (4048771) APP_MAIN: Log salvo! Ar: 23.62 C / 72.26 %, Solo: 21.88 C / 0.00 %, Lux: 69.2, DPV: 0.809 kPa[0m
+[0;32mI (4058521) APP_MAIN: Log salvo! Ar: 23.62 C / 72.38 %, Solo: 21.81 C / 0.00 %, Lux: 74.2, DPV: 0.806 kPa[0m
+[0;32mI (4068751) APP_MAIN: Log salvo! Ar: 23.64 C / 72.39 %, Solo: 21.81 C / 0.00 %, Lux: 70.8, DPV: 0.806 kPa[0m
+[0;32mI (4078741) APP_MAIN: Log salvo! Ar: 23.63 C / 72.44 %, Solo: 21.81 C / 0.00 %, Lux: 70.0, DPV: 0.805 kPa[0m
+[0;32mI (4088491) APP_MAIN: Log salvo! Ar: 23.66 C / 72.36 %, Solo: 21.81 C / 0.00 %, Lux: 70.8, DPV: 0.808 kPa[0m
+[0;32mI (4098721) APP_MAIN: Log salvo! Ar: 23.68 C / 72.42 %, Solo: 21.88 C / 0.00 %, Lux: 70.8, DPV: 0.807 kPa[0m
+[0;32mI (4108711) APP_MAIN: Log salvo! Ar: 23.66 C / 72.35 %, Solo: 21.88 C / 0.00 %, Lux: 70.8, DPV: 0.808 kPa[0m
+[0;32mI (4118461) APP_MAIN: Log salvo! Ar: 23.68 C / 72.34 %, Solo: 21.81 C / 0.00 %, Lux: 70.8, DPV: 0.810 kPa[0m
+[0;32mI (4128691) APP_MAIN: Log salvo! Ar: 23.70 C / 72.28 %, Solo: 21.81 C / 0.00 %, Lux: 70.0, DPV: 0.812 kPa[0m
+[0;32mI (4138681) APP_MAIN: Log salvo! Ar: 23.71 C / 72.29 %, Solo: 21.88 C / 0.00 %, Lux: 70.8, DPV: 0.813 kPa[0m
+[0;32mI (4148431) APP_MAIN: Log salvo! Ar: 23.69 C / 72.29 %, Solo: 21.88 C / 0.00 %, Lux: 75.0, DPV: 0.811 kPa[0m
+[0;32mI (4158661) APP_MAIN: Log salvo! Ar: 23.72 C / 72.25 %, Solo: 21.81 C / 0.00 %, Lux: 70.8, DPV: 0.814 kPa[0m
+[0;32mI (4168651) APP_MAIN: Log salvo! Ar: 23.70 C / 72.22 %, Solo: 21.88 C / 0.00 %, Lux: 71.7, DPV: 0.814 kPa[0m
+[0;32mI (4178401) APP_MAIN: Log salvo! Ar: 23.68 C / 72.19 %, Solo: 21.88 C / 0.00 %, Lux: 71.7, DPV: 0.814 kPa[0m
+[0;32mI (4188631) APP_MAIN: Log salvo! Ar: 23.71 C / 72.20 %, Solo: 21.81 C / 0.00 %, Lux: 72.5, DPV: 0.815 kPa[0m
+[0;32mI (4198621) APP_MAIN: Log salvo! Ar: 23.73 C / 72.17 %, Solo: 21.88 C / 0.00 %, Lux: 72.5, DPV: 0.817 kPa[0m
+[0;32mI (4208611) APP_MAIN: Log salvo! Ar: 23.72 C / 72.18 %, Solo: 21.88 C / 0.00 %, Lux: 72.5, DPV: 0.816 kPa[0m
+[0;32mI (4218361) APP_MAIN: Log salvo! Ar: 23.72 C / 72.12 %, Solo: 21.81 C / 0.00 %, Lux: 72.5, DPV: 0.818 kPa[0m
+[0;32mI (4228591) APP_MAIN: Log salvo! Ar: 23.70 C / 72.13 %, Solo: 21.88 C / 0.00 %, Lux: 71.7, DPV: 0.817 kPa[0m
+[0;32mI (4238581) APP_MAIN: Log salvo! Ar: 23.72 C / 72.24 %, Solo: 21.88 C / 0.00 %, Lux: 70.8, DPV: 0.814 kPa[0m
+[0;32mI (4248331) APP_MAIN: Log salvo! Ar: 23.74 C / 72.12 %, Solo: 21.88 C / 0.00 %, Lux: 69.2, DPV: 0.819 kPa[0m
+[0;32mI (4258561) APP_MAIN: Log salvo! Ar: 23.73 C / 72.10 %, Solo: 21.88 C / 0.00 %, Lux: 70.0, DPV: 0.819 kPa[0m
+[0;32mI (4268551) APP_MAIN: Log salvo! Ar: 23.74 C / 72.11 %, Solo: 21.88 C / 0.00 %, Lux: 69.2, DPV: 0.819 kPa[0m
+[0;32mI (4278301) APP_MAIN: Log salvo! Ar: 23.70 C / 72.17 %, Solo: 21.88 C / 0.00 %, Lux: 69.2, DPV: 0.816 kPa[0m
+[0;32mI (4288531) APP_MAIN: Log salvo! Ar: 23.72 C / 72.16 %, Solo: 21.88 C / 0.00 %, Lux: 69.2, DPV: 0.817 kPa[0m
+[0;32mI (4298521) APP_MAIN: Log salvo! Ar: 23.72 C / 72.14 %, Solo: 21.81 C / 0.00 %, Lux: 69.2, DPV: 0.818 kPa[0m
+[0;32mI (4308271) APP_MAIN: Log salvo! Ar: 23.73 C / 72.21 %, Solo: 21.81 C / 0.00 %, Lux: 69.2, DPV: 0.816 kPa[0m
+[0;32mI (4318501) APP_MAIN: Log salvo! Ar: 23.72 C / 72.21 %, Solo: 21.88 C / 0.00 %, Lux: 70.0, DPV: 0.815 kPa[0m
+[0;32mI (4328491) APP_MAIN: Log salvo! Ar: 23.72 C / 72.15 %, Solo: 21.94 C / 0.00 %, Lux: 70.0, DPV: 0.817 kPa[0m
+[0;32mI (4338241) APP_MAIN: Log salvo! Ar: 23.72 C / 72.17 %, Solo: 21.88 C / 0.00 %, Lux: 70.0, DPV: 0.817 kPa[0m
+[0;32mI (4348471) APP_MAIN: Log salvo! Ar: 23.70 C / 72.16 %, Solo: 21.88 C / 0.00 %, Lux: 69.2, DPV: 0.816 kPa[0m
+[0;32mI (4358461) APP_MAIN: Log salvo! Ar: 23.70 C / 72.16 %, Solo: 21.81 C / 0.00 %, Lux: 68.3, DPV: 0.816 kPa[0m
+[0;32mI (4368211) APP_MAIN: Log salvo! Ar: 23.73 C / 72.09 %, Solo: 21.88 C / 0.00 %, Lux: 68.3, DPV: 0.819 kPa[0m
+[0;32mI (4378441) APP_MAIN: Log salvo! Ar: 23.70 C / 72.09 %, Solo: 21.88 C / 0.00 %, Lux: 66.7, DPV: 0.818 kPa[0m
+[0;32mI (4388431) APP_MAIN: Log salvo! Ar: 23.73 C / 72.09 %, Solo: 21.88 C / 0.00 %, Lux: 68.3, DPV: 0.819 kPa[0m
+[0;32mI (4398181) APP_MAIN: Log salvo! Ar: 23.71 C / 72.10 %, Solo: 21.88 C / 0.00 %, Lux: 68.3, DPV: 0.818 kPa[0m
+[0;32mI (4408411) APP_MAIN: Log salvo! Ar: 23.71 C / 72.13 %, Solo: 21.88 C / 0.00 %, Lux: 69.2, DPV: 0.818 kPa[0m
+[0;32mI (4418401) APP_MAIN: Log salvo! Ar: 23.72 C / 72.16 %, Solo: 21.88 C / 0.00 %, Lux: 69.2, DPV: 0.817 kPa[0m
+[0;32mI (4428151) APP_MAIN: Log salvo! Ar: 23.71 C / 72.17 %, Solo: 21.88 C / 0.00 %, Lux: 69.2, DPV: 0.816 kPa[0m
+[0;32mI (4438381) APP_MAIN: Log salvo! Ar: 23.71 C / 72.20 %, Solo: 21.81 C / 0.00 %, Lux: 70.0, DPV: 0.815 kPa[0m
+[0;32mI (4448371) APP_MAIN: Log salvo! Ar: 23.71 C / 72.20 %, Solo: 21.88 C / 0.00 %, Lux: 69.2, DPV: 0.815 kPa[0m
+[0;32mI (4458361) APP_MAIN: Log salvo! Ar: 23.73 C / 72.21 %, Solo: 21.81 C / 0.00 %, Lux: 70.0, DPV: 0.816 kPa[0m
+[0;32mI (4468111) APP_MAIN: Log salvo! Ar: 23.74 C / 72.17 %, Solo: 21.81 C / 0.00 %, Lux: 70.0, DPV: 0.818 kPa[0m
+[0;32mI (4478341) APP_MAIN: Log salvo! Ar: 23.75 C / 72.16 %, Solo: 21.88 C / 0.00 %, Lux: 69.2, DPV: 0.819 kPa[0m
+[0;32mI (4488331) APP_MAIN: Log salvo! Ar: 23.73 C / 72.11 %, Solo: 21.88 C / 0.00 %, Lux: 69.2, DPV: 0.819 kPa[0m
+[0;32mI (4498081) APP_MAIN: Log salvo! Ar: 23.74 C / 72.06 %, Solo: 21.88 C / 0.00 %, Lux: 69.2, DPV: 0.821 kPa[0m
+[0;32mI (4508311) APP_MAIN: Log salvo! Ar: 23.75 C / 72.07 %, Solo: 21.88 C / 0.00 %, Lux: 70.0, DPV: 0.821 kPa[0m
+[0;32mI (4518301) APP_MAIN: Log salvo! Ar: 23.74 C / 72.05 %, Solo: 21.81 C / 0.00 %, Lux: 70.8, DPV: 0.821 kPa[0m
+[0;32mI (4528051) APP_MAIN: Log salvo! Ar: 23.73 C / 72.00 %, Solo: 21.81 C / 0.00 %, Lux: 71.7, DPV: 0.822 kPa[0m
+[0;32mI (4538281) APP_MAIN: Log salvo! Ar: 23.72 C / 72.06 %, Solo: 21.88 C / 0.00 %, Lux: 75.8, DPV: 0.820 kPa[0m
+[0;32mI (4548271) APP_MAIN: Log salvo! Ar: 23.73 C / 72.04 %, Solo: 21.81 C / 0.00 %, Lux: 68.3, DPV: 0.821 kPa[0m
+[0;32mI (4558021) APP_MAIN: Log salvo! Ar: 23.73 C / 72.11 %, Solo: 21.81 C / 0.00 %, Lux: 75.8, DPV: 0.819 kPa[0m
+[0;32mI (4568251) APP_MAIN: Log salvo! Ar: 23.74 C / 72.13 %, Solo: 21.81 C / 0.00 %, Lux: 72.5, DPV: 0.819 kPa[0m
+[0;32mI (4578241) APP_MAIN: Log salvo! Ar: 23.75 C / 72.09 %, Solo: 21.81 C / 0.00 %, Lux: 73.3, DPV: 0.820 kPa[0m
+[0;32mI (4587991) APP_MAIN: Log salvo! Ar: 23.77 C / 72.06 %, Solo: 21.81 C / 0.00 %, Lux: 72.5, DPV: 0.822 kPa[0m
+[0;32mI (4598221) APP_MAIN: Log salvo! Ar: 23.75 C / 71.97 %, Solo: 21.81 C / 0.00 %, Lux: 72.5, DPV: 0.824 kPa[0m
+[0;32mI (4608211) APP_MAIN: Log salvo! Ar: 23.76 C / 72.07 %, Solo: 21.88 C / 0.00 %, Lux: 74.2, DPV: 0.822 kPa[0m
+[0;32mI (4617961) APP_MAIN: Log salvo! Ar: 23.74 C / 72.06 %, Solo: 21.81 C / 0.00 %, Lux: 74.2, DPV: 0.821 kPa[0m
+[0;32mI (4628191) APP_MAIN: Log salvo! Ar: 23.75 C / 72.05 %, Solo: 21.88 C / 0.00 %, Lux: 75.0, DPV: 0.821 kPa[0m
+[0;32mI (4641091) APP_MAIN: Log salvo! Ar: 23.76 C / 72.05 %, Solo: 21.88 C / 0.00 %, Lux: 78.3, DPV: 0.822 kPa[0m
+[0;32mI (4647931) APP_MAIN: Log salvo! Ar: 23.77 C / 72.13 %, Solo: 21.88 C / 0.00 %, Lux: 75.8, DPV: 0.820 kPa[0m
+[0;32mI (4658161) APP_MAIN: Log salvo! Ar: 23.77 C / 72.14 %, Solo: 21.88 C / 0.00 %, Lux: 81.7, DPV: 0.820 kPa[0m
+[0;32mI (4668151) APP_MAIN: Log salvo! Ar: 23.78 C / 72.13 %, Solo: 21.88 C / 0.00 %, Lux: 75.8, DPV: 0.821 kPa[0m
+[0;32mI (4677901) APP_MAIN: Log salvo! Ar: 23.76 C / 72.06 %, Solo: 21.81 C / 0.00 %, Lux: 76.7, DPV: 0.822 kPa[0m
+[0;32mI (4687381) APP_MAIN: Log salvo! Ar: 23.77 C / 72.11 %, Solo: 21.81 C / 0.00 %, Lux: 75.8, DPV: 0.821 kPa[0m
+[0;32mI (4698121) APP_MAIN: Log salvo! Ar: 23.77 C / 72.09 %, Solo: 21.88 C / 0.00 %, Lux: 75.8, DPV: 0.821 kPa[0m
+[0;32mI (4708111) APP_MAIN: Log salvo! Ar: 23.77 C / 72.07 %, Solo: 21.88 C / 0.00 %, Lux: 75.0, DPV: 0.822 kPa[0m
+[0;32mI (4717861) APP_MAIN: Log salvo! Ar: 23.77 C / 72.14 %, Solo: 21.88 C / 0.00 %, Lux: 75.0, DPV: 0.820 kPa[0m
+[0;32mI (4728091) APP_MAIN: Log salvo! Ar: 23.76 C / 72.04 %, Solo: 21.88 C / 0.00 %, Lux: 75.0, DPV: 0.822 kPa[0m
+[0;32mI (4738081) APP_MAIN: Log salvo! Ar: 23.77 C / 72.12 %, Solo: 21.88 C / 0.00 %, Lux: 75.0, DPV: 0.820 kPa[0m
+[0;32mI (4747831) APP_MAIN: Log salvo! Ar: 23.78 C / 72.09 %, Solo: 21.88 C / 0.00 %, Lux: 75.0, DPV: 0.822 kPa[0m
+[0;32mI (4758061) APP_MAIN: Log salvo! Ar: 23.79 C / 72.12 %, Solo: 21.88 C / 0.00 %, Lux: 75.0, DPV: 0.821 kPa[0m
+[0;32mI (4768061) APP_MAIN: Log salvo! Ar: 23.77 C / 72.15 %, Solo: 21.88 C / 0.00 %, Lux: 75.0, DPV: 0.820 kPa[0m
+[0;32mI (4777801) APP_MAIN: Log salvo! Ar: 23.75 C / 72.14 %, Solo: 21.88 C / 0.00 %, Lux: 73.3, DPV: 0.819 kPa[0m
+[0;32mI (4788031) APP_MAIN: Log salvo! Ar: 23.77 C / 72.08 %, Solo: 21.88 C / 0.00 %, Lux: 75.0, DPV: 0.822 kPa[0m
+[0;32mI (4798021) APP_MAIN: Log salvo! Ar: 23.74 C / 72.07 %, Solo: 21.88 C / 0.00 %, Lux: 74.2, DPV: 0.820 kPa[0m
+[0;32mI (4807771) APP_MAIN: Log salvo! Ar: 23.76 C / 72.14 %, Solo: 21.88 C / 0.00 %, Lux: 75.0, DPV: 0.819 kPa[0m
+[0;32mI (4818001) APP_MAIN: Log salvo! Ar: 23.74 C / 72.11 %, Solo: 21.88 C / 0.00 %, Lux: 74.2, DPV: 0.819 kPa[0m
+[0;32mI (4827991) APP_MAIN: Log salvo! Ar: 23.74 C / 72.13 %, Solo: 21.88 C / 0.00 %, Lux: 74.2, DPV: 0.819 kPa[0m
+[0;32mI (4837741) APP_MAIN: Log salvo! Ar: 23.73 C / 72.15 %, Solo: 21.88 C / 0.00 %, Lux: 75.0, DPV: 0.818 kPa[0m
+[0;32mI (4847971) APP_MAIN: Log salvo! Ar: 23.70 C / 72.26 %, Solo: 21.88 C / 0.00 %, Lux: 75.0, DPV: 0.813 kPa[0m
+[0;32mI (4857961) APP_MAIN: Log salvo! Ar: 23.71 C / 72.26 %, Solo: 21.88 C / 0.00 %, Lux: 75.0, DPV: 0.813 kPa[0m
+[0;32mI (4867711) APP_MAIN: Log salvo! Ar: 23.72 C / 72.30 %, Solo: 21.88 C / 0.00 %, Lux: 75.8, DPV: 0.813 kPa[0m
+[0;32mI (4877941) APP_MAIN: Log salvo! Ar: 23.71 C / 72.30 %, Solo: 21.88 C / 0.00 %, Lux: 73.3, DPV: 0.813 kPa[0m
+[0;32mI (4887931) APP_MAIN: Log salvo! Ar: 23.71 C / 72.27 %, Solo: 21.81 C / 0.00 %, Lux: 71.7, DPV: 0.813 kPa[0m
+[0;32mI (4897681) APP_MAIN: Log salvo! Ar: 23.72 C / 72.33 %, Solo: 21.88 C / 0.00 %, Lux: 73.3, DPV: 0.812 kPa[0m
+[0;32mI (4907911) APP_MAIN: Log salvo! Ar: 23.72 C / 72.39 %, Solo: 21.88 C / 0.00 %, Lux: 73.3, DPV: 0.810 kPa[0m
+[0;32mI (4917901) APP_MAIN: Log salvo! Ar: 23.73 C / 72.33 %, Solo: 21.88 C / 0.00 %, Lux: 74.2, DPV: 0.812 kPa[0m
+[0;32mI (4927651) APP_MAIN: Log salvo! Ar: 23.72 C / 72.31 %, Solo: 21.88 C / 0.00 %, Lux: 72.5, DPV: 0.812 kPa[0m
+[0;32mI (4937881) APP_MAIN: Log salvo! Ar: 23.73 C / 72.33 %, Solo: 21.88 C / 0.00 %, Lux: 73.3, DPV: 0.812 kPa[0m
+[0;32mI (4947871) APP_MAIN: Log salvo! Ar: 23.76 C / 72.29 %, Solo: 21.88 C / 0.00 %, Lux: 76.7, DPV: 0.815 kPa[0m
+[0;32mI (4957621) APP_MAIN: Log salvo! Ar: 23.79 C / 72.30 %, Solo: 21.88 C / 0.00 %, Lux: 70.0, DPV: 0.816 kPa[0m
+[0;32mI (4967851) APP_MAIN: Log salvo! Ar: 23.77 C / 72.30 %, Solo: 21.88 C / 0.00 %, Lux: 73.3, DPV: 0.815 kPa[0m
+[0;32mI (4977841) APP_MAIN: Log salvo! Ar: 23.73 C / 72.26 %, Solo: 21.81 C / 0.00 %, Lux: 72.5, DPV: 0.814 kPa[0m
+[0;32mI (4987831) APP_MAIN: Log salvo! Ar: 23.76 C / 72.26 %, Solo: 21.81 C / 0.00 %, Lux: 70.8, DPV: 0.816 kPa[0m
+[0;32mI (4997581) APP_MAIN: Log salvo! Ar: 23.79 C / 72.19 %, Solo: 21.88 C / 0.00 %, Lux: 70.0, DPV: 0.819 kPa[0m
+[0;32mI (5007811) APP_MAIN: Log salvo! Ar: 23.77 C / 72.16 %, Solo: 21.81 C / 0.00 %, Lux: 70.0, DPV: 0.819 kPa[0m
+[0;32mI (5017801) APP_MAIN: Log salvo! Ar: 23.76 C / 72.13 %, Solo: -0.12 C / 0.00 %, Lux: 68.3, DPV: 0.819 kPa[0m
+[0;32mI (5027551) APP_MAIN: Log salvo! Ar: 23.76 C / 72.07 %, Solo: 21.88 C / 0.00 %, Lux: 69.2, DPV: 0.822 kPa[0m
+[0;32mI (5037781) APP_MAIN: Log salvo! Ar: 23.75 C / 72.10 %, Solo: 21.88 C / 0.00 %, Lux: 68.3, DPV: 0.820 kPa[0m
+[0;32mI (5047771) APP_MAIN: Log salvo! Ar: 23.74 C / 72.13 %, Solo: 21.88 C / 0.00 %, Lux: 70.8, DPV: 0.819 kPa[0m
+[0;32mI (5057521) APP_MAIN: Log salvo! Ar: 23.74 C / 72.10 %, Solo: 21.88 C / 0.00 %, Lux: 67.5, DPV: 0.820 kPa[0m
+[0;32mI (5067751) APP_MAIN: Log salvo! Ar: 23.74 C / 72.18 %, Solo: 21.88 C / 0.00 %, Lux: 67.5, DPV: 0.817 kPa[0m
+[0;32mI (5077741) APP_MAIN: Log salvo! Ar: 23.73 C / 72.18 %, Solo: 21.88 C / 0.00 %, Lux: 69.2, DPV: 0.817 kPa[0m
+[0;32mI (5087491) APP_MAIN: Log salvo! Ar: 23.74 C / 72.23 %, Solo: 21.88 C / 0.00 %, Lux: 68.3, DPV: 0.816 kPa[0m
+[0;32mI (5097721) APP_MAIN: Log salvo! Ar: 23.76 C / 72.15 %, Solo: 21.88 C / 0.00 %, Lux: 66.7, DPV: 0.819 kPa[0m
+[0;32mI (5107711) APP_MAIN: Log salvo! Ar: 23.75 C / 72.07 %, Solo: 21.88 C / 0.00 %, Lux: 67.5, DPV: 0.821 kPa[0m
+[0;32mI (5117461) APP_MAIN: Log salvo! Ar: 23.77 C / 72.12 %, Solo: 21.88 C / 0.00 %, Lux: 68.3, DPV: 0.820 kPa[0m
+[0;32mI (5127691) APP_MAIN: Log salvo! Ar: 23.78 C / 72.05 %, Solo: 21.88 C / 0.00 %, Lux: 69.2, DPV: 0.823 kPa[0m
+[0;32mI (5137681) APP_MAIN: Log salvo! Ar: 23.79 C / 72.13 %, Solo: 21.88 C / 0.00 %, Lux: 65.8, DPV: 0.821 kPa[0m
+[0;32mI (5147431) APP_MAIN: Log salvo! Ar: 23.78 C / 72.05 %, Solo: 21.88 C / 0.00 %, Lux: 66.7, DPV: 0.823 kPa[0m
+[0;32mI (5157661) APP_MAIN: Log salvo! Ar: 23.74 C / 72.15 %, Solo: 21.88 C / 0.00 %, Lux: 66.7, DPV: 0.818 kPa[0m
+[0;32mI (5167661) APP_MAIN: Log salvo! Ar: 23.76 C / 72.14 %, Solo: 21.88 C / 0.00 %, Lux: 66.7, DPV: 0.819 kPa[0m
+[0;32mI (5177401) APP_MAIN: Log salvo! Ar: 23.77 C / 72.20 %, Solo: 21.88 C / 0.00 %, Lux: 66.7, DPV: 0.818 kPa[0m
+[0;32mI (5187641) APP_MAIN: Log salvo! Ar: 23.75 C / 72.13 %, Solo: 21.88 C / 0.00 %, Lux: 66.7, DPV: 0.819 kPa[0m
+[0;32mI (5197621) APP_MAIN: Log salvo! Ar: 23.75 C / 72.17 %, Solo: 21.88 C / 0.00 %, Lux: 66.7, DPV: 0.818 kPa[0m
+[0;32mI (5207371) APP_MAIN: Log salvo! Ar: 23.75 C / 72.16 %, Solo: 21.88 C / 0.00 %, Lux: 68.3, DPV: 0.818 kPa[0m
+[0;32mI (5217601) APP_MAIN: Log salvo! Ar: 23.76 C / 72.15 %, Solo: 21.88 C / 0.00 %, Lux: 66.7, DPV: 0.819 kPa[0m
+[0;32mI (5227591) APP_MAIN: Log salvo! Ar: 23.75 C / 72.20 %, Solo: 21.88 C / 0.00 %, Lux: 67.5, DPV: 0.817 kPa[0m
+[0;32mI (5237581) APP_MAIN: Log salvo! Ar: 23.77 C / 72.15 %, Solo: 21.88 C / 0.00 %, Lux: 67.5, DPV: 0.819 kPa[0m
+[0;32mI (5247331) APP_MAIN: Log salvo! Ar: 23.79 C / 72.04 %, Solo: 21.88 C / 0.00 %, Lux: 66.7, DPV: 0.824 kPa[0m
+[0;32mI (5257561) APP_MAIN: Log salvo! Ar: 23.77 C / 72.05 %, Solo: 21.88 C / 0.00 %, Lux: 66.7, DPV: 0.823 kPa[0m
+[0;32mI (5267551) APP_MAIN: Log salvo! Ar: 23.78 C / 72.01 %, Solo: 21.88 C / 0.00 %, Lux: 66.7, DPV: 0.824 kPa[0m
+[0;32mI (5277301) APP_MAIN: Log salvo! Ar: 23.78 C / 72.02 %, Solo: 21.88 C / 0.00 %, Lux: 66.7, DPV: 0.824 kPa[0m
+[0;32mI (5287531) APP_MAIN: Log salvo! Ar: 23.79 C / 71.99 %, Solo: 21.88 C / 0.00 %, Lux: 66.7, DPV: 0.825 kPa[0m
+[0;32mI (5297521) APP_MAIN: Log salvo! Ar: 23.77 C / 72.00 %, Solo: 21.88 C / 0.00 %, Lux: 66.7, DPV: 0.824 kPa[0m
+[0;32mI (5307271) APP_MAIN: Log salvo! Ar: 23.79 C / 72.05 %, Solo: 21.88 C / 0.00 %, Lux: 66.7, DPV: 0.824 kPa[0m
+[0;32mI (5317501) APP_MAIN: Log salvo! Ar: 23.78 C / 72.04 %, Solo: 21.88 C / 0.00 %, Lux: 66.7, DPV: 0.823 kPa[0m
+[0;32mI (5327491) APP_MAIN: Log salvo! Ar: 23.78 C / 72.03 %, Solo: -0.06 C / 0.00 %, Lux: 66.7, DPV: 0.824 kPa[0m
+[0;32mI (5337241) APP_MAIN: Log salvo! Ar: 23.78 C / 71.99 %, Solo: -0.06 C / 0.00 %, Lux: 67.5, DPV: 0.825 kPa[0m
+[0;32mI (5347471) APP_MAIN: Log salvo! Ar: 23.78 C / 72.00 %, Solo: 21.88 C / 0.00 %, Lux: 65.0, DPV: 0.825 kPa[0m
+[0;32mI (5357461) APP_MAIN: Log salvo! Ar: 23.79 C / 71.97 %, Solo: 21.88 C / 0.00 %, Lux: 65.8, DPV: 0.826 kPa[0m
+[0;32mI (5367211) APP_MAIN: Log salvo! Ar: 23.79 C / 72.00 %, Solo: 21.88 C / 0.00 %, Lux: 63.3, DPV: 0.825 kPa[0m
+[0;32mI (5377441) APP_MAIN: Log salvo! Ar: 23.79 C / 71.97 %, Solo: 21.88 C / 0.00 %, Lux: 65.0, DPV: 0.826 kPa[0m
+[0;32mI (5387431) APP_MAIN: Log salvo! Ar: 23.79 C / 71.94 %, Solo: 21.94 C / 0.00 %, Lux: 65.0, DPV: 0.827 kPa[0m
+[0;32mI (5397181) APP_MAIN: Log salvo! Ar: 23.81 C / 71.93 %, Solo: 21.88 C / 0.00 %, Lux: 63.3, DPV: 0.828 kPa[0m
+[0;32mI (5407411) APP_MAIN: Log salvo! Ar: 23.80 C / 71.88 %, Solo: 21.88 C / 0.00 %, Lux: 66.7, DPV: 0.829 kPa[0m
+[0;32mI (5417401) APP_MAIN: Log salvo! Ar: 23.81 C / 71.88 %, Solo: 21.88 C / 0.00 %, Lux: 65.0, DPV: 0.829 kPa[0m
+[0;32mI (5427151) APP_MAIN: Log salvo! Ar: 23.79 C / 71.92 %, Solo: 21.88 C / 0.00 %, Lux: 66.7, DPV: 0.827 kPa[0m
+[0;32mI (5437381) APP_MAIN: Log salvo! Ar: 23.78 C / 71.94 %, Solo: 21.88 C / 0.00 %, Lux: 63.3, DPV: 0.826 kPa[0m
+[0;32mI (5447371) APP_MAIN: Log salvo! Ar: 23.78 C / 71.95 %, Solo: 21.88 C / 0.00 %, Lux: 63.3, DPV: 0.826 kPa[0m
+[0;32mI (5457121) APP_MAIN: Log salvo! Ar: 23.78 C / 71.93 %, Solo: 21.88 C / 0.00 %, Lux: 63.3, DPV: 0.826 kPa[0m
+[0;32mI (5467351) APP_MAIN: Log salvo! Ar: 23.77 C / 71.92 %, Solo: 21.88 C / 0.00 %, Lux: 63.3, DPV: 0.827 kPa[0m
+[0;32mI (5477341) APP_MAIN: Log salvo! Ar: 23.78 C / 71.99 %, Solo: 21.88 C / 0.00 %, Lux: 63.3, DPV: 0.825 kPa[0m
+[0;32mI (5487091) APP_MAIN: Log salvo! Ar: 23.79 C / 71.96 %, Solo: 21.88 C / 0.00 %, Lux: 62.5, DPV: 0.826 kPa[0m
+[0;32mI (5497321) APP_MAIN: Log salvo! Ar: 23.79 C / 72.05 %, Solo: 21.88 C / 0.00 %, Lux: 62.5, DPV: 0.824 kPa[0m
+[0;32mI (5507311) APP_MAIN: Log salvo! Ar: 23.80 C / 72.05 %, Solo: 21.88 C / 0.00 %, Lux: 61.7, DPV: 0.824 kPa[0m
+[0;32mI (5517301) APP_MAIN: Log salvo! Ar: 23.78 C / 72.07 %, Solo: 21.88 C / 0.00 %, Lux: 62.5, DPV: 0.823 kPa[0m
+[0;32mI (5527051) APP_MAIN: Log salvo! Ar: 23.80 C / 72.06 %, Solo: 21.88 C / 0.00 %, Lux: 62.5, DPV: 0.824 kPa[0m
+[0;32mI (5537281) APP_MAIN: Log salvo! Ar: 23.79 C / 72.05 %, Solo: 21.88 C / 0.00 %, Lux: 61.7, DPV: 0.823 kPa[0m
+[0;32mI (5547271) APP_MAIN: Log salvo! Ar: 23.80 C / 72.08 %, Solo: 21.88 C / 0.00 %, Lux: 61.7, DPV: 0.823 kPa[0m
+[0;32mI (5557021) APP_MAIN: Log salvo! Ar: 23.80 C / 72.05 %, Solo: 21.88 C / 0.00 %, Lux: 64.2, DPV: 0.824 kPa[0m
+[0;32mI (5567251) APP_MAIN: Log salvo! Ar: 23.82 C / 72.06 %, Solo: 21.94 C / 0.00 %, Lux: 61.7, DPV: 0.825 kPa[0m
+[0;32mI (5577241) APP_MAIN: Log salvo! Ar: 23.81 C / 72.08 %, Solo: 21.88 C / 0.00 %, Lux: 61.7, DPV: 0.824 kPa[0m
+[0;32mI (5586991) APP_MAIN: Log salvo! Ar: 23.81 C / 72.08 %, Solo: 21.88 C / 0.00 %, Lux: 61.7, DPV: 0.824 kPa[0m
+[0;32mI (5597221) APP_MAIN: Log salvo! Ar: 23.79 C / 72.03 %, Solo: 21.88 C / 0.00 %, Lux: 60.8, DPV: 0.824 kPa[0m
+[0;32mI (5607211) APP_MAIN: Log salvo! Ar: 23.82 C / 71.96 %, Solo: 21.88 C / 0.00 %, Lux: 60.8, DPV: 0.828 kPa[0m
+[0;32mI (5616961) APP_MAIN: Log salvo! Ar: 23.82 C / 71.89 %, Solo: 21.88 C / 0.00 %, Lux: 60.8, DPV: 0.830 kPa[0m
+[0;32mI (5627191) APP_MAIN: Log salvo! Ar: 23.83 C / 71.90 %, Solo: 21.88 C / 0.00 %, Lux: 60.0, DPV: 0.830 kPa[0m
+[0;32mI (5637181) APP_MAIN: Log salvo! Ar: 23.81 C / 71.90 %, Solo: 21.88 C / 0.00 %, Lux: 60.0, DPV: 0.829 kPa[0m
+[0;32mI (5646931) APP_MAIN: Log salvo! Ar: 23.81 C / 71.92 %, Solo: 21.88 C / 0.00 %, Lux: 60.0, DPV: 0.829 kPa[0m
+[0;32mI (5657161) APP_MAIN: Log salvo! Ar: 23.77 C / 71.97 %, Solo: 21.88 C / 0.00 %, Lux: 60.8, DPV: 0.825 kPa[0m
+[0;32mI (5667151) APP_MAIN: Log salvo! Ar: 23.79 C / 71.95 %, Solo: 21.88 C / 0.00 %, Lux: 58.3, DPV: 0.827 kPa[0m
+[0;32mI (5676901) APP_MAIN: Log salvo! Ar: 23.81 C / 71.97 %, Solo: 21.94 C / 0.00 %, Lux: 58.3, DPV: 0.827 kPa[0m
+[0;32mI (5687131) APP_MAIN: Log salvo! Ar: 23.81 C / 72.01 %, Solo: 21.94 C / 0.00 %, Lux: 59.2, DPV: 0.826 kPa[0m
+[0;32mI (5697121) APP_MAIN: Log salvo! Ar: 23.78 C / 72.02 %, Solo: 21.94 C / 0.00 %, Lux: 58.3, DPV: 0.824 kPa[0m
+[0;32mI (5706871) APP_MAIN: Log salvo! Ar: 23.81 C / 72.09 %, Solo: 21.88 C / 0.00 %, Lux: 58.3, DPV: 0.823 kPa[0m
+[0;32mI (5717101) APP_MAIN: Log salvo! Ar: 23.81 C / 72.07 %, Solo: 21.94 C / 0.00 %, Lux: 59.2, DPV: 0.824 kPa[0m
+[0;32mI (5727091) APP_MAIN: Log salvo! Ar: 23.83 C / 72.03 %, Solo: 21.88 C / 0.00 %, Lux: 58.3, DPV: 0.826 kPa[0m
+[0;32mI (5736841) APP_MAIN: Log salvo! Ar: 23.81 C / 71.96 %, Solo: 21.88 C / 0.00 %, Lux: 57.5, DPV: 0.827 kPa[0m
+[0;32mI (5747071) APP_MAIN: Log salvo! Ar: 23.84 C / 71.92 %, Solo: 21.94 C / 0.00 %, Lux: 58.3, DPV: 0.830 kPa[0m
+[0;32mI (5757061) APP_MAIN: Log salvo! Ar: 23.84 C / 71.90 %, Solo: 21.88 C / 0.00 %, Lux: 58.3, DPV: 0.830 kPa[0m
+[0;32mI (5767051) APP_MAIN: Log salvo! Ar: 23.81 C / 71.98 %, Solo: 21.88 C / 0.00 %, Lux: 58.3, DPV: 0.827 kPa[0m
+[0;32mI (5776801) APP_MAIN: Log salvo! Ar: 23.82 C / 71.89 %, Solo: 21.88 C / 0.00 %, Lux: 58.3, DPV: 0.830 kPa[0m
+[0;32mI (5787031) APP_MAIN: Log salvo! Ar: 23.82 C / 71.83 %, Solo: 21.88 C / 0.00 %, Lux: 57.5, DPV: 0.832 kPa[0m
+[0;32mI (5797021) APP_MAIN: Log salvo! Ar: 23.81 C / 71.85 %, Solo: 21.94 C / 0.00 %, Lux: 58.3, DPV: 0.830 kPa[0m
+[0;32mI (5806771) APP_MAIN: Log salvo! Ar: 23.80 C / 71.83 %, Solo: 21.88 C / 0.00 %, Lux: 58.3, DPV: 0.831 kPa[0m
+[0;32mI (5817001) APP_MAIN: Log salvo! Ar: 23.80 C / 71.83 %, Solo: 21.88 C / 0.00 %, Lux: 57.5, DPV: 0.831 kPa[0m
+[0;32mI (5826991) APP_MAIN: Log salvo! Ar: 23.82 C / 71.86 %, Solo: 21.94 C / 0.00 %, Lux: 57.5, DPV: 0.831 kPa[0m
+[0;32mI (5836741) APP_MAIN: Log salvo! Ar: 23.81 C / 71.83 %, Solo: 21.88 C / 0.00 %, Lux: 56.7, DPV: 0.831 kPa[0m
+[0;32mI (5846971) APP_MAIN: Log salvo! Ar: 23.82 C / 71.88 %, Solo: 21.94 C / 0.00 %, Lux: 55.8, DPV: 0.830 kPa[0m
+[0;32mI (5856961) APP_MAIN: Log salvo! Ar: 23.82 C / 71.87 %, Solo: 21.88 C / 0.00 %, Lux: 55.8, DPV: 0.830 kPa[0m
+[0;32mI (5866711) APP_MAIN: Log salvo! Ar: 23.82 C / 71.91 %, Solo: 21.88 C / 0.00 %, Lux: 55.8, DPV: 0.829 kPa[0m
+[0;32mI (5876941) APP_MAIN: Log salvo! Ar: 23.80 C / 71.89 %, Solo: 21.88 C / 0.00 %, Lux: 55.0, DPV: 0.829 kPa[0m
+[0;32mI (5886931) APP_MAIN: Log salvo! Ar: 23.81 C / 71.93 %, Solo: 21.88 C / 0.00 %, Lux: 55.0, DPV: 0.828 kPa[0m
+[0;32mI (5896681) APP_MAIN: Log salvo! Ar: 23.82 C / 71.88 %, Solo: 21.88 C / 0.00 %, Lux: 55.0, DPV: 0.830 kPa[0m
+[0;32mI (5906911) APP_MAIN: Log salvo! Ar: 23.82 C / 71.91 %, Solo: 21.94 C / 0.00 %, Lux: 54.2, DPV: 0.829 kPa[0m
+[0;32mI (5916901) APP_MAIN: Log salvo! Ar: 23.80 C / 71.88 %, Solo: 21.94 C / 0.00 %, Lux: 52.5, DPV: 0.829 kPa[0m
+[0;32mI (5926651) APP_MAIN: Log salvo! Ar: 23.83 C / 71.88 %, Solo: 21.88 C / 0.00 %, Lux: 51.7, DPV: 0.830 kPa[0m
+[0;32mI (5936881) APP_MAIN: Log salvo! Ar: 23.78 C / 71.88 %, Solo: 21.88 C / 0.00 %, Lux: 51.7, DPV: 0.828 kPa[0m
+[0;32mI (5946871) APP_MAIN: Log salvo! Ar: 23.79 C / 71.92 %, Solo: 21.88 C / 0.00 %, Lux: 50.8, DPV: 0.827 kPa[0m
+[0;32mI (5956621) APP_MAIN: Log salvo! Ar: 23.80 C / 71.95 %, Solo: 21.88 C / 0.00 %, Lux: 50.8, DPV: 0.827 kPa[0m
+[0;32mI (5966851) APP_MAIN: Log salvo! Ar: 23.81 C / 71.97 %, Solo: 21.88 C / 0.00 %, Lux: 50.8, DPV: 0.827 kPa[0m
+[0;32mI (5976841) APP_MAIN: Log salvo! Ar: 23.80 C / 71.95 %, Solo: 21.88 C / 0.00 %, Lux: 50.8, DPV: 0.827 kPa[0m
+[0;32mI (5986591) APP_MAIN: Log salvo! Ar: 23.78 C / 71.98 %, Solo: 21.88 C / 0.00 %, Lux: 50.0, DPV: 0.825 kPa[0m
+[0;32mI (5996821) APP_MAIN: Log salvo! Ar: 23.77 C / 72.02 %, Solo: 21.88 C / 0.00 %, Lux: 49.2, DPV: 0.823 kPa[0m
+[0;32mI (6006811) APP_MAIN: Log salvo! Ar: 23.79 C / 72.05 %, Solo: 21.88 C / 0.00 %, Lux: 49.2, DPV: 0.824 kPa[0m
+[0;32mI (6016801) APP_MAIN: Log salvo! Ar: 23.77 C / 72.06 %, Solo: 21.88 C / 0.00 %, Lux: 50.0, DPV: 0.822 kPa[0m
+[0;32mI (6026551) APP_MAIN: Log salvo! Ar: 23.78 C / 72.05 %, Solo: 21.94 C / 0.00 %, Lux: 49.2, DPV: 0.823 kPa[0m
+[0;32mI (6036781) APP_MAIN: Log salvo! Ar: 23.81 C / 71.92 %, Solo: 21.94 C / 0.00 %, Lux: 49.2, DPV: 0.828 kPa[0m
+[0;32mI (6046771) APP_MAIN: Log salvo! Ar: 23.82 C / 71.88 %, Solo: 21.94 C / 0.00 %, Lux: 49.2, DPV: 0.830 kPa[0m
+[0;32mI (6056521) APP_MAIN: Log salvo! Ar: 23.83 C / 71.86 %, Solo: 21.88 C / 0.00 %, Lux: 47.5, DPV: 0.831 kPa[0m
+[0;32mI (6066751) APP_MAIN: Log salvo! Ar: 23.83 C / 71.87 %, Solo: 21.88 C / 0.00 %, Lux: 47.5, DPV: 0.831 kPa[0m
+[0;32mI (6076741) APP_MAIN: Log salvo! Ar: 23.84 C / 71.80 %, Solo: 21.94 C / 0.00 %, Lux: 47.5, DPV: 0.834 kPa[0m
+[0;32mI (6086491) APP_MAIN: Log salvo! Ar: 23.85 C / 71.83 %, Solo: 21.88 C / 0.00 %, Lux: 47.5, DPV: 0.833 kPa[0m
+[0;32mI (6096721) APP_MAIN: Log salvo! Ar: 23.84 C / 71.74 %, Solo: 21.88 C / 0.00 %, Lux: 47.5, DPV: 0.835 kPa[0m
+[0;32mI (6106711) APP_MAIN: Log salvo! Ar: 23.85 C / 71.79 %, Solo: 21.94 C / 0.00 %, Lux: 46.7, DPV: 0.835 kPa[0m
+[0;32mI (6116461) APP_MAIN: Log salvo! Ar: 23.88 C / 71.69 %, Solo: 21.88 C / 0.00 %, Lux: 46.7, DPV: 0.839 kPa[0m
+[0;32mI (6126691) APP_MAIN: Log salvo! Ar: 23.85 C / 71.71 %, Solo: 21.94 C / 0.00 %, Lux: 45.8, DPV: 0.836 kPa[0m
+[0;32mI (6136681) APP_MAIN: Log salvo! Ar: 23.86 C / 71.69 %, Solo: 21.88 C / 0.00 %, Lux: 45.8, DPV: 0.838 kPa[0m
+[0;32mI (6146431) APP_MAIN: Log salvo! Ar: 23.82 C / 71.70 %, Solo: 21.94 C / 0.00 %, Lux: 46.7, DPV: 0.836 kPa[0m
+[0;32mI (6156661) APP_MAIN: Log salvo! Ar: 23.85 C / 71.65 %, Solo: 21.88 C / 0.00 %, Lux: 45.8, DPV: 0.838 kPa[0m
+[0;32mI (6166651) APP_MAIN: Log salvo! Ar: 23.84 C / 71.67 %, Solo: 21.94 C / 0.00 %, Lux: 45.8, DPV: 0.837 kPa[0m
+[0;32mI (6176401) APP_MAIN: Log salvo! Ar: 23.82 C / 71.62 %, Solo: 21.94 C / 0.00 %, Lux: 45.0, DPV: 0.838 kPa[0m
+[0;32mI (6186631) APP_MAIN: Log salvo! Ar: 23.85 C / 71.68 %, Solo: 21.94 C / 0.00 %, Lux: 45.0, DPV: 0.838 kPa[0m
+[0;32mI (6196621) APP_MAIN: Log salvo! Ar: 23.84 C / 71.62 %, Solo: 21.88 C / 0.00 %, Lux: 44.2, DPV: 0.839 kPa[0m
+[0;32mI (6206371) APP_MAIN: Log salvo! Ar: 23.85 C / 71.66 %, Solo: 21.94 C / 0.00 %, Lux: 45.8, DPV: 0.838 kPa[0m
+[0;32mI (6216601) APP_MAIN: Log salvo! Ar: 23.80 C / 71.67 %, Solo: 21.94 C / 0.00 %, Lux: 45.0, DPV: 0.836 kPa[0m
+[0;32mI (6226591) APP_MAIN: Log salvo! Ar: 23.80 C / 71.65 %, Solo: 21.88 C / 0.00 %, Lux: 45.0, DPV: 0.836 kPa[0m
+[0;32mI (6236341) APP_MAIN: Log salvo! Ar: 23.85 C / 71.75 %, Solo: 21.94 C / 0.00 %, Lux: 45.0, DPV: 0.835 kPa[0m
+[0;32mI (6246571) APP_MAIN: Log salvo! Ar: 23.84 C / 71.76 %, Solo: 21.94 C / 0.00 %, Lux: 45.0, DPV: 0.834 kPa[0m
+[0;32mI (6256561) APP_MAIN: Log salvo! Ar: 23.83 C / 71.77 %, Solo: 21.88 C / 0.00 %, Lux: 44.2, DPV: 0.834 kPa[0m
+[0;32mI (6266311) APP_MAIN: Log salvo! Ar: 23.84 C / 71.75 %, Solo: 21.94 C / 0.00 %, Lux: 44.2, DPV: 0.835 kPa[0m
+[0;32mI (6276541) APP_MAIN: Log salvo! Ar: 23.83 C / 71.79 %, Solo: 21.88 C / 0.00 %, Lux: 47.5, DPV: 0.833 kPa[0m
+[0;32mI (6286531) APP_MAIN: Log salvo! Ar: 23.82 C / 71.78 %, Solo: 21.94 C / 0.00 %, Lux: 45.0, DPV: 0.833 kPa[0m
+[0;32mI (6296521) APP_MAIN: Log salvo! Ar: 23.84 C / 71.81 %, Solo: 21.94 C / 0.00 %, Lux: 45.0, DPV: 0.833 kPa[0m
+[0;32mI (6306271) APP_MAIN: Log salvo! Ar: 23.84 C / 71.76 %, Solo: 21.94 C / 0.00 %, Lux: 49.2, DPV: 0.834 kPa[0m
+[0;32mI (6316501) APP_MAIN: Log salvo! Ar: 23.86 C / 71.76 %, Solo: 21.94 C / 0.00 %, Lux: 46.7, DPV: 0.836 kPa[0m
+[0;32mI (6326491) APP_MAIN: Log salvo! Ar: 23.85 C / 71.79 %, Solo: 21.88 C / 0.00 %, Lux: 47.5, DPV: 0.834 kPa[0m
+[0;32mI (6336241) APP_MAIN: Log salvo! Ar: 23.85 C / 71.76 %, Solo: 21.94 C / 0.00 %, Lux: 47.5, DPV: 0.835 kPa[0m
+[0;32mI (6346471) APP_MAIN: Log salvo! Ar: 23.86 C / 71.71 %, Solo: 21.94 C / 0.00 %, Lux: 47.5, DPV: 0.837 kPa[0m
+[0;32mI (6356461) APP_MAIN: Log salvo! Ar: 23.83 C / 71.65 %, Solo: 21.94 C / 0.00 %, Lux: 47.5, DPV: 0.838 kPa[0m
+[0;32mI (6366211) APP_MAIN: Log salvo! Ar: 23.86 C / 71.61 %, Solo: 21.94 C / 0.00 %, Lux: 50.0, DPV: 0.840 kPa[0m
+[0;32mI (6376441) APP_MAIN: Log salvo! Ar: 23.83 C / 71.53 %, Solo: 21.94 C / 0.00 %, Lux: 47.5, DPV: 0.841 kPa[0m
+[0;32mI (6386431) APP_MAIN: Log salvo! Ar: 23.82 C / 71.61 %, Solo: 21.94 C / 0.00 %, Lux: 47.5, DPV: 0.838 kPa[0m
+[0;32mI (6396181) APP_MAIN: Log salvo! Ar: 23.83 C / 71.61 %, Solo: 21.94 C / 0.00 %, Lux: 47.5, DPV: 0.839 kPa[0m
+[0;32mI (6406411) APP_MAIN: Log salvo! Ar: 23.83 C / 71.65 %, Solo: 21.94 C / 0.00 %, Lux: 47.5, DPV: 0.837 kPa[0m
+[0;32mI (6416401) APP_MAIN: Log salvo! Ar: 23.84 C / 71.59 %, Solo: 21.94 C / 0.00 %, Lux: 50.0, DPV: 0.840 kPa[0m
+[0;32mI (6426151) APP_MAIN: Log salvo! Ar: 23.84 C / 71.62 %, Solo: 21.94 C / 0.00 %, Lux: 50.0, DPV: 0.839 kPa[0m
+[0;32mI (6436381) APP_MAIN: Log salvo! Ar: 23.83 C / 71.62 %, Solo: 21.94 C / 0.00 %, Lux: 47.5, DPV: 0.838 kPa[0m
+[0;32mI (6446371) APP_MAIN: Log salvo! Ar: 23.83 C / 71.58 %, Solo: 21.94 C / 0.00 %, Lux: 48.3, DPV: 0.840 kPa[0m
+[0;32mI (6456121) APP_MAIN: Log salvo! Ar: 23.86 C / 71.53 %, Solo: 21.94 C / 0.00 %, Lux: 47.5, DPV: 0.842 kPa[0m
+[0;32mI (6466351) APP_MAIN: Log salvo! Ar: 23.86 C / 71.55 %, Solo: 21.94 C / 0.00 %, Lux: 46.7, DPV: 0.842 kPa[0m
+[0;32mI (6476341) APP_MAIN: Log salvo! Ar: 23.85 C / 71.54 %, Solo: 21.94 C / 0.00 %, Lux: 46.7, DPV: 0.841 kPa[0m
+[0;32mI (6486091) APP_MAIN: Log salvo! Ar: 23.86 C / 71.52 %, Solo: 21.94 C / 0.00 %, Lux: 46.7, DPV: 0.843 kPa[0m
+[0;32mI (6496321) APP_MAIN: Log salvo! Ar: 23.85 C / 71.49 %, Solo: 21.94 C / 0.00 %, Lux: 46.7, DPV: 0.843 kPa[0m
+[0;32mI (6506311) APP_MAIN: Log salvo! Ar: 23.85 C / 71.51 %, Solo: 21.94 C / 0.00 %, Lux: 45.8, DPV: 0.842 kPa[0m
+[0;32mI (6516061) APP_MAIN: Log salvo! Ar: 23.85 C / 71.44 %, Solo: 21.94 C / 0.00 %, Lux: 45.8, DPV: 0.845 kPa[0m
+[0;32mI (6526291) APP_MAIN: Log salvo! Ar: 23.82 C / 71.48 %, Solo: 21.94 C / 0.00 %, Lux: 45.8, DPV: 0.842 kPa[0m
+[0;32mI (6536281) APP_MAIN: Log salvo! Ar: 23.86 C / 71.47 %, Solo: 21.94 C / 0.00 %, Lux: 49.2, DPV: 0.844 kPa[0m
+[0;32mI (6546271) APP_MAIN: Log salvo! Ar: 23.86 C / 71.48 %, Solo: 21.94 C / 0.00 %, Lux: 45.0, DPV: 0.844 kPa[0m
+[0;32mI (6556021) APP_MAIN: Log salvo! Ar: 23.84 C / 71.42 %, Solo: 21.94 C / 0.00 %, Lux: 47.5, DPV: 0.845 kPa[0m
+[0;32mI (6566251) APP_MAIN: Log salvo! Ar: 23.87 C / 71.40 %, Solo: 21.94 C / 0.00 %, Lux: 45.8, DPV: 0.847 kPa[0m
+[0;32mI (6576241) APP_MAIN: Log salvo! Ar: 23.87 C / 71.37 %, Solo: 21.94 C / 0.00 %, Lux: 45.8, DPV: 0.848 kPa[0m
+[0;32mI (6585991) APP_MAIN: Log salvo! Ar: 23.86 C / 71.40 %, Solo: 21.94 C / 0.00 %, Lux: 45.0, DPV: 0.846 kPa[0m
+[0;32mI (6596221) APP_MAIN: Log salvo! Ar: 23.84 C / 71.31 %, Solo: 21.94 C / 0.00 %, Lux: 45.0, DPV: 0.848 kPa[0m
+[0;32mI (6606211) APP_MAIN: Log salvo! Ar: 23.84 C / 71.35 %, Solo: 21.94 C / 0.00 %, Lux: 46.7, DPV: 0.846 kPa[0m
+[0;32mI (6615961) APP_MAIN: Log salvo! Ar: 23.85 C / 71.38 %, Solo: 21.94 C / 0.00 %, Lux: 45.8, DPV: 0.846 kPa[0m
+[0;32mI (6626191) APP_MAIN: Log salvo! Ar: 23.85 C / 71.35 %, Solo: 21.94 C / 0.00 %, Lux: 45.8, DPV: 0.847 kPa[0m
+[0;32mI (6636181) APP_MAIN: Log salvo! Ar: 23.84 C / 71.33 %, Solo: 21.94 C / 0.00 %, Lux: 45.8, DPV: 0.847 kPa[0m
+[0;32mI (6645931) APP_MAIN: Log salvo! Ar: 23.84 C / 71.37 %, Solo: 21.94 C / 0.00 %, Lux: 46.7, DPV: 0.846 kPa[0m
+[0;32mI (6656161) APP_MAIN: Log salvo! Ar: 23.83 C / 71.30 %, Solo: 21.94 C / 0.00 %, Lux: 46.7, DPV: 0.848 kPa[0m
+[0;32mI (6666151) APP_MAIN: Log salvo! Ar: 23.89 C / 71.27 %, Solo: 21.94 C / 0.00 %, Lux: 46.7, DPV: 0.852 kPa[0m
+[0;32mI (6675901) APP_MAIN: Log salvo! Ar: 23.88 C / 71.26 %, Solo: 21.94 C / 0.00 %, Lux: 45.8, DPV: 0.851 kPa[0m
+[0;32mI (6686131) APP_MAIN: Log salvo! Ar: 23.87 C / 71.20 %, Solo: 21.94 C / 0.00 %, Lux: 45.8, DPV: 0.853 kPa[0m
+[0;32mI (6696121) APP_MAIN: Log salvo! Ar: 23.89 C / 71.12 %, Solo: 21.94 C / 0.00 %, Lux: 46.7, DPV: 0.856 kPa[0m
+[0;32mI (6705871) APP_MAIN: Log salvo! Ar: 23.87 C / 71.10 %, Solo: 21.94 C / 0.00 %, Lux: 47.5, DPV: 0.855 kPa[0m
+[0;32mI (6716101) APP_MAIN: Log salvo! Ar: 23.91 C / 71.17 %, Solo: 21.94 C / 0.00 %, Lux: 48.3, DPV: 0.856 kPa[0m
+[0;32mI (6726091) APP_MAIN: Log salvo! Ar: 23.88 C / 71.16 %, Solo: 21.94 C / 0.00 %, Lux: 48.3, DPV: 0.854 kPa[0m
+[0;32mI (6735841) APP_MAIN: Log salvo! Ar: 23.88 C / 71.17 %, Solo: 21.94 C / 0.00 %, Lux: 48.3, DPV: 0.854 kPa[0m
+[0;32mI (6746071) APP_MAIN: Log salvo! Ar: 23.89 C / 71.14 %, Solo: 21.94 C / 0.00 %, Lux: 48.3, DPV: 0.855 kPa[0m
+[0;32mI (6756061) APP_MAIN: Log salvo! Ar: 23.88 C / 71.10 %, Solo: 21.94 C / 0.00 %, Lux: 48.3, DPV: 0.856 kPa[0m
+[0;32mI (6765811) APP_MAIN: Log salvo! Ar: 23.87 C / 71.11 %, Solo: 21.94 C / 0.00 %, Lux: 48.3, DPV: 0.855 kPa[0m
+[0;32mI (6776041) APP_MAIN: Log salvo! Ar: 23.87 C / 71.12 %, Solo: 21.94 C / 0.00 %, Lux: 50.8, DPV: 0.855 kPa[0m
+[0;32mI (6786031) APP_MAIN: Log salvo! Ar: 23.87 C / 71.19 %, Solo: 21.94 C / 0.00 %, Lux: 49.2, DPV: 0.853 kPa[0m
+[0;32mI (6796021) APP_MAIN: Log salvo! Ar: 23.88 C / 71.18 %, Solo: 21.94 C / 0.00 %, Lux: 50.8, DPV: 0.854 kPa[0m
+[0;32mI (6805771) APP_MAIN: Log salvo! Ar: 23.89 C / 71.19 %, Solo: 21.94 C / 0.00 %, Lux: 49.2, DPV: 0.854 kPa[0m
+[0;32mI (6816001) APP_MAIN: Log salvo! Ar: 23.89 C / 71.16 %, Solo: 21.94 C / 0.00 %, Lux: 50.8, DPV: 0.855 kPa[0m
+[0;32mI (6825991) APP_MAIN: Log salvo! Ar: 23.87 C / 71.13 %, Solo: 21.94 C / 0.00 %, Lux: 55.0, DPV: 0.855 kPa[0m
+[0;32mI (6835741) APP_MAIN: Log salvo! Ar: 23.86 C / 71.14 %, Solo: 21.94 C / 0.00 %, Lux: 54.2, DPV: 0.854 kPa[0m
+[0;32mI (6845971) APP_MAIN: Log salvo! Ar: 23.88 C / 71.08 %, Solo: 21.94 C / 0.00 %, Lux: 55.0, DPV: 0.857 kPa[0m
+[0;32mI (6855961) APP_MAIN: Log salvo! Ar: 23.87 C / 71.08 %, Solo: 21.94 C / 0.00 %, Lux: 55.8, DPV: 0.856 kPa[0m
+[0;32mI (6865711) APP_MAIN: Log salvo! Ar: 23.84 C / 71.04 %, Solo: 21.94 C / 0.00 %, Lux: 55.8, DPV: 0.856 kPa[0m
+[0;32mI (6875941) APP_MAIN: Log salvo! Ar: 23.86 C / 71.15 %, Solo: 21.94 C / 0.00 %, Lux: 56.7, DPV: 0.853 kPa[0m
+[0;32mI (6885921) APP_MAIN: Log salvo! Ar: 23.89 C / 71.12 %, Solo: 21.94 C / 0.00 %, Lux: 56.7, DPV: 0.856 kPa[0m
+[0;32mI (6895681) APP_MAIN: Log salvo! Ar: 23.87 C / 71.10 %, Solo: 21.94 C / 0.00 %, Lux: 56.7, DPV: 0.855 kPa[0m
+[0;32mI (6905911) APP_MAIN: Log salvo! Ar: 23.85 C / 71.11 %, Solo: 21.94 C / 0.00 %, Lux: 58.3, DPV: 0.854 kPa[0m
+[0;32mI (6915901) APP_MAIN: Log salvo! Ar: 23.84 C / 71.03 %, Solo: 21.94 C / 0.00 %, Lux: 59.2, DPV: 0.856 kPa[0m
+[0;32mI (6925651) APP_MAIN: Log salvo! Ar: 23.87 C / 71.03 %, Solo: 21.94 C / 0.00 %, Lux: 59.2, DPV: 0.857 kPa[0m
+[0;32mI (6935881) APP_MAIN: Log salvo! Ar: 23.85 C / 71.08 %, Solo: 21.94 C / 0.00 %, Lux: 60.0, DPV: 0.855 kPa[0m
+[0;32mI (6945871) APP_MAIN: Log salvo! Ar: 23.88 C / 71.04 %, Solo: 21.94 C / 0.00 %, Lux: 63.3, DPV: 0.858 kPa[0m
+[0;32mI (6955621) APP_MAIN: Log salvo! Ar: 23.86 C / 71.16 %, Solo: 21.94 C / 0.00 %, Lux: 61.7, DPV: 0.853 kPa[0m
+[0;32mI (6965851) APP_MAIN: Log salvo! Ar: 23.86 C / 71.15 %, Solo: 21.94 C / 0.00 %, Lux: 62.5, DPV: 0.854 kPa[0m
+[0;32mI (6975841) APP_MAIN: Log salvo! Ar: 23.84 C / 71.17 %, Solo: 21.94 C / 0.00 %, Lux: 62.5, DPV: 0.852 kPa[0m
+[0;32mI (6985591) APP_MAIN: Log salvo! Ar: 23.85 C / 71.17 %, Solo: 21.94 C / 0.00 %, Lux: 63.3, DPV: 0.853 kPa[0m
+[0;32mI (6995821) APP_MAIN: Log salvo! Ar: 23.87 C / 71.13 %, Solo: 21.94 C / 0.00 %, Lux: 64.2, DPV: 0.855 kPa[0m
+[0;32mI (7005811) APP_MAIN: Log salvo! Ar: 23.86 C / 71.13 %, Solo: 21.94 C / 0.00 %, Lux: 64.2, DPV: 0.854 kPa[0m
+[0;32mI (7015561) APP_MAIN: Log salvo! Ar: 23.86 C / 71.09 %, Solo: 21.94 C / 0.00 %, Lux: 65.0, DPV: 0.855 kPa[0m
+[0;32mI (7025791) APP_MAIN: Log salvo! Ar: 23.88 C / 71.10 %, Solo: 21.94 C / 0.00 %, Lux: 65.0, DPV: 0.856 kPa[0m
+[0;32mI (7035781) APP_MAIN: Log salvo! Ar: 23.86 C / 71.11 %, Solo: 21.94 C / 0.00 %, Lux: 68.3, DPV: 0.855 kPa[0m
+[0;32mI (7045531) APP_MAIN: Log salvo! Ar: 23.88 C / 71.12 %, Solo: 21.94 C / 0.00 %, Lux: 65.8, DPV: 0.856 kPa[0m
+[0;32mI (7055761) APP_MAIN: Log salvo! Ar: 23.88 C / 71.10 %, Solo: 21.94 C / 0.00 %, Lux: 67.5, DPV: 0.856 kPa[0m
+[0;32mI (7065751) APP_MAIN: Log salvo! Ar: 23.91 C / 71.10 %, Solo: 21.94 C / 0.00 %, Lux: 67.5, DPV: 0.858 kPa[0m
+[0;32mI (7075741) APP_MAIN: Log salvo! Ar: 23.90 C / 71.13 %, Solo: 21.94 C / 0.00 %, Lux: 68.3, DPV: 0.857 kPa[0m
+[0;32mI (7085491) APP_MAIN: Log salvo! Ar: 23.88 C / 71.08 %, Solo: 21.94 C / 0.00 %, Lux: 68.3, DPV: 0.857 kPa[0m
+[0;32mI (7095721) APP_MAIN: Log salvo! Ar: 23.91 C / 71.12 %, Solo: 21.94 C / 0.00 %, Lux: 69.2, DPV: 0.857 kPa[0m
+[0;32mI (7105711) APP_MAIN: Log salvo! Ar: 23.88 C / 71.13 %, Solo: 21.94 C / 0.00 %, Lux: 70.0, DPV: 0.855 kPa[0m
+[0;32mI (7115461) APP_MAIN: Log salvo! Ar: 23.89 C / 71.15 %, Solo: 21.94 C / 0.00 %, Lux: 70.0, DPV: 0.855 kPa[0m
+[0;32mI (7125691) APP_MAIN: Log salvo! Ar: 23.88 C / 71.06 %, Solo: 21.94 C / 0.00 %, Lux: 70.0, DPV: 0.858 kPa[0m
+[0;32mI (7135681) APP_MAIN: Log salvo! Ar: 23.89 C / 70.98 %, Solo: 21.94 C / 0.00 %, Lux: 69.2, DPV: 0.860 kPa[0m
+[0;32mI (7145431) APP_MAIN: Log salvo! Ar: 23.87 C / 71.08 %, Solo: 21.94 C / 0.00 %, Lux: 70.0, DPV: 0.856 kPa[0m
+[0;32mI (7155661) APP_MAIN: Log salvo! Ar: 23.86 C / 71.11 %, Solo: 21.94 C / 0.00 %, Lux: 70.0, DPV: 0.855 kPa[0m
+[0;32mI (7165651) APP_MAIN: Log salvo! Ar: 23.88 C / 71.14 %, Solo: 21.94 C / 0.00 %, Lux: 70.0, DPV: 0.855 kPa[0m
+[0;32mI (7175401) APP_MAIN: Log salvo! Ar: 23.86 C / 71.17 %, Solo: 21.94 C / 0.00 %, Lux: 70.0, DPV: 0.853 kPa[0m
+[0;32mI (7185631) APP_MAIN: Log salvo! Ar: 23.86 C / 71.12 %, Solo: 21.94 C / 0.00 %, Lux: 70.8, DPV: 0.855 kPa[0m
+[0;32mI (7195621) APP_MAIN: Log salvo! Ar: 23.86 C / 71.05 %, Solo: 21.94 C / 0.00 %, Lux: 70.8, DPV: 0.856 kPa[0m
+[0;32mI (7205371) APP_MAIN: Log salvo! Ar: 23.87 C / 71.05 %, Solo: 21.94 C / 0.00 %, Lux: 71.7, DPV: 0.857 kPa[0m
+[0;32mI (7215601) APP_MAIN: Log salvo! Ar: 23.88 C / 71.11 %, Solo: 21.94 C / 0.00 %, Lux: 70.8, DPV: 0.856 kPa[0m
+[0;32mI (7225591) APP_MAIN: Log salvo! Ar: 23.87 C / 71.17 %, Solo: 21.94 C / 0.00 %, Lux: 71.7, DPV: 0.854 kPa[0m
+[0;32mI (7235341) APP_MAIN: Log salvo! Ar: 23.87 C / 71.19 %, Solo: 21.94 C / 0.00 %, Lux: 70.8, DPV: 0.853 kPa[0m
+[0;32mI (7245571) APP_MAIN: Log salvo! Ar: 23.89 C / 71.19 %, Solo: 21.94 C / 0.00 %, Lux: 71.7, DPV: 0.854 kPa[0m
+[0;32mI (7255561) APP_MAIN: Log salvo! Ar: 23.88 C / 71.16 %, Solo: 21.94 C / 0.00 %, Lux: 71.7, DPV: 0.854 kPa[0m
+[0;32mI (7265311) APP_MAIN: Log salvo! Ar: 23.89 C / 71.19 %, Solo: 21.94 C / 0.00 %, Lux: 70.8, DPV: 0.854 kPa[0m
+[0;32mI (7275541) APP_MAIN: Log salvo! Ar: 23.87 C / 71.15 %, Solo: 21.94 C / 0.00 %, Lux: 70.8, DPV: 0.854 kPa[0m
+[0;32mI (7285531) APP_MAIN: Log salvo! Ar: 23.88 C / 71.13 %, Solo: 21.94 C / 0.00 %, Lux: 70.8, DPV: 0.856 kPa[0m
+[0;32mI (7295281) APP_MAIN: Log salvo! Ar: 23.85 C / 71.14 %, Solo: 21.94 C / 0.00 %, Lux: 71.7, DPV: 0.854 kPa[0m
+[0;32mI (7305511) APP_MAIN: Log salvo! Ar: 23.89 C / 71.15 %, Solo: 21.94 C / 0.00 %, Lux: 70.8, DPV: 0.855 kPa[0m
+[0;32mI (7315501) APP_MAIN: Log salvo! Ar: 23.88 C / 71.18 %, Solo: 21.94 C / 0.00 %, Lux: 75.0, DPV: 0.854 kPa[0m
+[0;32mI (7325491) APP_MAIN: Log salvo! Ar: 23.89 C / 71.16 %, Solo: 21.94 C / 0.00 %, Lux: 75.0, DPV: 0.855 kPa[0m
+[0;32mI (7335241) APP_MAIN: Log salvo! Ar: 23.87 C / 71.15 %, Solo: 21.94 C / 0.00 %, Lux: 70.8, DPV: 0.854 kPa[0m
+[0;32mI (7345471) APP_MAIN: Log salvo! Ar: 23.87 C / 71.15 %, Solo: 21.94 C / 0.00 %, Lux: 70.8, DPV: 0.854 kPa[0m
+[0;32mI (7355461) APP_MAIN: Log salvo! Ar: 23.88 C / 71.13 %, Solo: 21.94 C / 0.00 %, Lux: 73.3, DPV: 0.855 kPa[0m
+[0;32mI (7365211) APP_MAIN: Log salvo! Ar: 23.89 C / 71.08 %, Solo: 21.94 C / 0.00 %, Lux: 71.7, DPV: 0.858 kPa[0m
+[0;32mI (7367361) esp_netif_lwip: DHCP server assigned IP to a client, IP is: 192.168.4.3[0m
+[0;32mI (7375451) APP_MAIN: Log salvo! Ar: 23.91 C / 70.99 %, Solo: 21.94 C / 0.00 %, Lux: 71.7, DPV: 0.861 kPa[0m
+[0;32mI (7385431) APP_MAIN: Log salvo! Ar: 23.91 C / 70.99 %, Solo: 22.00 C / 0.00 %, Lux: 72.5, DPV: 0.861 kPa[0m
+[0;32mI (7395181) APP_MAIN: Log salvo! Ar: 23.90 C / 70.94 %, Solo: 21.94 C / 0.00 %, Lux: 73.3, DPV: 0.862 kPa[0m
+[0;32mI (7405411) APP_MAIN: Log salvo! Ar: 23.94 C / 70.98 %, Solo: 21.94 C / 0.00 %, Lux: 74.2, DPV: 0.863 kPa[0m
+[0;32mI (7415401) APP_MAIN: Log salvo! Ar: 23.94 C / 70.94 %, Solo: 21.94 C / 0.00 %, Lux: 74.2, DPV: 0.864 kPa[0m
+[0;32mI (7425151) APP_MAIN: Log salvo! Ar: 23.95 C / 70.82 %, Solo: 22.00 C / 0.00 %, Lux: 74.2, DPV: 0.868 kPa[0m
+[0;32mI (7435381) APP_MAIN: Log salvo! Ar: 23.94 C / 70.78 %, Solo: 22.00 C / 0.00 %, Lux: 75.8, DPV: 0.869 kPa[0m
+[0;32mI (7445371) APP_MAIN: Log salvo! Ar: 23.97 C / 70.79 %, Solo: 21.94 C / 0.00 %, Lux: 76.7, DPV: 0.870 kPa[0m
+[0;32mI (7455121) APP_MAIN: Log salvo! Ar: 23.98 C / 70.79 %, Solo: 22.00 C / 0.00 %, Lux: 77.5, DPV: 0.870 kPa[0m
+[0;32mI (7465351) APP_MAIN: Log salvo! Ar: 23.94 C / 70.80 %, Solo: 21.94 C / 0.00 %, Lux: 75.0, DPV: 0.868 kPa[0m
+[0;32mI (7475341) APP_MAIN: Log salvo! Ar: 23.95 C / 70.82 %, Solo: 22.00 C / 0.00 %, Lux: 75.0, DPV: 0.868 kPa[0m
+[0;32mI (7485091) APP_MAIN: Log salvo! Ar: 23.93 C / 70.88 %, Solo: 21.94 C / 0.00 %, Lux: 76.7, DPV: 0.865 kPa[0m
+[0;32mI (7495321) APP_MAIN: Log salvo! Ar: 23.94 C / 70.84 %, Solo: 22.00 C / 0.00 %, Lux: 75.0, DPV: 0.867 kPa[0m
+[0;32mI (7505311) APP_MAIN: Log salvo! Ar: 23.93 C / 70.85 %, Solo: 22.00 C / 0.00 %, Lux: 75.8, DPV: 0.866 kPa[0m
+[0;32mI (7515061) APP_MAIN: Log salvo! Ar: 23.93 C / 70.89 %, Solo: 22.00 C / 0.00 %, Lux: 76.7, DPV: 0.865 kPa[0m
+[0;32mI (7525291) APP_MAIN: Log salvo! Ar: 23.93 C / 70.87 %, Solo: 22.00 C / 0.00 %, Lux: 77.5, DPV: 0.866 kPa[0m
+[0;32mI (7535281) APP_MAIN: Log salvo! Ar: 23.92 C / 70.86 %, Solo: 22.00 C / 0.00 %, Lux: 77.5, DPV: 0.865 kPa[0m
+[0;32mI (7545031) APP_MAIN: Log salvo! Ar: 23.94 C / 70.87 %, Solo: 22.00 C / 0.00 %, Lux: 78.3, DPV: 0.866 kPa[0m
+[0;32mI (7555261) APP_MAIN: Log salvo! Ar: 23.93 C / 70.91 %, Solo: 21.94 C / 0.00 %, Lux: 79.2, DPV: 0.864 kPa[0m
+[0;32mI (7565251) APP_MAIN: Log salvo! Ar: 23.95 C / 70.91 %, Solo: 22.00 C / 0.00 %, Lux: 80.0, DPV: 0.866 kPa[0m
+[0;32mI (7575001) APP_MAIN: Log salvo! Ar: 23.93 C / 71.00 %, Solo: 21.94 C / 0.00 %, Lux: 80.8, DPV: 0.862 kPa[0m
+[0;32mI (7585221) APP_MAIN: Log salvo! Ar: 23.92 C / 70.92 %, Solo: 22.00 C / 0.00 %, Lux: 80.8, DPV: 0.863 kPa[0m
+[0;32mI (7595221) APP_MAIN: Log salvo! Ar: 23.90 C / 70.97 %, Solo: 22.00 C / 0.00 %, Lux: 81.7, DPV: 0.861 kPa[0m
+[0;32mI (7605211) APP_MAIN: Log salvo! Ar: 23.91 C / 71.01 %, Solo: 22.00 C / 0.00 %, Lux: 82.5, DPV: 0.860 kPa[0m
+[0;32mI (7614961) APP_MAIN: Log salvo! Ar: 23.92 C / 71.06 %, Solo: 22.00 C / 0.00 %, Lux: 81.7, DPV: 0.859 kPa[0m
+[0;32mI (7625191) APP_MAIN: Log salvo! Ar: 23.93 C / 71.02 %, Solo: 22.00 C / 0.00 %, Lux: 83.3, DPV: 0.861 kPa[0m
+[0;32mI (7635171) APP_MAIN: Log salvo! Ar: 23.92 C / 71.13 %, Solo: 22.00 C / 0.00 %, Lux: 84.2, DPV: 0.857 kPa[0m
+[0;32mI (7644931) APP_MAIN: Log salvo! Ar: 23.92 C / 71.11 %, Solo: 21.94 C / 0.00 %, Lux: 82.5, DPV: 0.858 kPa[0m
+[0;32mI (7655161) APP_MAIN: Log salvo! Ar: 23.96 C / 71.15 %, Solo: 22.00 C / 0.00 %, Lux: 81.7, DPV: 0.859 kPa[0m
+[0;32mI (7665151) APP_MAIN: Log salvo! Ar: 23.95 C / 71.05 %, Solo: 22.00 C / 0.00 %, Lux: 81.7, DPV: 0.861 kPa[0m
+[0;32mI (7674901) APP_MAIN: Log salvo! Ar: 23.95 C / 71.05 %, Solo: 21.94 C / 0.00 %, Lux: 80.8, DPV: 0.861 kPa[0m
+[0;32mI (7685131) APP_MAIN: Log salvo! Ar: 23.96 C / 70.97 %, Solo: 22.00 C / 0.00 %, Lux: 80.0, DPV: 0.864 kPa[0m
+[0;32mI (7695121) APP_MAIN: Log salvo! Ar: 23.94 C / 70.90 %, Solo: 22.00 C / 0.00 %, Lux: 79.2, DPV: 0.865 kPa[0m
+[0;32mI (7704871) APP_MAIN: Log salvo! Ar: 23.94 C / 70.87 %, Solo: 22.00 C / 0.00 %, Lux: 78.3, DPV: 0.866 kPa[0m
+[0;32mI (7715101) APP_MAIN: Log salvo! Ar: 23.93 C / 70.97 %, Solo: 22.00 C / 0.00 %, Lux: 79.2, DPV: 0.862 kPa[0m
+[0;32mI (7725091) APP_MAIN: Log salvo! Ar: 23.94 C / 70.96 %, Solo: 22.00 C / 0.00 %, Lux: 76.7, DPV: 0.863 kPa[0m
+[0;32mI (7734841) APP_MAIN: Log salvo! Ar: 23.94 C / 71.02 %, Solo: 22.00 C / 0.00 %, Lux: 79.2, DPV: 0.862 kPa[0m
+[0;32mI (7745071) APP_MAIN: Log salvo! Ar: 23.92 C / 71.00 %, Solo: 22.00 C / 0.00 %, Lux: 80.8, DPV: 0.861 kPa[0m
+[0;32mI (7755061) APP_MAIN: Log salvo! Ar: 23.94 C / 70.96 %, Solo: 22.00 C / 0.00 %, Lux: 80.0, DPV: 0.863 kPa[0m
+[0;32mI (7764811) APP_MAIN: Log salvo! Ar: 23.94 C / 70.97 %, Solo: 22.00 C / 0.00 %, Lux: 80.0, DPV: 0.863 kPa[0m
+[0;32mI (7775041) APP_MAIN: Log salvo! Ar: 23.92 C / 71.01 %, Solo: 22.00 C / 0.00 %, Lux: 80.0, DPV: 0.861 kPa[0m
+[0;32mI (7785031) APP_MAIN: Log salvo! Ar: 23.95 C / 71.07 %, Solo: 22.00 C / 0.00 %, Lux: 79.2, DPV: 0.861 kPa[0m
+[0;32mI (7794781) APP_MAIN: Log salvo! Ar: 23.95 C / 71.06 %, Solo: 22.00 C / 0.00 %, Lux: 77.5, DPV: 0.861 kPa[0m
+[0;32mI (7805011) APP_MAIN: Log salvo! Ar: 23.96 C / 71.06 %, Solo: 22.00 C / 0.00 %, Lux: 76.7, DPV: 0.861 kPa[0m
+[0;32mI (7815001) APP_MAIN: Log salvo! Ar: 23.94 C / 71.06 %, Solo: 22.00 C / 0.00 %, Lux: 76.7, DPV: 0.860 kPa[0m
+[0;32mI (7824751) APP_MAIN: Log salvo! Ar: 23.97 C / 70.98 %, Solo: 22.00 C / 0.00 %, Lux: 77.5, DPV: 0.864 kPa[0m
+[0;32mI (7834981) APP_MAIN: Log salvo! Ar: 23.95 C / 71.03 %, Solo: 22.00 C / 0.00 %, Lux: 76.7, DPV: 0.862 kPa[0m
+[0;32mI (7844221) APP_MAIN: Log salvo! Ar: 23.97 C / 70.89 %, Solo: 22.00 C / 0.00 %, Lux: 76.7, DPV: 0.867 kPa[0m
+[0;32mI (7854961) APP_MAIN: Log salvo! Ar: 23.94 C / 70.91 %, Solo: 22.00 C / 0.00 %, Lux: 76.7, DPV: 0.865 kPa[0m
+[0;32mI (7864711) APP_MAIN: Log salvo! Ar: 23.93 C / 70.90 %, Solo: 22.00 C / 0.00 %, Lux: 78.3, DPV: 0.865 kPa[0m
+[0;32mI (7874941) APP_MAIN: Log salvo! Ar: 23.93 C / 70.99 %, Solo: 22.00 C / 0.00 %, Lux: 76.7, DPV: 0.862 kPa[0m
+[0;32mI (7884931) APP_MAIN: Log salvo! Ar: 23.91 C / 71.05 %, Solo: 22.00 C / 0.00 %, Lux: 77.5, DPV: 0.859 kPa[0m
+[0;32mI (7894681) APP_MAIN: Log salvo! Ar: 23.94 C / 71.07 %, Solo: 22.00 C / 0.00 %, Lux: 77.5, DPV: 0.860 kPa[0m
+[0;32mI (7904911) APP_MAIN: Log salvo! Ar: 23.92 C / 71.07 %, Solo: 22.00 C / 0.00 %, Lux: 78.3, DPV: 0.859 kPa[0m
+[0;32mI (7914901) APP_MAIN: Log salvo! Ar: 23.91 C / 71.06 %, Solo: 22.00 C / 0.00 %, Lux: 79.2, DPV: 0.859 kPa[0m
+[0;32mI (7924651) APP_MAIN: Log salvo! Ar: 23.94 C / 71.02 %, Solo: 22.00 C / 0.00 %, Lux: 80.0, DPV: 0.862 kPa[0m
+[0;32mI (7934881) APP_MAIN: Log salvo! Ar: 23.93 C / 71.01 %, Solo: 22.00 C / 0.00 %, Lux: 80.0, DPV: 0.861 kPa[0m
+[0;32mI (7944871) APP_MAIN: Log salvo! Ar: 23.94 C / 71.01 %, Solo: 22.00 C / 0.00 %, Lux: 81.7, DPV: 0.862 kPa[0m
+[0;32mI (7954621) APP_MAIN: Log salvo! Ar: 23.94 C / 70.95 %, Solo: 22.00 C / 0.00 %, Lux: 83.3, DPV: 0.864 kPa[0m
+[0;32mI (7964851) APP_MAIN: Log salvo! Ar: 23.96 C / 70.88 %, Solo: 22.00 C / 0.00 %, Lux: 83.3, DPV: 0.867 kPa[0m
+[0;32mI (7974841) APP_MAIN: Log salvo! Ar: 23.96 C / 70.94 %, Solo: 22.00 C / 0.00 %, Lux: 84.2, DPV: 0.865 kPa[0m
+[0;32mI (7984591) APP_MAIN: Log salvo! Ar: 23.97 C / 70.92 %, Solo: 21.94 C / 0.00 %, Lux: 84.2, DPV: 0.866 kPa[0m
+[0;32mI (7994821) APP_MAIN: Log salvo! Ar: 23.96 C / 70.90 %, Solo: 22.00 C / 0.00 %, Lux: 85.0, DPV: 0.866 kPa[0m
+[0;32mI (8004811) APP_MAIN: Log salvo! Ar: 23.96 C / 70.92 %, Solo: 22.00 C / 0.00 %, Lux: 84.2, DPV: 0.866 kPa[0m
+[0;32mI (8014561) APP_MAIN: Log salvo! Ar: 23.97 C / 70.96 %, Solo: 22.00 C / 0.00 %, Lux: 84.2, DPV: 0.865 kPa[0m
+[0;32mI (8024791) APP_MAIN: Log salvo! Ar: 23.94 C / 70.90 %, Solo: 21.94 C / 0.00 %, Lux: 84.2, DPV: 0.865 kPa[0m
+[0;32mI (8034781) APP_MAIN: Log salvo! Ar: 23.96 C / 70.93 %, Solo: 22.00 C / 0.00 %, Lux: 88.3, DPV: 0.865 kPa[0m
+[0;32mI (8044531) APP_MAIN: Log salvo! Ar: 23.95 C / 70.93 %, Solo: 22.00 C / 0.00 %, Lux: 82.5, DPV: 0.865 kPa[0m
+[0;32mI (8054761) APP_MAIN: Log salvo! Ar: 23.94 C / 71.00 %, Solo: 22.00 C / 0.00 %, Lux: 86.7, DPV: 0.862 kPa[0m
+[0;32mI (8064751) APP_MAIN: Log salvo! Ar: 23.96 C / 70.97 %, Solo: 22.00 C / 0.00 %, Lux: 81.7, DPV: 0.864 kPa[0m
+[0;32mI (8074501) APP_MAIN: Log salvo! Ar: 23.97 C / 70.95 %, Solo: 22.00 C / 0.00 %, Lux: 80.8, DPV: 0.865 kPa[0m
+[0;32mI (8084731) APP_MAIN: Log salvo! Ar: 23.97 C / 70.94 %, Solo: 22.00 C / 0.00 %, Lux: 80.8, DPV: 0.865 kPa[0m
+[0;32mI (8094721) APP_MAIN: Log salvo! Ar: 23.95 C / 70.90 %, Solo: 22.00 C / 0.00 %, Lux: 80.0, DPV: 0.866 kPa[0m
+[0;32mI (8104711) APP_MAIN: Log salvo! Ar: 23.94 C / 70.91 %, Solo: 22.00 C / 0.00 %, Lux: 82.5, DPV: 0.865 kPa[0m
+[0;32mI (8114461) APP_MAIN: Log salvo! Ar: 23.96 C / 70.89 %, Solo: 22.00 C / 0.00 %, Lux: 83.3, DPV: 0.867 kPa[0m
+[0;32mI (8124691) APP_MAIN: Log salvo! Ar: 23.96 C / 70.95 %, Solo: 22.00 C / 0.00 %, Lux: 86.7, DPV: 0.865 kPa[0m
+[0;32mI (8134681) APP_MAIN: Log salvo! Ar: 23.96 C / 70.83 %, Solo: 22.00 C / 0.00 %, Lux: 88.3, DPV: 0.868 kPa[0m
+[0;32mI (8144431) APP_MAIN: Log salvo! Ar: 23.93 C / 70.83 %, Solo: 22.00 C / 0.00 %, Lux: 95.8, DPV: 0.867 kPa[0m
+[0;32mI (8154661) APP_MAIN: Log salvo! Ar: 23.93 C / 70.88 %, Solo: 22.00 C / 0.00 %, Lux: 96.7, DPV: 0.865 kPa[0m
+[0;32mI (8164651) APP_MAIN: Log salvo! Ar: 23.93 C / 71.07 %, Solo: 22.00 C / 0.00 %, Lux: 92.5, DPV: 0.860 kPa[0m
+[0;32mI (8174401) APP_MAIN: Log salvo! Ar: 23.93 C / 71.10 %, Solo: 22.00 C / 0.00 %, Lux: 91.7, DPV: 0.859 kPa[0m
+[0;32mI (8184631) APP_MAIN: Log salvo! Ar: 23.95 C / 71.09 %, Solo: 22.00 C / 0.00 %, Lux: 95.0, DPV: 0.860 kPa[0m
+[0;32mI (8194621) APP_MAIN: Log salvo! Ar: 23.94 C / 70.99 %, Solo: 22.00 C / 0.00 %, Lux: 92.5, DPV: 0.863 kPa[0m
+[0;32mI (8204371) APP_MAIN: Log salvo! Ar: 23.96 C / 70.96 %, Solo: 22.00 C / 0.00 %, Lux: 89.2, DPV: 0.864 kPa[0m
+[0;32mI (8214601) APP_MAIN: Log salvo! Ar: 23.96 C / 70.88 %, Solo: 22.00 C / 0.00 %, Lux: 91.7, DPV: 0.867 kPa[0m
+[0;32mI (8224591) APP_MAIN: Log salvo! Ar: 23.97 C / 70.93 %, Solo: 22.25 C / 0.00 %, Lux: 89.2, DPV: 0.866 kPa[0m
+[0;32mI (8234341) APP_MAIN: Log salvo! Ar: 24.00 C / 70.91 %, Solo: 22.00 C / 0.00 %, Lux: 91.7, DPV: 0.868 kPa[0m
+[0;32mI (8244571) APP_MAIN: Log salvo! Ar: 23.99 C / 70.87 %, Solo: 22.00 C / 0.00 %, Lux: 92.5, DPV: 0.869 kPa[0m
+[0;32mI (8254561) APP_MAIN: Log salvo! Ar: 23.98 C / 70.89 %, Solo: 22.00 C / 0.00 %, Lux: 91.7, DPV: 0.867 kPa[0m
+[0;32mI (8264311) APP_MAIN: Log salvo! Ar: 24.00 C / 70.85 %, Solo: 22.00 C / 0.00 %, Lux: 94.2, DPV: 0.870 kPa[0m
+[0;32mI (8274541) APP_MAIN: Log salvo! Ar: 24.02 C / 70.81 %, Solo: 22.00 C / 0.00 %, Lux: 94.2, DPV: 0.872 kPa[0m
+[0;32mI (8284531) APP_MAIN: Log salvo! Ar: 24.02 C / 70.78 %, Solo: 22.00 C / 0.00 %, Lux: 93.3, DPV: 0.873 kPa[0m
+[0;32mI (8294281) APP_MAIN: Log salvo! Ar: 23.99 C / 70.85 %, Solo: 22.00 C / 0.00 %, Lux: 91.7, DPV: 0.869 kPa[0m
+[0;32mI (8304511) APP_MAIN: Log salvo! Ar: 24.00 C / 70.81 %, Solo: 22.00 C / 0.00 %, Lux: 92.5, DPV: 0.871 kPa[0m
+[0;32mI (8314501) APP_MAIN: Log salvo! Ar: 24.02 C / 70.86 %, Solo: 22.00 C / 0.00 %, Lux: 92.5, DPV: 0.870 kPa[0m
+[0;32mI (8324251) APP_MAIN: Log salvo! Ar: 24.01 C / 70.95 %, Solo: 22.06 C / 0.00 %, Lux: 91.7, DPV: 0.867 kPa[0m
+[0;32mI (8334481) APP_MAIN: Log salvo! Ar: 23.99 C / 71.07 %, Solo: 22.00 C / 0.00 %, Lux: 91.7, DPV: 0.863 kPa[0m
+[0;32mI (8344471) APP_MAIN: Log salvo! Ar: 23.99 C / 71.08 %, Solo: 22.00 C / 0.00 %, Lux: 90.8, DPV: 0.863 kPa[0m
+[0;32mI (8354221) APP_MAIN: Log salvo! Ar: 24.00 C / 70.99 %, Solo: 22.00 C / 0.00 %, Lux: 90.0, DPV: 0.866 kPa[0m
+[0;32mI (8364451) APP_MAIN: Log salvo! Ar: 24.01 C / 70.86 %, Solo: 22.00 C / 0.00 %, Lux: 90.0, DPV: 0.870 kPa[0m
+[0;32mI (8373691) APP_MAIN: Log salvo! Ar: 23.99 C / 70.91 %, Solo: 22.00 C / 0.00 %, Lux: 89.2, DPV: 0.867 kPa[0m
+[0;32mI (8384431) APP_MAIN: Log salvo! Ar: 24.01 C / 70.95 %, Solo: 22.00 C / 0.00 %, Lux: 89.2, DPV: 0.867 kPa[0m
+[0;32mI (8394181) APP_MAIN: Log salvo! Ar: 24.01 C / 71.07 %, Solo: 22.06 C / 0.00 %, Lux: 87.5, DPV: 0.864 kPa[0m
+[0;32mI (8404411) APP_MAIN: Log salvo! Ar: 23.99 C / 71.05 %, Solo: 22.00 C / 0.00 %, Lux: 85.8, DPV: 0.863 kPa[0m
+[0;32mI (8414401) APP_MAIN: Log salvo! Ar: 24.03 C / 71.04 %, Solo: 22.00 C / 0.00 %, Lux: 80.0, DPV: 0.866 kPa[0m
+[0;32mI (8424151) APP_MAIN: Log salvo! Ar: 24.03 C / 71.09 %, Solo: 22.00 C / 0.00 %, Lux: 79.2, DPV: 0.864 kPa[0m
+[0;32mI (8434381) APP_MAIN: Log salvo! Ar: 24.02 C / 70.99 %, Solo: 22.06 C / 0.00 %, Lux: 74.2, DPV: 0.867 kPa[0m
+[0;32mI (8444371) APP_MAIN: Log salvo! Ar: 24.00 C / 71.03 %, Solo: 22.06 C / 0.00 %, Lux: 75.0, DPV: 0.865 kPa[0m
+[0;32mI (8454121) APP_MAIN: Log salvo! Ar: 24.02 C / 71.10 %, Solo: 22.00 C / 0.00 %, Lux: 74.2, DPV: 0.863 kPa[0m
+[0;32mI (8464351) APP_MAIN: Log salvo! Ar: 24.00 C / 71.09 %, Solo: 22.06 C / 0.00 %, Lux: 73.3, DPV: 0.863 kPa[0m
+[0;32mI (8474341) APP_MAIN: Log salvo! Ar: 24.02 C / 71.04 %, Solo: 22.06 C / 0.00 %, Lux: 73.3, DPV: 0.865 kPa[0m
+[0;32mI (8484091) APP_MAIN: Log salvo! Ar: 23.99 C / 71.05 %, Solo: 22.06 C / 0.00 %, Lux: 85.0, DPV: 0.863 kPa[0m
+[0;32mI (8494321) APP_MAIN: Log salvo! Ar: 24.01 C / 71.03 %, Solo: 22.06 C / 0.00 %, Lux: 72.5, DPV: 0.865 kPa[0m
+[0;32mI (8504311) APP_MAIN: Log salvo! Ar: 24.01 C / 71.01 %, Solo: 22.06 C / 0.00 %, Lux: 71.7, DPV: 0.866 kPa[0m
+[0;32mI (8514061) APP_MAIN: Log salvo! Ar: 24.00 C / 71.03 %, Solo: 22.06 C / 0.00 %, Lux: 71.7, DPV: 0.864 kPa[0m
+[0;32mI (8524291) APP_MAIN: Log salvo! Ar: 24.02 C / 71.04 %, Solo: 22.06 C / 0.00 %, Lux: 70.8, DPV: 0.865 kPa[0m
+[0;32mI (8534281) APP_MAIN: Log salvo! Ar: 24.01 C / 71.06 %, Solo: 22.06 C / 0.00 %, Lux: 70.8, DPV: 0.864 kPa[0m
+[0;32mI (8544031) APP_MAIN: Log salvo! Ar: 23.99 C / 71.11 %, Solo: 22.06 C / 0.00 %, Lux: 70.8, DPV: 0.861 kPa[0m
+[0;32mI (8554261) APP_MAIN: Log salvo! Ar: 24.00 C / 71.11 %, Solo: 22.06 C / 0.00 %, Lux: 76.7, DPV: 0.862 kPa[0m
+[0;32mI (8564241) APP_MAIN: Log salvo! Ar: 24.00 C / 71.16 %, Solo: 22.06 C / 0.00 %, Lux: 71.7, DPV: 0.860 kPa[0m
+[0;32mI (8574001) APP_MAIN: Log salvo! Ar: 24.00 C / 71.22 %, Solo: 22.06 C / 0.00 %, Lux: 70.0, DPV: 0.859 kPa[0m
+[0;32mI (8584231) APP_MAIN: Log salvo! Ar: 24.01 C / 71.21 %, Solo: 22.06 C / 0.00 %, Lux: 69.2, DPV: 0.860 kPa[0m
+[0;32mI (8594221) APP_MAIN: Log salvo! Ar: 24.01 C / 71.23 %, Solo: 22.06 C / 0.00 %, Lux: 67.5, DPV: 0.859 kPa[0m
+[0;32mI (8603971) APP_MAIN: Log salvo! Ar: 24.02 C / 71.25 %, Solo: 22.06 C / 0.00 %, Lux: 69.2, DPV: 0.859 kPa[0m
+[0;32mI (8614201) APP_MAIN: Log salvo! Ar: 24.03 C / 71.24 %, Solo: 22.06 C / 0.00 %, Lux: 69.2, DPV: 0.860 kPa[0m
+[0;32mI (8624201) APP_MAIN: Log salvo! Ar: 24.04 C / 71.15 %, Solo: 22.06 C / 0.00 %, Lux: 70.0, DPV: 0.863 kPa[0m
+[0;32mI (8634181) APP_MAIN: Log salvo! Ar: 24.04 C / 71.12 %, Solo: 22.06 C / 0.00 %, Lux: 72.5, DPV: 0.864 kPa[0m
+[0;32mI (8643931) APP_MAIN: Log salvo! Ar: 24.03 C / 71.08 %, Solo: 22.06 C / 0.00 %, Lux: 79.2, DPV: 0.864 kPa[0m
+[0;32mI (8654161) APP_MAIN: Log salvo! Ar: 24.04 C / 71.05 %, Solo: 22.06 C / 0.00 %, Lux: 85.0, DPV: 0.866 kPa[0m
+[0;32mI (8664151) APP_MAIN: Log salvo! Ar: 24.04 C / 71.01 %, Solo: 22.06 C / 0.00 %, Lux: 86.7, DPV: 0.867 kPa[0m
+[0;32mI (8673901) APP_MAIN: Log salvo! Ar: 24.03 C / 71.00 %, Solo: 22.06 C / 0.00 %, Lux: 87.5, DPV: 0.867 kPa[0m
+[0;32mI (8684141) APP_MAIN: Log salvo! Ar: 24.03 C / 70.97 %, Solo: 22.06 C / 0.00 %, Lux: 87.5, DPV: 0.868 kPa[0m
+[0;32mI (8694121) APP_MAIN: Log salvo! Ar: 24.04 C / 70.97 %, Solo: 22.06 C / 0.00 %, Lux: 86.7, DPV: 0.868 kPa[0m
+[0;32mI (8703871) APP_MAIN: Log salvo! Ar: 24.05 C / 70.96 %, Solo: 22.06 C / 0.00 %, Lux: 89.2, DPV: 0.869 kPa[0m
+[0;32mI (8714101) APP_MAIN: Log salvo! Ar: 24.03 C / 71.01 %, Solo: 22.06 C / 0.00 %, Lux: 86.7, DPV: 0.867 kPa[0m
+[0;32mI (8724091) APP_MAIN: Log salvo! Ar: 24.04 C / 71.04 %, Solo: 22.06 C / 0.00 %, Lux: 85.0, DPV: 0.866 kPa[0m
+[0;32mI (8733841) APP_MAIN: Log salvo! Ar: 24.01 C / 71.01 %, Solo: 22.06 C / 0.00 %, Lux: 88.3, DPV: 0.866 kPa[0m
+[0;32mI (8744071) APP_MAIN: Log salvo! Ar: 24.05 C / 71.03 %, Solo: 22.06 C / 0.00 %, Lux: 85.8, DPV: 0.867 kPa[0m
+[0;32mI (8754061) APP_MAIN: Log salvo! Ar: 24.04 C / 71.05 %, Solo: 22.06 C / 0.00 %, Lux: 84.2, DPV: 0.866 kPa[0m
+[0;32mI (8763811) APP_MAIN: Log salvo! Ar: 24.05 C / 71.04 %, Solo: 22.06 C / 0.00 %, Lux: 81.7, DPV: 0.867 kPa[0m
+[0;32mI (8774041) APP_MAIN: Log salvo! Ar: 24.03 C / 71.04 %, Solo: 22.06 C / 0.00 %, Lux: 72.5, DPV: 0.866 kPa[0m
+[0;32mI (8784031) APP_MAIN: Log salvo! Ar: 24.05 C / 71.00 %, Solo: 22.06 C / 0.00 %, Lux: 71.7, DPV: 0.868 kPa[0m
+[0;32mI (8793781) APP_MAIN: Log salvo! Ar: 24.04 C / 70.93 %, Solo: 22.06 C / 0.00 %, Lux: 70.8, DPV: 0.870 kPa[0m
+[0;32mI (8804021) APP_MAIN: Log salvo! Ar: 24.07 C / 70.87 %, Solo: 22.12 C / 0.00 %, Lux: 72.5, DPV: 0.873 kPa[0m
+[0;32mI (8814001) APP_MAIN: Log salvo! Ar: 24.09 C / 70.83 %, Solo: 22.06 C / 0.00 %, Lux: 80.0, DPV: 0.875 kPa[0m
+[0;32mI (8823751) APP_MAIN: Log salvo! Ar: 24.08 C / 70.77 %, Solo: 22.06 C / 0.00 %, Lux: 80.0, DPV: 0.876 kPa[0m
+[0;32mI (8833981) APP_MAIN: Log salvo! Ar: 24.05 C / 70.77 %, Solo: 22.06 C / 0.00 %, Lux: 72.5, DPV: 0.875 kPa[0m
+[0;32mI (8843971) APP_MAIN: Log salvo! Ar: 24.07 C / 70.80 %, Solo: 22.06 C / 0.00 %, Lux: 70.0, DPV: 0.875 kPa[0m
+[0;32mI (8853721) APP_MAIN: Log salvo! Ar: 24.07 C / 70.83 %, Solo: 22.12 C / 0.00 %, Lux: 68.3, DPV: 0.874 kPa[0m
+[0;32mI (8863951) APP_MAIN: Log salvo! Ar: 24.07 C / 70.79 %, Solo: 22.06 C / 0.00 %, Lux: 68.3, DPV: 0.876 kPa[0m
+[0;32mI (8873941) APP_MAIN: Log salvo! Ar: 24.05 C / 70.77 %, Solo: 22.06 C / 0.00 %, Lux: 67.5, DPV: 0.875 kPa[0m
+[0;32mI (8883931) APP_MAIN: Log salvo! Ar: 24.06 C / 70.80 %, Solo: 22.12 C / 0.00 %, Lux: 65.8, DPV: 0.875 kPa[0m
+[0;32mI (8893681) APP_MAIN: Log salvo! Ar: 24.06 C / 70.88 %, Solo: 22.06 C / 0.00 %, Lux: 64.2, DPV: 0.872 kPa[0m
+[0;32mI (8903911) APP_MAIN: Log salvo! Ar: 24.05 C / 70.88 %, Solo: 22.12 C / 0.00 %, Lux: 64.2, DPV: 0.872 kPa[0m
+[0;32mI (8913901) APP_MAIN: Log salvo! Ar: 24.04 C / 70.89 %, Solo: 22.06 C / 0.00 %, Lux: 65.0, DPV: 0.871 kPa[0m
+[0;32mI (8923651) APP_MAIN: Log salvo! Ar: 24.05 C / 70.91 %, Solo: 22.06 C / 0.00 %, Lux: 63.3, DPV: 0.870 kPa[0m
+[0;32mI (8933881) APP_MAIN: Log salvo! Ar: 24.04 C / 70.91 %, Solo: 22.06 C / 0.00 %, Lux: 63.3, DPV: 0.870 kPa[0m
+[0;32mI (8943871) APP_MAIN: Log salvo! Ar: 24.07 C / 70.91 %, Solo: 22.06 C / 0.00 %, Lux: 65.0, DPV: 0.872 kPa[0m
+[0;32mI (8953621) APP_MAIN: Log salvo! Ar: 24.04 C / 70.83 %, Solo: 22.12 C / 0.00 %, Lux: 64.2, DPV: 0.873 kPa[0m
+[0;32mI (8963851) APP_MAIN: Log salvo! Ar: 24.07 C / 70.81 %, Solo: 22.12 C / 0.00 %, Lux: 64.2, DPV: 0.875 kPa[0m
+[0;32mI (8973841) APP_MAIN: Log salvo! Ar: 24.08 C / 70.71 %, Solo: 22.12 C / 0.00 %, Lux: 64.2, DPV: 0.878 kPa[0m
+[0;32mI (8983591) APP_MAIN: Log salvo! Ar: 24.09 C / 70.68 %, Solo: 22.12 C / 0.00 %, Lux: 65.0, DPV: 0.879 kPa[0m
+[0;32mI (8993821) APP_MAIN: Log salvo! Ar: 24.10 C / 70.53 %, Solo: 22.12 C / 0.00 %, Lux: 65.8, DPV: 0.885 kPa[0m
+[0;32mI (9003811) APP_MAIN: Log salvo! Ar: 24.13 C / 70.50 %, Solo: 22.06 C / 0.00 %, Lux: 66.7, DPV: 0.887 kPa[0m
+[0;32mI (9013561) APP_MAIN: Log salvo! Ar: 24.15 C / 70.53 %, Solo: 22.12 C / 0.00 %, Lux: 67.5, DPV: 0.887 kPa[0m
+[0;32mI (9023791) APP_MAIN: Log salvo! Ar: 24.18 C / 70.43 %, Solo: 22.12 C / 0.00 %, Lux: 66.7, DPV: 0.892 kPa[0m
+[0;32mI (9033781) APP_MAIN: Log salvo! Ar: 24.15 C / 70.37 %, Solo: 22.12 C / 0.00 %, Lux: 69.2, DPV: 0.892 kPa[0m
+[0;32mI (9043531) APP_MAIN: Log salvo! Ar: 24.15 C / 70.33 %, Solo: 22.12 C / 0.00 %, Lux: 69.2, DPV: 0.893 kPa[0m
+[0;32mI (9053761) APP_MAIN: Log salvo! Ar: 24.17 C / 70.34 %, Solo: 22.12 C / 0.00 %, Lux: 69.2, DPV: 0.894 kPa[0m
+[0;32mI (9063751) APP_MAIN: Log salvo! Ar: 24.15 C / 70.36 %, Solo: 22.12 C / 0.00 %, Lux: 70.0, DPV: 0.892 kPa[0m
+[0;32mI (9073501) APP_MAIN: Log salvo! Ar: 24.14 C / 70.33 %, Solo: 22.12 C / 0.00 %, Lux: 75.8, DPV: 0.893 kPa[0m
+[0;32mI (9086641) APP_MAIN: Log salvo! Ar: 24.16 C / 70.41 %, Solo: 22.12 C / 0.00 %, Lux: 73.3, DPV: 0.892 kPa[0m
+[0;32mI (9093721) APP_MAIN: Log salvo! Ar: 24.13 C / 70.34 %, Solo: 22.12 C / 0.00 %, Lux: 72.5, DPV: 0.892 kPa[0m
+[0;32mI (9103471) APP_MAIN: Log salvo! Ar: 24.11 C / 70.39 %, Solo: 22.12 C / 0.00 %, Lux: 70.8, DPV: 0.889 kPa[0m
+[0;32mI (9113701) APP_MAIN: Log salvo! Ar: 24.15 C / 70.42 %, Solo: 22.12 C / 0.00 %, Lux: 75.8, DPV: 0.891 kPa[0m
+[0;32mI (9123691) APP_MAIN: Log salvo! Ar: 24.16 C / 70.35 %, Solo: 22.12 C / 0.00 %, Lux: 75.0, DPV: 0.893 kPa[0m
+[0;32mI (9133441) APP_MAIN: Log salvo! Ar: 24.14 C / 70.33 %, Solo: 22.12 C / 0.00 %, Lux: 73.3, DPV: 0.893 kPa[0m
+[0;32mI (9143671) APP_MAIN: Log salvo! Ar: 24.10 C / 70.38 %, Solo: 22.12 C / 0.00 %, Lux: 73.3, DPV: 0.889 kPa[0m
+[0;32mI (9153661) APP_MAIN: Log salvo! Ar: 24.11 C / 70.39 %, Solo: 22.12 C / 0.00 %, Lux: 82.5, DPV: 0.889 kPa[0m
+[0;32mI (9163651) APP_MAIN: Log salvo! Ar: 24.12 C / 70.46 %, Solo: 22.12 C / 0.00 %, Lux: 85.0, DPV: 0.888 kPa[0m
+[0;32mI (9173401) APP_MAIN: Log salvo! Ar: 24.11 C / 70.40 %, Solo: 22.12 C / 0.00 %, Lux: 84.2, DPV: 0.889 kPa[0m
+[0;32mI (9183631) APP_MAIN: Log salvo! Ar: 24.12 C / 70.44 %, Solo: 22.12 C / 0.00 %, Lux: 86.7, DPV: 0.888 kPa[0m
+[0;32mI (9193621) APP_MAIN: Log salvo! Ar: 24.11 C / 70.45 %, Solo: 22.12 C / 0.00 %, Lux: 84.2, DPV: 0.888 kPa[0m
+[0;32mI (9203371) APP_MAIN: Log salvo! Ar: 24.11 C / 70.45 %, Solo: 22.12 C / 0.00 %, Lux: 82.5, DPV: 0.887 kPa[0m
+[0;32mI (9213601) APP_MAIN: Log salvo! Ar: 24.12 C / 70.44 %, Solo: 22.12 C / 0.00 %, Lux: 82.5, DPV: 0.888 kPa[0m
+[0;32mI (9223591) APP_MAIN: Log salvo! Ar: 24.13 C / 70.46 %, Solo: 22.12 C / 0.00 %, Lux: 82.5, DPV: 0.888 kPa[0m
+[0;32mI (9233341) APP_MAIN: Log salvo! Ar: 24.12 C / 70.47 %, Solo: 22.12 C / 0.00 %, Lux: 83.3, DPV: 0.888 kPa[0m
+[0;32mI (9243571) APP_MAIN: Log salvo! Ar: 24.13 C / 70.54 %, Solo: 22.12 C / 0.00 %, Lux: 82.5, DPV: 0.886 kPa[0m
+[0;32mI (9253561) APP_MAIN: Log salvo! Ar: 24.12 C / 70.54 %, Solo: 22.12 C / 0.00 %, Lux: 80.0, DPV: 0.886 kPa[0m
+[0;32mI (9263311) APP_MAIN: Log salvo! Ar: 24.12 C / 70.52 %, Solo: 22.12 C / 0.00 %, Lux: 80.8, DPV: 0.886 kPa[0m
+[0;32mI (9273541) APP_MAIN: Log salvo! Ar: 24.12 C / 70.48 %, Solo: 22.06 C / 0.00 %, Lux: 75.0, DPV: 0.887 kPa[0m
+[0;32mI (9283531) APP_MAIN: Log salvo! Ar: 24.13 C / 70.49 %, Solo: 22.12 C / 0.00 %, Lux: 80.0, DPV: 0.888 kPa[0m
+[0;32mI (9293281) APP_MAIN: Log salvo! Ar: 24.14 C / 70.51 %, Solo: 22.12 C / 0.00 %, Lux: 77.5, DPV: 0.888 kPa[0m
+[0;32mI (9303511) APP_MAIN: Log salvo! Ar: 24.12 C / 70.45 %, Solo: 22.12 C / 0.00 %, Lux: 70.8, DPV: 0.888 kPa[0m
+[0;32mI (9313501) APP_MAIN: Log salvo! Ar: 24.13 C / 70.41 %, Solo: 22.12 C / 0.00 %, Lux: 64.2, DPV: 0.890 kPa[0m
+[0;32mI (9323251) APP_MAIN: Log salvo! Ar: 24.14 C / 70.33 %, Solo: 22.12 C / 0.00 %, Lux: 61.7, DPV: 0.893 kPa[0m
+[0;32mI (9333481) APP_MAIN: Log salvo! Ar: 24.14 C / 70.37 %, Solo: -0.12 C / 0.00 %, Lux: 61.7, DPV: 0.891 kPa[0m
+[0;32mI (9343471) APP_MAIN: Log salvo! Ar: 24.13 C / 70.31 %, Solo: 22.12 C / 0.00 %, Lux: 61.7, DPV: 0.893 kPa[0m
+[0;32mI (9353221) APP_MAIN: Log salvo! Ar: 24.11 C / 70.30 %, Solo: 22.06 C / 0.00 %, Lux: 60.0, DPV: 0.892 kPa[0m
+[0;32mI (9363451) APP_MAIN: Log salvo! Ar: 24.09 C / 70.35 %, Solo: 22.12 C / 0.00 %, Lux: 59.2, DPV: 0.890 kPa[0m
+[0;32mI (9373441) APP_MAIN: Log salvo! Ar: 24.05 C / 70.41 %, Solo: 22.12 C / 0.00 %, Lux: 61.7, DPV: 0.885 kPa[0m
+[0;32mI (9383191) APP_MAIN: Log salvo! Ar: 24.06 C / 70.44 %, Solo: 22.06 C / 0.00 %, Lux: 57.5, DPV: 0.885 kPa[0m
+[0;32mI (9393421) APP_MAIN: Log salvo! Ar: 24.08 C / 70.45 %, Solo: 22.12 C / 0.00 %, Lux: 56.7, DPV: 0.886 kPa[0m
+[0;32mI (9403411) APP_MAIN: Log salvo! Ar: 24.09 C / 70.44 %, Solo: 22.06 C / 0.00 %, Lux: 55.8, DPV: 0.887 kPa[0m
+[0;32mI (9413401) APP_MAIN: Log salvo! Ar: 24.08 C / 70.49 %, Solo: 22.06 C / 0.00 %, Lux: 55.8, DPV: 0.885 kPa[0m
+[0;32mI (9423151) APP_MAIN: Log salvo! Ar: 24.08 C / 70.57 %, Solo: 22.06 C / 0.00 %, Lux: 55.0, DPV: 0.882 kPa[0m
+[0;32mI (9433381) APP_MAIN: Log salvo! Ar: 24.08 C / 70.49 %, Solo: 22.12 C / 0.00 %, Lux: 54.2, DPV: 0.885 kPa[0m
+[0;32mI (9443371) APP_MAIN: Log salvo! Ar: 24.08 C / 70.57 %, Solo: 22.12 C / 0.00 %, Lux: 55.0, DPV: 0.882 kPa[0m
+[0;32mI (9453121) APP_MAIN: Log salvo! Ar: 24.09 C / 70.51 %, Solo: 22.12 C / 0.00 %, Lux: 55.0, DPV: 0.885 kPa[0m
+[0;32mI (9463351) APP_MAIN: Log salvo! Ar: 24.10 C / 70.51 %, Solo: 22.06 C / 0.00 %, Lux: 55.0, DPV: 0.885 kPa[0m
+[0;32mI (9473341) APP_MAIN: Log salvo! Ar: 24.08 C / 70.44 %, Solo: 22.12 C / 0.00 %, Lux: 55.0, DPV: 0.886 kPa[0m
+[0;32mI (9483091) APP_MAIN: Log salvo! Ar: 24.08 C / 70.46 %, Solo: 22.06 C / 0.00 %, Lux: 55.0, DPV: 0.886 kPa[0m
+[0;32mI (9493321) APP_MAIN: Log salvo! Ar: 24.10 C / 70.39 %, Solo: 22.06 C / 0.00 %, Lux: 55.0, DPV: 0.889 kPa[0m
+[0;32mI (9503311) APP_MAIN: Log salvo! Ar: 24.09 C / 70.37 %, Solo: 22.06 C / 0.00 %, Lux: 55.0, DPV: 0.889 kPa[0m
+[0;32mI (9513061) APP_MAIN: Log salvo! Ar: 24.08 C / 70.28 %, Solo: 22.06 C / 0.00 %, Lux: 55.8, DPV: 0.891 kPa[0m
+[0;32mI (9523291) APP_MAIN: Log salvo! Ar: 24.06 C / 70.35 %, Solo: 22.06 C / 0.00 %, Lux: 55.8, DPV: 0.888 kPa[0m
+[0;32mI (9533281) APP_MAIN: Log salvo! Ar: 24.07 C / 70.42 %, Solo: 22.06 C / 0.00 %, Lux: 55.8, DPV: 0.886 kPa[0m
+[0;32mI (9543031) APP_MAIN: Log salvo! Ar: 24.07 C / 70.42 %, Solo: 22.06 C / 0.00 %, Lux: 56.7, DPV: 0.886 kPa[0m
+[0;32mI (9553261) APP_MAIN: Log salvo! Ar: 24.05 C / 70.44 %, Solo: 22.06 C / 0.00 %, Lux: 56.7, DPV: 0.885 kPa[0m
+[0;32mI (9563251) APP_MAIN: Log salvo! Ar: 24.06 C / 70.46 %, Solo: 22.06 C / 0.00 %, Lux: 57.5, DPV: 0.885 kPa[0m
+[0;32mI (9573001) APP_MAIN: Log salvo! Ar: 24.07 C / 70.35 %, Solo: 22.06 C / 0.00 %, Lux: 55.8, DPV: 0.888 kPa[0m
+[0;32mI (9583231) APP_MAIN: Log salvo! Ar: 24.08 C / 70.41 %, Solo: 22.06 C / 0.00 %, Lux: 57.5, DPV: 0.887 kPa[0m
+[0;32mI (9593221) APP_MAIN: Log salvo! Ar: 24.10 C / 70.34 %, Solo: 22.06 C / 0.00 %, Lux: 55.0, DPV: 0.890 kPa[0m
+[0;32mI (9602971) APP_MAIN: Log salvo! Ar: 24.09 C / 70.37 %, Solo: 22.06 C / 0.00 %, Lux: 60.0, DPV: 0.889 kPa[0m
+[0;32mI (9613201) APP_MAIN: Log salvo! Ar: 24.10 C / 70.42 %, Solo: 22.06 C / 0.00 %, Lux: 60.0, DPV: 0.888 kPa[0m
+[0;32mI (9623191) APP_MAIN: Log salvo! Ar: 24.12 C / 70.36 %, Solo: 22.06 C / 0.00 %, Lux: 56.7, DPV: 0.891 kPa[0m
+[0;32mI (9632941) APP_MAIN: Log salvo! Ar: 24.10 C / 70.31 %, Solo: 22.06 C / 0.00 %, Lux: 58.3, DPV: 0.891 kPa[0m
+[0;32mI (9643171) APP_MAIN: Log salvo! Ar: 24.11 C / 70.35 %, Solo: 22.06 C / 0.00 %, Lux: 56.7, DPV: 0.890 kPa[0m
+[0;32mI (9653161) APP_MAIN: Log salvo! Ar: 24.13 C / 70.35 %, Solo: 22.06 C / 0.00 %, Lux: 58.3, DPV: 0.892 kPa[0m
+[0;32mI (9662911) APP_MAIN: Log salvo! Ar: 24.08 C / 70.39 %, Solo: 22.12 C / 0.00 %, Lux: 62.5, DPV: 0.888 kPa[0m
+[0;32mI (9673141) APP_MAIN: Log salvo! Ar: 24.10 C / 70.39 %, Solo: 22.06 C / 0.00 %, Lux: 58.3, DPV: 0.889 kPa[0m
+[0;32mI (9683131) APP_MAIN: Log salvo! Ar: 24.10 C / 70.33 %, Solo: 22.06 C / 0.00 %, Lux: 56.7, DPV: 0.891 kPa[0m
+[0;32mI (9693121) APP_MAIN: Log salvo! Ar: 24.10 C / 70.33 %, Solo: 22.06 C / 0.00 %, Lux: 55.8, DPV: 0.891 kPa[0m
+[0;32mI (9702871) APP_MAIN: Log salvo! Ar: 24.11 C / 70.32 %, Solo: 22.12 C / 0.00 %, Lux: 56.7, DPV: 0.891 kPa[0m
+[0;32mI (9713101) APP_MAIN: Log salvo! Ar: 24.14 C / 70.25 %, Solo: 22.06 C / 0.00 %, Lux: 56.7, DPV: 0.895 kPa[0m
+[0;32mI (9723091) APP_MAIN: Log salvo! Ar: 24.14 C / 70.22 %, Solo: 22.12 C / 0.00 %, Lux: 56.7, DPV: 0.896 kPa[0m
+[0;32mI (9732841) APP_MAIN: Log salvo! Ar: 24.13 C / 70.18 %, Solo: 22.12 C / 0.00 %, Lux: 56.7, DPV: 0.897 kPa[0m
+[0;32mI (9743071) APP_MAIN: Log salvo! Ar: 24.13 C / 70.18 %, Solo: 22.12 C / 0.00 %, Lux: 57.5, DPV: 0.897 kPa[0m
+[0;32mI (9753061) APP_MAIN: Log salvo! Ar: 24.14 C / 70.13 %, Solo: 22.12 C / 0.00 %, Lux: 57.5, DPV: 0.899 kPa[0m
+[0;32mI (9762811) APP_MAIN: Log salvo! Ar: 24.14 C / 70.14 %, Solo: 22.12 C / 0.00 %, Lux: 56.7, DPV: 0.898 kPa[0m
+[0;32mI (9773041) APP_MAIN: Log salvo! Ar: 24.14 C / 70.21 %, Solo: 22.12 C / 0.00 %, Lux: 55.8, DPV: 0.896 kPa[0m
+[0;32mI (9783031) APP_MAIN: Log salvo! Ar: 24.14 C / 70.18 %, Solo: 22.12 C / 0.00 %, Lux: 55.8, DPV: 0.897 kPa[0m
+[0;32mI (9792781) APP_MAIN: Log salvo! Ar: 24.12 C / 70.14 %, Solo: 22.12 C / 0.00 %, Lux: 55.0, DPV: 0.898 kPa[0m
+[0;32mI (9803011) APP_MAIN: Log salvo! Ar: 24.09 C / 70.21 %, Solo: 22.12 C / 0.00 %, Lux: 56.7, DPV: 0.894 kPa[0m
+[0;32mI (9813001) APP_MAIN: Log salvo! Ar: 24.10 C / 70.29 %, Solo: 22.12 C / 0.00 %, Lux: 55.0, DPV: 0.892 kPa[0m
+[0;32mI (9822751) APP_MAIN: Log salvo! Ar: 24.10 C / 70.31 %, Solo: 22.12 C / 0.00 %, Lux: 55.8, DPV: 0.891 kPa[0m
+[0;32mI (9832981) APP_MAIN: Log salvo! Ar: 24.08 C / 70.35 %, Solo: 22.12 C / 0.00 %, Lux: 55.8, DPV: 0.889 kPa[0m
+[0;32mI (9842971) APP_MAIN: Log salvo! Ar: 24.08 C / 70.37 %, Solo: 22.06 C / 0.00 %, Lux: 55.0, DPV: 0.888 kPa[0m
+[0;32mI (9852721) APP_MAIN: Log salvo! Ar: 24.11 C / 70.34 %, Solo: 22.12 C / 0.00 %, Lux: 55.8, DPV: 0.891 kPa[0m
+[0;32mI (9862951) APP_MAIN: Log salvo! Ar: 24.11 C / 70.35 %, Solo: 22.06 C / 0.00 %, Lux: 55.8, DPV: 0.890 kPa[0m
+[0;32mI (9872941) APP_MAIN: Log salvo! Ar: 24.12 C / 70.30 %, Solo: 22.12 C / 0.00 %, Lux: 55.8, DPV: 0.893 kPa[0m
+[0;32mI (9882691) APP_MAIN: Log salvo! Ar: 24.11 C / 70.33 %, Solo: 22.06 C / 0.00 %, Lux: 56.7, DPV: 0.891 kPa[0m
+[0;32mI (9892921) APP_MAIN: Log salvo! Ar: 24.12 C / 70.40 %, Solo: 22.06 C / 0.00 %, Lux: 56.7, DPV: 0.889 kPa[0m
+[0;32mI (9902911) APP_MAIN: Log salvo! Ar: 24.11 C / 70.34 %, Solo: 22.12 C / 0.00 %, Lux: 56.7, DPV: 0.891 kPa[0m
+[0;32mI (9912661) APP_MAIN: Log salvo! Ar: 24.12 C / 70.30 %, Solo: 22.06 C / 0.00 %, Lux: 61.7, DPV: 0.893 kPa[0m
+[0;32mI (9922891) APP_MAIN: Log salvo! Ar: 24.11 C / 70.33 %, Solo: 22.06 C / 0.00 %, Lux: 57.5, DPV: 0.891 kPa[0m
+[0;32mI (9932881) APP_MAIN: Log salvo! Ar: 24.10 C / 70.31 %, Solo: 22.12 C / 0.00 %, Lux: 60.0, DPV: 0.891 kPa[0m
+[0;32mI (9942871) APP_MAIN: Log salvo! Ar: 24.09 C / 70.30 %, Solo: 22.12 C / 0.00 %, Lux: 60.0, DPV: 0.891 kPa[0m
+[0;32mI (9952621) APP_MAIN: Log salvo! Ar: 24.09 C / 70.30 %, Solo: 22.06 C / 0.00 %, Lux: 60.0, DPV: 0.891 kPa[0m
+[0;32mI (9962851) APP_MAIN: Log salvo! Ar: 24.13 C / 70.32 %, Solo: 22.12 C / 0.00 %, Lux: 59.2, DPV: 0.892 kPa[0m
+[0;32mI (9972841) APP_MAIN: Log salvo! Ar: 24.14 C / 70.33 %, Solo: 22.12 C / 0.00 %, Lux: 60.8, DPV: 0.893 kPa[0m
+[0;32mI (9982591) APP_MAIN: Log salvo! Ar: 24.14 C / 70.24 %, Solo: 22.06 C / 0.00 %, Lux: 60.8, DPV: 0.896 kPa[0m
+[0;32mI (9992821) APP_MAIN: Log salvo! Ar: 24.15 C / 70.20 %, Solo: 22.12 C / 0.00 %, Lux: 62.5, DPV: 0.897 kPa[0m
+[0;32mI (10002811) APP_MAIN: Log salvo! Ar: 24.15 C / 70.14 %, Solo: 22.12 C / 0.00 %, Lux: 63.3, DPV: 0.899 kPa[0m
+[0;32mI (10012561) APP_MAIN: Log salvo! Ar: 24.17 C / 70.16 %, Solo: 22.12 C / 0.00 %, Lux: 62.5, DPV: 0.900 kPa[0m
+[0;32mI (10022791) APP_MAIN: Log salvo! Ar: 24.15 C / 70.15 %, Solo: 22.12 C / 0.00 %, Lux: 62.5, DPV: 0.899 kPa[0m
+[0;32mI (10032781) APP_MAIN: Log salvo! Ar: 24.15 C / 70.26 %, Solo: 22.12 C / 0.00 %, Lux: 64.2, DPV: 0.896 kPa[0m
+[0;32mI (10042531) APP_MAIN: Log salvo! Ar: 24.14 C / 70.26 %, Solo: 22.12 C / 0.00 %, Lux: 65.0, DPV: 0.895 kPa[0m
+[0;32mI (10052761) APP_MAIN: Log salvo! Ar: 24.16 C / 70.34 %, Solo: 22.12 C / 0.00 %, Lux: 65.0, DPV: 0.893 kPa[0m
+[0;32mI (10062751) APP_MAIN: Log salvo! Ar: 24.17 C / 70.28 %, Solo: 22.12 C / 0.00 %, Lux: 70.0, DPV: 0.896 kPa[0m
+[0;32mI (10072501) APP_MAIN: Log salvo! Ar: 24.18 C / 70.28 %, Solo: 22.12 C / 0.00 %, Lux: 65.8, DPV: 0.897 kPa[0m
+[0;32mI (10082731) APP_MAIN: Log salvo! Ar: 24.15 C / 70.22 %, Solo: 22.12 C / 0.00 %, Lux: 66.7, DPV: 0.897 kPa[0m
+[0;32mI (10092721) APP_MAIN: Log salvo! Ar: 24.15 C / 70.24 %, Solo: 22.12 C / 0.00 %, Lux: 70.8, DPV: 0.896 kPa[0m
+[0;32mI (10102471) APP_MAIN: Log salvo! Ar: 24.15 C / 70.20 %, Solo: 30.12 C / 0.00 %, Lux: 68.3, DPV: 0.898 kPa[0m
+[0;32mI (10112701) APP_MAIN: Log salvo! Ar: 24.16 C / 70.18 %, Solo: 22.12 C / 0.00 %, Lux: 68.3, DPV: 0.899 kPa[0m
+[0;32mI (10122691) APP_MAIN: Log salvo! Ar: 24.16 C / 70.20 %, Solo: 22.12 C / 0.00 %, Lux: 72.5, DPV: 0.898 kPa[0m
+[0;32mI (10132441) APP_MAIN: Log salvo! Ar: 24.19 C / 70.17 %, Solo: 22.12 C / 0.00 %, Lux: 68.3, DPV: 0.900 kPa[0m
+[0;32mI (10142671) APP_MAIN: Log salvo! Ar: 24.17 C / 70.11 %, Solo: 22.12 C / 0.00 %, Lux: 68.3, DPV: 0.901 kPa[0m
+[0;32mI (10152661) APP_MAIN: Log salvo! Ar: 24.17 C / 70.13 %, Solo: 22.12 C / 0.00 %, Lux: 69.2, DPV: 0.900 kPa[0m
+[0;32mI (10162411) APP_MAIN: Log salvo! Ar: 24.17 C / 70.05 %, Solo: 22.12 C / 0.00 %, Lux: 70.0, DPV: 0.903 kPa[0m
+[0;32mI (10172641) APP_MAIN: Log salvo! Ar: 24.17 C / 70.04 %, Solo: 22.12 C / 0.00 %, Lux: 70.8, DPV: 0.903 kPa[0m
+[0;32mI (10182631) APP_MAIN: Log salvo! Ar: 24.17 C / 70.02 %, Solo: 22.12 C / 0.00 %, Lux: 71.7, DPV: 0.904 kPa[0m
+[0;32mI (10192621) APP_MAIN: Log salvo! Ar: 24.18 C / 70.07 %, Solo: 22.12 C / 0.00 %, Lux: 75.0, DPV: 0.903 kPa[0m
+[0;32mI (10202371) APP_MAIN: Log salvo! Ar: 24.18 C / 70.09 %, Solo: 22.12 C / 0.00 %, Lux: 80.8, DPV: 0.902 kPa[0m
+[0;32mI (10212601) APP_MAIN: Log salvo! Ar: 24.17 C / 70.07 %, Solo: 22.12 C / 0.00 %, Lux: 83.3, DPV: 0.902 kPa[0m
+[0;32mI (10222591) APP_MAIN: Log salvo! Ar: 24.17 C / 70.09 %, Solo: 22.12 C / 0.00 %, Lux: 83.3, DPV: 0.901 kPa[0m
+[0;32mI (10232341) APP_MAIN: Log salvo! Ar: 24.16 C / 70.11 %, Solo: 22.12 C / 0.00 %, Lux: 87.5, DPV: 0.901 kPa[0m
+[0;32mI (10242571) APP_MAIN: Log salvo! Ar: 24.17 C / 70.17 %, Solo: 22.12 C / 0.00 %, Lux: 90.0, DPV: 0.899 kPa[0m
+[0;32mI (10252561) APP_MAIN: Log salvo! Ar: 24.15 C / 70.19 %, Solo: 22.12 C / 0.00 %, Lux: 90.0, DPV: 0.898 kPa[0m
+[0;32mI (10262311) APP_MAIN: Log salvo! Ar: 24.17 C / 70.14 %, Solo: 22.12 C / 0.00 %, Lux: 93.3, DPV: 0.900 kPa[0m
+[0;32mI (10272541) APP_MAIN: Log salvo! Ar: 24.16 C / 70.11 %, Solo: 22.12 C / 0.00 %, Lux: 94.2, DPV: 0.900 kPa[0m
+[0;32mI (10282531) APP_MAIN: Log salvo! Ar: 24.14 C / 70.06 %, Solo: 22.12 C / 0.00 %, Lux: 94.2, DPV: 0.901 kPa[0m
+[0;32mI (10292281) APP_MAIN: Log salvo! Ar: 24.19 C / 70.06 %, Solo: 22.12 C / 0.00 %, Lux: 94.2, DPV: 0.904 kPa[0m
+[0;32mI (10302511) APP_MAIN: Log salvo! Ar: 24.19 C / 69.94 %, Solo: 22.12 C / 0.00 %, Lux: 95.0, DPV: 0.908 kPa[0m
+[0;32mI (10312501) APP_MAIN: Log salvo! Ar: 24.19 C / 70.01 %, Solo: 22.12 C / 0.00 %, Lux: 95.8, DPV: 0.905 kPa[0m
+[0;32mI (10322251) APP_MAIN: Log salvo! Ar: 24.17 C / 70.02 %, Solo: 22.12 C / 0.00 %, Lux: 95.0, DPV: 0.904 kPa[0m
+[0;32mI (10332481) APP_MAIN: Log salvo! Ar: 24.16 C / 70.07 %, Solo: 22.12 C / 0.00 %, Lux: 92.5, DPV: 0.902 kPa[0m
+[0;32mI (10342471) APP_MAIN: Log salvo! Ar: 24.17 C / 70.13 %, Solo: 22.12 C / 0.00 %, Lux: 92.5, DPV: 0.901 kPa[0m
+[0;32mI (10352221) APP_MAIN: Log salvo! Ar: 24.19 C / 70.13 %, Solo: 22.12 C / 0.00 %, Lux: 93.3, DPV: 0.901 kPa[0m
+[0;32mI (10362451) APP_MAIN: Log salvo! Ar: 24.18 C / 70.12 %, Solo: 22.12 C / 0.00 %, Lux: 91.7, DPV: 0.901 kPa[0m
+[0;32mI (10372441) APP_MAIN: Log salvo! Ar: 24.20 C / 70.15 %, Solo: 22.12 C / 0.00 %, Lux: 90.8, DPV: 0.901 kPa[0m
+[0;32mI (10382191) APP_MAIN: Log salvo! Ar: 24.18 C / 70.10 %, Solo: 22.19 C / 0.00 %, Lux: 87.5, DPV: 0.902 kPa[0m
+[0;32mI (10392421) APP_MAIN: Log salvo! Ar: 24.17 C / 70.19 %, Solo: 22.12 C / 0.00 %, Lux: 88.3, DPV: 0.898 kPa[0m
+[0;32mI (10402411) APP_MAIN: Log salvo! Ar: 24.18 C / 70.26 %, Solo: 22.12 C / 0.00 %, Lux: 87.5, DPV: 0.897 kPa[0m
+[0;32mI (10412161) APP_MAIN: Log salvo! Ar: 24.19 C / 70.08 %, Solo: 22.12 C / 0.00 %, Lux: 86.7, DPV: 0.903 kPa[0m
+[0;32mI (10422391) APP_MAIN: Log salvo! Ar: 24.22 C / 70.17 %, Solo: 22.19 C / 0.00 %, Lux: 87.5, DPV: 0.902 kPa[0m
+[0;32mI (10432381) APP_MAIN: Log salvo! Ar: 24.20 C / 70.09 %, Solo: 22.19 C / 0.00 %, Lux: 85.8, DPV: 0.904 kPa[0m
+[0;32mI (10442371) APP_MAIN: Log salvo! Ar: 24.20 C / 70.09 %, Solo: 22.19 C / 0.00 %, Lux: 88.3, DPV: 0.903 kPa[0m
+[0;32mI (10452121) APP_MAIN: Log salvo! Ar: 24.23 C / 70.11 %, Solo: 22.12 C / 0.00 %, Lux: 87.5, DPV: 0.904 kPa[0m
+[0;32mI (10462351) APP_MAIN: Log salvo! Ar: 24.20 C / 70.08 %, Solo: 22.19 C / 0.00 %, Lux: 90.0, DPV: 0.903 kPa[0m
+[0;32mI (10472341) APP_MAIN: Log salvo! Ar: 24.19 C / 70.06 %, Solo: 22.19 C / 0.00 %, Lux: 93.3, DPV: 0.904 kPa[0m
+[0;32mI (10482091) APP_MAIN: Log salvo! Ar: 24.19 C / 70.16 %, Solo: 22.12 C / 0.00 %, Lux: 91.7, DPV: 0.901 kPa[0m
+[0;32mI (10492321) APP_MAIN: Log salvo! Ar: 24.18 C / 70.17 %, Solo: 22.12 C / 0.00 %, Lux: 90.0, DPV: 0.900 kPa[0m
+[0;32mI (10502311) APP_MAIN: Log salvo! Ar: 24.20 C / 70.17 %, Solo: 22.12 C / 0.00 %, Lux: 91.7, DPV: 0.901 kPa[0m
+[0;32mI (10512061) APP_MAIN: Log salvo! Ar: 24.20 C / 70.14 %, Solo: 22.19 C / 0.00 %, Lux: 88.3, DPV: 0.902 kPa[0m
+[0;32mI (10522291) APP_MAIN: Log salvo! Ar: 24.21 C / 70.18 %, Solo: 22.19 C / 0.00 %, Lux: 88.3, DPV: 0.901 kPa[0m
+[0;32mI (10532281) APP_MAIN: Log salvo! Ar: 24.20 C / 70.22 %, Solo: 22.19 C / 0.00 %, Lux: 88.3, DPV: 0.899 kPa[0m
+[0;32mI (10542031) APP_MAIN: Log salvo! Ar: 24.21 C / 70.16 %, Solo: 22.19 C / 0.00 %, Lux: 84.2, DPV: 0.902 kPa[0m
+[0;32mI (10552261) APP_MAIN: Log salvo! Ar: 24.19 C / 70.16 %, Solo: 22.19 C / 0.00 %, Lux: 83.3, DPV: 0.901 kPa[0m
+[0;32mI (10562251) APP_MAIN: Log salvo! Ar: 24.21 C / 70.17 %, Solo: 22.19 C / 0.00 %, Lux: 81.7, DPV: 0.901 kPa[0m
+[0;32mI (10572001) APP_MAIN: Log salvo! Ar: 24.21 C / 70.15 %, Solo: 22.19 C / 0.00 %, Lux: 83.3, DPV: 0.902 kPa[0m
+[0;32mI (10582231) APP_MAIN: Log salvo! Ar: 24.19 C / 70.15 %, Solo: 22.19 C / 0.00 %, Lux: 84.2, DPV: 0.901 kPa[0m
+[0;32mI (10592221) APP_MAIN: Log salvo! Ar: 24.21 C / 70.17 %, Solo: 22.19 C / 0.00 %, Lux: 83.3, DPV: 0.901 kPa[0m
+[0;32mI (10601971) APP_MAIN: Log salvo! Ar: 24.20 C / 70.15 %, Solo: 22.19 C / 0.00 %, Lux: 85.0, DPV: 0.902 kPa[0m
+[0;32mI (10612201) APP_MAIN: Log salvo! Ar: 24.22 C / 70.09 %, Solo: 22.19 C / 0.00 %, Lux: 83.3, DPV: 0.904 kPa[0m
+[0;32mI (10622201) APP_MAIN: Log salvo! Ar: 24.21 C / 70.10 %, Solo: 22.19 C / 0.00 %, Lux: 84.2, DPV: 0.904 kPa[0m
+[0;32mI (10631941) APP_MAIN: Log salvo! Ar: 24.22 C / 70.11 %, Solo: 22.19 C / 0.00 %, Lux: 81.7, DPV: 0.904 kPa[0m
+[0;32mI (10642171) APP_MAIN: Log salvo! Ar: 24.23 C / 70.10 %, Solo: 22.19 C / 0.00 %, Lux: 81.7, DPV: 0.904 kPa[0m
+[0;32mI (10652161) APP_MAIN: Log salvo! Ar: 24.22 C / 70.12 %, Solo: 22.19 C / 0.00 %, Lux: 88.3, DPV: 0.904 kPa[0m
+[0;32mI (10661911) APP_MAIN: Log salvo! Ar: 24.22 C / 70.17 %, Solo: 22.19 C / 0.00 %, Lux: 83.3, DPV: 0.902 kPa[0m
+[0;32mI (10672141) APP_MAIN: Log salvo! Ar: 24.22 C / 70.15 %, Solo: 22.19 C / 0.00 %, Lux: 80.0, DPV: 0.902 kPa[0m
+[0;32mI (10682141) APP_MAIN: Log salvo! Ar: 24.22 C / 70.16 %, Solo: 22.12 C / 0.00 %, Lux: 82.5, DPV: 0.902 kPa[0m
+[0;32mI (10692121) APP_MAIN: Log salvo! Ar: 24.22 C / 70.12 %, Solo: 22.19 C / 0.00 %, Lux: 82.5, DPV: 0.904 kPa[0m
+[0;32mI (10701871) APP_MAIN: Log salvo! Ar: 24.25 C / 70.16 %, Solo: 22.19 C / 0.00 %, Lux: 82.5, DPV: 0.904 kPa[0m
+[0;32mI (10712101) APP_MAIN: Log salvo! Ar: 24.22 C / 70.17 %, Solo: 22.19 C / 0.00 %, Lux: 79.2, DPV: 0.902 kPa[0m
+[0;32mI (10722091) APP_MAIN: Log salvo! Ar: 24.25 C / 70.15 %, Solo: 22.19 C / 0.00 %, Lux: 79.2, DPV: 0.904 kPa[0m
+[0;32mI (10731841) APP_MAIN: Log salvo! Ar: 24.22 C / 70.13 %, Solo: 22.19 C / 0.00 %, Lux: 77.5, DPV: 0.903 kPa[0m
+[0;32mI (10742081) APP_MAIN: Log salvo! Ar: 24.22 C / 70.14 %, Solo: 22.19 C / 0.00 %, Lux: 78.3, DPV: 0.903 kPa[0m
+[0;32mI (10752061) APP_MAIN: Log salvo! Ar: 24.23 C / 70.15 %, Solo: 22.19 C / 0.00 %, Lux: 79.2, DPV: 0.903 kPa[0m
+[0;32mI (10761811) APP_MAIN: Log salvo! Ar: 24.20 C / 70.14 %, Solo: 22.19 C / 0.00 %, Lux: 80.8, DPV: 0.902 kPa[0m
+[0;32mI (10772041) APP_MAIN: Log salvo! Ar: 24.22 C / 70.11 %, Solo: 22.12 C / 0.00 %, Lux: 78.3, DPV: 0.903 kPa[0m
+[0;32mI (10782031) APP_MAIN: Log salvo! Ar: 24.21 C / 70.09 %, Solo: 22.19 C / 0.00 %, Lux: 78.3, DPV: 0.904 kPa[0m
+[0;32mI (10791781) APP_MAIN: Log salvo! Ar: 24.22 C / 70.14 %, Solo: 22.19 C / 0.00 %, Lux: 78.3, DPV: 0.903 kPa[0m
+[0;32mI (10802011) APP_MAIN: Log salvo! Ar: 24.22 C / 70.20 %, Solo: 22.12 C / 0.00 %, Lux: 83.3, DPV: 0.901 kPa[0m
+[0;32mI (10812001) APP_MAIN: Log salvo! Ar: 24.18 C / 70.20 %, Solo: 22.19 C / 0.00 %, Lux: 83.3, DPV: 0.899 kPa[0m
+[0;32mI (10821751) APP_MAIN: Log salvo! Ar: 24.17 C / 70.33 %, Solo: 22.19 C / 0.00 %, Lux: 80.8, DPV: 0.895 kPa[0m
+[0;32mI (10831981) APP_MAIN: Log salvo! Ar: 24.19 C / 70.24 %, Solo: 22.19 C / 0.00 %, Lux: 79.2, DPV: 0.898 kPa[0m
+[0;32mI (10841971) APP_MAIN: Log salvo! Ar: 24.21 C / 70.17 %, Solo: 22.19 C / 0.00 %, Lux: 83.3, DPV: 0.901 kPa[0m
+[0;32mI (10851721) APP_MAIN: Log salvo! Ar: 24.15 C / 70.20 %, Solo: 22.19 C / 0.00 %, Lux: 76.7, DPV: 0.897 kPa[0m
+[0;32mI (10861951) APP_MAIN: Log salvo! Ar: 24.19 C / 70.18 %, Solo: 22.19 C / 0.00 %, Lux: 76.7, DPV: 0.900 kPa[0m
+[0;32mI (10871941) APP_MAIN: Log salvo! Ar: 24.20 C / 70.18 %, Solo: 22.19 C / 0.00 %, Lux: 76.7, DPV: 0.900 kPa[0m
+[0;32mI (10881691) APP_MAIN: Log salvo! Ar: 24.21 C / 70.17 %, Solo: 22.19 C / 0.00 %, Lux: 78.3, DPV: 0.902 kPa[0m
+[0;32mI (10891921) APP_MAIN: Log salvo! Ar: 24.22 C / 70.16 %, Solo: 22.19 C / 0.00 %, Lux: 79.2, DPV: 0.902 kPa[0m
+[0;32mI (10901911) APP_MAIN: Log salvo! Ar: 24.24 C / 70.20 %, Solo: 22.19 C / 0.00 %, Lux: 77.5, DPV: 0.902 kPa[0m
+[0;32mI (10911661) APP_MAIN: Log salvo! Ar: 24.21 C / 70.18 %, Solo: 22.19 C / 0.00 %, Lux: 76.7, DPV: 0.901 kPa[0m
+[0;32mI (10921891) APP_MAIN: Log salvo! Ar: 24.24 C / 70.14 %, Solo: 22.19 C / 0.00 %, Lux: 77.5, DPV: 0.904 kPa[0m
+[0;32mI (10931881) APP_MAIN: Log salvo! Ar: 24.22 C / 70.07 %, Solo: 22.19 C / 0.00 %, Lux: 76.7, DPV: 0.905 kPa[0m
+[0;32mI (10941631) APP_MAIN: Log salvo! Ar: 24.23 C / 70.11 %, Solo: 22.19 C / 0.00 %, Lux: 77.5, DPV: 0.905 kPa[0m
+[0;32mI (10951861) APP_MAIN: Log salvo! Ar: 24.24 C / 70.08 %, Solo: 22.19 C / 0.00 %, Lux: 83.3, DPV: 0.906 kPa[0m
+[0;32mI (10961851) APP_MAIN: Log salvo! Ar: 24.21 C / 69.92 %, Solo: 22.19 C / 0.00 %, Lux: 76.7, DPV: 0.909 kPa[0m
+[0;32mI (10966861) esp_netif_lwip: DHCP server assigned IP to a client, IP is: 192.168.4.3[0m
+[0;32mI (10971841) APP_MAIN: Log salvo! Ar: 24.22 C / 69.98 %, Solo: 22.19 C / 0.00 %, Lux: 77.5, DPV: 0.908 kPa[0m
+[0;32mI (10981591) APP_MAIN: Log salvo! Ar: 24.19 C / 70.02 %, Solo: 22.19 C / 0.00 %, Lux: 78.3, DPV: 0.905 kPa[0m
+[0;32mI (10991931) APP_MAIN: Log salvo! Ar: 24.21 C / 70.07 %, Solo: 22.19 C / 0.00 %, Lux: 76.7, DPV: 0.905 kPa[0m
+[0;32mI (11001811) APP_MAIN: Log salvo! Ar: 24.22 C / 70.11 %, Solo: 22.19 C / 0.00 %, Lux: 75.0, DPV: 0.904 kPa[0m
+[0;32mI (11011801) APP_MAIN: Log salvo! Ar: 24.24 C / 70.19 %, Solo: 22.19 C / 0.00 %, Lux: 76.7, DPV: 0.902 kPa[0m
+[0;32mI (11021791) APP_MAIN: Log salvo! Ar: 24.23 C / 70.16 %, Solo: 22.19 C / 0.00 %, Lux: 76.7, DPV: 0.903 kPa[0m
+[0;32mI (11031631) APP_MAIN: Log salvo! Ar: 24.23 C / 70.15 %, Solo: 22.19 C / 0.00 %, Lux: 76.7, DPV: 0.903 kPa[0m
+[0;32mI (11041771) APP_MAIN: Log salvo! Ar: 24.23 C / 70.08 %, Solo: 22.19 C / 0.00 %, Lux: 75.0, DPV: 0.905 kPa[0m
+[0;32mI (11051761) APP_MAIN: Log salvo! Ar: 24.22 C / 70.05 %, Solo: 22.19 C / 0.00 %, Lux: 76.7, DPV: 0.905 kPa[0m
+[0;32mI (11061511) APP_MAIN: Log salvo! Ar: 24.22 C / 70.10 %, Solo: 22.19 C / 0.00 %, Lux: 77.5, DPV: 0.904 kPa[0m
+[0;32mI (11071741) APP_MAIN: Log salvo! Ar: 24.22 C / 70.11 %, Solo: 22.19 C / 0.00 %, Lux: 76.7, DPV: 0.904 kPa[0m
+[0;32mI (11081731) APP_MAIN: Log salvo! Ar: 24.25 C / 70.07 %, Solo: 22.19 C / 0.00 %, Lux: 73.3, DPV: 0.906 kPa[0m
+[0;32mI (11091481) APP_MAIN: Log salvo! Ar: 24.25 C / 70.08 %, Solo: 22.19 C / 0.00 %, Lux: 72.5, DPV: 0.906 kPa[0m
+[0;32mI (11101711) APP_MAIN: Log salvo! Ar: 24.23 C / 70.09 %, Solo: 22.25 C / 0.00 %, Lux: 73.3, DPV: 0.905 kPa[0m
+[0;32mI (11111701) APP_MAIN: Log salvo! Ar: 24.24 C / 70.10 %, Solo: 22.19 C / 0.00 %, Lux: 74.2, DPV: 0.905 kPa[0m
+[0;32mI (11121451) APP_MAIN: Log salvo! Ar: 24.24 C / 70.14 %, Solo: 22.19 C / 0.00 %, Lux: 75.8, DPV: 0.904 kPa[0m
+[0;32mI (11131681) APP_MAIN: Log salvo! Ar: 24.21 C / 70.10 %, Solo: 22.19 C / 0.00 %, Lux: 75.8, DPV: 0.904 kPa[0m
+[0;32mI (11141671) APP_MAIN: Log salvo! Ar: 24.24 C / 70.15 %, Solo: 22.19 C / 0.00 %, Lux: 74.2, DPV: 0.904 kPa[0m
+[0;32mI (11151421) APP_MAIN: Log salvo! Ar: 24.20 C / 70.20 %, Solo: 22.19 C / 0.00 %, Lux: 75.0, DPV: 0.900 kPa[0m
+[0;32mI (11161651) APP_MAIN: Log salvo! Ar: 24.21 C / 70.26 %, Solo: 22.19 C / 0.00 %, Lux: 75.0, DPV: 0.899 kPa[0m
+[0;32mI (11171641) APP_MAIN: Log salvo! Ar: 24.20 C / 70.21 %, Solo: 22.25 C / 0.00 %, Lux: 78.3, DPV: 0.900 kPa[0m
+[0;32mI (11181391) APP_MAIN: Log salvo! Ar: 24.21 C / 70.27 %, Solo: 22.19 C / 0.00 %, Lux: 79.2, DPV: 0.898 kPa[0m
+[0;32mI (11191621) APP_MAIN: Log salvo! Ar: 24.22 C / 70.31 %, Solo: 22.19 C / 0.00 %, Lux: 79.2, DPV: 0.898 kPa[0m
+[0;32mI (11201611) APP_MAIN: Log salvo! Ar: 24.20 C / 70.28 %, Solo: 22.19 C / 0.00 %, Lux: 81.7, DPV: 0.898 kPa[0m
+[0;32mI (11211601) APP_MAIN: Log salvo! Ar: 24.22 C / 70.28 %, Solo: 22.19 C / 0.00 %, Lux: 85.0, DPV: 0.898 kPa[0m
+[0;32mI (11221351) APP_MAIN: Log salvo! Ar: 24.18 C / 70.21 %, Solo: 22.25 C / 0.00 %, Lux: 86.7, DPV: 0.899 kPa[0m
+[0;32mI (11231601) APP_MAIN: Log salvo! Ar: 24.21 C / 70.18 %, Solo: 22.25 C / 0.00 %, Lux: 85.8, DPV: 0.901 kPa[0m
+[0;32mI (11241571) APP_MAIN: Log salvo! Ar: 24.21 C / 70.16 %, Solo: 22.19 C / 0.00 %, Lux: 84.2, DPV: 0.902 kPa[0m
+[0;32mI (11251561) APP_MAIN: Log salvo! Ar: 24.20 C / 70.17 %, Solo: 22.19 C / 0.00 %, Lux: 85.8, DPV: 0.901 kPa[0m
+[0;32mI (11261551) APP_MAIN: Log salvo! Ar: 24.20 C / 70.24 %, Solo: 22.19 C / 0.00 %, Lux: 85.0, DPV: 0.899 kPa[0m
+[0;32mI (11271301) APP_MAIN: Log salvo! Ar: 24.23 C / 70.19 %, Solo: 22.19 C / 0.00 %, Lux: 85.8, DPV: 0.901 kPa[0m
+[0;32mI (11281531) APP_MAIN: Log salvo! Ar: 24.21 C / 70.21 %, Solo: 22.19 C / 0.00 %, Lux: 85.8, DPV: 0.900 kPa[0m
+[0;32mI (11291521) APP_MAIN: Log salvo! Ar: 24.23 C / 70.13 %, Solo: 22.19 C / 0.00 %, Lux: 87.5, DPV: 0.904 kPa[0m
+[0;32mI (11301271) APP_MAIN: Log salvo! Ar: 24.23 C / 70.11 %, Solo: 22.19 C / 0.00 %, Lux: 86.7, DPV: 0.904 kPa[0m
+[0;32mI (11311501) APP_MAIN: Log salvo! Ar: 24.24 C / 70.07 %, Solo: 22.19 C / 0.00 %, Lux: 87.5, DPV: 0.906 kPa[0m
+[0;32mI (11321491) APP_MAIN: Log salvo! Ar: 24.23 C / 70.14 %, Solo: 22.19 C / 0.00 %, Lux: 86.7, DPV: 0.903 kPa[0m
+[0;32mI (11331241) APP_MAIN: Log salvo! Ar: 24.22 C / 70.15 %, Solo: 22.19 C / 0.00 %, Lux: 87.5, DPV: 0.902 kPa[0m
+[0;32mI (11341471) APP_MAIN: Log salvo! Ar: 24.23 C / 70.17 %, Solo: 22.19 C / 0.00 %, Lux: 88.3, DPV: 0.903 kPa[0m
+[0;32mI (11351461) APP_MAIN: Log salvo! Ar: 24.23 C / 70.11 %, Solo: 22.19 C / 0.00 %, Lux: 89.2, DPV: 0.904 kPa[0m
+[0;32mI (11361211) APP_MAIN: Log salvo! Ar: 24.23 C / 70.11 %, Solo: 22.19 C / 0.00 %, Lux: 92.5, DPV: 0.904 kPa[0m
+[0;32mI (11371441) APP_MAIN: Log salvo! Ar: 24.21 C / 70.11 %, Solo: 22.19 C / 0.00 %, Lux: 92.5, DPV: 0.903 kPa[0m
+[0;32mI (11381431) APP_MAIN: Log salvo! Ar: 24.23 C / 70.22 %, Solo: 22.19 C / 0.00 %, Lux: 92.5, DPV: 0.901 kPa[0m
+[0;32mI (11391181) APP_MAIN: Log salvo! Ar: 24.23 C / 70.20 %, Solo: 22.19 C / 0.00 %, Lux: 90.0, DPV: 0.901 kPa[0m
+[0;32mI (11401411) APP_MAIN: Log salvo! Ar: 24.22 C / 70.18 %, Solo: 22.19 C / 0.00 %, Lux: 89.2, DPV: 0.902 kPa[0m
+[0;32mI (11411391) APP_MAIN: Log salvo! Ar: 24.23 C / 70.15 %, Solo: 22.19 C / 0.00 %, Lux: 95.8, DPV: 0.903 kPa[0m
+[0;32mI (11421151) APP_MAIN: Log salvo! Ar: 24.23 C / 70.09 %, Solo: 22.19 C / 0.00 %, Lux: 91.7, DPV: 0.905 kPa[0m
+[0;32mI (11431391) APP_MAIN: Log salvo! Ar: 24.24 C / 70.08 %, Solo: 22.19 C / 0.00 %, Lux: 94.2, DPV: 0.906 kPa[0m
+[0;32mI (11441371) APP_MAIN: Log salvo! Ar: 24.22 C / 70.13 %, Solo: 22.19 C / 0.00 %, Lux: 95.0, DPV: 0.903 kPa[0m
+[0;32mI (11451121) APP_MAIN: Log salvo! Ar: 24.22 C / 70.19 %, Solo: 22.19 C / 0.00 %, Lux: 98.3, DPV: 0.901 kPa[0m
+[0;32mI (11461351) APP_MAIN: Log salvo! Ar: 24.24 C / 70.13 %, Solo: 22.19 C / 0.00 %, Lux: 95.8, DPV: 0.904 kPa[0m
+[0;32mI (11471341) APP_MAIN: Log salvo! Ar: 24.26 C / 70.13 %, Solo: 22.19 C / 0.00 %, Lux: 80.8, DPV: 0.906 kPa[0m
+[0;32mI (11481341) APP_MAIN: Log salvo! Ar: 24.24 C / 70.03 %, Solo: 22.25 C / 0.00 %, Lux: 80.8, DPV: 0.907 kPa[0m
+[0;32mI (11491321) APP_MAIN: Log salvo! Ar: 24.27 C / 70.03 %, Solo: 22.19 C / 0.00 %, Lux: 78.3, DPV: 0.909 kPa[0m
+[0;32mI (11501301) APP_MAIN: Log salvo! Ar: 24.25 C / 70.10 %, Solo: 22.19 C / 0.00 %, Lux: 77.5, DPV: 0.905 kPa[0m
+[0;32mI (11511061) APP_MAIN: Log salvo! Ar: 24.24 C / 70.09 %, Solo: 22.25 C / 0.00 %, Lux: 77.5, DPV: 0.906 kPa[0m
+[0;32mI (11521291) APP_MAIN: Log salvo! Ar: 24.28 C / 70.12 %, Solo: 22.19 C / 0.00 %, Lux: 80.8, DPV: 0.907 kPa[0m
+[0;32mI (11531281) APP_MAIN: Log salvo! Ar: 24.25 C / 70.11 %, Solo: 22.19 C / 0.00 %, Lux: 79.2, DPV: 0.905 kPa[0m
+[0;32mI (11541031) APP_MAIN: Log salvo! Ar: 24.25 C / 70.10 %, Solo: 22.25 C / 0.00 %, Lux: 80.8, DPV: 0.906 kPa[0m
+[0;32mI (11551261) APP_MAIN: Log salvo! Ar: 24.24 C / 70.12 %, Solo: 22.25 C / 0.00 %, Lux: 88.3, DPV: 0.905 kPa[0m
+[0;32mI (11561251) APP_MAIN: Log salvo! Ar: 24.25 C / 70.10 %, Solo: 22.19 C / 0.00 %, Lux: 89.2, DPV: 0.906 kPa[0m
+[0;32mI (11571001) APP_MAIN: Log salvo! Ar: 24.23 C / 70.19 %, Solo: 22.19 C / 0.00 %, Lux: 105.0, DPV: 0.902 kPa[0m
+[0;32mI (11581231) APP_MAIN: Log salvo! Ar: 24.27 C / 70.24 %, Solo: 22.19 C / 0.00 %, Lux: 110.8, DPV: 0.903 kPa[0m
+[0;32mI (11591221) APP_MAIN: Log salvo! Ar: 24.27 C / 70.22 %, Solo: 22.19 C / 0.00 %, Lux: 110.8, DPV: 0.903 kPa[0m
+[0;32mI (11600971) APP_MAIN: Log salvo! Ar: 24.25 C / 70.23 %, Solo: 22.25 C / 0.00 %, Lux: 109.2, DPV: 0.902 kPa[0m
+[0;32mI (11611201) APP_MAIN: Log salvo! Ar: 24.27 C / 70.11 %, Solo: 22.25 C / 0.00 %, Lux: 110.0, DPV: 0.906 kPa[0m
+[0;32mI (11621191) APP_MAIN: Log salvo! Ar: 24.28 C / 70.09 %, Solo: 22.19 C / 0.00 %, Lux: 111.7, DPV: 0.908 kPa[0m
+[0;32mI (11630941) APP_MAIN: Log salvo! Ar: 24.28 C / 70.09 %, Solo: 22.19 C / 0.00 %, Lux: 110.8, DPV: 0.908 kPa[0m
+[0;32mI (11641171) APP_MAIN: Log salvo! Ar: 24.28 C / 70.05 %, Solo: 22.19 C / 0.00 %, Lux: 110.0, DPV: 0.909 kPa[0m
+[0;32mI (11651161) APP_MAIN: Log salvo! Ar: 24.30 C / 70.00 %, Solo: 22.19 C / 0.00 %, Lux: 110.8, DPV: 0.912 kPa[0m
+[0;32mI (11660911) APP_MAIN: Log salvo! Ar: 24.30 C / 70.00 %, Solo: 22.19 C / 0.00 %, Lux: 112.5, DPV: 0.911 kPa[0m
+[0;32mI (11671141) APP_MAIN: Log salvo! Ar: 24.27 C / 70.00 %, Solo: 22.19 C / 0.00 %, Lux: 110.0, DPV: 0.910 kPa[0m
+[0;32mI (11681131) APP_MAIN: Log salvo! Ar: 24.26 C / 70.07 %, Solo: 22.31 C / 0.00 %, Lux: 108.3, DPV: 0.907 kPa[0m
+[0;32mI (11690881) APP_MAIN: Log salvo! Ar: 24.26 C / 70.11 %, Solo: 22.19 C / 0.00 %, Lux: 108.3, DPV: 0.906 kPa[0m
+[0;32mI (11701111) APP_MAIN: Log salvo! Ar: 24.26 C / 70.15 %, Solo: 22.19 C / 0.00 %, Lux: 109.2, DPV: 0.905 kPa[0m
+[0;32mI (11711101) APP_MAIN: Log salvo! Ar: 24.29 C / 70.04 %, Solo: 22.19 C / 0.00 %, Lux: 111.7, DPV: 0.910 kPa[0m
+[0;32mI (11721091) APP_MAIN: Log salvo! Ar: 24.29 C / 70.09 %, Solo: 22.19 C / 0.00 %, Lux: 110.0, DPV: 0.908 kPa[0m
+[0;32mI (11730841) APP_MAIN: Log salvo! Ar: 24.29 C / 70.13 %, Solo: 22.19 C / 0.00 %, Lux: 112.5, DPV: 0.907 kPa[0m
+[0;32mI (11741071) APP_MAIN: Log salvo! Ar: 24.27 C / 70.14 %, Solo: 22.25 C / 0.00 %, Lux: 110.8, DPV: 0.906 kPa[0m
+[0;32mI (11751071) APP_MAIN: Log salvo! Ar: 24.25 C / 70.18 %, Solo: 22.25 C / 0.00 %, Lux: 121.7, DPV: 0.903 kPa[0m
+[0;32mI (11761051) APP_MAIN: Log salvo! Ar: 24.27 C / 70.27 %, Solo: 22.25 C / 0.00 %, Lux: 113.3, DPV: 0.902 kPa[0m
+[0;32mI (11771041) APP_MAIN: Log salvo! Ar: 24.27 C / 70.28 %, Solo: 22.25 C / 0.00 %, Lux: 111.7, DPV: 0.901 kPa[0m
+[0;32mI (11780791) APP_MAIN: Log salvo! Ar: 24.26 C / 70.37 %, Solo: 22.25 C / 0.00 %, Lux: 112.5, DPV: 0.898 kPa[0m
+[0;32mI (11791021) APP_MAIN: Log salvo! Ar: 24.29 C / 70.31 %, Solo: 22.25 C / 0.00 %, Lux: 110.8, DPV: 0.902 kPa[0m
+[0;32mI (11801011) APP_MAIN: Log salvo! Ar: 24.29 C / 70.21 %, Solo: 22.19 C / 0.00 %, Lux: 111.7, DPV: 0.904 kPa[0m
+[0;32mI (11810761) APP_MAIN: Log salvo! Ar: 24.29 C / 70.22 %, Solo: 22.25 C / 0.00 %, Lux: 115.0, DPV: 0.904 kPa[0m
+[0;32mI (11820991) APP_MAIN: Log salvo! Ar: 24.33 C / 70.05 %, Solo: 22.25 C / 0.00 %, Lux: 103.3, DPV: 0.912 kPa[0m
+[0;32mI (11830981) APP_MAIN: Log salvo! Ar: 24.32 C / 69.84 %, Solo: 22.31 C / 0.00 %, Lux: 124.2, DPV: 0.917 kPa[0m
+[0;32mI (11840731) APP_MAIN: Log salvo! Ar: 24.40 C / 69.83 %, Solo: 22.38 C / 0.00 %, Lux: 45.8, DPV: 0.922 kPa[0m
+[0;32mI (11850961) APP_MAIN: Log salvo! Ar: 24.51 C / 69.73 %, Solo: 22.38 C / 0.00 %, Lux: 117.5, DPV: 0.931 kPa[0m
+[0;32mI (11860951) APP_MAIN: Log salvo! Ar: 24.61 C / 69.43 %, Solo: 22.50 C / 0.00 %, Lux: 102.5, DPV: 0.946 kPa[0m
+[0;32mI (11870701) APP_MAIN: Log salvo! Ar: 24.62 C / 69.35 %, Solo: 22.56 C / 0.00 %, Lux: 116.7, DPV: 0.950 kPa[0m
+[0;32mI (11880931) APP_MAIN: Log salvo! Ar: 24.73 C / 69.20 %, Solo: 22.62 C / 0.00 %, Lux: 115.0, DPV: 0.960 kPa[0m
+[0;32mI (11890921) APP_MAIN: Log salvo! Ar: 24.88 C / 68.87 %, Solo: 22.75 C / 0.00 %, Lux: 102.5, DPV: 0.979 kPa[0m
+[0;32mI (11900671) APP_MAIN: Log salvo! Ar: 24.94 C / 68.44 %, Solo: 22.81 C / 0.00 %, Lux: 95.0, DPV: 0.996 kPa[0m
+[0;32mI (11910901) APP_MAIN: Log salvo! Ar: 24.95 C / 67.97 %, Solo: 22.88 C / 0.00 %, Lux: 111.7, DPV: 1.012 kPa[0m
+[0;32mI (11920891) APP_MAIN: Log salvo! Ar: 24.98 C / 67.59 %, Solo: 22.94 C / 0.00 %, Lux: 122.5, DPV: 1.025 kPa[0m
+[0;32mI (11930641) APP_MAIN: Log salvo! Ar: 25.03 C / 67.24 %, Solo: 23.00 C / 0.00 %, Lux: 114.2, DPV: 1.039 kPa[0m
+[0;32mI (11940871) APP_MAIN: Log salvo! Ar: 25.12 C / 67.00 %, Solo: 23.06 C / 0.00 %, Lux: 112.5, DPV: 1.053 kPa[0m
+[0;32mI (11950861) APP_MAIN: Log salvo! Ar: 25.18 C / 66.71 %, Solo: 23.19 C / 0.00 %, Lux: 114.2, DPV: 1.066 kPa[0m
+[0;32mI (11960851) APP_MAIN: Log salvo! Ar: 25.16 C / 66.48 %, Solo: 23.19 C / 0.00 %, Lux: 120.8, DPV: 1.072 kPa[0m
+[0;32mI (11970601) APP_MAIN: Log salvo! Ar: 25.20 C / 66.46 %, Solo: 23.25 C / 0.00 %, Lux: 120.0, DPV: 1.075 kPa[0m
+[0;32mI (11980831) APP_MAIN: Log salvo! Ar: 25.26 C / 66.29 %, Solo: 23.38 C / 0.00 %, Lux: 133.3, DPV: 1.084 kPa[0m
+[0;32mI (11990821) APP_MAIN: Log salvo! Ar: 25.28 C / 66.20 %, Solo: 23.38 C / 0.00 %, Lux: 127.5, DPV: 1.089 kPa[0m
+[0;32mI (12000571) APP_MAIN: Log salvo! Ar: 25.31 C / 65.99 %, Solo: 23.44 C / 0.00 %, Lux: 130.0, DPV: 1.097 kPa[0m
+[0;32mI (12010801) APP_MAIN: Log salvo! Ar: 25.36 C / 65.73 %, Solo: 23.44 C / 0.00 %, Lux: 126.7, DPV: 1.109 kPa[0m
+[0;32mI (12020801) APP_MAIN: Log salvo! Ar: 25.35 C / 65.62 %, Solo: 23.50 C / 0.00 %, Lux: 115.0, DPV: 1.112 kPa[0m
+[0;32mI (12030791) APP_MAIN: Log salvo! Ar: 25.37 C / 65.64 %, Solo: 23.50 C / 0.00 %, Lux: 113.3, DPV: 1.113 kPa[0m
+[0;32mI (12040781) APP_MAIN: Log salvo! Ar: 25.33 C / 65.64 %, Solo: 23.50 C / 0.00 %, Lux: 122.5, DPV: 1.110 kPa[0m
+[0;32mI (12050531) APP_MAIN: Log salvo! Ar: 25.35 C / 65.69 %, Solo: 23.56 C / 0.00 %, Lux: 110.8, DPV: 1.110 kPa[0m
+[0;32mI (12060761) APP_MAIN: Log salvo! Ar: 25.35 C / 65.62 %, Solo: 23.62 C / 0.00 %, Lux: 98.3, DPV: 1.112 kPa[0m
+[0;32mI (12070751) APP_MAIN: Log salvo! Ar: 25.32 C / 65.66 %, Solo: 23.62 C / 0.00 %, Lux: 92.5, DPV: 1.108 kPa[0m
+[0;32mI (12080501) APP_MAIN: Log salvo! Ar: 25.29 C / 65.59 %, Solo: 23.62 C / 0.00 %, Lux: 93.3, DPV: 1.109 kPa[0m
+[0;32mI (12090731) APP_MAIN: Log salvo! Ar: 25.27 C / 65.74 %, Solo: 23.62 C / 0.00 %, Lux: 94.2, DPV: 1.102 kPa[0m
+[0;32mI (12094101) wifi:station: e4:5f:01:6b:13:2d leave, AID = 2, reason = 8, bss_flags is 691299, bss:0x3ffba5d8[0m
+[0;32mI (12094101) wifi:new:<1,0>, old:<1,0>, ap:<1,1>, sta:<255,255>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (12094111) wifi:<ba-del>idx:4, tid:0[0m
+[0;32mI (12094111) wifi:<ba-del>idx:2, tid:4[0m
+[0;32mI (12094111) wifi:<ba-del>idx:3, tid:7[0m
+[0;32mI (12094121) BSP_WIFI_AP: Cliente e4:5f:01:6b:13:2d saiu, AID=2[0m
+[0;32mI (12100721) APP_MAIN: Log salvo! Ar: 25.27 C / 65.72 %, Solo: 23.62 C / 0.00 %, Lux: 96.7, DPV: 1.103 kPa[0m
+[0;32mI (12110471) APP_MAIN: Log salvo! Ar: 25.21 C / 65.90 %, Solo: 23.62 C / 0.00 %, Lux: 84.2, DPV: 1.094 kPa[0m
+[0;32mI (12120701) APP_MAIN: Log salvo! Ar: 25.18 C / 66.09 %, Solo: 23.62 C / 0.00 %, Lux: 102.5, DPV: 1.085 kPa[0m
+[0;32mI (12130691) APP_MAIN: Log salvo! Ar: 25.16 C / 66.20 %, Solo: 23.62 C / 0.00 %, Lux: 90.8, DPV: 1.081 kPa[0m
+[0;32mI (12140441) APP_MAIN: Log salvo! Ar: 25.15 C / 66.16 %, Solo: 23.62 C / 0.00 %, Lux: 117.5, DPV: 1.082 kPa[0m
+[0;32mI (12147401) wifi:new:<1,0>, old:<1,0>, ap:<1,1>, sta:<255,255>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (12147401) wifi:station: e4:5f:01:6b:13:2d join, AID=1, bgn, 20[0m
+[0;32mI (12147521) BSP_WIFI_AP: Cliente e4:5f:01:6b:13:2d conectou, AID=1[0m
+[0;32mI (12147551) esp_netif_lwip: DHCP server assigned IP to a client, IP is: 192.168.4.3[0m
+[0;32mI (12147561) wifi:<ba-add>idx:2 (ifx:1, e4:5f:01:6b:13:2d), tid:7, ssn:0, winSize:64[0m
+[0;32mI (12147631) wifi:<ba-add>idx:3 (ifx:1, e4:5f:01:6b:13:2d), tid:0, ssn:2, winSize:64[0m
+[0;32mI (12150671) APP_MAIN: Log salvo! Ar: 25.14 C / 66.32 %, Solo: 23.62 C / 0.00 %, Lux: 97.5, DPV: 1.076 kPa[0m
+[0;32mI (12160661) APP_MAIN: Log salvo! Ar: 25.16 C / 66.37 %, Solo: 23.62 C / 0.00 %, Lux: 110.0, DPV: 1.075 kPa[0m
+ ppp���p�|������|p�p�p|pp|p���pp|ppp� ppp���p�|������|p�p�p|pp|p���pp|ppp� ppp���p�|������|p�p�p|pp|p���pp|ppp� ppp���p�|������|p�p�p|pp|p���pp|ppp� ppp���p�|������|p�p�p|pp|p���pp|ppp� ppp���p�|������|p�p�p|pp|p���pp|ppp� ppp���p�|������|p�p�p|pp|p���pp|ppp� ppp���p�|������|p�p�p|pp|p���pp|ppp� ppp���p�|������|p�p�p|pp|p���pp|ppp� ppp���p�|������|p�p�p|pp|p���pp|ppp� ppp���p�|������|p�p�p|pp|p���pp|ppp� ppp���p�|������|p�p�p|pp|p���pp|ppp� ppp���p�|������|p�p�p|pp|p���pp|ppp� ppp���p�|������|p�p�p|pp|p���pp|ppp� ppp���p�|������|p�p�p|pp|p���pp|ppp� ppp���p�|������|p�p�p|pp|p���pp|ppp� ppp���p�|������|p�p�p|pp|p���pp|ppp� ppp���p�|������|p�p�p|pp|p���pp|ppp� ppp���p�|������|p�p�p|pp|p���pp|ppp� ppp���p�|������|p�p�p|pp|p���pp|ppp� ppp���p�|������|p�p�p|pp|p���pp|ppp� ppp���p�|������|p�p�p|pp|p���pp|ppp���pp���p||� p|�|p |�|� p�p�p�p|�pp�|ppppp��������|�||���pp|�p| p�|| p����pppppp�p p||� p|�|p |�|� p�p�p�p|�pp�|pp�pppp��������|�||���pp|� p�|| p����pppppp���pp�pp||� p|�|p |�|� p�p�p�p|�pp�|pppppp��������|�||���pp || p����pppppppppp���pp||� p|�|p |�|� p�p�p�p|�pp�||p�pppp|��� ��|�||���ppp||���p� ||p�p|�� pp� �|p �� �p|�|��p��|pp���|�|�p��p |�|�||� ��p�|�|pp||� p|�|p |�|� p�p�p�p|�pp�|�| pppp|��� ��|�||���pp �p�p��� �|��pp|��| ppppp�p�p�ppp�| p�p �pp�pp�p� �|�||� p|�|p |�|� p�p�p�p|�pp�|�|�| p|��� ��|�||���pp �p�p�� p ��ppp|��| pppp�p|�|��ppp�p| p�p �pp�pp�p� �|�||� p|�|p |�|� p�p�p�p|�pp�|�|ppppp|��� ��|�||���pp �p�p���p|�| pp|��| ppppp�p �ppp| p�p �pp�pp��pp��|�||� p|�|p |�|� p�p�p�p|�pp�|�|pppp|��� ��|�||���pp �p�p���||p�ppp|��| pppp�p �  ppp�p�pp�p �pp�pp��pp��|�||� p|�|p |�|� p�p�p�p|�pp�|�|�| p|��� ��|�||���pp �p| pp�ppp�p p|��| ppppp|���| p|p�pp�p �pp�pppp� �|�||� p|�|p |�|� p�p�p�p|�pp�|�||pppp��p����|��|ppp���������p�|| �pp��|����p���||� p|�|p |�|� p�p�p�p|�pp�|�|�| p��p����|��|ppp�|��| pp�|ppp��p�||�|� p|�|p |�|� p�p�p�p|�pp�| p�pppp|� �p|����� �����ppp�� ����p|�| p ���p||� p|�|p |�|� p�p�p�p|�pp�|p�pppp|� �p|����� �����pp � |�||�|��p ���|�p| |�|� p|�|p |�|� p�p�p�p|�pp�|p�pppp �p����p����ppp���pp|||�p� ||p� ��| p|�| p��p�p p�p||� p|�|p |�|� p�p�p�p|�pp�|p�pppp �p������p��pp �pp�pp��p��pp �pppp|||�p� ||p� ��| p|�| p��p�p p||�|� p|�|p |�|� p�p�p�p|�pp�|p�pppp �p����� �pp �� p��|�p�� ��p��|�|�| pp|||�p� ||p� ��|� p�� ||�p| p��p����p��|�p�p�pp ���|�p�p||� p|�|p |�|� p�p�p�p|�pp�|�|pppp �p���p����pp�pp p����pppp|||�p� ||p� ��| p��|�| p�����������| pppp p ����ppp��pppp||� p|�|p |�|� p�p�p�p|�pp�|�|pppp �p���|���p|��pp�|�ppp p����pppp|||�p� ||p� ��| p��|�| p�����������||�|� p|�|p |�|� p�p�p�p|�pp�|p�pppp �p���ppp|�| p�pp pp|�| ppp|||�p� ||p� ��| p��|�| p�����������| pppp p ����ppp�p�ppp||� p|�|p |�|� p�p�p�p|�pp�|p�pppp �p���|���p|��pp�|�ppp pp|�| ppp|||�p� ||p� ��| p��|�| p�����������||�|� p|�|p |�|� p�p�p�p|�pp�|p�pppp �p���|���p|��pp�|�pppp�||�|p���p �p� pp|||�p� ||p� ��||�||� p|�|p |�|� p�p�p�p|�pp�|p�pppp � ���|���p|��pp����p��p�ppp�||�|pp|� |����pp|||�p� ||p� ��||�|� p|�|p |�|� p�p�p�p|�pp pp�pppp � ������ �� ���p�p�����p�ppp|||�p� ||p� |���| pp�p����p��|�|� p|�|p |�|� p�p�p�p|�ppp�p�p�pppp � ������ �� ���p�p�����p�ppp�p����pp|�|�|��� ��| p�|p|�p�����||� p|�|p |�|� p�p�p�p|�ppp�p�p�pppp � ������ �� ���p�p�����p�pp��|��� |�p�p�p�p�p|�|pp������� p��|� ��|�p| p�p�p�pp��������||� p|�|p |�|� p�p�p�p|�ppp�p�p�pppp � ������ �� ���p�p�����p�pp�p�| �p�|�| pp|���p���p��p|�|��p���� �pp�p�p�p�p||� p|�|p |�|� p�p�p�p|��pp�pp�pppp � ������ �� ���p�p�����p�pp ������p��| p|�p�����|�||�|��|� ||pp||�|�| p|�| p||�|�|���� ��|� p��|� |���| p� ��� �| p|������|ppp| ppp p|�|�| |��|ppp| pppp||� p|�|p |�|� p�p�p�p|�ppp�pp�pppp � ������ �� ���p�p�����p�pp�� �� p|�|������pp|||�p� ||p� ��|� p�p�| �p�|�| pp|���p����pp�p�p�p�p||� p|�|p |�|� p�p�p�p|�ppp�p�p�pppp � ���|��|��pp�p���pp����� ���|���| p�� ������ ��| p��| pp���p�pp�pppppp|���||� p|�|p |�|� p�p�p�p|�ppp�p�p�pppp � ���|���� ��p�����pp���p���pp����� ���|���| p���� �� ��|��p���| p�� ������ ��| p��| pp���p�pp�p�pp �|�||��� ���||� p|�|p |�|� p�p�p�p|�ppp| p�pppp � ���|����p���p�� ��p�p�pppp��|�|���� p|||�p� ��p��p���|���p��| p�� ������ �� ��p��| pp���p�||� p|�|p |�|� p�p�p�p|�ppp|p�pppp � ��������p��|���p��p� ��p�ppp����p� �p�||p����p p�����p����� ��||�||� p|�|p p pp||p�pppp��p��p�p��p��pp���p���p�� �����pp�p������p�ppp p��p�|pp�p�p p��� �����p|�|�|�|� p��|p���pp|p p pp|�|pppp��p��p�p��p��pp��p��|��� ��p������p�|�|ppp|���p�p�p|��|p�|p p pp|�|pppp��p��p�p��p��pp�����p��p��� ��p�|�| p������p�|�|ppp��|� p|p p pp|�|pppp��p��p�p��|�|���p��pp���pp�|��|ppp|�|����|p p pp|�|pppp��p��p�p��|�|���p��p||�| p��|p�|� ���p|���pp��p��� �|����|p p pp|�|pppp��p��p�pp||��p�� �� p��� �|�p���|�|�p��p�p�������p|���|�pp�p�p|p p pp|�|pppp��p��p�pp||��p��� ��p��p�p|���|�p�������p|���|�pp�p|p p pp|�|pppp��p��p�pp||��p|� |����|�|��p�|�|p�p�������p|���|�pp�p�p|p p pp|�|pppp��p��p�pp||��p���|�|�p��p�p�������p|���|�pp�p�p|p p pp|�|pppp��p��p�pp||��p��� ��p��p�p�������p��p���pp�p| pp|p p pp|�|pppp��p��p�pp||��p��� ��p��p�p�������p|���|�pp�pp|p p pp|�|pppp��p��p�pp||��p���|�|�p��p�p�������p|���|�pp�p�p|p |�|� p�p�p�p|�ppp|�|pppp��p��p��|�||���pp�p�� p��p|ppp||�|� p|�|p |�|� p�p�p�p|�ppp| p�pppp��p��p��|�||���pp ������p|��| �pp||�|� p|�|p |�|� p�p�p�p|�ppp| p�pppp��p��p��|�||���pp����pp|��| �pp�p�p||� p|�|p |�|� p�p�p�p|�ppp| p�pppp��p��p��|�||���pp��p|��| �pp||�|� p|�|p |�|� p�p�p�p|�ppp|p�pppp��p��p��|�||���pp���p|��| �pp||�|� p|�|p |�|� p�p�p�p|�ppp|p�pppp��p��p��|�||���pp���p�p��p|ppp�p|�| p||� p|�|p |�|� p�p�p�p|�ppp| p�pppp��p��p��|�||���pp���p�p��p|ppp�p|�| p||� p|�|p |�|� p�p�p�p|�ppp| p�pppp��p��p��|�||���pp���p|�����pp�p|�| p||� p|�|p |�|� p�p�p�p|�ppp| p�pppp��p��p��|�||���pp��p��pppp� �|pp � p|�|����||� p|�|p |�|� p�p�p�p|�ppp|p�pppp��p��p��|�||���pp��p��ppp� ppp� �|pp � p|�|����||� p|�|p |�|� p�p�p�p|�ppp|pp�pppp|��|�||���pp|���������p�|�| p| p| p�|p�||����p����pp| p�pp�p�pp|pp|�|ppp||�|� p|�|p |�|� p�p�p�p|�ppppp�pppp|��|�||���ppp� ��p|��p|����p�� ||p�� ��p�|�| p�� �� p����p��| p�|�����������|p�� �p|����p|pp|����� ���p�� ||p�� ��p�|�| p�� ��  p|�|��� ppp||� p|�|p p ppp�p�pppp��p��p�p|�|���p�pp��|���� � p|pp�p�pp�p�p��p� �p��|pp���pp|p p ppp�p�pppp��p��p�p��|��� | p�|����p�� ��p�������p|���|����pp�p|� p p ppp�p�pppp��p��p�pp||��p|� p|��|���| p|��p��� ���|�|ppp|�|pp�|�|pp|p p ppp�p�pppp��p��p�pp||��p|� p|��|���| p|��p��� ���|�|ppp|�|pp�|�|pp|p |�|� p�p�p�p|�pppp�p�pppp �p������p��p���ppp|�|���| p � pp|||�p� ��|� pp�p�p���pp�����||�����|� �|�|�p p��| |��ppp�p�p|�|�|�| pp|�|� p|�|p |�|� p�p�p�p|�pppp�p�pppp�����|����p����|���p�pp�p|� p������p��� ����p|�| pp|������ ���p��p��p���������p��p�| pp�ppp�p�p�pp| p�|�p||� p|�|p |�|� p�p�p�p|�pppp�p�pppp|�||���|���|�pp|�p|� p�� ����p��p|�| p��p���� ���p���|�| pp|����|| pp� �|�||� p|�|p |�|� p�p�p�p|�pppp|pppp����p�� p������|���p��p�ppp����p��|ppp���� pp|||�p� ��| pp��|��� ��p�����p����� �� �� p ��������p|����p������||��|�||� |� p|��p|����p�p�p�pp| p�|�p|�|� p|�|p |�|� p�p�p�p|�pppp|pppp � ����p�pppppp�p�����|� pp|||�p� ��| p|pp ������p������� p �p��� �������p|�|� p|�|p |�|� p�p�p�p|�pppp|pppp|� �p|����� �����ppp�����|���p���|�| p ���|�p| |�|� p|�|p |�|� p�p�p�p|�ppppp�p�pppp � ����p�pppppp�|��p�� |���|pp ��pp�p�p|p�pp p p|�|�p�ppp pp�|�|�|ppp�p|� ppp p pp pppp pp���pp�p||p|p p�����pp�pp�p| p���||� p|�|p |�|� p�p�p�p|�ppp�pp�p�pppp � ����p�pppppp�|��p�� |���|pp ��pp�p�ppppp p p|�|��|ppp pp�|�|�|ppp�p|� ppp p pp pppp pp���pp�p|pp�|� p�����pp�pp�p�pp���||� p|�|p |�|� p�p�p�p|�pppp�pp�p�pppp � ����p�pppppp�|��p�� |���|pp ��pp�p�p|p�pp p p|�|��| ppp pp�|�|�|ppp�p|� p| p p pp pppp pp���pp�p|�|� p p�����pp�pp�p�pp���||� p|�|p |�|� p�p�p�p|�pp|p�p|�|pppp � ����p�pppppp�|��p�� |���|pp ��pp�p�p|p�pp p p|�|��|ppp pp�|�|�|ppp�p|� p| p p pp pppp pp���pp�p�pp p p�����pp�pp�p�pp���||� p|�|p |�|� p�p�p�p|�pp�|pp�p�p�pppp � ����p�pppppp�|��p�� |���|pp ��pp�p�p|p| p p p|�|� p| pp pp�|�|�|ppp�p|�p�pp p pp pppp pp���pp�p�p|�pp p�����pp�ppp�pp���||� p|�|p |�|� p�p�p�p|�pp�|pp�pp�pppp � ����p�pppppp�|��p�� |���|pp ��pp�p�p�|pp p p|�|�p�ppp pp�|�|�|ppp�p|�p�pp p pp pppp pp���pp�p�p p p�����pp�ppppp���||� p|�|p |�|� p�p�p�p|�pp�|pp�p|pppp � ����p�pppppp�|��p�� |���|pp ��pp�p�p�|�| p p p|�|�pppp pp�|�|�|ppp�p|�pp�pp p pp pppp pp���pp|�|� p p�����pp�ppppp���||� p|�|p |�|� p�p�p�p|�pp�|pp|pp�pppp � ����p�pppppp�|��p�� |���|pp ��pp�p�p�|�| p p p|�|� p| pp pp�|�|�|ppp�p|�pp�pp p pp pppp pp���pp�p|�|�pp p�����pp�ppp| p���||� p|�|p |�|� p�p�p�p|�pp p�p�p�p�pppp � ����p�pppppp�|��p�� |���|pp ��pp�p�p�|ppp p p|�|� pppp pp�|�|�|ppp�p|�|p�pp p pp pppp pp���pp�p�p�p|p p�����pp�pp�p�pp���||� p|�|p |�|� p�p�p�p|�ppp�p�p|pppp � ����p�pppppp�|��p�� |���|pp ��pp�p�p�|ppp p p|�|��| ppp pp�|�|�|ppp�p|�pp�pp p pp pppp pp���ppp�ppp p�����pp�pp�p| p���||� p|�|p |�|� p�p�p�p|�pppp�p�p|pppp � ����p�pppppp�|��p�� |���|pp ��pp�p�p�||pp p p|�|��|�| pp pp�|�|�|ppp�p|�pp�pp p pp pppp pp���ppp�p p p�����pp�pp�p�pp���||� p|�|p |�|� p�p�p�p|�ppp�p�p�p�p�pppp � ����p�pppppp�|��p�� |���|pp ��pp�p�p�|�| p p p|�|�|p�ppp pp�|�|�|ppp�p|�|p�pp p pp pppp pp���pp�pp�p�|� p�����pp�pp�p�pp���||� p|�|p |�|� p�p�p�p|�ppp�p�p| p�pppp � ����p�pppppp�|��p�� |���|pp ��pp�p�p�|�| p p p|�|��|pppp pp�|�|�|ppp�p|�|p�pp p pp pppp pp���pp�p�ppp p�����pp�pp�ppp���||� p|�|p |�|� p�p�p�p|�ppp�p�p�p�p�pppp � ����p�pppppp�|��p�� |���|pp ��pp�p�p�|�| p p p|�|� p�ppp pp�|�|�|ppp�p|�|p�pp p pp pppp pp���pppp p p�����pp�pp�p�pp���||� p|�|p |�|� p�p�p�p|�ppp|pp�pp�pppp � ����p�pppppp�|��p�� |���|pp ��pp�p�p�||pp p p|�|� p�ppp pp�|�|�|ppp�p|�|p�pp p pp pppp pp���pp�p�pp p p�����pp�pp�ppp���||� p|�|p |�|� p�p�p�p|�ppp�p�p|�|pppp � ����p�pppppp�|��p�� |���|pp ��pp�p�p�|�| p p p|�|��|ppp pp�|�|�|ppp�p|�pp�pp p pp pppp pp���pp�p�p�p�|� p�����pp�pp�p�pp���||� p|�|p 
