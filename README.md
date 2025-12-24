@@ -206,7 +206,7 @@ Este projeto está sob a licença **MIT**. Veja o arquivo [LICENSE](LICENSE) par
 
 <div align="center">
 
-### 🌱 Desenvolvido com ❤️ na Universidade de Brasília
+### 🌱 Desenvolvido na Universidade de Brasília
 
 **GreenSe** - Transformando a agricultura através da tecnologia IoT e inteligência artificial
 
