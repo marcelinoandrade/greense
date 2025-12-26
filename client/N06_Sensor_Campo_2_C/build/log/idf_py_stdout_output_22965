@@ -1,0 +1,22 @@
+Command: ninja size
+[0/1] cd /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_2_C/build && /usr/bin/cmake -D "IDF_SIZE_TOOL=/home/mrclnndrd/.espressif/python_env/idf5.5_py3.11_env/bin/python;-m;esp_idf_size" -D MAP_FILE=/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_2_C/build/sensor_campo.map -D OUTPUT_JSON= -P /home/mrclnndrd/esp/esp-idf/tools/cmake/run_size_tool.cmake
+                             Memory Type Usage Summary                              
+┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓
+┃ Memory Type/Section   ┃ Used [bytes] ┃ Used [%] ┃ Remain [bytes] ┃ Total [bytes] ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩
+│ Flash Code            │       701882 │          │                │               │
+│    .text              │       701882 │          │                │               │
+│ Flash Data            │       207476 │          │                │               │
+│    .rodata            │       207220 │          │                │               │
+│    .appdesc           │          256 │          │                │               │
+│ IRAM                  │        98431 │     75.1 │          32641 │        131072 │
+│    .text              │        97403 │    74.31 │                │               │
+│    .vectors           │         1028 │     0.78 │                │               │
+│ DRAM                  │        35348 │    19.56 │         145388 │        180736 │
+│    .bss               │        19224 │    10.64 │                │               │
+│    .data              │        16124 │     8.92 │                │               │
+│ RTC FAST              │           28 │     0.34 │           8164 │          8192 │
+│    .force_fast        │           28 │     0.34 │                │               │
+│ RTC SLOW              │           24 │     0.29 │           8168 │          8192 │
+│    .rtc_slow_reserved │           24 │     0.29 │                │               │
+└───────────────────────┴──────────────┴──────────┴────────────────┴───────────────┘

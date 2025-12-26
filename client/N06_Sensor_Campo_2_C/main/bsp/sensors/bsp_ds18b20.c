@@ -6,8 +6,8 @@
 #include "esp_rom_sys.h"
 #include "driver/gpio.h"
 #include "esp_log.h"
-#include "esp_random.h"
 #include <stdint.h>
+#include <math.h>
 
 static const char *TAG = "BSP_DS18B20";
 
@@ -104,12 +104,58 @@ esp_err_t ds18b20_bsp_init(void)
 
 float ds18b20_bsp_read_temperature(void)
 {
-    // Simulação: retorna temperatura de solo aleatória entre 20 e 30 °C.
-    // Mantém interface para não quebrar camadas superiores.
-    uint32_t r = esp_random();
-    float temp = 20.0f + (r % 1000) / 100.0f; // 20.00 a 29.99
-    // Log em nível INFO para visualizar facilmente a temperatura simulada.
-    ESP_LOGI(TAG, "Temp solo simulada: %.2f C", temp);
+    if (!initialized) {
+        ESP_LOGE(TAG, "DS18B20 não inicializado");
+        return -127.0f;
+    }
+    
+    // 1. Reset do barramento 1-Wire
+    if (!ds_reset()) {
+        ESP_LOGW(TAG, "DS18B20: nenhum sensor presente (reset falhou)");
+        return -127.0f;
+    }
+    
+    // 2. Skip ROM (0xCC) - para um único sensor no barramento
+    ds_write_byte(CMD_SKIP_ROM);
+    
+    // 3. Convert Temperature (0x44) - inicia conversão
+    ds_write_byte(CMD_CONVERT_T);
+    
+    // 4. Aguarda conversão (750ms para resolução de 12 bits)
+    vTaskDelay(pdMS_TO_TICKS(750));
+    
+    // 5. Reset novamente
+    if (!ds_reset()) {
+        ESP_LOGW(TAG, "DS18B20: reset falhou após conversão");
+        return -127.0f;
+    }
+    
+    // 6. Skip ROM novamente
+    ds_write_byte(CMD_SKIP_ROM);
+    
+    // 7. Read Scratchpad (0xBE) - lê os dados
+    ds_write_byte(CMD_READ_SCRATCH);
+    
+    // 8. Lê 9 bytes do scratchpad
+    uint8_t scratchpad[9];
+    for (int i = 0; i < 9; i++) {
+        scratchpad[i] = ds_read_byte();
+    }
+    
+    // 9. Converte os 2 primeiros bytes para temperatura
+    // Os bytes 0 e 1 contêm a temperatura (LSB e MSB)
+    int16_t raw_temp = (scratchpad[1] << 8) | scratchpad[0];
+    
+    // 10. Converte para °C (resolução de 0.0625°C)
+    float temp = (float)raw_temp / 16.0f;
+    
+    // 11. Verifica se a temperatura está em range válido (-55°C a +125°C)
+    if (temp < -55.0f || temp > 125.0f) {
+        ESP_LOGW(TAG, "DS18B20: temperatura fora do range válido: %.2f C", temp);
+        return -127.0f;
+    }
+    
+    ESP_LOGI(TAG, "DS18B20: temperatura lida: %.2f C", temp);
     return temp;
 }
 

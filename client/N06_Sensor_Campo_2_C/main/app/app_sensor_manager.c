@@ -15,9 +15,12 @@ static bool initialized = false;
  *   es = pressão de vapor de saturação (kPa) - função da temperatura
  *   ea = pressão de vapor atual (kPa) = es * (umidade_relativa / 100)
  * 
- * Fórmula de Magnus para es (em kPa):
- *   es = 0.6108 * exp(17.27 * T / (T + 237.3))
+ * Fórmula de Buck para es (em kPa) - mais precisa para temperaturas altas:
+ *   es = 0.61121 * exp((18.678 - T/234.5) * T / (257.14 + T))
  *   onde T é a temperatura em °C
+ * 
+ * A fórmula de Buck é mais adequada para condições tropicais e subtropicais,
+ * como as encontradas no Brasil, especialmente em temperaturas acima de 0°C.
  * 
  * @param temp_c Temperatura do ar em °C
  * @param humid_pct Umidade relativa do ar em %
@@ -31,8 +34,9 @@ static float calculate_dpv(float temp_c, float humid_pct)
         return NAN;
     }
     
-    // Pressão de vapor de saturação (es) usando fórmula de Magnus
-    float es = 0.6108f * expf(17.27f * temp_c / (temp_c + 237.3f));
+    // Pressão de vapor de saturação (es) usando fórmula de Buck
+    // Mais precisa para temperaturas altas (adequada para clima brasileiro)
+    float es = 0.61121f * expf((18.678f - temp_c / 234.5f) * temp_c / (257.14f + temp_c));
     
     // Pressão de vapor atual (ea)
     float ea = es * (humid_pct / 100.0f);

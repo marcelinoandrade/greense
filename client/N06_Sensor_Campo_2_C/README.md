@@ -20,7 +20,7 @@ Firmware para um **módulo único** com ESP32, sensor capacitivo de umidade de s
 | Temperatura do solo | DS18B20 (OneWire) | GPIO4 |
 | Temp/Umid do ar | DHT11 (1-wire) | GPIO22 |
 | Luminosidade | BH1750 (I2C) | SDA: GPIO21, SCL: GPIO19 |
-| LED de status | GPIO digital | GPIO2 |
+| LED de status | GPIO digital | GPIO16 |
 
 <div align="center">
   <img src="imagens/sensorDHT11.png" width="140" alt="DHT11">
@@ -38,17 +38,20 @@ Firmware para um **módulo único** com ESP32, sensor capacitivo de umidade de s
 
 ## 🖥️ Telas da Interface Web
 <div align="center">
-  <img src="imagens/telaPrincipal.png" width="280" alt="Página principal">
-  <img src="imagens/telaGraficos.png" width="280" alt="Gráficos em tempo real">
-  <img src="imagens/telaEstatisticas.png" width="280" alt="Estatísticas e histórico">
+  <img src="imagens/telaMonitoramento.jpg" width="420" alt="Página de Monitoramento">
+  <img src="imagens/telaConfiguracao.jpg" width="420" alt="Página de Configuração">
 </div>
+
+A interface web oferece:
+- **Monitoramento**: Dashboard principal com gráficos em tempo real, estatísticas das últimas medidas e alertas visuais quando valores estão fora dos limites configurados
+- **Configuração**: Ajustes de período de amostragem, tolerâncias de cultivo, calibração de umidade do solo e visualização de estatísticas históricas
 
 ## 🔌 Ligações Rápidas
 - **DHT11:** VCC 3V3, GND, DATA no GPIO22 (com resistor de pull-up interno via firmware)
 - **Solo (capacit.)**: VCC 3V3, GND, saída analógica no GPIO32
 - **DS18B20:** VCC 3V3, GND, DATA no GPIO4 com pull-up 4.7 kΩ
 - **BH1750:** SDA 21, SCL 19, VCC 3V3, GND (pull-ups geralmente no módulo)
-- **LED Status:** Anodo no GPIO2 (via resistor), catodo no GND
+- **LED Status:** Anodo no GPIO16 (via resistor), catodo no GND
 
 ## 🗂️ Estrutura do Projeto
 ```

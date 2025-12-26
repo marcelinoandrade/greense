@@ -1,0 +1,223 @@
+Command: ninja all
+[1/9] Performing build step for 'bootloader'
+[1/1] cd /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_2_C/build/bootloader/esp-idf/esptool_py && /home/mrclnndrd/.espressif/python_env/idf5.5_py3.11_env/bin/python /home/mrclnndrd/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x1000 /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_2_C/build/bootloader/bootloader.bin
+Bootloader binary size 0x6680 bytes. 0x980 bytes (8%) free.
+[2/9] No install step for 'bootloader'
+[3/9] Completed 'bootloader'
+[4/9] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/gui/web/gui_http_server.c.obj
+FAILED: esp-idf/main/CMakeFiles/__idf_main.dir/gui/web/gui_http_server.c.obj 
+/home/mrclnndrd/.espressif/tools/xtensa-esp-elf/esp-14.2.0_20241119/xtensa-esp-elf/bin/xtensa-esp32-elf-gcc -DESP_MDNS_VERSION_NUMBER=\"1.9.1\" -DESP_PLATFORM -DIDF_VER=\"v5.5-dev-3372-g38628f98b9\" -DSOC_MMU_PAGE_SIZE=CONFIG_MMU_PAGE_SIZE -DSOC_XTAL_FREQ_MHZ=CONFIG_XTAL_FREQ -D_GLIBCXX_HAVE_POSIX_SEMAPHORE -D_GLIBCXX_USE_POSIX_SEMAPHORE -D_GNU_SOURCE -D_POSIX_READER_WRITER_LOCKS -I/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_2_C/build/config -I/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_2_C/main -I/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_2_C/main/bsp -I/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_2_C/main/bsp/sensors -I/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_2_C/main/bsp/actuators -I/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_2_C/main/bsp/network -I/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_2_C/main/app -I/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_2_C/main/gui -I/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_2_C/main/gui/web -I/home/mrclnndrd/esp/esp-idf/components/newlib/platform_include -I/home/mrclnndrd/esp/esp-idf/components/freertos/config/include -I/home/mrclnndrd/esp/esp-idf/components/freertos/config/include/freertos -I/home/mrclnndrd/esp/esp-idf/components/freertos/config/xtensa/include -I/home/mrclnndrd/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include -I/home/mrclnndrd/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/include -I/home/mrclnndrd/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/include/freertos -I/home/mrclnndrd/esp/esp-idf/components/freertos/esp_additions/include -I/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/include -I/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/include/soc -I/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/include/soc/esp32 -I/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/dma/include -I/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/ldo/include -I/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/debug_probe/include -I/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/mspi_timing_tuning/include -I/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/power_supply/include -I/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/port/esp32/. -I/home/mrclnndrd/esp/esp-idf/components/esp_hw_support/port/esp32/include -I/home/mrclnndrd/esp/esp-idf/components/heap/include -I/home/mrclnndrd/esp/esp-idf/components/heap/tlsf -I/home/mrclnndrd/esp/esp-idf/components/log/include -I/home/mrclnndrd/esp/esp-idf/components/soc/include -I/home/mrclnndrd/esp/esp-idf/components/soc/esp32 -I/home/mrclnndrd/esp/esp-idf/components/soc/esp32/include -I/home/mrclnndrd/esp/esp-idf/components/soc/esp32/register -I/home/mrclnndrd/esp/esp-idf/components/hal/platform_port/include -I/home/mrclnndrd/esp/esp-idf/components/hal/esp32/include -I/home/mrclnndrd/esp/esp-idf/components/hal/include -I/home/mrclnndrd/esp/esp-idf/components/esp_rom/include -I/home/mrclnndrd/esp/esp-idf/components/esp_rom/esp32/include -I/home/mrclnndrd/esp/esp-idf/components/esp_rom/esp32/include/esp32 -I/home/mrclnndrd/esp/esp-idf/components/esp_rom/esp32 -I/home/mrclnndrd/esp/esp-idf/components/esp_common/include -I/home/mrclnndrd/esp/esp-idf/components/esp_system/include -I/home/mrclnndrd/esp/esp-idf/components/esp_system/port/soc -I/home/mrclnndrd/esp/esp-idf/components/esp_system/port/include/private -I/home/mrclnndrd/esp/esp-idf/components/xtensa/esp32/include -I/home/mrclnndrd/esp/esp-idf/components/xtensa/include -I/home/mrclnndrd/esp/esp-idf/components/xtensa/deprecated_include -I/home/mrclnndrd/esp/esp-idf/components/lwip/include -I/home/mrclnndrd/esp/esp-idf/components/lwip/include/apps -I/home/mrclnndrd/esp/esp-idf/components/lwip/include/apps/sntp -I/home/mrclnndrd/esp/esp-idf/components/lwip/lwip/src/include -I/home/mrclnndrd/esp/esp-idf/components/lwip/port/include -I/home/mrclnndrd/esp/esp-idf/components/lwip/port/freertos/include -I/home/mrclnndrd/esp/esp-idf/components/lwip/port/esp32xx/include -I/home/mrclnndrd/esp/esp-idf/components/lwip/port/esp32xx/include/arch -I/home/mrclnndrd/esp/esp-idf/components/lwip/port/esp32xx/include/sys -I/home/mrclnndrd/esp/esp-idf/components/esp_wifi/include -I/home/mrclnndrd/esp/esp-idf/components/esp_wifi/include/local -I/home/mrclnndrd/esp/esp-idf/components/esp_wifi/wifi_apps/include -I/home/mrclnndrd/esp/esp-idf/components/esp_wifi/wifi_apps/nan_app/include -I/home/mrclnndrd/esp/esp-idf/components/esp_event/include -I/home/mrclnndrd/esp/esp-idf/components/esp_phy/include -I/home/mrclnndrd/esp/esp-idf/components/esp_phy/esp32/include -I/home/mrclnndrd/esp/esp-idf/components/esp_netif/include -I/home/mrclnndrd/esp/esp-idf/components/esp_http_server/include -I/home/mrclnndrd/esp/esp-idf/components/http_parser -I/home/mrclnndrd/esp/esp-idf/components/esp_adc/include -I/home/mrclnndrd/esp/esp-idf/components/esp_adc/interface -I/home/mrclnndrd/esp/esp-idf/components/esp_adc/esp32/include -I/home/mrclnndrd/esp/esp-idf/components/esp_adc/deprecated/include -I/home/mrclnndrd/esp/esp-idf/components/nvs_flash/include -I/home/mrclnndrd/esp/esp-idf/components/esp_partition/include -I/home/mrclnndrd/esp/esp-idf/components/spiffs/include -I/home/mrclnndrd/esp/esp-idf/components/driver/deprecated -I/home/mrclnndrd/esp/esp-idf/components/driver/i2c/include -I/home/mrclnndrd/esp/esp-idf/components/driver/touch_sensor/include -I/home/mrclnndrd/esp/esp-idf/components/driver/twai/include -I/home/mrclnndrd/esp/esp-idf/components/driver/touch_sensor/esp32/include -I/home/mrclnndrd/esp/esp-idf/components/esp_pm/include -I/home/mrclnndrd/esp/esp-idf/components/esp_ringbuf/include -I/home/mrclnndrd/esp/esp-idf/components/esp_driver_gpio/include -I/home/mrclnndrd/esp/esp-idf/components/esp_driver_pcnt/include -I/home/mrclnndrd/esp/esp-idf/components/esp_driver_gptimer/include -I/home/mrclnndrd/esp/esp-idf/components/esp_driver_spi/include -I/home/mrclnndrd/esp/esp-idf/components/esp_driver_mcpwm/include -I/home/mrclnndrd/esp/esp-idf/components/esp_driver_ana_cmpr/include -I/home/mrclnndrd/esp/esp-idf/components/esp_driver_i2s/include -I/home/mrclnndrd/esp/esp-idf/components/esp_driver_sdmmc/include -I/home/mrclnndrd/esp/esp-idf/components/sdmmc/include -I/home/mrclnndrd/esp/esp-idf/components/esp_driver_sdspi/include -I/home/mrclnndrd/esp/esp-idf/components/esp_driver_sdio/include -I/home/mrclnndrd/esp/esp-idf/components/esp_driver_dac/include -I/home/mrclnndrd/esp/esp-idf/components/esp_driver_rmt/include -I/home/mrclnndrd/esp/esp-idf/components/esp_driver_tsens/include -I/home/mrclnndrd/esp/esp-idf/components/esp_driver_sdm/include -I/home/mrclnndrd/esp/esp-idf/components/esp_driver_i2c/include -I/home/mrclnndrd/esp/esp-idf/components/esp_driver_uart/include -I/home/mrclnndrd/esp/esp-idf/components/vfs/include -I/home/mrclnndrd/esp/esp-idf/components/esp_driver_ledc/include -I/home/mrclnndrd/esp/esp-idf/components/esp_driver_parlio/include -I/home/mrclnndrd/esp/esp-idf/components/esp_driver_usb_serial_jtag/include -I/home/mrclnndrd/esp/esp-idf/components/esp_timer/include -I/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_2_C/managed_components/espressif__cjson/cJSON -I/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_2_C/managed_components/espressif__mdns/include -I/home/mrclnndrd/esp/esp-idf/components/console -I/home/mrclnndrd/esp/esp-idf/components/esp_vfs_console/include -mlongcalls -Wno-frame-address  -fno-builtin-memcpy -fno-builtin-memset -fno-builtin-bzero -fno-builtin-stpcpy -fno-builtin-strncpy -fdiagnostics-color=always -ffunction-sections -fdata-sections -Wall -Werror=all -Wno-error=unused-function -Wno-error=unused-variable -Wno-error=unused-but-set-variable -Wno-error=deprecated-declarations -Wextra -Wno-error=extra -Wno-unused-parameter -Wno-sign-compare -Wno-enum-conversion -gdwarf-4 -ggdb -Og -fno-shrink-wrap -fmacro-prefix-map=/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_2_C=. -fmacro-prefix-map=/home/mrclnndrd/esp/esp-idf=/IDF -fstrict-volatile-bitfields -fno-jump-tables -fno-tree-switch-conversion -std=gnu17 -Wno-old-style-declaration -MD -MT esp-idf/main/CMakeFiles/__idf_main.dir/gui/web/gui_http_server.c.obj -MF esp-idf/main/CMakeFiles/__idf_main.dir/gui/web/gui_http_server.c.obj.d -o esp-idf/main/CMakeFiles/__idf_main.dir/gui/web/gui_http_server.c.obj -c /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_2_C/main/gui/web/gui_http_server.c
+/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_2_C/main/gui/web/gui_http_server.c: In function 'handle_config':
+/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_2_C/main/gui/web/gui_http_server.c:913:9: error: '<div class='card'><span clas...' directive output truncated writing 1447 bytes into a region of size between 114 and 625 [-Werror=format-truncation=]
+  913 |         "<!DOCTYPE html>"
+      |         ^~~~~~~~~~~~~~~~~
+/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_2_C/main/gui/web/gui_http_server.c:967:73: note: format string is defined here
+  956 |         "<div class='card'>"
+      |          ~~~~~~~~~~~~~~~~~~~                                             
+  957 |         "<span class='tag'>greenSe Campo</span>"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~                         
+  958 |         "<h1>Configura&ccedil;&otilde;es Gerais</h1>"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~                    
+  959 |         "<p class='lead'>Configure par&acirc;metros de amostragem, toler&acirc;ncias de cultivo e calibra&ccedil;&atilde;o do sensor. "
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  960 |         "Fa&ccedil;a o download dos dados ou limpe o armazenamento quando necessário.</p>"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  961 |         "<div class='actions'>"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~                                          
+  962 |         "<div class='action'>"
+      |         ~~~~~~~~~~~~~~~~~~~~~~                                           
+  963 |         "<a class='button secondary' href='/sampling'>Amostragem e Estatísticas</a>"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  964 |         "<p>Configure a frequência de coleta de dados e o número de amostras para análise estatística e gráficos.</p>"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  965 |         "</div>"
+      |         ~~~~~~~~                                                         
+  966 |         "<div class='action'>"
+      |         ~~~~~~~~~~~~~~~~~~~~~~                                           
+  967 |         "<a class='button secondary' href='/calibra'>Configurações de Cultivo</a>"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~
+  968 |         "<p>Configure as faixas ideais de cultivo para cada vari&aacute;vel e calibre o sensor de umidade do solo para leituras mais precisas.</p>"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  969 |         "</div>"
+      |         ~~~~~~~~                                                         
+  970 |         "<div class='action'>"
+      |         ~~~~~~~~~~~~~~~~~~~~~~                                           
+  971 |         "<a class='button neutral' href='/download'>Baixar log em CSV</a>"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  972 |         "<p>Exporte todo o hist&oacute;rico de dados coletados para an&aacute;lise em planilhas ou ferramentas de an&aacute;lise de dados.</p>"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  973 |         "</div>"
+      |         ~~~~~~~~                                                         
+  974 |         "<div class='action'>"
+      |         ~~~~~~~~~~~~~~~~~~~~~~                                           
+  975 |         "<form id='clearForm' method='post' action='/clear_data' onsubmit='return confirmaApagar();'>"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  976 |         "<button class='delete' type='submit'>Apagar dados gravados</button>"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  977 |         "<p>Remove todos os dados armazenados e reinicia o sistema de registro. Use apenas quando iniciar um novo ciclo de monitoramento.</p>"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  978 |         "</form>"
+      |         ~~~~~~~~~                                                        
+  979 |         "</div>"
+      |         ~~~~~~~~                                                         
+  980 |         "</div>"
+      |         ~~~~~~~~                                                         
+  981 |         "<p class='footer-note'>greenSe Campo | Tecnologia desenhada para agricultura conectada.</p>"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  982 |         "</div>"
+      |         ~~~~~~~~                                                         
+  983 |         "</div>"
+      |         ~~~~~~~~                                                         
+  984 |         "</body></html>",
+      |         ~~~~~~~~~~~~~~~                                                  
+/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_2_C/main/gui/web/gui_http_server.c:912:15: note: 'snprintf' output between 4919 and 5430 bytes into a destination of size 4096
+  912 |     int len = snprintf(page, page_capacity,
+      |               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  913 |         "<!DOCTYPE html>"
+      |         ~~~~~~~~~~~~~~~~~
+  914 |         "<html><head><meta charset='utf-8'/>"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  915 |         "<meta name='viewport' content='width=device-width,initial-scale=1'/>"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  916 |         "<title>Configurações Gerais - greenSe Campo</title>"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  917 |         "<style>"
+      |         ~~~~~~~~~
+  918 |         "*{box-sizing:border-box}"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~
+  919 |         "body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:linear-gradient(180deg,#f0f7f2 0%%,#fafcfa 50%%,#ffffff 100%%);color:#1a2e1f;margin:0;padding:20px;line-height:1.6}"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  920 |         ".wrapper{max-width:800px;margin:0 auto}"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  921 |         ".card{background:#ffffff;border-radius:20px;padding:32px;box-shadow:0 2px 8px rgba(0,0,0,0.04),0 8px 24px rgba(0,0,0,0.06);border:1px solid rgba(0,0,0,0.04);transition:transform 0.2s,box-shadow 0.2s}"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  922 |         ".card:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,0.08),0 12px 32px rgba(0,0,0,0.1)}"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  923 |         ".tag{display:inline-block;padding:6px 14px;border-radius:20px;background:linear-gradient(135deg,#c8e6c9 0%%,#a5d6a7 100%%);color:#1b5e20;font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:0.5px}"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  924 |         "h1{margin:12px 0 12px;font-size:32px;font-weight:700;color:#2e7d32;letter-spacing:-0.5px}"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  925 |         ".lead{color:#5a6c5e;margin-bottom:28px;line-height:1.6;font-size:15px}"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  926 |         ".actions{display:flex;flex-direction:column;gap:16px}"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  927 |         ".action{background:linear-gradient(135deg,#fafbfa 0%%,#f5f7f6 100%%);border-radius:16px;padding:24px;border:1px solid #e8ede9;transition:all 0.3s}"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  928 |         ".action:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,0.08);border-color:#c8e6c9}"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  929 |         ".action p{margin:12px 0 0;font-size:13px;color:#6b7c6f;line-height:1.6}"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  930 |         "a.button,button{display:inline-flex;align-items:center;justify-content:center;padding:12px 24px;border:none;border-radius:10px;font-weight:600;color:#fff;text-decoration:none;box-shadow:0 4px 12px rgba(76,175,80,0.3);transition:all 0.3s;font-size:14px}"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  931 |         "a.button{background:linear-gradient(135deg,#4caf50 0%%,#388e3c 100%%)}"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  932 |         "a.button:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(76,175,80,0.4)}"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  933 |         "a.button.secondary{background:linear-gradient(135deg,#42a5f5 0%%,#1976d2 100%%);box-shadow:0 4px 12px rgba(25,118,210,0.3)}"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  934 |         "a.button.secondary:hover{box-shadow:0 6px 16px rgba(25,118,210,0.4)}"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  935 |         "a.button.neutral{background:linear-gradient(135deg,#78909c 0%%,#546e7a 100%%);box-shadow:0 4px 12px rgba(84,110,122,0.3)}"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  936 |         "a.button.neutral:hover{box-shadow:0 6px 16px rgba(84,110,122,0.4)}"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  937 |         "button.delete{background:linear-gradient(135deg,#ef5350 0%%,#c62828 100%%);width:100%%;box-shadow:0 4px 12px rgba(198,40,40,0.3)}"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  938 |         "button.delete:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(198,40,40,0.4)}"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  939 |         ".footer-note{margin-top:32px;font-size:12px;color:#8a9b8d;font-style:italic;text-align:center}"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  940 |         ".main-nav{background:#ffffff;border-radius:16px;padding:12px;margin-bottom:24px;box-shadow:0 2px 8px rgba(0,0,0,0.06),0 4px 16px rgba(0,0,0,0.04);border:1px solid rgba(0,0,0,0.04)}"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  941 |         ".nav-container{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  942 |         ".nav-item{padding:10px 20px;border-radius:10px;text-decoration:none;font-size:14px;font-weight:500;color:#6b7c6f;transition:all 0.3s;background:transparent;position:relative}"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  943 |         ".nav-item:hover{background:#f1f8e9;color:#2e7d32;transform:translateY(-2px)}"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  944 |         ".nav-item.active{background:linear-gradient(135deg,#4caf50 0%%,#388e3c 100%%);color:#fff;font-weight:600;box-shadow:0 4px 12px rgba(76,175,80,0.3)}"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  945 |         "</style>"
+      |         ~~~~~~~~~~
+  946 |         "<script>"
+      |         ~~~~~~~~~~
+  947 |         "function confirmaApagar(){"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  948 |         "  if(!confirm('Deseja realmente apagar os dados gravados?')){return false;}"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  949 |         "  document.getElementById('clearForm').submit();"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  950 |         "  return false;"
+      |         ~~~~~~~~~~~~~~~~~
+  951 |         "}"
+      |         ~~~    
+  952 |         "</script>"
+      |         ~~~~~~~~~~~
+  953 |         "</head><body>"
+      |         ~~~~~~~~~~~~~~~
+  954 |         "<div class='wrapper'>"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~
+  955 |         "%s"
+      |         ~~~~   
+  956 |         "<div class='card'>"
+      |         ~~~~~~~~~~~~~~~~~~~~
+  957 |         "<span class='tag'>greenSe Campo</span>"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  958 |         "<h1>Configura&ccedil;&otilde;es Gerais</h1>"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  959 |         "<p class='lead'>Configure par&acirc;metros de amostragem, toler&acirc;ncias de cultivo e calibra&ccedil;&atilde;o do sensor. "
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  960 |         "Fa&ccedil;a o download dos dados ou limpe o armazenamento quando necessário.</p>"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  961 |         "<div class='actions'>"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~
+  962 |         "<div class='action'>"
+      |         ~~~~~~~~~~~~~~~~~~~~~~
+  963 |         "<a class='button secondary' href='/sampling'>Amostragem e Estatísticas</a>"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  964 |         "<p>Configure a frequência de coleta de dados e o número de amostras para análise estatística e gráficos.</p>"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  965 |         "</div>"
+      |         ~~~~~~~~
+  966 |         "<div class='action'>"
+      |         ~~~~~~~~~~~~~~~~~~~~~~
+  967 |         "<a class='button secondary' href='/calibra'>Configurações de Cultivo</a>"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  968 |         "<p>Configure as faixas ideais de cultivo para cada vari&aacute;vel e calibre o sensor de umidade do solo para leituras mais precisas.</p>"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  969 |         "</div>"
+      |         ~~~~~~~~
+  970 |         "<div class='action'>"
+      |         ~~~~~~~~~~~~~~~~~~~~~~
+  971 |         "<a class='button neutral' href='/download'>Baixar log em CSV</a>"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  972 |         "<p>Exporte todo o hist&oacute;rico de dados coletados para an&aacute;lise em planilhas ou ferramentas de an&aacute;lise de dados.</p>"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  973 |         "</div>"
+      |         ~~~~~~~~
+  974 |         "<div class='action'>"
+      |         ~~~~~~~~~~~~~~~~~~~~~~
+  975 |         "<form id='clearForm' method='post' action='/clear_data' onsubmit='return confirmaApagar();'>"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  976 |         "<button class='delete' type='submit'>Apagar dados gravados</button>"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  977 |         "<p>Remove todos os dados armazenados e reinicia o sistema de registro. Use apenas quando iniciar um novo ciclo de monitoramento.</p>"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  978 |         "</form>"
+      |         ~~~~~~~~~
+  979 |         "</div>"
+      |         ~~~~~~~~
+  980 |         "</div>"
+      |         ~~~~~~~~
+  981 |         "<p class='footer-note'>greenSe Campo | Tecnologia desenhada para agricultura conectada.</p>"
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  982 |         "</div>"
+      |         ~~~~~~~~
+  983 |         "</div>"
+      |         ~~~~~~~~
+  984 |         "</body></html>",
+      |         ~~~~~~~~~~~~~~~~~
+  985 |         nav_menu);
+      |         ~~~~~~~~~
+cc1: some warnings being treated as errors
+ninja: build stopped: subcommand failed.

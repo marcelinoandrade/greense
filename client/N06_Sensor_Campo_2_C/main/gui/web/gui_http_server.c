@@ -24,6 +24,7 @@
 #include "esp_log.h"
 #include "esp_http_server.h"
 #include "esp_system.h"
+#include "esp_netif.h"
 #include "mdns.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
@@ -110,6 +111,49 @@ static void format_duration_ms(uint64_t duration_ms, char *out, size_t out_len)
     } else {
         snprintf(out, out_len, "%llu ms", duration_ms);
     }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Função auxiliar para gerar menu de navegação                               */
+/* -------------------------------------------------------------------------- */
+static void build_nav_menu(const char *current_page, char *out, size_t out_size)
+{
+    const char *menu_items[][2] = {
+        {"/", "Monitoramento"},
+        {"/config", "Configuração"}
+    };
+    
+    size_t used = 0;
+    used += snprintf(out + used, out_size - used,
+        "<nav class='main-nav'>"
+        "<div class='nav-container'>");
+    
+    for (int i = 0; i < 2; i++) {
+        const char *url = menu_items[i][0];
+        const char *label = menu_items[i][1];
+        bool is_active = false;
+        
+        // Página de Monitoramento
+        if (i == 0) {
+            is_active = (strcmp(current_page, "/") == 0);
+        }
+        // Página de Configuração (ativa também para subpáginas /sampling e /calibra)
+        else if (i == 1) {
+            is_active = (strcmp(current_page, "/config") == 0 ||
+                        strcmp(current_page, "/sampling") == 0 ||
+                        strcmp(current_page, "/calibra") == 0);
+        }
+        
+        used += snprintf(out + used, out_size - used,
+            "<a href='%s' class='nav-item%s'>%s</a>",
+            url,
+            is_active ? " active" : "",
+            label);
+    }
+    
+    used += snprintf(out + used, out_size - used,
+        "</div>"
+        "</nav>");
 }
 
 /* -------------------------------------------------------------------------- */
@@ -282,16 +326,14 @@ static esp_err_t handle_dashboard(httpd_req_t *req)
     if (stats_available && window_samples > 0) {
         snprintf(stats_info_text,
                  sizeof(stats_info_text),
-                 "An&aacute;lise baseada nas &uacute;ltimas %d amostras coletadas (per&iacute;odo aproximado: %s). "
-                 "Frequ&ecirc;ncia de amostragem atual: %s.",
+                 "Baseado nas &uacute;ltimas %d medi&ccedil;&otilde;es (%s). Coleta a cada %s.",
                  window_samples,
                  window_span_text,
                  sampling_period_text);
     } else {
         snprintf(stats_info_text,
                  sizeof(stats_info_text),
-                 "Aguardando leituras suficientes para calcular estat&iacute;sticas. "
-                 "As estat&iacute;sticas ficar&atilde;o dispon&iacute;veis assim que houver amostras registradas.");
+                 "Aguardando medi&ccedil;&otilde;es. Os dados aparecer&atilde;o em breve.");
     }
 
     char window_summary_text[128];
@@ -305,23 +347,23 @@ static esp_err_t handle_dashboard(httpd_req_t *req)
         if (window_samples > 0 && sampling_ms > 0 && window_span_text[0] != '\0') {
             snprintf(window_summary_text,
                      sizeof(window_summary_text),
-                     "%d amostras (~%s)",
+                     "%d (%s)",
                      window_samples,
                      window_span_text);
         } else if (window_samples > 0) {
             snprintf(window_summary_text,
                      sizeof(window_summary_text),
-                     "%d amostras na janela de an&aacute;lise",
+                     "%d medi&ccedil;&otilde;es",
                      window_samples);
         } else {
             snprintf(window_summary_text,
                      sizeof(window_summary_text),
-                     "Nenhuma amostra registrada ainda");
+                     "Sem dados ainda");
         }
 
         snprintf(total_samples_text,
                  sizeof(total_samples_text),
-                 "%d leituras acumuladas",
+                 "%d registros",
                  recent_stats.total_samples);
 
         if (recent_stats.storage_total_bytes > 0) {
@@ -337,12 +379,12 @@ static esp_err_t handle_dashboard(httpd_req_t *req)
         }
     }
 
-    char temp_ar_avg_text[32], temp_ar_min_text[32], temp_ar_max_text[32], temp_ar_last_text[32];
-    char umid_ar_avg_text[32], umid_ar_min_text[32], umid_ar_max_text[32], umid_ar_last_text[32];
-    char temp_solo_avg_text[32], temp_solo_min_text[32], temp_solo_max_text[32], temp_solo_last_text[32];
-    char umid_solo_avg_text[32], umid_solo_min_text[32], umid_solo_max_text[32], umid_solo_last_text[32];
-    char luminosidade_avg_text[32], luminosidade_min_text[32], luminosidade_max_text[32], luminosidade_last_text[32];
-    char dpv_avg_text[32], dpv_min_text[32], dpv_max_text[32], dpv_last_text[32];
+    char temp_ar_avg_text[32], temp_ar_min_text[32], temp_ar_max_text[32], temp_ar_last_text[32], temp_ar_limits_text[64];
+    char umid_ar_avg_text[32], umid_ar_min_text[32], umid_ar_max_text[32], umid_ar_last_text[32], umid_ar_limits_text[64];
+    char temp_solo_avg_text[32], temp_solo_min_text[32], temp_solo_max_text[32], temp_solo_last_text[32], temp_solo_limits_text[64];
+    char umid_solo_avg_text[32], umid_solo_min_text[32], umid_solo_max_text[32], umid_solo_last_text[32], umid_solo_limits_text[64];
+    char luminosidade_avg_text[32], luminosidade_min_text[32], luminosidade_max_text[32], luminosidade_last_text[32], luminosidade_limits_text[64];
+    char dpv_avg_text[32], dpv_min_text[32], dpv_max_text[32], dpv_last_text[32], dpv_limits_text[64];
 
     if (stats_available && recent_stats.temp_ar.has_data) {
         snprintf(temp_ar_avg_text, sizeof(temp_ar_avg_text), "%.1f&nbsp;&deg;C", recent_stats.temp_ar.avg);
@@ -416,6 +458,14 @@ static esp_err_t handle_dashboard(httpd_req_t *req)
         snprintf(dpv_last_text, sizeof(dpv_last_text), "--");
     }
 
+    // Formata textos dos limites predefinidos
+    snprintf(temp_ar_limits_text, sizeof(temp_ar_limits_text), "%.1f - %.1f&nbsp;&deg;C", temp_ar_min, temp_ar_max);
+    snprintf(umid_ar_limits_text, sizeof(umid_ar_limits_text), "%.1f - %.1f&nbsp;%%", umid_ar_min, umid_ar_max);
+    snprintf(temp_solo_limits_text, sizeof(temp_solo_limits_text), "%.1f - %.1f&nbsp;&deg;C", temp_solo_min, temp_solo_max);
+    snprintf(umid_solo_limits_text, sizeof(umid_solo_limits_text), "%.1f - %.1f&nbsp;%%", umid_solo_min, umid_solo_max);
+    snprintf(luminosidade_limits_text, sizeof(luminosidade_limits_text), "%.0f - %.0f&nbsp;lux", luminosidade_min, luminosidade_max);
+    snprintf(dpv_limits_text, sizeof(dpv_limits_text), "%.3f - %.3f&nbsp;kPa", dpv_min, dpv_max);
+
     char card_temp_ar[512];
     char card_umid_ar[512];
     char card_temp_solo[512];
@@ -424,94 +474,106 @@ static esp_err_t handle_dashboard(httpd_req_t *req)
     char card_dpv[512];
 
     snprintf(card_temp_ar, sizeof(card_temp_ar),
-             "<div class='stats-card'>"
+             "<div class='stats-card' id='card-temp-ar'>"
              "<h3>Temp. do ar</h3>"
              "<ul>"
              "<li><span>M&eacute;dia</span><strong>%s</strong></li>"
-             "<li><span>M&iacute;nimo</span><strong>%s</strong></li>"
-             "<li><span>M&aacute;ximo</span><strong>%s</strong></li>"
-             "<li><span>&Uacute;ltima</span><strong>%s</strong></li>"
+             "<li><span>Menor</span><strong>%s</strong></li>"
+             "<li><span>Maior</span><strong>%s</strong></li>"
+             "<li><span>Agora</span><strong>%s</strong></li>"
+             "<li><span>Limites</span><strong>%s</strong></li>"
              "</ul>"
              "</div>",
              temp_ar_avg_text,
              temp_ar_min_text,
              temp_ar_max_text,
-             temp_ar_last_text);
+             temp_ar_last_text,
+             temp_ar_limits_text);
 
     snprintf(card_umid_ar, sizeof(card_umid_ar),
-             "<div class='stats-card'>"
-             "<h3>Umidade do ar</h3>"
+             "<div class='stats-card' id='card-umid-ar'>"
+             "<h3>Umidade ar</h3>"
              "<ul>"
              "<li><span>M&eacute;dia</span><strong>%s</strong></li>"
-             "<li><span>M&iacute;nimo</span><strong>%s</strong></li>"
-             "<li><span>M&aacute;ximo</span><strong>%s</strong></li>"
-             "<li><span>&Uacute;ltima</span><strong>%s</strong></li>"
+             "<li><span>Menor</span><strong>%s</strong></li>"
+             "<li><span>Maior</span><strong>%s</strong></li>"
+             "<li><span>Agora</span><strong>%s</strong></li>"
+             "<li><span>Limites</span><strong>%s</strong></li>"
              "</ul>"
              "</div>",
              umid_ar_avg_text,
              umid_ar_min_text,
              umid_ar_max_text,
-             umid_ar_last_text);
+             umid_ar_last_text,
+             umid_ar_limits_text);
 
     snprintf(card_temp_solo, sizeof(card_temp_solo),
-             "<div class='stats-card'>"
+             "<div class='stats-card' id='card-temp-solo'>"
              "<h3>Temp. do solo</h3>"
              "<ul>"
              "<li><span>M&eacute;dia</span><strong>%s</strong></li>"
-             "<li><span>M&iacute;nimo</span><strong>%s</strong></li>"
-             "<li><span>M&aacute;ximo</span><strong>%s</strong></li>"
-             "<li><span>&Uacute;ltima</span><strong>%s</strong></li>"
+             "<li><span>Menor</span><strong>%s</strong></li>"
+             "<li><span>Maior</span><strong>%s</strong></li>"
+             "<li><span>Agora</span><strong>%s</strong></li>"
+             "<li><span>Limites</span><strong>%s</strong></li>"
              "</ul>"
              "</div>",
              temp_solo_avg_text,
              temp_solo_min_text,
              temp_solo_max_text,
-             temp_solo_last_text);
+             temp_solo_last_text,
+             temp_solo_limits_text);
 
     snprintf(card_umid_solo, sizeof(card_umid_solo),
-             "<div class='stats-card'>"
+             "<div class='stats-card' id='card-umid-solo'>"
              "<h3>Umidade do solo</h3>"
              "<ul>"
              "<li><span>M&eacute;dia</span><strong>%s</strong></li>"
-             "<li><span>M&iacute;nimo</span><strong>%s</strong></li>"
-             "<li><span>M&aacute;ximo</span><strong>%s</strong></li>"
-             "<li><span>&Uacute;ltima</span><strong>%s</strong></li>"
+             "<li><span>Menor</span><strong>%s</strong></li>"
+             "<li><span>Maior</span><strong>%s</strong></li>"
+             "<li><span>Agora</span><strong>%s</strong></li>"
+             "<li><span>Limites</span><strong>%s</strong></li>"
              "</ul>"
              "</div>",
              umid_solo_avg_text,
              umid_solo_min_text,
              umid_solo_max_text,
-             umid_solo_last_text);
+             umid_solo_last_text,
+             umid_solo_limits_text);
 
     snprintf(card_luminosidade, sizeof(card_luminosidade),
-             "<div class='stats-card'>"
+             "<div class='stats-card' id='card-luminosidade'>"
              "<h3>Luminosidade</h3>"
              "<ul>"
              "<li><span>M&eacute;dia</span><strong>%s</strong></li>"
-             "<li><span>M&iacute;nimo</span><strong>%s</strong></li>"
-             "<li><span>M&aacute;ximo</span><strong>%s</strong></li>"
-             "<li><span>&Uacute;ltima</span><strong>%s</strong></li>"
+             "<li><span>Menor</span><strong>%s</strong></li>"
+             "<li><span>Maior</span><strong>%s</strong></li>"
+             "<li><span>Agora</span><strong>%s</strong></li>"
+             "<li><span>Limites</span><strong>%s</strong></li>"
              "</ul>"
              "</div>",
              luminosidade_avg_text,
              luminosidade_min_text,
              luminosidade_max_text,
-             luminosidade_last_text);
+             luminosidade_last_text,
+             luminosidade_limits_text);
 
     snprintf(card_dpv, sizeof(card_dpv),
-             "<div class='stats-card'>"
+             "<div class='stats-card' id='card-dpv'>"
              "<h3>DPV</h3>"
              "<ul>"
              "<li><span>M&eacute;dia</span><strong>%s</strong></li>"
-             "<li><span>M&iacute;nimo</span><strong>%s</strong></li>"
-             "<li><span>M&aacute;ximo</span><strong>%s</strong></li>"
-             "<li><span>&Uacute;ltima</span><strong>%s</strong></li>"
+             "<li><span>Menor</span><strong>%s</strong></li>"
+             "<li><span>Maior</span><strong>%s</strong></li>"
+             "<li><span>Agora</span><strong>%s</strong></li>"
+             "<li><span>Limites</span><strong>%s</strong></li>"
              "</ul>"
              "</div>",
              dpv_avg_text,
              dpv_min_text,
              dpv_max_text,
-             dpv_last_text);
+             dpv_last_text,
+             dpv_limits_text);
 
     char stats_grid_html[3500];
     snprintf(stats_grid_html,
@@ -528,13 +590,17 @@ static esp_err_t handle_dashboard(httpd_req_t *req)
     snprintf(stats_meta_html,
              sizeof(stats_meta_html),
              "<div class='meta-grid'>"
-             "<div class='meta-item'><strong>Janela de an&aacute;lise</strong>%s</div>"
-             "<div class='meta-item'><strong>Total de leituras</strong>%s</div>"
-             "<div class='meta-item'><strong>Armazenamento usado</strong>%s</div>"
+             "<div class='meta-item'><strong>Per&iacute;odo</strong>%s</div>"
+             "<div class='meta-item'><strong>Total</strong>%s</div>"
+             "<div class='meta-item'><strong>Mem&oacute;ria</strong>%s</div>"
              "</div>",
              window_summary_text,
              total_samples_text,
              memory_text);
+
+    /* Gera menu de navegação */
+    char nav_menu[512];
+    build_nav_menu("/", nav_menu, sizeof(nav_menu));
 
     /* Buffer alocado no heap para evitar stack overflow */
     char *page = (char *)malloc(16000);
@@ -552,78 +618,90 @@ static esp_err_t handle_dashboard(httpd_req_t *req)
         "<meta name='viewport' content='width=device-width,initial-scale=1'/>"
         "<title>Sensor de Campo</title>"
         "<style>"
-        "body{font-family:'Inter',sans-serif;margin:0;padding:24px;"
-        "background:linear-gradient(180deg,#e8f5e9 0%%,#f6fff5 65%%,#ffffff 100%%);color:#1f2a24}"
-        ".content{max-width:960px;margin:auto}"
-        ".card{background:#fff;border-radius:16px;padding:20px 24px;margin-bottom:20px;"
-        "box-shadow:0 16px 30px rgba(0,0,0,0.08)}"
-        ".hero{background:linear-gradient(135deg,#dcedc8,#f1f8e9)}"
-        "h1{margin:0;font-size:28px;color:#1b5e20}"
-        "h2{margin-top:0;color:#2e4a34}"
-        ".subtitle{color:#4f5b62;margin:8px 0 18px;font-size:15px;line-height:1.4}"
-        ".info-text{font-size:14px;color:#546e7a;margin:14px 0}"
-        ".grid{display:grid;grid-template-columns:1fr 1fr;grid-gap:16px}"
-        "canvas{max-width:100%%;height:190px;border:1px solid #dfe6e0;border-radius:10px;background:#fafafa}"
-        "a.button{display:inline-block;margin-top:12px;padding:11px 18px;"
-        "background:#388e3c;color:#fff;border-radius:8px;text-decoration:none;"
-        "font-size:14px;font-weight:600;box-shadow:0 6px 18px rgba(56,142,60,0.35)}"
-        ".badge{display:inline-flex;align-items:center;gap:6px;background:#c8e6c9;"
-        "color:#1b5e20;font-size:12px;font-weight:700;border-radius:999px;padding:4px 12px}"
-        ".preset-badge{display:inline-flex;align-items:center;gap:6px;background:#fff3cd;"
-        "color:#856404;font-size:12px;font-weight:600;border-radius:999px;padding:4px 12px;margin-left:8px;"
-        "border:1px solid #ffc107}"
-        ".caption{font-size:12px;color:#78909c;margin-top:10px}"
-        "table{font-size:14px;width:100%%;border-collapse:separate;border-spacing:0;margin-top:12px}"
-        "table tr:first-child td{background:#e8f5e9;font-weight:600;color:#1b5e20;padding:10px 12px;border-bottom:2px solid #a5d6a7}"
-        "table tr:not(:first-child) td{padding:10px 12px;border-bottom:1px solid #e0e8e1}"
-        "table tr:not(:first-child):hover td{background:#f1f8e9}"
+        "*{box-sizing:border-box}"
+        "body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;margin:0;padding:20px;"
+        "background:linear-gradient(180deg,#f0f7f2 0%%,#fafcfa 50%%,#ffffff 100%%);color:#1a2e1f;line-height:1.6}"
+        ".content{max-width:1200px;margin:0 auto}"
+        ".card{background:#ffffff;border-radius:20px;padding:28px 32px;margin-bottom:24px;"
+        "box-shadow:0 2px 8px rgba(0,0,0,0.04),0 8px 24px rgba(0,0,0,0.06);border:1px solid rgba(0,0,0,0.04);transition:transform 0.2s,box-shadow 0.2s}"
+        ".card:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,0.08),0 12px 32px rgba(0,0,0,0.1)}"
+        ".hero{background:linear-gradient(135deg,#e8f5e9 0%%,#f1f8e9 100%%);border:1px solid rgba(76,175,80,0.1)}"
+        "h1{margin:0 0 8px;font-size:32px;font-weight:700;color:#2e7d32;letter-spacing:-0.5px}"
+        "h2{margin:0 0 12px;font-size:24px;font-weight:600;color:#388e3c;letter-spacing:-0.3px}"
+        ".subtitle{color:#5a6c5e;margin:0 0 20px;font-size:15px;line-height:1.6;font-weight:400}"
+        ".info-text{font-size:14px;color:#6b7c6f;margin:16px 0;line-height:1.6}"
+        ".grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;margin-top:20px}"
+        "canvas{max-width:100%%;height:200px;border:1px solid #e8ede9;border-radius:12px;background:#fafbfa;transition:border-color 0.2s}"
+        "canvas:hover{border-color:#c8e6c9}"
+        "a.button{display:inline-flex;align-items:center;justify-content:center;padding:12px 24px;"
+        "background:linear-gradient(135deg,#4caf50 0%%,#388e3c 100%%);color:#fff;border-radius:10px;text-decoration:none;"
+        "font-size:14px;font-weight:600;box-shadow:0 4px 12px rgba(76,175,80,0.3);transition:all 0.3s;border:none}"
+        "a.button:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(76,175,80,0.4)}"
+        "a.button:active{transform:translateY(0)}"
+        ".badge{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#c8e6c9 0%%,#a5d6a7 100%%);"
+        "color:#1b5e20;font-size:11px;font-weight:700;border-radius:20px;padding:6px 14px;text-transform:uppercase;letter-spacing:0.5px}"
+        ".preset-badge{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#fff9c4 0%%,#fff59d 100%%);"
+        "color:#7d6608;font-size:11px;font-weight:600;border-radius:20px;padding:6px 14px;margin-left:10px;"
+        "border:1px solid #ffd54f;box-shadow:0 2px 4px rgba(255,193,7,0.2)}"
+        ".caption{font-size:12px;color:#8a9b8d;margin-top:12px;font-style:italic}"
+        "table{font-size:14px;width:100%%;border-collapse:separate;border-spacing:0;margin-top:16px;border-radius:10px;overflow:hidden}"
+        "table tr:first-child td{background:linear-gradient(135deg,#e8f5e9 0%%,#c8e6c9 100%%);font-weight:600;color:#1b5e20;padding:14px 16px;border-bottom:2px solid #a5d6a7}"
+        "table tr:not(:first-child) td{padding:12px 16px;border-bottom:1px solid #f0f4f1;transition:background 0.2s}"
+        "table tr:not(:first-child):hover td{background:#f8fbf9}"
         "td:first-child{font-weight:500;color:#2e4a34;min-width:140px}"
         "td:nth-child(2){color:#388e3c;font-weight:500}"
-        "td:nth-child(3){color:#546e7a;font-size:13px}"
-        ".stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:16px}"
-        ".stats-card{border:1px solid #e0e8e1;border-radius:14px;padding:14px 16px;background:#f9fbf8}"
-        ".stats-card h3{margin:0;font-size:15px;color:#1b5e20}"
-        ".stats-card ul{list-style:none;padding:0;margin:12px 0 0}"
-        ".stats-card li{display:flex;justify-content:space-between;font-size:13px;margin:4px 0;color:#455a64}"
-        ".stats-card li strong{color:#1f2a24}"
-        ".meta-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:16px}"
-        ".meta-item{background:#f1f8e9;border:1px solid #dfe8d7;border-radius:12px;padding:10px 14px;font-size:13px;color:#2e4a34}"
-        ".meta-item strong{display:block;font-size:11px;color:#5a6c57;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}"
+        "td:nth-child(3){color:#6b7c6f;font-size:13px}"
+        ".stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:20px}"
+        ".stats-card{border:1px solid #e8ede9;border-radius:16px;padding:20px;background:#fafbfa;transition:all 0.3s;position:relative;overflow:hidden}"
+        ".stats-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#4caf50 0%%,#8bc34a 100%%)}"
+        ".stats-card:hover{transform:translateY(-4px);box-shadow:0 8px 20px rgba(0,0,0,0.1);border-color:#c8e6c9}"
+        ".stats-card h3{margin:0 0 16px;font-size:16px;font-weight:600;color:#2e7d32}"
+        ".stats-card ul{list-style:none;padding:0;margin:0}"
+        ".stats-card li{display:flex;justify-content:space-between;align-items:center;font-size:13px;margin:8px 0;padding:6px 0;color:#5a6c5e;border-bottom:1px solid #f0f4f1}"
+        ".stats-card li:last-child{border-bottom:none}"
+        ".stats-card li strong{color:#1a2e1f;font-weight:600;font-size:14px}"
+        ".meta-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:20px}"
+        ".meta-item{background:linear-gradient(135deg,#f1f8e9 0%%,#e8f5e9 100%%);border:1px solid #c8e6c9;border-radius:14px;padding:16px;font-size:13px;color:#2e4a34;transition:all 0.2s}"
+        ".meta-item:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,0.08)}"
+        ".meta-item strong{display:block;font-size:10px;color:#5a6c57;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;font-weight:700}"
+        ".warn{background:linear-gradient(135deg,#ffebee 0%%,#ffcdd2 100%%) !important;border-color:#ef5350 !important;box-shadow:0 4px 12px rgba(244,67,54,0.15) !important}"
+        ".warn::before{background:linear-gradient(90deg,#f44336 0%%,#e53935 100%%) !important}"
+        "canvas.warn{background:#fff5f5 !important;border-color:#ef9a9a !important}"
+        ".main-nav{background:#ffffff;border-radius:16px;padding:12px;margin-bottom:24px;box-shadow:0 2px 8px rgba(0,0,0,0.06),0 4px 16px rgba(0,0,0,0.04);border:1px solid rgba(0,0,0,0.04)}"
+        ".nav-container{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}"
+        ".nav-item{padding:10px 20px;border-radius:10px;text-decoration:none;font-size:14px;font-weight:500;color:#6b7c6f;transition:all 0.3s;background:transparent;position:relative}"
+        ".nav-item:hover{background:#f1f8e9;color:#2e7d32;transform:translateY(-2px)}"
+        ".nav-item.active{background:linear-gradient(135deg,#4caf50 0%%,#388e3c 100%%);color:#fff;font-weight:600;box-shadow:0 4px 12px rgba(76,175,80,0.3)}"
         "</style>"
         "</head>"
         "<body>"
         "<div class='content'>"
-
+        "%s"
         "<div class='card hero'>"
         "<div style='display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:8px'>"
         "<div class='badge'>greenSe Campo</div>"
         "<div class='preset-badge'>%s</div>"
         "</div>"
-        "<h1>Painel em tempo real</h1>"
-        "<p class='subtitle'>Monitore o microclima e a umidade do solo diretamente no campo. "
-        "Os dados são atualizados automaticamente conforme a frequência de amostragem configurada.</p>"
-        "<p class='info-text'>Utilize o resumo estat&iacute;stico e os gr&aacute;ficos para identificar rapidamente variações nas condições ambientais. "
-        "As linhas pontilhadas nos gr&aacute;ficos indicam os limites ideais configurados para seu cultivo. "
-        "Para an&aacute;lises detalhadas, baixe o arquivo CSV completo.</p>"
-        "<div style='display:flex;gap:12px;flex-wrap:wrap;margin-top:8px'>"
-        "  <a class='button' href='/' style='background:#388e3c'>Voltar ao painel principal</a>"
-        "</div>"
+        "<h1>Monitoramento</h1>"
+        "<p class='subtitle'>Veja temperatura, umidade e luz do seu cultivo em tempo real.</p>"
+        "<p class='info-text'>Os gr&aacute;ficos mostram as condi&ccedil;&otilde;es do seu cultivo. "
+        "As linhas laranja mostram os valores ideais. "
+        "Se ficar amarelo, algo precisa de aten&ccedil;&atilde;o.</p>"
         "</div>"
 
         "<div class='card stats'>"
-        "<h2>Estat&iacute;sticas recentes</h2>"
-        "<p class='info-text'>Resumo das leituras baseado na janela de an&aacute;lise configurada. "
-        "Os valores mostram m&eacute;dia, m&iacute;nimo, m&aacute;ximo e &uacute;ltima leitura de cada vari&aacute;vel medida.</p>"
+        "<h2>Resumo</h2>"
+        "<p class='info-text'>M&eacute;dia, menor, maior, valor atual e limites predefinidos de cada medida.</p>"
+        "<p style='background:#fff3cd;border:1px solid #ffc107;border-radius:8px;padding:12px;margin:16px 0;color:#856404;font-size:13px'><strong>ℹ️ Observa&ccedil;&atilde;o:</strong> O alarme (fundo vermelho) acontece quando 3 entre as 4 &uacute;ltimas medidas ficam fora dos limites predefinidos.</p>"
         "<p class='info-text'>%s</p>"
         "%s"
         "%s"
         "</div>"
 
         "<div class='card'>"
-        "<h2>Hist&oacute;rico recente</h2>"
-        "<p class='info-text'>Gr&aacute;ficos mostrando a evolu&ccedil;&atilde;o temporal das vari&aacute;veis ambientais. "
-        "As linhas pontilhadas laranja indicam os limites m&iacute;nimo e m&aacute;ximo ideais para cultivo. "
-        "Use essas visualiza&ccedil;&otilde;es para identificar tend&ecirc;ncias e tomar decis&otilde;es r&aacute;pidas no campo.</p>"
+        "<h2>Gr&aacute;ficos</h2>"
+        "<p class='info-text'>Evolu&ccedil;&atilde;o das condi&ccedil;&otilde;es ao longo do tempo. "
+        "Linhas laranja mostram os valores ideais.</p>"
         "<div class='grid'>"
         "<div><canvas id='chart_temp_ar' width='320' height='180'></canvas></div>"
         "<div><canvas id='chart_umid_ar' width='320' height='180'></canvas></div>"
@@ -632,7 +710,7 @@ static esp_err_t handle_dashboard(httpd_req_t *req)
         "<div><canvas id='chart_luminosidade' width='320' height='180'></canvas></div>"
         "<div><canvas id='chart_dpv' width='320' height='180'></canvas></div>"
         "</div>"
-        "<p class='caption'>Gr&aacute;ficos exibindo at&eacute; %d amostras mais recentes conforme a janela de an&aacute;lise configurada.</p>"
+        "<p class='caption'>Mostrando as &uacute;ltimas %d medi&ccedil;&otilde;es.</p>"
         "</div>"
 
 
@@ -742,12 +820,35 @@ static esp_err_t handle_dashboard(httpd_req_t *req)
         "  const tol={temp_ar_min:%.1f,temp_ar_max:%.1f,umid_ar_min:%.1f,umid_ar_max:%.1f,"
         "temp_solo_min:%.1f,temp_solo_max:%.1f,umid_solo_min:%.1f,umid_solo_max:%.1f,"
         "luminosidade_min:%.0f,luminosidade_max:%.0f,dpv_min:%.1f,dpv_max:%.1f};"
-        "  desenha('chart_temp_ar','Temp Ar (C)',tAr.xs,tAr.ys,10,40,tol.temp_ar_min,tol.temp_ar_max);"
-        "  desenha('chart_umid_ar','UR Ar (%%)',uAr.xs,uAr.ys,0,100,tol.umid_ar_min,tol.umid_ar_max);"
-        "  desenha('chart_temp_solo','Temp Solo (C)',tSolo.xs,tSolo.ys,10,40,tol.temp_solo_min,tol.temp_solo_max);"
-        "  desenha('chart_umid_solo','Umid Solo (%%)',uSolo.xs,uSolo.ys,0,100,tol.umid_solo_min,tol.umid_solo_max);"
-        "  desenha('chart_luminosidade','Luminosidade (lux)',lum.xs,lum.ys,0,2500,tol.luminosidade_min,tol.luminosidade_max);"
-        "  desenha('chart_dpv','DPV (kPa)',dpv.xs,dpv.ys,0,3,tol.dpv_min,tol.dpv_max);"
+        "  function countOutliers(values,min,max){"
+        "    const last=values.slice(-4);"
+        "    let out=0;"
+        "    for(const v of last){"
+        "      if(!isFinite(v)) continue;"
+        "      if((isFinite(min)&&v<min)||(isFinite(max)&&v>max)) out++;"
+        "    }"
+        "    return {out,lastCount:last.length};"
+        "  }"
+        "  function applyWarn(cardId,canvasId,values,min,max){"
+        "    const {out,lastCount}=countOutliers(values,min,max);"
+        "    const warn=(lastCount>=4)&&(out>=3);"
+        "    [document.getElementById(cardId),document.getElementById(canvasId)].forEach(el=>{"
+        "      if(!el)return;"
+        "      el.classList.toggle('warn',warn);"
+        "    });"
+        "  }"
+        "  desenha('chart_temp_ar','Temp. Ar',tAr.xs,tAr.ys,10,40,tol.temp_ar_min,tol.temp_ar_max);"
+        "  desenha('chart_umid_ar','Umidade Ar',uAr.xs,uAr.ys,0,100,tol.umid_ar_min,tol.umid_ar_max);"
+        "  desenha('chart_temp_solo','Temp. Solo',tSolo.xs,tSolo.ys,10,40,tol.temp_solo_min,tol.temp_solo_max);"
+        "  desenha('chart_umid_solo','Umidade Solo',uSolo.xs,uSolo.ys,0,100,tol.umid_solo_min,tol.umid_solo_max);"
+        "  desenha('chart_luminosidade','Luz',lum.xs,lum.ys,0,2500,tol.luminosidade_min,tol.luminosidade_max);"
+        "  desenha('chart_dpv','DPV',dpv.xs,dpv.ys,0,3,tol.dpv_min,tol.dpv_max);"
+        "  applyWarn('card-temp-ar','chart_temp_ar',tAr.ys,tol.temp_ar_min,tol.temp_ar_max);"
+        "  applyWarn('card-umid-ar','chart_umid_ar',uAr.ys,tol.umid_ar_min,tol.umid_ar_max);"
+        "  applyWarn('card-temp-solo','chart_temp_solo',tSolo.ys,tol.temp_solo_min,tol.temp_solo_max);"
+        "  applyWarn('card-umid-solo','chart_umid_solo',uSolo.ys,tol.umid_solo_min,tol.umid_solo_max);"
+        "  applyWarn('card-luminosidade','chart_luminosidade',lum.ys,tol.luminosidade_min,tol.luminosidade_max);"
+        "  applyWarn('card-dpv','chart_dpv',dpv.ys,tol.dpv_min,tol.dpv_max);"
         " }catch(e){console.log('erro /history',e);}"
         "}"
 
@@ -778,6 +879,7 @@ static esp_err_t handle_dashboard(httpd_req_t *req)
         "</div>"
         "</body>"
         "</html>",
+        nav_menu,
         preset_text,
         stats_info_text,
         stats_grid_html,
@@ -825,27 +927,84 @@ static esp_err_t handle_history(httpd_req_t *req)
 /* Página de configurações */
 static esp_err_t handle_config(httpd_req_t *req)
 {
-    const char *page =
+    const gui_services_t *svc = gui_services_get();
+    if (svc == NULL || svc->get_cultivation_tolerance == NULL) {
+        httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "Serviços não disponíveis");
+        return ESP_FAIL;
+    }
+
+    /* Obtém valores de tolerância para detectar preset */
+    float temp_ar_min = 20.0f, temp_ar_max = 30.0f;
+    float umid_ar_min = 50.0f, umid_ar_max = 80.0f;
+    float temp_solo_min = 18.0f, temp_solo_max = 25.0f;
+    float umid_solo_min = 40.0f, umid_solo_max = 80.0f;
+    float luminosidade_min = 500.0f, luminosidade_max = 2000.0f;
+    float dpv_min = 0.5f, dpv_max = 2.0f;
+    svc->get_cultivation_tolerance(&temp_ar_min, &temp_ar_max,
+                                    &umid_ar_min, &umid_ar_max,
+                                    &temp_solo_min, &temp_solo_max,
+                                    &umid_solo_min, &umid_solo_max,
+                                    &luminosidade_min, &luminosidade_max,
+                                    &dpv_min, &dpv_max);
+    
+    /* Detecta qual preset está ativo */
+    const char *active_preset = detect_active_preset(temp_ar_min, temp_ar_max,
+                                                     umid_ar_min, umid_ar_max,
+                                                     temp_solo_min, temp_solo_max,
+                                                     umid_solo_min, umid_solo_max,
+                                                     luminosidade_min, luminosidade_max,
+                                                     dpv_min, dpv_max);
+    char preset_text[64];
+    snprintf(preset_text, sizeof(preset_text), "Preset: %s", active_preset);
+
+    /* Gera menu de navegação */
+    char nav_menu[512];
+    build_nav_menu("/config", nav_menu, sizeof(nav_menu));
+
+    /* Constrói página dinamicamente */
+    const size_t page_capacity = 6144;
+    char *page = (char *)malloc(page_capacity);
+    if (!page) {
+        httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "Erro de memória");
+        return ESP_FAIL;
+    }
+
+    int len = snprintf(page, page_capacity,
         "<!DOCTYPE html>"
         "<html><head><meta charset='utf-8'/>"
         "<meta name='viewport' content='width=device-width,initial-scale=1'/>"
-        "<title>Painel greenSe Campo</title>"
+        "<title>Configurações - greenSe Campo</title>"
         "<style>"
-        "body{font-family:'Inter',sans-serif;background:#edf3ee;color:#1f2a24;margin:0;padding:32px}"
-        ".wrapper{max-width:720px;margin:auto}"
-        ".card{background:#fff;border-radius:20px;padding:28px;box-shadow:0 20px 40px rgba(0,0,0,0.1)}"
-        ".tag{display:inline-block;padding:4px 12px;border-radius:999px;background:#c8e6c9;color:#1b5e20;font-weight:600;font-size:12px}"
-        "h1{margin:12px 0 8px;font-size:28px;color:#1b5e20}"
-        ".lead{color:#4f5b62;margin-bottom:24px;line-height:1.5}"
-        ".actions{display:flex;flex-direction:column;gap:18px}"
-        ".action{background:#f7faf6;border-radius:16px;padding:18px 20px;border:1px solid #e0e8e1}"
-        ".action p{margin:10px 0 0;font-size:13px;color:#546e7a}"
-        "a.button,button{display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;border:none;border-radius:12px;font-weight:600;color:#fff;text-decoration:none;box-shadow:0 10px 24px rgba(56,142,60,0.25)}"
-        "a.button{background:#388e3c}"
-        "a.button.secondary{background:#1976d2}"
-        "a.button.neutral{background:#455a64}"
-        "button.delete{background:#c62828;width:100%}"
-        ".footer-note{margin-top:28px;font-size:12px;color:#78909c}"
+        "*{box-sizing:border-box}"
+        "body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:linear-gradient(180deg,#f0f7f2 0%%,#fafcfa 50%%,#ffffff 100%%);color:#1a2e1f;margin:0;padding:20px;line-height:1.6}"
+        ".wrapper{max-width:800px;margin:0 auto}"
+        ".card{background:#ffffff;border-radius:20px;padding:32px;box-shadow:0 2px 8px rgba(0,0,0,0.04),0 8px 24px rgba(0,0,0,0.06);border:1px solid rgba(0,0,0,0.04);transition:transform 0.2s,box-shadow 0.2s}"
+        ".card:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,0.08),0 12px 32px rgba(0,0,0,0.1)}"
+        ".tag{display:inline-block;padding:6px 14px;border-radius:20px;background:linear-gradient(135deg,#c8e6c9 0%%,#a5d6a7 100%%);color:#1b5e20;font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:0.5px}"
+        "h1{margin:12px 0 12px;font-size:32px;font-weight:700;color:#2e7d32;letter-spacing:-0.5px}"
+        ".lead{color:#5a6c5e;margin-bottom:28px;line-height:1.6;font-size:15px}"
+        ".actions{display:flex;flex-direction:column;gap:16px}"
+        ".action{background:linear-gradient(135deg,#fafbfa 0%%,#f5f7f6 100%%);border-radius:16px;padding:24px;border:1px solid #e8ede9;transition:all 0.3s}"
+        ".action:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,0.08);border-color:#c8e6c9}"
+        ".action p{margin:12px 0 0;font-size:13px;color:#6b7c6f;line-height:1.6}"
+        "a.button,button{display:inline-flex;align-items:center;justify-content:center;padding:12px 24px;border:none;border-radius:10px;font-weight:600;color:#fff;text-decoration:none;box-shadow:0 4px 12px rgba(76,175,80,0.3);transition:all 0.3s;font-size:14px}"
+        "a.button{background:linear-gradient(135deg,#4caf50 0%%,#388e3c 100%%)}"
+        "a.button:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(76,175,80,0.4)}"
+        "a.button.secondary{background:linear-gradient(135deg,#42a5f5 0%%,#1976d2 100%%);box-shadow:0 4px 12px rgba(25,118,210,0.3)}"
+        "a.button.secondary:hover{box-shadow:0 6px 16px rgba(25,118,210,0.4)}"
+        "a.button.neutral{background:linear-gradient(135deg,#78909c 0%%,#546e7a 100%%);box-shadow:0 4px 12px rgba(84,110,122,0.3)}"
+        "a.button.neutral:hover{box-shadow:0 6px 16px rgba(84,110,122,0.4)}"
+        "button.delete{background:linear-gradient(135deg,#ef5350 0%%,#c62828 100%%);width:100%%;box-shadow:0 4px 12px rgba(198,40,40,0.3)}"
+        "button.delete:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(198,40,40,0.4)}"
+        ".footer-note{margin-top:32px;font-size:12px;color:#8a9b8d;font-style:italic;text-align:center}"
+        ".preset-badge{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#fff9c4 0%%,#fff59d 100%%);"
+        "color:#7d6608;font-size:11px;font-weight:600;border-radius:20px;padding:6px 14px;margin-left:10px;"
+        "border:1px solid #ffd54f;box-shadow:0 2px 4px rgba(255,193,7,0.2)}"
+        ".main-nav{background:#ffffff;border-radius:16px;padding:12px;margin-bottom:24px;box-shadow:0 2px 8px rgba(0,0,0,0.06),0 4px 16px rgba(0,0,0,0.04);border:1px solid rgba(0,0,0,0.04)}"
+        ".nav-container{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}"
+        ".nav-item{padding:10px 20px;border-radius:10px;text-decoration:none;font-size:14px;font-weight:500;color:#6b7c6f;transition:all 0.3s;background:transparent;position:relative}"
+        ".nav-item:hover{background:#f1f8e9;color:#2e7d32;transform:translateY(-2px)}"
+        ".nav-item.active{background:linear-gradient(135deg,#4caf50 0%%,#388e3c 100%%);color:#fff;font-weight:600;box-shadow:0 4px 12px rgba(76,175,80,0.3)}"
         "</style>"
         "<script>"
         "function confirmaApagar(){"
@@ -856,43 +1015,51 @@ static esp_err_t handle_config(httpd_req_t *req)
         "</script>"
         "</head><body>"
         "<div class='wrapper'>"
+        "%s"
         "<div class='card'>"
+        "<div style='display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:8px'>"
         "<span class='tag'>greenSe Campo</span>"
-        "<h1>Painel principal</h1>"
-        "<p class='lead'>Centralize o gerenciamento do seu sensor greenSe Campo. "
-        "Acesse o dashboard para monitoramento em tempo real, configure par&acirc;metros de amostragem e cultivo, "
-        "ou fa&ccedil;a o download dos dados para an&aacute;lises externas.</p>"
+        "<div class='preset-badge'>%s</div>"
+        "</div>"
+        "<h1>Configura&ccedil;&otilde;es</h1>"
+        "<p class='lead'>Ajuste como o sensor coleta dados, defina valores ideais para seu cultivo e baixe os dados quando precisar.</p>"
         "<div class='actions'>"
         "<div class='action'>"
-        "<a class='button' href='/dashboard'>Ver dashboard</a>"
-        "<p>Visualize gr&aacute;ficos em tempo real, estat&iacute;sticas recentes e a evolu&ccedil;&atilde;o das vari&aacute;veis ambientais medidas pelo sensor.</p>"
+        "<a class='button secondary' href='/sampling'>Amostragem</a>"
+        "<p>Defina de quanto em quanto tempo o sensor vai medir e quantas medidas usar nos gr&aacute;ficos.</p>"
         "</div>"
         "<div class='action'>"
-        "<a class='button secondary' href='/sampling'>Amostragem e Estatísticas</a>"
-        "<p>Configure a frequência de coleta de dados e o número de amostras para análise estatística e gráficos.</p>"
+        "<a class='button secondary' href='/calibra'>Cultivo</a>"
+        "<p>Defina os valores ideais de temperatura, umidade e luz para sua planta e ajuste o sensor de solo.</p>"
         "</div>"
         "<div class='action'>"
-        "<a class='button secondary' href='/calibra'>Configurações de Cultivo</a>"
-        "<p>Configure as faixas ideais de cultivo para cada vari&aacute;vel e calibre o sensor de umidade do solo para leituras mais precisas.</p>"
-        "</div>"
-        "<div class='action'>"
-        "<a class='button neutral' href='/download'>Baixar log em CSV</a>"
-        "<p>Exporte todo o hist&oacute;rico de dados coletados para an&aacute;lise em planilhas ou ferramentas de an&aacute;lise de dados.</p>"
+        "<a class='button neutral' href='/download'>Baixar dados</a>"
+        "<p>Baixe todos os dados coletados para abrir em planilha ou an&aacute;lise.</p>"
         "</div>"
         "<div class='action'>"
         "<form id='clearForm' method='post' action='/clear_data' onsubmit='return confirmaApagar();'>"
-        "<button class='delete' type='submit'>Apagar dados gravados</button>"
-        "<p>Remove todos os dados armazenados e reinicia o sistema de registro. Use apenas quando iniciar um novo ciclo de monitoramento.</p>"
+        "<button class='delete' type='submit'>Apagar dados</button>"
+        "<p>Remove todos os dados salvos. Use apenas quando come&ccedil;ar um novo ciclo de cultivo.</p>"
         "</form>"
         "</div>"
         "</div>"
         "<p class='footer-note'>greenSe Campo | Tecnologia desenhada para agricultura conectada.</p>"
         "</div>"
         "</div>"
-        "</body></html>";
+        "</body></html>",
+        nav_menu,
+        preset_text);
+
+    if (len < 0 || len >= (int)page_capacity) {
+        free(page);
+        httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "Erro gerando página");
+        return ESP_FAIL;
+    }
 
     httpd_resp_set_type(req, "text/html");
-    return httpd_resp_send(req, page, HTTPD_RESP_USE_STRLEN);
+    esp_err_t ret = httpd_resp_send(req, page, len);
+    free(page);
+    return ret;
 }
 
 static esp_err_t handle_sampling_page(httpd_req_t *req)
@@ -961,7 +1128,37 @@ static esp_err_t handle_sampling_page(httpd_req_t *req)
         stats_used += (size_t)written;
     }
 
-    const size_t page_capacity = 6144;
+    /* Obtém valores de tolerância para detectar preset */
+    float temp_ar_min = 20.0f, temp_ar_max = 30.0f;
+    float umid_ar_min = 50.0f, umid_ar_max = 80.0f;
+    float temp_solo_min = 18.0f, temp_solo_max = 25.0f;
+    float umid_solo_min = 40.0f, umid_solo_max = 80.0f;
+    float luminosidade_min = 500.0f, luminosidade_max = 2000.0f;
+    float dpv_min = 0.5f, dpv_max = 2.0f;
+    if (svc->get_cultivation_tolerance) {
+        svc->get_cultivation_tolerance(&temp_ar_min, &temp_ar_max,
+                                        &umid_ar_min, &umid_ar_max,
+                                        &temp_solo_min, &temp_solo_max,
+                                        &umid_solo_min, &umid_solo_max,
+                                        &luminosidade_min, &luminosidade_max,
+                                        &dpv_min, &dpv_max);
+    }
+    
+    /* Detecta qual preset está ativo */
+    const char *active_preset = detect_active_preset(temp_ar_min, temp_ar_max,
+                                                     umid_ar_min, umid_ar_max,
+                                                     temp_solo_min, temp_solo_max,
+                                                     umid_solo_min, umid_solo_max,
+                                                     luminosidade_min, luminosidade_max,
+                                                     dpv_min, dpv_max);
+    char preset_text[64];
+    snprintf(preset_text, sizeof(preset_text), "Preset: %s", active_preset);
+
+    /* Gera menu de navegação */
+    char nav_menu[512];
+    build_nav_menu("/sampling", nav_menu, sizeof(nav_menu));
+
+    const size_t page_capacity = 8192;
     char *page = malloc(page_capacity);
     if (!page) {
         httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "Erro de memória");
@@ -974,53 +1171,67 @@ static esp_err_t handle_sampling_page(httpd_req_t *req)
         "<!DOCTYPE html>"
         "<html><head><meta charset='utf-8'/>"
         "<meta name='viewport' content='width=device-width,initial-scale=1'/>"
-        "<title>Amostragem e Estatísticas</title>"
+        "<title>Amostragem - greenSe Campo</title>"
         "<style>"
-        "body{font-family:'Inter',sans-serif;background:#f0f4f1;color:#1f2a24;margin:0;padding:28px}"
-        ".card{background:#fff;border-radius:20px;padding:26px;max-width:520px;margin:auto;"
-        "box-shadow:0 22px 40px rgba(0,0,0,0.12)}"
-        ".tag{display:inline-block;padding:4px 12px;border-radius:999px;background:#c8e6c9;"
-        "color:#1b5e20;font-size:12px;font-weight:600}"
-        "h1{margin:10px 0 6px;font-size:26px;color:#1b5e20}"
-        "h2{margin:20px 0 8px;font-size:20px;color:#2e7d32}"
-        ".lead{color:#4f5b62;line-height:1.5;margin-bottom:18px}"
-        ".options{display:flex;flex-direction:column;gap:12px;margin:16px 0}"
-        ".option{display:flex;align-items:center;gap:10px;font-size:15px;background:#f7faf6;"
-        "border-radius:12px;padding:10px 14px;border:1px solid #e0e8e1}"
-        "button{padding:12px 18px;border:none;border-radius:12px;background:#388e3c;"
+        "*{box-sizing:border-box}"
+        "body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:linear-gradient(180deg,#f0f7f2 0%%,#fafcfa 50%%,#ffffff 100%%);color:#1a2e1f;margin:0;padding:20px;line-height:1.6}"
+        ".card{background:#ffffff;border-radius:20px;padding:32px;max-width:600px;margin:0 auto;"
+        "box-shadow:0 2px 8px rgba(0,0,0,0.04),0 8px 24px rgba(0,0,0,0.06);border:1px solid rgba(0,0,0,0.04);transition:transform 0.2s,box-shadow 0.2s}"
+        ".card:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,0.08),0 12px 32px rgba(0,0,0,0.1)}"
+        ".tag{display:inline-block;padding:6px 14px;border-radius:20px;background:linear-gradient(135deg,#c8e6c9 0%%,#a5d6a7 100%%);"
+        "color:#1b5e20;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px}"
+        "h1{margin:12px 0 12px;font-size:32px;font-weight:700;color:#2e7d32;letter-spacing:-0.5px}"
+        "h2{margin:24px 0 12px;font-size:22px;font-weight:600;color:#388e3c;letter-spacing:-0.3px}"
+        ".lead{color:#5a6c5e;line-height:1.6;margin-bottom:20px;font-size:15px}"
+        ".options{display:flex;flex-direction:column;gap:10px;margin:20px 0}"
+        ".option{display:flex;align-items:center;gap:12px;font-size:15px;background:linear-gradient(135deg,#fafbfa 0%%,#f5f7f6 100%%);"
+        "border-radius:12px;padding:14px 18px;border:1px solid #e8ede9;transition:all 0.3s;cursor:pointer}"
+        ".option:hover{transform:translateX(4px);box-shadow:0 2px 8px rgba(0,0,0,0.06);border-color:#c8e6c9}"
+        ".option input[type='radio']{width:20px;height:20px;cursor:pointer;accent-color:#4caf50}"
+        "button{padding:14px 24px;border:none;border-radius:10px;background:linear-gradient(135deg,#4caf50 0%%,#388e3c 100%%);"
         "color:#fff;font-size:15px;font-weight:600;cursor:pointer;width:100%%;"
-        "box-shadow:0 10px 24px rgba(56,142,60,0.25);box-sizing:border-box}"
-        "p.hint{font-size:13px;color:#546e7a;margin-top:12px}"
-        "a{color:#1976d2;text-decoration:none}"
-        ".button-back{display:block;padding:12px 18px;border-radius:12px;"
-        "background:#388e3c;color:#fff;text-decoration:none;text-align:center;"
-        "border:1px solid #2e7d32;width:100%%;margin-top:16px;font-weight:600;"
-        "box-shadow:0 10px 24px rgba(56,142,60,0.25);box-sizing:border-box}"
-        ".section{margin-bottom:28px;padding-bottom:24px;border-bottom:1px solid #e0e8e1}"
+        "box-shadow:0 4px 12px rgba(76,175,80,0.3);transition:all 0.3s;margin-top:8px}"
+        "button:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(76,175,80,0.4)}"
+        "button:active{transform:translateY(0)}"
+        "p.hint{font-size:13px;color:#6b7c6f;margin-top:16px;font-style:italic}"
+        "a{color:#1976d2;text-decoration:none;transition:color 0.2s}"
+        "a:hover{color:#1565c0}"
+        ".section{margin-bottom:32px;padding-bottom:24px;border-bottom:2px solid #f0f4f1}"
         ".section:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}"
+        ".preset-badge{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#fff9c4 0%%,#fff59d 100%%);"
+        "color:#7d6608;font-size:11px;font-weight:600;border-radius:20px;padding:6px 14px;margin-left:10px;"
+        "border:1px solid #ffd54f;box-shadow:0 2px 4px rgba(255,193,7,0.2)}"
+        ".main-nav{background:#ffffff;border-radius:16px;padding:12px;margin-bottom:24px;box-shadow:0 2px 8px rgba(0,0,0,0.06),0 4px 16px rgba(0,0,0,0.04);border:1px solid rgba(0,0,0,0.04);max-width:600px;margin-left:auto;margin-right:auto}"
+        ".nav-container{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}"
+        ".nav-item{padding:10px 20px;border-radius:10px;text-decoration:none;font-size:14px;font-weight:500;color:#6b7c6f;transition:all 0.3s;background:transparent;position:relative}"
+        ".nav-item:hover{background:#f1f8e9;color:#2e7d32;transform:translateY(-2px)}"
+        ".nav-item.active{background:linear-gradient(135deg,#4caf50 0%%,#388e3c 100%%);color:#fff;font-weight:600;box-shadow:0 4px 12px rgba(76,175,80,0.3)}"
         "</style>"
         "</head><body>"
+        "<div style='max-width:600px;margin:0 auto 24px'>%s</div>"
         "<div class='card'>"
+        "<div style='display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:8px'>"
         "<span class='tag'>greenSe Campo</span>"
-        "<h1>Amostragem e Estatísticas</h1>"
-        "<p class='lead'>Configure a frequência de coleta de dados e o número de amostras usadas para cálculos estatísticos e visualização nos gráficos.</p>"
-        "<p style='background:#fff3cd;border:1px solid #ffc107;border-radius:8px;padding:12px;margin:16px 0;color:#856404;font-size:13px'><strong>⚠️ Atenção:</strong> Alterar a frequência de amostragem apagará todos os dados gravados e reiniciará o dispositivo.</p>"
+        "<div class='preset-badge'>%s</div>"
+        "</div>"
+        "<h1>Amostragem</h1>"
+        "<p class='lead'>Defina de quanto em quanto tempo o sensor vai medir e quantas medidas aparecem nos gr&aacute;ficos.</p>"
+        "<p style='background:#fff3cd;border:1px solid #ffc107;border-radius:8px;padding:12px;margin:16px 0;color:#856404;font-size:13px'><strong>⚠️ Atenção:</strong> Mudar o tempo de medida vai apagar todos os dados e reiniciar o aparelho.</p>"
         "<form action='/set_sampling' method='get' id='samplingForm' onsubmit='return confirmSamplingChange()'>"
         "<div class='section'>"
-        "<h2>Frequência de Amostragem</h2>"
-        "<p class='lead'>Defina o intervalo entre cada registro de dados. Intervalos menores fornecem dados mais detalhados, enquanto intervalos maiores economizam energia e memória.</p>"
+        "<h2>Tempo entre Medidas</h2>"
+        "<p class='lead'>Escolha de quanto em quanto tempo o sensor vai medir. Tempos menores mostram mais detalhes, tempos maiores economizam bateria.</p>"
         "<div class='options'>%s</div>"
-        "<p class='hint'>Intervalo atual: <strong>%s</strong></p>"
+        "<p class='hint'>Tempo atual: <strong>%s</strong></p>"
         "</div>"
         "<div class='section'>"
-        "<h2>Janela de Análise Estatística</h2>"
-        "<p class='lead'>Configure quantas amostras serão consideradas para calcular médias, mínimos e máximos, além de definir quantos pontos aparecem nos gráficos. Mais amostras revelam tendências de longo prazo; menos amostras destacam variações recentes.</p>"
+        "<h2>Quantas Medidas nos Gr&aacute;ficos</h2>"
+        "<p class='lead'>Escolha quantas medidas aparecem nos gr&aacute;ficos e no resumo. Mais medidas mostram tend&ecirc;ncias, menos medidas mostram o que aconteceu agora.</p>"
         "<div class='options'>%s</div>"
-        "<p class='hint'>Janela atual: <strong>%d amostras</strong></p>"
+        "<p class='hint'>Quantidade atual: <strong>%d medidas</strong></p>"
         "</div>"
-        "<button type='submit'>Salvar configurações</button>"
+        "<button type='submit'>Salvar</button>"
         "</form>"
-        "<a class='button-back' href='/'>Voltar ao painel principal</a>"
         "</div>"
         "<script>"
         "const currentPeriod = %lu;"
@@ -1035,6 +1246,8 @@ static esp_err_t handle_sampling_page(httpd_req_t *req)
         "}"
         "</script>"
         "</body></html>",
+        nav_menu,
+        preset_text,
         radios,
         current_label,
         stats_radios,
@@ -1204,7 +1417,7 @@ static esp_err_t handle_set_sampling(httpd_req_t *req)
         "<h2>Configurações salvas com sucesso!</h2>"
         "<p>Frequência de amostragem: <strong>%s</strong></p>"
         "<p>Janela de análise estatística: <strong>%s</strong></p>"
-        "<p style='margin-top:20px'><a href='/sampling'>Voltar às configurações</a> | <a href='/'>Painel principal</a></p>"
+        "<p style='margin-top:20px'><a href='/sampling'>Voltar às configurações</a> | <a href='/'>Monitoramento</a></p>"
         "</body></html>",
         period_label,
         stats_label
@@ -1296,6 +1509,10 @@ static esp_err_t handle_calibra(httpd_req_t *req)
     char preset_text[64];
     snprintf(preset_text, sizeof(preset_text), "Preset: %s", active_preset);
  
+    /* Gera menu de navegação */
+    char nav_menu[512];
+    build_nav_menu("/calibra", nav_menu, sizeof(nav_menu));
+
     const size_t page_capacity = 16384;
     char *page = malloc(page_capacity);
     if (!page) {
@@ -1307,58 +1524,71 @@ static esp_err_t handle_calibra(httpd_req_t *req)
              "<!DOCTYPE html><html><head>"
              "<meta charset='utf-8'/>"
              "<meta name='viewport' content='width=device-width, initial-scale=1'/>"
-             "<title>Configurações de Cultivo</title>"
+             "<title>Cultivo - greenSe Campo</title>"
              "<style>"
-             "body{font-family:'Inter',sans-serif;background:#f0f4f1;color:#1f2a24;margin:0;padding:24px;}"
-             ".card{background:#fff;border-radius:20px;padding:26px;max-width:600px;margin:auto;"
-             "box-shadow:0 24px 46px rgba(0,0,0,0.12);margin-bottom:20px}"
-             ".tag{display:inline-block;padding:4px 12px;border-radius:999px;background:#c8e6c9;"
-             "color:#1b5e20;font-size:12px;font-weight:600}"
-             "h2{margin:12px 0 6px;font-size:24px;color:#1b5e20}"
-             "h3{margin:20px 0 8px;font-size:18px;color:#2e7d32;border-top:2px solid #e0e8e1;padding-top:16px}"
+             "*{box-sizing:border-box}"
+             "body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:linear-gradient(180deg,#f0f7f2 0%%,#fafcfa 50%%,#ffffff 100%%);color:#1a2e1f;margin:0;padding:20px;line-height:1.6}"
+             ".card{background:#ffffff;border-radius:20px;padding:32px;max-width:600px;margin:0 auto 24px;"
+             "box-shadow:0 2px 8px rgba(0,0,0,0.04),0 8px 24px rgba(0,0,0,0.06);border:1px solid rgba(0,0,0,0.04);transition:transform 0.2s,box-shadow 0.2s}"
+             ".card:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,0.08),0 12px 32px rgba(0,0,0,0.1)}"
+             ".tag{display:inline-block;padding:6px 14px;border-radius:20px;background:linear-gradient(135deg,#c8e6c9 0%%,#a5d6a7 100%%);"
+             "color:#1b5e20;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px}"
+             "h2{margin:12px 0 12px;font-size:28px;font-weight:700;color:#2e7d32;letter-spacing:-0.5px}"
+             "h3{margin:28px 0 16px;font-size:20px;font-weight:600;color:#388e3c;border-top:2px solid #f0f4f1;padding-top:20px;letter-spacing:-0.3px}"
              "h3:first-of-type{border-top:none;padding-top:0;margin-top:0}"
-             ".lead{color:#4f5b62;line-height:1.5;margin-bottom:18px}"
-             ".info{display:flex;gap:12px;margin:18px 0}"
-             ".info-box{flex:1;background:#f7faf6;border:1px solid #e0e8e1;border-radius:14px;"
-             "padding:12px 14px;text-align:center;font-size:14px}"
-             "form label{display:block;margin:12px 0 4px;font-weight:600;font-size:14px;color:#37474f}"
-             ".tolerance-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}"
-             ".tolerance-row label{grid-column:1/-1;margin-bottom:4px}"
+             ".lead{color:#5a6c5e;line-height:1.6;margin-bottom:24px;font-size:15px}"
+             ".info{display:flex;gap:12px;margin:20px 0}"
+             ".info-box{flex:1;background:linear-gradient(135deg,#fafbfa 0%%,#f5f7f6 100%%);border:1px solid #e8ede9;border-radius:14px;"
+             "padding:16px;text-align:center;font-size:14px;transition:all 0.3s}"
+             ".info-box:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,0.08);border-color:#c8e6c9}"
+             "form label{display:block;margin:16px 0 8px;font-weight:600;font-size:14px;color:#2e4a34}"
+             ".tolerance-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}"
+             ".tolerance-row label{grid-column:1/-1;margin-bottom:8px}"
              ".tolerance-row input{width:100%%}"
-             "input{width:100%%;padding:10px;border:1px solid #cddbd2;border-radius:10px;"
-             "font-size:15px;box-sizing:border-box}"
-             "select{width:100%%;padding:10px;border:1px solid #cddbd2;border-radius:10px;"
-             "font-size:15px;box-sizing:border-box;background:#fff;color:#1f2a24;cursor:pointer}"
-             "select:hover{border-color:#388e3c}"
-             ".preset-box{background:#f7faf6;border:1px solid #e0e8e1;border-radius:14px;"
-             "padding:16px;margin-bottom:20px}"
-             ".preset-label{display:block;margin-bottom:8px;font-weight:600;font-size:14px;color:#37474f}"
-             "button{width:100%%;padding:12px 18px;border:none;border-radius:12px;background:#388e3c;"
-             "color:#fff;font-size:15px;font-weight:600;margin-top:18px;box-shadow:0 10px 24px rgba(56,142,60,0.25)}"
-             "a.button{display:inline-block;width:100%%;text-align:center;padding:12px 18px;"
-             "border-radius:12px;background:#388e3c;color:#fff;text-decoration:none;font-weight:600;"
-             "margin-top:12px;border:1px solid #2e7d32;box-shadow:0 8px 20px rgba(56,142,60,0.25);"
-             "box-sizing:border-box}"
-             ".tip{font-size:13px;color:#546e7a;margin-top:14px}"
-             ".preset-badge{display:inline-flex;align-items:center;gap:6px;background:#fff3cd;"
-             "color:#856404;font-size:12px;font-weight:600;border-radius:999px;padding:4px 12px;margin-left:8px;"
-             "border:1px solid #ffc107}"
+             "input{width:100%%;padding:12px;border:1px solid #e8ede9;border-radius:10px;"
+             "font-size:15px;box-sizing:border-box;transition:all 0.2s;background:#fafbfa}"
+             "input:focus{outline:none;border-color:#4caf50;background:#fff;box-shadow:0 0 0 3px rgba(76,175,80,0.1)}"
+             "select{width:100%%;padding:12px;border:1px solid #e8ede9;border-radius:10px;"
+             "font-size:15px;box-sizing:border-box;background:#fafbfa;color:#1a2e1f;cursor:pointer;transition:all 0.2s}"
+             "select:hover{border-color:#4caf50}"
+             "select:focus{outline:none;border-color:#4caf50;background:#fff;box-shadow:0 0 0 3px rgba(76,175,80,0.1)}"
+             ".preset-box{background:linear-gradient(135deg,#fafbfa 0%%,#f5f7f6 100%%);border:1px solid #e8ede9;border-radius:16px;"
+             "padding:20px;margin-bottom:24px;transition:all 0.3s}"
+             ".preset-box:hover{border-color:#c8e6c9;box-shadow:0 2px 8px rgba(0,0,0,0.06)}"
+             ".preset-label{display:block;margin-bottom:12px;font-weight:600;font-size:14px;color:#2e4a34}"
+             "button{width:100%%;padding:14px 24px;border:none;border-radius:10px;background:linear-gradient(135deg,#4caf50 0%%,#388e3c 100%%);"
+             "color:#fff;font-size:15px;font-weight:600;margin-top:24px;box-shadow:0 4px 12px rgba(76,175,80,0.3);transition:all 0.3s;cursor:pointer}"
+             "button:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(76,175,80,0.4)}"
+             "button:active{transform:translateY(0)}"
+             "a.button{display:inline-block;width:100%%;text-align:center;padding:14px 24px;"
+             "border-radius:10px;background:linear-gradient(135deg,#4caf50 0%%,#388e3c 100%%);color:#fff;text-decoration:none;font-weight:600;"
+             "margin-top:16px;box-shadow:0 4px 12px rgba(76,175,80,0.3);box-sizing:border-box;transition:all 0.3s}"
+             "a.button:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(76,175,80,0.4)}"
+             ".tip{font-size:13px;color:#6b7c6f;margin-top:16px;font-style:italic;line-height:1.6}"
+             ".preset-badge{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#fff9c4 0%%,#fff59d 100%%);"
+             "color:#7d6608;font-size:11px;font-weight:600;border-radius:20px;padding:6px 14px;margin-left:10px;"
+             "border:1px solid #ffd54f;box-shadow:0 2px 4px rgba(255,193,7,0.2)}"
+             ".main-nav{background:#ffffff;border-radius:16px;padding:12px;margin-bottom:24px;box-shadow:0 2px 8px rgba(0,0,0,0.06),0 4px 16px rgba(0,0,0,0.04);border:1px solid rgba(0,0,0,0.04);max-width:600px;margin-left:auto;margin-right:auto}"
+             ".nav-container{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}"
+             ".nav-item{padding:10px 20px;border-radius:10px;text-decoration:none;font-size:14px;font-weight:500;color:#6b7c6f;transition:all 0.3s;background:transparent;position:relative}"
+             ".nav-item:hover{background:#f1f8e9;color:#2e7d32;transform:translateY(-2px)}"
+             ".nav-item.active{background:linear-gradient(135deg,#4caf50 0%%,#388e3c 100%%);color:#fff;font-weight:600;box-shadow:0 4px 12px rgba(76,175,80,0.3)}"
              "</style></head><body>"
+             "<div style='max-width:600px;margin:0 auto 20px'>%s</div>"
              "<div class='card'>"
              "<div style='display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:8px'>"
              "<span class='tag'>greenSe Campo</span>"
              "<div class='preset-badge'>%s</div>"
              "</div>"
-             "<h2>Configurações de Cultivo</h2>"
-             "<p class='lead'>Personalize as faixas ideais de cultivo para cada vari&aacute;vel ambiental medida. "
-             "Esses valores definem os limites m&iacute;nimo e m&aacute;ximo que aparecem como linhas de refer&ecirc;ncia nos gr&aacute;ficos, "
-             "facilitando a identifica&ccedil;&atilde;o visual de quando as condi&ccedil;&otilde;es est&atilde;o dentro ou fora da faixa ideal para seu cultivo.</p>"
+             "<h2>Cultivo</h2>"
+             "<p class='lead'>Defina os valores ideais de temperatura, umidade e luz para sua planta. "
+             "Esses valores aparecem como linhas nos gr&aacute;ficos para voc&ecirc; ver quando est&aacute; bom ou precisa ajustar.</p>"
              
              "<form action='/set_tolerance' method='get' id='toleranceForm'>"
-             "<h3>Faixas Ideais de Cultivo</h3>"
+             "<h3>Valores Ideais</h3>"
              
              "<div class='preset-box'>"
-             "<label class='preset-label' for='presetSelect'>Selecione um preset de cultivo:</label>"
+             "<label class='preset-label' for='presetSelect'>Escolha um tipo de planta:</label>"
              "<select id='presetSelect' onchange='applyPreset()'>"
              "<option value=''>-- Escolha um preset --</option>"
              "<option value='padrao'>Padrão (Genérico)</option>"
@@ -1367,7 +1597,7 @@ static esp_err_t handle_calibra(httpd_req_t *req)
              "<option value='alface'>Alface</option>"
              "<option value='rucula'>Rúcula</option>"
              "</select>"
-             "<p class='tip' style='margin-top:8px'>Ao escolher um preset, os campos abaixo são preenchidos automaticamente. Você pode ajustar manualmente depois se necessário.</p>"
+             "<p class='tip' style='margin-top:8px'>Ao escolher um tipo, os valores abaixo s&atilde;o preenchidos automaticamente. Voc&ecirc; pode ajustar depois se precisar.</p>"
              "</div>"
              
              "<div class='tolerance-row'>"
@@ -1406,32 +1636,31 @@ static esp_err_t handle_calibra(httpd_req_t *req)
              "<input type='number' step='0.1' name='dpv_max' value='%.1f' placeholder='Máximo'>"
              "</div>"
              
-             "<button type='submit'>Salvar Faixas Ideais</button>"
+             "<button type='submit'>Salvar Preset</button>"
              "</form>"
              "<form action='/reset_tolerance' method='get' style='margin-top:12px'>"
-             "<button type='submit' style='background:#ff9800;box-shadow:0 10px 24px rgba(255,152,0,0.25)'>Restaurar Valores Padrão</button>"
+             "<button type='submit' style='background:#ff9800;box-shadow:0 10px 24px rgba(255,152,0,0.25)'>Voltar ao Padrão</button>"
              "</form>"
-             "<p class='tip' style='margin-top:8px'><strong>Restaurar padrões:</strong> O bot&atilde;o acima restaura os valores padr&atilde;o recomendados para cultivos gerais "
-             "(20-30°C ar, 50-80%% umidade ar, 18-25°C solo, 40-80%% umidade solo, 500-2000 lux, 0.5-2.0 kPa DPV). "
-             "Use quando quiser voltar aos valores iniciais do sistema.</p>"
+             "<p class='tip' style='margin-top:8px'><strong>Voltar ao padrão:</strong> Restaura os valores iniciais recomendados para a maioria dos cultivos. "
+             "Use quando quiser come&ccedil;ar de novo.</p>"
              
-             "<h3>Calibração do Sensor de Umidade do Solo</h3>"
-             "<p class='lead'>Ajuste os valores de refer&ecirc;ncia para solo seco e totalmente molhado conforme as condi&ccedil;&otilde;es reais do seu canteiro. "
-             "Esta calibra&ccedil;&atilde;o garante que as leituras de umidade do solo reflitam com precis&atilde;o a condi&ccedil;&atilde;o atual do solo.</p>"
+             "<h3>Ajustar Sensor de Solo</h3>"
+             "<p class='lead'>Ajuste os valores para quando o solo est&aacute; seco e quando est&aacute; molhado no seu canteiro. "
+             "Isso faz o sensor mostrar a umidade correta do seu solo.</p>"
              "<div class='info'>"
-             "<div class='info-box'><strong>Leitura bruta</strong><br>%d</div>"
-             "<div class='info-box'><strong>Faixa atual</strong><br>Seco %.0f | Molhado %.0f</div>"
+             "<div class='info-box'><strong>Valor atual</strong><br>%d</div>"
+             "<div class='info-box'><strong>Configurado</strong><br>Seco %.0f | Molhado %.0f</div>"
              "</div>"
              "<form action='/set_calibra' method='get'>"
-             "<label>Novo valor para solo seco</label>"
+             "<label>Valor quando solo est&aacute; seco</label>"
              "<input type='number' name='seco' value='%.0f'>"
-             "<label>Novo valor para solo molhado</label>"
+             "<label>Valor quando solo est&aacute; molhado</label>"
              "<input type='number' name='molhado' value='%.0f'>"
-             "<button type='submit'>Salvar calibração</button>"
+             "<button type='submit'>Salvar Calibração</button>"
              "</form>"
-             "<p class='tip'><strong>Dica:</strong> Para uma calibra&ccedil;&atilde;o precisa, registre o valor do sensor logo ap&oacute;s uma irriga&ccedil;&atilde;o completa (solo molhado) "
-             "e ap&oacute;s um per&iacute;odo prolongado sem irriga&ccedil;&atilde;o (solo seco). Isso garante que o sistema capture toda a faixa de varia&ccedil;&atilde;o real do seu solo.</p>"
-             "<a class='button' href='/'>Voltar ao painel principal</a>"
+             "<p class='tip'><strong>Dica:</strong> Para ajustar bem, anote o valor logo depois de regar (solo molhado) "
+             "e depois de alguns dias sem regar (solo seco). Assim o sensor vai funcionar melhor no seu solo.</p>"
+             "<a class='button' href='/'>Voltar</a>"
              "</div>"
              "<script>"
              "const presets = {"
@@ -1496,6 +1725,7 @@ static esp_err_t handle_calibra(httpd_req_t *req)
              "}"
              "</script>"
              "</body></html>",
+             nav_menu,
              preset_text,
              temp_ar_min, temp_ar_max,
              umid_ar_min, umid_ar_max,
@@ -1571,7 +1801,7 @@ static esp_err_t handle_set_tolerance(httpd_req_t *req)
         "<!DOCTYPE html><html><head><meta charset='utf-8'/><meta name='viewport' content='width=device-width, initial-scale=1'/>"
         "<title>Configuração Salva</title></head><body style='font-family:sans-serif;padding:20px'>"
         "<h2>Faixas ideais salvas com sucesso!</h2>"
-        "<p><a href='/calibra'>Voltar</a> | <a href='/'>Painel principal</a></p>"
+        "<p><a href='/calibra'>Voltar</a> | <a href='/'>Monitoramento</a></p>"
         "</body></html>";
     httpd_resp_set_type(req, "text/html");
     return httpd_resp_send(req, ok_page, HTTPD_RESP_USE_STRLEN);
@@ -1617,7 +1847,7 @@ static esp_err_t handle_reset_tolerance(httpd_req_t *req)
         "<li>Luminosidade: 500-2000 lux</li>"
         "<li>DPV: 0.5-2.0 kPa</li>"
         "</ul>"
-        "<p><a href='/calibra'>Voltar às configurações</a> | <a href='/'>Painel principal</a></p>"
+        "<p><a href='/calibra'>Voltar às configurações</a> | <a href='/'>Monitoramento</a></p>"
         "</body></html>";
     httpd_resp_set_type(req, "text/html");
     return httpd_resp_send(req, ok_page, HTTPD_RESP_USE_STRLEN);
@@ -1674,7 +1904,7 @@ static esp_err_t handle_set_calibra(httpd_req_t *req)
         "<h2>Calibração salva com sucesso!</h2>"
         "<p>Os valores de calibra&ccedil;&atilde;o do sensor de umidade do solo foram atualizados. "
         "As leituras agora refletem com maior precis&atilde;o as condi&ccedil;&otilde;es reais do seu canteiro.</p>"
-        "<p><a href='/calibra'>Voltar às configurações</a> | <a href='/'>Painel principal</a></p>"
+        "<p><a href='/calibra'>Voltar às configurações</a> | <a href='/'>Monitoramento</a></p>"
         "</body></html>";
  
     httpd_resp_set_type(req, "text/html");
@@ -1766,14 +1996,52 @@ esp_err_t http_server_start(void)
     /* Inicializa Wi-Fi AP sem callbacks (serão registrados por app_main) */
     ESP_ERROR_CHECK(wifi_ap_init());
     
+    // Aguarda a interface de rede estar pronta antes de inicializar mDNS
+    // Isso garante que o DHCP server já tenha atribuído o IP
+    vTaskDelay(pdMS_TO_TICKS(2000)); // Aguarda 2 segundos para rede estabilizar
+    
     // Inicializa mDNS para acesso via nome de domínio
-    ESP_ERROR_CHECK(mdns_init());
+    esp_err_t mdns_ret = mdns_init();
+    if (mdns_ret != ESP_OK) {
+        ESP_LOGW(TAG, "Falha ao inicializar mDNS (código: %d), tentando novamente...", mdns_ret);
+        vTaskDelay(pdMS_TO_TICKS(1000));
+        mdns_ret = mdns_init();
+        if (mdns_ret != ESP_OK) {
+            ESP_LOGE(TAG, "Falha crítica ao inicializar mDNS após retry");
+            // Continua mesmo assim, mas sem mDNS
+        }
+    }
     
-    // Define o hostname (nome do dispositivo na rede)
-    ESP_ERROR_CHECK(mdns_hostname_set("greense"));
-    
-    // Define o nome do serviço
-    ESP_ERROR_CHECK(mdns_instance_name_set("greenSe Campo Sensor"));
+    if (mdns_ret == ESP_OK) {
+        // Obtém a interface de rede do AP
+        esp_netif_t *ap_netif = esp_netif_get_handle_from_ifkey("WIFI_AP_DEF");
+        if (ap_netif != NULL) {
+            // Registra a interface de rede no mDNS
+            esp_err_t netif_ret = mdns_register_netif(ap_netif);
+            if (netif_ret != ESP_OK) {
+                ESP_LOGW(TAG, "Falha ao registrar interface de rede no mDNS (código: %d)", netif_ret);
+            }
+        } else {
+            ESP_LOGW(TAG, "Interface de rede AP não encontrada");
+        }
+        
+        // Define o hostname (nome do dispositivo na rede)
+        mdns_ret = mdns_hostname_set("greense");
+        if (mdns_ret != ESP_OK) {
+            ESP_LOGW(TAG, "Falha ao definir hostname mDNS, tentando novamente...");
+            vTaskDelay(pdMS_TO_TICKS(500));
+            mdns_ret = mdns_hostname_set("greense");
+        }
+        
+        if (mdns_ret == ESP_OK) {
+            // Define o nome do serviço
+            ESP_ERROR_CHECK(mdns_instance_name_set("greenSe Campo Sensor"));
+            
+            ESP_LOGI(TAG, "mDNS inicializado: greense.local");
+        } else {
+            ESP_LOGE(TAG, "Falha ao configurar hostname mDNS");
+        }
+    }
     
     httpd_config_t config = HTTPD_DEFAULT_CONFIG();
     uint16_t http_port = config.server_port;  // Guarda a porta para usar no mDNS depois
@@ -1795,14 +2063,14 @@ esp_err_t http_server_start(void)
     httpd_uri_t uri_root = {
         .uri      = "/",
         .method   = HTTP_GET,
-        .handler  = handle_config,
+        .handler  = handle_dashboard,
         .user_ctx = NULL,
     };
     if (httpd_register_uri_handler(server_handle, &uri_root) != ESP_OK) {
         ESP_LOGE(TAG, "Falha ao registrar handler /");
         return ESP_FAIL;
     }
- 
+
     httpd_uri_t uri_hist = {
         .uri      = "/history",
         .method   = HTTP_GET,
@@ -1814,17 +2082,6 @@ esp_err_t http_server_start(void)
         return ESP_FAIL;
     }
 
-    httpd_uri_t uri_dashboard = {
-        .uri      = "/dashboard",
-        .method   = HTTP_GET,
-        .handler  = handle_dashboard,
-        .user_ctx = NULL,
-    };
-    if (httpd_register_uri_handler(server_handle, &uri_dashboard) != ESP_OK) {
-        ESP_LOGE(TAG, "Falha ao registrar handler /dashboard");
-        return ESP_FAIL;
-    }
- 
     httpd_uri_t uri_config = {
         .uri      = "/config",
         .method   = HTTP_GET,
@@ -1949,11 +2206,27 @@ esp_err_t http_server_start(void)
     }
  
     // Registra o serviço HTTP no mDNS (porta já obtida acima)
-    mdns_txt_item_t serviceTxtData[] = {
-        {"path", "/"},
-        {"version", "1.0"}
-    };
-    ESP_ERROR_CHECK(mdns_service_add("greenSe Campo", "_http", "_tcp", http_port, serviceTxtData, 2));
+    if (mdns_ret == ESP_OK) {
+        mdns_txt_item_t serviceTxtData[] = {
+            {"path", "/"},
+            {"version", "1.0"}
+        };
+        esp_err_t service_ret = mdns_service_add("greenSe Campo", "_http", "_tcp", http_port, serviceTxtData, 2);
+        if (service_ret != ESP_OK) {
+            ESP_LOGW(TAG, "Falha ao registrar serviço HTTP no mDNS (código: %d), tentando novamente...", service_ret);
+            vTaskDelay(pdMS_TO_TICKS(1000));
+            service_ret = mdns_service_add("greenSe Campo", "_http", "_tcp", http_port, serviceTxtData, 2);
+            if (service_ret == ESP_OK) {
+                ESP_LOGI(TAG, "Serviço HTTP registrado no mDNS após retry");
+            } else {
+                ESP_LOGW(TAG, "Falha ao registrar serviço HTTP no mDNS após retry (código: %d)", service_ret);
+            }
+        } else {
+            ESP_LOGI(TAG, "Serviço HTTP registrado no mDNS");
+        }
+    } else {
+        ESP_LOGW(TAG, "mDNS não disponível, serviço HTTP não registrado");
+    }
     
     ESP_LOGI(TAG,
              "Servidor HTTP iniciado e rotas registradas. Acesse http://greense.local/ ou http://192.168.4.1/");
