@@ -1,8 +1,8 @@
 <div align="center">
 
-# 🌱 GreenSe
+# 🌱 greenSe
 
-<img src="https://github.com/marcelinoandrade/greense/blob/main/dashboardGreense.jpg" alt="GreenSe Logo" width="800">
+<img src="brand/svg/greense-horizontal.svg" alt="greenSe logo" width="720">
 
 ### Sistema IoT para Monitoramento e Automação de Estufas e Cultivos Hidropônicos
 
@@ -18,7 +18,9 @@
 
 ## 📖 Sobre o Projeto
 
-O **GreenSe** é uma solução completa de **agricultura de precisão** para cultivos protegidos, integrando sensores IoT, automação e inteligência artificial. Desenvolvido para estufas e sistemas hidropônicos, otimiza o uso de água, nutrientes e energia através de monitoramento em tempo real e análises preditivas.
+> Nota: removemos algumas imagens ilustrativas para manter o repositório mais leve; este README mantém apenas o logotipo e recursos essenciais.
+
+O **greenSe** é uma solução completa de **agricultura de precisão** para cultivos protegidos, integrando sensores IoT, automação e inteligência artificial. Desenvolvido para estufas e sistemas hidropônicos, otimiza o uso de água, nutrientes e energia através de monitoramento em tempo real e análises preditivas.
 
 ### ✨ Destaques
 
@@ -208,7 +210,7 @@ Este projeto está sob a licença **MIT**. Veja o arquivo [LICENSE](LICENSE) par
 
 ### 🌱 Desenvolvido na Universidade de Brasília
 
-**GreenSe** - Transformando a agricultura através da tecnologia IoT e inteligência artificial
+**greenSe** - Transformando a agricultura através da tecnologia IoT e inteligência artificial
 
 [⬆️ Voltar ao topo](#-greense)
 
