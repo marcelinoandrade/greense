@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="80" viewBox="0 0 160 80">
+  <text x="18" y="54"
+        font-family="IBM Plex Sans, Inter, Arial, sans-serif"
+        font-size="48"
+        font-weight="700"
+        letter-spacing="-0.7"
+        fill="#2E2E2E">
+    G<tspan font-weight="600" fill="#1B8F4E">Se</tspan>
+  </text>
+</svg>

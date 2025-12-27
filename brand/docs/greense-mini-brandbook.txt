@@ -1,0 +1,21 @@
+greenSe – Mini Brandbook (INPI)
+
+Nome registrado:
+- greenSe (g minúsculo, S e e conforme registro INPI)
+
+Tipografia oficial:
+- IBM Plex Sans (Regular, SemiBold, Bold)
+
+Cores:
+- Verde greenSe: #1B8F4E
+- Cinza técnico: #2E2E2E
+- Branco / Preto
+
+Regra principal:
+Sempre que houver cor disponível, o 'Se' deve ser verde.
+
+Aplicações:
+- Web
+- Firmware ESP32
+- Dashboards
+- Documentação técnica
