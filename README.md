@@ -2,7 +2,7 @@
 
 <a id="topo"></a>
 <p align="center">
-  <img src="brand/svg/greense-horizontal.svg" alt="greenSe logo" width="520">
+  <img src="greense.svg" alt="greenSe logo" width="520">
 </p>
 
 ### Sistema IoT para Monitoramento e Automação de Estufas e Cultivos Hidropônicos
