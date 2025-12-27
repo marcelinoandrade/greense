@@ -1,0 +1,260 @@
+Command: /home/mrclnndrd/.espressif/python_env/idf5.5_py3.11_env/bin/python /home/mrclnndrd/esp/esp-idf/tools/idf_monitor.py -p /dev/ttyUSB0 -b 115200 --toolchain-prefix xtensa-esp32-elf- --target esp32 --revision 0 /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_2_C/build/sensor_campo.elf /home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_2_C/build/bootloader/bootloader.elf -m '/home/mrclnndrd/.espressif/python_env/idf5.5_py3.11_env/bin/python' '/home/mrclnndrd/esp/esp-idf/tools/idf.py'
+ets Jun  8 2016 00:22:57
+
+rst:0x1 (POWERON_RESET),boot:0x17 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:6380
+ho 0 tail 12 room 4
+load:0x40078000,len:15904
+load:0x40080400,len:3860
+entry 0x40080638
+[0;32mI (28) boot: ESP-IDF v5.5-dev-3372-g38628f98b9 2nd stage bootloader[0m
+[0;32mI (28) boot: compile time Dec 24 2025 07:15:46[0m
+[0;32mI (28) boot: Multicore bootloader[0m
+[0;32mI (31) boot: chip revision: v1.0[0m
+[0;32mI (34) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (38) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (41) boot.esp32: SPI Flash Size : 4MB[0m
+[0;32mI (45) boot: Enabling RNG early entropy source...[0m
+[0;32mI (49) boot: Partition Table:[0m
+[0;32mI (52) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (58) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (65) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (71) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (78) boot:  3 spiffs           Unknown data     01 82 00110000 002f0000[0m
+[0;32mI (84) boot: End of partition table[0m
+[0;32mI (88) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=34354h (213844) map[0m
+[0;32mI (168) esp_image: segment 1: paddr=0004437c vaddr=3ff80000 size=0001ch (    28) load[0m
+[0;32mI (168) esp_image: segment 2: paddr=000443a0 vaddr=3ffb0000 size=03efch ( 16124) load[0m
+[0;32mI (178) esp_image: segment 3: paddr=000482a4 vaddr=40080000 size=07d74h ( 32116) load[0m
+[0;32mI (192) esp_image: segment 4: paddr=00050020 vaddr=400d0020 size=abc6ch (703596) map[0m
+[0;32mI (433) esp_image: segment 5: paddr=000fbc94 vaddr=40087d74 size=1030ch ( 66316) load[0m
+[0;32mI (470) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (471) boot: Disabling RNG early entropy source...[0m
+[0;32mI (481) cpu_start: Multicore app[0m
+[0;32mI (489) cpu_start: Pro cpu start user code[0m
+[0;32mI (490) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (490) app_init: Application information:[0m
+[0;32mI (492) app_init: Project name:     sensor_campo[0m
+[0;32mI (498) app_init: App version:      c2c17f0a-dirty[0m
+[0;32mI (503) app_init: Compile time:     Dec 27 2025 13:43:50[0m
+[0;32mI (509) app_init: ELF file SHA256:  d2dabf293...[0m
+[0;32mI (515) app_init: ESP-IDF:          v5.5-dev-3372-g38628f98b9[0m
+[0;32mI (521) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (526) efuse_init: Max chip rev:     v3.99 [0m
+[0;32mI (531) efuse_init: Chip rev:         v1.0[0m
+[0;32mI (536) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (543) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (549) heap_init: At 3FFB8A18 len 000275E8 (157 KiB): DRAM[0m
+[0;32mI (555) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (561) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (568) heap_init: At 40098080 len 00007F80 (31 KiB): IRAM[0m
+[0;32mI (576) spi_flash: detected chip: generic[0m
+[0;32mI (579) spi_flash: flash io: dio[0m
+[0;32mI (584) main_task: Started on CPU0[0m
+[0;32mI (594) main_task: Calling app_main()[0m
+[0;32mI (614) BSP_LED: LED inicializado no GPIO 16[0m
+[0;32mI (614) BSP_DS18B20: DS18B20 inicializado no GPIO 4[0m
+[0;32mI (614) BSP_ADC: ADC umidade solo inicializado. canal=4 bitwidth=12 atten=3[0m
+[0;32mI (614) BSP_DHT11: DHT11 configurado no GPIO 22[0m
+[0;32mI (624) BSP_SENSORS: DHT11 inicializado com sucesso[0m
+[0;33mW (634) BSP_BH1750: Barramento I2C não compartilhado, criando novo...[0m
+[0;32mI (774) BSP_BH1750: BH1750 inicializado com sucesso (I2C addr: 0x23)[0m
+[0;32mI (774) BSP_SENSORS: BH1750 inicializado com sucesso[0m
+[0;32mI (774) BSP_SENSORS: Sensores BSP inicializados[0m
+[0;32mI (774) APP_SENSOR_MGR: Sensor Manager inicializado[0m
+[0;32mI (784) APP_DATA_LOGGER: Inicializando SPIFFS...[0m
+[0;32mI (1094) APP_DATA_LOGGER: SPIFFS montado em /spiffs[0m
+[0;32mI (1094) APP_DATA_LOGGER: Total=2293769 bytes, Usado=547203 bytes[0m
+[0;32mI (3174) APP_DATA_LOGGER: Proximo indice de log sera: 13256[0m
+[0;32mI (3264) APP_DATA_LOGGER: Calibracao carregada. seco=4000 molhado=1831[0m
+[0;32mI (3264) APP_DATA_LOGGER: Data logger inicializado. Proximo indice: 13256[0m
+[0;32mI (3274) APP_SAMPLING: Período carregado do NVS: 10000 ms[0m
+[0;32mI (3274) APP_STATS_WINDOW: Período estatístico carregado do NVS: 20 amostras[0m
+[0;32mI (3284) APP_CULTIVATION: Tolerâncias de cultivo carregadas do NVS[0m
+[0;32mI (3294) APP_GUI_SERVICES: Serviços GUI registrados[0m
+[0;32mI (3314) wifi:wifi driver task: 3ffc31d8, prio:23, stack:6656, core=0[0m
+[0;32mI (3324) wifi:wifi firmware version: 7d2994f4b[0m
+[0;32mI (3324) wifi:wifi certification version: v7.0[0m
+[0;32mI (3324) wifi:config NVS flash: enabled[0m
+[0;32mI (3324) wifi:config nano formatting: disabled[0m
+[0;32mI (3324) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (3334) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (3334) wifi:Init management short buffer num: 32[0m
+[0;32mI (3344) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (3344) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (3344) wifi:Init static rx buffer num: 10[0m
+[0;32mI (3354) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (3354) wifi_init: rx ba win: 6[0m
+[0;32mI (3364) wifi_init: accept mbox: 6[0m
+[0;32mI (3364) wifi_init: tcpip mbox: 32[0m
+[0;32mI (3364) wifi_init: udp mbox: 6[0m
+[0;32mI (3374) wifi_init: tcp mbox: 6[0m
+[0;32mI (3374) wifi_init: tcp tx win: 5760[0m
+[0;32mI (3384) wifi_init: tcp rx win: 5760[0m
+[0;32mI (3384) wifi_init: tcp mss: 1440[0m
+[0;32mI (3384) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (3394) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (3404) phy_init: phy_version 4860,6b7a6e5,Feb  6 2025,14:47:07[0m
+[0;32mI (3484) wifi:mode : softAP (b0:b2:1c:44:7c:5d)[0m
+[0;32mI (3484) wifi:Total power save buffer number: 16[0m
+[0;32mI (3484) wifi:Init max length of beacon: 752/752[0m
+[0;32mI (3494) wifi:Init max length of beacon: 752/752[0m
+[0;32mI (3494) BSP_WIFI_AP: Modo AP iniciado. SSID='greenSe_Campo' senha='12345678'[0m
+[0;32mI (3494) esp_netif_lwip: DHCP server started on interface WIFI_AP_DEF with IP: 192.168.4.1[0m
+[0;32mI (5504) mdns_mem: mDNS task will be created from internal RAM[0m
+[0;33mW (5504) GUI_HTTP_SERVER: Falha ao registrar interface de rede no mDNS (código: 259)[0m
+[0;32mI (5504) GUI_HTTP_SERVER: mDNS inicializado: greense.local[0m
+[0;32mI (5514) GUI_HTTP_SERVER: Serviço HTTP registrado no mDNS[0m
+[0;32mI (5514) GUI_HTTP_SERVER: Servidor HTTP iniciado e rotas registradas. Acesse http://greense.local/ ou http://192.168.4.1/[0m
+[0;32mI (5554) APP_MAIN: Sistema iniciado - Arquitetura BSP/APP/GUI[0m
+[0;32mI (5554) main_task: Returned from app_main()[0m
+[0;32mI (6304) BSP_DS18B20: DS18B20: temperatura lida: 29.00 C[0m
+[0;32mI (6764) APP_MAIN: Log salvo! Ar: 31.20 C / 36.30 %, Solo: 29.00 C / 18.44 %, Lux: 40.0, DPV: 2.896 kPa[0m
+[0;32mI (8394) wifi:new:<1,0>, old:<1,1>, ap:<1,1>, sta:<255,255>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (8404) wifi:station: 32:2a:5f:51:e8:85 join, AID=1, bgn, 20[0m
+[0;32mI (8454) BSP_WIFI_AP: Cliente 32:2a:5f:51:e8:85 conectou, AID=1[0m
+[0;32mI (8564) wifi:<ba-add>idx:2 (ifx:1, 32:2a:5f:51:e8:85), tid:0, ssn:0, winSize:64[0m
+[0;32mI (8634) esp_netif_lwip: DHCP server assigned IP to a client, IP is: 192.168.4.2[0m
+[0;32mI (16294) BSP_DS18B20: DS18B20: temperatura lida: 29.00 C[0m
+[0;32mI (16984) APP_MAIN: Log salvo! Ar: 31.30 C / 36.30 %, Solo: 29.00 C / 23.56 %, Lux: 40.8, DPV: 2.913 kPa[0m
+[0;31mE (25534) DHT11: Wrong checksum[0m
+[0;33mW (25534) BSP_DHT11: Falha na leitura do DHT11 (ret=-1)[0m
+[0;32mI (26284) BSP_DS18B20: DS18B20: temperatura lida: 29.00 C[0m
+[0;32mI (26954) APP_MAIN: Log salvo! Ar: 31.30 C / 36.30 %, Solo: 29.00 C / 23.65 %, Lux: 40.8, DPV: 2.913 kPa[0m
+[0;32mI (36274) BSP_DS18B20: DS18B20: temperatura lida: 29.00 C[0m
+[0;32mI (36734) APP_MAIN: Log salvo! Ar: 31.30 C / 36.10 %, Solo: 29.00 C / 23.51 %, Lux: 40.8, DPV: 2.922 kPa[0m
+[0;32mI (46264) BSP_DS18B20: DS18B20: temperatura lida: 29.00 C[0m
+[0;32mI (46734) APP_MAIN: Log salvo! Ar: 31.30 C / 36.20 %, Solo: 29.00 C / 24.11 %, Lux: 40.8, DPV: 2.917 kPa[0m
+[0;32mI (56254) BSP_DS18B20: DS18B20: temperatura lida: 29.00 C[0m
+[0;32mI (57074) APP_MAIN: Log salvo! Ar: 31.30 C / 36.00 %, Solo: 29.00 C / 24.57 %, Lux: 40.8, DPV: 2.926 kPa[0m
+[0;31mE (65494) DHT11: Wrong checksum[0m
+[0;33mW (65494) BSP_DHT11: Falha na leitura do DHT11 (ret=-1)[0m
+[0;32mI (66244) BSP_DS18B20: DS18B20: temperatura lida: 29.00 C[0m
+[0;32mI (66714) APP_MAIN: Log salvo! Ar: 31.30 C / 36.00 %, Solo: 29.00 C / 22.87 %, Lux: 40.8, DPV: 2.926 kPa[0m
+[0;31mE (75484) DHT11: Wrong checksum[0m
+[0;33mW (75484) BSP_DHT11: Falha na leitura do DHT11 (ret=-1)[0m
+[0;32mI (76234) BSP_DS18B20: DS18B20: temperatura lida: 29.00 C[0m
+[0;32mI (76544) APP_MAIN: Log salvo! Ar: 31.30 C / 36.00 %, Solo: 29.00 C / 23.88 %, Lux: 40.8, DPV: 2.926 kPa[0m
+[0;32mI (86224) BSP_DS18B20: DS18B20: temperatura lida: 29.06 C[0m
+[0;32mI (86684) APP_MAIN: Log salvo! Ar: 31.30 C / 36.30 %, Solo: 29.06 C / 22.87 %, Lux: 40.8, DPV: 2.913 kPa[0m
+[0;32mI (96214) BSP_DS18B20: DS18B20: temperatura lida: 29.00 C[0m
+[0;32mI (96644) APP_MAIN: Log salvo! Ar: 31.30 C / 36.30 %, Solo: 29.00 C / 23.19 %, Lux: 40.8, DPV: 2.913 kPa[0m
+[0;32mI (106204) BSP_DS18B20: DS18B20: temperatura lida: 29.00 C[0m
+[0;33mW (106384) httpd_txrx: httpd_sock_err: error in recv : 104[0m
+[0;33mW (106404) httpd_txrx: httpd_sock_err: error in recv : 104[0m
+[0;33mW (106414) httpd_txrx: httpd_sock_err: error in recv : 104[0m
+[0;32mI (106654) APP_MAIN: Log salvo! Ar: 31.30 C / 36.30 %, Solo: 29.00 C / 24.07 %, Lux: 40.8, DPV: 2.913 kPa[0m
+[0;32mI (116204) BSP_DS18B20: DS18B20: temperatura lida: 29.00 C[0m
+[0;32mI (116664) APP_MAIN: Log salvo! Ar: 31.30 C / 36.40 %, Solo: 29.00 C / 23.74 %, Lux: 40.8, DPV: 2.908 kPa[0m
+[0;32mI (120794) wifi:new:<1,0>, old:<1,0>, ap:<1,1>, sta:<255,255>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (120794) wifi:station: e4:5f:01:6b:13:2d join, AID=2, bgn, 20[0m
+[0;32mI (120864) BSP_WIFI_AP: Cliente e4:5f:01:6b:13:2d conectou, AID=2[0m
+[0;32mI (120904) wifi:<ba-add>idx:3 (ifx:1, e4:5f:01:6b:13:2d), tid:7, ssn:0, winSize:64[0m
+[0;32mI (120974) esp_netif_lwip: DHCP server assigned IP to a client, IP is: 192.168.4.4[0m
+[0;32mI (121014) wifi:<ba-add>idx:4 (ifx:1, e4:5f:01:6b:13:2d), tid:0, ssn:2, winSize:64[0m
+[0;32mI (126194) BSP_DS18B20: DS18B20: temperatura lida: 29.00 C[0m
+[0;32mI (126864) APP_MAIN: Log salvo! Ar: 31.30 C / 36.30 %, Solo: 29.00 C / 20.33 %, Lux: 40.0, DPV: 2.913 kPa[0m
+[0;32mI (136194) BSP_DS18B20: DS18B20: temperatura lida: 29.00 C[0m
+[0;32mI (136624) APP_MAIN: Log salvo! Ar: 31.30 C / 36.30 %, Solo: 29.00 C / 23.10 %, Lux: 40.8, DPV: 2.913 kPa[0m
+[0;31mE (145434) DHT11: Wrong checksum[0m
+[0;33mW (145434) BSP_DHT11: Falha na leitura do DHT11 (ret=-1)[0m
+[0;32mI (146184) BSP_DS18B20: DS18B20: temperatura lida: 29.00 C[0m
+[0;32mI (147024) APP_MAIN: Log salvo! Ar: 31.30 C / 36.30 %, Solo: 29.00 C / 23.14 %, Lux: 40.8, DPV: 2.913 kPa[0m
+[0;31mE (155424) DHT11: Wrong checksum[0m
+[0;33mW (155424) BSP_DHT11: Falha na leitura do DHT11 (ret=-1)[0m
+[0;32mI (156174) BSP_DS18B20: DS18B20: temperatura lida: 29.00 C[0m
+[0;32mI (156604) APP_MAIN: Log salvo! Ar: 31.30 C / 36.30 %, Solo: 29.00 C / 24.39 %, Lux: 40.8, DPV: 2.913 kPa[0m
+[0;31mE (165424) DHT11: Wrong checksum[0m
+[0;33mW (165424) BSP_DHT11: Falha na leitura do DHT11 (ret=-1)[0m
+[0;33mW (165434) BSP_DS18B20: DS18B20: nenhum sensor presente (reset falhou)[0m
+[0;32mI (165444) GUI_HTTP_SERVER: Presets atualizados via upload (2023 bytes)[0m
+[0;32mI (165874) APP_MAIN: Log salvo! Ar: 31.30 C / 36.30 %, Solo: 29.00 C / 23.51 %, Lux: 40.8, DPV: 2.913 kPa[0m
+[0;32mI (176154) BSP_DS18B20: DS18B20: temperatura lida: 29.00 C[0m
+[0;32mI (176604) APP_MAIN: Log salvo! Ar: 31.30 C / 36.30 %, Solo: 29.00 C / 24.34 %, Lux: 40.0, DPV: 2.913 kPa[0m
+[0;32mI (186144) BSP_DS18B20: DS18B20: temperatura lida: 29.00 C[0m
+[0;32mI (186574) APP_MAIN: Log salvo! Ar: 31.30 C / 36.20 %, Solo: 29.00 C / 23.61 %, Lux: 40.0, DPV: 2.917 kPa[0m
+[0;32mI (196134) BSP_DS18B20: DS18B20: temperatura lida: 29.00 C[0m
+[0;32mI (196574) APP_MAIN: Log salvo! Ar: 31.30 C / 36.20 %, Solo: 29.00 C / 22.91 %, Lux: 40.0, DPV: 2.917 kPa[0m
+[0;32mI (206134) BSP_DS18B20: DS18B20: temperatura lida: 29.00 C[0m
+[0;32mI (206564) APP_MAIN: Log salvo! Ar: 31.30 C / 36.40 %, Solo: 29.00 C / 23.10 %, Lux: 40.0, DPV: 2.908 kPa[0m
+[0;32mI (216124) BSP_DS18B20: DS18B20: temperatura lida: 29.00 C[0m
+[0;32mI (216584) APP_MAIN: Log salvo! Ar: 31.30 C / 36.50 %, Solo: 29.00 C / 23.10 %, Lux: 40.0, DPV: 2.903 kPa[0m
+[0;33mW (226114) BSP_DS18B20: DS18B20: temperatura fora do range válido: 157.00 C[0m
+[0;32mI (226774) APP_MAIN: Log salvo! Ar: 31.40 C / 36.70 %, Solo: 29.00 C / 23.84 %, Lux: 40.0, DPV: 2.911 kPa[0m
+[0;32mI (236114) BSP_DS18B20: DS18B20: temperatura lida: 29.00 C[0m
+[0;32mI (236564) APP_MAIN: Log salvo! Ar: 31.40 C / 36.70 %, Solo: 29.00 C / 23.47 %, Lux: 40.0, DPV: 2.911 kPa[0m
+[0;32mI (246104) BSP_DS18B20: DS18B20: temperatura lida: 29.00 C[0m
+[0;32mI (246544) APP_MAIN: Log salvo! Ar: 31.40 C / 36.80 %, Solo: 29.00 C / 23.42 %, Lux: 40.0, DPV: 2.906 kPa[0m
+[0;32mI (256104) BSP_DS18B20: DS18B20: temperatura lida: 28.94 C[0m
+[0;32mI (256544) APP_MAIN: Log salvo! Ar: 31.40 C / 36.90 %, Solo: 28.94 C / 23.93 %, Lux: 40.0, DPV: 2.902 kPa[0m
+[0;32mI (260504) wifi:station: e4:5f:01:6b:13:2d leave, AID = 2, reason = 8, bss_flags is 691315, bss:0x3ffba660[0m
+[0;32mI (260504) wifi:new:<1,0>, old:<1,0>, ap:<1,1>, sta:<255,255>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (260514) wifi:<ba-del>idx:4, tid:0[0m
+[0;32mI (260514) wifi:<ba-del>idx:3, tid:7[0m
+[0;32mI (260524) BSP_WIFI_AP: Cliente e4:5f:01:6b:13:2d saiu, AID=2[0m
+[0;31mE (265344) DHT11: Wrong checksum[0m
+[0;33mW (265344) BSP_DHT11: Falha na leitura do DHT11 (ret=-1)[0m
+[0;32mI (266094) BSP_DS18B20: DS18B20: temperatura lida: 28.94 C[0m
+[0;32mI (266774) APP_MAIN: Log salvo! Ar: 31.40 C / 36.90 %, Solo: 28.94 C / 22.54 %, Lux: 40.0, DPV: 2.902 kPa[0m
+[0;32mI (276084) BSP_DS18B20: DS18B20: temperatura lida: 28.94 C[0m
+[0;32mI (276524) APP_MAIN: Log salvo! Ar: 31.40 C / 36.70 %, Solo: 28.94 C / 25.08 %, Lux: 40.8, DPV: 2.911 kPa[0m
+[0;32mI (281824) APP_CULTIVATION: Tolerâncias de cultivo atualizadas[0m
+[0;31mE (285324) DHT11: Wrong checksum[0m
+[0;33mW (285324) BSP_DHT11: Falha na leitura do DHT11 (ret=-1)[0m
+[0;32mI (286074) BSP_DS18B20: DS18B20: temperatura lida: 28.94 C[0m
+[0;31mE (287084) APP_DATA_LOGGER: Timeout ao obter mutex para append[0m
+[0;32mI (296064) BSP_DS18B20: DS18B20: temperatura lida: -0.12 C[0m
+[0;32mI (296514) APP_MAIN: Log salvo! Ar: 31.40 C / 36.40 %, Solo: -0.12 C / 24.48 %, Lux: 40.0, DPV: 2.925 kPa[0m
+[0;31mE (305304) DHT11: Wrong checksum[0m
+[0;33mW (305304) BSP_DHT11: Falha na leitura do DHT11 (ret=-1)[0m
+[0;32mI (306054) BSP_DS18B20: DS18B20: temperatura lida: 28.94 C[0m
+[0;32mI (306494) APP_MAIN: Log salvo! Ar: 31.40 C / 36.40 %, Solo: 28.94 C / 23.65 %, Lux: 40.0, DPV: 2.925 kPa[0m
+[0;31mE (315294) DHT11: Wrong checksum[0m
+[0;33mW (315294) BSP_DHT11: Falha na leitura do DHT11 (ret=-1)[0m
+[0;32mI (316044) BSP_DS18B20: DS18B20: temperatura lida: 28.94 C[0m
+[0;32mI (316484) APP_MAIN: Log salvo! Ar: 31.40 C / 36.40 %, Solo: 28.94 C / 23.88 %, Lux: 40.0, DPV: 2.925 kPa[0m
+[0;33mW (320164) httpd_txrx: httpd_sock_err: error in recv : 104[0m
+[0;33mW (320174) httpd_txrx: httpd_sock_err: error in recv : 104[0m
+[0;31mE (325294) DHT11: Wrong checksum[0m
+[0;33mW (325294) BSP_DHT11: Falha na leitura do DHT11 (ret=-1)[0m
+[0;32mI (326044) BSP_DS18B20: DS18B20: temperatura lida: 28.94 C[0m
+[0;32mI (326474) APP_MAIN: Log salvo! Ar: 31.40 C / 36.40 %, Solo: 28.94 C / 26.65 %, Lux: 40.0, DPV: 2.925 kPa[0m
+[0;32mI (336034) BSP_DS18B20: DS18B20: temperatura lida: 29.00 C[0m
+[0;32mI (336474) APP_MAIN: Log salvo! Ar: 31.40 C / 36.00 %, Solo: 29.00 C / 23.65 %, Lux: 40.0, DPV: 2.943 kPa[0m
+[0;32mI (346034) BSP_DS18B20: DS18B20: temperatura lida: 29.00 C[0m
+[0;32mI (346464) APP_MAIN: Log salvo! Ar: 31.40 C / 36.10 %, Solo: 29.00 C / 24.02 %, Lux: 40.0, DPV: 2.938 kPa[0m
+[0;32mI (356024) BSP_DS18B20: DS18B20: temperatura lida: 29.00 C[0m
+[0;32mI (356474) APP_MAIN: Log salvo! Ar: 31.40 C / 36.10 %, Solo: 29.00 C / 24.48 %, Lux: 40.0, DPV: 2.938 kPa[0m
+[0;31mE (365264) DHT11: Wrong checksum[0m
+[0;33mW (365264) BSP_DHT11: Falha na leitura do DHT11 (ret=-1)[0m
+[0;32mI (366014) BSP_DS18B20: DS18B20: temperatura lida: 29.00 C[0m
+[0;32mI (367364) APP_MAIN: Log salvo! Ar: 31.40 C / 36.10 %, Solo: 29.00 C / 24.39 %, Lux: 40.0, DPV: 2.938 kPa[0m
+[0;31mE (375254) DHT11: Wrong checksum[0m
+[0;33mW (375254) BSP_DHT11: Falha na leitura do DHT11 (ret=-1)[0m
+[0;32mI (376004) BSP_DS18B20: DS18B20: temperatura lida: 29.25 C[0m
+[0;32mI (376514) APP_MAIN: Log salvo! Ar: 31.40 C / 36.10 %, Solo: 29.25 C / 24.02 %, Lux: 40.0, DPV: 2.938 kPa[0m
+[0;31mE (385244) DHT11: Wrong checksum[0m
+[0;33mW (385244) BSP_DHT11: Falha na leitura do DHT11 (ret=-1)[0m
+[0;32mI (385994) BSP_DS18B20: DS18B20: temperatura lida: 29.00 C[0m
+[0;32mI (386454) APP_MAIN: Log salvo! Ar: 31.40 C / 36.10 %, Solo: 29.00 C / 23.74 %, Lux: 40.0, DPV: 2.938 kPa[0m
+[0;32mI (395984) BSP_DS18B20: DS18B20: temperatura lida: 29.00 C[0m
+[0;32mI (396684) APP_MAIN: Log salvo! Ar: 31.30 C / 36.00 %, Solo: 29.00 C / 24.34 %, Lux: 40.0, DPV: 2.926 kPa[0m
+[0;32mI (405974) BSP_DS18B20: DS18B20: temperatura lida: 29.00 C[0m
+[0;32mI (406414) APP_MAIN: Log salvo! Ar: 31.30 C / 36.00 %, Solo: 29.00 C / 24.07 %, Lux: 40.0, DPV: 2.926 kPa[0m
+[0;32mI (415964) BSP_DS18B20: DS18B20: temperatura lida: 29.00 C[0m
+[0;32mI (416634) APP_MAIN: Log salvo! Ar: 31.30 C / 36.00 %, Solo: 29.00 C / 24.34 %, Lux: 40.0, DPV: 2.926 kPa[0m
+[0;32mI (425954) BSP_DS18B20: DS18B20: temperatura lida: 29.00 C[0m
+[0;32mI (426394) APP_MAIN: Log salvo! Ar: 31.30 C / 36.10 %, Solo: 29.00 C / 23.37 %, Lux: 40.0, DPV: 2.922 kPa[0m
+[0;32mI (435944) BSP_DS18B20: DS18B20: temperatura lida: 29.00 C[0m
+[0;32mI (436384) APP_MAIN: Log salvo! Ar: 31.30 C / 36.10 %, Solo: 29.00 C / 24.07 %, Lux: 40.0, DPV: 2.922 kPa[0m
+[0;32mI (445944) BSP_DS18B20: DS18B20: temperatura lida: 29.00 C[0m
+[0;32mI (446374) APP_MAIN: Log salvo! Ar: 31.30 C / 36.10 %, Solo: 29.00 C / 23.01 %, Lux: 40.0, DPV: 2.922 kPa[0m
+[0;33mW (448984) httpd_txrx: httpd_sock_err: error in recv : 104[0m
+[0;33mW (448994) httpd_txrx: httpd_sock_err: error in recv : 104[0m
+[0;31mE (455184) DHT11: Wrong checksum[0m
+[0;33mW (455184) BSP_DHT11: Falha na leitura do DHT11 (ret=-1)[0m
+[0;32mI (455934) BSP_DS18B20: DS18B20: temperatura lida: 29.06 C[0m
+[0;32mI (456374) APP_MAIN: Log salvo! Ar: 31.30 C / 36.10 %, Solo: 29.06 C / 23.51 %, Lux: 40.0, DPV: 2.922 kPa[0m

@@ -19,7 +19,6 @@
 
 ## 📖 Sobre o Projeto
 
-> Nota: removemos algumas imagens ilustrativas para manter o repositório mais leve; este README mantém apenas o logotipo e recursos essenciais.
 
 O **greenSe** é uma solução completa de **agricultura de precisão** para cultivos protegidos, integrando sensores IoT, automação e inteligência artificial. Desenvolvido para estufas e sistemas hidropônicos, otimiza o uso de água, nutrientes e energia através de monitoramento em tempo real e análises preditivas.
 

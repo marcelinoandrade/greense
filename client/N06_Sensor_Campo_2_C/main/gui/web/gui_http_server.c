@@ -11,6 +11,7 @@
  */
 
 #include "gui_http_server.h"
+#include "logo.h"
 #include "../../bsp/network/bsp_wifi_ap.h"
 #include "../../app/gui_services.h"
 #include "../../bsp/board.h"
@@ -28,10 +29,15 @@
 #include "mdns.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
+#include "cJSON.h"
+#include <sys/stat.h>
+#include <errno.h>
 
 static const char *TAG = "GUI_HTTP_SERVER";
 
 static httpd_handle_t server_handle = NULL;
+
+#define PRESETS_FILE_PATH BSP_SPIFFS_MOUNT "/presets.json"
 
 typedef struct {
     uint32_t ms;
@@ -447,10 +453,10 @@ static esp_err_t handle_dashboard(httpd_req_t *req)
     }
 
     if (stats_available && recent_stats.dpv.has_data) {
-        snprintf(dpv_avg_text, sizeof(dpv_avg_text), "%.3f&nbsp;kPa", recent_stats.dpv.avg);
-        snprintf(dpv_min_text, sizeof(dpv_min_text), "%.3f&nbsp;kPa", recent_stats.dpv.min);
-        snprintf(dpv_max_text, sizeof(dpv_max_text), "%.3f&nbsp;kPa", recent_stats.dpv.max);
-        snprintf(dpv_last_text, sizeof(dpv_last_text), "%.3f&nbsp;kPa", recent_stats.dpv.latest);
+        snprintf(dpv_avg_text, sizeof(dpv_avg_text), "%.1f&nbsp;kPa", recent_stats.dpv.avg);
+        snprintf(dpv_min_text, sizeof(dpv_min_text), "%.1f&nbsp;kPa", recent_stats.dpv.min);
+        snprintf(dpv_max_text, sizeof(dpv_max_text), "%.1f&nbsp;kPa", recent_stats.dpv.max);
+        snprintf(dpv_last_text, sizeof(dpv_last_text), "%.1f&nbsp;kPa", recent_stats.dpv.latest);
     } else {
         snprintf(dpv_avg_text, sizeof(dpv_avg_text), "--");
         snprintf(dpv_min_text, sizeof(dpv_min_text), "--");
@@ -464,7 +470,7 @@ static esp_err_t handle_dashboard(httpd_req_t *req)
     snprintf(temp_solo_limits_text, sizeof(temp_solo_limits_text), "%.1f - %.1f&nbsp;&deg;C", temp_solo_min, temp_solo_max);
     snprintf(umid_solo_limits_text, sizeof(umid_solo_limits_text), "%.1f - %.1f&nbsp;%%", umid_solo_min, umid_solo_max);
     snprintf(luminosidade_limits_text, sizeof(luminosidade_limits_text), "%.0f - %.0f&nbsp;lux", luminosidade_min, luminosidade_max);
-    snprintf(dpv_limits_text, sizeof(dpv_limits_text), "%.3f - %.3f&nbsp;kPa", dpv_min, dpv_max);
+    snprintf(dpv_limits_text, sizeof(dpv_limits_text), "%.1f - %.1f&nbsp;kPa", dpv_min, dpv_max);
 
     char card_temp_ar[512];
     char card_umid_ar[512];
@@ -603,14 +609,14 @@ static esp_err_t handle_dashboard(httpd_req_t *req)
     build_nav_menu("/", nav_menu, sizeof(nav_menu));
 
     /* Buffer alocado no heap para evitar stack overflow */
-    char *page = (char *)malloc(16000);
+    char *page = (char *)malloc(20000);
     if (!page) {
         httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "Erro de memória");
         return ESP_FAIL;
     }
     
     int len = snprintf(
-        page, 16000,
+        page, 20000,
         "<!DOCTYPE html>"
         "<html>"
         "<head>"
@@ -672,11 +678,13 @@ static esp_err_t handle_dashboard(httpd_req_t *req)
         ".nav-item{padding:10px 20px;border-radius:10px;text-decoration:none;font-size:14px;font-weight:500;color:#6b7c6f;transition:all 0.3s;background:transparent;position:relative}"
         ".nav-item:hover{background:#f1f8e9;color:#2e7d32;transform:translateY(-2px)}"
         ".nav-item.active{background:linear-gradient(135deg,#4caf50 0%%,#388e3c 100%%);color:#fff;font-weight:600;box-shadow:0 4px 12px rgba(76,175,80,0.3)}"
+        ".footer-note{margin-top:32px;font-size:12px;color:#8a9b8d;font-style:italic;text-align:center}"
         "</style>"
         "</head>"
         "<body>"
         "<div class='content'>"
         "%s"
+        "<div style='text-align:center;margin-bottom:20px'>%s</div>"
         "<div class='card hero'>"
         "<div style='display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:8px'>"
         "<div class='badge'>greenSe Campo</div>"
@@ -877,9 +885,11 @@ static esp_err_t handle_dashboard(httpd_req_t *req)
         "</script>"
 
         "</div>"
+        "<p class='footer-note'>greenSe Campo | Tecnologia desenhada para agricultura conectada.</p>"
         "</body>"
         "</html>",
         nav_menu,
+        greense_logo_svg,
         preset_text,
         stats_info_text,
         stats_grid_html,
@@ -962,7 +972,7 @@ static esp_err_t handle_config(httpd_req_t *req)
     build_nav_menu("/config", nav_menu, sizeof(nav_menu));
 
     /* Constrói página dinamicamente */
-    const size_t page_capacity = 6144;
+    const size_t page_capacity = 12288;
     char *page = (char *)malloc(page_capacity);
     if (!page) {
         httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "Erro de memória");
@@ -1016,6 +1026,7 @@ static esp_err_t handle_config(httpd_req_t *req)
         "</head><body>"
         "<div class='wrapper'>"
         "%s"
+        "<div style='text-align:center;margin-bottom:20px'>%s</div>"
         "<div class='card'>"
         "<div style='display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:8px'>"
         "<span class='tag'>greenSe Campo</span>"
@@ -1048,6 +1059,7 @@ static esp_err_t handle_config(httpd_req_t *req)
         "</div>"
         "</body></html>",
         nav_menu,
+        greense_logo_svg,
         preset_text);
 
     if (len < 0 || len >= (int)page_capacity) {
@@ -1158,7 +1170,7 @@ static esp_err_t handle_sampling_page(httpd_req_t *req)
     char nav_menu[512];
     build_nav_menu("/sampling", nav_menu, sizeof(nav_menu));
 
-    const size_t page_capacity = 8192;
+    const size_t page_capacity = 14336;
     char *page = malloc(page_capacity);
     if (!page) {
         httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "Erro de memória");
@@ -1206,9 +1218,11 @@ static esp_err_t handle_sampling_page(httpd_req_t *req)
         ".nav-item{padding:10px 20px;border-radius:10px;text-decoration:none;font-size:14px;font-weight:500;color:#6b7c6f;transition:all 0.3s;background:transparent;position:relative}"
         ".nav-item:hover{background:#f1f8e9;color:#2e7d32;transform:translateY(-2px)}"
         ".nav-item.active{background:linear-gradient(135deg,#4caf50 0%%,#388e3c 100%%);color:#fff;font-weight:600;box-shadow:0 4px 12px rgba(76,175,80,0.3)}"
+        ".footer-note{margin-top:32px;font-size:12px;color:#8a9b8d;font-style:italic;text-align:center}"
         "</style>"
         "</head><body>"
         "<div style='max-width:600px;margin:0 auto 24px'>%s</div>"
+        "<div style='text-align:center;margin-bottom:20px'>%s</div>"
         "<div class='card'>"
         "<div style='display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:8px'>"
         "<span class='tag'>greenSe Campo</span>"
@@ -1245,8 +1259,10 @@ static esp_err_t handle_sampling_page(httpd_req_t *req)
         "  return true;"
         "}"
         "</script>"
+        "<p class='footer-note'>greenSe Campo | Tecnologia desenhada para agricultura conectada.</p>"
         "</body></html>",
         nav_menu,
+        greense_logo_svg,
         preset_text,
         radios,
         current_label,
@@ -1513,7 +1529,7 @@ static esp_err_t handle_calibra(httpd_req_t *req)
     char nav_menu[512];
     build_nav_menu("/calibra", nav_menu, sizeof(nav_menu));
 
-    const size_t page_capacity = 16384;
+    const size_t page_capacity = 20480;
     char *page = malloc(page_capacity);
     if (!page) {
         httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "Erro de memória");
@@ -1573,8 +1589,10 @@ static esp_err_t handle_calibra(httpd_req_t *req)
              ".nav-item{padding:10px 20px;border-radius:10px;text-decoration:none;font-size:14px;font-weight:500;color:#6b7c6f;transition:all 0.3s;background:transparent;position:relative}"
              ".nav-item:hover{background:#f1f8e9;color:#2e7d32;transform:translateY(-2px)}"
              ".nav-item.active{background:linear-gradient(135deg,#4caf50 0%%,#388e3c 100%%);color:#fff;font-weight:600;box-shadow:0 4px 12px rgba(76,175,80,0.3)}"
+             ".footer-note{margin-top:32px;font-size:12px;color:#8a9b8d;font-style:italic;text-align:center}"
              "</style></head><body>"
              "<div style='max-width:600px;margin:0 auto 20px'>%s</div>"
+             "<div style='text-align:center;margin-bottom:20px'>%s</div>"
              "<div class='card'>"
              "<div style='display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:8px'>"
              "<span class='tag'>greenSe Campo</span>"
@@ -1590,12 +1608,7 @@ static esp_err_t handle_calibra(httpd_req_t *req)
              "<div class='preset-box'>"
              "<label class='preset-label' for='presetSelect'>Escolha um tipo de planta:</label>"
              "<select id='presetSelect' onchange='applyPreset()'>"
-             "<option value=''>-- Escolha um preset --</option>"
-             "<option value='padrao'>Padrão (Genérico)</option>"
-             "<option value='tomate'>Tomate</option>"
-             "<option value='morango'>Morango</option>"
-             "<option value='alface'>Alface</option>"
-             "<option value='rucula'>Rúcula</option>"
+             "<option value=''>Carregando presets...</option>"
              "</select>"
              "<p class='tip' style='margin-top:8px'>Ao escolher um tipo, os valores abaixo s&atilde;o preenchidos automaticamente. Voc&ecirc; pode ajustar depois se precisar.</p>"
              "</div>"
@@ -1644,6 +1657,14 @@ static esp_err_t handle_calibra(httpd_req_t *req)
              "<p class='tip' style='margin-top:8px'><strong>Voltar ao padrão:</strong> Restaura os valores iniciais recomendados para a maioria dos cultivos. "
              "Use quando quiser come&ccedil;ar de novo.</p>"
              
+             "<form id='uploadPresetsForm' enctype='multipart/form-data' style='margin-top:16px'>"
+             "<label style='display:block;margin-bottom:8px;font-weight:600;font-size:14px;color:#2e4a34'>Carregar Presets</label>"
+             "<input type='file' id='presetsFile' name='presets' accept='.json' style='width:100%%;padding:8px;border:1px solid #e8ede9;border-radius:8px;margin-bottom:8px'>"
+             "<button type='submit' style='width:100%%;padding:12px;border:none;border-radius:10px;background:linear-gradient(135deg,#42a5f5 0%%,#1976d2 100%%);color:#fff;font-weight:600;cursor:pointer;box-shadow:0 4px 12px rgba(25,118,210,0.3)'>Enviar Arquivo de Presets</button>"
+             "</form>"
+             "<p class='tip' style='margin-top:8px'><strong>Carregar Presets:</strong> Faça upload de um arquivo JSON com presets personalizados. "
+             "O arquivo deve seguir o formato do exemplo fornecido.</p>"
+             
              "<h3>Ajustar Sensor de Solo</h3>"
              "<p class='lead'>Ajuste os valores para quando o solo est&aacute; seco e quando est&aacute; molhado no seu canteiro. "
              "Isso faz o sensor mostrar a umidade correta do seu solo.</p>"
@@ -1663,48 +1684,40 @@ static esp_err_t handle_calibra(httpd_req_t *req)
              "<a class='button' href='/'>Voltar</a>"
              "</div>"
              "<script>"
-             "const presets = {"
-             "  'padrao': {"
-             "    temp_ar_min: 20.0, temp_ar_max: 30.0,"
-             "    umid_ar_min: 50.0, umid_ar_max: 80.0,"
-             "    temp_solo_min: 18.0, temp_solo_max: 25.0,"
-             "    umid_solo_min: 40.0, umid_solo_max: 80.0,"
-             "    luminosidade_min: 500, luminosidade_max: 2000,"
-             "    dpv_min: 0.5, dpv_max: 2.0"
-             "  },"
-             "  'tomate': {"
-             "    temp_ar_min: 18.0, temp_ar_max: 28.0,"
-             "    umid_ar_min: 60.0, umid_ar_max: 85.0,"
-             "    temp_solo_min: 16.0, temp_solo_max: 24.0,"
-             "    umid_solo_min: 60.0, umid_solo_max: 85.0,"
-             "    luminosidade_min: 1000, luminosidade_max: 3000,"
-             "    dpv_min: 0.8, dpv_max: 1.8"
-             "  },"
-             "  'morango': {"
-             "    temp_ar_min: 15.0, temp_ar_max: 25.0,"
-             "    umid_ar_min: 70.0, umid_ar_max: 90.0,"
-             "    temp_solo_min: 14.0, temp_solo_max: 22.0,"
-             "    umid_solo_min: 70.0, umid_solo_max: 90.0,"
-             "    luminosidade_min: 800, luminosidade_max: 2500,"
-             "    dpv_min: 0.6, dpv_max: 1.5"
-             "  },"
-             "  'alface': {"
-             "    temp_ar_min: 10.0, temp_ar_max: 22.0,"
-             "    umid_ar_min: 65.0, umid_ar_max: 85.0,"
-             "    temp_solo_min: 10.0, temp_solo_max: 20.0,"
-             "    umid_solo_min: 60.0, umid_solo_max: 85.0,"
-             "    luminosidade_min: 600, luminosidade_max: 2000,"
-             "    dpv_min: 0.5, dpv_max: 1.8"
-             "  },"
-             "  'rucula': {"
-             "    temp_ar_min: 12.0, temp_ar_max: 24.0,"
-             "    umid_ar_min: 60.0, umid_ar_max: 80.0,"
-             "    temp_solo_min: 12.0, temp_solo_max: 22.0,"
-             "    umid_solo_min: 55.0, umid_solo_max: 80.0,"
-             "    luminosidade_min: 700, luminosidade_max: 2200,"
-             "    dpv_min: 0.6, dpv_max: 1.7"
+             "let presets = {};"
+             "let presetsList = [];"
+             ""
+             "async function loadPresets() {"
+             "  try {"
+             "    const response = await fetch('/presets.json');"
+             "    const data = await response.json();"
+             "    presets = {};"
+             "    presetsList = data.presets || [];"
+             "    "
+             "    presetsList.forEach(p => {"
+             "      presets[p.id] = {"
+             "        temp_ar_min: p.temp_ar_min, temp_ar_max: p.temp_ar_max,"
+             "        umid_ar_min: p.umid_ar_min, umid_ar_max: p.umid_ar_max,"
+             "        temp_solo_min: p.temp_solo_min, temp_solo_max: p.temp_solo_max,"
+             "        umid_solo_min: p.umid_solo_min, umid_solo_max: p.umid_solo_max,"
+             "        luminosidade_min: p.luminosidade_min, luminosidade_max: p.luminosidade_max,"
+             "        dpv_min: p.dpv_min, dpv_max: p.dpv_max"
+             "      };"
+             "    });"
+             "    "
+             "    const select = document.getElementById('presetSelect');"
+             "    select.innerHTML = '<option value=\"\">-- Escolha um preset --</option>';"
+             "    presetsList.forEach(p => {"
+             "      const option = document.createElement('option');"
+             "      option.value = p.id;"
+             "      option.textContent = p.name;"
+             "      select.appendChild(option);"
+             "    });"
+             "  } catch(e) {"
+             "    console.error('Erro ao carregar presets:', e);"
              "  }"
-             "};"
+             "}"
+             ""
              "function applyPreset() {"
              "  const select = document.getElementById('presetSelect');"
              "  const preset = select.value;"
@@ -1720,12 +1733,46 @@ static esp_err_t handle_calibra(httpd_req_t *req)
              "  document.querySelector('input[name=\"umid_solo_max\"]').value = values.umid_solo_max;"
              "  document.querySelector('input[name=\"luminosidade_min\"]').value = values.luminosidade_min;"
              "  document.querySelector('input[name=\"luminosidade_max\"]').value = values.luminosidade_max;"
-             "  document.querySelector('input[name=\"dpv_min\"]').value = values.dpv_min;"
-             "  document.querySelector('input[name=\"dpv_max\"]').value = values.dpv_max;"
+             "  document.querySelector('input[name=\"dpv_min\"]').value = parseFloat(values.dpv_min).toFixed(1);"
+             "  document.querySelector('input[name=\"dpv_max\"]').value = parseFloat(values.dpv_max).toFixed(1);"
              "}"
+             ""
+             "document.getElementById('uploadPresetsForm').addEventListener('submit', async function(e) {"
+             "  e.preventDefault();"
+             "  const fileInput = document.getElementById('presetsFile');"
+             "  if (!fileInput.files || !fileInput.files[0]) {"
+             "    alert('Por favor, selecione um arquivo JSON');"
+             "    return;"
+             "  }"
+             "  "
+             "  const formData = new FormData();"
+             "  formData.append('presets', fileInput.files[0]);"
+             "  "
+             "  try {"
+             "    const response = await fetch('/upload_presets', {"
+             "      method: 'POST',"
+             "      body: formData"
+             "    });"
+             "    "
+             "    if (response.ok) {"
+             "      alert('Presets carregados com sucesso! Recarregando página...');"
+             "      await loadPresets();"
+             "      location.reload();"
+             "    } else {"
+             "      const error = await response.text();"
+             "      alert('Erro ao carregar presets: ' + error);"
+             "    }"
+             "  } catch(e) {"
+             "    alert('Erro ao enviar arquivo: ' + e.message);"
+             "  }"
+             "});"
+             ""
+             "loadPresets();"
              "</script>"
+             "<p class='footer-note'>greenSe Campo | Tecnologia desenhada para agricultura conectada.</p>"
              "</body></html>",
              nav_menu,
+             greense_logo_svg,
              preset_text,
              temp_ar_min, temp_ar_max,
              umid_ar_min, umid_ar_max,
@@ -1816,6 +1863,14 @@ static esp_err_t handle_reset_tolerance(httpd_req_t *req)
         return ESP_FAIL;
     }
 
+    // Remove arquivo de presets customizado para voltar aos presets de fábrica
+    if (remove(PRESETS_FILE_PATH) == 0) {
+        ESP_LOGI(TAG, "Arquivo de presets customizado removido: %s", PRESETS_FILE_PATH);
+    } else {
+        // Arquivo pode não existir, não é erro crítico
+        ESP_LOGD(TAG, "Arquivo de presets não encontrado ou já removido: %s", PRESETS_FILE_PATH);
+    }
+
     // Valores padrão
     float temp_ar_min = 20.0f, temp_ar_max = 30.0f;
     float umid_ar_min = 50.0f, umid_ar_max = 80.0f;
@@ -1838,7 +1893,7 @@ static esp_err_t handle_reset_tolerance(httpd_req_t *req)
         "<!DOCTYPE html><html><head><meta charset='utf-8'/><meta name='viewport' content='width=device-width, initial-scale=1'/>"
         "<title>Valores Restaurados</title></head><body style='font-family:sans-serif;padding:20px'>"
         "<h2>Valores padrão restaurados com sucesso!</h2>"
-        "<p>As faixas ideais foram restauradas para os valores padrão:</p>"
+        "<p>As faixas ideais e os presets foram restaurados para os valores de fábrica:</p>"
         "<ul>"
         "<li>Temp. do ar: 20-30&deg;C</li>"
         "<li>Umidade do ar: 50-80%%</li>"
@@ -1936,6 +1991,208 @@ static esp_err_t handle_generate204(httpd_req_t *req)
     httpd_resp_set_status(req, "204 No Content");
     httpd_resp_set_hdr(req, "Cache-Control", "no-cache");
     return httpd_resp_send(req, NULL, 0);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Gerenciamento de Presets via Arquivo                                      */
+/* -------------------------------------------------------------------------- */
+
+/* Gera JSON dos presets hardcoded (fallback) */
+static char* generate_default_presets_json(void)
+{
+    cJSON *root = cJSON_CreateObject();
+    cJSON *presets_array = cJSON_CreateArray();
+    
+    for (size_t i = 0; i < PRESET_COUNT; i++) {
+        cJSON *preset = cJSON_CreateObject();
+        cJSON_AddStringToObject(preset, "id", (i == 0) ? "padrao" : 
+            (i == 1) ? "tomate" : (i == 2) ? "morango" : (i == 3) ? "alface" : "rucula");
+        cJSON_AddStringToObject(preset, "name", presets[i].name);
+        cJSON_AddNumberToObject(preset, "temp_ar_min", presets[i].temp_ar_min);
+        cJSON_AddNumberToObject(preset, "temp_ar_max", presets[i].temp_ar_max);
+        cJSON_AddNumberToObject(preset, "umid_ar_min", presets[i].umid_ar_min);
+        cJSON_AddNumberToObject(preset, "umid_ar_max", presets[i].umid_ar_max);
+        cJSON_AddNumberToObject(preset, "temp_solo_min", presets[i].temp_solo_min);
+        cJSON_AddNumberToObject(preset, "temp_solo_max", presets[i].temp_solo_max);
+        cJSON_AddNumberToObject(preset, "umid_solo_min", presets[i].umid_solo_min);
+        cJSON_AddNumberToObject(preset, "umid_solo_max", presets[i].umid_solo_max);
+        cJSON_AddNumberToObject(preset, "luminosidade_min", presets[i].luminosidade_min);
+        cJSON_AddNumberToObject(preset, "luminosidade_max", presets[i].luminosidade_max);
+        cJSON_AddNumberToObject(preset, "dpv_min", presets[i].dpv_min);
+        cJSON_AddNumberToObject(preset, "dpv_max", presets[i].dpv_max);
+        cJSON_AddItemToArray(presets_array, preset);
+    }
+    
+    cJSON_AddItemToObject(root, "presets", presets_array);
+    char *json_string = cJSON_PrintUnformatted(root);
+    cJSON_Delete(root);
+    return json_string;
+}
+
+/* Handler GET /presets.json - Retorna presets em JSON */
+static esp_err_t handle_get_presets_json(httpd_req_t *req)
+{
+    FILE *f = fopen(PRESETS_FILE_PATH, "r");
+    char *json_response = NULL;
+    
+    if (f) {
+        // Arquivo existe, lê e retorna
+        char buf[4096];
+        size_t len = fread(buf, 1, sizeof(buf) - 1, f);
+        fclose(f);
+        buf[len] = '\0';
+        
+        // Valida JSON
+        cJSON *test = cJSON_Parse(buf);
+        if (test) {
+            cJSON_Delete(test);
+            json_response = malloc(len + 1);
+            if (json_response) {
+                memcpy(json_response, buf, len);
+                json_response[len] = '\0';
+            }
+        } else {
+            // JSON inválido, usa fallback
+            json_response = generate_default_presets_json();
+        }
+    } else {
+        // Arquivo não existe, retorna presets hardcoded
+        json_response = generate_default_presets_json();
+    }
+    
+    if (!json_response) {
+        httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "Erro ao gerar JSON");
+        return ESP_FAIL;
+    }
+    
+    httpd_resp_set_type(req, "application/json");
+    httpd_resp_set_hdr(req, "Cache-Control", "no-cache");
+    esp_err_t ret = httpd_resp_send(req, json_response, strlen(json_response));
+    free(json_response);
+    return ret;
+}
+
+/* Handler POST /upload_presets - Recebe arquivo JSON e salva */
+static esp_err_t handle_upload_presets(httpd_req_t *req)
+{
+    if (req->content_len > 4096) {
+        httpd_resp_send_err(req, HTTPD_400_BAD_REQUEST, "Arquivo muito grande (máx 4KB)");
+        return ESP_FAIL;
+    }
+    
+    char *buf = malloc(req->content_len + 1);
+    if (!buf) {
+        httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "Erro de memória");
+        return ESP_FAIL;
+    }
+    
+    int received = 0;
+    int remaining = req->content_len;
+    
+    while (remaining > 0) {
+        int to_read = remaining < 1024 ? remaining : 1024;
+        int ret = httpd_req_recv(req, buf + received, to_read);
+        if (ret <= 0) {
+            free(buf);
+            httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "Erro ao receber dados");
+            return ESP_FAIL;
+        }
+        received += ret;
+        remaining -= ret;
+    }
+    buf[received] = '\0';
+    
+    // Extrai JSON do multipart/form-data (busca por boundary e JSON)
+    char *json_start = strstr(buf, "{");
+    char *json_end = strrchr(buf, '}');
+    
+    if (!json_start || !json_end || json_end <= json_start) {
+        // Tenta como JSON direto
+        json_start = buf;
+        json_end = buf + received;
+    } else {
+        json_end++;
+    }
+    
+    size_t json_len = json_end - json_start;
+    char *json_content = malloc(json_len + 1);
+    if (!json_content) {
+        free(buf);
+        httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "Erro de memória");
+        return ESP_FAIL;
+    }
+    memcpy(json_content, json_start, json_len);
+    json_content[json_len] = '\0';
+    
+    // Valida JSON
+    cJSON *root = cJSON_Parse(json_content);
+    if (!root) {
+        free(buf);
+        free(json_content);
+        httpd_resp_send_err(req, HTTPD_400_BAD_REQUEST, "JSON inválido");
+        return ESP_FAIL;
+    }
+    
+    // Valida estrutura básica
+    cJSON *presets_array = cJSON_GetObjectItem(root, "presets");
+    if (!cJSON_IsArray(presets_array) || cJSON_GetArraySize(presets_array) == 0) {
+        cJSON_Delete(root);
+        free(buf);
+        free(json_content);
+        httpd_resp_send_err(req, HTTPD_400_BAD_REQUEST, "JSON deve conter array 'presets' não vazio");
+        return ESP_FAIL;
+    }
+    
+    // Valida cada preset
+    int array_size = cJSON_GetArraySize(presets_array);
+    for (int i = 0; i < array_size; i++) {
+        cJSON *preset = cJSON_GetArrayItem(presets_array, i);
+        cJSON *temp_ar_min = cJSON_GetObjectItem(preset, "temp_ar_min");
+        cJSON *temp_ar_max = cJSON_GetObjectItem(preset, "temp_ar_max");
+        
+        if (!cJSON_IsNumber(temp_ar_min) || !cJSON_IsNumber(temp_ar_max)) {
+            cJSON_Delete(root);
+            free(buf);
+            free(json_content);
+            httpd_resp_send_err(req, HTTPD_400_BAD_REQUEST, "Preset inválido: valores numéricos obrigatórios");
+            return ESP_FAIL;
+        }
+        
+        // Valida min < max
+        if (temp_ar_min->valuedouble >= temp_ar_max->valuedouble) {
+            cJSON_Delete(root);
+            free(buf);
+            free(json_content);
+            httpd_resp_send_err(req, HTTPD_400_BAD_REQUEST, "Preset inválido: min deve ser < max");
+            return ESP_FAIL;
+        }
+    }
+    
+    cJSON_Delete(root);
+    
+    // Salva arquivo
+    FILE *f = fopen(PRESETS_FILE_PATH, "w");
+    if (!f) {
+        free(buf);
+        free(json_content);
+        httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "Erro ao criar arquivo");
+        return ESP_FAIL;
+    }
+    
+    size_t written = fwrite(json_content, 1, json_len, f);
+    fclose(f);
+    
+    free(buf);
+    free(json_content);
+    
+    if (written != json_len) {
+        httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "Erro ao escrever arquivo");
+        return ESP_FAIL;
+    }
+    
+    ESP_LOGI(TAG, "Presets atualizados via upload (%d bytes)", (int)written);
+    httpd_resp_send(req, "OK", HTTPD_RESP_USE_STRLEN);
+    return ESP_OK;
 }
 
 /* Endpoint para limpar dados via GUI */
@@ -2202,6 +2459,28 @@ esp_err_t http_server_start(void)
     };
     if (httpd_register_uri_handler(server_handle, &uri_gen204) != ESP_OK) {
         ESP_LOGE(TAG, "Falha ao registrar handler /generate_204");
+        return ESP_FAIL;
+    }
+
+    httpd_uri_t uri_presets_json = {
+        .uri      = "/presets.json",
+        .method   = HTTP_GET,
+        .handler  = handle_get_presets_json,
+        .user_ctx = NULL,
+    };
+    if (httpd_register_uri_handler(server_handle, &uri_presets_json) != ESP_OK) {
+        ESP_LOGE(TAG, "Falha ao registrar handler /presets.json");
+        return ESP_FAIL;
+    }
+
+    httpd_uri_t uri_upload_presets = {
+        .uri      = "/upload_presets",
+        .method   = HTTP_POST,
+        .handler  = handle_upload_presets,
+        .user_ctx = NULL,
+    };
+    if (httpd_register_uri_handler(server_handle, &uri_upload_presets) != ESP_OK) {
+        ESP_LOGE(TAG, "Falha ao registrar handler /upload_presets");
         return ESP_FAIL;
     }
  

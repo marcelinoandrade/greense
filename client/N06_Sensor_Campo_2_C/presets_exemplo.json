@@ -1,0 +1,85 @@
+{
+  "presets": [
+    {
+      "id": "padrao",
+      "name": "Padrão (Genérico)",
+      "temp_ar_min": 20.0,
+      "temp_ar_max": 30.0,
+      "umid_ar_min": 50.0,
+      "umid_ar_max": 80.0,
+      "temp_solo_min": 18.0,
+      "temp_solo_max": 25.0,
+      "umid_solo_min": 40.0,
+      "umid_solo_max": 80.0,
+      "luminosidade_min": 500.0,
+      "luminosidade_max": 2000.0,
+      "dpv_min": 0.5,
+      "dpv_max": 2.0
+    },
+    {
+      "id": "tomate",
+      "name": "Tomate_espacial",
+      "temp_ar_min": 18.0,
+      "temp_ar_max": 28.0,
+      "umid_ar_min": 60.0,
+      "umid_ar_max": 85.0,
+      "temp_solo_min": 16.0,
+      "temp_solo_max": 24.0,
+      "umid_solo_min": 60.0,
+      "umid_solo_max": 85.0,
+      "luminosidade_min": 1000.0,
+      "luminosidade_max": 3000.0,
+      "dpv_min": 0.8,
+      "dpv_max": 1.8
+    },
+    {
+      "id": "morango",
+      "name": "Morango_eletronico",
+      "temp_ar_min": 15.0,
+      "temp_ar_max": 25.0,
+      "umid_ar_min": 70.0,
+      "umid_ar_max": 90.0,
+      "temp_solo_min": 14.0,
+      "temp_solo_max": 22.0,
+      "umid_solo_min": 70.0,
+      "umid_solo_max": 90.0,
+      "luminosidade_min": 800.0,
+      "luminosidade_max": 2500.0,
+      "dpv_min": 0.6,
+      "dpv_max": 1.5
+    },
+    {
+      "id": "alface",
+      "name": "Alface",
+      "temp_ar_min": 10.0,
+      "temp_ar_max": 22.0,
+      "umid_ar_min": 65.0,
+      "umid_ar_max": 85.0,
+      "temp_solo_min": 10.0,
+      "temp_solo_max": 20.0,
+      "umid_solo_min": 60.0,
+      "umid_solo_max": 85.0,
+      "luminosidade_min": 600.0,
+      "luminosidade_max": 2000.0,
+      "dpv_min": 0.5,
+      "dpv_max": 1.8
+    },
+    {
+      "id": "rucula",
+      "name": "Rúcula de ouro",
+      "temp_ar_min": 13.0,
+      "temp_ar_max": 24.0,
+      "umid_ar_min": 60.0,
+      "umid_ar_max": 80.0,
+      "temp_solo_min": 12.0,
+      "temp_solo_max": 22.0,
+      "umid_solo_min": 55.0,
+      "umid_solo_max": 80.0,
+      "luminosidade_min": 700.0,
+      "luminosidade_max": 2200.0,
+      "dpv_min": 0.6,
+      "dpv_max": 1.7
+    }
+  ]
+}
+
