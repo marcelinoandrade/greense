@@ -8,7 +8,7 @@
     </mask>
   </defs>
 
-  <text x="83" y="44" font-family="Arial, Helvetica, sans-serif" font-weight="bold" font-size="28" 
+  <text x="80" y="44" font-family="Arial, Helvetica, sans-serif" font-weight="bold" font-size="28" 
         fill="#2E7D32" mask="url(#recorte-elegante)">Se</text>
   
   <text x="10" y="44" font-family="Arial, Helvetica, sans-serif" font-weight="bold" font-size="28" 
