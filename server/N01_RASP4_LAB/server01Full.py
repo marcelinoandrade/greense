@@ -377,7 +377,7 @@ def processar_dados_mqtt(topic, data):
             "tags": {"dispositivo": dispositivo},
             "fields": {
                 "temp": data.get("temp", 0),
-                "umid": data.get("umid", 0),
+                "umid": data.get("umid", 0)-10,
                 "co2": data.get("co2", 0),
                 "luz": data.get("luz", 0),
                 "agua_min": float(data.get("agua_min", 0)),

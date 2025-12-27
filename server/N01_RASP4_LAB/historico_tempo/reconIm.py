@@ -7,12 +7,12 @@ import os
 import math
 
 # --- Parâmetros do GRID INICIAL (SELETOR) ---
-LINHAS, COLUNAS = 5, 5 # ajuste aqui (ex.: 5,5)
+LINHAS, COLUNAS = 4, 4# ajuste aqui (ex.: 5,5)
 N = LINHAS * COLUNAS
 # --------------------------------------------
 
 ARQUIVO_CSV = "termica_global.csv"
-VMIN, VMAX = 25, 30 
+VMIN, VMAX = 22, 32 
 
 # --- Dimensões da imagem térmica ---
 # (altere aqui se sua matriz de sensor for diferente, ex: 8x8)
@@ -230,4 +230,4 @@ fig2.suptitle(
 # Mostra o Plot Final
 plt.show()
 
-print("\nConcluído.")
+print("\nConcluído.")     

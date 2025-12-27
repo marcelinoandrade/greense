@@ -1,0 +1,783 @@
+Traceback (most recent call last):
+  File "/home/greense/projetoGreense/server/N01_RASP4_LAB/historico_tempo/imagemTermica.py", line 51, in <module>
+    header, dados, colunas_temp = carregar_dados(ARQUIVO_CSV)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/greense/projetoGreense/server/N01_RASP4_LAB/historico_tempo/imagemTermica.py", line 23, in carregar_dados
+    raise FileNotFoundError(f"Arquivo não encontrado: {arquivo_csv}")
+FileNotFoundError: Arquivo não encontrado: termica_global.csv
+Traceback (most recent call last):
+  File "/home/greense/projetoGreense/server/N01_RASP4_LAB/historico_tempo/imagemTermica.py", line 51, in <module>
+    header, dados, colunas_temp = carregar_dados(ARQUIVO_CSV)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/greense/projetoGreense/server/N01_RASP4_LAB/historico_tempo/imagemTermica.py", line 23, in carregar_dados
+    raise FileNotFoundError(f"Arquivo não encontrado: {arquivo_csv}")
+FileNotFoundError: Arquivo não encontrado: termica_global.csv
+Traceback (most recent call last):
+  File "/home/greense/projetoGreense/server/N01_RASP4_LAB/historico_tempo/imagemTermica.py", line 51, in <module>
+    header, dados, colunas_temp = carregar_dados(ARQUIVO_CSV)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/greense/projetoGreense/server/N01_RASP4_LAB/historico_tempo/imagemTermica.py", line 23, in carregar_dados
+    raise FileNotFoundError(f"Arquivo não encontrado: {arquivo_csv}")
+FileNotFoundError: Arquivo não encontrado: termica_global.csv
+Traceback (most recent call last):
+  File "/home/greense/projetoGreense/server/N01_RASP4_LAB/historico_tempo/imagemTermica.py", line 51, in <module>
+    header, dados, colunas_temp = carregar_dados(ARQUIVO_CSV)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/greense/projetoGreense/server/N01_RASP4_LAB/historico_tempo/imagemTermica.py", line 23, in carregar_dados
+    raise FileNotFoundError(f"Arquivo não encontrado: {arquivo_csv}")
+FileNotFoundError: Arquivo não encontrado: termica_global.csv
+Traceback (most recent call last):
+  File "/home/greense/projetoGreense/server/N01_RASP4_LAB/historico_tempo/imagemTermica.py", line 51, in <module>
+    header, dados, colunas_temp = carregar_dados(ARQUIVO_CSV)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/greense/projetoGreense/server/N01_RASP4_LAB/historico_tempo/imagemTermica.py", line 23, in carregar_dados
+    raise FileNotFoundError(f"Arquivo não encontrado: {arquivo_csv}")
+FileNotFoundError: Arquivo não encontrado: termica_global.csv
+Traceback (most recent call last):
+  File "/home/greense/projetoGreense/server/N01_RASP4_LAB/historico_tempo/imagemTermica.py", line 51, in <module>
+    header, dados, colunas_temp = carregar_dados(ARQUIVO_CSV)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/greense/projetoGreense/server/N01_RASP4_LAB/historico_tempo/imagemTermica.py", line 23, in carregar_dados
+    raise FileNotFoundError(f"Arquivo não encontrado: {arquivo_csv}")
+FileNotFoundError: Arquivo não encontrado: termica_global.csv
+Traceback (most recent call last):
+  File "/home/greense/projetoGreense/server/N01_RASP4_LAB/historico_tempo/imagemTermica.py", line 51, in <module>
+    header, dados, colunas_temp = carregar_dados(ARQUIVO_CSV)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/greense/projetoGreense/server/N01_RASP4_LAB/historico_tempo/imagemTermica.py", line 23, in carregar_dados
+    raise FileNotFoundError(f"Arquivo não encontrado: {arquivo_csv}")
+FileNotFoundError: Arquivo não encontrado: termica_global.csv
+Usando as 4 últimas colunas: 18-12-25 19:30 ... 18-12-25 20:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 4 últimas colunas: 18-12-25 19:30 ... 18-12-25 20:30
+Usando as 4 últimas colunas: 18-12-25 19:30 ... 18-12-25 20:30
+Usando as 4 últimas colunas: 18-12-25 20:00 ... 18-12-25 21:00
+Usando as 4 últimas colunas: 18-12-25 20:30 ... 18-12-25 21:30
+Usando as 4 últimas colunas: 18-12-25 21:00 ... 18-12-25 22:00
+Usando as 4 últimas colunas: 18-12-25 21:30 ... 18-12-25 22:30
+Usando as 4 últimas colunas: 18-12-25 22:00 ... 18-12-25 23:00
+Usando as 4 últimas colunas: 18-12-25 22:30 ... 18-12-25 23:30
+Usando as 4 últimas colunas: 18-12-25 23:00 ... 19-12-25 00:00
+Usando as 4 últimas colunas: 18-12-25 23:30 ... 19-12-25 00:30
+Usando as 4 últimas colunas: 19-12-25 00:00 ... 19-12-25 01:00
+Usando as 4 últimas colunas: 19-12-25 00:30 ... 19-12-25 01:30
+Traceback (most recent call last):
+  File "/home/greense/projetoGreense/server/N01_RASP4_LAB/historico_tempo/imagemTermica.py", line 68, in <module>
+    matrizes.append(coluna_para_matriz(header, dados, nome, IMG_LINHAS, IMG_COLUNAS))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/greense/projetoGreense/server/N01_RASP4_LAB/historico_tempo/imagemTermica.py", line 45, in coluna_para_matriz
+    vetor = [float(linha[col_index].replace(",", ".")) for linha in dados]
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/greense/projetoGreense/server/N01_RASP4_LAB/historico_tempo/imagemTermica.py", line 45, in <listcomp>
+    vetor = [float(linha[col_index].replace(",", ".")) for linha in dados]
+                   ~~~~~^^^^^^^^^^^
+IndexError: list index out of range
+Usando as 4 últimas colunas: 19-12-25 01:00 ... 19-12-25 02:00
+Usando as 4 últimas colunas: 19-12-25 01:30 ... 19-12-25 02:30
+Usando as 4 últimas colunas: 19-12-25 02:00 ... 19-12-25 03:00
+Usando as 4 últimas colunas: 19-12-25 02:30 ... 19-12-25 03:30
+Usando as 4 últimas colunas: 19-12-25 03:00 ... 19-12-25 04:00
+Usando as 4 últimas colunas: 19-12-25 03:30 ... 19-12-25 04:30
+Usando as 4 últimas colunas: 19-12-25 04:00 ... 19-12-25 05:00
+Usando as 4 últimas colunas: 19-12-25 04:30 ... 19-12-25 05:30
+Usando as 4 últimas colunas: 19-12-25 05:00 ... 19-12-25 06:00
+Usando as 4 últimas colunas: 19-12-25 05:30 ... 19-12-25 06:30
+Usando as 4 últimas colunas: 19-12-25 06:00 ... 19-12-25 07:00
+Usando as 4 últimas colunas: 19-12-25 06:30 ... 19-12-25 07:30
+Usando as 4 últimas colunas: 19-12-25 07:00 ... 19-12-25 08:00
+Usando as 4 últimas colunas: 19-12-25 08:00 ... 19-12-25 09:00
+Usando as 4 últimas colunas: 19-12-25 08:00 ... 19-12-25 09:00
+Usando as 4 últimas colunas: 19-12-25 09:00 ... 19-12-25 10:00
+Usando as 4 últimas colunas: 19-12-25 09:00 ... 19-12-25 10:00
+Usando as 4 últimas colunas: 19-12-25 09:30 ... 19-12-25 10:30
+Usando as 4 últimas colunas: 19-12-25 10:00 ... 19-12-25 11:00
+Usando as 4 últimas colunas: 19-12-25 10:30 ... 19-12-25 11:30
+Usando as 4 últimas colunas: 19-12-25 11:00 ... 19-12-25 12:00
+Usando as 4 últimas colunas: 19-12-25 11:30 ... 19-12-25 12:30
+Usando as 4 últimas colunas: 19-12-25 12:00 ... 19-12-25 13:00
+Usando as 4 últimas colunas: 19-12-25 12:30 ... 19-12-25 13:30
+Usando as 4 últimas colunas: 19-12-25 13:00 ... 19-12-25 14:00
+Usando as 4 últimas colunas: 19-12-25 13:30 ... 19-12-25 14:30
+Usando as 4 últimas colunas: 19-12-25 14:00 ... 19-12-25 15:00
+Usando as 4 últimas colunas: 19-12-25 14:30 ... 19-12-25 15:30
+Usando as 4 últimas colunas: 19-12-25 15:00 ... 19-12-25 16:00
+Usando as 4 últimas colunas: 19-12-25 15:30 ... 19-12-25 16:30
+Usando as 4 últimas colunas: 19-12-25 16:00 ... 19-12-25 17:00
+Usando as 4 últimas colunas: 19-12-25 16:30 ... 19-12-25 17:30
+Usando as 4 últimas colunas: 19-12-25 17:00 ... 19-12-25 18:00
+Usando as 4 últimas colunas: 19-12-25 17:30 ... 19-12-25 18:30
+Usando as 4 últimas colunas: 19-12-25 18:00 ... 19-12-25 19:00
+Usando as 4 últimas colunas: 19-12-25 18:30 ... 19-12-25 19:30
+Usando as 4 últimas colunas: 19-12-25 19:00 ... 19-12-25 20:00
+Usando as 4 últimas colunas: 19-12-25 19:30 ... 19-12-25 20:30
+Usando as 4 últimas colunas: 19-12-25 20:00 ... 19-12-25 21:00
+Usando as 4 últimas colunas: 19-12-25 20:30 ... 19-12-25 21:30
+Usando as 4 últimas colunas: 19-12-25 20:30 ... 19-12-25 21:30
+Usando as 4 últimas colunas: 19-12-25 20:30 ... 19-12-25 21:30
+Usando as 4 últimas colunas: 19-12-25 20:30 ... 19-12-25 21:30
+Usando as 4 últimas colunas: 19-12-25 21:00 ... 19-12-25 22:00
+Usando as 4 últimas colunas: 19-12-25 21:30 ... 20-12-25 00:00
+Usando as 4 últimas colunas: 19-12-25 22:00 ... 20-12-25 00:30
+Usando as 4 últimas colunas: 20-12-25 00:00 ... 20-12-25 01:00
+Usando as 4 últimas colunas: 20-12-25 00:30 ... 20-12-25 01:30
+Usando as 4 últimas colunas: 20-12-25 01:00 ... 20-12-25 02:00
+Usando as 4 últimas colunas: 20-12-25 01:30 ... 20-12-25 02:30
+Usando as 4 últimas colunas: 20-12-25 02:00 ... 20-12-25 03:00
+Usando as 4 últimas colunas: 20-12-25 02:30 ... 20-12-25 03:30
+Usando as 4 últimas colunas: 20-12-25 03:30 ... 20-12-25 04:30
+Usando as 4 últimas colunas: 20-12-25 03:30 ... 20-12-25 04:30
+Usando as 4 últimas colunas: 20-12-25 04:00 ... 20-12-25 05:00
+Usando as 4 últimas colunas: 20-12-25 04:30 ... 20-12-25 05:30
+Usando as 4 últimas colunas: 20-12-25 05:00 ... 20-12-25 06:00
+Usando as 4 últimas colunas: 20-12-25 05:30 ... 20-12-25 06:30
+Usando as 4 últimas colunas: 20-12-25 06:00 ... 20-12-25 07:00
+Usando as 4 últimas colunas: 20-12-25 06:30 ... 20-12-25 07:30
+Usando as 4 últimas colunas: 20-12-25 07:00 ... 20-12-25 08:00
+Usando as 4 últimas colunas: 20-12-25 07:30 ... 20-12-25 08:30
+Usando as 4 últimas colunas: 20-12-25 08:00 ... 20-12-25 09:00
+Usando as 4 últimas colunas: 20-12-25 08:30 ... 20-12-25 09:30
+Usando as 4 últimas colunas: 20-12-25 09:00 ... 20-12-25 10:00
+Usando as 4 últimas colunas: 20-12-25 10:00 ... 20-12-25 11:00
+Usando as 4 últimas colunas: 20-12-25 10:00 ... 20-12-25 11:00
+Usando as 4 últimas colunas: 20-12-25 10:30 ... 20-12-25 11:30
+Usando as 4 últimas colunas: 20-12-25 11:00 ... 20-12-25 12:00
+Usando as 4 últimas colunas: 20-12-25 11:30 ... 20-12-25 12:30
+Usando as 4 últimas colunas: 20-12-25 12:00 ... 20-12-25 13:00
+Usando as 4 últimas colunas: 20-12-25 12:30 ... 20-12-25 13:30
+Usando as 4 últimas colunas: 20-12-25 13:00 ... 20-12-25 14:00
+Usando as 4 últimas colunas: 20-12-25 13:30 ... 20-12-25 14:30
+Usando as 4 últimas colunas: 20-12-25 14:00 ... 20-12-25 15:00
+Usando as 4 últimas colunas: 20-12-25 15:00 ... 20-12-25 16:00
+Usando as 4 últimas colunas: 20-12-25 15:00 ... 20-12-25 16:00
+Usando as 4 últimas colunas: 20-12-25 15:30 ... 20-12-25 16:30
+Usando as 4 últimas colunas: 20-12-25 16:00 ... 20-12-25 17:00
+Usando as 4 últimas colunas: 20-12-25 16:30 ... 20-12-25 17:30
+Usando as 4 últimas colunas: 20-12-25 17:00 ... 20-12-25 18:00
+Usando as 4 últimas colunas: 20-12-25 17:30 ... 20-12-25 18:30
+Usando as 4 últimas colunas: 20-12-25 18:00 ... 20-12-25 19:00
+Usando as 4 últimas colunas: 20-12-25 18:30 ... 20-12-25 19:30
+Usando as 4 últimas colunas: 20-12-25 19:30 ... 20-12-25 20:30
+Usando as 4 últimas colunas: 20-12-25 19:30 ... 20-12-25 20:30
+Usando as 4 últimas colunas: 20-12-25 20:00 ... 20-12-25 21:00
+Usando as 4 últimas colunas: 20-12-25 20:30 ... 20-12-25 21:30
+Usando as 4 últimas colunas: 20-12-25 20:30 ... 20-12-25 21:30
+Usando as 4 últimas colunas: 20-12-25 20:30 ... 20-12-25 21:30
+Usando as 4 últimas colunas: 20-12-25 20:30 ... 20-12-25 21:30
+Usando as 4 últimas colunas: 20-12-25 20:30 ... 20-12-25 21:30
+Usando as 4 últimas colunas: 20-12-25 20:30 ... 20-12-25 21:30
+Usando as 4 últimas colunas: 20-12-25 21:00 ... 20-12-25 22:00
+Usando as 4 últimas colunas: 20-12-25 22:00 ... 21-12-25 01:30
+Usando as 4 últimas colunas: 20-12-25 22:00 ... 21-12-25 01:30
+Usando as 4 últimas colunas: 21-12-25 01:00 ... 21-12-25 02:00
+Usando as 4 últimas colunas: 21-12-25 01:30 ... 21-12-25 02:30
+Usando as 4 últimas colunas: 21-12-25 02:00 ... 21-12-25 03:00
+Usando as 4 últimas colunas: 21-12-25 02:30 ... 21-12-25 03:30
+Usando as 4 últimas colunas: 21-12-25 03:00 ... 21-12-25 04:00
+Usando as 4 últimas colunas: 21-12-25 03:30 ... 21-12-25 04:30
+Usando as 4 últimas colunas: 21-12-25 04:00 ... 21-12-25 05:00
+Usando as 4 últimas colunas: 21-12-25 04:30 ... 21-12-25 05:30
+Usando as 4 últimas colunas: 21-12-25 05:00 ... 21-12-25 06:00
+Usando as 4 últimas colunas: 21-12-25 05:30 ... 21-12-25 06:30
+Usando as 4 últimas colunas: 21-12-25 06:00 ... 21-12-25 07:00
+Usando as 4 últimas colunas: 21-12-25 07:00 ... 21-12-25 08:00
+Usando as 4 últimas colunas: 21-12-25 07:00 ... 21-12-25 08:00
+Usando as 4 últimas colunas: 21-12-25 07:30 ... 21-12-25 08:30
+Usando as 4 últimas colunas: 21-12-25 08:00 ... 21-12-25 09:00
+Usando as 4 últimas colunas: 21-12-25 08:30 ... 21-12-25 09:30
+Usando as 4 últimas colunas: 21-12-25 09:00 ... 21-12-25 10:00
+Usando as 4 últimas colunas: 21-12-25 09:30 ... 21-12-25 10:30
+Usando as 4 últimas colunas: 21-12-25 10:00 ... 21-12-25 11:00
+Usando as 4 últimas colunas: 21-12-25 10:30 ... 21-12-25 11:30
+Usando as 4 últimas colunas: 21-12-25 11:00 ... 21-12-25 12:00
+Usando as 297 últimas colunas: 15-12-25 05:00 ... 15-12-25 06:00
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 05:30 ... 15-12-25 06:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 06:30 ... 15-12-25 07:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 07:00 ... 15-12-25 08:00
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 07:00 ... 15-12-25 08:00
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 07:30 ... 15-12-25 08:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 08:00 ... 15-12-25 09:00
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 08:30 ... 15-12-25 09:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 09:00 ... 15-12-25 10:00
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 09:30 ... 15-12-25 10:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 10:00 ... 15-12-25 11:00
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 10:30 ... 15-12-25 11:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 11:00 ... 15-12-25 12:00
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 11:30 ... 15-12-25 12:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 12:00 ... 15-12-25 13:00
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 12:30 ... 15-12-25 13:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 13:00 ... 15-12-25 14:00
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 13:30 ... 15-12-25 14:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 14:00 ... 15-12-25 15:00
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 14:00 ... 15-12-25 15:00
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 14:00 ... 15-12-25 15:00
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 14:00 ... 15-12-25 15:00
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 14:30 ... 15-12-25 15:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 15:00 ... 15-12-25 16:00
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 15:00 ... 15-12-25 16:00
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 15:30 ... 15-12-25 16:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 16:00 ... 15-12-25 17:00
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 16:00 ... 15-12-25 17:00
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 16:00 ... 15-12-25 17:00
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 16:00 ... 15-12-25 17:00
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 16:00 ... 15-12-25 17:00
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 16:00 ... 15-12-25 17:00
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 16:00 ... 15-12-25 17:00
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 16:30 ... 15-12-25 17:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 17:00 ... 15-12-25 18:00
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 17:30 ... 15-12-25 18:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 18:00 ... 15-12-25 19:00
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 18:30 ... 15-12-25 19:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 19:00 ... 15-12-25 20:00
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 19:30 ... 15-12-25 20:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 20:30 ... 15-12-25 21:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 20:30 ... 15-12-25 21:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:00 ... 15-12-25 22:00
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
+Usando as 297 últimas colunas: 15-12-25 21:30 ... 15-12-25 22:30
+Imagem salva em: /home/greense/projetoGreense/server/N01_RASP4_LAB/fotos_recebidas/cam_01/ultima.jpg
