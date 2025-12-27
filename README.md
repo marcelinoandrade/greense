@@ -1,8 +1,7 @@
 <div align="center">
 
-# 🌱 greenSe
 
-<img src="brand/svg/greense-horizontal.svg" alt="greenSe logo" width="720">
+<img src="brand/svg/greense-horizontal.svg" alt="greenSe logo" width="310">
 
 ### Sistema IoT para Monitoramento e Automação de Estufas e Cultivos Hidropônicos
 
