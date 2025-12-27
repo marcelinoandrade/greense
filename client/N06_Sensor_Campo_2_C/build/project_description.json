@@ -1,7 +1,7 @@
 {
     "version":            "1.2",
     "project_name":       "sensor_campo",
-    "project_version":    "c2c17f0a-dirty",
+    "project_version":    "42a42893-dirty",
     "project_path":       "/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_2_C",
     "idf_path":           "/home/mrclnndrd/esp/esp-idf",
     "build_dir":          "/home/mrclnndrd/projetos/greense/client/N06_Sensor_Campo_2_C/build",

@@ -850,7 +850,7 @@ static esp_err_t handle_dashboard(httpd_req_t *req)
         "  desenha('chart_temp_solo','Temp. Solo',tSolo.xs,tSolo.ys,10,40,tol.temp_solo_min,tol.temp_solo_max);"
         "  desenha('chart_umid_solo','Umidade Solo',uSolo.xs,uSolo.ys,0,100,tol.umid_solo_min,tol.umid_solo_max);"
         "  desenha('chart_luminosidade','Luz',lum.xs,lum.ys,0,2500,tol.luminosidade_min,tol.luminosidade_max);"
-        "  desenha('chart_dpv','DPV',dpv.xs,dpv.ys,0,3,tol.dpv_min,tol.dpv_max);"
+        "  desenha('chart_dpv','DPV',dpv.xs,dpv.ys,0,4,tol.dpv_min,tol.dpv_max);"
         "  applyWarn('card-temp-ar','chart_temp_ar',tAr.ys,tol.temp_ar_min,tol.temp_ar_max);"
         "  applyWarn('card-umid-ar','chart_umid_ar',uAr.ys,tol.umid_ar_min,tol.umid_ar_max);"
         "  applyWarn('card-temp-solo','chart_temp_solo',tSolo.ys,tol.temp_solo_min,tol.temp_solo_max);"

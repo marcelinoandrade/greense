@@ -91,12 +91,13 @@ static const uint32_t SENSOR_RETRY_MS  = 2000;
 
 static bool capturar_primeiro_valido(sensor_reading_t *dest)
 {
+    uint32_t period_ms = sampling_period_get_ms();
     int64_t deadline_us = esp_timer_get_time() + (int64_t)SENSOR_JANELA_MS * 1000;
 
     while (esp_timer_get_time() < deadline_us) {
         sensor_reading_t leitura = {0};
         if (sensor_manager_read(&leitura) == ESP_OK &&
-            sensor_manager_is_valid(&leitura)) {
+            sensor_manager_is_valid_with_outlier_detection(&leitura, period_ms)) {
             *dest = leitura;
             return true;
         }

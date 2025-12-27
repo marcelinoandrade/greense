@@ -15,6 +15,7 @@
 #include "app/sensor_manager.h"
 #include "app/data_logger.h"
 #include "app/atuadores.h"
+#include "app/app_sampling_period.h"
 
 // GUI
 #include "gui/web/http_server.h"
@@ -26,10 +27,11 @@ static void tarefa_log(void *pvParameter)
 {
     while (1)
     {
+        uint32_t period_ms = sampling_period_get_ms();
         sensor_reading_t reading;
         if (sensor_manager_read(&reading) == ESP_OK)
         {
-            if (sensor_manager_is_valid(&reading))
+            if (sensor_manager_is_valid_with_outlier_detection(&reading, period_ms))
             {
                 log_entry_t entry;
                 entry.temp_ar    = reading.temp_air;
@@ -74,6 +76,9 @@ void app_main(void)
 
     // Inicializa logger (SPIFFS e calibração)
     ESP_ERROR_CHECK(data_logger_init());
+
+    // Carrega período de amostragem atual (NVS)
+    ESP_ERROR_CHECK(sampling_period_init());
 
     // Sobe servidor HTTP + SoftAP
     // http_server_start() deve:

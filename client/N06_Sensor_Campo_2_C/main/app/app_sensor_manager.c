@@ -1,11 +1,18 @@
 #include "app_sensor_manager.h"
 #include "../bsp/sensors/bsp_sensors.h"
 #include "app_data_logger.h"  // Para conversão de umidade
+#include "app_sampling_period.h"  // Para acessar período de amostragem
 #include "esp_log.h"
 #include <math.h>
 
 static const char *TAG = "APP_SENSOR_MGR";
 static bool initialized = false;
+
+// Últimos valores válidos para detecção de outliers
+static float last_valid_temp_air = NAN;
+static float last_valid_humid_air = NAN;
+static float last_valid_temp_soil = NAN;
+static float last_valid_humid_soil = NAN;
 
 /**
  * @brief Calcula o Déficit de Pressão de Vapor (DPV) em kPa
@@ -112,18 +119,161 @@ bool sensor_manager_is_valid(const sensor_reading_t *reading)
 {
     if (reading == NULL) return false;
     
-    // Valida ranges razoáveis
-    if (isnan(reading->temp_soil) || isnan(reading->humid_soil)) {
+    // Valida NAN em todos os sensores críticos
+    if (isnan(reading->temp_air) || isnan(reading->humid_air) ||
+        isnan(reading->temp_soil) || isnan(reading->humid_soil)) {
         return false;
     }
     
+    // Valida ranges para temperatura do ar (DHT11: -40°C a +80°C)
+    if (reading->temp_air < -40.0f || reading->temp_air > 80.0f) {
+        ESP_LOGW(TAG, "Temp. ar fora do range: %.1f°C", reading->temp_air);
+        return false;
+    }
+    
+    // Valida umidade do ar (0-100%)
+    if (reading->humid_air < 0.0f || reading->humid_air > 100.0f) {
+        ESP_LOGW(TAG, "Umidade ar fora do range: %.1f%%", reading->humid_air);
+        return false;
+    }
+    
+    // Valida temperatura do solo (DS18B20: -55°C a +125°C, range prático)
     if (reading->temp_soil < -40.0f || reading->temp_soil > 85.0f) {
-        return false;  // DS18B20 range: -55°C a +125°C, mas validamos range prático
-    }
-    
-    if (reading->humid_soil < 0.0f || reading->humid_soil > 100.0f) {
+        ESP_LOGW(TAG, "Temp. solo fora do range: %.1f°C", reading->temp_soil);
         return false;
     }
+    
+    // Valida umidade do solo (0-100%)
+    if (reading->humid_soil < 0.0f || reading->humid_soil > 100.0f) {
+        ESP_LOGW(TAG, "Umidade solo fora do range: %.1f%%", reading->humid_soil);
+        return false;
+    }
+    
+    // Valida luminosidade (BH1750: 1-65535 lux, mas valores negativos indicam erro)
+    if (reading->luminosity < 0.0f || reading->luminosity > 100000.0f) {
+        ESP_LOGW(TAG, "Luminosidade fora do range: %.0f lux", reading->luminosity);
+        return false;
+    }
+    
+    return true;
+}
+
+/**
+ * @brief Calcula limite máximo de mudança permitida baseado no período de amostragem
+ * 
+ * Para períodos curtos (10s-1min): limites restritivos (detecta erros imediatos)
+ * Para períodos médios (10min-1h): limites moderados
+ * Para períodos longos (6h-12h): limites permissivos (permite variações naturais)
+ */
+static void get_outlier_limits_for_period(uint32_t period_ms, 
+                                          float *max_temp_change, 
+                                          float *max_humid_change)
+{
+    // Taxa de mudança máxima esperada por hora
+    // Baseado em variações climáticas típicas:
+    // - Temperatura: até 15°C/hora em condições extremas, normalmente 5-10°C/hora
+    // - Umidade: até 30%/hora em condições extremas, normalmente 10-20%/hora
+    
+    float hours = (float)period_ms / (1000.0f * 3600.0f);
+    
+    // Limites base (por hora)
+    float base_temp_change_per_hour = 12.0f;  // °C/hora
+    float base_humid_change_per_hour = 25.0f; // %/hora
+    
+    // Para períodos muito curtos (< 1 min), usa limites fixos restritivos
+    if (period_ms < 60 * 1000) {
+        *max_temp_change = 5.0f;   // Máximo 5°C de mudança em < 1 min
+        *max_humid_change = 10.0f; // Máximo 10% de mudança em < 1 min
+        return;
+    }
+    
+    // Para períodos médios (1 min - 1 hora), escala linear
+    if (hours < 1.0f) {
+        *max_temp_change = 5.0f + (hours * 7.0f);  // 5°C a 12°C
+        *max_humid_change = 10.0f + (hours * 15.0f); // 10% a 25%
+        return;
+    }
+    
+    // Para períodos longos (>= 1 hora), escala proporcional ao tempo
+    // Com margem de segurança de 1.5x para variações climáticas extremas
+    *max_temp_change = base_temp_change_per_hour * hours * 1.5f;
+    *max_humid_change = base_humid_change_per_hour * hours * 1.5f;
+    
+    // Limites máximos absolutos (mesmo em 12h, não esperamos > 50°C de mudança)
+    if (*max_temp_change > 50.0f) *max_temp_change = 50.0f;
+    if (*max_humid_change > 100.0f) *max_humid_change = 100.0f;
+}
+
+/**
+ * @brief Valida leitura de sensores com detecção adaptativa de outliers
+ * 
+ * Esta função valida ranges básicos e também detecta outliers baseado no
+ * período de amostragem. Para períodos longos (6-12h), permite mudanças
+ * maiores que são esperadas em ciclos dia/noite.
+ * 
+ * @param reading Leitura dos sensores a validar
+ * @param sampling_period_ms Período de amostragem em milissegundos
+ * @return true se válido, false caso contrário
+ */
+bool sensor_manager_is_valid_with_outlier_detection(const sensor_reading_t *reading, 
+                                                     uint32_t sampling_period_ms)
+{
+    if (reading == NULL) return false;
+    
+    // Primeiro, validação básica (ranges e NAN)
+    if (!sensor_manager_is_valid(reading)) {
+        return false;
+    }
+    
+    // Detecção de outliers adaptativa (só se houver último valor válido)
+    float max_temp_change, max_humid_change;
+    get_outlier_limits_for_period(sampling_period_ms, &max_temp_change, &max_humid_change);
+    
+    // Valida temperatura do ar
+    if (!isnan(last_valid_temp_air)) {
+        float temp_diff = fabsf(reading->temp_air - last_valid_temp_air);
+        if (temp_diff > max_temp_change) {
+            ESP_LOGW(TAG, "Outlier temp_ar: mudança de %.1f°C (limite: %.1f°C para período de %lu ms)",
+                     temp_diff, max_temp_change, (unsigned long)sampling_period_ms);
+            return false;
+        }
+    }
+    
+    // Valida umidade do ar
+    if (!isnan(last_valid_humid_air)) {
+        float humid_diff = fabsf(reading->humid_air - last_valid_humid_air);
+        if (humid_diff > max_humid_change) {
+            ESP_LOGW(TAG, "Outlier umid_ar: mudança de %.1f%% (limite: %.1f%% para período de %lu ms)",
+                     humid_diff, max_humid_change, (unsigned long)sampling_period_ms);
+            return false;
+        }
+    }
+    
+    // Valida temperatura do solo
+    if (!isnan(last_valid_temp_soil)) {
+        float temp_diff = fabsf(reading->temp_soil - last_valid_temp_soil);
+        if (temp_diff > max_temp_change) {
+            ESP_LOGW(TAG, "Outlier temp_solo: mudança de %.1f°C (limite: %.1f°C para período de %lu ms)",
+                     temp_diff, max_temp_change, (unsigned long)sampling_period_ms);
+            return false;
+        }
+    }
+    
+    // Valida umidade do solo
+    if (!isnan(last_valid_humid_soil)) {
+        float humid_diff = fabsf(reading->humid_soil - last_valid_humid_soil);
+        if (humid_diff > max_humid_change) {
+            ESP_LOGW(TAG, "Outlier umid_solo: mudança de %.1f%% (limite: %.1f%% para período de %lu ms)",
+                     humid_diff, max_humid_change, (unsigned long)sampling_period_ms);
+            return false;
+        }
+    }
+    
+    // Atualiza últimos valores válidos
+    last_valid_temp_air = reading->temp_air;
+    last_valid_humid_air = reading->humid_air;
+    last_valid_temp_soil = reading->temp_soil;
+    last_valid_humid_soil = reading->humid_soil;
     
     return true;
 }

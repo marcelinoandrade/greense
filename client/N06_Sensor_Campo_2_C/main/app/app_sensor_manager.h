@@ -20,6 +20,20 @@ esp_err_t sensor_manager_init(void);
 esp_err_t sensor_manager_read(sensor_reading_t *reading);
 bool sensor_manager_is_valid(const sensor_reading_t *reading);
 
+/**
+ * @brief Valida leitura de sensores com detecção adaptativa de outliers
+ * 
+ * Esta função valida ranges básicos e também detecta outliers baseado no
+ * período de amostragem. Para períodos longos (6-12h), permite mudanças
+ * maiores que são esperadas em ciclos dia/noite.
+ * 
+ * @param reading Leitura dos sensores a validar
+ * @param sampling_period_ms Período de amostragem em milissegundos
+ * @return true se válido, false caso contrário
+ */
+bool sensor_manager_is_valid_with_outlier_detection(const sensor_reading_t *reading, 
+                                                     uint32_t sampling_period_ms);
+
 // Funções de compatibilidade com código antigo
 float sensor_manager_get_temp_ar(void);
 float sensor_manager_get_umid_ar(void);
