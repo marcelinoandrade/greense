@@ -13,7 +13,7 @@ LAYERS = [
         "size": 36,
         "x": 78,      # Posição ajustada (Fundo)
         "y": 44,      # Baseline
-        "color": "#2E7D32", # Verde Escuro
+        "color": "#00C853", # Verde Escuro
         "z_index": 0
     },
     {
@@ -21,7 +21,7 @@ LAYERS = [
         "size": 28,
         "x": 10,      # Posição (Frente)
         "y": 44,      # Baseline
-        "color": "#00C853", # Verde Claro
+        "color": "#2E7D32", # Verde Claro
         "z_index": 1
     }
 ]
