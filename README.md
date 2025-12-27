@@ -1,7 +1,7 @@
 <div align="center">
 
-
-<img src="brand/svg/greense-horizontal.svg" alt="greenSe logo" width="310">
+<a id="topo"></a>
+<img src="brand/svg/greense-horizontal.svg" alt="greenSe logo" width="520">
 
 ### Sistema IoT para Monitoramento e Automação de Estufas e Cultivos Hidropônicos
 
@@ -211,6 +211,6 @@ Este projeto está sob a licença **MIT**. Veja o arquivo [LICENSE](LICENSE) par
 
 **greenSe** - Transformando a agricultura através da tecnologia IoT e inteligência artificial
 
-[⬆️ Voltar ao topo](#-greense)
+[⬆️ Voltar ao topo](#topo)
 
 </div>
