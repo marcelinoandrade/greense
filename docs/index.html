@@ -350,6 +350,25 @@
             box-shadow: var(--shadow);
         }
 
+        .github-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #24292e 0%, #2f363d 100%);
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1em;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .github-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, #2f363d 0%, #24292e 100%);
+        }
+
         hr {
             border: none;
             height: 2px;
@@ -410,6 +429,7 @@
             <h1>Sistema IoT para Monitoramento e Automação de Estufas</h1>
             <p class="subtitle">Cultivos Hidropônicos Inteligentes</p>
             <div class="badges">
+                <a href="https://github.com/marcelinoandrade/greense" target="_blank"><img src="https://img.shields.io/badge/GitHub-Repositório-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"></a>
                 <a href="https://www.greense.com.br"><img src="https://img.shields.io/badge/🌐-Website-green?style=for-the-badge" alt="Website"></a>
                 <a href="../LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue?style=for-the-badge" alt="License"></a>
                 <a href="https://www.espressif.com/"><img src="https://img.shields.io/badge/ESP32-Ready-orange?style=for-the-badge&logo=espressif" alt="ESP32"></a>
@@ -632,6 +652,14 @@
 
         <section class="section" id="inicio-rapido">
             <h2>🚀 Início Rápido</h2>
+
+            <div style="text-align: center; margin: 30px 0;">
+                <a href="https://github.com/marcelinoandrade/greense" target="_blank" class="github-button">
+                    <span style="font-size: 1.3em; margin-right: 8px;">📦</span>
+                    Acessar Repositório no GitHub
+                    <span style="margin-left: 8px;">→</span>
+                </a>
+            </div>
 
             <h3>1️⃣ Clone o Repositório</h3>
             <pre><code>git clone https://github.com/marcelinoandrade/greense.git
