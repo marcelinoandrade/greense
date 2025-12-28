@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>greenSe - Sistema IoT para Monitoramento e Automação de Estufas</title>
+    <meta name="description" content="Sistema IoT para Monitoramento e Automação de Estufas e Cultivos Hidropônicos">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            max-width: 1012px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+        }
+        table td, table th {
+            border: 1px solid #dfe2e5;
+            padding: 6px 13px;
+        }
+        table th {
+            background-color: #f6f8fa;
+        }
+        code {
+            background-color: #f6f8fa;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+        }
+        pre {
+            background-color: #f6f8fa;
+            padding: 16px;
+            border-radius: 6px;
+            overflow: auto;
+        }
+        pre code {
+            background-color: transparent;
+            padding: 0;
+        }
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        h1, h2, h3 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        hr {
+            height: 0;
+            margin: 24px 0;
+            background: transparent;
+            border: 0;
+            border-top: 1px solid #eaecef;
+        }
+        .center {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div align="center">
+
+<a id="topo"></a>
+<p align="center">
+  <img src="greense.svg" alt="greenSe logo" width="520">
+</p>
+
+<h3>Sistema IoT para Monitoramento e Automação de Estufas e Cultivos Hidropônicos</h3>
+
+<p>
+<a href="https://www.greense.com.br"><img src="https://img.shields.io/badge/🌐-Website-green?style=for-the-badge" alt="Website"></a>
+<a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue?style=for-the-badge" alt="License"></a>
+<a href="https://www.espressif.com/"><img src="https://img.shields.io/badge/ESP32-Ready-orange?style=for-the-badge&logo=espressif" alt="ESP32"></a>
+<a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3.x-blue?style=for-the-badge&logo=python" alt="Python"></a>
+<a href="https://www.raspberrypi.org/"><img src="https://img.shields.io/badge/Raspberry%20Pi-4-red?style=for-the-badge&logo=raspberry-pi" alt="Raspberry Pi"></a>
+</p>
+
+</div>
+
+<hr>
+
+<h2>📖 Sobre o Projeto</h2>
+
+<p>O <strong>greenSe</strong> é uma solução completa de <strong>agricultura de precisão</strong> para cultivos protegidos, integrando sensores IoT, automação e inteligência artificial. Desenvolvido para estufas e sistemas hidropônicos, otimiza o uso de água, nutrientes e energia através de monitoramento em tempo real e análises preditivas.</p>
+
+<h3>✨ Destaques</h3>
+
+<div align="center">
+
+<table>
+<thead>
+<tr>
+<th>🌡️ Monitoramento</th>
+<th>🤖 Inteligência Artificial</th>
+<th>📊 Análise Térmica</th>
+<th>🔒 Segurança</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tempo real 24/7</td>
+<td>IA Eng. GePeTo (GPT-4o)</td>
+<td>Câmera MLX90640</td>
+<td>MQTT/TLS/WSS</td>
+</tr>
+<tr>
+<td>Múltiplos sensores</td>
+<td>Relatórios automáticos</td>
+<td>Detecção precoce</td>
+<td>Comunicação criptografada</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+<hr>
+
+<h2>🌟 Funcionalidades Principais</h2>
+
+<h3>📡 Monitoramento Inteligente</h3>
+<ul>
+<li>⚡ <strong>Tempo real</strong> de parâmetros ambientais (temperatura, umidade, CO₂, luminosidade)</li>
+<li>💧 <strong>Hidroponia avançada</strong> com pH e condutividade elétrica (EC)</li>
+<li>🌡️ <strong>Análise térmica</strong> via câmera MLX90640 (24×32px) para detecção precoce de estresse hídrico e doenças</li>
+<li>📷 <strong>Monitoramento visual</strong> com ESP32-CAM para acompanhamento do crescimento</li>
+</ul>
+
+<h3>⚙️ Automação e Controle</h3>
+<ul>
+<li>🔄 <strong>Controle automatizado</strong> de irrigação, iluminação e sistemas de ventilação</li>
+<li>💾 <strong>Armazenamento histórico</strong> com InfluxDB para análise temporal</li>
+<li>📈 <strong>Dashboards interativos</strong> com Grafana para visualização de dados</li>
+</ul>
+
+<h3>🤖 Inteligência Artificial</h3>
+
+<div align="center">
+  <img src="gepeto.png" alt="Eng. Gepeto" width="120">
+</div>
+
+<p>A <strong>IA Eng. GePeTo</strong> (baseada em GPT-4o) atua como consultor agrícola virtual:</p>
+
+<ul>
+<li>📝 <strong>Relatórios automáticos</strong> com interpretação técnica dos dados</li>
+<li>🧠 <strong>Análises inteligentes</strong> em linguagem prática e acessível</li>
+<li>💡 <strong>Recomendações personalizadas</strong> para otimização de irrigação, clima e nutrição</li>
+<li>🔮 <strong>Modelos preditivos</strong> para previsão de necessidades (em desenvolvimento)</li>
+</ul>
+
+<hr>
+
+<h2>🏗️ Arquitetura do Sistema</h2>
+
+<h3>🔌 Cliente (Hardware IoT)</h3>
+
+<p>Soluções modulares baseadas em <strong>ESP32</strong> para diferentes necessidades:</p>
+
+<div align="center">
+
+<table>
+<thead>
+<tr>
+<th>Solução</th>
+<th>📋 Descrição</th>
+<th>🔧 Tecnologia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>N01</strong></td>
+<td>Germinação - Monitoramento básico</td>
+<td>ESP32 + AHT20, ENS160, DS18B20</td>
+</tr>
+<tr>
+<td><strong>N02</strong></td>
+<td>Maturação - Monitoramento completo</td>
+<td>ESP32 + sensores completos + boias</td>
+</tr>
+<tr>
+<td><strong>N03</strong></td>
+<td>Hidroponia - pH e EC</td>
+<td>ESP32 + MicroPython</td>
+</tr>
+<tr>
+<td><strong>N04</strong></td>
+<td>Câmera Visual - Monitoramento óptico</td>
+<td>ESP32-CAM</td>
+</tr>
+<tr>
+<td><strong>N05</strong></td>
+<td>Câmera Térmica - Análise térmica</td>
+<td>ESP32-C3 + MLX90640 (24×32px)</td>
+</tr>
+<tr>
+<td><strong>N06</strong></td>
+<td>Sensor de Campo - Solo com bateria</td>
+<td>ESP32 + interface web embarcada</td>
+</tr>
+<tr>
+<td><strong>N07</strong></td>
+<td>Solução Completa - Térmica avançada</td>
+<td>ESP32-S3 + MLX90640</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+<p><strong>🌐 Comunicação</strong>: MQTT/TLS ou HTTP POST</p>
+
+<h3>🖥️ Servidor (Backend)</h3>
+
+<p>Sistema central em <strong>Python</strong> rodando em <strong>Raspberry Pi 4</strong>:</p>
+
+<table>
+<thead>
+<tr>
+<th>Módulo</th>
+<th>Funcionalidade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>server01Full.py</strong></td>
+<td>🔌 Broker MQTT • 🚀 API REST (Flask) • 💾 InfluxDB • 🌡️ Processamento térmico</td>
+</tr>
+<tr>
+<td><strong>server01IA.py</strong></td>
+<td>🤖 Serviço IA (Eng. GePeTo) • 📊 Análise de dados • 📝 Geração de relatórios</td>
+</tr>
+<tr>
+<td><strong>serverTermica.py</strong></td>
+<td>🌡️ Processamento dedicado de imagens térmicas • 📈 Estatísticas</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>🛠️ Stack Tecnológico</strong>: Python 3.x • Flask • InfluxDB • MQTT (paho-mqtt) • OpenAI GPT-4o • NumPy</p>
+
+<hr>
+
+<h2>🛠️ Tecnologias Utilizadas</h2>
+
+<div align="center">
+
+<h3>🔩 Hardware</h3>
+
+<p>
+<img src="https://img.shields.io/badge/ESP32--WROOM--32-✓-orange?style=flat-square" alt="ESP32">
+<img src="https://img.shields.io/badge/ESP32--S3-✓-orange?style=flat-square" alt="ESP32-S3">
+<img src="https://img.shields.io/badge/ESP32--C3-✓-orange?style=flat-square" alt="ESP32-C3">
+<img src="https://img.shields.io/badge/Raspberry%20Pi%204/5-✓-red?style=flat-square" alt="Raspberry Pi">
+</p>
+
+<p><strong>Sensores</strong>: AHT20 • ENS160 • DS18B20 • DHT22 • pH/EC • MLX90640</p>
+
+<h3>💻 Software</h3>
+
+<p>
+<img src="https://img.shields.io/badge/C/C++-ESP--IDF%20v5.x-blue?style=flat-square&logo=c%2B%2B" alt="C++">
+<img src="https://img.shields.io/badge/Python-3.x-blue?style=flat-square&logo=python" alt="Python">
+<img src="https://img.shields.io/badge/MicroPython-ESP32-yellow?style=flat-square" alt="MicroPython">
+<img src="https://img.shields.io/badge/Flask-API%20REST-black?style=flat-square&logo=flask" alt="Flask">
+<img src="https://img.shields.io/badge/MQTT/WSS-TLS-green?style=flat-square" alt="MQTT">
+<img src="https://img.shields.io/badge/InfluxDB-Time%20Series-22ADF6?style=flat-square&logo=influxdb" alt="InfluxDB">
+<img src="https://img.shields.io/badge/Grafana-Dashboards-F46800?style=flat-square&logo=grafana" alt="Grafana">
+<img src="https://img.shields.io/badge/OpenAI-GPT--4o-00A67E?style=flat-square&logo=openai" alt="OpenAI">
+</p>
+
+</div>
+
+<hr>
+
+<h2>📊 Escalabilidade</h2>
+
+<div align="center">
+
+<table>
+<thead>
+<tr>
+<th>🏭 Capacidade</th>
+<th>💻 Solução</th>
+<th>⚡ Performance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1-20 estufas</strong></td>
+<td>Raspberry Pi 4</td>
+<td>Ideal para pequenos produtores</td>
+</tr>
+<tr>
+<td><strong>21-50 estufas</strong></td>
+<td>Raspberry Pi 5</td>
+<td>Médios produtores</td>
+</tr>
+<tr>
+<td><strong>51-1.000 estufas</strong></td>
+<td>Servidor dedicado</td>
+<td>Grande escala</td>
+</tr>
+<tr>
+<td><strong>1.000+ estufas</strong></td>
+<td>Edge + Cloud</td>
+<td>Arquitetura distribuída</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+<hr>
+
+<h2>🚀 Início Rápido</h2>
+
+<h3>1️⃣ Clone o Repositório</h3>
+
+<pre><code>git clone https://github.com/marcelinoandrade/greense.git
+cd greense
+</code></pre>
+
+<h3>2️⃣ Explore as Soluções</h3>
+
+<ul>
+<li>📦 <strong>Hardware</strong>: Explore <code>client/</code> - cada projeto possui README específico com instruções detalhadas</li>
+<li>🖥️ <strong>Servidor</strong>: Consulte <code>server/N01_RASP4_LAB/</code> para documentação de instalação e configuração</li>
+</ul>
+
+<h3>3️⃣ Documentação</h3>
+
+<p>Cada módulo cliente possui seu próprio README com:</p>
+<ul>
+<li>📋 Requisitos de hardware</li>
+<li>🔧 Instruções de instalação</li>
+<li>⚙️ Configuração específica</li>
+<li>🧪 Guia de testes</li>
+</ul>
+
+<hr>
+
+<h2>📁 Estrutura do Repositório</h2>
+
+<pre><code>greense/
+├── 📦 client/                          # Soluções hardware (ESP32)
+│   ├── N01_Estufa_Germinar_C/         # 🌱 Monitoramento básico (germinação)
+│   ├── N02_Estufa_Maturar_C/          # 🌿 Monitoramento completo (maturação)
+│   ├── N03_Estufa_P/                  # 💧 Hidroponia (MicroPython)
+│   ├── N04_Estufa_Camera_C/           # 📷 Câmera visual
+│   ├── N05_Estufa_Termica_C/          # 🌡️ Câmera térmica
+│   ├── N06_Sensor_Campo_C/            # 🌍 Sensores de campo
+│   └── N07_Estufa_Artigo_C/           # 🔬 Solução completa térmica
+├── 🖥️ server/                          # Sistema servidor
+│   └── N01_RASP4_LAB/                 # Backend Raspberry Pi 4
+└── 📄 README.md                        # Este arquivo
+</code></pre>
+
+<hr>
+
+<h2>📝 Licença</h2>
+
+<p>Este projeto está sob a licença <strong>MIT</strong>. Veja o arquivo <a href="LICENSE">LICENSE</a> para mais detalhes.</p>
+
+<hr>
+
+<h2>📧 Contato e Suporte</h2>
+
+<div align="center">
+
+<table>
+<thead>
+<tr>
+<th>🌐 Website</th>
+<th>💼 LinkedIn</th>
+<th>🏛️ Instituição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://www.greense.com.br">www.greense.com.br</a></td>
+<td><a href="https://www.linkedin.com/in/marcelino-andrade-b164b369"><img src="https://img.shields.io/badge/LinkedIn-Prof.%20Marcelino%20Andrade-0077B5?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn"></a></td>
+<td>Universidade de Brasília</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Coordenação</strong>: Prof. Marcelino Monteiro de Andrade<br>
+<strong>Faculdade</strong>: Ciências e Tecnologias em Engenharia (FCTE) – Universidade de Brasília</p>
+
+</div>
+
+<hr>
+
+<div align="center">
+
+<h3>🌱 Desenvolvido na Universidade de Brasília</h3>
+
+<p><strong>greenSe</strong> - Transformando a agricultura através da tecnologia IoT e inteligência artificial</p>
+
+<p><a href="#topo">⬆️ Voltar ao topo</a></p>
+
+</div>
+
+</body>
+</html>
