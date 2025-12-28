@@ -393,6 +393,10 @@
                 padding: 25px;
             }
 
+            .contact-section {
+                padding: 25px 15px;
+            }
+
             .highlights-grid,
             .features-grid {
                 grid-template-columns: 1fr;
@@ -400,11 +404,57 @@
 
             table {
                 font-size: 0.9em;
+                display: block;
+                width: 100%;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            table thead,
+            table tbody,
+            table tr {
+                display: block;
+            }
+
+            table thead {
+                display: none;
+            }
+
+            table tbody tr {
+                margin-bottom: 15px;
+                border: 1px solid rgba(255,255,255,0.2);
+                border-radius: 8px;
+                padding: 10px;
+                background: rgba(255,255,255,0.05);
+            }
+
+            table td {
+                display: block;
+                text-align: left;
+                padding: 8px 0;
+                border: none;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+
+            table td:last-child {
+                border-bottom: none;
+            }
+
+            table td:before {
+                content: attr(data-label) ": ";
+                font-weight: 600;
+                display: block;
+                margin-bottom: 5px;
+                color: rgba(255,255,255,0.9);
             }
 
             table th,
             table td {
                 padding: 10px;
+            }
+
+            .contact-section table td:before {
+                color: rgba(255,255,255,0.8);
             }
         }
 
@@ -736,9 +786,9 @@ cd greense</code></pre>
                 </thead>
                 <tbody>
                     <tr>
-                        <td><a href="https://www.greense.com.br">www.greense.com.br</a></td>
-                        <td><a href="https://www.linkedin.com/in/marcelino-andrade-b164b369"><img src="https://img.shields.io/badge/LinkedIn-Prof.%20Marcelino%20Andrade-0077B5?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn"></a></td>
-                        <td>Universidade de Brasília</td>
+                        <td data-label="🌐 Website"><a href="https://www.greense.com.br">www.greense.com.br</a></td>
+                        <td data-label="💼 LinkedIn"><a href="https://www.linkedin.com/in/marcelino-andrade-b164b369"><img src="https://img.shields.io/badge/LinkedIn-Prof.%20Marcelino%20Andrade-0077B5?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn"></a></td>
+                        <td data-label="🏛️ Instituição">Universidade de Brasília</td>
                     </tr>
                 </tbody>
             </table>
