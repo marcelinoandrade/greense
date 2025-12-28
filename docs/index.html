@@ -7,15 +7,17 @@
     <meta name="description" content="Sistema IoT para Monitoramento e Automação de Estufas e Cultivos Hidropônicos">
     <style>
         :root {
-            --primary-color: #2d8659;
-            --secondary-color: #34a853;
-            --accent-color: #1e7e34;
-            --text-color: #24292e;
+            --primary-color: #2e7d32;
+            --secondary-color: #4caf50;
+            --accent-color: #66bb6a;
+            --text-color: #212121;
             --bg-color: #ffffff;
-            --card-bg: #f8f9fa;
-            --border-color: #e1e4e8;
-            --shadow: 0 2px 8px rgba(0,0,0,0.1);
-            --shadow-hover: 0 4px 16px rgba(0,0,0,0.15);
+            --card-bg: #f1f8f4;
+            --border-color: #c8e6c9;
+            --shadow: 0 2px 8px rgba(46, 125, 50, 0.15);
+            --shadow-hover: 0 4px 16px rgba(46, 125, 50, 0.25);
+            --gradient-primary: linear-gradient(135deg, #2e7d32 0%, #4caf50 100%);
+            --gradient-light: linear-gradient(135deg, #f1f8f4 0%, #e8f5e9 100%);
         }
 
         * {
@@ -28,7 +30,7 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
             line-height: 1.7;
             color: var(--text-color);
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background: var(--gradient-light);
             min-height: 100vh;
         }
 
@@ -39,7 +41,7 @@
         }
 
         header {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            background: var(--gradient-primary);
             color: white;
             padding: 60px 20px;
             text-align: center;
@@ -130,7 +132,7 @@
         }
 
         .highlight-card {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            background: var(--gradient-light);
             padding: 25px;
             border-radius: 12px;
             border-left: 4px solid var(--secondary-color);
@@ -190,12 +192,13 @@
         }
 
         .ai-section {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: var(--gradient-primary);
             color: white;
             padding: 40px;
             border-radius: 15px;
             margin: 30px 0;
             text-align: center;
+            box-shadow: var(--shadow);
         }
 
         .ai-section h3 {
@@ -225,7 +228,7 @@
         }
 
         table thead {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            background: var(--gradient-primary);
             color: white;
         }
 
@@ -245,7 +248,7 @@
         }
 
         table tbody tr:hover {
-            background-color: #f8f9fa;
+            background-color: var(--card-bg);
         }
 
         table tbody tr:last-child td {
@@ -299,11 +302,12 @@
         }
 
         .contact-section {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            background: var(--gradient-primary);
             color: white;
             padding: 40px;
             border-radius: 15px;
             margin: 30px 0;
+            box-shadow: var(--shadow);
         }
 
         .contact-section h2 {
