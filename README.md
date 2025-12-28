@@ -195,9 +195,9 @@ Este projeto está sob a licença **MIT**. Veja o arquivo [LICENSE](LICENSE) par
 
 <div align="center">
 
-| 🌐 Website | 📧 Email | 🏛️ Instituição |
+| 🌐 Website | 💼 LinkedIn | 🏛️ Instituição |
 |:----------|:--------|:---------------|
-| [www.greense.com.br](https://www.greense.com.br) | [contato@greense.com.br](mailto:contato@greense.com.br) | Universidade de Brasília |
+| [www.greense.com.br](https://www.greense.com.br) | [![LinkedIn](https://img.shields.io/badge/LinkedIn-Prof.%20Marcelino%20Andrade-0077B5?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/marcelino-andrade-b164b369) | Universidade de Brasília |
 
 **Coordenação**: Prof. Marcelino Monteiro de Andrade  
 **Faculdade**: Ciências e Tecnologias em Engenharia (FCTE) – Universidade de Brasília
