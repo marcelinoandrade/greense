@@ -18002,3 +18002,15 @@ Análise realizada em 27/12/2025 12:00. Temp. ambiente: 31.39 °C, fora da faixa
 🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
 Análise realizada em 27/12/2025 16:00. Temperatura ambiente: 31.6 °C, fora da faixa tolerada, acima do limite superior de 30 °C; Umidade: 37.08%, fora da faixa tolerada, abaixo do limite inferior de 40%; pH: 5.5, no limite inferior da faixa tolerada, sem risco associado; EC: 1.8 mS/cm, dentro da faixa tolerada; Temp. reservatório: 25.94 °C, dentro da faixa tolerada; água_max: 0, nível abaixo da boia, reposição recomendada; água_min: 1, nível adequado. || Conclusão: A temperatura ambiente e a umidade relativa estão fora das faixas toleradas, necessitando de ajustes para evitar estresse nas plantas. || Impacto previsto: Caso os parâmetros fora da faixa não sejam corrigidos, pode ocorrer murcha fisiológica devido à baixa umidade e queima das bordas das folhas por causa da alta temperatura; risco atual classificado como 3/5.
 ✅ Resposta da IA Eng. GePTo gravada no InfluxDB.
+
+📜 [27/12/2025 20:00] Início da execução do script de análise da estufa.
+
+📡 Dados coletados d Estufa_Maturar:
+{'temp': 31.71, 'umid': 36.54, 'co2': 600.0, 'luz': 0.0, 'temp_reserv_int': 26.0, 'agua_min': 1.0, 'agua_max': 0.0, 'ph': 5.5, 'ec': 1.8}
+
+📦 Estrutura para enviar para OpenAI:
+{'temperatura_ambiente': 31.71, 'umidade_ambiente': 36.54, 'nivel_co2': 600.0, 'luminosidade': 0.0, 'ph_agua': 5.5, 'condutividade_ec': 1.8, 'temp_reservatorio_interno': 26.0, 'agua_min': 1, 'agua_max': 0, 'timestamp_consulta': '2025-12-27T23:00:15.890759Z'}
+
+🧠 Resposta da IA Eng. GePeTo sobre a Estufa de Maturação:
+Análise realizada em 27/12/2025 20:00. Temperatura ambiente: 31.71 °C, fora da faixa tolerada; Umidade: 36.54 %, fora da faixa tolerada; pH: 5.5, no limite inferior da faixa tolerada; EC: 1.8 mS/cm, dentro da faixa tolerada; Temperatura do reservatório: 26.0 °C, no limite superior da faixa tolerada; água_max: 0, nível abaixo da boia, reposição recomendada; água_min: 1, nível adequado. || Conclusão: A temperatura ambiente e a umidade relativa estão fora das faixas toleradas, o que pode impactar negativamente o cultivo. Impacto previsto: Se não corrigidos, os parâmetros fora da faixa podem levar a estresse hídrico e térmico, aumentando o risco de doenças como murcha bacteriana e podridão radicular, devido ao calor excessivo e baixa umidade; risco atual classificado como 4/5.
+✅ Resposta da IA Eng. GePTo gravada no InfluxDB.
