@@ -1,0 +1,30 @@
+# Configuração do Jekyll para GitHub Pages
+# Site do greenSe - Sistema IoT para Monitoramento e Automação de Estufas
+
+title: greenSe
+description: Sistema IoT para Monitoramento e Automação de Estufas e Cultivos Hidropônicos
+url: https://marcelinoandrade.github.io
+baseurl: /greense
+
+# Configurações do Jekyll
+# Usando tema minima para compatibilidade com GitHub Pages
+theme: minima
+
+# Plugins suportados pelo GitHub Pages
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Configurações de exibição
+show_excerpts: false
+markdown: kramdown
+highlighter: rouge
+
+# Configurações do autor
+author:
+  name: Prof. Marcelino Monteiro de Andrade
+  email: contato@greense.com.br
+
+# Configurações do GitHub Pages
+github: [metadata]
+
