@@ -7,6 +7,7 @@
 
 ### Sistema IoT para Monitoramento e Automação de Estufas e Cultivos Hidropônicos
 
+[![GitHub Pages](https://img.shields.io/badge/GitHub-Pages-181717?style=for-the-badge&logo=github&logoColor=white)](https://marcelinoandrade.github.io/greense/)
 [![Website](https://img.shields.io/badge/🌐-Website-green?style=for-the-badge)](https://www.greense.com.br)
 [![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](LICENSE)
 [![ESP32](https://img.shields.io/badge/ESP32-Ready-orange?style=for-the-badge&logo=espressif)](https://www.espressif.com/)
