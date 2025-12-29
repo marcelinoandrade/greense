@@ -13,14 +13,14 @@
 
 /* GPIOs */
 #define BSP_GPIO_DS18B20        GPIO_NUM_4
-#define BSP_GPIO_LED_STATUS     GPIO_NUM_16
-/* DHT11 - sensor de temperatura/umidade do ar */
-#define BSP_GPIO_DHT11          GPIO_NUM_22
+#define BSP_GPIO_LED_STATUS     GPIO_NUM_2
+/* DHT11 removido - usando AHT10 via I2C */
+// #define BSP_GPIO_DHT11          GPIO_NUM_22  /* GPIO22 liberada para I2C SCL */
 
-/* I2C (atualmente apenas BH1750 usa) */
+/* I2C para AHT10 e BH1750 */
 #define BSP_I2C_NUM             I2C_NUM_0
 #define BSP_I2C_SDA             GPIO_NUM_21
-#define BSP_I2C_SCL             GPIO_NUM_19
+#define BSP_I2C_SCL             GPIO_NUM_22
 
 /* ADC - Umidade do Solo */
 #define BSP_ADC_SOIL_UNIT       ADC_UNIT_1

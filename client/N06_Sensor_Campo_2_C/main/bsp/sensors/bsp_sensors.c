@@ -1,12 +1,10 @@
 #include "bsp_sensors.h"
 #include "bsp_ds18b20.h"
 #include "bsp_adc.h"
-#include "bsp_dht11.h"
+#include "bsp_aht10.h"
 #include "bsp_bh1750.h"
 #include "esp_log.h"
 #include "esp_err.h"
-#include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
 #include <math.h>
 #include <stdbool.h>
 #include <stdint.h>
@@ -19,42 +17,6 @@ static int last_soil_raw = -1;
 static float last_temp_air = NAN;
 static float last_humid_air = NAN;
 static float last_luminosity = NAN;
-
-static esp_err_t bsp_sensors_read_dht11_cached(float *temp, float *humid)
-{
-    static TickType_t last_read_ticks = 0;
-    static float cached_temp = NAN;
-    static float cached_humid = NAN;
-
-    const TickType_t now = xTaskGetTickCount();
-    const TickType_t min_interval = pdMS_TO_TICKS(2000); // DHT11 precisa de ~2s entre leituras
-
-    if (last_read_ticks != 0 &&
-        (now - last_read_ticks) < min_interval &&
-        isfinite(cached_temp) && isfinite(cached_humid)) {
-        if (temp) *temp = cached_temp;
-        if (humid) *humid = cached_humid;
-        return ESP_OK;
-    }
-
-    float t = NAN, h = NAN;
-    esp_err_t err = dht11_bsp_read(&t, &h);
-    if (err == ESP_OK) {
-        cached_temp = t;
-        cached_humid = h;
-        last_read_ticks = now;
-        last_temp_air = t;
-        last_humid_air = h;
-        if (temp) *temp = t;
-        if (humid) *humid = h;
-        return ESP_OK;
-    }
-
-    // Retorna último valor válido em caso de falha
-    if (temp) *temp = cached_temp;
-    if (humid) *humid = cached_humid;
-    return err;
-}
 
 /* Implementação das operações */
 static esp_err_t bsp_sensors_init_impl(void)
@@ -73,12 +35,18 @@ static esp_err_t bsp_sensors_init_impl(void)
         return err;
     }
 
-    /* Inicializa DHT11 (temperatura e umidade do ar) */
-    err = dht11_bsp_init();
+    /* Inicializa AHT10 (temperatura e umidade do ar) */
+    err = aht10_bsp_init();
     if (err != ESP_OK) {
-        ESP_LOGW(TAG, "DHT11 não disponível: %s", esp_err_to_name(err));
+        ESP_LOGW(TAG, "AHT10 não disponível: %s", esp_err_to_name(err));
     } else {
-        ESP_LOGI(TAG, "DHT11 inicializado com sucesso");
+        ESP_LOGI(TAG, "AHT10 inicializado com sucesso");
+        
+        /* Compartilha o barramento I2C com BH1750 */
+        void* i2c_bus = aht10_get_i2c_bus_handle();
+        if (i2c_bus != NULL) {
+            bh1750_set_shared_i2c_bus((void*)i2c_bus);
+        }
     }
 
     /* Inicializa BH1750 (luxímetro) */
@@ -129,37 +97,68 @@ static esp_err_t bsp_sensors_read_soil_raw_impl(int *raw)
 static esp_err_t bsp_sensors_read_temp_air_impl(float *temp)
 {
     if (temp == NULL) return ESP_ERR_INVALID_ARG;
-    return bsp_sensors_read_dht11_cached(temp, NULL);
+    
+    if (aht10_bsp_is_available()) {
+        float temp_val, humid_val;
+        esp_err_t err = aht10_bsp_read(&temp_val, &humid_val);
+        if (err == ESP_OK) {
+            last_temp_air = temp_val;
+            *temp = temp_val;
+            return ESP_OK;
+        }
+    }
+    
+    /* Retorna último valor válido ou NAN se não houver */
+    *temp = last_temp_air;
+    return ESP_ERR_INVALID_RESPONSE;
 }
 
 static esp_err_t bsp_sensors_read_humid_air_impl(float *humid)
 {
     if (humid == NULL) return ESP_ERR_INVALID_ARG;
-    return bsp_sensors_read_dht11_cached(NULL, humid);
+    
+    if (aht10_bsp_is_available()) {
+        float temp_val, humid_val;
+        esp_err_t err = aht10_bsp_read(&temp_val, &humid_val);
+        if (err == ESP_OK) {
+            last_humid_air = humid_val;
+            *humid = humid_val;
+            return ESP_OK;
+        }
+    }
+    
+    /* Retorna último valor válido ou NAN se não houver */
+    *humid = last_humid_air;
+    return ESP_ERR_INVALID_RESPONSE;
 }
 
 static esp_err_t bsp_sensors_read_all_impl(bsp_sensor_data_t *data)
 {
     if (data == NULL) return ESP_ERR_INVALID_ARG;
     
-    /* Lê temperatura e umidade do ar do DHT11 */
+    /* Lê temperatura e umidade do ar do AHT10 */
     float temp_air = NAN;
     float humid_air = NAN;
-    bsp_sensors_read_dht11_cached(&temp_air, &humid_air);
+    bsp_sensors_read_temp_air_impl(&temp_air);
+    bsp_sensors_read_humid_air_impl(&humid_air);
     data->temp_air = temp_air;
     data->humid_air = humid_air;
     
-    /* Lê luminosidade do BH1750 (mantém último valor em caso de falha) */
-    float luminosity = last_luminosity;
+    /* Lê luminosidade do BH1750 */
+    float luminosity = NAN;
     if (bh1750_bsp_is_available()) {
-        float lux_read = NAN;
-        esp_err_t err = bh1750_bsp_read(&lux_read);
+        esp_err_t err = bh1750_bsp_read(&luminosity);
         if (err == ESP_OK) {
-            last_luminosity = lux_read;
-            luminosity = lux_read;
+            last_luminosity = luminosity;
+            data->luminosity = luminosity;
+        } else {
+            /* Usa último valor válido ou NAN */
+            data->luminosity = last_luminosity;
         }
+    } else {
+        /* Usa último valor válido ou NAN */
+        data->luminosity = last_luminosity;
     }
-    data->luminosity = luminosity;
     
     /* Temperatura do solo */
     float temp_soil = NAN;
