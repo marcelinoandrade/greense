@@ -3,7 +3,6 @@ import matplotlib.textpath as mtextpath
 import matplotlib.font_manager as mfont
 import numpy as np
 
-
 # --- CONFIGURAÇÕES ---
 OUTPUT_FILE = "greense.svg"
 
@@ -114,3 +113,4 @@ def generate_svg():
 
 if __name__ == "__main__":
     generate_svg()
+    
