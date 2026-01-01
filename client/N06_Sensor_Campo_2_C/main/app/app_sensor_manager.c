@@ -125,7 +125,7 @@ bool sensor_manager_is_valid(const sensor_reading_t *reading)
         return false;
     }
     
-    // Valida ranges para temperatura do ar (DHT11: -40°C a +80°C)
+    // Valida ranges para temperatura do ar (AHT10: -40°C a +85°C)
     if (reading->temp_air < -40.0f || reading->temp_air > 80.0f) {
         ESP_LOGW(TAG, "Temp. ar fora do range: %.1f°C", reading->temp_air);
         return false;
