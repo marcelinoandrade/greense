@@ -1,0 +1,112 @@
+# ESP-IDF Build System
+build/
+sdkconfig
+sdkconfig.old
+sdkconfig.defaults.old
+*.sdkconfig.in
+.flashbundle
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+*.cmake
+!CMakeLists.txt
+compile_commands.json
+
+# Build artifacts
+*.o
+*.obj
+*.a
+*.lib
+*.elf
+*.bin
+*.hex
+*.map
+*.list
+*.s19
+*.d
+
+# ESP-IDF managed components (auto-generated)
+managed_components/
+
+# Dependencies lock (can be regenerated)
+dependencies.lock
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+
+# IDEs and editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.sublime-project
+*.sublime-workspace
+.project
+.cproject
+.settings/
+*.code-workspace
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# Logs
+*.log
+log/
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.backup
+*.orig
+
+# ESP-IDF specific
+bootloader.bin
+partitions.bin
+flash_args
+*.flash_args
+*.flash_args.in
+flasher_args.json
+*.partition_table.bin
+
+# Test coverage
+*.gcda
+*.gcno
+*.gcov
+coverage/
+*.out
+
+# Debug files
+*.su
+*.idb
+*.pdb
+*.ilk
+
+# ESP-IDF tools
+.pytest_cache/
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Project specific
+*.patch
+
+# Keep sdkconfig.defaults but ignore user modifications
+# sdkconfig.defaults
