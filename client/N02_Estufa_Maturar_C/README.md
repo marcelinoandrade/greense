@@ -1,79 +1,72 @@
-# 🌿 Projeto GreenSe – Nó de Monitoramento Ambiental e Atuação (ESP32)
+# N02 · Estufa Maturar · Monitoramento Completo (ESP32)
 
-Firmware baseado em **ESP-IDF (v5.x)** para monitoramento e controle ambiental, integrando sensores múltiplos (AHT20, ENS160, DHT22, DS18B20) e atuadores, com comunicação segura via **MQTT sobre TLS**.
+Firmware baseado em **ESP-IDF v5.x** para monitoramento e controle ambiental, integrando sensores múltiplos (AHT20, ENS160, DHT22, DS18B20) e atuadores, com comunicação segura via **MQTT sobre TLS**.
 
 ---
 
-## ⚙️ Visão Geral
+## Descrição Geral
 
-Este projeto implementa um nó IoT completo para **agricultura inteligente**, capaz de coletar dados ambientais em tempo real, acionar dispositivos e enviar informações a um servidor remoto via MQTT seguro.
+Nó IoT completo para agricultura inteligente, capaz de coletar dados ambientais em tempo real, acionar dispositivos e enviar informações a um servidor remoto via MQTT seguro. Sistema monitora temperatura, umidade, qualidade do ar, níveis de água e outras variáveis ambientais críticas para cultivo em estufas.
 
-O sistema monitora temperatura, umidade, qualidade do ar, níveis de água e outras variáveis ambientais críticas para o cultivo em estufas.
+### Recursos Principais
 
-### Principais recursos
-
-- 📡 Conexão Wi-Fi (modo STA) com reconexão automática
-- 🔐 Comunicação **MQTT segura (TLS/WSS)** usando certificado embutido
-- 🌤️ Sensores integrados:
+- Conexão Wi-Fi (modo STA) com reconexão automática
+- Comunicação **MQTT segura (TLS/WSS)** usando certificado embutido
+- Sensores integrados:
   - **AHT20** – temperatura e umidade do ar (I2C)
   - **ENS160** – qualidade do ar e eCO₂ (I2C)
   - **DS18B20** – temperatura do reservatório interno (OneWire)
   - **DHT22** – temperatura e umidade externas (GPIO)
   - **Boias de nível** – detecção de água mínima/máxima (GPIO)
   - **Sensor de luz** – detecção de claridade (GPIO)
-- ⚙️ Atuadores:
+- Atuadores:
   - **LED RGB** – indicador visual de status do sistema (GPIO 16)
-- 💾 Armazenamento local (NVS) para configurações
-- 🧠 Arquitetura modular: conexões, sensores e atuadores independentes
-- 🔄 Loop de leitura automático a cada 5 segundos
+- Armazenamento local (NVS) para configurações
+- Arquitetura modular: conexões, sensores e atuadores independentes
+- Loop de leitura automático a cada 5 segundos
 
 ---
 
-## 🧩 Estrutura de Diretórios
+## Estrutura de Diretórios
 
 ```
-N02_Estufa_Maturar_C++/
-├── CMakeLists.txt              # Configuração principal do CMake
-├── main/
-│   ├── main.c                  # Inicialização e loop principal
-│   ├── config.h                # Configurações gerais (MQTT, intervalos)
-│   ├── secrets.h               # Credenciais Wi-Fi (criar este arquivo)
-│   ├── conexoes/
-│   │   ├── conexoes.c/.h       # Configuração de Wi-Fi e MQTT
-│   ├── sensores/
-│   │   ├── sensores.c/.h       # Integração geral dos sensores
-│   │   ├── aht20.c/.h          # Sensor de temperatura e umidade
-│   │   ├── ens160.c/.h         # Sensor de qualidade do ar
-│   │   ├── ds18b20.c/.h        # Sensor de temperatura do solo
-│   │   ├── dht.c/.h            # Sensor DHT22 (temperatura/umidade externa)
-│   ├── atuadores/
-│   │   ├── atuadores.c/.h      # Controle de LED RGB
-│   ├── CMakeLists.txt          # Configuração de build e dependências
-│   └── idf_component.yml       # Dependências de componentes
-└── README.md                   # Este arquivo
+main/
+├── main.c                  # Inicialização e loop principal
+├── config.h                # Configurações gerais (MQTT, intervalos)
+├── secrets.h               # Credenciais Wi-Fi (criar este arquivo)
+├── conexoes/
+│   ├── conexoes.c/.h       # Configuração de Wi-Fi e MQTT
+├── sensores/
+│   ├── sensores.c/.h       # Integração geral dos sensores
+│   ├── aht20.c/.h          # Sensor de temperatura e umidade
+│   ├── ens160.c/.h         # Sensor de qualidade do ar
+│   ├── ds18b20.c/.h        # Sensor de temperatura do solo
+│   ├── dht.c/.h            # Sensor DHT22 (temperatura/umidade externa)
+├── atuadores/
+│   ├── atuadores.c/.h      # Controle de LED RGB
+├── CMakeLists.txt          # Configuração de build e dependências
+└── idf_component.yml       # Dependências de componentes
 ```
 
 ---
 
-## 📡 Comunicação MQTT
+## Comunicação MQTT
 
 ### Configuração
 
-- **Broker:** `mqtt.greense.com.br`
-- **Porta:** `8883` (TLS/WSS)
-- **Biblioteca:** `esp-mqtt`
-- **Certificado:** embutido no firmware (referenciado como binário)
-- **Protocolo:** WSS (WebSocket Secure)
+- **Broker**: `mqtt.greense.com.br`
+- **Porta**: `8883` (TLS/WSS)
+- **Biblioteca**: `esp-mqtt`
+- **Certificado**: embutido no firmware (referenciado como binário)
+- **Protocolo**: WSS (WebSocket Secure)
 
 ### Tópicos
 
 | Tópico | Direção | Descrição |
-|--------|----------|-----------|
+|--------|---------|-----------|
 | `estufa/maturar` | → broker | Publicação de dados ambientais (a cada 5 segundos) |
 
 ### Formato dos Dados Publicados
-
-O sistema publica um JSON com os seguintes campos:
 
 ```json
 {
@@ -94,7 +87,7 @@ O sistema publica um JSON com os seguintes campos:
 
 ---
 
-## 🔧 Configuração
+## Configuração
 
 ### 1. Arquivo `secrets.h`
 
@@ -110,11 +103,11 @@ Crie o arquivo `main/secrets.h` com suas credenciais Wi-Fi:
 #endif // SECRETS_H
 ```
 
-⚠️ **Importante:** Este arquivo não deve ser commitado no repositório. Adicione `secrets.h` ao `.gitignore`.
+⚠️ **Importante**: Este arquivo não deve ser commitado no repositório. Adicione `secrets.h` ao `.gitignore`.
 
 ### 2. Configurações em `config.h`
 
-As principais configurações podem ser ajustadas em `main/config.h`:
+Principais configurações em `main/config.h`:
 
 - `MQTT_BROKER`: Endereço do broker MQTT
 - `MQTT_TOPIC`: Tópico para publicação
@@ -123,37 +116,35 @@ As principais configurações podem ser ajustadas em `main/config.h`:
 
 ---
 
-## 💡 Indicadores Visuais
+## Indicadores Visuais
 
 O sistema utiliza um **LED RGB** (GPIO 16) para indicar o status:
 
 | Cor | Estado |
 |-----|--------|
-| 🔴 Vermelho (10, 0, 0) | Wi-Fi ou MQTT desconectado |
-| 🔵 Azul (0, 0, 10) | Sistema conectado e operacional |
+| Vermelho (10, 0, 0) | Wi-Fi ou MQTT desconectado |
+| Azul (0, 0, 10) | Sistema conectado e operacional |
 
 ---
 
-## 🖼️ Hardware de Referência
+## Hardware de Referência
 
-| ESP32 |
-|-----------------|
-| ![ESP32](esp32_Freenove.png) |
+![ESP32](esp32_Freenove.png)
 
 ### Pinos Utilizados
 
-- **I2C (AHT20, ENS160):**
+- **I2C (AHT20, ENS160)**:
   - SDA: GPIO 21
   - SCL: GPIO 22
-- **OneWire (DS18B20):** GPIO 26
-- **DHT22:** GPIO 4
-- **Boias de nível:** GPIO 32 (mínimo), GPIO 33 (máximo)
-- **Sensor de luz:** GPIO 25
-- **LED RGB:** GPIO 16
+- **OneWire (DS18B20)**: GPIO 26
+- **DHT22**: GPIO 4
+- **Boias de nível**: GPIO 32 (mínimo), GPIO 33 (máximo)
+- **Sensor de luz**: GPIO 25
+- **LED RGB**: GPIO 16
 
 ---
 
-## 💾 Requisitos de Build
+## Requisitos de Build
 
 ### Ferramentas
 
@@ -161,7 +152,7 @@ O sistema utiliza um **LED RGB** (GPIO 16) para indicar o status:
 - **Python 3.x**
 - `idf.py`, `esptool.py`, `menuconfig`
 
-### Componentes utilizados
+### Componentes Utilizados
 
 - `esp_wifi` – Gerenciamento Wi-Fi
 - `esp_event` – Sistema de eventos
@@ -172,7 +163,7 @@ O sistema utiliza um **LED RGB** (GPIO 16) para indicar o status:
 
 ---
 
-## 🚀 Como Executar
+## Como Executar
 
 ### 1. Configurar o ambiente
 
@@ -181,7 +172,7 @@ O sistema utiliza um **LED RGB** (GPIO 16) para indicar o status:
 . $HOME/esp/esp-idf/export.sh
 
 # Navegue até o diretório do projeto
-cd N02_Estufa_Maturar_C++
+cd N02_Estufa_Maturar_C
 ```
 
 ### 2. Criar arquivo de credenciais
@@ -234,7 +225,7 @@ Após a inicialização, você deve ver nos logs:
 
 ---
 
-## 🧪 Testes de Campo
+## Testes de Campo
 
 - ✅ Testado em **ESP32-WROOM-32** e **ESP32-S3**
 - ✅ Comunicação validada com broker MQTT seguro (TLS)
@@ -244,9 +235,7 @@ Após a inicialização, você deve ver nos logs:
 
 ---
 
-## 📊 Estrutura de Dados dos Sensores
-
-A estrutura `sensor_data_t` contém os seguintes campos:
+## Estrutura de Dados dos Sensores
 
 ```c
 typedef struct {
@@ -267,20 +256,7 @@ typedef struct {
 
 ---
 
-## 🧰 Próximas Extensões
-
-- [ ] Suporte a modo Access Point (AP)
-- [ ] Servidor HTTP embarcado para visualização local
-- [ ] Implementação real de sensores de pH e EC
-- [ ] Suporte a OTA (atualização remota)
-- [ ] Integração com banco de dados InfluxDB
-- [ ] Interface web responsiva
-- [ ] Controle inteligente por IA embarcada
-- [ ] Suporte a múltiplos atuadores (relés, bombas)
-
----
-
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Wi-Fi não conecta
 
@@ -309,16 +285,11 @@ typedef struct {
 
 ---
 
-## 🧑‍🔬 Autoria e Créditos
-
-**Projeto GreenSe | Agricultura Inteligente**  
-Coordenação: *Prof. Marcelino Monteiro de Andrade* e *Prof. Ronne Toledo*  
-Faculdade de Ciências e Tecnologias em Engenharia (FCTE) – Universidade de Brasília  
-📧 [andrade@unb.br](mailto:andrade@unb.br)  
-🌐 [https://greense.com.br](https://greense.com.br)
-
----
-
-## 📝 Licença
+## Licença
 
 Este projeto faz parte do Projeto GreenSe da Universidade de Brasília.
+
+**Autoria**: Prof. Marcelino Monteiro de Andrade  
+**Instituição**: Faculdade de Ciências e Tecnologias em Engenharia (FCTE) – Universidade de Brasília  
+**Email**: [andrade@unb.br](mailto:andrade@unb.br)  
+**Website**: [https://greense.com.br](https://greense.com.br)

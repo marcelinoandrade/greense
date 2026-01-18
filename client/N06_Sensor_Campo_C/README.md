@@ -1,19 +1,23 @@
-# 🌱 GreenSe – Sensor de Campo IoT (ESP32)
+# N06-C · Sensor de Campo · Monitoramento de Solo (ESP32)
 
 Sistema embarcado para monitoramento ambiental e de solo em agricultura inteligente. Desenvolvido com **ESP-IDF v5.x**, integra múltiplos sensores com armazenamento local, interface web embarcada e análise estatística configurável.
-
-## ⚙️ Visão Geral
 
 <div align="center">
 <img src="imagens/esp32_battery.png" width="200" alt="ESP32 com Bateria">
 </div>
 
-O firmware cria uma rede Wi-Fi Access Point local e hospeda uma interface web acessível via navegador. O sistema coleta dados de sensores ambientais e de solo, armazena em CSV e permite visualização em tempo real com gráficos, estatísticas e configuração de tolerâncias de cultivo.
+---
 
-**Acesso:** `http://greense.local/` ou `http://192.168.4.1/`  
-**Rede Wi-Fi:** `greenSe_Campo` (senha: `12345678`)
+## Descrição Geral
 
-## 📡 Sensores Implementados
+Firmware que cria uma rede Wi-Fi Access Point local e hospeda interface web acessível via navegador. Sistema coleta dados de sensores ambientais e de solo, armazena em CSV e permite visualização em tempo real com gráficos, estatísticas e configuração de tolerâncias de cultivo.
+
+**Acesso**: `http://greense.local/` ou `http://192.168.4.1/`  
+**Rede Wi-Fi**: `greenSe_Campo` (senha: `12345678`)
+
+---
+
+## Sensores Implementados
 
 | Sensor | Tipo | Interface | GPIO | Status |
 |--------|------|-----------|------|--------|
@@ -23,26 +27,21 @@ O firmware cria uma rede Wi-Fi Access Point local e hospeda uma interface web ac
 | **BH1750** | Luminosidade | I2C | SDA:21, SCL:22 | ✅ |
 | **DPV** | Déficit de Pressão de Vapor | Calculado | — | ✅ |
 
-<div align="center">
-<img src="imagens/sensorDs18b20.png" width="120" alt="DS18B20">
-<img src="imagens/sensorumidade.png" width="120" alt="Sensor Umidade">
-<img src="imagens/sensorAHT10.png" width="120" alt="AHT10">
-<img src="imagens/sensorBH1750.png" width="120" alt="BH1750">
-</div>
+**Nota**: O sistema é robusto e continua funcionando mesmo com sensores ausentes, mantendo a última leitura válida ou retornando NAN.
 
-**Nota:** O sistema é robusto e continua funcionando mesmo com sensores ausentes, mantendo a última leitura válida ou retornando NAN.
+---
 
-## 🎯 Funcionalidades
+## Funcionalidades
 
-- **Dashboard em tempo real** com gráficos e estatísticas (min/max/média)
-- **Configuração de período de amostragem:** 10s, 1min, 10min, 1h, 6h, 12h
-- **Janela estatística configurável:** 5, 10, 15 ou 20 amostras
-- **Tolerâncias de cultivo personalizáveis** para cada parâmetro (linhas de referência nos gráficos)
-- **Calibração do sensor de umidade do solo** (valores seco/molhado)
-- **Download do histórico completo** em CSV
-- **Limpeza de dados** via interface web
-- **mDNS** para acesso por nome (`greense.local`)
-- **LED de status** indicando estado do AP e gravação
+- Dashboard em tempo real com gráficos e estatísticas (min/max/média)
+- Configuração de período de amostragem: 10s, 1min, 10min, 1h, 6h, 12h
+- Janela estatística configurável: 5, 10, 15 ou 20 amostras
+- Tolerâncias de cultivo personalizáveis para cada parâmetro (linhas de referência nos gráficos)
+- Calibração do sensor de umidade do solo (valores seco/molhado)
+- Download do histórico completo em CSV
+- Limpeza de dados via interface web
+- mDNS para acesso por nome (`greense.local`)
+- LED de status indicando estado do AP e gravação
 
 ### Protocolo de Mudança de Frequência
 
@@ -51,11 +50,9 @@ Ao alterar o período de amostragem, o sistema:
 2. Limpa todos os dados registrados (garantindo integridade estatística)
 3. Reinicia o dispositivo automaticamente
 
-## 🌐 Interface Web
+---
 
-| Dashboard Principal | Dashboard Estatísticas | Dashboard Tolerâncias |
-|:-------------------:|:---------------------:|:-------------------:|
-| <img src="imagens/dashboardPrincipal.png" width="300" height="450" style="object-fit: contain;" alt="Dashboard Principal"> | <img src="imagens/dashboardEstatisticas.png" width="300" height="450" style="object-fit: contain;" alt="Dashboard Estatísticas"> | <img src="imagens/dashboardTolerancias.png" width="300" height="450" style="object-fit: contain;" alt="Dashboard Tolerâncias"> |
+## Interface Web
 
 ### Rotas HTTP
 
@@ -71,7 +68,9 @@ Ao alterar o período de amostragem, o sistema:
 | `/download` | GET | Download do arquivo CSV completo |
 | `/clear_data` | POST | Limpa todos os dados registrados |
 
-## 📊 Estrutura de Dados
+---
+
+## Estrutura de Dados
 
 ### Arquivo CSV (`/spiffs/log_temp.csv`)
 
@@ -95,7 +94,9 @@ Exemplo:
 | `luminosidade_lux` | Intensidade luminosa | lux |
 | `dpv_kPa` | Déficit de Pressão de Vapor | kPa |
 
-## 🏗️ Arquitetura
+---
+
+## Arquitetura
 
 ```
 projeto/
@@ -118,21 +119,16 @@ projeto/
 │   ├── bsp/               # Board Support Package
 │   │   ├── board.h                       # Configurações da placa
 │   │   ├── sensors/                      # Drivers de sensores
-│   │   │   ├── bsp_sensors.c/.h          # Interface abstrata
-│   │   │   ├── bsp_ds18b20.c/.h          # DS18B20 (OneWire)
-│   │   │   ├── bsp_adc.c/.h              # ADC umidade do solo
-│   │   │   ├── bsp_aht10.c/.h            # AHT10 (I2C)
-│   │   │   └── bsp_bh1750.c/.h           # BH1750 (I2C)
 │   │   ├── actuators/                    # Controle de atuadores
-│   │   │   └── bsp_led.c/.h              # LED de status
 │   │   └── network/                      # Wi-Fi AP
-│   │       └── bsp_wifi_ap.c/.h          # Access Point
 │   └── gui/web/           # Interface web
 │       └── gui_http_server.c/.h          # Servidor HTTP e páginas HTML
 └── imagens/               # Imagens de hardware e interface
 ```
 
-## 🚀 Como Executar
+---
+
+## Como Executar
 
 ### Requisitos
 
@@ -149,33 +145,41 @@ idf.py build flash monitor
 
 ### Conexão
 
-1. Conecte os sensores conforme [Conexões](#-conexões)
+1. Conecte os sensores conforme pinagem
 2. Conecte-se ao Wi-Fi **greenSe_Campo** (senha: `12345678`)
 3. Acesse `http://greense.local/` ou `http://192.168.4.1/`
 
-## 🔌 Conexões
+---
+
+## Conexões
 
 ### I2C (Barramento Compartilhado)
-- **SDA:** GPIO21
-- **SCL:** GPIO22
-- **VCC:** 3.3V
-- **GND:** GND
-- **Pull-ups:** 4.7kΩ (geralmente incluídos nos módulos)
 
-**Sensores:**
+- **SDA**: GPIO21
+- **SCL**: GPIO22
+- **VCC**: 3.3V
+- **GND**: GND
+- **Pull-ups**: 4.7kΩ (geralmente incluídos nos módulos)
+
+**Sensores**:
 - AHT10: endereço 0x38
 - BH1750: endereço 0x23
 
 ### OneWire
-- **DS18B20:** GPIO4 (com pull-up 4.7kΩ)
+
+- **DS18B20**: GPIO4 (com pull-up 4.7kΩ)
 
 ### ADC
-- **Sensor de Umidade do Solo:** GPIO34 (ADC1_CH6)
+
+- **Sensor de Umidade do Solo**: GPIO34 (ADC1_CH6)
 
 ### Outros
-- **LED de Status:** GPIO2
 
-## 🔧 Componentes ESP-IDF
+- **LED de Status**: GPIO2
+
+---
+
+## Componentes ESP-IDF
 
 - `esp_wifi`, `esp_netif`, `esp_http_server`
 - `esp_event`, `lwip`
@@ -183,7 +187,9 @@ idf.py build flash monitor
 - `freertos`, `esp_rom`, `vfs`
 - `mdns` (via Component Manager: `espressif/mdns`)
 
-## 🧪 Testes
+---
+
+## Testes
 
 Testado em:
 - ESP32-WROOM-32
@@ -194,17 +200,19 @@ Navegadores validados:
 - Edge (Desktop)
 - Samsung Browser
 
-## 🔧 Troubleshooting
+---
+
+## Troubleshooting
 
 ### Sensores não detectados
 
-**I2C:**
+**I2C**:
 - Verifique conexões SDA/SCL (GPIO21/22)
 - Confirme pull-ups de 4.7kΩ
 - Verifique alimentação 3.3V e GND
 - Confirme endereços: AHT10 (0x38), BH1750 (0x23)
 
-**DS18B20:**
+**DS18B20**:
 - Verifique pull-up de 4.7kΩ no GPIO4
 - Confirme alimentação e GND
 
@@ -216,10 +224,13 @@ Comportamento esperado quando o sensor não está conectado. O sistema mantém a
 
 Comportamento normal quando o navegador fecha a conexão. Não afeta o funcionamento do sistema.
 
-## 📝 Licença e Autoria
+---
 
-**Projeto GreenSe | Agricultura Inteligente**  
-Coordenação: *Prof. Marcelino Monteiro de Andrade* e *Prof. Ronne Toledo*  
-Faculdade de Ciências e Tecnologias em Engenharia (FCTE) – Universidade de Brasília  
-📧 [andrade@unb.br](mailto:andrade@unb.br)  
-🌐 [https://greense.com.br](https://greense.com.br)
+## Licença
+
+Este projeto faz parte do Projeto GreenSe da Universidade de Brasília.
+
+**Autoria**: Prof. Marcelino Monteiro de Andrade  
+**Instituição**: Faculdade de Ciências e Tecnologias em Engenharia (FCTE) – Universidade de Brasília  
+**Email**: [andrade@unb.br](mailto:andrade@unb.br)  
+**Website**: [https://greense.com.br](https://greense.com.br)
