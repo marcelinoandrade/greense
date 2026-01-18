@@ -1,18 +1,25 @@
-# Greense - Sistema de Coleta de Imagens em Ambiente Agrícola
+# N08 · Câmera P4 · Sistema de Coleta de Imagens (ESP32-P4-EYE)
 
-## Sobre o Projeto
+Sistema de coleta de imagens baseado na placa **ESP32-P4-EYE**, otimizado para **ambientes agrícolas e campos abertos**, com detecção por IA (YOLOv11), captura intervalada e armazenamento em SD card.
+
+![ESP32-P4-EYE](imagens/camera.png)
+
+---
+
+## Descrição Geral
 
 O **Greense** é um sistema de coleta de imagens baseado na placa ESP32-P4-EYE, especialmente otimizado para uso em **ambientes agrícolas e campos abertos**. O sistema oferece captura de fotos, captura intervalada, gravação de vídeo, visualização de álbum e configurações avançadas de parâmetros de imagem, todos configurados para operar em condições de luz natural e céu aberto.
 
-### Características Principais
+### Recursos Principais
 
-- **Configurações Otimizadas para Campo Aberto**: Parâmetros de câmera pré-configurados para iluminação solar natural
-- **Captura de Imagens**: Fotos em alta resolução (até 1080P) para análise agrícola
-- **Captura Intervalada**: Monitoramento automático de culturas e campos ao longo do tempo
-- **Gravação de Vídeo**: Registro contínuo de atividades agrícolas
-- **Detecção por IA**: Suporte para detecção de objetos usando modelos YOLOv11
-- **Armazenamento em SD Card**: Grande capacidade de armazenamento para imagens e vídeos
-- **Acesso USB**: Transferência fácil de dados via interface USB
+- Configurações otimizadas para campo aberto (parâmetros pré-configurados para iluminação solar natural)
+- Captura de imagens em alta resolução (até 1080P) para análise agrícola
+- Captura intervalada para monitoramento automático de culturas
+- Gravação de vídeo em formato MP4
+- Detecção por IA usando modelos YOLOv11 para identificação de pragas e doenças
+- Armazenamento em SD Card para imagens e vídeos
+- Acesso USB para transferência de dados
+- Upload de imagens para servidor via POST `/upload` (fotos da pasta `imagens/` do SD card)
 
 ## Requisitos
 
@@ -155,6 +162,12 @@ Para suporte técnico e feedback:
 - Para questões técnicas, visite o fórum [esp32.com](https://esp32.com/viewforum.php?f=22)
 - Para solicitações de funcionalidades ou relatórios de bugs, crie uma nova [issue no GitHub](https://github.com/espressif/esp-dev-kits/issues)
 
+---
+
 ## Licença
 
-Este projeto faz parte do ecossistema ESP-IDF e segue as licenças correspondentes.
+Este projeto faz parte do Projeto GreenSe da Universidade de Brasília.
+
+**Autoria**: Prof. Marcelino Monteiro de Andrade  
+**Instituição**: Faculdade de Ciências e Tecnologias em Engenharia (FCTE) – Universidade de Brasília  
+**Website**: [https://greense.com.br](https://greense.com.br)
