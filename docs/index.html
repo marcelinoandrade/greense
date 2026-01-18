@@ -532,6 +532,7 @@
                         <li><strong>Hidroponia avançada</strong> com pH e condutividade elétrica (EC)</li>
                         <li><strong>Análise térmica</strong> via câmera MLX90640 (24×32px) para detecção precoce de estresse hídrico e doenças</li>
                         <li><strong>Monitoramento visual</strong> com ESP32-CAM para acompanhamento do crescimento</li>
+                        <li><strong>Detecção por IA</strong> com modelos YOLOv11 para identificação de pragas, doenças e objetos em campo aberto</li>
                     </ul>
                 </div>
 
@@ -610,10 +611,15 @@
                         <td>Solução Completa - Térmica avançada</td>
                         <td>ESP32-S3 + MLX90640</td>
                     </tr>
+                    <tr>
+                        <td><strong>N08</strong></td>
+                        <td>Câmera P4 - Coleta de imagens com IA para campo aberto</td>
+                        <td>ESP32-P4-EYE + OV2710 + YOLOv11 + SD</td>
+                    </tr>
                 </tbody>
             </table>
 
-            <p style="margin-top: 20px;"><strong>🌐 Comunicação</strong>: MQTT/TLS ou HTTP POST</p>
+            <p style="margin-top: 20px;"><strong>🌐 Comunicação</strong>: MQTT/TLS, HTTP POST, USB (transferência local)</p>
 
             <h3>🖥️ Servidor (Backend)</h3>
             <p>Sistema central em <strong>Python</strong> rodando em <strong>Raspberry Pi 4</strong>:</p>
@@ -652,9 +658,10 @@
                 <img src="https://img.shields.io/badge/ESP32--WROOM--32-✓-orange?style=flat-square" alt="ESP32">
                 <img src="https://img.shields.io/badge/ESP32--S3-✓-orange?style=flat-square" alt="ESP32-S3">
                 <img src="https://img.shields.io/badge/ESP32--C3-✓-orange?style=flat-square" alt="ESP32-C3">
+                <img src="https://img.shields.io/badge/ESP32--P4--EYE-✓-orange?style=flat-square" alt="ESP32-P4">
                 <img src="https://img.shields.io/badge/Raspberry%20Pi%204/5-✓-red?style=flat-square" alt="Raspberry Pi">
             </div>
-            <p style="text-align: center; margin-top: 15px;"><strong>Sensores</strong>: AHT20 • ENS160 • DS18B20 • DHT22 • pH/EC • MLX90640</p>
+            <p style="text-align: center; margin-top: 15px;"><strong>Sensores</strong>: AHT20 • ENS160 • DS18B20 • DHT22 • pH/EC • MLX90640 • OV2710</p>
 
             <h3>💻 Software</h3>
             <div class="tech-badges">
@@ -763,7 +770,8 @@ cd greense</code></pre>
 │   ├── N04_Estufa_Camera_C/           # 📷 Câmera visual
 │   ├── N05_Estufa_Termica_C/          # 🌡️ Câmera térmica
 │   ├── N06_Sensor_Campo_C/            # 🌍 Sensores de campo
-│   └── N07_Estufa_Artigo_C/           # 🔬 Solução completa térmica
+│   ├── N07_Estufa_Artigo_C/           # 🔬 Solução completa térmica
+│   └── N08_Camera_P4_C/               # 📸 Câmera para campo agrícola
 ├── 🖥️ server/                          # Sistema servidor
 │   └── N01_RASP4_LAB/                 # Backend Raspberry Pi 4
 └── 📄 README.md                        # Este arquivo</code></pre>

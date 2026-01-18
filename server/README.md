@@ -13,6 +13,7 @@ Sistema central em Python que atua como hub de telemetria e processamento para o
 - **Coleta térmica**: `server01Full.py` recebe matrizes 24×32 da câmera FLIR, persiste estatísticas no InfluxDB e mantém CSV histórico incremental
 - **Ingestão de sensores**: dados chegam via MQTT (`estufa/germinar`, `estufa/maturar`, `estufa3/esp32`) ou inserções manuais autenticadas (`POST /insere`), consolidados na measurement `sensores`
 - **Imagens RGB**: endpoints de upload e distribuição guardam última foto de cada câmera em `fotos_recebidas/cam_*`
+  - **N08 (ESP32-P4-EYE)**: envia apenas fotos da pasta `imagens/` do SD card via POST `/upload` (não envia vídeos ou outros arquivos)
 - **Análises com IA**: `server01IA.py` consulta últimas medições, gera resumo agronômico via GPT-4o e grava laudo em `analise_ia_estufa3`
 - **Dashboards embutidos**: `templates/*.html` oferecem páginas estáticas servidas pelo Nginx local com gráficos e estado das estufas
 
@@ -93,7 +94,7 @@ Consulta InfluxDB periodicamente e gera análises agronômicas via GPT-4o.
 | POST | `/termica` | Recebe JSON com `temperaturas` (768 pontos), enfileira para CSV e estatísticas |
 | POST | `/insere` | Inserção manual autenticada (`senha`), grava medições em `sensores` |
 | GET | `/imagem` | Retorna `ultima.jpg` da câmera associada ao hostname do request |
-| POST | `/upload` | Upload binário de JPGs das câmeras (`camera`, `camera02`, `camera03`) |
+| POST | `/upload` | Upload binário de JPGs das câmeras (`camera`, `camera02`, `camera03`, `N08`) |
 
 ---
 

@@ -43,6 +43,7 @@ O **greenSe** é uma solução completa de **agricultura de precisão** para cul
 - 💧 **Hidroponia avançada** com pH e condutividade elétrica (EC)
 - 🌡️ **Análise térmica** via câmera MLX90640 (24×32px) para detecção precoce de estresse hídrico e doenças
 - 📷 **Monitoramento visual** com ESP32-CAM para acompanhamento do crescimento
+- 🤖 **Detecção por IA** com modelos YOLOv11 para identificação de pragas, doenças e objetos em campo aberto
 
 ### ⚙️ Automação e Controle
 - 🔄 **Controle automatizado** de irrigação, iluminação e sistemas de ventilação
@@ -81,11 +82,11 @@ Soluções modulares baseadas em **ESP32** para diferentes necessidades:
 | **N05** | Câmera Térmica - Análise térmica | ESP32-C3 + MLX90640 (24×32px) |
 | **N06** | Sensor de Campo - Solo com bateria | ESP32 + interface web embarcada |
 | **N07** | Solução Completa - Térmica avançada | ESP32-S3 + MLX90640 |
-| **N08** | Câmera P4 - Coleta de imagens agrícolas | ESP32-P4-EYE + OV2710 + SD |
+| **N08** | Câmera P4 - Coleta de imagens com IA para campo aberto | ESP32-P4-EYE + OV2710 + YOLOv11 + SD |
 
 </div>
 
-**🌐 Comunicação**: MQTT/TLS ou HTTP POST
+**🌐 Comunicação**: MQTT/TLS, HTTP POST, USB (transferência local)
 
 ### 🖥️ Servidor (Backend)
 
@@ -110,9 +111,10 @@ Sistema central em **Python** rodando em **Raspberry Pi 4**:
 ![ESP32](https://img.shields.io/badge/ESP32--WROOM--32-✓-orange?style=flat-square)
 ![ESP32-S3](https://img.shields.io/badge/ESP32--S3-✓-orange?style=flat-square)
 ![ESP32-C3](https://img.shields.io/badge/ESP32--C3-✓-orange?style=flat-square)
+![ESP32-P4](https://img.shields.io/badge/ESP32--P4--EYE-✓-orange?style=flat-square)
 ![Raspberry Pi](https://img.shields.io/badge/Raspberry%20Pi%204/5-✓-red?style=flat-square)
 
-**Sensores**: AHT20 • ENS160 • DS18B20 • DHT22 • pH/EC • MLX90640
+**Sensores**: AHT20 • ENS160 • DS18B20 • DHT22 • pH/EC • MLX90640 • OV2710
 
 ### 💻 Software
 
