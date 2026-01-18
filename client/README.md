@@ -18,6 +18,7 @@ Cada pasta `Nxx_*` representa uma entrega do Projeto GreenSe, com firmware pront
 | **N06-C2** | `N06_Sensor_Campo_2_C` | ESP-IDF (C) app/bsp/gui | ESP32 módulo único + solo + DHT11 + DS18B20 + BH1750 | Wi-Fi AP `greenSe_Campo`, HTTP, mDNS |
 | **N06-P** | `N06_Sensor_Campo_P` | MicroPython + webserver | ESP32 Battery Kit | Wi-Fi AP `ESP32_TEMP`, HTTP |
 | **N07** | `N07_Estufa_Artigo_C` | ESP-IDF (C) p/ ESP32-S3 com PSRAM | ESP32-S3 + câmera visual + MLX90640 + SD | Wi-Fi STA, HTTPS, NTP, SD |
+| **N08** | `N08_Camera_P4_C` | ESP-IDF 5.5 (C) | ESP32-P4-EYE + câmera OV2710 + SD | USB, SD card, interface local |
 
 ---
 
@@ -73,6 +74,12 @@ Cada pasta `Nxx_*` representa uma entrega do Projeto GreenSe, com firmware pront
 - **Objetivo**: Plataforma premium (ESP32-S3) com câmera visual + MLX90640, SD card e LED WS2812
 - **Recursos**: Agendamentos independentes, SPIFFS→SD, scripts Python (`visualize_thermal.py`)
 - **Doc**: `N07_Estufa_Artigo_C/README.md`
+
+### N08 · Câmera P4
+- **Objetivo**: Sistema de coleta de imagens para ambientes agrícolas e campos abertos
+- **Hardware**: ESP32-P4-EYE com câmera OV2710, SD card, interface USB
+- **Recursos**: Captura de fotos/vídeo, captura intervalada, detecção IA (YOLOv11), configurações otimizadas para campo aberto
+- **Doc**: `N08_Camera_P4_C/README.md`
 
 ---
 

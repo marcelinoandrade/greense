@@ -81,6 +81,7 @@ Soluções modulares baseadas em **ESP32** para diferentes necessidades:
 | **N05** | Câmera Térmica - Análise térmica | ESP32-C3 + MLX90640 (24×32px) |
 | **N06** | Sensor de Campo - Solo com bateria | ESP32 + interface web embarcada |
 | **N07** | Solução Completa - Térmica avançada | ESP32-S3 + MLX90640 |
+| **N08** | Câmera P4 - Coleta de imagens agrícolas | ESP32-P4-EYE + OV2710 + SD |
 
 </div>
 
@@ -178,7 +179,8 @@ greense/
 │   ├── N04_Estufa_Camera_C/           # 📷 Câmera visual
 │   ├── N05_Estufa_Termica_C/          # 🌡️ Câmera térmica
 │   ├── N06_Sensor_Campo_C/            # 🌍 Sensores de campo
-│   └── N07_Estufa_Artigo_C/           # 🔬 Solução completa térmica
+│   ├── N07_Estufa_Artigo_C/           # 🔬 Solução completa térmica
+│   └── N08_Camera_P4_C/               # 📸 Câmera para campo agrícola
 ├── 🖥️ server/                          # Sistema servidor
 │   └── N01_RASP4_LAB/                 # Backend Raspberry Pi 4
 └── 📄 README.md                        # Este arquivo
