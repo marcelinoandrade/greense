@@ -259,6 +259,7 @@ static const char* detect_active_preset(float temp_ar_min, float temp_ar_max,
 /* Página principal / */
 static esp_err_t handle_dashboard(httpd_req_t *req)
 {
+    // Construi a pagina de monitoramento lendo servicos compartilhados de telemetria
     const gui_services_t *svc = gui_services_get();
     if (svc == NULL) {
         httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "Serviços não disponíveis");
@@ -1285,6 +1286,7 @@ static esp_err_t handle_sampling_page(httpd_req_t *req)
 
 static esp_err_t handle_set_sampling(httpd_req_t *req)
 {
+    // Atualiza periodo de coleta e janela estatistica recebidos via query string
     const gui_services_t *svc = gui_services_get();
     if (svc == NULL || svc->set_sampling_period_ms == NULL || svc->set_stats_window_count == NULL) {
         httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "Serviços não disponíveis");
@@ -1364,6 +1366,7 @@ static esp_err_t handle_set_sampling(httpd_req_t *req)
     }
 
     // Se a frequência mudou, limpar dados e reiniciar
+    // Se a frequencia mudou, limpa dados persistidos e reinicia para aplicar configuracao na coleta
     if (period_changed) {
         ESP_LOGI(TAG, "Frequência de amostragem alterada. Limpando dados e reiniciando...");
         
@@ -1462,6 +1465,7 @@ static esp_err_t handle_set_sampling(httpd_req_t *req)
 /* /download -> CSV inteiro */
 static esp_err_t handle_download(httpd_req_t *req)
 {
+    // Faz streaming chunked do arquivo CSV para evitar carregar tudo em RAM
     char filepath[64];
     snprintf(filepath, sizeof(filepath), "%s/log_temp.csv", BSP_SPIFFS_MOUNT);
     
@@ -1500,6 +1504,7 @@ static esp_err_t handle_calibra(httpd_req_t *req)
         return ESP_FAIL;
     }
     
+    // Preenche a pagina com leitura atual do sensor de solo e os limites configurados
     float seco, molhado;
     svc->get_calibration(&seco, &molhado);
  
@@ -1801,6 +1806,7 @@ static esp_err_t handle_calibra(httpd_req_t *req)
 /* /set_tolerance -> salva tolerâncias de cultivo */
 static esp_err_t handle_set_tolerance(httpd_req_t *req)
 {
+    // Recebe limites via query string para salvar novas faixas ideais
     const gui_services_t *svc = gui_services_get();
     if (svc == NULL || svc->set_cultivation_tolerance == NULL) {
         httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR, "Serviços não disponíveis");

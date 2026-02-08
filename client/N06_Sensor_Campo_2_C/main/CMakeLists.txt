@@ -9,10 +9,8 @@ idf_component_register(
     # BSP - Board Support Package
     "bsp/sensors/bsp_ds18b20.c"
     "bsp/sensors/bsp_adc.c"
-    "bsp/sensors/bsp_dht11.c"
     "bsp/sensors/bsp_aht10.c"
     "bsp/sensors/bsp_bh1750.c"
-    "bsp/sensors/dht.c"
     "bsp/sensors/bsp_sensors.c"
     "bsp/actuators/bsp_led.c"
     "bsp/network/bsp_wifi_ap.c"
