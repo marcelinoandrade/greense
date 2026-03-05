@@ -1,22 +1,42 @@
-client/N01_Estufa_Germinar_C/main/certs/greense_cert.pem
-client/N01_Estufa_Germinar_C/build/
-client/N01_Estufa_Germinar_C/managed_components/
-client/N01_Estufa_Germinar_C/main/secrets.h
-client/N02_Estufa_Maturar_C/main/certs/greense_cert.pem
-client/N02_Estufa_Maturar_C/build/
-client/N02_Estufa_Maturar_C/managed_components/
-client/N02_Estufa_Maturar_C/main/secrets.h
-server/N01_RASP4_LAB/config.py
-server/N01_RASP4_LAB/fotos_recebidas/
-client/N04_Estufa_Camera_C/main/certs/greense_cert.pem
-client/N04_Estufa_Camera_C/build/
-client/N04_Estufa_Camera_C/main/secrets.h
-client/N05_Estufa_Termica_C/main/secrets.h
-client/N05_Estufa_Termica_C/main/certs/greense_cert.pem
-client/N05_Estufa_Termica_C/build/
-client/N07_Estufa_Artigo_C/main/secrets.h
-client/N07_Estufa_Artigo_C/main/certs/greense_cert.pem
-client/N07_Estufa_Artigo_C/build/
-client/N07_Estufa_Artigo_C/managed_components/
-client/N07_Estufa_Artigo_C/sdkconfig.old
-client/N07_Estufa_Artigo_C/dependencies.lock
+# ==========================================
+# ESP-IDF (Build, components & configurations)
+# ==========================================
+build/
+managed_components/
+dependencies.lock
+sdkconfig.old
+
+# ==========================================
+# Security & Secrets (Certs, Keys, Passwords)
+# ==========================================
+secrets.h
+*.pem
+*.crt
+config.py
+.env
+
+# ==========================================
+# Python Caches & Virtual Environments
+# ==========================================
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+env/
+.venv/
+
+# ==========================================
+# Application Data & Media Output
+# ==========================================
+fotos_recebidas/
+thermal_logs/
+*.log
+
+# ==========================================
+# OS & IDE Specific Files
+# ==========================================
+.vscode/
+.idea/
+.DS_Store
+*.swp
+*.swo
