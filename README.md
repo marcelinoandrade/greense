@@ -75,14 +75,10 @@ Soluções modulares baseadas em **ESP32** para diferentes necessidades:
 
 | Solução | 📋 Descrição | 🔧 Tecnologia |
 |:--------|:-------------|:--------------|
-| **N01** | Germinação - Monitoramento básico | ESP32 + AHT20, ENS160, DS18B20 |
-| **N02** | Maturação - Monitoramento completo | ESP32 + sensores completos + boias |
-| **N03** | Hidroponia - pH e EC | ESP32 + MicroPython |
-| **N04** | Câmera Visual - Monitoramento óptico | ESP32-CAM |
-| **N05** | Câmera Térmica - Análise térmica | ESP32-C3 + MLX90640 (24×32px) |
-| **N06** | Sensor de Campo - Solo com bateria | ESP32 + interface web embarcada |
-| **N07** | Solução Completa - Térmica avançada | ESP32-S3 + MLX90640 |
-| **N08** | Câmera P4 - Coleta de imagens com IA para campo aberto | ESP32-P4-EYE + OV2710 + YOLOv11 + SD |
+| **N01** | Germinação - Monitoramento ambiental | ESP-IDF (C) + ESP32 + AHT20, ENS160, DS18B20 |
+| **N02** | Maturação - Monitoramento completo | ESP-IDF (C) + ESP32 + Sensores + Boias + LED RGB |
+| **N03** | Câmera Visual - Captura óptica | ESP-IDF (C) + ESP32-CAM + OV2640 |
+| **N04** | Câmera Térmica - Visão completa visual e térmica | ESP-IDF (C) + ESP32-S3 WROOM + MLX90640 |
 
 </div>
 
@@ -175,14 +171,10 @@ Cada módulo cliente possui seu próprio README com:
 ```
 greense/
 ├── 📦 client/                          # Soluções hardware (ESP32)
-│   ├── N01_Estufa_Germinar_C/         # 🌱 Monitoramento básico (germinação)
-│   ├── N02_Estufa_Maturar_C/          # 🌿 Monitoramento completo (maturação)
-│   ├── N03_Estufa_P/                  # 💧 Hidroponia (MicroPython)
-│   ├── N04_Estufa_Camera_C/           # 📷 Câmera visual
-│   ├── N05_Estufa_Termica_C/          # 🌡️ Câmera térmica
-│   ├── N06_Sensor_Campo_C/            # 🌍 Sensores de campo
-│   ├── N07_Estufa_Artigo_C/           # 🔬 Solução completa térmica
-│   └── N08_Camera_P4_C/               # 📸 Câmera para campo agrícola
+│   ├── N01_Estufa_Germinar/           # 🌱 Monitoramento básico (germinação)
+│   ├── N02_Estufa_Maturar/            # 🌿 Monitoramento completo (maturação)
+│   ├── N03_Estufa_Camera/             # 📷 Câmera visual
+│   └── N04_Estufa_Termica/            # 🌡️ Solução completa térmica e visual
 ├── 🖥️ server/                          # Sistema servidor
 │   └── N01_RASP4_LAB/                 # Backend Raspberry Pi 4
 └── 📄 README.md                        # Este arquivo

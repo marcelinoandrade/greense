@@ -578,43 +578,23 @@
                 <tbody>
                     <tr>
                         <td><strong>N01</strong></td>
-                        <td>Germinação - Monitoramento básico</td>
-                        <td>ESP32 + AHT20, ENS160, DS18B20</td>
+                        <td>Germinação - Monitoramento ambiental</td>
+                        <td>ESP-IDF (C) + ESP32 + AHT20, ENS160, DS18B20</td>
                     </tr>
                     <tr>
                         <td><strong>N02</strong></td>
                         <td>Maturação - Monitoramento completo</td>
-                        <td>ESP32 + sensores completos + boias</td>
+                        <td>ESP-IDF (C) + ESP32 + Sensores + Boias + LED RGB</td>
                     </tr>
                     <tr>
                         <td><strong>N03</strong></td>
-                        <td>Hidroponia - pH e EC</td>
-                        <td>ESP32 + MicroPython</td>
+                        <td>Câmera Visual - Captura óptica</td>
+                        <td>ESP-IDF (C) + ESP32-CAM + OV2640</td>
                     </tr>
                     <tr>
                         <td><strong>N04</strong></td>
-                        <td>Câmera Visual - Monitoramento óptico</td>
-                        <td>ESP32-CAM</td>
-                    </tr>
-                    <tr>
-                        <td><strong>N05</strong></td>
-                        <td>Câmera Térmica - Análise térmica</td>
-                        <td>ESP32-C3 + MLX90640 (24×32px)</td>
-                    </tr>
-                    <tr>
-                        <td><strong>N06</strong></td>
-                        <td>Sensor de Campo - Solo com bateria</td>
-                        <td>ESP32 + interface web embarcada</td>
-                    </tr>
-                    <tr>
-                        <td><strong>N07</strong></td>
-                        <td>Solução Completa - Térmica avançada</td>
-                        <td>ESP32-S3 + MLX90640</td>
-                    </tr>
-                    <tr>
-                        <td><strong>N08</strong></td>
-                        <td>Câmera P4 - Coleta de imagens com IA para campo aberto</td>
-                        <td>ESP32-P4-EYE + OV2710 + YOLOv11 + SD</td>
+                        <td>Câmera Térmica - Visão completa visual e térmica</td>
+                        <td>ESP-IDF (C) + ESP32-S3 WROOM + MLX90640</td>
                     </tr>
                 </tbody>
             </table>
@@ -764,14 +744,10 @@ cd greense</code></pre>
             <h2>📁 Estrutura do Repositório</h2>
             <pre><code>greense/
 ├── 📦 client/                          # Soluções hardware (ESP32)
-│   ├── N01_Estufa_Germinar_C/         # 🌱 Monitoramento básico (germinação)
-│   ├── N02_Estufa_Maturar_C/          # 🌿 Monitoramento completo (maturação)
-│   ├── N03_Estufa_P/                  # 💧 Hidroponia (MicroPython)
-│   ├── N04_Estufa_Camera_C/           # 📷 Câmera visual
-│   ├── N05_Estufa_Termica_C/          # 🌡️ Câmera térmica
-│   ├── N06_Sensor_Campo_C/            # 🌍 Sensores de campo
-│   ├── N07_Estufa_Artigo_C/           # 🔬 Solução completa térmica
-│   └── N08_Camera_P4_C/               # 📸 Câmera para campo agrícola
+│   ├── N01_Estufa_Germinar/           # 🌱 Monitoramento básico (germinação)
+│   ├── N02_Estufa_Maturar/            # 🌿 Monitoramento completo (maturação)
+│   ├── N03_Estufa_Camera/             # 📷 Câmera visual
+│   └── N04_Estufa_Termica/            # 🌡️ Solução completa térmica e visual
 ├── 🖥️ server/                          # Sistema servidor
 │   └── N01_RASP4_LAB/                 # Backend Raspberry Pi 4
 └── 📄 README.md                        # Este arquivo</code></pre>
