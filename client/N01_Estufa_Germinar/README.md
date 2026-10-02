@@ -1,162 +1,55 @@
-# N01 · Estufa Germinar · Monitoramento Ambiental (ESP32-C6)
+# N01 · Estufa Germinar
 
-Firmware baseado em **ESP-IDF v5.2** para a Placa Mini Estufa, com **ESP32-C6** (USB-C, Wi-Fi 6) e os sensores DHT11, DS18B20, HW-072 e HD-38. Os dados seguem por **MQTT sobre WSS**.
+Um nó de germinação que cabe na bancada: a placa que recebe o ESP32-C6 e os sensores, a base impressa em 3D que a sustenta na estufa, e o firmware que publica o clima no GreenSe.
 
----
-
-## Descrição Geral
-
-Nó IoT da fase de germinação. Lê temperatura e umidade do ar, temperatura e umidade do solo e luminosidade, e publica o conjunto no broker GreenSe. O LED RGB da própria placa indica se o Wi-Fi e o MQTT estão ativos.
-
-### Recursos Principais
-
-- Conexão Wi-Fi (modo STA) com reconexão automática
-- Comunicação **MQTT sobre WSS** com certificado embutido
-- Sensores:
-  - **DHT11** – temperatura e umidade do ar
-  - **DS18B20** – temperatura do solo (1-Wire, sonda à prova d’água)
-  - **HW-072** – luminosidade (LDR com LM393, saída digital)
-  - **HD-38** – umidade do solo (saída analógica)
-- **LED RGB** da placa (GPIO 8) como indicador de status
-- Arquitetura modular: conexões, sensores e atuadores
-- Leitura e publicação a cada 5 segundos, depois que o MQTT conecta
+O desenho está aberto. Dá para fabricar a placa, imprimir a base e gravar o mesmo firmware que roda em campo.
 
 ---
 
-## Hardware de Referência
+## Três camadas
 
-### ESP32-C6
+| Camada | O que é | Onde está |
+|--------|---------|-----------|
+| Placa | PCB da Mini Estufa, soquete do ESP32-C6 e conectores dos sensores | [`PlacaMiniEstufa/`](PlacaMiniEstufa/) |
+| Base 3D | Suporte com furos de fixação e ressaltos para a placa | [`imagens/base3D.stl`](imagens/base3D.stl) |
+| Firmware | ESP-IDF 5.2 para ESP32-C6, leitura e MQTT | [`main/`](main/) |
+
+### Placa
+
+![Placa Mini Estufa](imagens/placaPCB.jpeg)
+
+A **Placa Mini Estufa V0** é o carrier do ESP32-C6. Dois conectores no centro recebem a placa do módulo. Nas bordas ficam os pinos de alimentação e de sinal, com furos nos cantos para parafusar na base. O projeto KiCad (esquema e PCB) está em [`PlacaMiniEstufa/`](PlacaMiniEstufa/).
+
+### Base 3D
+
+![Base impressa](imagens/base3D.jpeg)
+
+A base acompanha o contorno da placa. Quatro ressaltos apoiam o PCB, e as abas laterais servem para prender o conjunto na estrutura da estufa.
+
+Para imprimir, abra [`imagens/base3D.stl`](imagens/base3D.stl) no fatiador. O arquivo está em milímetros.
+
+### Firmware
 
 ![ESP32-C6](imagens/esp32c6.jpg)
 
-![ESP32-C6, pinos e rádios](imagens/esp32c6_pinos.jpg)
+![Pinos do ESP32-C6](imagens/esp32c6_pinos.jpg)
 
-Placa usada neste nó:
+O firmware lê o ar, o solo e a luz, e publica tudo a cada 5 segundos em `estufa/germinar`. O LED da própria placa mostra se o Wi-Fi e o MQTT estão ativos.
 
-- **Chip:** ESP32-C6FH8 (revisão v0.2), um núcleo RISC-V a 160 MHz e núcleo de baixo consumo
-- **Rádio:** Wi-Fi 6 (2,4 GHz), Bluetooth 5 LE e 802.15.4
-- **Flash:** 8 MB na placa testada; a imagem do firmware usa 4 MB
-- **USB:** USB-C direto no chip (`/dev/ttyACM0`)
-- **LED:** RGB endereçável no GPIO 8
-
-O projeto da placa carrier está em [`PlacaMiniEstufa/`](PlacaMiniEstufa/).
-
-### Sensores
-
-| Função | Sensor | Pino | Observação |
-|--------|--------|------|------------|
-| Temperatura e umidade do ar | DHT11 | GPIO 18 | Pull-up para 3,3 V |
-| Temperatura do solo | DS18B20 | GPIO 19 | 1-Wire, pull-up para 3,3 V |
-| Luminosidade | HW-072 (DO) | GPIO 20 | Nível baixo = claro |
-| Umidade do solo | HD-38 (AO) | GPIO 0 (A0) | ADC1, canal 0 |
-| Status | LED RGB da placa | GPIO 8 | — |
-
-Alimente o DHT11 e o DS18B20 em 3,3 V. O HW-072 e o HD-38 também devem ficar em **3,3 V**: a saída de um módulo de 5 V pode danificar o ESP32-C6.
-
-Os GPIOs 12 e 13 são o USB e não entram na fiação. O GPIO 9 é pino de boot.
-
-### Indicadores do LED
-
-| Cor | Estado |
-|-----|--------|
-| Vermelho | Wi-Fi ou MQTT desconectado |
-| Azul | Wi-Fi conectado e publicando |
+- **Módulo:** ESP32-C6 com USB-C, Wi-Fi 6 e Bluetooth 5 LE
+- **Chip testado:** ESP32-C6FH8, flash de 8 MB; a imagem usa 4 MB
+- **LED:** GPIO 8, ordem de cor RGB
+- **Porta serial:** `/dev/ttyACM0`
 
 ---
 
-## Estrutura de Diretórios
+## Como reproduzir
 
-```
-N01_Estufa_Germinar/
-├── imagens/
-│   ├── esp32c6.jpg             # Foto da placa
-│   └── esp32c6_pinos.jpg       # Pinos, Wi-Fi 6 e BLE
-├── PlacaMiniEstufa/            # Esquema e PCB (KiCad)
-├── main/
-│   ├── main.c                  # Inicialização e loop principal
-│   ├── config.h                # MQTT, intervalo e pinos
-│   ├── secrets.h               # Credenciais Wi-Fi (não versionado)
-│   ├── conexoes/
-│   │   └── conexoes.c/.h       # Wi-Fi e MQTT
-│   ├── sensores/
-│   │   ├── sensores.c/.h       # Leitura conjunta
-│   │   ├── dht11.c/.h          # Ar
-│   │   └── ds18b20.c/.h        # Solo
-│   ├── atuadores/
-│   │   └── atuadores.c/.h      # LED RGB
-│   ├── certs/
-│   │   └── greense_cert.pem    # Certificado do broker
-│   └── CMakeLists.txt
-├── sdkconfig                   # Alvo esp32c6, flash 4 MB
-└── sdkconfig.defaults
-```
-
----
-
-## Comunicação MQTT
-
-### Configuração
-
-- **Broker:** `wss://mqtt.greense.com.br`
-- **Biblioteca:** `esp-mqtt`
-- **Certificado:** `main/certs/greense_cert.pem`
-- **Cliente:** `ESP32_E3`
-- **Tópico:** `estufa3/esp32`
-
-### Dados publicados
-
-```json
-{
-  "temp": 25.50,
-  "umid": 60.00,
-  "co2": 0.00,
-  "luz": 1.00,
-  "agua_min": 0,
-  "agua_max": 0,
-  "temp_reserv_int": 22.30,
-  "ph": 0.00,
-  "ec": 0.00,
-  "temp_reserv_ext": 0.00,
-  "umid_solo_raw": 2400,
-  "umid_solo_pct": 70.00
-}
-```
-
-| Campo | Origem |
-|-------|--------|
-| `temp`, `umid` | DHT11 (°C e %) |
-| `luz` | HW-072 (1 = claro, 0 = escuro) |
-| `temp_reserv_int` | DS18B20 (°C). `-127` indica sensor ausente |
-| `umid_solo_raw`, `umid_solo_pct` | HD-38 |
-| `co2`, `ph`, `ec`, `agua_min`, `agua_max`, `temp_reserv_ext` | Reservados, publicados em 0 |
-
-Sem os sensores ligados, o log mostra `DHT11: sem resposta no GPIO 18`, solo em `-127` e a umidade do solo oscila porque o GPIO 0 está solto.
-
----
-
-## Configuração
-
-### `secrets.h`
-
-Crie `main/secrets.h` (este arquivo não entra no Git):
-
-```c
-#ifndef SECRETS_H
-#define SECRETS_H
-
-#define WIFI_SSID "sua_rede_wifi"
-#define WIFI_PASS "sua_senha_wifi"
-
-#endif
-```
-
-### `config.h`
-
-Pinos, tópico MQTT e identificador do cliente ficam em `main/config.h`.
-
----
-
-## Como Executar
+1. Imprima [`imagens/base3D.stl`](imagens/base3D.stl).
+2. Fabrique a placa a partir de [`PlacaMiniEstufa/`](PlacaMiniEstufa/) e encaixe o ESP32-C6 nos conectores centrais.
+3. Ligue os sensores nos pinos da tabela abaixo. Alimente tudo em **3,3 V**. O resistor de pull-up do DHT11 e o do DS18B20 ficam entre o fio de dados e o 3,3 V, nunca no 5 V.
+4. Parafuse a placa nos ressaltos da base.
+5. Grave o firmware:
 
 ```bash
 cd client/N01_Estufa_Germinar
@@ -168,24 +61,105 @@ idf.py -p /dev/ttyACM0 flash monitor
 
 Para sair do monitor: `Ctrl+]`.
 
-No log, a sequência esperada é NVS, Wi-Fi, MQTT e, em seguida, uma publicação a cada 5 segundos.
+No log, a sequência esperada é NVS, Wi-Fi, MQTT e uma publicação a cada 5 segundos.
 
 ---
 
-## Requisitos de Build
+## Sensores
 
-- **ESP-IDF 5.2** (testado com 5.2.2)
-- **Python 3**
-- Alvo `esp32c6`
-- Componentes: `esp_wifi`, `esp_event`, `mqtt`, `nvs_flash`, `driver`, `esp_adc`, `esp_timer`, `espressif/led_strip`
+| Função | Sensor | Pino | Ligação |
+|--------|--------|------|---------|
+| Temperatura e umidade do ar | DHT11 | GPIO 18 | Dados com pull-up de 4,7 kΩ para 3,3 V |
+| Temperatura do solo | DS18B20 | GPIO 19 | Amarelo no GPIO 19, vermelho em 3,3 V, preto no GND, pull-up entre dados e 3,3 V |
+| Luminosidade | HW-072, saída DO | GPIO 20 | Nível baixo = claro |
+| Umidade do solo | HD-38, saída AO | GPIO 0 (A0) | Analógico |
+| Status | LED da placa | GPIO 8 | Azul ligado, vermelho sem Wi-Fi ou MQTT |
+
+Os GPIOs 12 e 13 são o USB. O GPIO 9 é pino de boot. Nenhum dos dois entra na fiação dos sensores.
+
+| Cor do LED | Estado |
+|------------|--------|
+| Azul | Wi-Fi conectado e publicando |
+| Vermelho | Wi-Fi ou MQTT desconectado |
 
 ---
 
-## Testes
+## MQTT
 
-- Gravado e executado no **ESP32-C6FH8** ligado por USB-C
-- Wi-Fi e MQTT confirmados, com publicação em `estufa3/esp32`
-- Leitura dos sensores depende da fiação descrita acima
+- **Broker:** `wss://mqtt.greense.com.br`
+- **Cliente:** `Estufa_Germinar`
+- **Tópico:** `estufa/germinar`
+- **Certificado:** `main/certs/greense_cert.pem`
+
+```json
+{
+  "temp": 28.50,
+  "umid": 53.10,
+  "co2": 0.00,
+  "luz": 0.00,
+  "agua_min": 0,
+  "agua_max": 0,
+  "temp_reserv_int": 26.44,
+  "ph": 0.00,
+  "ec": 0.00,
+  "temp_reserv_ext": 0.00,
+  "umid_solo_raw": 3267,
+  "umid_solo_pct": 26.65
+}
+```
+
+| Campo | Origem |
+|-------|--------|
+| `temp`, `umid` | DHT11, em °C e % |
+| `luz` | HW-072. 1 = claro, 0 = escuro |
+| `temp_reserv_int` | DS18B20, em °C. `-127` significa sensor ausente |
+| `umid_solo_raw`, `umid_solo_pct` | HD-38 |
+| `co2`, `ph`, `ec`, `agua_min`, `agua_max`, `temp_reserv_ext` | Reservados, publicados em 0 |
+
+---
+
+## Credenciais
+
+Crie `main/secrets.h`. Esse arquivo não entra no Git.
+
+```c
+#ifndef SECRETS_H
+#define SECRETS_H
+
+#define WIFI_SSID "sua_rede_wifi"
+#define WIFI_PASS "sua_senha_wifi"
+
+#endif
+```
+
+Pinos, tópico e identificador do cliente ficam em `main/config.h`.
+
+---
+
+## O que há no repositório
+
+```
+N01_Estufa_Germinar/
+├── imagens/
+│   ├── placaPCB.jpeg           # Render da placa
+│   ├── base3D.jpeg             # Render da base
+│   ├── base3D.stl              # Malha para impressão
+│   ├── esp32c6.jpg
+│   └── esp32c6_pinos.jpg
+├── PlacaMiniEstufa/            # KiCad: esquema, PCB e datasheets
+├── main/
+│   ├── main.c
+│   ├── config.h
+│   ├── secrets.h
+│   ├── conexoes/
+│   ├── sensores/
+│   ├── atuadores/
+│   └── certs/greense_cert.pem
+├── sdkconfig
+└── sdkconfig.defaults
+```
+
+Para compilar: ESP-IDF 5.2 (testado em 5.2.2), Python 3, alvo `esp32c6`. Componentes: `esp_wifi`, `esp_event`, `mqtt`, `nvs_flash`, `driver`, `esp_adc`, `esp_timer` e `espressif/led_strip`.
 
 ---
 
