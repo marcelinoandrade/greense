@@ -12,6 +12,8 @@ static void leds_init(void) {
     led_strip_config_t strip_config = {
         .strip_gpio_num = LED_STRIP_PIN,
         .max_leds = LED_STRIP_NUM_LEDS,
+        .led_model = LED_MODEL_WS2812,
+        .color_component_format = LED_STRIP_COLOR_COMPONENT_FMT_RGB,
         .flags = {
             .invert_out = false
         }
