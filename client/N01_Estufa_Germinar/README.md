@@ -16,9 +16,11 @@ O desenho está aberto. Dá para fabricar a placa, imprimir a base e gravar o me
 
 ### Placa
 
-![Placa Mini Estufa](imagens/placaPCB.jpeg)
+![Placa Mini Estufa montada](imagens/PlacaMiniEstufa.jpeg)
 
-A **Placa Mini Estufa V0** é o carrier do ESP32-C6. Dois conectores no centro recebem a placa do módulo. Nas bordas ficam os pinos de alimentação e de sinal, com furos nos cantos para parafusar na base. O projeto KiCad (esquema e PCB) está em [`PlacaMiniEstufa/`](PlacaMiniEstufa/).
+![Projeto da placa](imagens/placaPCB.jpeg)
+
+A **Placa Mini Estufa** montada leva o ESP32-C6 no centro e as barras de pinos nas laterais. O desenho de origem, a **V0**, tem os dois conectores do módulo, os pinos de alimentação e de sinal, e os furos dos cantos para parafusar na base. O KiCad (esquema e PCB) está em [`PlacaMiniEstufa/`](PlacaMiniEstufa/).
 
 ### Base 3D
 
@@ -40,6 +42,14 @@ O firmware lê o ar, o solo e a luz, e publica tudo a cada 5 segundos em `estufa
 - **Chip testado:** ESP32-C6FH8, flash de 8 MB; a imagem usa 4 MB
 - **LED:** GPIO 8, ordem de cor RGB
 - **Porta serial:** `/dev/ttyACM0`
+
+---
+
+## Na estufa
+
+![Mini estufa instrumentada](imagens/MiniEstufaInstrumentada.jpeg)
+
+Assim o nó fica em campo. A placa vai na parede, sobre a base impressa. O DHT11 fica no alto, no ar da câmara. O HW-072 também fica alto, de frente para a luz. O HD-38 entra no substrato da bandeja. A sonda do DS18B20 mede a temperatura junto ao cultivo.
 
 ---
 
@@ -141,7 +151,9 @@ Pinos, tópico e identificador do cliente ficam em `main/config.h`.
 ```
 N01_Estufa_Germinar/
 ├── imagens/
+│   ├── PlacaMiniEstufa.jpeg    # Placa montada com o ESP32-C6
 │   ├── placaPCB.jpeg           # Render da placa
+│   ├── MiniEstufaInstrumentada.jpeg
 │   ├── base3D.jpeg             # Render da base
 │   ├── base3D.stl              # Malha para impressão
 │   ├── esp32c6.jpg
