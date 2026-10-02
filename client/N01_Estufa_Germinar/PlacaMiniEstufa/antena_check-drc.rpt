@@ -1,0 +1,21 @@
+** Drc report for antena_check.kicad_pcb **
+** Created on 2026-10-01T12:32:25 **
+** Report includes: Errors **
+
+** Found 1 DRC violations **
+[items_not_allowed]: Itens não permitidos (área de isolamento 'Antena')
+    Rule: área de isolamento 'Antena'; error
+    @(133.0000 mm, 65.0000 mm): Zone [GND] on F.Cu, priority 0
+
+** Found 0 unconnected pads **
+
+** Found 0 Footprint errors **
+
+** Ignored checks **
+    - Footprint has no courtyard defined
+    - Track endpoint not centered on via
+    - Tuning profile track geometries
+    - Footprint doesn't match symbol's footprint filters
+    - Footprint component type doesn't match footprint pads
+
+** End of Report **

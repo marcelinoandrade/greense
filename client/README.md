@@ -8,7 +8,7 @@ A pasta `client` contém as entregas do Projeto GreenSe de firmware para microco
 
 | Nó | Diretório | Stack | Hardware Principal | Comunicação |
 |----|-----------|-------|-------------------|-------------|
-| **N01** | `N01_Estufa_Germinar` | ESP-IDF 5.x (C) | ESP32 + AHT20/ENS160/DS18B20 | Wi-Fi, MQTT/TLS, HTTP local |
+| **N01** | `N01_Estufa_Germinar` | ESP-IDF 5.2 (C) | ESP32-C6 + DHT11/DS18B20/HW-072/HD-38 | Wi-Fi 6, MQTT/WSS |
 | **N02** | `N02_Estufa_Maturar` | ESP-IDF 5.x (C) | ESP32 + Sensores + Boias + LED RGB | Wi-Fi, MQTT/TLS-WSS |
 | **N03** | `N03_Estufa_Camera` | ESP-IDF 5.x (C) | ESP32-CAM AI Thinker (OV2640) | Wi-Fi, HTTPS POST, SD Card |
 | **N04** | `N04_Estufa_Termica` | ESP-IDF 5.x (C) | ESP32-S3 WROOM (N16R8) + MLX90640 | Wi-Fi, HTTPS POST, SD Card, NTP |
@@ -18,9 +18,10 @@ A pasta `client` contém as entregas do Projeto GreenSe de firmware para microco
 ## Notas por Nó
 
 ### N01 · Estufa Germinar
-- **Objetivo**: Monitorar clima e solo na fase de germinação e acionar relés.
-- **Sensores**: AHT20 (ar), ENS160 (qualidade ar), DS18B20 (solo).
-- **Protocolos**: Wi-Fi AP/STA, MQTT seguro (`mqtt.greense.com.br:8883`), HTTP embarcado.
+- **Objetivo**: Monitorar clima, solo e luminosidade na fase de germinação.
+- **Hardware**: ESP32-C6 (USB-C, Wi-Fi 6) na Placa Mini Estufa.
+- **Sensores**: DHT11 (ar), DS18B20 (temperatura do solo), HW-072 (luz), HD-38 (umidade do solo).
+- **Protocolos**: Wi-Fi STA, MQTT sobre WSS (`mqtt.greense.com.br`), tópico `estufa3/esp32`.
 - **Doc**: [`N01_Estufa_Germinar/README.md`](N01_Estufa_Germinar/README.md)
 
 ### N02 · Estufa Maturar

@@ -10,7 +10,7 @@ extern "C" {
 #endif
 
 // Definições públicas
-#define LED_STRIP_PIN 16
+#define LED_STRIP_PIN 8
 #define LED_STRIP_NUM_LEDS 1
 
 /**

@@ -38,5 +38,9 @@ thermal_logs/
 .vscode/
 .idea/
 .DS_Store
+
+# KiCad
+*.lck
+**/.history/
 *.swp
 *.swo
