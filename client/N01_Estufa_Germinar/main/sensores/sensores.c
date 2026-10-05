@@ -8,8 +8,8 @@
 
 static const char *TAG = "SENSORES";
 
-#define UMID_SOLO_ADC_SECO   3800
-#define UMID_SOLO_ADC_UMIDO  1800
+#define UMID_SOLO_ADC_SECO   2620  /* fora da espuma, 5 out 2026 */
+#define UMID_SOLO_ADC_UMIDO  1180  /* dentro da espuma */
 
 static adc_oneshot_unit_handle_t adc_solo;
 
