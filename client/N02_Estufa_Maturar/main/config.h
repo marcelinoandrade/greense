@@ -1,19 +1,20 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
-// Wi-Fi
 #include "secrets.h"
+#include "greense.h"
 
-// MQTT (futuramente)
-#define MQTT_BROKER     "mqtt.greense.com.br" //"10.42.0.1"
+#define MQTT_BROKER     "mqtt.greense.com.br"
 #define MQTT_TOPIC      "estufa/maturar"
 #define MQTT_CLIENT_ID  "Estufa_Maturar"
 #define MQTT_KEEPALIVE  60
 
-// Sensores
-#define SENSOR_READ_INTERVAL 5  // segundos
+#define SENSOR_READ_INTERVAL 5
 
-// Atuadores
-#define ACTUATOR_PIN    25
+/* Mesma espuma medida na N01 em 5 out 2026. Recalibrar no S3 se o bruto divergir. */
+#define UMID_SOLO_ADC_SECO   2620
+#define UMID_SOLO_ADC_UMIDO  1180
 
-#endif // CONFIG_H
+#define GREENSE_BOIAS 1
+
+#endif

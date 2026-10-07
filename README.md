@@ -75,8 +75,8 @@ Soluções modulares baseadas em **ESP32** para diferentes necessidades:
 
 | Solução | 📋 Descrição | 🔧 Tecnologia |
 |:--------|:-------------|:--------------|
-| **N01** | Germinação - Monitoramento ambiental | ESP-IDF (C) + ESP32 + AHT20, ENS160, DS18B20 |
-| **N02** | Maturação - Monitoramento completo | ESP-IDF (C) + ESP32 + Sensores + Boias + LED RGB |
+| **N01** | Germinação - Clima, solo e luz | ESP-IDF (C) + ESP32-C6 Zero + DHT11, DS18B20, HW-072, HD-38 |
+| **N02** | Maturação - Clima, solo, luz e boias | ESP-IDF (C) + ESP32-S3 Zero + DHT11, DS18B20, HW-072, HD-38 |
 | **N03** | Câmera Visual - Captura óptica | ESP-IDF (C) + ESP32-CAM + OV2640 |
 | **N04** | Câmera Térmica - Visão completa visual e térmica | ESP-IDF (C) + ESP32-S3 WROOM + MLX90640 |
 
@@ -104,13 +104,12 @@ Sistema central em **Python** rodando em **Raspberry Pi 4**:
 
 ### 🔩 Hardware
 
-![ESP32](https://img.shields.io/badge/ESP32--WROOM--32-✓-orange?style=flat-square)
-![ESP32-S3](https://img.shields.io/badge/ESP32--S3-✓-orange?style=flat-square)
-![ESP32-C3](https://img.shields.io/badge/ESP32--C3-✓-orange?style=flat-square)
-![ESP32-P4](https://img.shields.io/badge/ESP32--P4--EYE-✓-orange?style=flat-square)
+![ESP32-C6](https://img.shields.io/badge/ESP32--C6%20Zero-✓-orange?style=flat-square)
+![ESP32-S3](https://img.shields.io/badge/ESP32--S3%20Zero-✓-orange?style=flat-square)
+![ESP32-S3](https://img.shields.io/badge/ESP32--S3%20WROOM-✓-orange?style=flat-square)
 ![Raspberry Pi](https://img.shields.io/badge/Raspberry%20Pi%204/5-✓-red?style=flat-square)
 
-**Sensores**: AHT20 • ENS160 • DS18B20 • DHT22 • pH/EC • MLX90640 • OV2710
+**Sensores**: DHT11 • DS18B20 • HW-072 • HD-38 • boias de nível • MLX90640 • OV2640
 
 ### 💻 Software
 
@@ -171,8 +170,9 @@ Cada módulo cliente possui seu próprio README com:
 ```
 greense/
 ├── 📦 client/                          # Soluções hardware (ESP32)
-│   ├── N01_Estufa_Germinar/           # 🌱 Monitoramento básico (germinação)
-│   ├── N02_Estufa_Maturar/            # 🌿 Monitoramento completo (maturação)
+│   ├── greense/                       # Firmware comum da N01 e da N02
+│   ├── N01_Estufa_Germinar/           # 🌱 Germinação no ESP32-C6 Zero
+│   ├── N02_Estufa_Maturar/            # 🌿 Maturação no ESP32-S3 Zero
 │   ├── N03_Estufa_Camera/             # 📷 Câmera visual
 │   └── N04_Estufa_Termica/            # 🌡️ Solução completa térmica e visual
 ├── 🖥️ server/                          # Sistema servidor

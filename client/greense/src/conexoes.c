@@ -1,5 +1,4 @@
 #include "conexoes.h"
-#include "config.h"
 #include "esp_log.h"
 #include "esp_event.h"
 #include "esp_wifi.h"
@@ -7,12 +6,12 @@
 #include "mqtt_client.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/event_groups.h"
-#include "nvs_flash.h"
+#include <stdio.h>
+#include <string.h>
 
 #define MAX_RETRY 5
 #define WIFI_CONNECTED_BIT BIT0
 #define WIFI_FAIL_BIT BIT1
-
 
 static const char *TAG_WIFI = "WiFi";
 static const char *TAG_MQTT = "MQTT";
@@ -21,16 +20,15 @@ static EventGroupHandle_t s_wifi_event_group;
 static int s_retry_num = 0;
 static esp_mqtt_client_handle_t client = NULL;
 static bool mqtt_conectado = false;
+static char s_mqtt_uri[128];
 
-// ======== WIFI ========
-
-static void wifi_event_handler(void* arg, esp_event_base_t event_base,
-                               int32_t event_id, void* event_data)
+static void wifi_event_handler(void *arg, esp_event_base_t event_base,
+                               int32_t event_id, void *event_data)
 {
     if (event_base == WIFI_EVENT && event_id == WIFI_EVENT_STA_START) {
         esp_wifi_connect();
     } else if (event_base == WIFI_EVENT && event_id == WIFI_EVENT_STA_DISCONNECTED) {
-        wifi_event_sta_disconnected_t* discon = (wifi_event_sta_disconnected_t*) event_data;
+        wifi_event_sta_disconnected_t *discon = (wifi_event_sta_disconnected_t *)event_data;
         ESP_LOGW(TAG_WIFI, "Desconectado. Motivo: %d", discon->reason);
 
         if (s_retry_num < MAX_RETRY) {
@@ -42,14 +40,14 @@ static void wifi_event_handler(void* arg, esp_event_base_t event_base,
             ESP_LOGE(TAG_WIFI, "Falha ao conectar ao Wi-Fi");
         }
     } else if (event_base == IP_EVENT && event_id == IP_EVENT_STA_GOT_IP) {
-        ip_event_got_ip_t* event = (ip_event_got_ip_t*) event_data;
+        ip_event_got_ip_t *event = (ip_event_got_ip_t *)event_data;
         ESP_LOGI(TAG_WIFI, "Conectado! IP: " IPSTR, IP2STR(&event->ip_info.ip));
         s_retry_num = 0;
         xEventGroupSetBits(s_wifi_event_group, WIFI_CONNECTED_BIT);
     }
 }
 
-void conexao_wifi_init(void)
+void conexao_wifi_init(const greense_app_config_t *cfg)
 {
     s_wifi_event_group = xEventGroupCreate();
 
@@ -57,23 +55,18 @@ void conexao_wifi_init(void)
     esp_event_loop_create_default();
     esp_netif_create_default_wifi_sta();
 
-    wifi_init_config_t cfg = WIFI_INIT_CONFIG_DEFAULT();
-    esp_wifi_init(&cfg);
+    wifi_init_config_t wifi_init_cfg = WIFI_INIT_CONFIG_DEFAULT();
+    esp_wifi_init(&wifi_init_cfg);
 
     esp_event_handler_instance_register(WIFI_EVENT, ESP_EVENT_ANY_ID, &wifi_event_handler, NULL, NULL);
     esp_event_handler_instance_register(IP_EVENT, IP_EVENT_STA_GOT_IP, &wifi_event_handler, NULL, NULL);
 
-    wifi_config_t wifi_config = {
-        .sta = {
-            .ssid = WIFI_SSID,
-            .password = WIFI_PASS,
-            .threshold.authmode = WIFI_AUTH_WPA_PSK,
-            .pmf_cfg = {
-                .capable = true,
-                .required = false
-            }
-        },
-    };
+    wifi_config_t wifi_config = {0};
+    strncpy((char *)wifi_config.sta.ssid, cfg->wifi_ssid, sizeof(wifi_config.sta.ssid) - 1);
+    strncpy((char *)wifi_config.sta.password, cfg->wifi_pass, sizeof(wifi_config.sta.password) - 1);
+    wifi_config.sta.threshold.authmode = WIFI_AUTH_WPA_PSK;
+    wifi_config.sta.pmf_cfg.capable = true;
+    wifi_config.sta.pmf_cfg.required = false;
 
     esp_wifi_set_mode(WIFI_MODE_STA);
     esp_wifi_set_config(WIFI_IF_STA, &wifi_config);
@@ -101,8 +94,6 @@ bool conexao_wifi_is_connected(void)
     return (esp_wifi_sta_get_ap_info(&ap_info) == ESP_OK);
 }
 
-// ======== MQTT ========
-
 static void mqtt_event_handler_cb(void *handler_args, esp_event_base_t base, int32_t event_id, void *event_data)
 {
     esp_mqtt_event_handle_t event = event_data;
@@ -124,38 +115,35 @@ static void mqtt_event_handler_cb(void *handler_args, esp_event_base_t base, int
     }
 }
 
-// Declaração do certificado embutido (fora da função)
 extern const uint8_t greense_cert_pem_start[] asm("_binary_greense_cert_pem_start");
-extern const uint8_t greense_cert_pem_end[]   asm("_binary_greense_cert_pem_end");
+extern const uint8_t greense_cert_pem_end[] asm("_binary_greense_cert_pem_end");
 
-void conexao_mqtt_start(void)
+void conexao_mqtt_start(const greense_app_config_t *cfg)
 {
+    snprintf(s_mqtt_uri, sizeof(s_mqtt_uri), "wss://%s", cfg->mqtt_broker);
+
     esp_mqtt_client_config_t mqtt_cfg = {
         .broker = {
             .address = {
-                .uri = "wss://" MQTT_BROKER,
+                .uri = s_mqtt_uri,
             },
             .verification = {
                 .certificate = (const char *)greense_cert_pem_start,
             },
         },
         .credentials = {
-            .client_id = MQTT_CLIENT_ID,
+            .client_id = cfg->mqtt_client_id,
         },
         .session = {
-            .keepalive = MQTT_KEEPALIVE,
+            .keepalive = cfg->mqtt_keepalive,
         }
     };
 
     client = esp_mqtt_client_init(&mqtt_cfg);
     esp_mqtt_client_register_event(client, ESP_EVENT_ANY_ID, mqtt_event_handler_cb, NULL);
     esp_mqtt_client_start(client);
+    (void)greense_cert_pem_end;
 }
-
-
-
-
-
 
 bool conexao_mqtt_is_connected(void)
 {
@@ -168,8 +156,8 @@ bool conexao_mqtt_publish(const char *topic, const char *message)
         int msg_id = esp_mqtt_client_publish(client, topic, message, 0, 1, 0);
         ESP_LOGI(TAG_MQTT, "Publicado (id=%d): %s -> %s", msg_id, topic, message);
         return msg_id != -1;
-    } else {
-        ESP_LOGW(TAG_MQTT, "MQTT não conectado ou cliente nulo");
-        return false;
     }
+
+    ESP_LOGW(TAG_MQTT, "MQTT não conectado ou cliente nulo");
+    return false;
 }

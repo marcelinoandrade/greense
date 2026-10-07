@@ -12,7 +12,7 @@ O desenho está aberto. Dá para fabricar a placa, imprimir a base e gravar o me
 |--------|---------|-----------|
 | Placa | PCB da Mini Estufa, soquete do ESP32-C6 e conectores dos sensores | [`PlacaMiniEstufa/`](PlacaMiniEstufa/) |
 | Base 3D | Suporte com furos de fixação e ressaltos para a placa | [`imagens/base3D.stl`](imagens/base3D.stl) |
-| Firmware | ESP-IDF 5.2 para ESP32-C6, leitura e MQTT | [`main/`](main/) |
+| Firmware | ESP-IDF 5.2 para ESP32-C6. A leitura e o MQTT ficam em [`../greense/`](../greense/) | [`main/`](main/) |
 
 ### Placa
 
@@ -36,7 +36,7 @@ Para imprimir, abra [`imagens/base3D.stl`](imagens/base3D.stl) no fatiador. O ar
 
 ![Pinos do ESP32-C6](imagens/esp32c6_pinos.jpg)
 
-O firmware lê o ar, o solo e a luz, e publica tudo a cada 5 segundos em `estufa/germinar`. O LED da própria placa mostra se o Wi-Fi e o MQTT estão ativos.
+O firmware lê o ar, o solo e a luz, e publica tudo a cada 5 segundos em `estufa/germinar`. O código dessa leitura é o mesmo da N02 e mora em [`../greense/`](../greense/). Aqui, `main/config.h` define o tópico `estufa/germinar` e deixa as boias desligadas: `agua_min` e `agua_max` saem em 0. O LED da própria placa mostra se o Wi-Fi e o MQTT estão ativos. Os pinos seguem o alvo desta pasta, que já é `esp32c6`.
 
 - **Módulo:** ESP32-C6 com USB-C, Wi-Fi 6 e Bluetooth 5 LE
 - **Chip testado:** ESP32-C6FH8, flash de 8 MB; a imagem usa 4 MB
@@ -64,10 +64,10 @@ Assim o nó fica em campo. A placa vai na parede, sobre a base impressa. O DHT11
 ```bash
 cd client/N01_Estufa_Germinar
 . $HOME/esp/esp-idf/export.sh
-idf.py set-target esp32c6
-idf.py build
-idf.py -p /dev/ttyACM0 flash monitor
+idf.py -p /dev/ttyACM0 build flash monitor
 ```
+
+O alvo `esp32c6` já está no `sdkconfig`. `idf.py set-target esp32c6` só entra se essa pasta for recriada.
 
 Para sair do monitor: `Ctrl+]`.
 
@@ -99,7 +99,7 @@ Os GPIOs 12 e 13 são o USB. O GPIO 9 é pino de boot. Nenhum dos dois entra na 
 - **Broker:** `wss://mqtt.greense.com.br`
 - **Cliente:** `Estufa_Germinar`
 - **Tópico:** `estufa/germinar`
-- **Certificado:** `main/certs/greense_cert.pem`
+- **Certificado:** [`../greense/certs/greense_cert.pem`](../greense/certs/greense_cert.pem)
 
 ```json
 {
@@ -142,7 +142,7 @@ Crie `main/secrets.h`. Esse arquivo não entra no Git.
 #endif
 ```
 
-Pinos, tópico e identificador do cliente ficam em `main/config.h`.
+O tópico e o identificador do cliente ficam em `main/config.h`. Os pinos ficam em `client/greense/` e seguem o alvo desta pasta, que já é `esp32c6`.
 
 ---
 
@@ -160,18 +160,14 @@ N01_Estufa_Germinar/
 │   └── esp32c6_pinos.jpg
 ├── PlacaMiniEstufa/            # KiCad: esquema, PCB e datasheets
 ├── main/
-│   ├── main.c
-│   ├── config.h
-│   ├── secrets.h
-│   ├── conexoes/
-│   ├── sensores/
-│   ├── atuadores/
-│   └── certs/greense_cert.pem
-├── sdkconfig
+│   ├── main.c                  # Chama a biblioteca greense
+│   ├── config.h                # Tópico, calibração, boias desligadas
+│   └── secrets.h
+├── sdkconfig                   # Alvo esp32c6
 └── sdkconfig.defaults
 ```
 
-Para compilar: ESP-IDF 5.2 (testado em 5.2.2), Python 3, alvo `esp32c6`. Componentes: `esp_wifi`, `esp_event`, `mqtt`, `nvs_flash`, `driver`, `esp_adc`, `esp_timer` e `espressif/led_strip`.
+O código comum está em [`../greense/`](../greense/). Para compilar: ESP-IDF 5.2 (testado em 5.2.2), Python 3, alvo `esp32c6`.
 
 ---
 

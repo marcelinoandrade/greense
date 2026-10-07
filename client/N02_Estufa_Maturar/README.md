@@ -1,287 +1,121 @@
-# N02 · Estufa Maturar · Monitoramento Completo (ESP32)
+# N02 · Estufa Maturar
 
-Firmware baseado em **ESP-IDF v5.x** para monitoramento e controle ambiental, integrando sensores múltiplos (AHT20, ENS160, DHT22, DS18B20) e atuadores, com comunicação segura via **MQTT sobre TLS**.
+O nó de maturação publica o clima, o solo, a luz e o nível das boias a cada 5 segundos em `estufa/maturar`. O módulo é o ESP32-S3 Zero.
 
----
-
-## Descrição Geral
-
-Nó IoT completo para agricultura inteligente, capaz de coletar dados ambientais em tempo real, acionar dispositivos e enviar informações a um servidor remoto via MQTT seguro. Sistema monitora temperatura, umidade, qualidade do ar, níveis de água e outras variáveis ambientais críticas para cultivo em estufas.
-
-### Recursos Principais
-
-- Conexão Wi-Fi (modo STA) com reconexão automática
-- Comunicação **MQTT segura (TLS/WSS)** usando certificado embutido
-- Sensores integrados:
-  - **AHT20** – temperatura e umidade do ar (I2C)
-  - **ENS160** – qualidade do ar e eCO₂ (I2C)
-  - **DS18B20** – temperatura do reservatório interno (OneWire)
-  - **DHT22** – temperatura e umidade externas (GPIO)
-  - **Boias de nível** – detecção de água mínima/máxima (GPIO)
-  - **Sensor de luz** – detecção de claridade (GPIO)
-- Atuadores:
-  - **LED RGB** – indicador visual de status do sistema (GPIO 16)
-- Armazenamento local (NVS) para configurações
-- Arquitetura modular: conexões, sensores e atuadores independentes
-- Loop de leitura automático a cada 5 segundos
+O firmware de leitura, Wi-Fi e MQTT fica em [`../greense/`](../greense/), compartilhado com a N01. Esta pasta guarda a identidade do nó: tópico, calibração do HD-38 e boias ligadas, em [`main/config.h`](main/config.h). O `main.c` só chama a biblioteca. Os pinos saem de [`../greense/include/greense.h`](../greense/include/greense.h) conforme o alvo desta pasta, que já é `esp32s3`.
 
 ---
 
-## Estrutura de Diretórios
+## Placa
 
+![ESP32-S3 Zero](imagens/esp32s3.jpg)
+
+- **Módulo:** Waveshare ESP32-S3 Zero, USB-C, Wi-Fi e Bluetooth 5 LE
+- **Chip:** ESP32-S3FH4R2, flash de 4 MB e PSRAM de 2 MB
+- **LED:** WS2812 no GPIO21, ordem de cor RGB
+- **Porta serial:** `/dev/ttyACM0`
+
+O conector traz 5V, GND, 3V3 e os GPIOs usados pelos sensores. O LED já vem soldado na placa.
+
+| Função | Sensor | GPIO | Ligação |
+|--------|--------|------|---------|
+| Temperatura e umidade do ar | DHT11 | GPIO4 | Dados com pull-up de 4,7 kΩ para 3,3 V |
+| Temperatura do solo | DS18B20 | GPIO5 | Dados com pull-up para 3,3 V |
+| Luminosidade | HW-072, saída DO | GPIO6 | Nível baixo = claro |
+| Umidade do solo | HD-38, saída AO | GPIO1 | Analógico, ADC1 canal 0 |
+| Boia baixa | contato para GND | GPIO7 | Aberto = 1, fechado = 0. Campo `agua_min` |
+| Boia alta | contato para GND | GPIO8 | Aberto = 1, fechado = 0. Campo `agua_max` |
+| Status | LED da placa | GPIO21 | Azul publicando, vermelho sem Wi-Fi ou MQTT |
+
+Alimente os sensores em **3,3 V**. O pull-up do DHT11 e o do DS18B20 ficam entre o fio de dados e o 3,3 V.
+
+O GPIO0 é o botão BOOT. O GPIO19 e o GPIO20 são o USB. O GPIO43 e o GPIO44 são o UART de log. Nenhum desses entra na fiação dos sensores.
+
+| Cor do LED | Estado |
+|------------|--------|
+| Azul | Wi-Fi conectado e publicando |
+| Vermelho | Wi-Fi ou MQTT desconectado |
+
+---
+
+## Como gravar
+
+Crie `main/secrets.h`. Esse arquivo não entra no Git.
+
+```c
+#ifndef SECRETS_H
+#define SECRETS_H
+
+#define WIFI_SSID "sua_rede_wifi"
+#define WIFI_PASS "sua_senha_wifi"
+
+#endif
 ```
-main/
-├── main.c                  # Inicialização e loop principal
-├── config.h                # Configurações gerais (MQTT, intervalos)
-├── secrets.h               # Credenciais Wi-Fi (criar este arquivo)
-├── conexoes/
-│   ├── conexoes.c/.h       # Configuração de Wi-Fi e MQTT
-├── sensores/
-│   ├── sensores.c/.h       # Integração geral dos sensores
-│   ├── aht20.c/.h          # Sensor de temperatura e umidade
-│   ├── ens160.c/.h         # Sensor de qualidade do ar
-│   ├── ds18b20.c/.h        # Sensor de temperatura do solo
-│   ├── dht.c/.h            # Sensor DHT22 (temperatura/umidade externa)
-├── atuadores/
-│   ├── atuadores.c/.h      # Controle de LED RGB
-├── CMakeLists.txt          # Configuração de build e dependências
-└── idf_component.yml       # Dependências de componentes
+
+```bash
+cd client/N02_Estufa_Maturar
+. $HOME/esp/esp-idf/export.sh
+idf.py -p /dev/ttyACM0 build flash monitor
 ```
+
+Para sair do monitor: `Ctrl+]`.
+
+O alvo `esp32s3` já está no `sdkconfig`. `idf.py set-target esp32s3` só entra se essa pasta for recriada. Se a gravação não começar, segure BOOT, aperte RESET e solte BOOT.
+
+No log, a sequência esperada é NVS, Wi-Fi, MQTT e uma publicação a cada 5 segundos.
 
 ---
 
-## Comunicação MQTT
+## MQTT
 
-### Configuração
-
-- **Broker**: `mqtt.greense.com.br`
-- **Porta**: `8883` (TLS/WSS)
-- **Biblioteca**: `esp-mqtt`
-- **Certificado**: embutido no firmware (referenciado como binário)
-- **Protocolo**: WSS (WebSocket Secure)
-
-### Tópicos
-
-| Tópico | Direção | Descrição |
-|--------|---------|-----------|
-| `estufa/maturar` | → broker | Publicação de dados ambientais (a cada 5 segundos) |
-
-### Formato dos Dados Publicados
+- **Broker:** `wss://mqtt.greense.com.br`
+- **Cliente:** `Estufa_Maturar`
+- **Tópico:** `estufa/maturar`
+- **Certificado:** [`../greense/certs/greense_cert.pem`](../greense/certs/greense_cert.pem)
 
 ```json
 {
-  "temp": 25.50,              // Temperatura do ar (°C) - AHT20
-  "umid": 65.20,             // Umidade do ar (%) - AHT20
-  "co2": 420.00,             // eCO₂ (ppm) - ENS160
-  "luz": 1.00,               // Sensor de luz (0=escuro, 1=claro)
-  "agua_min": 0,             // Boia nível mínimo (0=baixo, 1=ok)
-  "agua_max": 1,             // Boia nível máximo (0=ok, 1=cheio)
-  "temp_reserv_int": 22.30,  // Temperatura reservatório interno (°C) - DS18B20
-  "ph": 0.00,                // pH (simulado, não implementado)
-  "ec": 0.00,                // Condutividade elétrica (simulado, não implementado)
-  "temp_reserv_ext": 20.15,  // Temperatura reservatório externo (°C) - simulado
-  "temp_externa": 24.80,     // Temperatura externa (°C) - DHT22
-  "umid_externa": 70.50      // Umidade externa (%) - DHT22
+  "temp": 28.50,
+  "umid": 53.10,
+  "co2": 0.00,
+  "luz": 1.00,
+  "agua_min": 1,
+  "agua_max": 0,
+  "temp_reserv_int": 26.44,
+  "ph": 0.00,
+  "ec": 0.00,
+  "temp_reserv_ext": 0.00,
+  "umid_solo_raw": 3267,
+  "umid_solo_pct": 26.65
 }
 ```
 
+| Campo | Origem |
+|-------|--------|
+| `temp`, `umid` | DHT11, em °C e % |
+| `luz` | HW-072. 1 = claro, 0 = escuro |
+| `agua_min`, `agua_max` | Boias. 1 = contato aberto, 0 = fechado em GND |
+| `temp_reserv_int` | DS18B20, em °C. `-127` significa sensor ausente |
+| `umid_solo_raw`, `umid_solo_pct` | HD-38. A calibração fica em `main/config.h` |
+| `co2`, `ph`, `ec`, `temp_reserv_ext` | Reservados, publicados em 0 |
+
 ---
 
-## Configuração
+## O que há no repositório
 
-### 1. Arquivo `secrets.h`
-
-Crie o arquivo `main/secrets.h` com suas credenciais Wi-Fi:
-
-```c
-#ifndef SECRETS_H
-#define SECRETS_H
-
-#define WIFI_SSID "sua_rede_wifi"
-#define WIFI_PASS "sua_senha_wifi"
-
-#endif // SECRETS_H
+```
+N02_Estufa_Maturar/
+├── imagens/
+│   └── esp32s3.jpg             # ESP32-S3 Zero
+├── main/
+│   ├── main.c                  # Chama a biblioteca greense
+│   ├── config.h                # Tópico, calibração, boias ligadas
+│   └── secrets.h
+├── sdkconfig                   # Alvo esp32s3
+└── sdkconfig.defaults
 ```
 
-⚠️ **Importante**: Este arquivo não deve ser commitado no repositório. Adicione `secrets.h` ao `.gitignore`.
-
-### 2. Configurações em `config.h`
-
-Principais configurações em `main/config.h`:
-
-- `MQTT_BROKER`: Endereço do broker MQTT
-- `MQTT_TOPIC`: Tópico para publicação
-- `MQTT_CLIENT_ID`: Identificador do cliente
-- `SENSOR_READ_INTERVAL`: Intervalo de leitura (em segundos)
-
----
-
-## Indicadores Visuais
-
-O sistema utiliza um **LED RGB** (GPIO 16) para indicar o status:
-
-| Cor | Estado |
-|-----|--------|
-| Vermelho (10, 0, 0) | Wi-Fi ou MQTT desconectado |
-| Azul (0, 0, 10) | Sistema conectado e operacional |
-
----
-
-## Hardware de Referência
-
-![ESP32](esp32_Freenove.png)
-
-### Pinos Utilizados
-
-- **I2C (AHT20, ENS160)**:
-  - SDA: GPIO 21
-  - SCL: GPIO 22
-- **OneWire (DS18B20)**: GPIO 26
-- **DHT22**: GPIO 4
-- **Boias de nível**: GPIO 32 (mínimo), GPIO 33 (máximo)
-- **Sensor de luz**: GPIO 25
-- **LED RGB**: GPIO 16
-
----
-
-## Requisitos de Build
-
-### Ferramentas
-
-- **ESP-IDF ≥ 5.0**
-- **Python 3.x**
-- `idf.py`, `esptool.py`, `menuconfig`
-
-### Componentes Utilizados
-
-- `esp_wifi` – Gerenciamento Wi-Fi
-- `esp_event` – Sistema de eventos
-- `mqtt` – Cliente MQTT
-- `nvs_flash` – Armazenamento não volátil
-- `driver` – Drivers de hardware
-- `led_strip` – Controle de LED RGB (componente externo: `espressif/led_strip`)
-
----
-
-## Como Executar
-
-### 1. Configurar o ambiente
-
-```bash
-# Configure o ESP-IDF (se ainda não configurado)
-. $HOME/esp/esp-idf/export.sh
-
-# Navegue até o diretório do projeto
-cd N02_Estufa_Maturar_C
-```
-
-### 2. Criar arquivo de credenciais
-
-```bash
-# Crie o arquivo secrets.h
-cat > main/secrets.h << EOF
-#ifndef SECRETS_H
-#define SECRETS_H
-
-#define WIFI_SSID "sua_rede_wifi"
-#define WIFI_PASS "sua_senha_wifi"
-
-#endif // SECRETS_H
-EOF
-```
-
-### 3. Configurar e compilar
-
-```bash
-# Configure o alvo (ESP32)
-idf.py set-target esp32
-
-# (Opcional) Configure opções avançadas
-idf.py menuconfig
-
-# Compile o projeto
-idf.py build
-```
-
-### 4. Gravar no dispositivo
-
-```bash
-# Grave o firmware no ESP32
-idf.py flash
-
-# Monitore a saída serial
-idf.py monitor
-```
-
-### 5. Verificar funcionamento
-
-Após a inicialização, você deve ver nos logs:
-
-1. ✅ Inicialização do NVS
-2. ✅ Conexão Wi-Fi estabelecida
-3. ✅ Conexão MQTT estabelecida
-4. ✅ Inicialização dos sensores
-5. ✅ Publicação periódica de dados no tópico `estufa/maturar`
-
----
-
-## Testes de Campo
-
-- ✅ Testado em **ESP32-WROOM-32** e **ESP32-S3**
-- ✅ Comunicação validada com broker MQTT seguro (TLS)
-- ✅ Operação estável em Wi-Fi 2.4 GHz
-- ✅ Reconexão automática em caso de falha de conexão
-- ✅ Leitura contínua de sensores a cada 5 segundos
-
----
-
-## Estrutura de Dados dos Sensores
-
-```c
-typedef struct {
-    float temp;              // Temperatura do ar (°C)
-    float umid;              // Umidade do ar (%)
-    float co2;               // eCO₂ (ppm)
-    float luz;               // Sensor de luz (0 ou 1)
-    int agua_min;            // Boia nível mínimo
-    int agua_max;            // Boia nível máximo
-    float temp_reserv_int;   // Temperatura reservatório interno (°C)
-    float ph;                // pH (atualmente simulado)
-    float ec;                // Condutividade elétrica (atualmente simulado)
-    float temp_reserv_ext;   // Temperatura reservatório externo (°C)
-    float temp_externa;      // Temperatura externa (°C)
-    float umid_externa;      // Umidade externa (%)
-} sensor_data_t;
-```
-
----
-
-## Troubleshooting
-
-### Wi-Fi não conecta
-
-- Verifique se `secrets.h` existe e contém credenciais corretas
-- Verifique se a rede Wi-Fi está no alcance e operacional
-- Verifique os logs para mensagens de erro específicas
-
-### MQTT não conecta
-
-- Verifique se o broker `mqtt.greense.com.br` está acessível
-- Verifique se o certificado está corretamente embutido
-- Verifique a porta 8883 (TLS) não está bloqueada por firewall
-
-### Sensores não leem dados
-
-- Verifique as conexões I2C (AHT20, ENS160)
-- Verifique a conexão OneWire (DS18B20)
-- Verifique os pinos GPIO configurados corretamente
-- Consulte os logs para erros de inicialização
-
-### LED não acende
-
-- Verifique se o LED RGB está conectado ao GPIO 16
-- Verifique a alimentação do LED
-- Verifique se `atuadores_init()` foi chamado
+O código comum está em [`../greense/`](../greense/). Para compilar: ESP-IDF 5.2, Python 3, alvo `esp32s3`.
 
 ---
 

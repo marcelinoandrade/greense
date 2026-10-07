@@ -2,6 +2,8 @@
 
 A pasta `client` contém as entregas do Projeto GreenSe de firmware para microcontroladores ESP32, prontos para uso em campo com sensores definidos e assets de hardware. Use esta página como índice para localizar o nó adequado.
 
+A N01 e a N02 compartilham o firmware em [`greense/`](greense/). Cada pasta escolhe o tópico e os sensores no próprio `main/config.h`. Os pinos saem de [`greense/include/greense.h`](greense/include/greense.h) conforme o alvo já gravado no `sdkconfig`: a N01 é `esp32c6` e a N02 é `esp32s3`.
+
 ---
 
 ## Tabela de Nós
@@ -9,7 +11,7 @@ A pasta `client` contém as entregas do Projeto GreenSe de firmware para microco
 | Nó | Diretório | Stack | Hardware Principal | Comunicação |
 |----|-----------|-------|-------------------|-------------|
 | **N01** | `N01_Estufa_Germinar` | ESP-IDF 5.2 (C) | ESP32-C6 + DHT11/DS18B20/HW-072/HD-38 | Wi-Fi 6, MQTT/WSS |
-| **N02** | `N02_Estufa_Maturar` | ESP-IDF 5.x (C) | ESP32 + Sensores + Boias + LED RGB | Wi-Fi, MQTT/TLS-WSS |
+| **N02** | `N02_Estufa_Maturar` | ESP-IDF 5.2 (C) | ESP32-S3 Zero + DHT11/DS18B20/HW-072/HD-38 | Wi-Fi, MQTT/WSS |
 | **N03** | `N03_Estufa_Camera` | ESP-IDF 5.x (C) | ESP32-CAM AI Thinker (OV2640) | Wi-Fi, HTTPS POST, SD Card |
 | **N04** | `N04_Estufa_Termica` | ESP-IDF 5.x (C) | ESP32-S3 WROOM (N16R8) + MLX90640 | Wi-Fi, HTTPS POST, SD Card, NTP |
 
@@ -25,8 +27,10 @@ A pasta `client` contém as entregas do Projeto GreenSe de firmware para microco
 - **Doc**: [`N01_Estufa_Germinar/README.md`](N01_Estufa_Germinar/README.md)
 
 ### N02 · Estufa Maturar
-- **Objetivo**: Acompanhar reservatórios, claridade e status visual na fase de maturação.
-- **Destaques**: Boias de nível, DHT22 externo, DS18B20, LED RGB (GPIO 16), MQTT via WSS.
+- **Objetivo**: Monitorar clima, solo e luminosidade na fase de maturação.
+- **Hardware**: ESP32-S3 Zero. Os pinos saem de `greense/include/greense.h` porque o alvo desta pasta é `esp32s3`.
+- **Sensores**: DHT11 (ar), DS18B20 (temperatura do solo), HW-072 (luz), HD-38 (umidade do solo), boia baixa no GPIO7 e boia alta no GPIO8.
+- **Protocolos**: Wi-Fi STA, MQTT sobre WSS (`mqtt.greense.com.br`), tópico `estufa/maturar`.
 - **Doc**: [`N02_Estufa_Maturar/README.md`](N02_Estufa_Maturar/README.md)
 
 ### N03 · Estufa Câmera (Visual)

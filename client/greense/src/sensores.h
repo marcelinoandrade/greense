@@ -1,6 +1,8 @@
 #ifndef SENSORES_H
 #define SENSORES_H
 
+#include "greense_app.h"
+
 typedef struct {
     float temp;
     float umid;
@@ -13,10 +15,10 @@ typedef struct {
     float ec;
     float temp_reserv_ext;
     int umid_solo_raw;
-    float umid_solo_pct;  
+    float umid_solo_pct;
 } sensor_data_t;
 
-void sensores_init(void);
+void sensores_init(const greense_app_config_t *cfg);
 sensor_data_t sensores_ler_dados(void);
 
-#endif // SENSORES_H
+#endif
