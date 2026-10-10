@@ -578,13 +578,13 @@
                 <tbody>
                     <tr>
                         <td><strong>N01</strong></td>
-                        <td>Germinação - Monitoramento ambiental</td>
-                        <td>ESP-IDF (C) + ESP32 + AHT20, ENS160, DS18B20</td>
+                        <td>Germinação - Clima, solo e luz</td>
+                        <td>ESP-IDF (C) + ESP32-C6 Zero na Placa Mini Estufa + DHT11, DS18B20, HW-072, HD-38</td>
                     </tr>
                     <tr>
                         <td><strong>N02</strong></td>
-                        <td>Maturação - Monitoramento completo</td>
-                        <td>ESP-IDF (C) + ESP32 + Sensores + Boias + LED RGB</td>
+                        <td>Maturação - Clima interno e externo, solo, luz e boias</td>
+                        <td>ESP-IDF (C) + ESP32-S3 Zero na mesma Placa Mini Estufa + DHT11, DHT22, DS18B20, HW-072, HD-38</td>
                     </tr>
                     <tr>
                         <td><strong>N03</strong></td>
@@ -598,6 +598,19 @@
                     </tr>
                 </tbody>
             </table>
+
+            <p style="margin-top: 20px;">A N02 usa a mesma placa e a mesma base 3D da N01. No soquete entra o ESP32-S3 Zero. Além dos sensores da germinação, a maturação lê o DHT22 fora da tenda e as boias do reservatório.</p>
+
+            <div style="display: flex; flex-wrap: wrap; gap: 24px; justify-content: center; margin-top: 24px;">
+                <figure style="margin: 0; max-width: 460px; text-align: center;">
+                    <img src="https://raw.githubusercontent.com/marcelinoandrade/greense/main/client/N01_Estufa_Germinar/imagens/MiniEstufaInstrumentada.jpeg" alt="Estufa de germinação com a Placa Mini Estufa" style="width: 100%; border-radius: 12px; box-shadow: var(--shadow);">
+                    <figcaption style="margin-top: 8px;">N01 · Germinação no ESP32-C6 Zero</figcaption>
+                </figure>
+                <figure style="margin: 0; max-width: 460px; text-align: center;">
+                    <img src="https://raw.githubusercontent.com/marcelinoandrade/greense/main/client/N02_Estufa_Maturar/imagens/estufaMaturar.jpeg" alt="Estufa de maturação com DHT22, boias e a Placa Mini Estufa" style="width: 100%; border-radius: 12px; box-shadow: var(--shadow);">
+                    <figcaption style="margin-top: 8px;">N02 · Maturação no ESP32-S3 Zero</figcaption>
+                </figure>
+            </div>
 
             <p style="margin-top: 20px;"><strong>🌐 Comunicação</strong>: MQTT/TLS, HTTP POST, USB (transferência local)</p>
 
@@ -635,13 +648,12 @@
 
             <h3>🔩 Hardware</h3>
             <div class="tech-badges">
-                <img src="https://img.shields.io/badge/ESP32--WROOM--32-✓-orange?style=flat-square" alt="ESP32">
-                <img src="https://img.shields.io/badge/ESP32--S3-✓-orange?style=flat-square" alt="ESP32-S3">
-                <img src="https://img.shields.io/badge/ESP32--C3-✓-orange?style=flat-square" alt="ESP32-C3">
-                <img src="https://img.shields.io/badge/ESP32--P4--EYE-✓-orange?style=flat-square" alt="ESP32-P4">
+                <img src="https://img.shields.io/badge/ESP32--C6%20Zero-✓-orange?style=flat-square" alt="ESP32-C6 Zero">
+                <img src="https://img.shields.io/badge/ESP32--S3%20Zero-✓-orange?style=flat-square" alt="ESP32-S3 Zero">
+                <img src="https://img.shields.io/badge/ESP32--S3%20WROOM-✓-orange?style=flat-square" alt="ESP32-S3 WROOM">
                 <img src="https://img.shields.io/badge/Raspberry%20Pi%204/5-✓-red?style=flat-square" alt="Raspberry Pi">
             </div>
-            <p style="text-align: center; margin-top: 15px;"><strong>Sensores</strong>: AHT20 • ENS160 • DS18B20 • DHT22 • pH/EC • MLX90640 • OV2710</p>
+            <p style="text-align: center; margin-top: 15px;"><strong>Sensores</strong>: DHT11 • DHT22 • DS18B20 • HW-072 • HD-38 • boias de nível • MLX90640 • OV2640</p>
 
             <h3>💻 Software</h3>
             <div class="tech-badges">
@@ -744,8 +756,9 @@ cd greense</code></pre>
             <h2>📁 Estrutura do Repositório</h2>
             <pre><code>greense/
 ├── 📦 client/                          # Soluções hardware (ESP32)
-│   ├── N01_Estufa_Germinar/           # 🌱 Monitoramento básico (germinação)
-│   ├── N02_Estufa_Maturar/            # 🌿 Monitoramento completo (maturação)
+│   ├── greense/                       # Firmware comum da N01 e da N02
+│   ├── N01_Estufa_Germinar/           # 🌱 Germinação no ESP32-C6 Zero
+│   ├── N02_Estufa_Maturar/            # 🌿 Maturação no ESP32-S3 Zero
 │   ├── N03_Estufa_Camera/             # 📷 Câmera visual
 │   └── N04_Estufa_Termica/            # 🌡️ Solução completa térmica e visual
 ├── 🖥️ server/                          # Sistema servidor
