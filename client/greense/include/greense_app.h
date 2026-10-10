@@ -18,6 +18,9 @@ typedef struct {
     int umid_solo_adc_seco;
     int umid_solo_adc_umido;
     int boias;
+    int dht_ext;
+    /* 1: temp_externa e umid_externa saem sem decimal, no tipo que o Influx da maturação já tem. */
+    int mqtt_ext_inteiro;
 } greense_app_config_t;
 
 void greense_app_start(const greense_app_config_t *cfg);

@@ -16,5 +16,8 @@
 #define UMID_SOLO_ADC_UMIDO  1180
 
 #define GREENSE_BOIAS 1
+#define GREENSE_DHT_EXT 1
+/* O Influx da maturação guarda temp_ext e umid_ext como inteiro. */
+#define GREENSE_MQTT_EXT_INTEIRO 1
 
 #endif

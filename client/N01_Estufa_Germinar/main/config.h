@@ -16,5 +16,6 @@
 #define UMID_SOLO_ADC_UMIDO  1180
 
 #define GREENSE_BOIAS 0
+#define GREENSE_DHT_EXT 0
 
 #endif

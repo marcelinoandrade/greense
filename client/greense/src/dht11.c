@@ -30,7 +30,33 @@ static const char *TAG = "DHT11";
 #define DHT_HUM_MAX 100.0f
 
 static uint32_t s_ticks_per_us = 1;
-static int64_t s_last_read_us;
+
+/* O intervalo mínimo é por pino. O DHT11 de dentro e o DHT22 de fora não compartilham o relógio. */
+#define DHT_MAX_PINOS 4
+
+static struct {
+    gpio_num_t gpio;
+    int64_t last_us;
+    bool usado;
+} s_ultimo[DHT_MAX_PINOS];
+
+static int64_t *ultimo_leitura(gpio_num_t gpio)
+{
+    for (int i = 0; i < DHT_MAX_PINOS; i++) {
+        if (s_ultimo[i].usado && s_ultimo[i].gpio == gpio) {
+            return &s_ultimo[i].last_us;
+        }
+    }
+    for (int i = 0; i < DHT_MAX_PINOS; i++) {
+        if (!s_ultimo[i].usado) {
+            s_ultimo[i].usado = true;
+            s_ultimo[i].gpio = gpio;
+            s_ultimo[i].last_us = 0;
+            return &s_ultimo[i].last_us;
+        }
+    }
+    return &s_ultimo[0].last_us;
+}
 
 static int IRAM_ATTR wait_level(gpio_num_t pin, int level, uint32_t timeout_us)
 {
@@ -94,12 +120,13 @@ bool dht11_read(gpio_num_t gpio, float *temperature, float *humidity)
     uint32_t ticks = esp_rom_get_cpu_ticks_per_us();
     s_ticks_per_us = ticks ? ticks : 1;
 
+    int64_t *ultima = ultimo_leitura(gpio);
     int64_t now = esp_timer_get_time();
-    if (s_last_read_us != 0 && (now - s_last_read_us) < DHT11_MIN_INTERVAL_US) {
-        ESP_LOGW(TAG, "leitura cedo demais");
+    if (*ultima != 0 && (now - *ultima) < DHT11_MIN_INTERVAL_US) {
+        ESP_LOGW(TAG, "leitura cedo demais no GPIO %d", gpio);
         return false;
     }
-    s_last_read_us = now;
+    *ultima = now;
 
     gpio_set_level(gpio, 0);
     esp_rom_delay_us(20000);

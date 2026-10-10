@@ -29,6 +29,8 @@
 #define GREENSE_ADC_SOLO_CHANNEL    ADC_CHANNEL_0
 #define GREENSE_PIN_BOIA_MIN        GPIO_NUM_7
 #define GREENSE_PIN_BOIA_MAX        GPIO_NUM_8
+/* DHT22 externo. No S3 o GPIO3 é pino de boot: o pull-up de 4,7 kΩ para 3,3 V deixa a linha em alto. */
+#define GREENSE_PIN_AR_EXT          GPIO_NUM_3
 #define GREENSE_LED_GPIO            GPIO_NUM_21
 #define GREENSE_LED_COUNT           1
 
@@ -48,6 +50,7 @@
 #define GREENSE_ADC_SOLO_CHANNEL    ADC_CHANNEL_0
 #define GREENSE_PIN_BOIA_MIN        GPIO_NUM_1
 #define GREENSE_PIN_BOIA_MAX        GPIO_NUM_2
+#define GREENSE_PIN_AR_EXT          GPIO_NUM_3
 #define GREENSE_LED_GPIO            GPIO_NUM_8
 #define GREENSE_LED_COUNT           1
 

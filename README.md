@@ -76,7 +76,7 @@ Soluções modulares baseadas em **ESP32** para diferentes necessidades:
 | Solução | 📋 Descrição | 🔧 Tecnologia |
 |:--------|:-------------|:--------------|
 | **N01** | Germinação - Clima, solo e luz | ESP-IDF (C) + ESP32-C6 Zero + DHT11, DS18B20, HW-072, HD-38 |
-| **N02** | Maturação - Clima, solo, luz e boias | ESP-IDF (C) + ESP32-S3 Zero + DHT11, DS18B20, HW-072, HD-38 |
+| **N02** | Maturação - Clima interno e externo, solo, luz e boias | ESP-IDF (C) + ESP32-S3 Zero na Placa Mini Estufa + DHT11, DHT22, DS18B20, HW-072, HD-38 |
 | **N03** | Câmera Visual - Captura óptica | ESP-IDF (C) + ESP32-CAM + OV2640 |
 | **N04** | Câmera Térmica - Visão completa visual e térmica | ESP-IDF (C) + ESP32-S3 WROOM + MLX90640 |
 
@@ -109,7 +109,7 @@ Sistema central em **Python** rodando em **Raspberry Pi 4**:
 ![ESP32-S3](https://img.shields.io/badge/ESP32--S3%20WROOM-✓-orange?style=flat-square)
 ![Raspberry Pi](https://img.shields.io/badge/Raspberry%20Pi%204/5-✓-red?style=flat-square)
 
-**Sensores**: DHT11 • DS18B20 • HW-072 • HD-38 • boias de nível • MLX90640 • OV2640
+**Sensores**: DHT11 • DHT22 • DS18B20 • HW-072 • HD-38 • boias de nível • MLX90640 • OV2640
 
 ### 💻 Software
 

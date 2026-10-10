@@ -21,6 +21,8 @@ void app_main(void)
         .umid_solo_adc_seco = UMID_SOLO_ADC_SECO,
         .umid_solo_adc_umido = UMID_SOLO_ADC_UMIDO,
         .boias = GREENSE_BOIAS,
+        .dht_ext = GREENSE_DHT_EXT,
+        .mqtt_ext_inteiro = GREENSE_MQTT_EXT_INTEIRO,
     };
     greense_app_start(&cfg);
 }

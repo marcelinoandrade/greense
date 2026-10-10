@@ -10,16 +10,21 @@ static const char *TAG = "SENSORES";
 
 static adc_oneshot_unit_handle_t adc_solo;
 static int s_boias;
+static int s_dht_ext;
 static int s_adc_seco;
 static int s_adc_umido;
 
 void sensores_init(const greense_app_config_t *cfg)
 {
     s_boias = cfg->boias;
+    s_dht_ext = cfg->dht_ext;
     s_adc_seco = cfg->umid_solo_adc_seco;
     s_adc_umido = cfg->umid_solo_adc_umido;
 
     dht11_init(GREENSE_PIN_AR);
+    if (s_dht_ext) {
+        dht11_init(GREENSE_PIN_AR_EXT);
+    }
     ds18b20_init(GREENSE_PIN_SOLO_TEMP);
 
     gpio_config_t luz_conf = {
@@ -60,6 +65,9 @@ void sensores_init(const greense_app_config_t *cfg)
     if (s_boias) {
         ESP_LOGI(TAG, "boia min GPIO%d | boia max GPIO%d", GREENSE_PIN_BOIA_MIN, GREENSE_PIN_BOIA_MAX);
     }
+    if (s_dht_ext) {
+        ESP_LOGI(TAG, "DHT22 externo GPIO%d", GREENSE_PIN_AR_EXT);
+    }
 }
 
 sensor_data_t sensores_ler_dados(void)
@@ -71,6 +79,15 @@ sensor_data_t sensores_ler_dados(void)
     if (dht11_read(GREENSE_PIN_AR, &temp, &umid)) {
         dados.temp = temp;
         dados.umid = umid;
+    }
+
+    if (s_dht_ext) {
+        float temp_ext = 0;
+        float umid_ext = 0;
+        if (dht11_read(GREENSE_PIN_AR_EXT, &temp_ext, &umid_ext)) {
+            dados.temp_externa = temp_ext;
+            dados.umid_externa = umid_ext;
+        }
     }
 
     dados.luz = (gpio_get_level(GREENSE_PIN_LUZ) == 0) ? 1 : 0;
@@ -97,9 +114,9 @@ sensor_data_t sensores_ler_dados(void)
         dados.umid_solo_pct = umid_pct;
     }
 
-    ESP_LOGI(TAG, "ar %.1f C / %.1f %% | solo %.1f C | umid %d (%.0f%%) | luz %.0f | boia min %d max %d",
-             dados.temp, dados.umid, dados.temp_reserv_int,
-             dados.umid_solo_raw, dados.umid_solo_pct, dados.luz,
+    ESP_LOGI(TAG, "ar %.1f C / %.1f %% | fora %.1f C / %.1f %% | solo %.1f C | umid %d (%.0f%%) | luz %.0f | boia min %d max %d",
+             dados.temp, dados.umid, dados.temp_externa, dados.umid_externa,
+             dados.temp_reserv_int, dados.umid_solo_raw, dados.umid_solo_pct, dados.luz,
              dados.agua_min, dados.agua_max);
     return dados;
 }
